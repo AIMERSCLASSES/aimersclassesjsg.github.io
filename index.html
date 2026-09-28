@@ -16,12 +16,15 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 
 <!-- =====================================================
-     ONLY FOR CURRENT AFFAIRS PDF SECTION
+     CUSTOM CSS
      ===================================================== -->
 
 <style>
 
-/* Keep Current Affairs PDF headings small and normal */
+/* =====================================================
+   CURRENT AFFAIRS - NORMAL FONT SIZE
+   ===================================================== */
+
 .monthly-capsule .pdf-title {
     font-size: 16px !important;
     line-height: 1.4 !important;
@@ -31,11 +34,10 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 .monthly-capsule .pdf-description {
     font-size: 14px !important;
+    line-height: 1.5 !important;
     margin: 0 0 12px 0 !important;
 }
 
-
-/* Monthly Capsule main heading */
 .monthly-capsule .capsule-title {
     font-size: 18px !important;
     line-height: 1.4 !important;
@@ -44,8 +46,7 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 
 /* =====================================================
-   HERO SECTION
-   Keep left content LEFT and right card RIGHT
+   HERO - LEFT CONTENT + RIGHT CARD
    ===================================================== */
 
 .hero .hero-grid {
@@ -55,17 +56,33 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
     gap: 50px !important;
 }
 
-
-/* Keep AIMERS main content on LEFT */
 .hero .hero-grid > div:first-child {
     text-align: left !important;
 }
 
-
-/* Keep Your Goal card on RIGHT */
 .hero .hero-card {
     width: 100% !important;
     justify-self: end !important;
+}
+
+
+/* =====================================================
+   STUDY MATERIAL CURRENT AFFAIRS
+   ===================================================== */
+
+.study-current {
+    margin-top: 35px;
+    scroll-margin-top: 100px;
+}
+
+.study-current-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.study-current-subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
 
@@ -170,7 +187,9 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
                 Study Material
             </a>
 
-            <a href="#current">
+            <!-- DIRECTLY OPEN CURRENT AFFAIRS INSIDE STUDY MATERIAL -->
+
+            <a href="#current-affairs">
                 Current Affairs
             </a>
 
@@ -195,7 +214,7 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 
 <!-- =====================================================
-     HOME / HERO
+     HOME
      ===================================================== -->
 
 <section id="home" class="hero">
@@ -244,8 +263,6 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
             </div>
 
-
-            <!-- MINI STATS -->
 
             <div class="mini-stats">
 
@@ -296,7 +313,7 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 
 
-        <!-- RIGHT SIDE CARD -->
+        <!-- RIGHT SIDE -->
 
         <div class="hero-card">
 
@@ -364,8 +381,8 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
         </span>
 
 
-        <a href="#materials">
-            View Materials →
+        <a href="#current-affairs">
+            View Current Affairs →
         </a>
 
 
@@ -570,12 +587,15 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 <!-- =====================================================
      STUDY MATERIAL
+     CURRENT AFFAIRS IS INSIDE THIS SECTION
      ===================================================== -->
 
 <section id="materials" class="section alt">
 
     <div class="container">
 
+
+        <!-- STUDY MATERIAL HEADING -->
 
         <div class="section-head">
 
@@ -588,15 +608,21 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
             </h2>
 
             <p>
-                Notes, PDFs and practice resources will be available here.
+                Notes, PDFs, current affairs and practice resources.
             </p>
 
         </div>
 
 
 
+        <!-- =================================================
+             STUDY MATERIAL CARDS
+             ================================================= -->
+
         <div class="resource-grid">
 
+
+            <!-- PDF NOTES -->
 
             <a class="resource" href="materials.html#pdf">
 
@@ -616,6 +642,8 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 
 
+            <!-- VIDEO CLASSES -->
+
             <a class="resource" href="materials.html#video">
 
                 <b>
@@ -634,7 +662,9 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 
 
-            <a class="resource" href="materials.html#current">
+            <!-- CURRENT AFFAIRS -->
+
+            <a class="resource" href="#current-affairs">
 
                 <b>
                     📰 Current Affairs
@@ -652,7 +682,9 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 
 
-            <a class="resource" href="materials.html#mock">
+            <!-- MOCK TESTS -->
+
+            <a class="resource" href="mock-test.html">
 
                 <b>
                     📝 Mock Tests
@@ -671,145 +703,124 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
         </div>
 
-    </div>
-
-</section>
 
 
+        <!-- =================================================
+             CURRENT AFFAIRS
+             INSIDE STUDY MATERIAL
+             ================================================= -->
 
-<!-- =====================================================
-     CURRENT AFFAIRS
-     ===================================================== -->
-
-<section id="current" class="section">
-
-    <div class="container">
-
-
-        <div class="section-head">
-
-            <span>
-                STAY UPDATED
-            </span>
+        <div
+            id="current-affairs"
+            class="study-current">
 
 
-            <h2>
-                Current Affairs
-            </h2>
+            <!-- CURRENT AFFAIRS TITLE -->
+
+            <div class="update-box monthly-capsule">
 
 
-            <p>
-                Daily, weekly and monthly current affairs resources for
-                competitive examination preparation.
-            </p>
-
-        </div>
+                <div>
+                    🗓️
+                </div>
 
 
-
-        <!-- MONTHLY CURRENT AFFAIRS CAPSULE -->
-
-        <div class="update-box monthly-capsule">
-
-
-            <div>
-                🗓️
-            </div>
-
-
-            <h3 class="capsule-title">
-                Monthly Current Affairs Capsule
-            </h3>
-
-
-            <span>
-                Easy-to-read resources for competitive exam preparation.
-            </span>
-
-
-
-            <!-- =================================================
-                 AUGUST 2026
-                 ================================================= -->
-
-            <div style="margin-top:20px;">
-
-
-                <h3 class="pdf-title">
-                    📄 August 2026 Current Affairs
+                <h3 class="capsule-title">
+                    Monthly Current Affairs Capsule
                 </h3>
 
 
-                <p class="pdf-description">
-                    300 MCQs – August 2026 Current Affairs
-                </p>
+                <span>
+                    Easy-to-read resources for competitive exam preparation.
+                </span>
 
 
-                <a
-                    class="btn primary"
-                    href="300_MCQs_August_2026_Current_Affairs.pdf"
-                    target="_blank">
 
-                    📖 View PDF
+                <!-- =========================================
+                     AUGUST 2026
+                     ========================================= -->
 
-                </a>
+                <div style="margin-top:20px;">
 
 
-                <a
-                    class="btn light"
-                    href="300_MCQs_August_2026_Current_Affairs.pdf"
-                    download>
+                    <h3 class="pdf-title">
+                        📄 August 2026 Current Affairs
+                    </h3>
 
-                    ⬇ Download PDF
 
-                </a>
+                    <p class="pdf-description">
+                        300 MCQs – August 2026 Current Affairs
+                    </p>
+
+
+                    <a
+                        class="btn primary"
+                        href="300_MCQs_August_2026_Current_Affairs.pdf"
+                        target="_blank">
+
+                        📖 View PDF
+
+                    </a>
+
+
+                    <a
+                        class="btn light"
+                        href="300_MCQs_August_2026_Current_Affairs.pdf"
+                        download>
+
+                        ⬇ Download PDF
+
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     JULY 2026
+                     ========================================= -->
+
+                <div style="margin-top:22px;">
+
+
+                    <h3 class="pdf-title">
+                        📄 July 2026 Current Affairs
+                    </h3>
+
+
+                    <p class="pdf-description">
+                        Current Affairs MCQs – July 2026
+                    </p>
+
+
+                    <a
+                        class="btn primary"
+                        href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
+                        target="_blank">
+
+                        📖 View PDF
+
+                    </a>
+
+
+                    <a
+                        class="btn light"
+                        href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
+                        download>
+
+                        ⬇ Download PDF
+
+                    </a>
+
+
+                </div>
 
 
             </div>
-
-
-
-            <!-- =================================================
-                 JULY 2026
-                 ================================================= -->
-
-            <div style="margin-top:22px;">
-
-
-                <h3 class="pdf-title">
-                    📄 July 2026 Current Affairs
-                </h3>
-
-
-                <p class="pdf-description">
-                    Current Affairs MCQs – July 2026
-                </p>
-
-
-                <a
-                    class="btn primary"
-                    href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
-                    target="_blank">
-
-                    📖 View PDF
-
-                </a>
-
-
-                <a
-                    class="btn light"
-                    href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
-                    download>
-
-                    ⬇ Download PDF
-
-                </a>
-
-
-            </div>
-
 
         </div>
+
 
     </div>
 
@@ -821,7 +832,7 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
      MOCK TEST
      ===================================================== -->
 
-<section id="mock" class="section alt">
+<section id="mock" class="section">
 
     <div class="container two-col reverse-mobile">
 
@@ -883,7 +894,7 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 
 <!-- =====================================================
-     CALL TO ACTION
+     CTA
      ===================================================== -->
 
 <section class="cta">
