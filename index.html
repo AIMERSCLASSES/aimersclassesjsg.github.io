@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
@@ -12,13 +10,16 @@
 
     <title>AIMERS CLASSES | Aim High • Achieve High</title>
 
+    <link rel="stylesheet" href="css/style.css">
 
     <style>
 
+        /* =====================================================
+           BASIC RESET
+        ===================================================== */
+
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
         html {
@@ -26,938 +27,181 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fb;
-            color: #172033;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
+            margin: 0;
         }
 
 
-        /* ================= HEADER ================= */
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
-        header {
+        .header {
             position: sticky;
             top: 0;
-            z-index: 1000;
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+            z-index: 9999;
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 14px 20px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 20px;
+        .header .nav {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
         }
 
         .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            display: flex !important;
+            align-items: center !important;
+            text-decoration: none !important;
+            margin-right: auto !important;
         }
 
-        .brand-logo {
-            width: 48px;
-            height: 48px;
-
-            border-radius: 12px;
-
-            background: linear-gradient(
-                135deg,
-                #0d47a1,
-                #1565c0
-            );
-
-            color: #ffffff;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 15px;
-            font-weight: 800;
+        #navlinks {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-end !important;
+            gap: 22px !important;
         }
 
-        .brand-text h1 {
-            color: #0d47a1;
-            font-size: 22px;
-            line-height: 1.1;
-        }
-
-        .brand-text span {
-            color: #667085;
-            font-size: 12px;
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 7px;
-        }
-
-        nav a {
-            color: #344054;
-            font-size: 14px;
-            font-weight: 600;
-
-            padding: 9px 11px;
-
-            border-radius: 8px;
-        }
-
-        nav a:hover {
-            background: #eaf2ff;
-            color: #0d47a1;
+        #navlinks a {
+            text-decoration: none !important;
         }
 
 
-        /* ================= HERO ================= */
+        /* =====================================================
+           HERO
+        ===================================================== */
 
-        .hero {
-            padding: 70px 20px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #eaf3ff,
-                    #ffffff
-                );
+        .hero .hero-grid {
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) minmax(300px, 420px) !important;
+            align-items: center !important;
+            gap: 50px !important;
         }
 
-        .hero-grid {
-            max-width: 1200px;
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns:
-                minmax(0, 1fr)
-                minmax(300px, 420px);
-
-            align-items: center;
-
-            gap: 50px;
+        .hero .hero-grid > div:first-child {
+            text-align: left !important;
         }
 
-        .hero-content {
-            text-align: left;
+        .hero .hero-card {
+            width: 100% !important;
+            justify-self: end !important;
         }
 
-        .hero-content .tag {
-            display: inline-block;
 
-            background: #dbeafe;
-            color: #0d47a1;
+        /* =====================================================
+           STUDY MATERIAL
+        ===================================================== */
 
-            padding: 7px 14px;
-
-            border-radius: 30px;
-
-            font-size: 13px;
-            font-weight: 700;
-
-            margin-bottom: 15px;
+        #materials {
+            scroll-margin-top: 90px;
         }
 
-        .hero-content h2 {
-            color: #0d47a1;
-
-            font-size: clamp(
-                36px,
-                6vw,
-                65px
-            );
-
-            line-height: 1.05;
-
-            margin-bottom: 15px;
+        .study-current {
+            margin-top: 35px;
+            scroll-margin-top: 100px;
         }
 
-        .hero-content h3 {
-            color: #1d2939;
-            font-size: 24px;
 
-            margin-bottom: 12px;
-        }
+        /* =====================================================
+           CURRENT AFFAIRS CAPSULE
+        ===================================================== */
 
-        .hero-content p {
-            max-width: 650px;
-
-            color: #667085;
-
-            font-size: 17px;
-
-            margin-bottom: 25px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .btn {
-            display: inline-block;
-
-            padding: 12px 20px;
-
-            border-radius: 10px;
-
-            font-weight: 700;
-        }
-
-        .btn-primary {
-            background: #0d47a1;
-            color: #ffffff;
-        }
-
-        .btn-secondary {
-            background: #ffffff;
-            color: #0d47a1;
-
-            border: 1px solid #b8c7df;
-        }
-
-        .hero-card {
+        .monthly-capsule {
             width: 100%;
-
-            background: #ffffff;
-
-            padding: 30px;
-
-            border-radius: 22px;
-
-            border: 1px solid #e5e7eb;
-
-            box-shadow:
-                0 18px 50px
-                rgba(13,71,161,0.14);
         }
 
-        .hero-card h3 {
-            color: #0d47a1;
-
-            font-size: 27px;
-
-            margin-bottom: 8px;
+        .monthly-capsule .capsule-title {
+            font-size: 18px !important;
+            line-height: 1.4 !important;
+            margin: 0 0 6px 0 !important;
+            font-weight: 700 !important;
         }
 
-        .hero-card p {
-            color: #667085;
-
-            margin-bottom: 20px;
+        .monthly-capsule > span {
+            font-size: 14px !important;
+            line-height: 1.5 !important;
         }
 
-        .hero-card ul {
-            list-style: none;
-        }
-
-        .hero-card li {
-            padding: 9px 0;
-
-            border-bottom:
-                1px solid #eef2f6;
-        }
-
-        .hero-card li:last-child {
-            border-bottom: none;
-        }
-
-
-        /* ================= GENERAL ================= */
-
-        section {
-            padding: 65px 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .section-heading {
-            text-align: center;
-
-            margin-bottom: 35px;
-        }
-
-        .section-heading h2 {
-            color: #0d47a1;
-
-            font-size: 34px;
-
-            margin-bottom: 8px;
-        }
-
-        .section-heading p {
-            color: #667085;
-        }
-
-
-        /* ================= NOTICE ================= */
-
-        .notice {
-            padding: 18px 20px;
-
-            background: #fff8e1;
-
-            border-left:
-                5px solid #ffb300;
-        }
-
-        .notice strong {
-            color: #8a5a00;
-        }
-
-
-        /* ================= COURSES ================= */
-
-        .course-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 18px;
-        }
-
-        .course-card {
-            background: #ffffff;
-
-            padding: 25px;
-
-            border-radius: 16px;
-
-            border:
-                1px solid #e5e7eb;
-
-            box-shadow:
-                0 8px 25px
-                rgba(0,0,0,0.05);
-        }
-
-        .course-card h3 {
-            color: #0d47a1;
-
-            margin-bottom: 8px;
-        }
-
-        .course-card p {
-            color: #667085;
-
-            font-size: 14px;
-        }
-
-
-        /* ================= STUDY MATERIAL ================= */
-
-        .study-material {
-            background: #eef5ff;
-        }
-
-        .resource-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 18px;
-        }
-
-        .resource {
-            background: #ffffff;
-
-            border-radius: 16px;
-
-            padding: 22px;
-
-            border:
-                1px solid #e2e8f0;
-
-            box-shadow:
-                0 8px 25px
-                rgba(0,0,0,0.05);
-
-            transition: 0.2s;
-        }
-
-        .resource:hover {
-            transform: translateY(-4px);
-
-            box-shadow:
-                0 15px 30px
-                rgba(0,0,0,0.08);
-        }
-
-        .resource b {
-            display: block;
-
-            color: #0d47a1;
-
-            font-size: 19px;
-
-            margin-bottom: 6px;
-        }
-
-        .resource span {
-            display: block;
-
-            color: #667085;
-
-            font-size: 14px;
-
-            margin-bottom: 12px;
-        }
-
-        .resource em {
-            color: #1565c0;
-
-            font-style: normal;
-
-            font-weight: 700;
-        }
-
-
-        /* ================= CURRENT AFFAIRS ================= */
-
-        .current-affairs {
-            margin-top: 45px;
-        }
-
-        .current-affairs h3 {
-            color: #0d47a1;
-
-            font-size: 24px;
-
-            margin-bottom: 8px;
-        }
-
-        .current-affairs p {
-            color: #667085;
-
-            margin-bottom: 20px;
-        }
-
-        .capsule-box {
-            background: #ffffff;
-
-            padding: 24px;
-
-            border-radius: 18px;
-
-            border:
-                1px solid #e2e8f0;
-
-            box-shadow:
-                0 8px 25px
-                rgba(0,0,0,0.05);
-        }
-
-        .pdf-list {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 15px;
-        }
-
-        .pdf-item {
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 15px;
-
-            padding: 17px;
-
-            background: #f8fafc;
-
-            border-radius: 12px;
-
-            border:
-                1px solid #e5e7eb;
-        }
-
-        .pdf-item strong {
-            color: #172033;
-        }
-
-        .pdf-button {
-            background: #0d47a1;
-
-            color: #ffffff;
-
-            padding: 9px 14px;
-
-            border-radius: 8px;
-
-            font-weight: 700;
-
-            white-space: nowrap;
-        }
-
-
-        /* ================================================= */
-        /* ================= PDF NOTES ===================== */
-        /* ================================================= */
-
-        .pdf-notes-section {
-            margin-top: 55px;
-        }
-
-        .pdf-notes-heading {
-            margin-bottom: 25px;
-        }
-
-        .pdf-notes-heading h3 {
-            color: #0d47a1;
-
-            font-size: 26px;
-
-            margin-bottom: 6px;
-        }
-
-        .pdf-notes-heading p {
-            color: #667085;
-        }
-
-
-        /* FOUR MAIN FOLDERS */
-
-        .pdf-main-folder-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 20px;
-        }
-
-
-        .pdf-main-folder {
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: space-between;
-
-            min-height: 330px;
-
-            padding: 25px;
-
-            background: #ffffff;
-
-            border-radius: 18px;
-
-            border:
-                1px solid #dbe3ef;
-
-            box-shadow:
-                0 10px 28px
-                rgba(0,0,0,0.06);
-
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-
-        .pdf-main-folder:hover {
-
-            transform:
-                translateY(-6px);
-
-            box-shadow:
-                0 18px 40px
-                rgba(0,0,0,0.10);
-        }
-
-
-        .main-folder-icon {
-
-            font-size: 48px;
-
-            margin-bottom: 12px;
-        }
-
-
-        .pdf-main-folder h4 {
-
-            color: #0d47a1;
-
-            font-size: 20px;
-
-            margin-bottom: 18px;
-        }
-
-
-        /* SUBJECT FOLDERS */
-
-        .subject-folder-list {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 8px;
-        }
-
-
-        .subject-folder {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 9px;
-
-            padding: 9px 11px;
-
-            background: #f4f7fc;
-
-            color: #344054;
-
-            border-radius: 8px;
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            border:
-                1px solid #e5eaf2;
-
-            transition: 0.2s;
-        }
-
-
-        .subject-folder:hover {
-
-            background: #eaf2ff;
-
-            color: #0d47a1;
-
-            border-color: #c5d7f2;
-        }
-
-
-        .folder-open {
-
+        .monthly-capsule .pdf-item {
             margin-top: 20px;
-
-            color: #1565c0;
-
-            font-size: 14px;
-
-            font-weight: 700;
+            padding: 16px 0;
+            border-top: 1px solid rgba(0,0,0,0.10);
         }
 
-
-        /* COMPETITIVE EXAM FOLDER */
-
-        .competitive-folder {
-
-            min-height: 330px;
+        .monthly-capsule .pdf-title {
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+            margin: 0 0 6px 0 !important;
+            font-weight: 600 !important;
         }
 
+        .monthly-capsule .pdf-description {
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+            margin: 0 0 12px 0 !important;
+        }
 
-        .competitive-list {
-
+        .monthly-capsule .pdf-buttons {
             display: flex;
-
-            flex-direction: column;
-
+            flex-wrap: wrap;
             gap: 8px;
         }
 
-
-        .competitive-list div {
-
-            padding: 9px 11px;
-
-            background: #f4f7fc;
-
-            color: #344054;
-
-            border-radius: 8px;
-
-            font-size: 14px;
-
-            font-weight: 600;
+        .monthly-capsule .pdf-buttons .btn {
+            font-size: 13px !important;
+            padding: 9px 14px !important;
         }
 
 
-        /* ================= MOCK TEST ================= */
-
-        .mock-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 18px;
-        }
-
-        .mock-card {
-
-            background: #ffffff;
-
-            padding: 25px;
-
-            border-radius: 16px;
-
-            border:
-                1px solid #e5e7eb;
-
-            box-shadow:
-                0 8px 25px
-                rgba(0,0,0,0.05);
-        }
-
-        .mock-card h3 {
-
-            color: #0d47a1;
-
-            margin-bottom: 8px;
-        }
-
-        .mock-card p {
-
-            color: #667085;
-
-            margin-bottom: 15px;
-        }
-
-
-        /* ================= CTA ================= */
-
-        .cta {
-
-            background: #0d47a1;
-
-            color: #ffffff;
-
-            text-align: center;
-        }
-
-        .cta h2 {
-
-            font-size: 35px;
-
-            margin-bottom: 10px;
-        }
-
-        .cta p {
-
-            margin-bottom: 22px;
-
-            opacity: 0.9;
-        }
-
-        .cta .btn {
-
-            background: #ffffff;
-
-            color: #0d47a1;
-        }
-
-
-        /* ================= CONTACT ================= */
-
-        .contact-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 25px;
-        }
-
-        .contact-card {
-
-            background: #ffffff;
-
-            padding: 28px;
-
-            border-radius: 18px;
-
-            border:
-                1px solid #e5e7eb;
-
-            box-shadow:
-                0 8px 25px
-                rgba(0,0,0,0.05);
-        }
-
-        .contact-card h3 {
-
-            color: #0d47a1;
-
-            margin-bottom: 12px;
-        }
-
-        .contact-card p {
-
-            margin-bottom: 8px;
-
-            color: #667085;
-        }
-
-        .contact-card a {
-
-            color: #0d47a1;
-
-            font-weight: 700;
-        }
-
-
-        /* ================= FOOTER ================= */
-
-        footer {
-
-            background: #101828;
-
-            color: #d0d5dd;
-
-            padding: 30px 20px;
-
-            text-align: center;
-        }
-
-        footer strong {
-
-            color: #ffffff;
-        }
-
-        footer p {
-
-            margin-top: 5px;
-
-            font-size: 13px;
-        }
-
-
-        /* ================= RESPONSIVE ================= */
-
-        @media (max-width: 1100px) {
-
-            .pdf-main-folder-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .course-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-        }
-
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 800px) {
 
-            .nav-container {
-
-                flex-direction: column;
-
-                align-items: flex-start;
+            .hero .hero-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
             }
 
-            nav {
-
-                justify-content: flex-start;
+            .hero .hero-card {
+                justify-self: stretch !important;
             }
 
-            .hero-grid {
-
-                grid-template-columns: 1fr;
-
-                gap: 30px;
-            }
-
-            .hero-content {
-
-                text-align: center;
-            }
-
-            .hero-buttons {
-
-                justify-content: center;
-            }
-
-            .hero-card {
-
-                max-width: 500px;
-
-                margin: auto;
-            }
-
-            .resource-grid,
-            .mock-grid,
-            .contact-grid,
-            .pdf-list {
-
-                grid-template-columns: 1fr;
+            #navlinks {
+                gap: 12px !important;
             }
         }
 
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
 
-            .course-grid,
-            .pdf-main-folder-grid {
-
-                grid-template-columns: 1fr;
+            #navlinks {
+                display: none !important;
             }
 
-            section {
-
-                padding:
-                    50px 15px;
+            .menu {
+                display: block !important;
             }
 
-            .hero {
-
-                padding:
-                    50px 15px;
-            }
-
-            .brand-text h1 {
-
-                font-size: 19px;
-            }
-
-            nav a {
-
-                font-size: 13px;
-
-                padding:
-                    7px 8px;
-            }
-
-            .pdf-item {
-
+            .monthly-capsule .pdf-buttons {
                 flex-direction: column;
-
                 align-items: flex-start;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .monthly-capsule .pdf-title {
+                font-size: 15px !important;
+            }
+
+            .monthly-capsule .pdf-description {
+                font-size: 13px !important;
+            }
+
+            .monthly-capsule .capsule-title {
+                font-size: 17px !important;
             }
         }
 
@@ -969,1124 +213,850 @@
 <body>
 
 
-<!-- ================================================= -->
-<!-- ================= HEADER ========================= -->
-<!-- ================================================= -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-<header>
+    <header class="header">
 
-    <div class="nav-container">
+        <div class="container nav">
 
+            <!-- AIMERS CLASSES LEFT -->
+            <a class="brand" href="#home">
 
-        <a href="#home" class="brand">
-
-            <div class="brand-logo">
-                AC
-            </div>
-
-
-            <div class="brand-text">
-
-                <h1>
-                    AIMERS CLASSES
-                </h1>
+                <span class="brand-mark">A</span>
 
                 <span>
-                    Aim High • Achieve High
+                    <b>AIMERS</b>
+                    <small>CLASSES</small>
                 </span>
 
-            </div>
-
-        </a>
-
-
-        <nav>
-
-            <a href="#home">
-                Home
             </a>
 
-            <a href="#courses">
-                Courses
-            </a>
 
-            <a href="#study-material">
-                Study Material
-            </a>
-
-            <a href="#pdf-notes">
-                PDF Notes
-            </a>
-
-            <a href="#current-affairs">
-                Current Affairs
-            </a>
-
-            <a href="#mock-tests">
-                Mock Tests
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
-
-        </nav>
-
-    </div>
-
-</header>
+            <!-- MOBILE MENU -->
+            <button class="menu" onclick="toggleMenu()">☰</button>
 
 
+            <!-- NAVIGATION -->
+            <nav id="navlinks">
 
-<!-- ================================================= -->
-<!-- ================= HERO =========================== -->
-<!-- ================================================= -->
+                <a href="#home">Home</a>
 
-<section class="hero" id="home">
+                <a href="#courses">Courses</a>
 
+                <a href="#materials">Study Material</a>
 
-    <div class="hero-grid">
+                <!-- IMPORTANT:
+                     CURRENT AFFAIRS GOES DIRECTLY
+                     TO CURRENT AFFAIRS INSIDE STUDY MATERIAL
+                -->
+                <a href="#current-affairs">Current Affairs</a>
 
+                <a href="#mock">Mock Tests</a>
 
-        <div class="hero-content">
+                <a href="#contact">Contact</a>
 
-
-            <span class="tag">
-
-                Jharsuguda's Learning Destination
-
-            </span>
-
-
-            <h2>
-
-                AIMERS CLASSES
-
-            </h2>
-
-
-            <h3>
-
-                Aim High • Achieve High
-
-            </h3>
-
-
-            <p>
-
-                Quality coaching for school students,
-                competitive examinations and school
-                entrance examinations with regular tests,
-                doubt clearing and personal attention.
-
-            </p>
-
-
-            <div class="hero-buttons">
-
-
-                <a
-                    href="#courses"
-                    class="btn btn-primary">
-
-                    Explore Courses
-
-                </a>
-
-
-                <a
-                    href="#study-material"
-                    class="btn btn-secondary">
-
-                    Study Material
-
-                </a>
-
-
-            </div>
-
+            </nav>
 
         </div>
 
+    </header>
 
 
-        <div class="hero-card">
 
+    <main>
 
-            <h3>
 
-                Your Goal. Our Guidance.
+        <!-- =====================================================
+             HOME / HERO
+        ====================================================== -->
 
-            </h3>
+        <section id="home" class="hero">
 
+            <div class="container hero-grid">
 
-            <p>
 
-                Focused learning, regular practice and
-                the right guidance to help students
-                move towards their goals.
+                <!-- LEFT SIDE -->
 
-            </p>
+                <div>
 
+                    <span class="pill">
+                        ADMISSIONS OPEN
+                    </span>
 
-            <ul>
 
-                <li>
-                    ✓ Experienced Faculty
-                </li>
+                    <h1>
+                        AIM HIGH.<br>
+                        <span>ACHIEVE HIGH.</span>
+                    </h1>
 
-                <li>
-                    ✓ Regular Tests
-                </li>
 
-                <li>
-                    ✓ Doubt Clearing Sessions
-                </li>
+                    <p class="hero-text">
+                        Quality coaching for school students,
+                        competitive examinations and school
+                        entrance examinations — all under one roof.
+                    </p>
 
-                <li>
-                    ✓ Personal Attention
-                </li>
 
-                <li>
-                    ✓ Smart Learning
-                </li>
+                    <div class="hero-buttons">
 
-                <li>
-                    ✓ Result Oriented Teaching
-                </li>
-
-            </ul>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ================= NOTICE ========================= -->
-<!-- ================================================= -->
-
-<div class="notice">
-
-
-    <div class="container">
-
-
-        <strong>
-            Admission Open:
-        </strong>
-
-
-        Limited Seats Available.
-        Contact AIMERS CLASSES for admission details.
-
-
-    </div>
-
-
-</div>
-
-
-
-<!-- ================================================= -->
-<!-- ================= COURSES ======================== -->
-<!-- ================================================= -->
-
-<section id="courses">
-
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-
-            <h2>
-                Our Courses
-            </h2>
-
-
-            <p>
-                School education and competitive
-                examination preparation.
-            </p>
-
-
-        </div>
-
-
-
-        <div class="course-grid">
-
-
-            <div class="course-card">
-
-                <h3>
-                    Classes 1–5
-                </h3>
-
-                <p>
-                    Foundation learning with strong focus
-                    on concepts, practice and school
-                    examinations.
-                </p>
-
-            </div>
-
-
-
-            <div class="course-card">
-
-                <h3>
-                    Classes 6–10
-                </h3>
-
-                <p>
-                    Complete school preparation for ICSE,
-                    CBSE, CHSE and BSE with regular tests.
-                </p>
-
-            </div>
-
-
-
-            <div class="course-card">
-
-                <h3>
-                    Classes 11–12
-                </h3>
-
-                <p>
-                    Subject-focused preparation, board
-                    examination support and concept-based
-                    learning.
-                </p>
-
-            </div>
-
-
-
-            <div class="course-card">
-
-                <h3>
-                    Competitive Exams
-                </h3>
-
-                <p>
-                    SSC, Railway, Banking, ASO, OSSC,
-                    OSSSC and other competitive examinations.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ================= STUDY MATERIAL ================= -->
-<!-- ================================================= -->
-
-<section
-    class="study-material"
-    id="study-material">
-
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-
-            <h2>
-                Study Material
-            </h2>
-
-
-            <p>
-                Notes, current affairs, PDFs and
-                other learning resources.
-            </p>
-
-
-        </div>
-
-
-
-        <div class="resource-grid">
-
-
-            <!-- PDF NOTES -->
-
-            <a
-                class="resource"
-                href="#pdf-notes">
-
-
-                <b>
-                    📄 PDF Notes
-                </b>
-
-
-                <span>
-                    Class 10, Class 11, Class 12
-                    and Competitive Exams Notes.
-                </span>
-
-
-                <em>
-                    Open →
-                </em>
-
-
-            </a>
-
-
-
-            <!-- CURRENT AFFAIRS -->
-
-            <a
-                class="resource"
-                href="#current-affairs">
-
-
-                <b>
-                    📰 Current Affairs
-                </b>
-
-
-                <span>
-                    Monthly Current Affairs Capsules
-                    and MCQ PDFs.
-                </span>
-
-
-                <em>
-                    Open →
-                </em>
-
-
-            </a>
-
-
-
-            <!-- MOCK TEST -->
-
-            <a
-                class="resource"
-                href="mock-test.html">
-
-
-                <b>
-                    📝 Mock Tests
-                </b>
-
-
-                <span>
-                    Practice questions and
-                    online mock tests.
-                </span>
-
-
-                <em>
-                    Open →
-                </em>
-
-
-            </a>
-
-
-        </div>
-
-
-
-        <!-- ================================================= -->
-        <!-- ================= CURRENT AFFAIRS ================= -->
-        <!-- ================================================= -->
-
-        <div
-            class="current-affairs"
-            id="current-affairs">
-
-
-            <h3>
-                📰 Current Affairs
-            </h3>
-
-
-            <p>
-                Monthly Current Affairs Capsule
-                for competitive examination preparation.
-            </p>
-
-
-
-            <div class="capsule-box">
-
-
-                <div class="pdf-list">
-
-
-                    <div class="pdf-item">
-
-
-                        <strong>
-                            📕 July 2026 Current Affairs MCQ
-                        </strong>
-
-
-                        <a
-                            class="pdf-button"
-                            href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
-                            target="_blank">
-
-                            View PDF
-
+                        <a class="btn primary" href="#courses">
+                            Explore Courses
                         </a>
 
+                        <a class="btn light" href="tel:+917735060804">
+                            Call Now
+                        </a>
 
                     </div>
 
 
+                    <div class="mini-stats">
 
-                    <div class="pdf-item">
+                        <div>
+                            <b>1–12</b>
+                            <span>Classes</span>
+                        </div>
 
+                        <div>
+                            <b>SSC</b>
+                            <span>Railway & Banking</span>
+                        </div>
 
-                        <strong>
-                            📘 August 2026 Current Affairs MCQ
-                        </strong>
-
-
-                        <a
-                            class="pdf-button"
-                            href="300_MCQs_August_2026_Current_Affairs.pdf"
-                            target="_blank">
-
-                            View PDF
-
-                        </a>
-
+                        <div>
+                            <b>Odisha</b>
+                            <span>Govt Exams</span>
+                        </div>
 
                     </div>
 
+                </div>
+
+
+                <!-- RIGHT SIDE -->
+
+                <div class="hero-card">
+
+                    <div class="card-top">
+                        AIMERS CLASSES
+                    </div>
+
+                    <h3>
+                        Your Goal. Our Guidance.
+                    </h3>
+
+                    <div class="feature">
+                        ✓ Regular Classes
+                    </div>
+
+                    <div class="feature">
+                        ✓ Exam-focused Preparation
+                    </div>
+
+                    <div class="feature">
+                        ✓ Notes & Study Material
+                    </div>
+
+                    <div class="feature">
+                        ✓ Mock Tests & Practice
+                    </div>
+
+                    <div class="feature">
+                        ✓ Current Affairs Updates
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             NOTICE
+        ====================================================== -->
+
+        <section class="notice">
+
+            <div class="container notice-inner">
+
+                <b>📢 Latest Updates</b>
+
+                <span>
+                    Current Affairs • PDF Notes • Video Classes • Mock Tests
+                </span>
+
+                <!-- DIRECT CURRENT AFFAIRS LINK -->
+                <a href="#current-affairs">
+                    View Current Affairs →
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             COURSES
+        ====================================================== -->
+
+        <section id="courses" class="section">
+
+            <div class="container">
+
+
+                <div class="section-head">
+
+                    <span>
+                        WHAT WE OFFER
+                    </span>
+
+                    <h2>
+                        Courses for Every Goal
+                    </h2>
+
+                    <p>
+                        Choose the programme that matches
+                        your academic or career goal.
+                    </p>
+
+                </div>
+
+
+
+                <div class="cards">
+
+
+                    <!-- CLASS 1-12 -->
+
+                    <article class="course">
+
+                        <div class="icon">
+                            🎓
+                        </div>
+
+                        <h3>
+                            Class 1 to 12
+                        </h3>
+
+                        <p>
+                            Science, Commerce and Arts for
+                            ICSE, CBSE and CHSE Board students.
+                        </p>
+
+                        <div class="tags">
+
+                            <i>ICSE</i>
+                            <i>CBSE</i>
+                            <i>CHSE</i>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- COMPETITIVE -->
+
+                    <article class="course">
+
+                        <div class="icon">
+                            🏆
+                        </div>
+
+                        <h3>
+                            Competitive Exams
+                        </h3>
+
+                        <p>
+                            Focused coaching and practice for
+                            SSC, Railway and Banking examinations.
+                        </p>
+
+                        <div class="tags">
+
+                            <i>SSC</i>
+                            <i>Railway</i>
+                            <i>Banking</i>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- ODISHA GOVT -->
+
+                    <article class="course">
+
+                        <div class="icon">
+                            📋
+                        </div>
+
+                        <h3>
+                            Odisha Govt. Jobs
+                        </h3>
+
+                        <p>
+                            Preparation for ASO, OSSC, OSSSC,
+                            RI, AMIN and many more examinations.
+                        </p>
+
+                        <div class="tags">
+
+                            <i>ASO</i>
+                            <i>OSSC</i>
+                            <i>OSSSC</i>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- SCHOOL ENTRANCE -->
+
+                    <article class="course">
+
+                        <div class="icon">
+                            🚀
+                        </div>
+
+                        <h3>
+                            School Entrance
+                        </h3>
+
+                        <p>
+                            Preparation for Jawahar Navodaya,
+                            Adarsha School and Sainik School entrance exams.
+                        </p>
+
+                        <div class="tags">
+
+                            <i>JNV</i>
+                            <i>Adarsha</i>
+                            <i>Sainik</i>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             STUDY MATERIAL
+             
+             IMPORTANT:
+             CURRENT AFFAIRS IS INSIDE THIS SECTION.
+             THERE IS NO SEPARATE CURRENT AFFAIRS SECTION.
+        ====================================================== -->
+
+        <section id="materials" class="section alt">
+
+            <div class="container">
+
+
+                <div class="section-head">
+
+                    <span>
+                        LEARNING HUB
+                    </span>
+
+                    <h2>
+                        Study Material
+                    </h2>
+
+                    <p>
+                        Notes, PDFs, current affairs and practice resources.
+                    </p>
+
+                </div>
+
+
+
+                <!-- STUDY MATERIAL CARDS -->
+
+                <div class="resource-grid">
+
+
+                    <!-- PDF NOTES -->
+
+                    <a class="resource" href="materials.html#pdf">
+
+                        <b>
+                            📄 PDF Notes
+                        </b>
+
+                        <span>
+                            Class notes, exam notes and downloadable PDFs
+                        </span>
+
+                        <em>
+                            Open →
+                        </em>
+
+                    </a>
+
+
+
+                    <!-- VIDEO -->
+
+                    <a class="resource" href="materials.html#video">
+
+                        <b>
+                            🎥 Video Classes
+                        </b>
+
+                        <span>
+                            Topic-wise video lessons and revision classes
+                        </span>
+
+                        <em>
+                            Open →
+                        </em>
+
+                    </a>
+
+
+
+                    <!-- CURRENT AFFAIRS -->
+
+                    <a class="resource" href="#current-affairs">
+
+                        <b>
+                            📰 Current Affairs
+                        </b>
+
+                        <span>
+                            Daily and monthly current affairs resources
+                        </span>
+
+                        <em>
+                            Open →
+                        </em>
+
+                    </a>
+
+
+
+                    <!-- MOCK TEST -->
+
+                    <a class="resource" href="mock-test.html">
+
+                        <b>
+                            📝 Mock Tests
+                        </b>
+
+                        <span>
+                            Practice MCQs and online tests
+                        </span>
+
+                        <em>
+                            Open →
+                        </em>
+
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CURRENT AFFAIRS INSIDE STUDY MATERIAL
+                     
+                     THIS IS THE ONLY CURRENT AFFAIRS AREA.
+                ================================================== -->
+
+                <div id="current-affairs" class="study-current">
+
+
+                    <div class="update-box monthly-capsule">
+
+
+                        <!-- CAPSULE HEADING -->
+
+                        <div>
+                            🗓️
+                        </div>
+
+                        <h3 class="capsule-title">
+                            Monthly Current Affairs Capsule
+                        </h3>
+
+                        <span>
+                            Easy-to-read resources for competitive exam preparation.
+                        </span>
+
+
+
+                        <!-- =========================================
+                             AUGUST PDF
+                        ========================================== -->
+
+                        <div class="pdf-item">
+
+
+                            <h3 class="pdf-title">
+                                📄 August 2026 Current Affairs
+                            </h3>
+
+
+                            <p class="pdf-description">
+                                300 MCQs – August 2026 Current Affairs
+                            </p>
+
+
+                            <div class="pdf-buttons">
+
+                                <a
+                                    class="btn primary"
+                                    href="300_MCQs_August_2026_Current_Affairs.pdf"
+                                    target="_blank"
+                                >
+                                    📖 View PDF
+                                </a>
+
+
+                                <a
+                                    class="btn light"
+                                    href="300_MCQs_August_2026_Current_Affairs.pdf"
+                                    download
+                                >
+                                    ⬇ Download PDF
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =========================================
+                             JULY PDF
+                        ========================================== -->
+
+                        <div class="pdf-item">
+
+
+                            <h3 class="pdf-title">
+                                📄 July 2026 Current Affairs
+                            </h3>
+
+
+                            <p class="pdf-description">
+                                Current Affairs MCQs – July 2026
+                            </p>
+
+
+                            <div class="pdf-buttons">
+
+                                <a
+                                    class="btn primary"
+                                    href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
+                                    target="_blank"
+                                >
+                                    📖 View PDF
+                                </a>
+
+
+                                <a
+                                    class="btn light"
+                                    href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
+                                    download
+                                >
+                                    ⬇ Download PDF
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
 
                 </div>
 
 
             </div>
 
+        </section>
 
-        </div>
 
 
+        <!-- =====================================================
+             MOCK TEST
+        ====================================================== -->
 
-        <!-- ================================================= -->
-        <!-- ================= PDF NOTES ===================== -->
-        <!-- ================================================= -->
+        <section id="mock" class="section">
 
-        <div
-            class="pdf-notes-section"
-            id="pdf-notes">
+            <div class="container two-col reverse-mobile">
 
 
-            <div class="pdf-notes-heading">
+                <div class="test-card">
 
+                    <span>
+                        FREE PRACTICE
+                    </span>
 
-                <h3>
-                    📁 PDF Notes
-                </h3>
+                    <strong>
+                        📝
+                    </strong>
 
+                    <h3>
+                        Online Mock Tests
+                    </h3>
 
-                <p>
-                    Choose a main folder to access
-                    your study materials.
-                </p>
+                    <p>
+                        Practice with MCQs and check your score instantly.
+                    </p>
 
-
-            </div>
-
-
-
-            <!-- ================================================= -->
-            <!-- ONLY 04 MAIN FOLDERS -->
-            <!-- ================================================= -->
-
-            <div class="pdf-main-folder-grid">
-
-
-                <!-- ========================================= -->
-                <!-- 01 COMPETITIVE EXAMS -->
-                <!-- ========================================= -->
-
-                <a
-                    class="pdf-main-folder competitive-folder"
-                    href="pdf-notes/competitive-exams-notes/">
-
-
-                    <div>
-
-
-                        <div class="main-folder-icon">
-                            📁
-                        </div>
-
-
-                        <h4>
-                            Competitive Exams Notes
-                        </h4>
-
-
-                        <div class="competitive-list">
-
-
-                            <div>
-                                📄 SSC
-                            </div>
-
-
-                            <div>
-                                📄 Railway
-                            </div>
-
-
-                            <div>
-                                📄 Banking
-                            </div>
-
-
-                            <div>
-                                📄 ASO
-                            </div>
-
-
-                            <div>
-                                📄 OSSC / OSSSC
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="folder-open">
-                        Open Folder →
-                    </div>
-
-
-                </a>
-
-
-
-                <!-- ========================================= -->
-                <!-- 02 CLASS 12 -->
-                <!-- ========================================= -->
-
-                <a
-                    class="pdf-main-folder"
-                    href="pdf-notes/class-12-notes/">
-
-
-                    <div>
-
-
-                        <div class="main-folder-icon">
-                            📁
-                        </div>
-
-
-                        <h4>
-                            Class 12 Notes
-                        </h4>
-
-
-                        <div class="subject-folder-list">
-
-
-                            <div class="subject-folder">
-                                📁 Mathematics
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 Physics
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 Chemistry
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 Biology
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 SST
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="folder-open">
-                        Open Class 12 Folder →
-                    </div>
-
-
-                </a>
-
-
-
-                <!-- ========================================= -->
-                <!-- 03 CLASS 11 -->
-                <!-- ========================================= -->
-
-                <a
-                    class="pdf-main-folder"
-                    href="pdf-notes/class-11-notes/">
-
-
-                    <div>
-
-
-                        <div class="main-folder-icon">
-                            📁
-                        </div>
-
-
-                        <h4>
-                            Class 11 Notes
-                        </h4>
-
-
-                        <div class="subject-folder-list">
-
-
-                            <div class="subject-folder">
-                                📁 Mathematics
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 Physics
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 Chemistry
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 Biology
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 SST
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="folder-open">
-                        Open Class 11 Folder →
-                    </div>
-
-
-                </a>
-
-
-
-                <!-- ========================================= -->
-                <!-- 04 CLASS 10 -->
-                <!-- ========================================= -->
-
-                <a
-                    class="pdf-main-folder"
-                    href="pdf-notes/class-10-notes/">
-
-
-                    <div>
-
-
-                        <div class="main-folder-icon">
-                            📁
-                        </div>
-
-
-                        <h4>
-                            Class 10 Notes
-                        </h4>
-
-
-                        <div class="subject-folder-list">
-
-
-                            <div class="subject-folder">
-                                📁 Mathematics
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 Physics
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 Chemistry
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 Biology
-                            </div>
-
-
-                            <div class="subject-folder">
-                                📁 SST
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="folder-open">
-                        Open Class 10 Folder →
-                    </div>
-
-
-                </a>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ================= MOCK TESTS ===================== -->
-<!-- ================================================= -->
-
-<section id="mock-tests">
-
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-
-            <h2>
-                Mock Tests
-            </h2>
-
-
-            <p>
-                Practice regularly and improve
-                your preparation.
-            </p>
-
-
-        </div>
-
-
-
-        <div class="mock-grid">
-
-
-            <div class="mock-card">
-
-
-                <h3>
-                    School Tests
-                </h3>
-
-
-                <p>
-                    Practice tests for Classes 6–12.
-                </p>
-
-
-                <a
-                    href="mock-test.html"
-                    class="btn btn-primary">
-
-                    Start Practice
-
-                </a>
-
-
-            </div>
-
-
-
-            <div class="mock-card">
-
-
-                <h3>
-                    Competitive Exams
-                </h3>
-
-
-                <p>
-                    Practice MCQs for SSC, Railway,
-                    Banking and other exams.
-                </p>
-
-
-                <a
-                    href="mock-test.html"
-                    class="btn btn-primary">
-
-                    Start Practice
-
-                </a>
-
-
-            </div>
-
-
-
-            <div class="mock-card">
-
-
-                <h3>
-                    Current Affairs
-                </h3>
-
-
-                <p>
-                    Monthly current affairs
-                    based MCQ practice.
-                </p>
-
-
-                <a
-                    href="#current-affairs"
-                    class="btn btn-primary">
-
-                    View PDFs
-
-                </a>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ================= CTA ============================ -->
-<!-- ================================================= -->
-
-<section class="cta">
-
-
-    <div class="container">
-
-
-        <h2>
-            Ready to Achieve Your Goal?
-        </h2>
-
-
-        <p>
-            Join AIMERS CLASSES and take the
-            next step towards better preparation.
-        </p>
-
-
-        <a
-            href="#contact"
-            class="btn">
-
-            Contact Us
-
-        </a>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ================= CONTACT ======================== -->
-<!-- ================================================= -->
-
-<section id="contact">
-
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-
-            <h2>
-                Contact AIMERS CLASSES
-            </h2>
-
-
-            <p>
-                For admission and course details,
-                contact us.
-            </p>
-
-
-        </div>
-
-
-
-        <div class="contact-grid">
-
-
-            <div class="contact-card">
-
-
-                <h3>
-                    📍 Address
-                </h3>
-
-
-                <p>
-
-                    Near Hanuman Mandir,<br>
-
-                    Front Lane of SBI ATM,<br>
-
-                    Purunabasti,<br>
-
-                    District Jharsuguda, Odisha
-
-                </p>
-
-
-            </div>
-
-
-
-            <div class="contact-card">
-
-
-                <h3>
-                    📞 Contact
-                </h3>
-
-
-                <p>
-
-                    <a href="tel:7735060804">
-                        7735060804
+                    <a class="btn primary" href="mock-test.html">
+                        Start Demo Test
                     </a>
 
-                </p>
+                </div>
 
+
+                <div>
+
+                    <span class="eyebrow">
+                        PRACTICE • PERFORM • IMPROVE
+                    </span>
+
+                    <h2>
+                        Test Your Preparation
+                    </h2>
+
+                    <p>
+                        Mock tests can be added exam-wise and topic-wise.
+                        The included demo shows the basic test experience.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CTA
+        ====================================================== -->
+
+        <section class="cta">
+
+            <div class="container">
+
+                <h2>
+                    Ready to Aim Higher?
+                </h2>
 
                 <p>
+                    Join AIMERS CLASSES and prepare with a focused learning approach.
+                </p>
 
-                    <a href="tel:7657040804">
-                        7657040804
+                <a
+                    class="btn white"
+                    href="https://wa.me/917735060804?text=Hello%20AIMERS%20CLASSES,%20I%20want%20information%20about%20admission."
+                    target="_blank"
+                >
+                    WhatsApp Enquiry
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CONTACT
+        ====================================================== -->
+
+        <section id="contact" class="section contact">
+
+            <div class="container contact-grid">
+
+
+                <div>
+
+                    <span class="eyebrow">
+                        GET IN TOUCH
+                    </span>
+
+                    <h2>
+                        Contact AIMERS CLASSES
+                    </h2>
+
+                    <p>
+                        Near Hanuman Mandir, Front Lane of SBI ATM,<br>
+                        Purunabasti, District Jharsuguda, Odisha.
+                    </p>
+
+
+                    <div class="contact-links">
+
+                        <a href="tel:+917735060804">
+                            📞 7735060804
+                        </a>
+
+                        <a href="tel:+917657040804">
+                            📞 7657040804
+                        </a>
+
+                        <a
+                            target="_blank"
+                            href="https://wa.me/917735060804"
+                        >
+                            💬 WhatsApp Us
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="map-card">
+
+                    <div class="map-pin">
+                        📍
+                    </div>
+
+                    <b>
+                        Purunabasti, Jharsuguda
+                    </b>
+
+                    <span>
+                        Near Hanuman Mandir • Front Lane of SBI ATM
+                    </span>
+
+                    <a
+                        target="_blank"
+                        href="https://www.google.com/maps/search/?api=1&query=Purunabasti%20Jharsuguda%20Odisha"
+                    >
+                        Open in Google Maps →
                     </a>
 
-                </p>
+                </div>
 
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="container footer">
+
+
+            <div>
+
+                <b>
+                    AIMERS CLASSES
+                </b>
 
                 <p>
-                    WhatsApp available for
-                    admission enquiries.
+                    AIM HIGH • ACHIEVE HIGH
                 </p>
 
+            </div>
+
+
+            <div>
+
+                © <span id="year"></span>
+                AIMERS CLASSES.
+                All Rights Reserved.
 
             </div>
 
 
         </div>
 
-
-    </div>
-
-
-</section>
+    </footer>
 
 
 
-<!-- ================================================= -->
-<!-- ================= FOOTER ========================= -->
-<!-- ================================================= -->
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
-<footer>
-
-
-    <strong>
-        AIMERS CLASSES
-    </strong>
+    <script src="js/main.js"></script>
 
 
-    <p>
-        Aim High • Achieve High
-    </p>
+    <script>
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
 
 
-    <p>
-        Classes 1–12 | ICSE | CBSE | CHSE | BSE |
-        Competitive Exams | SSC | Railway | Banking |
-        ASO | OSSC | OSSSC
-    </p>
+        /*
+         * CURRENT AFFAIRS DIRECT SCROLL
+         *
+         * Clicking Current Affairs in the top menu
+         * directly opens the Current Affairs area
+         * inside Study Material.
+         */
 
+        document.querySelectorAll('a[href="#current-affairs"]')
+            .forEach(function(link) {
 
-    <p>
-        © 2026 AIMERS CLASSES. All Rights Reserved.
-    </p>
+                link.addEventListener("click", function(e) {
 
+                    e.preventDefault();
 
-</footer>
+                    const target =
+                        document.getElementById("current-affairs");
+
+                    if (target) {
+
+                        const header =
+                            document.querySelector(".header");
+
+                        const headerHeight =
+                            header ? header.offsetHeight : 0;
+
+                        const position =
+                            target.getBoundingClientRect().top +
+                            window.pageYOffset -
+                            headerHeight -
+                            20;
+
+                        window.scrollTo({
+                            top: position,
+                            behavior: "smooth"
+                        });
+
+                    }
+
+                });
+
+            });
+
+    </script>
 
 
 </body>
