@@ -15,22 +15,96 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 <link rel="stylesheet" href="css/style.css">
 
 
-<!-- CURRENT AFFAIRS FONT CONTROL -->
+<!-- =====================================================
+     ONLY FOR CURRENT AFFAIRS PDF SECTION
+     ===================================================== -->
+
 <style>
 
-.monthly-capsule .capsule-title {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
+/* Keep Current Affairs PDF headings small and normal */
 .monthly-capsule .pdf-title {
-  font-size: 18px;
-  margin-bottom: 8px;
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    margin: 0 0 6px 0 !important;
+    font-weight: 600 !important;
 }
 
 .monthly-capsule .pdf-description {
-  font-size: 16px;
-  margin-bottom: 15px;
+    font-size: 14px !important;
+    margin: 0 0 12px 0 !important;
+}
+
+
+/* Monthly Capsule main heading */
+.monthly-capsule .capsule-title {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+    margin: 0 0 6px 0 !important;
+}
+
+
+/* =====================================================
+   HERO SECTION
+   Keep left content LEFT and right card RIGHT
+   ===================================================== */
+
+.hero .hero-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 420px) !important;
+    align-items: center !important;
+    gap: 50px !important;
+}
+
+
+/* Keep AIMERS main content on LEFT */
+.hero .hero-grid > div:first-child {
+    text-align: left !important;
+}
+
+
+/* Keep Your Goal card on RIGHT */
+.hero .hero-card {
+    width: 100% !important;
+    justify-self: end !important;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+    .hero .hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+
+    .hero .hero-card {
+        justify-self: stretch !important;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 500px) {
+
+    .monthly-capsule .pdf-title {
+        font-size: 15px !important;
+    }
+
+    .monthly-capsule .pdf-description {
+        font-size: 13px !important;
+    }
+
+    .monthly-capsule .capsule-title {
+        font-size: 17px !important;
+    }
+
 }
 
 </style>
@@ -41,44 +115,77 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
 
 <header class="header">
 
-  <div class="container nav">
-
-    <a class="brand" href="#home">
-
-      <span class="brand-mark">A</span>
-
-      <span>
-        <b>AIMERS</b>
-        <small>CLASSES</small>
-      </span>
-
-    </a>
+    <div class="container nav">
 
 
-    <button class="menu" onclick="toggleMenu()">☰</button>
+        <!-- AIMERS CLASSES - LEFT -->
+
+        <a class="brand" href="#home">
+
+            <span class="brand-mark">
+                A
+            </span>
+
+            <span>
+
+                <b>
+                    AIMERS
+                </b>
+
+                <small>
+                    CLASSES
+                </small>
+
+            </span>
+
+        </a>
 
 
-    <nav id="navlinks">
+        <!-- MOBILE MENU -->
 
-      <a href="#home">Home</a>
+        <button class="menu" onclick="toggleMenu()">
+            ☰
+        </button>
 
-      <a href="#courses">Courses</a>
 
-      <a href="#materials">Study Material</a>
+        <!-- NAVIGATION -->
 
-      <a href="#current">Current Affairs</a>
+        <nav id="navlinks">
 
-      <a href="#mock">Mock Tests</a>
+            <a href="#home">
+                Home
+            </a>
 
-      <a href="#contact">Contact</a>
+            <a href="#courses">
+                Courses
+            </a>
 
-    </nav>
+            <a href="#materials">
+                Study Material
+            </a>
 
-  </div>
+            <a href="#current">
+                Current Affairs
+            </a>
+
+            <a href="#mock">
+                Mock Tests
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+
+    </div>
 
 </header>
 
@@ -87,753 +194,824 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 <main>
 
 
-<!-- ================= HOME ================= -->
+<!-- =====================================================
+     HOME / HERO
+     ===================================================== -->
 
 <section id="home" class="hero">
 
-  <div class="container hero-grid">
+    <div class="container hero-grid">
 
 
-    <div>
-
-      <span class="pill">
-        ADMISSIONS OPEN
-      </span>
-
-
-      <h1>
-        AIM HIGH.<br>
-        <span>ACHIEVE HIGH.</span>
-      </h1>
-
-
-      <p class="hero-text">
-
-        Quality coaching for school students, competitive examinations and
-        school entrance examinations — all under one roof.
-
-      </p>
-
-
-      <div class="hero-buttons">
-
-        <a class="btn primary" href="#courses">
-          Explore Courses
-        </a>
-
-        <a class="btn light" href="tel:+917735060804">
-          Call Now
-        </a>
-
-      </div>
-
-
-      <div class="mini-stats">
-
+        <!-- LEFT SIDE -->
 
         <div>
 
-          <b>1–12</b>
+            <span class="pill">
+                ADMISSIONS OPEN
+            </span>
 
-          <span>
-            Classes
-          </span>
+
+            <h1>
+
+                AIM HIGH.<br>
+
+                <span>
+                    ACHIEVE HIGH.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-text">
+
+                Quality coaching for school students, competitive examinations
+                and school entrance examinations — all under one roof.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a class="btn primary" href="#courses">
+                    Explore Courses
+                </a>
+
+
+                <a class="btn light" href="tel:+917735060804">
+                    Call Now
+                </a>
+
+            </div>
+
+
+            <!-- MINI STATS -->
+
+            <div class="mini-stats">
+
+
+                <div>
+
+                    <b>
+                        1–12
+                    </b>
+
+                    <span>
+                        Classes
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <b>
+                        SSC
+                    </b>
+
+                    <span>
+                        Railway & Banking
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <b>
+                        Odisha
+                    </b>
+
+                    <span>
+                        Govt Exams
+                    </span>
+
+                </div>
+
+
+            </div>
+
 
         </div>
 
 
-        <div>
 
-          <b>SSC</b>
+        <!-- RIGHT SIDE CARD -->
 
-          <span>
-            Railway & Banking
-          </span>
+        <div class="hero-card">
+
+
+            <div class="card-top">
+                AIMERS CLASSES
+            </div>
+
+
+            <h3>
+                Your Goal. Our Guidance.
+            </h3>
+
+
+            <div class="feature">
+                ✓ Regular Classes
+            </div>
+
+
+            <div class="feature">
+                ✓ Exam-focused Preparation
+            </div>
+
+
+            <div class="feature">
+                ✓ Notes & Study Material
+            </div>
+
+
+            <div class="feature">
+                ✓ Mock Tests & Practice
+            </div>
+
+
+            <div class="feature">
+                ✓ Current Affairs Updates
+            </div>
+
 
         </div>
 
-
-        <div>
-
-          <b>Odisha</b>
-
-          <span>
-            Govt Exams
-          </span>
-
-        </div>
-
-
-      </div>
 
     </div>
-
-
-
-    <div class="hero-card">
-
-      <div class="card-top">
-        AIMERS CLASSES
-      </div>
-
-
-      <h3>
-        Your Goal. Our Guidance.
-      </h3>
-
-
-      <div class="feature">
-        ✓ Regular Classes
-      </div>
-
-
-      <div class="feature">
-        ✓ Exam-focused Preparation
-      </div>
-
-
-      <div class="feature">
-        ✓ Notes & Study Material
-      </div>
-
-
-      <div class="feature">
-        ✓ Mock Tests & Practice
-      </div>
-
-
-      <div class="feature">
-        ✓ Current Affairs Updates
-      </div>
-
-    </div>
-
-
-  </div>
 
 </section>
 
 
 
-<!-- ================= LATEST UPDATES ================= -->
+<!-- =====================================================
+     LATEST UPDATES
+     ===================================================== -->
 
 <section class="notice">
 
-  <div class="container notice-inner">
-
-    <b>
-      📢 Latest Updates
-    </b>
+    <div class="container notice-inner">
 
 
-    <span>
-      Current Affairs • PDF Notes • Video Classes • Mock Tests
-    </span>
+        <b>
+            📢 Latest Updates
+        </b>
 
 
-    <a href="#materials">
-      View Materials →
-    </a>
+        <span>
+            Current Affairs • PDF Notes • Video Classes • Mock Tests
+        </span>
 
-  </div>
+
+        <a href="#materials">
+            View Materials →
+        </a>
+
+
+    </div>
 
 </section>
 
 
 
-<!-- ================= COURSES ================= -->
+<!-- =====================================================
+     COURSES
+     ===================================================== -->
 
 <section id="courses" class="section">
 
-  <div class="container">
+    <div class="container">
 
 
-    <div class="section-head">
+        <div class="section-head">
 
-      <span>
-        WHAT WE OFFER
-      </span>
+            <span>
+                WHAT WE OFFER
+            </span>
 
-      <h2>
-        Courses for Every Goal
-      </h2>
+            <h2>
+                Courses for Every Goal
+            </h2>
 
-      <p>
-        Choose the programme that matches your academic or career goal.
-      </p>
+            <p>
+                Choose the programme that matches your academic or career goal.
+            </p>
+
+        </div>
+
+
+
+        <div class="cards">
+
+
+            <!-- CLASS 1 TO 12 -->
+
+            <article class="course">
+
+                <div class="icon">
+                    🎓
+                </div>
+
+
+                <h3>
+                    Class 1 to 12
+                </h3>
+
+
+                <p>
+                    Science, Commerce and Arts for ICSE, CBSE and CHSE Board students.
+                </p>
+
+
+                <div class="tags">
+
+                    <i>
+                        ICSE
+                    </i>
+
+                    <i>
+                        CBSE
+                    </i>
+
+                    <i>
+                        CHSE
+                    </i>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- COMPETITIVE EXAMS -->
+
+            <article class="course">
+
+                <div class="icon">
+                    🏆
+                </div>
+
+
+                <h3>
+                    Competitive Exams
+                </h3>
+
+
+                <p>
+                    Focused coaching and practice for SSC, Railway and Banking examinations.
+                </p>
+
+
+                <div class="tags">
+
+                    <i>
+                        SSC
+                    </i>
+
+                    <i>
+                        Railway
+                    </i>
+
+                    <i>
+                        Banking
+                    </i>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ODISHA GOVT JOBS -->
+
+            <article class="course">
+
+                <div class="icon">
+                    📋
+                </div>
+
+
+                <h3>
+                    Odisha Govt. Jobs
+                </h3>
+
+
+                <p>
+                    Preparation for ASO, OSSC, OSSSC, RI, AMIN and many more examinations.
+                </p>
+
+
+                <div class="tags">
+
+                    <i>
+                        ASO
+                    </i>
+
+                    <i>
+                        OSSC
+                    </i>
+
+                    <i>
+                        OSSSC
+                    </i>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- SCHOOL ENTRANCE -->
+
+            <article class="course">
+
+                <div class="icon">
+                    🚀
+                </div>
+
+
+                <h3>
+                    School Entrance
+                </h3>
+
+
+                <p>
+                    Preparation for Jawahar Navodaya, Adarsha School and Sainik School entrance exams.
+                </p>
+
+
+                <div class="tags">
+
+                    <i>
+                        JNV
+                    </i>
+
+                    <i>
+                        Adarsha
+                    </i>
+
+                    <i>
+                        Sainik
+                    </i>
+
+                </div>
+
+            </article>
+
+
+        </div>
 
     </div>
-
-
-
-    <div class="cards">
-
-
-      <!-- CLASS 1 TO 12 -->
-
-      <article class="course">
-
-        <div class="icon">
-          🎓
-        </div>
-
-
-        <h3>
-          Class 1 to 12
-        </h3>
-
-
-        <p>
-          Science, Commerce and Arts for ICSE, CBSE and CHSE Board students.
-        </p>
-
-
-        <div class="tags">
-
-          <i>ICSE</i>
-
-          <i>CBSE</i>
-
-          <i>CHSE</i>
-
-        </div>
-
-      </article>
-
-
-
-      <!-- COMPETITIVE EXAMS -->
-
-      <article class="course">
-
-        <div class="icon">
-          🏆
-        </div>
-
-
-        <h3>
-          Competitive Exams
-        </h3>
-
-
-        <p>
-          Focused coaching and practice for SSC, Railway and Banking examinations.
-        </p>
-
-
-        <div class="tags">
-
-          <i>SSC</i>
-
-          <i>Railway</i>
-
-          <i>Banking</i>
-
-        </div>
-
-      </article>
-
-
-
-      <!-- ODISHA GOVT JOBS -->
-
-      <article class="course">
-
-        <div class="icon">
-          📋
-        </div>
-
-
-        <h3>
-          Odisha Govt. Jobs
-        </h3>
-
-
-        <p>
-          Preparation for ASO, OSSC, OSSSC, RI, AMIN and many more examinations.
-        </p>
-
-
-        <div class="tags">
-
-          <i>ASO</i>
-
-          <i>OSSC</i>
-
-          <i>OSSSC</i>
-
-        </div>
-
-      </article>
-
-
-
-      <!-- SCHOOL ENTRANCE -->
-
-      <article class="course">
-
-        <div class="icon">
-          🚀
-        </div>
-
-
-        <h3>
-          School Entrance
-        </h3>
-
-
-        <p>
-          Preparation for Jawahar Navodaya, Adarsha School and Sainik School entrance exams.
-        </p>
-
-
-        <div class="tags">
-
-          <i>JNV</i>
-
-          <i>Adarsha</i>
-
-          <i>Sainik</i>
-
-        </div>
-
-      </article>
-
-
-    </div>
-
-  </div>
 
 </section>
 
 
 
-<!-- ================= STUDY MATERIAL ================= -->
+<!-- =====================================================
+     STUDY MATERIAL
+     ===================================================== -->
 
 <section id="materials" class="section alt">
 
-  <div class="container">
+    <div class="container">
 
 
-    <div class="section-head">
+        <div class="section-head">
 
-      <span>
-        LEARNING HUB
-      </span>
+            <span>
+                LEARNING HUB
+            </span>
 
-      <h2>
-        Study Material
-      </h2>
+            <h2>
+                Study Material
+            </h2>
 
-      <p>
-        Notes, PDFs and practice resources will be available here.
-      </p>
+            <p>
+                Notes, PDFs and practice resources will be available here.
+            </p>
+
+        </div>
+
+
+
+        <div class="resource-grid">
+
+
+            <a class="resource" href="materials.html#pdf">
+
+                <b>
+                    📄 PDF Notes
+                </b>
+
+                <span>
+                    Class notes, exam notes and downloadable PDFs
+                </span>
+
+                <em>
+                    Open →
+                </em>
+
+            </a>
+
+
+
+            <a class="resource" href="materials.html#video">
+
+                <b>
+                    🎥 Video Classes
+                </b>
+
+                <span>
+                    Topic-wise video lessons and revision classes
+                </span>
+
+                <em>
+                    Open →
+                </em>
+
+            </a>
+
+
+
+            <a class="resource" href="materials.html#current">
+
+                <b>
+                    📰 Current Affairs
+                </b>
+
+                <span>
+                    Daily and monthly current affairs resources
+                </span>
+
+                <em>
+                    Open →
+                </em>
+
+            </a>
+
+
+
+            <a class="resource" href="materials.html#mock">
+
+                <b>
+                    📝 Mock Tests
+                </b>
+
+                <span>
+                    Practice MCQs and online tests
+                </span>
+
+                <em>
+                    Open →
+                </em>
+
+            </a>
+
+
+        </div>
 
     </div>
-
-
-
-    <div class="resource-grid">
-
-
-      <a class="resource" href="materials.html#pdf">
-
-        <b>
-          📄 PDF Notes
-        </b>
-
-        <span>
-          Class notes, exam notes and downloadable PDFs
-        </span>
-
-        <em>
-          Open →
-        </em>
-
-      </a>
-
-
-
-      <a class="resource" href="materials.html#video">
-
-        <b>
-          🎥 Video Classes
-        </b>
-
-        <span>
-          Topic-wise video lessons and revision classes
-        </span>
-
-        <em>
-          Open →
-        </em>
-
-      </a>
-
-
-
-      <a class="resource" href="materials.html#current">
-
-        <b>
-          📰 Current Affairs
-        </b>
-
-        <span>
-          Daily and monthly current affairs resources
-        </span>
-
-        <em>
-          Open →
-        </em>
-
-      </a>
-
-
-
-      <a class="resource" href="materials.html#mock">
-
-        <b>
-          📝 Mock Tests
-        </b>
-
-        <span>
-          Practice MCQs and online tests
-        </span>
-
-        <em>
-          Open →
-        </em>
-
-      </a>
-
-
-    </div>
-
-  </div>
 
 </section>
 
 
 
-<!-- ================= CURRENT AFFAIRS ================= -->
+<!-- =====================================================
+     CURRENT AFFAIRS
+     ===================================================== -->
 
 <section id="current" class="section">
 
-  <div class="container">
+    <div class="container">
 
 
-    <div class="section-head">
+        <div class="section-head">
 
-      <span>
-        STAY UPDATED
-      </span>
-
-
-      <h2>
-        Current Affairs
-      </h2>
+            <span>
+                STAY UPDATED
+            </span>
 
 
-      <p>
-        Daily, weekly and monthly current affairs resources for
-        competitive examination preparation.
-      </p>
+            <h2>
+                Current Affairs
+            </h2>
+
+
+            <p>
+                Daily, weekly and monthly current affairs resources for
+                competitive examination preparation.
+            </p>
+
+        </div>
+
+
+
+        <!-- MONTHLY CURRENT AFFAIRS CAPSULE -->
+
+        <div class="update-box monthly-capsule">
+
+
+            <div>
+                🗓️
+            </div>
+
+
+            <h3 class="capsule-title">
+                Monthly Current Affairs Capsule
+            </h3>
+
+
+            <span>
+                Easy-to-read resources for competitive exam preparation.
+            </span>
+
+
+
+            <!-- =================================================
+                 AUGUST 2026
+                 ================================================= -->
+
+            <div style="margin-top:20px;">
+
+
+                <h3 class="pdf-title">
+                    📄 August 2026 Current Affairs
+                </h3>
+
+
+                <p class="pdf-description">
+                    300 MCQs – August 2026 Current Affairs
+                </p>
+
+
+                <a
+                    class="btn primary"
+                    href="300_MCQs_August_2026_Current_Affairs.pdf"
+                    target="_blank">
+
+                    📖 View PDF
+
+                </a>
+
+
+                <a
+                    class="btn light"
+                    href="300_MCQs_August_2026_Current_Affairs.pdf"
+                    download>
+
+                    ⬇ Download PDF
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 JULY 2026
+                 ================================================= -->
+
+            <div style="margin-top:22px;">
+
+
+                <h3 class="pdf-title">
+                    📄 July 2026 Current Affairs
+                </h3>
+
+
+                <p class="pdf-description">
+                    Current Affairs MCQs – July 2026
+                </p>
+
+
+                <a
+                    class="btn primary"
+                    href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
+                    target="_blank">
+
+                    📖 View PDF
+
+                </a>
+
+
+                <a
+                    class="btn light"
+                    href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
+                    download>
+
+                    ⬇ Download PDF
+
+                </a>
+
+
+            </div>
+
+
+        </div>
 
     </div>
-
-
-
-    <!-- MONTHLY CURRENT AFFAIRS CAPSULE -->
-
-    <div class="update-box monthly-capsule">
-
-
-      <div>
-        🗓️
-      </div>
-
-
-      <h3 class="capsule-title">
-        Monthly Current Affairs Capsule
-      </h3>
-
-
-      <span>
-        Easy-to-read resources for competitive exam preparation.
-      </span>
-
-
-
-      <!-- ================= AUGUST 2026 ================= -->
-
-      <div style="margin-top:25px;">
-
-
-        <h3 class="pdf-title">
-          📄 August 2026 Current Affairs
-        </h3>
-
-
-        <p class="pdf-description">
-          300 MCQs – August 2026 Current Affairs
-        </p>
-
-
-        <a
-          class="btn primary"
-          href="300_MCQs_August_2026_Current_Affairs.pdf"
-          target="_blank">
-
-          📖 View PDF
-
-        </a>
-
-
-        <a
-          class="btn light"
-          href="300_MCQs_August_2026_Current_Affairs.pdf"
-          download>
-
-          ⬇ Download PDF
-
-        </a>
-
-
-      </div>
-
-
-
-      <!-- ================= JULY 2026 ================= -->
-
-      <div style="margin-top:30px;">
-
-
-        <h3 class="pdf-title">
-          📄 July 2026 Current Affairs
-        </h3>
-
-
-        <p class="pdf-description">
-          Current Affairs MCQs – July 2026
-        </p>
-
-
-        <a
-          class="btn primary"
-          href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
-          target="_blank">
-
-          📖 View PDF
-
-        </a>
-
-
-        <a
-          class="btn light"
-          href="JULY_2026_CURRENT_AFFAIRS_MCQ.pdf"
-          download>
-
-          ⬇ Download PDF
-
-        </a>
-
-
-      </div>
-
-
-    </div>
-
-  </div>
 
 </section>
 
 
 
-<!-- ================= MOCK TEST ================= -->
+<!-- =====================================================
+     MOCK TEST
+     ===================================================== -->
 
 <section id="mock" class="section alt">
 
-  <div class="container two-col reverse-mobile">
+    <div class="container two-col reverse-mobile">
 
 
-    <div class="test-card">
+        <div class="test-card">
 
-      <span>
-        FREE PRACTICE
-      </span>
-
-
-      <strong>
-        📝
-      </strong>
+            <span>
+                FREE PRACTICE
+            </span>
 
 
-      <h3>
-        Online Mock Tests
-      </h3>
+            <strong>
+                📝
+            </strong>
 
 
-      <p>
-        Practice with MCQs and check your score instantly.
-      </p>
+            <h3>
+                Online Mock Tests
+            </h3>
 
 
-      <a class="btn primary" href="mock-test.html">
-        Start Demo Test
-      </a>
+            <p>
+                Practice with MCQs and check your score instantly.
+            </p>
+
+
+            <a class="btn primary" href="mock-test.html">
+                Start Demo Test
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <span class="eyebrow">
+                PRACTICE • PERFORM • IMPROVE
+            </span>
+
+
+            <h2>
+                Test Your Preparation
+            </h2>
+
+
+            <p>
+                Mock tests can be added exam-wise and topic-wise.
+                The included demo shows the basic test experience.
+            </p>
+
+        </div>
+
 
     </div>
-
-
-
-    <div>
-
-      <span class="eyebrow">
-        PRACTICE • PERFORM • IMPROVE
-      </span>
-
-
-      <h2>
-        Test Your Preparation
-      </h2>
-
-
-      <p>
-        Mock tests can be added exam-wise and topic-wise.
-        The included demo shows the basic test experience.
-      </p>
-
-    </div>
-
-
-  </div>
 
 </section>
 
 
 
-<!-- ================= CTA ================= -->
+<!-- =====================================================
+     CALL TO ACTION
+     ===================================================== -->
 
 <section class="cta">
 
-  <div class="container">
+    <div class="container">
 
 
-    <h2>
-      Ready to Aim Higher?
-    </h2>
+        <h2>
+            Ready to Aim Higher?
+        </h2>
 
 
-    <p>
-      Join AIMERS CLASSES and prepare with a focused learning approach.
-    </p>
+        <p>
+            Join AIMERS CLASSES and prepare with a focused learning approach.
+        </p>
 
 
-    <a
-      class="btn white"
-      href="https://wa.me/917735060804?text=Hello%20AIMERS%20CLASSES,%20I%20want%20information%20about%20admission."
-      target="_blank">
+        <a
+            class="btn white"
+            href="https://wa.me/917735060804?text=Hello%20AIMERS%20CLASSES,%20I%20want%20information%20about%20admission."
+            target="_blank">
 
-      WhatsApp Enquiry
+            WhatsApp Enquiry
 
-    </a>
+        </a>
 
 
-  </div>
+    </div>
 
 </section>
 
 
 
-<!-- ================= CONTACT ================= -->
+<!-- =====================================================
+     CONTACT
+     ===================================================== -->
 
 <section id="contact" class="section contact">
 
-  <div class="container contact-grid">
+    <div class="container contact-grid">
 
 
-    <div>
+        <div>
 
 
-      <span class="eyebrow">
-        GET IN TOUCH
-      </span>
+            <span class="eyebrow">
+                GET IN TOUCH
+            </span>
 
 
-      <h2>
-        Contact AIMERS CLASSES
-      </h2>
+            <h2>
+                Contact AIMERS CLASSES
+            </h2>
 
 
-      <p>
+            <p>
 
-        Near Hanuman Mandir, Front Lane of SBI ATM,<br>
-        Purunabasti, District Jharsuguda, Odisha.
+                Near Hanuman Mandir, Front Lane of SBI ATM,<br>
+                Purunabasti, District Jharsuguda, Odisha.
 
-      </p>
-
-
-
-      <div class="contact-links">
+            </p>
 
 
-        <a href="tel:+917735060804">
-          📞 7735060804
-        </a>
+
+            <div class="contact-links">
 
 
-        <a href="tel:+917657040804">
-          📞 7657040804
-        </a>
+                <a href="tel:+917735060804">
+
+                    📞 7735060804
+
+                </a>
 
 
-        <a
-          target="_blank"
-          href="https://wa.me/917735060804">
+                <a href="tel:+917657040804">
 
-          💬 WhatsApp Us
+                    📞 7657040804
 
-        </a>
+                </a>
 
 
-      </div>
+                <a
+                    target="_blank"
+                    href="https://wa.me/917735060804">
+
+                    💬 WhatsApp Us
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="map-card">
+
+
+            <div class="map-pin">
+                📍
+            </div>
+
+
+            <b>
+                Purunabasti, Jharsuguda
+            </b>
+
+
+            <span>
+                Near Hanuman Mandir • Front Lane of SBI ATM
+            </span>
+
+
+            <a
+                target="_blank"
+                href="https://www.google.com/maps/search/?api=1&query=Purunabasti%20Jharsuguda%20Odisha">
+
+                Open in Google Maps →
+
+            </a>
+
+
+        </div>
 
 
     </div>
-
-
-
-    <div class="map-card">
-
-
-      <div class="map-pin">
-        📍
-      </div>
-
-
-      <b>
-        Purunabasti, Jharsuguda
-      </b>
-
-
-      <span>
-        Near Hanuman Mandir • Front Lane of SBI ATM
-      </span>
-
-
-      <a
-        target="_blank"
-        href="https://www.google.com/maps/search/?api=1&query=Purunabasti%20Jharsuguda%20Odisha">
-
-        Open in Google Maps →
-
-      </a>
-
-
-    </div>
-
-
-  </div>
 
 </section>
 
@@ -842,42 +1020,46 @@ content="AIMERS CLASSES - Classes 1 to 12, Competitive Exams and School Entrance
 
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
 
 <footer>
 
-  <div class="container footer">
+    <div class="container footer">
 
 
-    <div>
+        <div>
 
-      <b>
-        AIMERS CLASSES
-      </b>
+            <b>
+                AIMERS CLASSES
+            </b>
 
 
-      <p>
-        AIM HIGH • ACHIEVE HIGH
-      </p>
+            <p>
+                AIM HIGH • ACHIEVE HIGH
+            </p>
+
+        </div>
+
+
+        <div>
+
+            © <span id="year"></span>
+            AIMERS CLASSES. All Rights Reserved.
+
+        </div>
+
 
     </div>
-
-
-    <div>
-
-      © <span id="year"></span>
-      AIMERS CLASSES. All Rights Reserved.
-
-    </div>
-
-
-  </div>
 
 </footer>
 
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
 
 <script src="js/main.js"></script>
 
