@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -58,6 +57,24 @@ header{
   gap:20px;
 }
 
+/* LOGO + NAME */
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-img{
+  width:52px;
+  height:52px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid #ffd43b;
+  background:white;
+  box-shadow:0 3px 10px rgba(0,0,0,.20);
+}
+
 .logo{
   font-size:25px;
   font-weight:900;
@@ -100,8 +117,6 @@ nav a:hover{
   gap:40px;
   align-items:center;
 }
-
-/* LEFT = AIMERS CLASSES */
 
 .hero h1{
   font-size:48px;
@@ -508,6 +523,10 @@ footer p{
     padding:15px 0;
   }
 
+  .brand{
+    justify-content:center;
+  }
+
   nav{
     justify-content:center;
   }
@@ -536,6 +555,7 @@ footer p{
   .pdf-group-title{
     font-size:23px;
   }
+
 }
 
 </style>
@@ -550,22 +570,31 @@ footer p{
 
 <div class="container nav">
 
+<div class="brand">
+
+<img src="logo.jpg" alt="AIMERS CLASSES Logo" class="logo-img">
+
 <div class="logo">
 AIMERS <span>CLASSES</span>
 </div>
 
+</div>
+
 <nav>
+
 <a href="#home">Home</a>
 <a href="#courses">Courses</a>
 <a href="#study-material">Study Material</a>
 <a href="#current-affairs">Current Affairs</a>
 <a href="#mock-test">Mock Tests</a>
 <a href="#contact">Contact</a>
+
 </nav>
 
 </div>
 
 </header>
+
 
 <!-- ================= HERO ================= -->
 
@@ -602,6 +631,7 @@ Contact Us
 
 </div>
 
+
 <!-- RIGHT -->
 
 <div class="hero-box">
@@ -624,6 +654,7 @@ Contact Us
 </div>
 
 </section>
+
 
 <!-- ================= COURSES ================= -->
 
@@ -689,6 +720,7 @@ SSC, Railway, Banking, ASO, OSSC, OSSSC and other competitive exams.
 
 </section>
 
+
 <!-- ================= STUDY MATERIAL ================= -->
 
 <section id="study-material">
@@ -719,6 +751,7 @@ Class notes, specimen papers and downloadable PDFs
 
 </a>
 
+
 <a class="resource" href="#current-affairs">
 
 <b>📰 Current Affairs</b>
@@ -731,6 +764,7 @@ Monthly current affairs and MCQ practice
 
 </a>
 
+
 <a class="resource" href="#mock-test">
 
 <b>📝 Mock Tests</b>
@@ -742,6 +776,7 @@ Practice tests for school and competitive examinations
 <em>Open →</em>
 
 </a>
+
 
 <a class="resource" href="#contact">
 
@@ -761,6 +796,7 @@ Learning resources and classroom support
 
 </section>
 
+
 <!-- ================= PDF NOTES ================= -->
 
 <section class="pdf-section" id="pdf-notes">
@@ -777,6 +813,7 @@ Download study material and specimen papers
 
 </div>
 
+
 <!-- CLASS 12 ISC 2027 -->
 
 <div class="pdf-group">
@@ -786,6 +823,7 @@ Download study material and specimen papers
 </h2>
 
 <div class="pdf-grid">
+
 
 <div class="pdf-card">
 
@@ -799,15 +837,18 @@ Class 12 ISC 2027 complete specimen paper.
 
 <a href="CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
 target="_blank" class="pdf-btn view-btn">
-📖 View PDF </a>
+📖 View PDF
+</a>
 
 <a href="CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
 download class="pdf-btn download-btn">
-⬇ Download </a>
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <div class="pdf-card">
 
@@ -821,15 +862,18 @@ ISC Class 12 Mathematics Specimen Paper 2027.
 
 <a href="MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
 target="_blank" class="pdf-btn view-btn">
-📖 View PDF </a>
+📖 View PDF
+</a>
 
 <a href="MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
 download class="pdf-btn download-btn">
-⬇ Download </a>
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <div class="pdf-card">
 
@@ -843,15 +887,18 @@ ISC Class 12 Physics Specimen Paper 2027.
 
 <a href="PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
 target="_blank" class="pdf-btn view-btn">
-📖 View PDF </a>
+📖 View PDF
+</a>
 
 <a href="PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
 download class="pdf-btn download-btn">
-⬇ Download </a>
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <div class="pdf-card">
 
@@ -865,11 +912,13 @@ Class 12 Chemistry Specimen Paper 2027.
 
 <a href="chemistry%20class%2012%202027%20specimen.pdf"
 target="_blank" class="pdf-btn view-btn">
-📖 View PDF </a>
+📖 View PDF
+</a>
 
 <a href="chemistry%20class%2012%202027%20specimen.pdf"
 download class="pdf-btn download-btn">
-⬇ Download </a>
+⬇ Download
+</a>
 
 </div>
 
@@ -878,6 +927,7 @@ download class="pdf-btn download-btn">
 </div>
 
 </div>
+
 
 <!-- CHEMISTRY 2026 -->
 
@@ -889,109 +939,151 @@ download class="pdf-btn download-btn">
 
 <div class="pdf-grid">
 
+
 <div class="pdf-card">
 
 <h3>🧪 Chemistry Class 12 2026 Specimen</h3>
 
-<p>Chemistry Class 12 2026 Specimen Paper.</p>
+<p>
+Chemistry Class 12 2026 Specimen Paper.
+</p>
 
 <div class="pdf-buttons">
 
 <a href="chemistry%20class%2012%202026%20specimen.pdf"
-target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
 
 <a href="chemistry%20class%2012%202026%20specimen.pdf"
-download class="pdf-btn download-btn">⬇ Download</a>
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <div class="pdf-card">
 
 <h3>🧪 Chemistry Class 12 Sample Paper 1</h3>
 
-<p>Chemistry Class 12 Sample Paper 1.</p>
+<p>
+Chemistry Class 12 Sample Paper 1.
+</p>
 
 <div class="pdf-buttons">
 
 <a href="chemistry%20class%2012%20sample%20papaer%201.pdf"
-target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
 
 <a href="chemistry%20class%2012%20sample%20papaer%201.pdf"
-download class="pdf-btn download-btn">⬇ Download</a>
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <div class="pdf-card">
 
 <h3>🧪 Chemistry Class 12 Sample Paper 2</h3>
 
-<p>Chemistry Class 12 Sample Paper 2.</p>
+<p>
+Chemistry Class 12 Sample Paper 2.
+</p>
 
 <div class="pdf-buttons">
 
 <a href="chemistry%20class%2012%20sample%20papaer%202.pdf"
-target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
 
 <a href="chemistry%20class%2012%20sample%20papaer%202.pdf"
-download class="pdf-btn download-btn">⬇ Download</a>
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <div class="pdf-card">
 
 <h3>🧪 Chemistry Class 12 Sample Paper 3</h3>
 
-<p>Chemistry Class 12 Sample Paper 3.</p>
+<p>
+Chemistry Class 12 Sample Paper 3.
+</p>
 
 <div class="pdf-buttons">
 
 <a href="chemistry%20class%2012%20sample%20papaer%203.pdf"
-target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
 
 <a href="chemistry%20class%2012%20sample%20papaer%203.pdf"
-download class="pdf-btn download-btn">⬇ Download</a>
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <div class="pdf-card">
 
 <h3>🧪 Chemistry Class 12 Sample Paper 4</h3>
 
-<p>Chemistry Class 12 Sample Paper 4.</p>
+<p>
+Chemistry Class 12 Sample Paper 4.
+</p>
 
 <div class="pdf-buttons">
 
 <a href="chemistry%20class%2012%20sample%20papaer%204.pdf"
-target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
 
 <a href="chemistry%20class%2012%20sample%20papaer%204.pdf"
-download class="pdf-btn download-btn">⬇ Download</a>
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <div class="pdf-card">
 
 <h3>🧪 Chemistry Class 12 Sample Paper 5</h3>
 
-<p>Chemistry Class 12 Sample Paper 5.</p>
+<p>
+Chemistry Class 12 Sample Paper 5.
+</p>
 
 <div class="pdf-buttons">
 
 <a href="chemistry%20class%2012%20sample%20papaer%205.pdf"
-target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
 
 <a href="chemistry%20class%2012%20sample%20papaer%205.pdf"
-download class="pdf-btn download-btn">⬇ Download</a>
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
 
 </div>
 
@@ -1000,6 +1092,7 @@ download class="pdf-btn download-btn">⬇ Download</a>
 </div>
 
 </div>
+
 
 <!-- MATHEMATICS 2026 -->
 
@@ -1011,63 +1104,148 @@ download class="pdf-btn download-btn">⬇ Download</a>
 
 <div class="pdf-grid">
 
+
 <div class="pdf-card">
+
 <h3>📐 Mathematics 2026 – Set 1</h3>
+
 <p>Class 12 Mathematics 2026 Set 1.</p>
+
 <div class="pdf-buttons">
-<a href="math%20class%2012%202026%20set%201.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="math%20class%2012%202026%20set%201.pdf" download class="pdf-btn download-btn">⬇ Download</a>
-</div>
+
+<a href="math%20class%2012%202026%20set%201.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="math%20class%2012%202026%20set%201.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
 
+</div>
+
+
 <div class="pdf-card">
+
 <h3>📐 Mathematics 2026 – Set 2</h3>
+
 <p>Class 12 Mathematics 2026 Set 2.</p>
+
 <div class="pdf-buttons">
-<a href="math%20class%2012%202026%20set%202.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="math%20class%2012%202026%20set%202.pdf" download class="pdf-btn download-btn">⬇ Download</a>
-</div>
+
+<a href="math%20class%2012%202026%20set%202.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="math%20class%2012%202026%20set%202.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
 
+</div>
+
+
 <div class="pdf-card">
+
 <h3>📐 Mathematics 2026 – Set 3</h3>
+
 <p>Class 12 Mathematics 2026 Set 3.</p>
+
 <div class="pdf-buttons">
-<a href="math%20class%2012%202026%20set%203.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="math%20class%2012%202026%20set%203.pdf" download class="pdf-btn download-btn">⬇ Download</a>
-</div>
+
+<a href="math%20class%2012%202026%20set%203.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="math%20class%2012%202026%20set%203.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
 
+</div>
+
+
 <div class="pdf-card">
+
 <h3>📐 Mathematics 2026 – Set 4</h3>
+
 <p>Class 12 Mathematics 2026 Set 4.</p>
+
 <div class="pdf-buttons">
-<a href="math%20class%2012%202026%20set%204.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="math%20class%2012%202026%20set%204.pdf" download class="pdf-btn download-btn">⬇ Download</a>
-</div>
+
+<a href="math%20class%2012%202026%20set%204.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="math%20class%2012%202026%20set%204.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
 
+</div>
+
+
 <div class="pdf-card">
+
 <h3>📐 Mathematics 2026 – Set 5</h3>
+
 <p>Class 12 Mathematics 2026 Set 5.</p>
+
 <div class="pdf-buttons">
-<a href="math%20class%2012%202026%20set%205.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="math%20class%2012%202026%20set%205.pdf" download class="pdf-btn download-btn">⬇ Download</a>
+
+<a href="math%20class%2012%202026%20set%205.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="math%20class%2012%202026%20set%205.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
+
 </div>
+
 
 <div class="pdf-card">
+
 <h3>📐 Mathematics 2026 – Specimen Paper</h3>
+
 <p>Class 12 Mathematics 2026 Specimen Paper.</p>
+
 <div class="pdf-buttons">
-<a href="math%20class%2012%202026%20specimen.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="math%20class%2012%202026%20specimen.pdf" download class="pdf-btn download-btn">⬇ Download</a>
+
+<a href="math%20class%2012%202026%20specimen.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="math%20class%2012%202026%20specimen.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
+
 </div>
 
 </div>
 
 </div>
+
 
 <!-- PHYSICS 2026 -->
 
@@ -1079,58 +1257,142 @@ download class="pdf-btn download-btn">⬇ Download</a>
 
 <div class="pdf-grid">
 
+
 <div class="pdf-card">
+
 <h3>⚛️ Physics 2026 – Set 1</h3>
+
 <p>Class 12 Physics 2026 Set 1.</p>
+
 <div class="pdf-buttons">
-<a href="physics%20class%2012%202026%20set%201.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="physics%20class%2012%202026%20set%201.pdf" download class="pdf-btn download-btn">⬇ Download</a>
-</div>
+
+<a href="physics%20class%2012%202026%20set%201.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="physics%20class%2012%202026%20set%201.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
 
+</div>
+
+
 <div class="pdf-card">
+
 <h3>⚛️ Physics 2026 – Set 2</h3>
+
 <p>Class 12 Physics 2026 Set 2.</p>
+
 <div class="pdf-buttons">
-<a href="physics%20class%2012%202026%20set%202.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="physics%20class%2012%202026%20set%202.pdf" download class="pdf-btn download-btn">⬇ Download</a>
-</div>
+
+<a href="physics%20class%2012%202026%20set%202.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="physics%20class%2012%202026%20set%202.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
 
+</div>
+
+
 <div class="pdf-card">
+
 <h3>⚛️ Physics 2026 – Set 3</h3>
+
 <p>Class 12 Physics 2026 Set 3.</p>
+
 <div class="pdf-buttons">
-<a href="physics%20class%2012%202026%20set%203.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="physics%20class%2012%202026%20set%203.pdf" download class="pdf-btn download-btn">⬇ Download</a>
-</div>
+
+<a href="physics%20class%2012%202026%20set%203.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="physics%20class%2012%202026%20set%203.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
 
+</div>
+
+
 <div class="pdf-card">
+
 <h3>⚛️ Physics 2026 – Set 4</h3>
+
 <p>Class 12 Physics 2026 Set 4.</p>
+
 <div class="pdf-buttons">
-<a href="physics%20class%2012%202026%20set%204.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="physics%20class%2012%202026%20set%204.pdf" download class="pdf-btn download-btn">⬇ Download</a>
-</div>
+
+<a href="physics%20class%2012%202026%20set%204.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="physics%20class%2012%202026%20set%204.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
 
+</div>
+
+
 <div class="pdf-card">
+
 <h3>⚛️ Physics 2026 – Set 5</h3>
+
 <p>Class 12 Physics 2026 Set 5.</p>
+
 <div class="pdf-buttons">
-<a href="physics%20class%2012%202026%20set%205.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="physics%20class%2012%202026%20set%205.pdf" download class="pdf-btn download-btn">⬇ Download</a>
-</div>
+
+<a href="physics%20class%2012%202026%20set%205.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="physics%20class%2012%202026%20set%205.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
 </div>
 
-<div class="pdf-card">
-<h3>⚛️ Physics 2026 – Specimen Paper</h3>
-<p>Class 12 Physics 2026 Specimen Paper.</p>
-<div class="pdf-buttons">
-<a href="physics%20isc%20class%2012%20specimen%202026.pdf" target="_blank" class="pdf-btn view-btn">📖 View PDF</a>
-<a href="physics%20isc%20class%2012%20specimen%202026.pdf" download class="pdf-btn download-btn">⬇ Download</a>
 </div>
+
+
+<div class="pdf-card">
+
+<h3>⚛️ Physics 2026 – Specimen Paper</h3>
+
+<p>Class 12 Physics 2026 Specimen Paper.</p>
+
+<div class="pdf-buttons">
+
+<a href="physics%20isc%20class%2012%20specimen%202026.pdf"
+target="_blank" class="pdf-btn view-btn">
+📖 View PDF
+</a>
+
+<a href="physics%20isc%20class%2012%20specimen%202026.pdf"
+download class="pdf-btn download-btn">
+⬇ Download
+</a>
+
+</div>
+
 </div>
 
 </div>
@@ -1140,6 +1402,7 @@ download class="pdf-btn download-btn">⬇ Download</a>
 </div>
 
 </section>
+
 
 <!-- ================= CURRENT AFFAIRS ================= -->
 
@@ -1159,6 +1422,7 @@ Monthly Current Affairs MCQs for examination preparation
 
 <div class="current-grid">
 
+
 <!-- MARCH -->
 
 <div class="current-card">
@@ -1173,15 +1437,18 @@ March 2026 Current Affairs MCQ PDF.
 
 <a href="MARCH%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
 target="_blank" class="pdf-btn view-btn">
-📖 View PDF </a>
+📖 View PDF
+</a>
 
 <a href="MARCH%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
 download class="pdf-btn download-btn">
-⬇ Download </a>
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <!-- APRIL -->
 
@@ -1197,15 +1464,18 @@ April 2026 Current Affairs MCQ PDF.
 
 <a href="APRIL%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
 target="_blank" class="pdf-btn view-btn">
-📖 View PDF </a>
+📖 View PDF
+</a>
 
 <a href="APRIL%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
 download class="pdf-btn download-btn">
-⬇ Download </a>
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <!-- MAY -->
 
@@ -1221,15 +1491,18 @@ May 2026 Current Affairs MCQ PDF.
 
 <a href="MAY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
 target="_blank" class="pdf-btn view-btn">
-📖 View PDF </a>
+📖 View PDF
+</a>
 
 <a href="MAY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
 download class="pdf-btn download-btn">
-⬇ Download </a>
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <!-- JUNE -->
 
@@ -1245,15 +1518,18 @@ June 2026 Current Affairs MCQ PDF.
 
 <a href="JUNE%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
 target="_blank" class="pdf-btn view-btn">
-📖 View PDF </a>
+📖 View PDF
+</a>
 
 <a href="JUNE%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
 download class="pdf-btn download-btn">
-⬇ Download </a>
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <!-- JULY -->
 
@@ -1269,15 +1545,18 @@ July 2026 Current Affairs MCQ PDF.
 
 <a href="JULY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
 target="_blank" class="pdf-btn view-btn">
-📖 View PDF </a>
+📖 View PDF
+</a>
 
 <a href="JULY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
 download class="pdf-btn download-btn">
-⬇ Download </a>
+⬇ Download
+</a>
 
 </div>
 
 </div>
+
 
 <!-- AUGUST -->
 
@@ -1293,11 +1572,13 @@ download class="pdf-btn download-btn">
 
 <a href="300_MCQs_August_2026_Current_Affairs.pdf"
 target="_blank" class="pdf-btn view-btn">
-📖 View PDF </a>
+📖 View PDF
+</a>
 
 <a href="300_MCQs_August_2026_Current_Affairs.pdf"
 download class="pdf-btn download-btn">
-⬇ Download </a>
+⬇ Download
+</a>
 
 </div>
 
@@ -1308,6 +1589,7 @@ download class="pdf-btn download-btn">
 </div>
 
 </section>
+
 
 <!-- ================= MOCK TEST ================= -->
 
@@ -1333,6 +1615,7 @@ Start Mock Test →
 
 </section>
 
+
 <!-- ================= CONTACT ================= -->
 
 <section class="contact-section" id="contact">
@@ -1351,19 +1634,25 @@ Admission Open • Limited Seats
 
 <div class="contact-grid">
 
+
 <div class="contact-card">
 
 <h3>📍 Address</h3>
 
 <p>
 Near Hanuman Mandir,
+<br>
 Front Lane of SBI ATM,
+<br>
 Purunabasti,
+<br>
 District Jharsuguda,
+<br>
 Odisha
 </p>
 
 </div>
+
 
 <div class="contact-card">
 
@@ -1385,13 +1674,15 @@ Odisha
 href="https://wa.me/917735060804"
 target="_blank"
 class="pdf-btn download-btn">
-💬 WhatsApp Us </a>
+💬 WhatsApp Us
+</a>
 
 <a
 href="https://www.google.com/maps/search/?api=1&query=Purunabasti%20Jharsuguda%20Odisha"
 target="_blank"
 class="pdf-btn view-btn">
-📍 Google Maps </a>
+📍 Google Maps
+</a>
 
 </div>
 
@@ -1402,6 +1693,7 @@ class="pdf-btn view-btn">
 </div>
 
 </section>
+
 
 <!-- ================= FOOTER ================= -->
 
