@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SSC CGL Reasoning Mock Test | AIMERS CLASSES</title>
+<title>Online Mock Tests | AIMERS CLASSES</title>
 
 <style>
 *{
@@ -15,255 +15,187 @@
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#f3f6fb;
+    background:#f5f7fb;
     color:#172033;
 }
 
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
 .container{
-    width:94%;
+    width:92%;
     max-width:1200px;
     margin:auto;
 }
 
 /* HEADER */
+
 header{
     background:linear-gradient(135deg,#102a43,#1d4ed8);
     color:white;
-    padding:16px 0;
+    position:sticky;
+    top:0;
+    z-index:1000;
     box-shadow:0 4px 15px rgba(0,0,0,.15);
 }
 
-.header-inner{
+.nav{
+    min-height:72px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:15px;
+    gap:20px;
 }
 
 .brand{
     font-size:25px;
     font-weight:900;
+    letter-spacing:1px;
 }
 
 .brand span{
     color:#ffd43b;
 }
 
-.exam-title{
-    font-size:18px;
-    font-weight:700;
+nav{
+    display:flex;
+    gap:20px;
 }
 
-/* INTRO */
-.intro{
-    background:white;
-    margin:25px auto;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 6px 20px rgba(0,0,0,.08);
-}
-
-.intro h1{
-    color:#102a43;
-    margin-bottom:10px;
-}
-
-.instructions{
-    margin-top:15px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
-
-.info{
-    background:#eef4ff;
-    padding:15px;
-    border-radius:10px;
-    text-align:center;
-}
-
-.info strong{
-    display:block;
-    color:#1d4ed8;
-    font-size:20px;
-}
-
-/* TIMER */
-.timer-box{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:white;
-    padding:15px;
-    margin-bottom:20px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
-    text-align:center;
-}
-
-.timer{
-    font-size:28px;
-    font-weight:900;
-    color:#1d4ed8;
-}
-
-.timer.warning{
-    color:#dc2626;
-}
-
-/* QUESTION */
-.question-card{
-    background:white;
-    padding:25px;
-    margin-bottom:20px;
-    border-radius:15px;
-    box-shadow:0 6px 20px rgba(0,0,0,.07);
-}
-
-.question-number{
-    color:#1d4ed8;
-    font-weight:900;
-    margin-bottom:10px;
-}
-
-.question{
-    font-size:18px;
-    font-weight:700;
-    line-height:1.5;
-    margin-bottom:18px;
-}
-
-.options{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.option{
-    border:2px solid #e2e8f0;
-    padding:14px;
-    border-radius:9px;
-    cursor:pointer;
-    transition:.2s;
-    background:#fff;
-}
-
-.option:hover{
-    border-color:#1d4ed8;
-    background:#f1f5ff;
-}
-
-.option input{
-    margin-right:10px;
-}
-
-.option.selected{
-    border-color:#1d4ed8;
-    background:#eaf2ff;
-}
-
-/* BUTTON */
-.submit-area{
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    text-align:center;
-    margin:25px 0;
-    box-shadow:0 6px 20px rgba(0,0,0,.08);
-}
-
-.submit-btn{
-    background:#16a34a;
+nav a{
     color:white;
-    border:none;
-    padding:15px 35px;
-    border-radius:8px;
-    font-size:18px;
-    font-weight:900;
-    cursor:pointer;
+    font-weight:700;
+    font-size:14px;
 }
 
-.submit-btn:hover{
-    background:#12813a;
+nav a:hover{
+    color:#ffd43b;
 }
 
-/* RESULT */
-#result{
-    display:none;
-    background:white;
-    padding:30px;
-    margin:25px 0;
-    border-radius:15px;
-    box-shadow:0 8px 25px rgba(0,0,0,.1);
-}
+/* HERO */
 
-.result-title{
+.hero{
+    background:linear-gradient(135deg,#eaf2ff,#ffffff);
+    padding:70px 0;
     text-align:center;
+}
+
+.hero h1{
+    font-size:44px;
     color:#102a43;
-    margin-bottom:25px;
+    margin-bottom:12px;
 }
 
-.result-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.result-box{
-    background:#f5f7fb;
-    padding:20px;
-    text-align:center;
-    border-radius:10px;
-}
-
-.result-box strong{
-    display:block;
-    font-size:28px;
+.hero h1 span{
     color:#1d4ed8;
 }
 
-/* REVIEW */
-.review{
-    margin-top:30px;
+.hero p{
+    color:#667085;
+    font-size:18px;
 }
 
-.review-item{
-    padding:18px;
-    border-radius:10px;
+/* TEST SECTION */
+
+.section{
+    padding:60px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:34px;
+    color:#102a43;
+}
+
+.section-title p{
+    color:#667085;
+    margin-top:8px;
+}
+
+/* TEST GRID */
+
+.test-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+}
+
+.test-card{
+    background:white;
+    border-radius:16px;
+    padding:28px;
+    box-shadow:0 7px 25px rgba(0,0,0,.08);
+    border-left:6px solid #1d4ed8;
+    transition:.3s;
+}
+
+.test-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 14px 35px rgba(0,0,0,.13);
+}
+
+.test-icon{
+    font-size:35px;
     margin-bottom:12px;
-    background:#f8fafc;
 }
 
-.correct{
-    border-left:5px solid #16a34a;
+.test-card h3{
+    color:#102a43;
+    font-size:22px;
+    margin-bottom:8px;
 }
 
-.wrong{
-    border-left:5px solid #dc2626;
+.test-card p{
+    color:#667085;
+    margin-bottom:18px;
+    line-height:1.6;
 }
 
-.unanswered{
-    border-left:5px solid #f59e0b;
+.test-info{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
 }
 
-.restart-btn{
-    margin-top:20px;
+.badge{
+    background:#eef4ff;
+    color:#1d4ed8;
+    padding:7px 11px;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:800;
+}
+
+.start-btn{
+    display:inline-block;
     background:#1d4ed8;
     color:white;
-    border:none;
-    padding:13px 25px;
+    padding:12px 20px;
     border-radius:8px;
     font-weight:800;
-    cursor:pointer;
+    transition:.3s;
+}
+
+.start-btn:hover{
+    background:#163eb3;
+    transform:translateY(-2px);
 }
 
 /* FOOTER */
+
 footer{
-    margin-top:40px;
     background:#0f172a;
     color:white;
+    padding:35px 0;
     text-align:center;
-    padding:30px 0;
+    margin-top:30px;
 }
 
 footer h3{
@@ -271,43 +203,35 @@ footer h3{
     margin-bottom:8px;
 }
 
-/* MOBILE */
-@media(max-width:800px){
-
-    .header-inner{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .instructions{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .options{
-        grid-template-columns:1fr;
-    }
-
-    .result-grid{
-        grid-template-columns:1fr 1fr;
-    }
+footer p{
+    color:#cbd5e1;
+    font-size:14px;
 }
 
-@media(max-width:500px){
+/* MOBILE */
 
-    .instructions{
+@media(max-width:700px){
+
+    .nav{
+        flex-direction:column;
+        padding:15px 0;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero{
+        padding:50px 0;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .test-grid{
         grid-template-columns:1fr;
-    }
-
-    .result-grid{
-        grid-template-columns:1fr;
-    }
-
-    .intro h1{
-        font-size:25px;
-    }
-
-    .question{
-        font-size:16px;
     }
 }
 </style>
@@ -316,1685 +240,351 @@ footer h3{
 <body>
 
 <header>
-<div class="container header-inner">
+
+<div class="container nav">
 
 <div class="brand">
 AIMERS <span>CLASSES</span>
 </div>
 
-<div class="exam-title">
-SSC CGL Reasoning Mock Test
-</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#courses">Courses</a>
+<a href="index.html#study-material">Study Material</a>
+<a href="mock-test.html">Mock Tests</a>
+<a href="index.html#contact">Contact</a>
+</nav>
 
 </div>
+
 </header>
 
 
+<section class="hero">
+
 <div class="container">
 
-<!-- INTRO -->
-<div class="intro">
-
-<h1>SSC CGL – Reasoning Mock Test</h1>
+<h1>
+Online <span>Mock Tests</span>
+</h1>
 
 <p>
-Practice test for SSC CGL Reasoning section.
-Attempt all 50 questions within the given time.
+Practice • Improve • Analyse • Achieve
 </p>
 
-<div class="instructions">
-
-<div class="info">
-<strong>50</strong>
-Questions
-</div>
-
-<div class="info">
-<strong>30 Min</strong>
-Time
-</div>
-
-<div class="info">
-<strong>+1</strong>
-Correct
-</div>
-
-<div class="info">
-<strong>-0.33</strong>
-Wrong
-</div>
-
-</div>
-
-</div>
-
-
-<!-- TIMER -->
-<div class="timer-box">
-
-<div>Time Remaining</div>
-
-<div id="timer" class="timer">
-30:00
-</div>
-
-</div>
-
-
-<!-- QUESTIONS -->
-<form id="quizForm">
-
-
-<!-- Q1 -->
-<div class="question-card">
-<div class="question-number">Question 1</div>
-<div class="question">
-Find the next number: 2, 4, 8, 16, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q1" value="A">
-A. 24
-</label>
-
-<label class="option">
-<input type="radio" name="q1" value="B">
-B. 32
-</label>
-
-<label class="option">
-<input type="radio" name="q1" value="C">
-C. 30
-</label>
-
-<label class="option">
-<input type="radio" name="q1" value="D">
-D. 36
-</label>
-</div>
-</div>
-
-
-<!-- Q2 -->
-<div class="question-card">
-<div class="question-number">Question 2</div>
-<div class="question">
-If CAT is coded as DBU, then DOG is coded as:
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q2" value="A">
-A. EPH
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="B">
-B. FPH
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="C">
-C. EOG
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="D">
-D. DPH
-</label>
-</div>
-</div>
-
-
-<!-- Q3 -->
-<div class="question-card">
-<div class="question-number">Question 3</div>
-<div class="question">
-Which number is different from the others?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q3" value="A">
-A. 9
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="B">
-B. 16
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="C">
-C. 25
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="D">
-D. 27
-</label>
-</div>
-</div>
-
-
-<!-- Q4 -->
-<div class="question-card">
-<div class="question-number">Question 4</div>
-<div class="question">
-Book is related to Reading in the same way as Food is related to:
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q4" value="A">
-A. Cooking
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="B">
-B. Eating
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="C">
-C. Kitchen
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="D">
-D. Plate
-</label>
-</div>
-</div>
-
-
-<!-- Q5 -->
-<div class="question-card">
-<div class="question-number">Question 5</div>
-<div class="question">
-Find the odd one out.
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q5" value="A">
-A. Apple
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="B">
-B. Mango
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="C">
-C. Potato
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="D">
-D. Banana
-</label>
-</div>
-</div>
-
-
-<!-- Q6 -->
-<div class="question-card">
-<div class="question-number">Question 6</div>
-<div class="question">
-If 5 + 3 = 40 and 6 + 2 = 48, then 7 + 4 = ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q6" value="A">
-A. 77
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="B">
-B. 70
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="C">
-C. 72
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="D">
-D. 66
-</label>
-</div>
-</div>
-
-
-<!-- Q7 -->
-<div class="question-card">
-<div class="question-number">Question 7</div>
-<div class="question">
-Complete the series: A, C, F, J, O, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q7" value="A">
-A. T
-</label>
-
-<label class="option">
-<input type="radio" name="q7" value="B">
-B. U
-</label>
-
-<label class="option">
-<input type="radio" name="q7" value="C">
-C. V
-</label>
-
-<label class="option">
-<input type="radio" name="q7" value="D">
-D. W
-</label>
-</div>
-</div>
-
-
-<!-- Q8 -->
-<div class="question-card">
-<div class="question-number">Question 8</div>
-<div class="question">
-A person walks 10 m north, then 10 m east. In which direction is he from the starting point?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q8" value="A">
-A. North
-</label>
-
-<label class="option">
-<input type="radio" name="q8" value="B">
-B. East
-</label>
-
-<label class="option">
-<input type="radio" name="q8" value="C">
-C. North-East
-</label>
-
-<label class="option">
-<input type="radio" name="q8" value="D">
-D. South-East
-</label>
-</div>
-</div>
-
-
-<!-- Q9 -->
-<div class="question-card">
-<div class="question-number">Question 9</div>
-<div class="question">
-Find the missing number: 3, 6, 12, 24, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q9" value="A">
-A. 36
-</label>
-
-<label class="option">
-<input type="radio" name="q9" value="B">
-B. 42
-</label>
-
-<label class="option">
-<input type="radio" name="q9" value="C">
-C. 48
-</label>
-
-<label class="option">
-<input type="radio" name="q9" value="D">
-D. 54
-</label>
-</div>
-</div>
-
-
-<!-- Q10 -->
-<div class="question-card">
-<div class="question-number">Question 10</div>
-<div class="question">
-If PEN is coded as 123, then how will PIN be coded if P=1, I=4, N=3?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q10" value="A">
-A. 143
-</label>
-
-<label class="option">
-<input type="radio" name="q10" value="B">
-B. 134
-</label>
-
-<label class="option">
-<input type="radio" name="q10" value="C">
-C. 413
-</label>
-
-<label class="option">
-<input type="radio" name="q10" value="D">
-D. 431
-</label>
-</div>
-</div>
-
-
-<!-- Q11 -->
-<div class="question-card">
-<div class="question-number">Question 11</div>
-<div class="question">
-Which word cannot be formed from the letters of COMPUTER?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q11" value="A">
-A. COME
-</label>
-
-<label class="option">
-<input type="radio" name="q11" value="B">
-B. TERM
-</label>
-
-<label class="option">
-<input type="radio" name="q11" value="C">
-C. MOTOR
-</label>
-
-<label class="option">
-<input type="radio" name="q11" value="D">
-D. ROOT
-</label>
-</div>
-</div>
-
-
-<!-- Q12 -->
-<div class="question-card">
-<div class="question-number">Question 12</div>
-<div class="question">
-Find the next number: 5, 10, 20, 40, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q12" value="A">
-A. 60
-</label>
-
-<label class="option">
-<input type="radio" name="q12" value="B">
-B. 70
-</label>
-
-<label class="option">
-<input type="radio" name="q12" value="C">
-C. 80
-</label>
-
-<label class="option">
-<input type="radio" name="q12" value="D">
-D. 90
-</label>
-</div>
-</div>
-
-
-<!-- Q13 -->
-<div class="question-card">
-<div class="question-number">Question 13</div>
-<div class="question">
-If SOUTH is written as HTUOS, then NORTH is written as:
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q13" value="A">
-A. HTRON
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="B">
-B. HTRNO
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="C">
-C. HNORT
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="D">
-D. TROHN
-</label>
-</div>
-</div>
-
-
-<!-- Q14 -->
-<div class="question-card">
-<div class="question-number">Question 14</div>
-<div class="question">
-Find the odd number: 11, 13, 17, 21, 23
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q14" value="A">
-A. 11
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="B">
-B. 17
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="C">
-C. 21
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="D">
-D. 23
-</label>
-</div>
-</div>
-
-
-<!-- Q15 -->
-<div class="question-card">
-<div class="question-number">Question 15</div>
-<div class="question">
-A is brother of B. B is sister of C. How is A related to C?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q15" value="A">
-A. Brother
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="B">
-B. Sister
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="C">
-C. Father
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="D">
-D. Uncle
-</label>
-</div>
-</div>
-
-
-<!-- Q16 -->
-<div class="question-card">
-<div class="question-number">Question 16</div>
-<div class="question">
-Find the missing term: AZ, BY, CX, DW, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q16" value="A">
-A. EV
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="B">
-B. EU
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="C">
-C. FV
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="D">
-D. FU
-</label>
-</div>
-</div>
-
-
-<!-- Q17 -->
-<div class="question-card">
-<div class="question-number">Question 17</div>
-<div class="question">
-If 1 January is Monday, what day will be 8 January?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q17" value="A">
-A. Monday
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="B">
-B. Tuesday
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="C">
-C. Sunday
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="D">
-D. Wednesday
-</label>
-</div>
-</div>
-
-
-<!-- Q18 -->
-<div class="question-card">
-<div class="question-number">Question 18</div>
-<div class="question">
-Which one is different?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q18" value="A">
-A. Square
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="B">
-B. Rectangle
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="C">
-C. Triangle
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="D">
-D. Circle
-</label>
-</div>
-</div>
-
-
-<!-- Q19 -->
-<div class="question-card">
-<div class="question-number">Question 19</div>
-<div class="question">
-Complete: 100, 90, 81, 73, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q19" value="A">
-A. 66
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="B">
-B. 65
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="C">
-C. 64
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="D">
-D. 63
-</label>
-</div>
-</div>
-
-
-<!-- Q20 -->
-<div class="question-card">
-<div class="question-number">Question 20</div>
-<div class="question">
-If all roses are flowers and some flowers are red, which conclusion is definitely true?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q20" value="A">
-A. All roses are red
-</label>
-
-<label class="option">
-<input type="radio" name="q20" value="B">
-B. Some roses are red
-</label>
-
-<label class="option">
-<input type="radio" name="q20" value="C">
-C. All roses are flowers
-</label>
-
-<label class="option">
-<input type="radio" name="q20" value="D">
-D. No rose is red
-</label>
-</div>
-</div>
-
-
-<!-- Q21 -->
-<div class="question-card">
-<div class="question-number">Question 21</div>
-<div class="question">
-Find the next number: 7, 14, 28, 56, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q21" value="A">
-A. 84
-</label>
-
-<label class="option">
-<input type="radio" name="q21" value="B">
-B. 96
-</label>
-
-<label class="option">
-<input type="radio" name="q21" value="C">
-C. 112
-</label>
-
-<label class="option">
-<input type="radio" name="q21" value="D">
-D. 120
-</label>
-</div>
-</div>
-
-
-<!-- Q22 -->
-<div class="question-card">
-<div class="question-number">Question 22</div>
-<div class="question">
-If EAST is coded as 1234, then TEA is coded as:
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q22" value="A">
-A. 412
-</label>
-
-<label class="option">
-<input type="radio" name="q22" value="B">
-B. 421
-</label>
-
-<label class="option">
-<input type="radio" name="q22" value="C">
-C. 214
-</label>
-
-<label class="option">
-<input type="radio" name="q22" value="D">
-D. 241
-</label>
-</div>
-</div>
-
-
-<!-- Q23 -->
-<div class="question-card">
-<div class="question-number">Question 23</div>
-<div class="question">
-A man faces east. He turns right, then right again. Which direction is he facing?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q23" value="A">
-A. North
-</label>
-
-<label class="option">
-<input type="radio" name="q23" value="B">
-B. South
-</label>
-
-<label class="option">
-<input type="radio" name="q23" value="C">
-C. East
-</label>
-
-<label class="option">
-<input type="radio" name="q23" value="D">
-D. West
-</label>
-</div>
-</div>
-
-
-<!-- Q24 -->
-<div class="question-card">
-<div class="question-number">Question 24</div>
-<div class="question">
-Find the odd pair.
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q24" value="A">
-A. 2 : 4
-</label>
-
-<label class="option">
-<input type="radio" name="q24" value="B">
-B. 3 : 9
-</label>
-
-<label class="option">
-<input type="radio" name="q24" value="C">
-C. 4 : 16
-</label>
-
-<label class="option">
-<input type="radio" name="q24" value="D">
-D. 5 : 20
-</label>
-</div>
-</div>
-
-
-<!-- Q25 -->
-<div class="question-card">
-<div class="question-number">Question 25</div>
-<div class="question">
-Which letter is 5th to the right of the 12th letter from the left?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q25" value="A">
-A. P
-</label>
-
-<label class="option">
-<input type="radio" name="q25" value="B">
-B. Q
-</label>
-
-<label class="option">
-<input type="radio" name="q25" value="C">
-C. R
-</label>
-
-<label class="option">
-<input type="radio" name="q25" value="D">
-D. S
-</label>
-</div>
-</div>
-
-
-<!-- Q26 -->
-<div class="question-card">
-<div class="question-number">Question 26</div>
-<div class="question">
-Find the missing number: 4, 9, 16, 25, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q26" value="A">
-A. 30
-</label>
-
-<label class="option">
-<input type="radio" name="q26" value="B">
-B. 32
-</label>
-
-<label class="option">
-<input type="radio" name="q26" value="C">
-C. 36
-</label>
-
-<label class="option">
-<input type="radio" name="q26" value="D">
-D. 40
-</label>
-</div>
-</div>
-
-
-<!-- Q27 -->
-<div class="question-card">
-<div class="question-number">Question 27</div>
-<div class="question">
-If MANGO is written as NBOHP, how is APPLE written?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q27" value="A">
-A. BQQMF
-</label>
-
-<label class="option">
-<input type="radio" name="q27" value="B">
-B. BQPMF
-</label>
-
-<label class="option">
-<input type="radio" name="q27" value="C">
-C. BQQNF
-</label>
-
-<label class="option">
-<input type="radio" name="q27" value="D">
-D. CQQMF
-</label>
-</div>
-</div>
-
-
-<!-- Q28 -->
-<div class="question-card">
-<div class="question-number">Question 28</div>
-<div class="question">
-Which number should replace the question mark? 2, 6, 12, 20, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q28" value="A">
-A. 28
-</label>
-
-<label class="option">
-<input type="radio" name="q28" value="B">
-B. 30
-</label>
-
-<label class="option">
-<input type="radio" name="q28" value="C">
-C. 32
-</label>
-
-<label class="option">
-<input type="radio" name="q28" value="D">
-D. 34
-</label>
-</div>
-</div>
-
-
-<!-- Q29 -->
-<div class="question-card">
-<div class="question-number">Question 29</div>
-<div class="question">
-A is taller than B. B is taller than C. Who is shortest?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q29" value="A">
-A. A
-</label>
-
-<label class="option">
-<input type="radio" name="q29" value="B">
-B. B
-</label>
-
-<label class="option">
-<input type="radio" name="q29" value="C">
-C. C
-</label>
-
-<label class="option">
-<input type="radio" name="q29" value="D">
-D. Cannot say
-</label>
-</div>
-</div>
-
-
-<!-- Q30 -->
-<div class="question-card">
-<div class="question-number">Question 30</div>
-<div class="question">
-Find the next letter: B, E, H, K, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q30" value="A">
-A. M
-</label>
-
-<label class="option">
-<input type="radio" name="q30" value="B">
-B. N
-</label>
-
-<label class="option">
-<input type="radio" name="q30" value="C">
-C. O
-</label>
-
-<label class="option">
-<input type="radio" name="q30" value="D">
-D. P
-</label>
-</div>
-</div>
-
-
-<!-- Q31 -->
-<div class="question-card">
-<div class="question-number">Question 31</div>
-<div class="question">
-If 8 × 2 = 20 and 6 × 3 = 21, then 7 × 4 = ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q31" value="A">
-A. 30
-</label>
-
-<label class="option">
-<input type="radio" name="q31" value="B">
-B. 32
-</label>
-
-<label class="option">
-<input type="radio" name="q31" value="C">
-C. 35
-</label>
-
-<label class="option">
-<input type="radio" name="q31" value="D">
-D. 28
-</label>
-</div>
-</div>
-
-
-<!-- Q32 -->
-<div class="question-card">
-<div class="question-number">Question 32</div>
-<div class="question">
-Which one is different from the others?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q32" value="A">
-A. January
-</label>
-
-<label class="option">
-<input type="radio" name="q32" value="B">
-B. March
-</label>
-
-<label class="option">
-<input type="radio" name="q32" value="C">
-C. May
-</label>
-
-<label class="option">
-<input type="radio" name="q32" value="D">
-D. June
-</label>
-</div>
-</div>
-
-
-<!-- Q33 -->
-<div class="question-card">
-<div class="question-number">Question 33</div>
-<div class="question">
-Find the next number: 1, 4, 9, 16, 25, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q33" value="A">
-A. 30
-</label>
-
-<label class="option">
-<input type="radio" name="q33" value="B">
-B. 36
-</label>
-
-<label class="option">
-<input type="radio" name="q33" value="C">
-C. 40
-</label>
-
-<label class="option">
-<input type="radio" name="q33" value="D">
-D. 49
-</label>
-</div>
-</div>
-
-
-<!-- Q34 -->
-<div class="question-card">
-<div class="question-number">Question 34</div>
-<div class="question">
-If yesterday was Sunday, what day will be tomorrow?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q34" value="A">
-A. Monday
-</label>
-
-<label class="option">
-<input type="radio" name="q34" value="B">
-B. Tuesday
-</label>
-
-<label class="option">
-<input type="radio" name="q34" value="C">
-C. Wednesday
-</label>
-
-<label class="option">
-<input type="radio" name="q34" value="D">
-D. Saturday
-</label>
-</div>
-</div>
-
-
-<!-- Q35 -->
-<div class="question-card">
-<div class="question-number">Question 35</div>
-<div class="question">
-A clock shows 3:00. What is the angle between the hands?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q35" value="A">
-A. 60°
-</label>
-
-<label class="option">
-<input type="radio" name="q35" value="B">
-B. 90°
-</label>
-
-<label class="option">
-<input type="radio" name="q35" value="C">
-C. 120°
-</label>
-
-<label class="option">
-<input type="radio" name="q35" value="D">
-D. 180°
-</label>
-</div>
-</div>
-
-
-<!-- Q36 -->
-<div class="question-card">
-<div class="question-number">Question 36</div>
-<div class="question">
-Find the missing number: 10, 20, 40, 80, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q36" value="A">
-A. 100
-</label>
-
-<label class="option">
-<input type="radio" name="q36" value="B">
-B. 120
-</label>
-
-<label class="option">
-<input type="radio" name="q36" value="C">
-C. 160
-</label>
-
-<label class="option">
-<input type="radio" name="q36" value="D">
-D. 180
-</label>
-</div>
-</div>
-
-
-<!-- Q37 -->
-<div class="question-card">
-<div class="question-number">Question 37</div>
-<div class="question">
-If P is father of Q and Q is father of R, how is P related to R?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q37" value="A">
-A. Father
-</label>
-
-<label class="option">
-<input type="radio" name="q37" value="B">
-B. Uncle
-</label>
-
-<label class="option">
-<input type="radio" name="q37" value="C">
-C. Grandfather
-</label>
-
-<label class="option">
-<input type="radio" name="q37" value="D">
-D. Brother
-</label>
-</div>
-</div>
-
-
-<!-- Q38 -->
-<div class="question-card">
-<div class="question-number">Question 38</div>
-<div class="question">
-Find the odd one out: 8, 27, 64, 100, 125
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q38" value="A">
-A. 8
-</label>
-
-<label class="option">
-<input type="radio" name="q38" value="B">
-B. 27
-</label>
-
-<label class="option">
-<input type="radio" name="q38" value="C">
-C. 100
-</label>
-
-<label class="option">
-<input type="radio" name="q38" value="D">
-D. 125
-</label>
-</div>
-</div>
-
-
-<!-- Q39 -->
-<div class="question-card">
-<div class="question-number">Question 39</div>
-<div class="question">
-Complete the series: Z, X, V, T, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q39" value="A">
-A. S
-</label>
-
-<label class="option">
-<input type="radio" name="q39" value="B">
-B. R
-</label>
-
-<label class="option">
-<input type="radio" name="q39" value="C">
-C. Q
-</label>
-
-<label class="option">
-<input type="radio" name="q39" value="D">
-D. P
-</label>
-</div>
-</div>
-
-
-<!-- Q40 -->
-<div class="question-card">
-<div class="question-number">Question 40</div>
-<div class="question">
-A person faces north and turns 90° clockwise. Which direction does he face?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q40" value="A">
-A. West
-</label>
-
-<label class="option">
-<input type="radio" name="q40" value="B">
-B. East
-</label>
-
-<label class="option">
-<input type="radio" name="q40" value="C">
-C. South
-</label>
-
-<label class="option">
-<input type="radio" name="q40" value="D">
-D. North
-</label>
-</div>
-</div>
-
-
-<!-- Q41 -->
-<div class="question-card">
-<div class="question-number">Question 41</div>
-<div class="question">
-Find the next number: 12, 24, 36, 48, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q41" value="A">
-A. 54
-</label>
-
-<label class="option">
-<input type="radio" name="q41" value="B">
-B. 60
-</label>
-
-<label class="option">
-<input type="radio" name="q41" value="C">
-C. 64
-</label>
-
-<label class="option">
-<input type="radio" name="q41" value="D">
-D. 72
-</label>
-</div>
-</div>
-
-
-<!-- Q42 -->
-<div class="question-card">
-<div class="question-number">Question 42</div>
-<div class="question">
-Which word comes first alphabetically?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q42" value="A">
-A. Mango
-</label>
-
-<label class="option">
-<input type="radio" name="q42" value="B">
-B. Apple
-</label>
-
-<label class="option">
-<input type="radio" name="q42" value="C">
-C. Banana
-</label>
-
-<label class="option">
-<input type="radio" name="q42" value="D">
-D. Orange
-</label>
-</div>
-</div>
-
-
-<!-- Q43 -->
-<div class="question-card">
-<div class="question-number">Question 43</div>
-<div class="question">
-If 2 = 6, 3 = 12, 4 = 20, then 5 = ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q43" value="A">
-A. 25
-</label>
-
-<label class="option">
-<input type="radio" name="q43" value="B">
-B. 30
-</label>
-
-<label class="option">
-<input type="radio" name="q43" value="C">
-C. 35
-</label>
-
-<label class="option">
-<input type="radio" name="q43" value="D">
-D. 40
-</label>
-</div>
-</div>
-
-
-<!-- Q44 -->
-<div class="question-card">
-<div class="question-number">Question 44</div>
-<div class="question">
-Which number is a perfect square?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q44" value="A">
-A. 48
-</label>
-
-<label class="option">
-<input type="radio" name="q44" value="B">
-B. 54
-</label>
-
-<label class="option">
-<input type="radio" name="q44" value="C">
-C. 64
-</label>
-
-<label class="option">
-<input type="radio" name="q44" value="D">
-D. 72
-</label>
-</div>
-</div>
-
-
-<!-- Q45 -->
-<div class="question-card">
-<div class="question-number">Question 45</div>
-<div class="question">
-If all cats are animals and all animals need food, which conclusion follows?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q45" value="A">
-A. All cats need food
-</label>
-
-<label class="option">
-<input type="radio" name="q45" value="B">
-B. Some cats do not need food
-</label>
-
-<label class="option">
-<input type="radio" name="q45" value="C">
-C. No cat is an animal
-</label>
-
-<label class="option">
-<input type="radio" name="q45" value="D">
-D. Some animals are not cats
-</label>
-</div>
-</div>
-
-
-<!-- Q46 -->
-<div class="question-card">
-<div class="question-number">Question 46</div>
-<div class="question">
-Find the next number: 1, 2, 4, 7, 11, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q46" value="A">
-A. 15
-</label>
-
-<label class="option">
-<input type="radio" name="q46" value="B">
-B. 16
-</label>
-
-<label class="option">
-<input type="radio" name="q46" value="C">
-C. 17
-</label>
-
-<label class="option">
-<input type="radio" name="q46" value="D">
-D. 18
-</label>
-</div>
-</div>
-
-
-<!-- Q47 -->
-<div class="question-card">
-<div class="question-number">Question 47</div>
-<div class="question">
-A is older than B but younger than C. Who is oldest?
 </div>
 
-<div class="options">
-<label class="option">
-<input type="radio" name="q47" value="A">
-A. A
-</label>
+</section>
 
-<label class="option">
-<input type="radio" name="q47" value="B">
-B. B
-</label>
 
-<label class="option">
-<input type="radio" name="q47" value="C">
-C. C
-</label>
-
-<label class="option">
-<input type="radio" name="q47" value="D">
-D. Cannot determine
-</label>
-</div>
-</div>
-
-
-<!-- Q48 -->
-<div class="question-card">
-<div class="question-number">Question 48</div>
-<div class="question">
-Complete the series: 121, 144, 169, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q48" value="A">
-A. 181
-</label>
-
-<label class="option">
-<input type="radio" name="q48" value="B">
-B. 196
-</label>
-
-<label class="option">
-<input type="radio" name="q48" value="C">
-C. 200
-</label>
-
-<label class="option">
-<input type="radio" name="q48" value="D">
-D. 225
-</label>
-</div>
-</div>
-
-
-<!-- Q49 -->
-<div class="question-card">
-<div class="question-number">Question 49</div>
-<div class="question">
-If MONDAY is coded as 123456, then DAY is coded as:
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q49" value="A">
-A. 456
-</label>
-
-<label class="option">
-<input type="radio" name="q49" value="B">
-B. 546
-</label>
-
-<label class="option">
-<input type="radio" name="q49" value="C">
-C. 345
-</label>
-
-<label class="option">
-<input type="radio" name="q49" value="D">
-D. 654
-</label>
-</div>
-</div>
-
-
-<!-- Q50 -->
-<div class="question-card">
-<div class="question-number">Question 50</div>
-<div class="question">
-Find the missing number: 2, 5, 10, 17, 26, ?
-</div>
-
-<div class="options">
-<label class="option">
-<input type="radio" name="q50" value="A">
-A. 35
-</label>
-
-<label class="option">
-<input type="radio" name="q50" value="B">
-B. 37
-</label>
-
-<label class="option">
-<input type="radio" name="q50" value="C">
-C. 38
-</label>
-
-<label class="option">
-<input type="radio" name="q50" value="D">
-D. 40
-</label>
-</div>
-</div>
+<section class="section">
 
+<div class="container">
 
-<!-- SUBMIT -->
-<div class="submit-area">
+<div class="section-title">
 
-<h2>Test Completed?</h2>
+<h2>Choose Your Mock Test</h2>
 
-<p style="margin:10px 0 20px;">
-Click the button below to submit your test.
+<p>
+Select a test below and start your examination.
 </p>
 
-<button type="button" class="submit-btn" onclick="submitTest(false)">
-Submit Test
-</button>
+</div>
+
+
+<div class="test-grid">
+
+
+<!-- SSC REASONING -->
+
+<div class="test-card">
+
+<div class="test-icon">🧠</div>
+
+<h3>SSC CGL Reasoning</h3>
+
+<p>
+SSC CGL Reasoning practice test covering analogy,
+series, coding-decoding, classification, blood relation,
+direction, syllogism and other reasoning topics.
+</p>
+
+<div class="test-info">
+
+<span class="badge">50 Questions</span>
+<span class="badge">30 Minutes</span>
+<span class="badge">−0.33 Negative</span>
 
 </div>
 
-</form>
-
-
-<!-- RESULT -->
-<div id="result">
-
-<h2 class="result-title">
-🎯 AIMERS CLASSES – Test Result
-</h2>
-
-<div class="result-grid">
-
-<div class="result-box">
-<strong id="score">0</strong>
-Score
-</div>
-
-<div class="result-box">
-<strong id="correct">0</strong>
-Correct
-</div>
-
-<div class="result-box">
-<strong id="wrong">0</strong>
-Wrong
-</div>
-
-<div class="result-box">
-<strong id="unanswered">0</strong>
-Unanswered
-</div>
+<a href="test.html?test=ssc-reasoning"
+class="start-btn">
+Start Test →
+</a>
 
 </div>
 
-<div class="review" id="review"></div>
 
-<div style="text-align:center;">
-<button class="restart-btn" onclick="location.reload()">
-🔄 Restart Test
-</button>
+<!-- SSC MATHS -->
+
+<div class="test-card">
+
+<div class="test-icon">📐</div>
+
+<h3>SSC CGL Mathematics</h3>
+
+<p>
+SSC CGL Mathematics practice test covering arithmetic,
+percentage, profit & loss, ratio, average, algebra,
+geometry, mensuration and other topics.
+</p>
+
+<div class="test-info">
+
+<span class="badge">50 Questions</span>
+<span class="badge">30 Minutes</span>
+<span class="badge">−0.33 Negative</span>
+
+</div>
+
+<a href="test.html?test=ssc-maths"
+class="start-btn">
+Start Test →
+</a>
+
+</div>
+
+
+<!-- SSC GENERAL AWARENESS -->
+
+<div class="test-card">
+
+<div class="test-icon">🌍</div>
+
+<h3>SSC CGL General Awareness</h3>
+
+<p>
+History, Geography, Polity, Economics, Science,
+Static GK and other General Awareness questions.
+</p>
+
+<div class="test-info">
+
+<span class="badge">50 Questions</span>
+<span class="badge">30 Minutes</span>
+<span class="badge">−0.33 Negative</span>
+
+</div>
+
+<a href="test.html?test=ssc-ga"
+class="start-btn">
+Start Test →
+</a>
+
+</div>
+
+
+<!-- SEPTEMBER -->
+
+<div class="test-card">
+
+<div class="test-icon">📰</div>
+
+<h3>September 2026 Current Affairs</h3>
+
+<p>
+Monthly Current Affairs MCQ Mock Test.
+</p>
+
+<div class="test-info">
+
+<span class="badge">100 Questions</span>
+<span class="badge">60 Minutes</span>
+<span class="badge">−0.33 Negative</span>
+
+</div>
+
+<a href="test.html?test=ca-september-2026"
+class="start-btn">
+Start Test →
+</a>
+
+</div>
+
+
+<!-- AUGUST -->
+
+<div class="test-card">
+
+<div class="test-icon">📰</div>
+
+<h3>August 2026 Current Affairs</h3>
+
+<p>
+Monthly Current Affairs MCQ Mock Test.
+</p>
+
+<div class="test-info">
+
+<span class="badge">100 Questions</span>
+<span class="badge">60 Minutes</span>
+<span class="badge">−0.33 Negative</span>
+
+</div>
+
+<a href="test.html?test=ca-august-2026"
+class="start-btn">
+Start Test →
+</a>
+
+</div>
+
+
+<!-- JULY -->
+
+<div class="test-card">
+
+<div class="test-icon">📰</div>
+
+<h3>July 2026 Current Affairs</h3>
+
+<p>
+Monthly Current Affairs MCQ Mock Test.
+</p>
+
+<div class="test-info">
+
+<span class="badge">100 Questions</span>
+<span class="badge">60 Minutes</span>
+<span class="badge">−0.33 Negative</span>
+
+</div>
+
+<a href="test.html?test=ca-july-2026"
+class="start-btn">
+Start Test →
+</a>
+
+</div>
+
+
+<!-- JUNE -->
+
+<div class="test-card">
+
+<div class="test-icon">📰</div>
+
+<h3>June 2026 Current Affairs</h3>
+
+<p>
+Monthly Current Affairs MCQ Mock Test.
+</p>
+
+<div class="test-info">
+
+<span class="badge">100 Questions</span>
+<span class="badge">60 Minutes</span>
+<span class="badge">−0.33 Negative</span>
+
+</div>
+
+<a href="test.html?test=ca-june-2026"
+class="start-btn">
+Start Test →
+</a>
+
+</div>
+
+
+<!-- MAY -->
+
+<div class="test-card">
+
+<div class="test-icon">📰</div>
+
+<h3>May 2026 Current Affairs</h3>
+
+<p>
+Monthly Current Affairs MCQ Mock Test.
+</p>
+
+<div class="test-info">
+
+<span class="badge">100 Questions</span>
+<span class="badge">60 Minutes</span>
+<span class="badge">−0.33 Negative</span>
+
+</div>
+
+<a href="test.html?test=ca-may-2026"
+class="start-btn">
+Start Test →
+</a>
+
+</div>
+
+
+<!-- APRIL -->
+
+<div class="test-card">
+
+<div class="test-icon">📰</div>
+
+<h3>April 2026 Current Affairs</h3>
+
+<p>
+Monthly Current Affairs MCQ Mock Test.
+</p>
+
+<div class="test-info">
+
+<span class="badge">100 Questions</span>
+<span class="badge">60 Minutes</span>
+<span class="badge">−0.33 Negative</span>
+
+</div>
+
+<a href="test.html?test=ca-april-2026"
+class="start-btn">
+Start Test →
+</a>
+
+</div>
+
+
+<!-- MARCH -->
+
+<div class="test-card">
+
+<div class="test-icon">📰</div>
+
+<h3>March 2026 Current Affairs</h3>
+
+<p>
+Monthly Current Affairs MCQ Mock Test.
+</p>
+
+<div class="test-info">
+
+<span class="badge">100 Questions</span>
+<span class="badge">60 Minutes</span>
+<span class="badge">−0.33 Negative</span>
+
+</div>
+
+<a href="test.html?test=ca-march-2026"
+class="start-btn">
+Start Test →
+</a>
+
+</div>
+
+
 </div>
 
 </div>
 
-</div>
+</section>
 
 
 <footer>
@@ -2005,268 +595,17 @@ Unanswered
 
 <p>Aim High • Achieve High</p>
 
-<p>SSC | Railway | Banking | ASO | OSSC | OSSSC</p>
-
 <p style="margin-top:10px;">
-📞 7735060804
+Online Mock Tests • Study Material • Current Affairs
+</p>
+
+<p style="margin-top:15px;">
+© 2026 AIMERS CLASSES. All Rights Reserved.
 </p>
 
 </div>
 
 </footer>
-
-
-<script>
-
-/* ================= ANSWER KEY ================= */
-
-const answers = {
-
-q1:"B",
-q2:"A",
-q3:"D",
-q4:"B",
-q5:"C",
-q6:"A",
-q7:"B",
-q8:"C",
-q9:"C",
-q10:"A",
-
-q11:"C",
-q12:"C",
-q13:"A",
-q14:"C",
-q15:"A",
-q16:"A",
-q17:"A",
-q18:"D",
-q19:"A",
-q20:"C",
-
-q21:"C",
-q22:"A",
-q23:"D",
-q24:"D",
-q25:"C",
-q26:"C",
-q27:"A",
-q28:"B",
-q29:"C",
-q30:"B",
-
-q31:"A",
-q32:"D",
-q33:"B",
-q34:"B",
-q35:"B",
-q36:"C",
-q37:"C",
-q38:"C",
-q39:"B",
-q40:"B",
-
-q41:"B",
-q42:"B",
-q43:"B",
-q44:"C",
-q45:"A",
-q46:"B",
-q47:"C",
-q48:"B",
-q49:"A",
-q50:"B"
-
-};
-
-
-/* ================= TIMER ================= */
-
-let timeLeft = 30 * 60;
-let submitted = false;
-
-const timerElement = document.getElementById("timer");
-
-const timerInterval = setInterval(function(){
-
-    if(submitted){
-        clearInterval(timerInterval);
-        return;
-    }
-
-    let minutes = Math.floor(timeLeft / 60);
-    let seconds = timeLeft % 60;
-
-    timerElement.textContent =
-        String(minutes).padStart(2,"0") +
-        ":" +
-        String(seconds).padStart(2,"0");
-
-    if(timeLeft <= 300){
-        timerElement.classList.add("warning");
-    }
-
-    if(timeLeft <= 0){
-
-        clearInterval(timerInterval);
-
-        alert("⏰ Time is over. Your test will be submitted automatically.");
-
-        submitTest(true);
-
-        return;
-    }
-
-    timeLeft--;
-
-},1000);
-
-
-/* ================= OPTION SELECT STYLE ================= */
-
-document.querySelectorAll(".option").forEach(function(option){
-
-    option.addEventListener("click",function(){
-
-        const parent = this.parentElement;
-
-        parent.querySelectorAll(".option").forEach(function(item){
-            item.classList.remove("selected");
-        });
-
-        this.classList.add("selected");
-
-    });
-
-});
-
-
-/* ================= SUBMIT TEST ================= */
-
-function submitTest(autoSubmit){
-
-    if(submitted){
-        return;
-    }
-
-    if(!autoSubmit){
-
-        const confirmSubmit = confirm(
-            "Are you sure you want to submit the test?"
-        );
-
-        if(!confirmSubmit){
-            return;
-        }
-
-    }
-
-    submitted = true;
-
-    clearInterval(timerInterval);
-
-    let correct = 0;
-    let wrong = 0;
-    let unanswered = 0;
-
-    let reviewHTML = "";
-
-    for(let i=1; i<=50; i++){
-
-        const questionName = "q" + i;
-
-        const selected =
-            document.querySelector(
-                'input[name="' + questionName + '"]:checked'
-            );
-
-        const correctAnswer = answers[questionName];
-
-        if(!selected){
-
-            unanswered++;
-
-            reviewHTML += `
-            <div class="review-item unanswered">
-                <strong>Question ${i}</strong><br>
-                ❓ Not Attempted<br>
-                Correct Answer: <strong>${correctAnswer}</strong>
-            </div>
-            `;
-
-        }
-        else if(selected.value === correctAnswer){
-
-            correct++;
-
-            reviewHTML += `
-            <div class="review-item correct">
-                <strong>Question ${i}</strong><br>
-                ✅ Your Answer: ${selected.value}<br>
-                Correct Answer: <strong>${correctAnswer}</strong>
-            </div>
-            `;
-
-        }
-        else{
-
-            wrong++;
-
-            reviewHTML += `
-            <div class="review-item wrong">
-                <strong>Question ${i}</strong><br>
-                ❌ Your Answer: ${selected.value}<br>
-                Correct Answer: <strong>${correctAnswer}</strong>
-            </div>
-            `;
-
-        }
-
-    }
-
-
-    /* MARKING */
-
-    const score =
-        (correct * 1) -
-        (wrong * 0.33);
-
-
-    document.getElementById("score").textContent =
-        score.toFixed(2);
-
-    document.getElementById("correct").textContent =
-        correct;
-
-    document.getElementById("wrong").textContent =
-        wrong;
-
-    document.getElementById("unanswered").textContent =
-        unanswered;
-
-    document.getElementById("review").innerHTML =
-        "<h2 style='margin-bottom:15px;'>Answer Review</h2>" +
-        reviewHTML;
-
-
-    document.getElementById("result").style.display =
-        "block";
-
-
-    /* HIDE QUESTIONS */
-
-    document.getElementById("quizForm").style.display =
-        "none";
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-</script>
 
 </body>
 </html>
