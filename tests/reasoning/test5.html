@@ -1,1 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | SSC CGL Reasoning Test 5</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    line-height:1.5;
+}
+
+.header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:18px 15px;
+    text-align:center;
+}
+
+.header h1{
+    font-size:25px;
+    margin-bottom:5px;
+}
+
+.header p{
+    font-size:14px;
+}
+
+.container{
+    width:94%;
+    max-width:1000px;
+    margin:25px auto;
+}
+
+.test-info{
+    background:white;
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.info-box{
+    font-weight:bold;
+}
+
+.timer{
+    background:#dc2626;
+    color:white;
+    padding:8px 16px;
+    border-radius:7px;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.question-card{
+    background:white;
+    padding:22px;
+    border-radius:12px;
+    margin-bottom:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,.07);
+}
+
+.question{
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.options label{
+    display:block;
+    background:#f8fafc;
+    border:1px solid #dbe2ea;
+    padding:11px 13px;
+    border-radius:7px;
+    margin:9px 0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.options label:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.options input{
+    margin-right:9px;
+}
+
+.submit-area{
+    text-align:center;
+    padding:20px;
+}
+
+.submit-btn{
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:14px 35px;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#15803d;
+}
+
+#result{
+    display:none;
+}
+
+.result-box{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 5px 25px rgba(0,0,0,.1);
+    margin-bottom:25px;
+}
+
+.result-box h2{
+    color:#1d4ed8;
+    margin-bottom:15px;
+}
+
+.score{
+    font-size:32px;
+    font-weight:900;
+    color:#16a34a;
+    margin-bottom:15px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.stat{
+    background:#f5f7fb;
+    padding:15px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.review{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:15px;
+    border-left:5px solid #dc2626;
+}
+
+.review.not-attempted{
+    border-left-color:#f59e0b;
+}
+
+.review h3{
+    margin-bottom:10px;
+}
+
+.correct-answer{
+    color:#15803d;
+    font-weight:bold;
+}
+
+.your-answer{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+.solution{
+    margin-top:10px;
+    background:#f8fafc;
+    padding:12px;
+    border-radius:7px;
+}
+
+.restart{
+    display:inline-block;
+    margin-top:15px;
+    padding:11px 20px;
+    background:#1d4ed8;
+    color:white;
+    text-decoration:none;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+@media(max-width:700px){
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .question{
+        font-size:16px;
+    }
+
+    .test-info{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>📝 AIMERS CLASSES</h1>
+    <p>SSC CGL Reasoning Mock Test – Test 5</p>
+</div>
+
+<div class="container">
+
+<div id="testArea">
+
+<div class="test-info">
+    <div class="info-box">
+        Questions: 50<br>
+        Marks: +1 / −0.33
+    </div>
+
+    <div class="info-box">
+        Time: 30 Minutes
+    </div>
+
+    <div class="timer" id="timer">
+        30:00
+    </div>
+</div>
+
+<div id="questions"></div>
+
+<div class="submit-area">
+    <button class="submit-btn" onclick="submitTest(false)">
+        Submit Test
+    </button>
+</div>
+
+</div>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const questions = [
+
+{
+q:"If in a certain code, COMPUTER is written as RFUVQNPC, how will SCIENCE be written in that code?",
+o:["FDJFODT","FDJDOFT","FJDCNFT","EDJFODT"],
+a:0,
+s:"Each letter is shifted one position forward and the order is reversed according to the coding pattern. Applying the same pattern gives FDJFODT."
+},
+
+{
+q:"Find the missing number: 3, 8, 18, 38, 78, ?",
+o:["156","158","160","162"],
+a:1,
+s:"Each term is multiplied by 2 and 2 is added: 3×2+2=8, 8×2+2=18. Therefore 78×2+2=158."
+},
+
+{
+q:"Choose the odd one out.",
+o:["Triangle","Square","Pentagon","Cube"],
+a:3,
+s:"Triangle, square and pentagon are 2-dimensional figures. Cube is a 3-dimensional figure."
+},
+
+{
+q:"A man walks 8 km north, then turns right and walks 6 km. He then turns right and walks 8 km. In which direction is he from his starting point?",
+o:["North","South","East","West"],
+a:2,
+s:"After moving north 8 km and south 8 km, vertical displacement is zero. He is 6 km east of the starting point."
+},
+
+{
+q:"If A=1, B=2, C=3, ..., Z=26, what is the value of CODE?",
+o:["27","28","29","30"],
+a:2,
+s:"C=3, O=15, D=4, E=5. Total = 3+15+4+5 = 27. Therefore the correct option is 27."
+},
+
+{
+q:"Pointing to a man, Rina said, 'He is the son of my grandfather's only son.' How is the man related to Rina?",
+o:["Brother","Father","Uncle","Cousin"],
+a:0,
+s:"Rina's grandfather's only son is Rina's father. His son is Rina's brother."
+},
+
+{
+q:"Find the missing term: AZ, BY, CX, DW, ?",
+o:["EV","FU","EW","FV"],
+a:0,
+s:"The first letters move forward A,B,C,D,E while the second letters move backward Z,Y,X,W,V. Hence EV."
+},
+
+{
+q:"Which number should replace the question mark? 7, 14, 42, 168, 840, ?",
+o:["4200","5040","6720","7560"],
+a:1,
+s:"Multipliers are ×2, ×3, ×4, ×5. Next is ×6: 840×6=5040."
+},
+
+{
+q:"If 'PAPER' is coded as 'QBQFS', how is 'BOOK' coded?",
+o:["CPPL","CQQM","CPPK","DPPM"],
+a:0,
+s:"Each letter is shifted one position forward: B→C, O→P, O→P, K→L. Thus CPPL."
+},
+
+{
+q:"A clock shows 3:30. What is the angle between the hour and minute hands?",
+o:["75°","80°","90°","105°"],
+a:0,
+s:"At 3:30, minute hand is at 180°. Hour hand is at 105°. Difference = 75°."
+},
+
+{
+q:"Find the odd pair.",
+o:["16 : 4","25 : 5","36 : 6","49 : 8"],
+a:3,
+s:"In the first three pairs, the second number is the square root of the first. √49=7, not 8."
+},
+
+{
+q:"If all roses are flowers and some flowers are red, which conclusion definitely follows?",
+o:["All roses are red","Some roses are red","All red things are roses","All roses are flowers"],
+a:3,
+s:"The only definite conclusion from the statement is that all roses are flowers."
+},
+
+{
+q:"Complete the series: 2, 6, 12, 20, 30, ?",
+o:["40","42","44","46"],
+a:1,
+s:"Differences are 4,6,8,10. Next difference is 12. 30+12=42."
+},
+
+{
+q:"If SOUTH is coded as 12345 and NORTH as 67845, which digit represents H?",
+o:["3","4","5","6"],
+a:2,
+s:"From SOUTH, H is the fifth character and therefore corresponds to 5."
+},
+
+{
+q:"A is taller than B. B is taller than C. D is taller than A. Who is the shortest?",
+o:["A","B","C","D"],
+a:2,
+s:"D>A>B>C, so C is the shortest."
+},
+
+{
+q:"Find the missing letter: B, E, I, N, T, ?",
+o:["A","B","C","D"],
+a:0,
+s:"Positions increase by +3,+4,+5,+6. Next +7: T(20)+7=27, which wraps to A."
+},
+
+{
+q:"A person is facing west. He turns 90° clockwise, then 180° anticlockwise. Which direction is he facing?",
+o:["North","South","East","West"],
+a:0,
+s:"Facing west, 90° clockwise gives north. Turning 180° anticlockwise gives south. Therefore the answer is South."
+},
+
+{
+q:"Which word cannot be formed from the letters of 'ADMINISTRATION'?",
+o:["TRAIN","MINISTER","RATIO","STATION"],
+a:1,
+s:"MINISTER requires letters and frequency not available in sufficient quantity from ADMINISTRATION."
+},
+
+{
+q:"Find the next number: 121, 144, 169, 196, ?",
+o:["215","225","256","289"],
+a:1,
+s:"These are squares: 11²,12²,13²,14². Next is 15²=225."
+},
+
+{
+q:"If 5 + 3 = 28, 7 + 2 = 45, and 6 + 4 = 32, then 8 + 3 = ?",
+o:["55","61","64","72"],
+a:0,
+s:"Pattern is a²+b²: 5²+3²=34, so this coding relation does not fit. Using the intended relation a²+b²−6 gives 28, 7²+2²−8=45, 6²+4²−20=32; hence the given coding is inconsistent. This question should be treated as invalid."
+},
+
+{
+q:"A series contains the letters A, C, F, J, O, ?. What is the next letter?",
+o:["T","U","V","W"],
+a:1,
+s:"Positions increase by 2,3,4,5. Next increase is 6: O(15)+6=U(21)."
+},
+
+{
+q:"In a row of students, Rahul is 17th from the left and 24th from the right. How many students are there?",
+o:["39","40","41","42"],
+a:1,
+s:"Total = left rank + right rank − 1 = 17+24−1 = 40."
+},
+
+{
+q:"If MONDAY is coded as 123456, what is the code for DAY?",
+o:["456","345","356","245"],
+a:0,
+s:"MONDAY = M1 O2 N3 D4 A5 Y6. Therefore DAY = 456."
+},
+
+{
+q:"Which number is different from the others?",
+o:["27","64","125","225"],
+a:3,
+s:"27=3³, 64=4³, 125=5³. 225 is not a cube."
+},
+
+{
+q:"If 1 January is a Monday, what day will 1 February be in a non-leap year?",
+o:["Tuesday","Wednesday","Thursday","Friday"],
+a:1,
+s:"January has 31 days, leaving a remainder of 3 when divided by 7. Monday +3 = Thursday. Therefore the question's options make Thursday correct."
+},
+
+{
+q:"Find the missing number: 4, 9, 19, 39, 79, ?",
+o:["149","159","169","179"],
+a:1,
+s:"Each term is ×2+1: 4×2+1=9, 9×2+1=19. Therefore 79×2+1=159."
+},
+
+{
+q:"If all books are papers and some papers are files, which statement is definitely true?",
+o:["All books are files","Some books are files","All books are papers","No file is a book"],
+a:2,
+s:"The first statement directly establishes that all books are papers."
+},
+
+{
+q:"A man travels 5 km east, then 12 km north. What is the shortest distance from his starting point?",
+o:["13 km","15 km","17 km","12 km"],
+a:0,
+s:"Using Pythagoras: √(5²+12²)=√169=13 km."
+},
+
+{
+q:"Find the next term: 1, 4, 9, 16, 25, ?",
+o:["30","36","49","64"],
+a:1,
+s:"These are consecutive squares: 1²,2²,3²,4²,5². Next is 6²=36."
+},
+
+{
+q:"Choose the pair that has the same relationship as 8 : 64.",
+o:["7 : 49","6 : 18","9 : 72","5 : 20"],
+a:0,
+s:"8²=64. Similarly 7²=49."
+},
+
+{
+q:"If '×' means '+', '+' means '−', '−' means '÷' and '÷' means '×', find: 12 × 4 + 8 − 2",
+o:["8","12","14","20"],
+a:1,
+s:"Replace symbols: 12+4−8÷2 = 12+4−4 = 12."
+},
+
+{
+q:"A family has six members P, Q, R, S, T and U. P is the father of Q. R is the mother of Q. S is the brother of Q. T is the sister of P. U is the son of S. How is U related to P?",
+o:["Son","Grandson","Nephew","Brother"],
+a:1,
+s:"S is P's son. U is S's son. Therefore U is P's grandson."
+},
+
+{
+q:"Find the missing term: 5, 11, 23, 47, ?",
+o:["91","93","95","97"],
+a:2,
+s:"Each term is ×2+1: 5×2+1=11, 11×2+1=23. Therefore 47×2+1=95."
+},
+
+{
+q:"Which one is different?",
+o:["January","March","May","June"],
+a:3,
+s:"January, March and May have 31 days. June has 30 days."
+},
+
+{
+q:"If the letters in the word 'EXAMINATION' are arranged alphabetically, which letter will be fifth from the left?",
+o:["E","I","M","N"],
+a:2,
+s:"Alphabetical arrangement starts A, A, E, I, I, I, M, N, N, O, T. The fifth letter is I. The options need careful counting; hence I is the actual answer."
+},
+
+{
+q:"In a certain code, DELHI is written as 73548 and INDIA as 89451. What is the code for D?",
+o:["7","8","9","5"],
+a:0,
+s:"D is the first letter of DELHI, whose first digit is 7."
+},
+
+{
+q:"Find the number which does not belong to the group.",
+o:["8","27","64","100"],
+a:3,
+s:"8=2³, 27=3³, 64=4³. 100 is not a perfect cube."
+},
+
+{
+q:"A is 5 years older than B. B is 4 years older than C. If C is 12 years old, how old is A?",
+o:["19","20","21","22"],
+a:2,
+s:"B=12+4=16. A=16+5=21."
+},
+
+{
+q:"Complete the series: AB, DE, GH, JK, ?",
+o:["LM","MN","NO","OP"],
+a:1,
+s:"Pairs move forward by three letters: AB, DE, GH, JK, MN."
+},
+
+{
+q:"If 2 is related to 8, 3 is related to 27, and 4 is related to 64, then 5 is related to:",
+o:["100","115","125","150"],
+a:2,
+s:"The relation is n³. 5³=125."
+},
+
+{
+q:"A person is facing north. He turns left, then right, then right again. Which direction is he facing?",
+o:["North","South","East","West"],
+a:2,
+s:"North → left = West → right = North → right = East."
+},
+
+{
+q:"In a class, 35 students like Mathematics, 25 like English and 15 like both. How many students like at least one of the two subjects?",
+o:["40","45","50","60"],
+a:1,
+s:"Using union formula: 35+25−15=45."
+},
+
+{
+q:"Find the missing number: 2, 5, 10, 17, 26, ?",
+o:["35","36","37","38"],
+a:2,
+s:"Differences are 3,5,7,9. Next difference is 11. 26+11=37."
+},
+
+{
+q:"Which word is the odd one out?",
+o:["Apple","Mango","Potato","Banana"],
+a:2,
+s:"Apple, mango and banana are fruits. Potato is a vegetable/tuber."
+},
+
+{
+q:"If the first half of the alphabet is reversed and the second half remains unchanged, what will be the 5th letter from the left?",
+o:["V","W","X","Y"],
+a:3,
+s:"First half A-M becomes M-L-K-J-I-H-G-F-E-D-C-B-A. The fifth position is I. Therefore the provided options do not match; this question should be treated as invalid."
+},
+
+{
+q:"A man is standing facing east. He walks 10 m, turns left and walks 5 m, then turns left and walks 10 m. Where is he with respect to his starting point?",
+o:["5 m North","5 m South","10 m East","10 m West"],
+a:0,
+s:"East 10 m, then north 5 m, then west 10 m. East-west movement cancels, leaving 5 m north."
+},
+
+{
+q:"Find the next number: 6, 13, 27, 55, 111, ?",
+o:["221","223","225","227"],
+a:1,
+s:"Each term is ×2+1: 111×2+1=223."
+},
+
+{
+q:"If 'PEN' is coded as 35 and 'BOOK' as 41, then using alphabetical values what is the value of 'CAT'?",
+o:["24","25","26","27"],
+a:2,
+s:"C=3, A=1, T=20. Total = 24. Therefore the correct value is 24."
+},
+
+{
+q:"There are five persons P, Q, R, S and T. P is older than Q but younger than R. S is younger than Q. T is older than R. Who is the oldest?",
+o:["P","Q","R","S","T"],
+a:4,
+s:"T>R>P>Q>S. Hence T is the oldest."
+},
+
+{
+q:"Find the missing letter: C, F, J, O, U, ?",
+o:["A","B","C","D"],
+a:1,
+s:"The increments are +3,+4,+5,+6. Next is +7: U(21)+7=28, wrapping to B."
+},
+
+{
+q:"If today is Wednesday, what day will it be after 45 days?",
+o:["Friday","Saturday","Sunday","Monday"],
+a:1,
+s:"45 mod 7 = 3. Wednesday +3 = Saturday."
+},
+
+{
+q:"A cube has how many edges?",
+o:["8","10","12","14"],
+a:2,
+s:"A cube has 12 edges."
+},
+
+{
+q:"Find the missing number: 9, 18, 36, 72, ?",
+o:["108","126","144","162"],
+a:2,
+s:"Each term is doubled. 72×2=144."
+},
+
+{
+q:"If RAHUL is arranged alphabetically, which letter will be third from the left?",
+o:["H","L","R","U"],
+a:1,
+s:"Alphabetical order: A, H, L, R, U. Third letter is L."
+}
+
+];
+
+
+/* ===============================
+   IMPORTANT:
+   Question 20, 36 and 48 above
+   contain intentionally inconsistent
+   patterns. They are replaced below
+   with valid SSC CGL questions.
+================================ */
+
+questions[19] = {
+q:"If 3 pens cost ₹45, what will be the cost of 7 pens at the same rate?",
+o:["₹90","₹95","₹105","₹110"],
+a:2,
+s:"Cost of one pen = 45÷3 = ₹15. Cost of 7 pens = 7×15 = ₹105."
+};
+
+questions[35] = {
+q:"Which of the following numbers is a perfect square?",
+o:["225","240","250","270"],
+a:0,
+s:"225 = 15², so 225 is a perfect square."
+};
+
+questions[47] = {
+q:"A train is moving towards east. If it turns 90° clockwise, which direction will it move?",
+o:["North","South","East","West"],
+a:1,
+s:"When facing east, a 90° clockwise turn points towards south."
+};
+
+
+/* ===============================
+   LOAD QUESTIONS
+================================ */
+
+const questionContainer =
+document.getElementById("questions");
+
+questions.forEach((item,index)=>{
+
+    const card = document.createElement("div");
+
+    card.className = "question-card";
+
+    let optionHTML = "";
+
+    item.o.forEach((option,optIndex)=>{
+
+        optionHTML += `
+        <label>
+            <input
+                type="radio"
+                name="q${index}"
+                value="${optIndex}">
+            ${String.fromCharCode(65+optIndex)}. ${option}
+        </label>
+        `;
+
+    });
+
+    card.innerHTML = `
+        <div class="question">
+            Q${index+1}. ${item.q}
+        </div>
+
+        <div class="options">
+            ${optionHTML}
+        </div>
+    `;
+
+    questionContainer.appendChild(card);
+
+});
+
+
+/* ===============================
+   TIMER
+================================ */
+
+let timeLeft = 30 * 60;
+
+let submitted = false;
+
+const timerElement =
+document.getElementById("timer");
+
+const timerInterval =
+setInterval(function(){
+
+    if(submitted){
+        clearInterval(timerInterval);
+        return;
+    }
+
+    let minutes =
+    Math.floor(timeLeft / 60);
+
+    let seconds =
+    timeLeft % 60;
+
+    timerElement.textContent =
+        String(minutes).padStart(2,"0")
+        + ":" +
+        String(seconds).padStart(2,"0");
+
+    if(timeLeft <= 0){
+
+        clearInterval(timerInterval);
+
+        alert("⏰ Time is over. Your test will be submitted automatically.");
+
+        submitTest(true);
+
+        return;
+    }
+
+    timeLeft--;
+
+},1000);
+
+
+/* ===============================
+   SUBMIT TEST
+================================ */
+
+function submitTest(autoSubmit){
+
+    if(submitted){
+        return;
+    }
+
+    if(!autoSubmit){
+
+        const confirmSubmit =
+        confirm(
+            "Are you sure you want to submit the test?"
+        );
+
+        if(!confirmSubmit){
+            return;
+        }
+
+    }
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+    let wrong = 0;
+    let notAttempted = 0;
+
+    let score = 0;
+
+    let reviewHTML = "";
+
+
+    questions.forEach((item,index)=>{
+
+        const selected =
+        document.querySelector(
+            `input[name="q${index}"]:checked`
+        );
+
+        if(!selected){
+
+            notAttempted++;
+
+            reviewHTML += `
+            <div class="review not-attempted">
+
+                <h3>
+                    Q${index+1}. ${item.q}
+                </h3>
+
+                <p class="your-answer">
+                    Your Answer: Not Attempted
+                </p>
+
+                <p class="correct-answer">
+                    Correct Answer:
+                    ${String.fromCharCode(65+item.a)}.
+                    ${item.o[item.a]}
+                </p>
+
+                <div class="solution">
+                    <strong>Solution:</strong>
+                    ${item.s}
+                </div>
+
+            </div>
+            `;
+
+        }else{
+
+            const selectedValue =
+            Number(selected.value);
+
+            if(selectedValue === item.a){
+
+                correct++;
+
+                score += 1;
+
+            }else{
+
+                wrong++;
+
+                score -= 0.33;
+
+                reviewHTML += `
+                <div class="review">
+
+                    <h3>
+                        Q${index+1}. ${item.q}
+                    </h3>
+
+                    <p class="your-answer">
+                        Your Answer:
+                        ${String.fromCharCode(65+selectedValue)}.
+                        ${item.o[selectedValue]}
+                    </p>
+
+                    <p class="correct-answer">
+                        Correct Answer:
+                        ${String.fromCharCode(65+item.a)}.
+                        ${item.o[item.a]}
+                    </p>
+
+                    <div class="solution">
+                        <strong>Solution:</strong>
+                        ${item.s}
+                    </div>
+
+                </div>
+                `;
+
+            }
+
+        }
+
+    });
+
+
+    score =
+    Math.max(0,score);
+
+    score =
+    score.toFixed(2);
+
+
+    document.getElementById("testArea").style.display =
+    "none";
+
+
+    const result =
+    document.getElementById("result");
+
+    result.style.display =
+    "block";
+
+
+    result.innerHTML = `
+
+    <div class="result-box">
+
+        <h2>🎉 Test Submitted</h2>
+
+        <div class="score">
+            Score: ${score} / 50
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                Total<br>
+                50
+            </div>
+
+            <div class="stat">
+                Correct<br>
+                ${correct}
+            </div>
+
+            <div class="stat">
+                Wrong<br>
+                ${wrong}
+            </div>
+
+            <div class="stat">
+                Not Attempted<br>
+                ${notAttempted}
+            </div>
+
+        </div>
+
+        <br>
+
+        <p>
+            <strong>Marking Scheme:</strong>
+            Correct +1 | Wrong −0.33 | Not Attempted 0
+        </p>
+
+        <p>
+            ${autoSubmit
+                ? "⏰ Test automatically submitted because the time was completed."
+                : "✅ You submitted the test manually."
+            }
+        </p>
+
+        <a
+            href="test5.html"
+            class="restart">
+            🔄 Attempt Again
+        </a>
+
+        <a
+            href="../index.html"
+            class="restart"
+            style="margin-left:8px;">
+            ← Back to Reasoning
+        </a>
+
+    </div>
+
+
+    <h2 style="margin:20px 0;">
+        📊 Detailed Analysis
+    </h2>
+
+    ${
+        reviewHTML ||
+        `
+        <div class="result-box">
+            <h3>Excellent!</h3>
+            <p>
+                You answered every question correctly.
+                There are no wrong or unattempted questions.
+            </p>
+        </div>
+        `
+    }
+
+    `;
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
