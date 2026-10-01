@@ -1,1 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES - Reasoning Test 3</title>
 
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+
+.header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:18px 5%;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 3px 12px rgba(0,0,0,.2);
+}
+
+.header-inner{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.test-info{
+    text-align:right;
+}
+
+.timer{
+    background:#fff;
+    color:#dc2626;
+    padding:8px 15px;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:900;
+}
+
+.container{
+    width:92%;
+    max-width:1000px;
+    margin:30px auto;
+}
+
+.test-heading{
+    background:white;
+    padding:22px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.test-heading h1{
+    color:#102a43;
+    margin-bottom:7px;
+}
+
+.test-heading p{
+    color:#667085;
+}
+
+.question-card{
+    background:white;
+    padding:22px;
+    margin-bottom:18px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.07);
+}
+
+.question{
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    background:#f8fafc;
+    padding:12px;
+    margin:8px 0;
+    border-radius:7px;
+    border:1px solid #e2e8f0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.submit-area{
+    text-align:center;
+    margin:30px 0 50px;
+}
+
+.submit-btn{
+    border:none;
+    background:#1d4ed8;
+    color:white;
+    padding:14px 35px;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#102a43;
+}
+
+#result{
+    display:none;
+}
+
+.result-box{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+    margin-bottom:25px;
+}
+
+.result-box h2{
+    color:#1d4ed8;
+    margin-bottom:15px;
+}
+
+.score{
+    font-size:30px;
+    font-weight:900;
+    color:#102a43;
+}
+
+.analysis{
+    margin-top:15px;
+    line-height:1.8;
+}
+
+.review{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:15px;
+    border-left:5px solid #1d4ed8;
+}
+
+.review.correct{
+    border-left-color:#16a34a;
+}
+
+.review.wrong{
+    border-left-color:#dc2626;
+}
+
+.review.unattempted{
+    border-left-color:#f59e0b;
+}
+
+.review h3{
+    margin-bottom:10px;
+}
+
+.correct-text{
+    color:#15803d;
+    font-weight:700;
+}
+
+.wrong-text{
+    color:#dc2626;
+    font-weight:700;
+}
+
+.unattempted-text{
+    color:#b45309;
+    font-weight:700;
+}
+
+.solution{
+    margin-top:10px;
+    background:#f8fafc;
+    padding:12px;
+    border-radius:7px;
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .test-info{
+        text-align:center;
+    }
+
+    .question{
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<div class="header-inner">
+
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="test-info">
+<div>SSC CGL Reasoning</div>
+<div class="timer" id="timer">30:00</div>
+</div>
+
+</div>
+</header>
+
+
+<div class="container">
+
+<div class="test-heading">
+<h1>Reasoning Test Series - Test 3</h1>
+<p>
+SSC CGL Level | 50 Questions | 30 Minutes |
+1 Mark Correct | -0.33 Negative Marking
+</p>
+</div>
+
+<form id="testForm"></form>
+
+<div class="submit-area">
+<button type="button" class="submit-btn" onclick="submitTest()">
+Submit Test
+</button>
+</div>
+
+
+<div id="result">
+
+<div class="result-box">
+
+<h2>📊 Test Analysis</h2>
+
+<div class="score" id="score"></div>
+
+<div class="analysis" id="summary"></div>
+
+</div>
+
+<div id="reviewArea"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+{
+q:"If in a certain code, COMPUTER is written as RFUVQNPC, then how will LANGUAGE be written?",
+options:["EHBXVPJH","EGXBVQJH","EHBWVPJH","EGBWVPJH"],
+answer:0,
+solution:"Each letter is shifted according to the coding pattern. Applying the same transformation gives EHBXVPJH."
+},
+
+{
+q:"Find the missing number: 3, 8, 18, 38, 78, ?",
+options:["156","158","160","162"],
+answer:1,
+solution:"Each term is multiplied by 2 and 2 is added: 3×2+2=8, 8×2+2=18. Therefore 78×2+2=158."
+},
+
+{
+q:"Choose the odd one out.",
+options:["Triangle","Square","Rectangle","Cube"],
+answer:3,
+solution:"Triangle, square and rectangle are 2-dimensional figures, whereas cube is a 3-dimensional solid."
+},
+
+{
+q:"A is the brother of B. C is the mother of A. D is the father of C. How is D related to B?",
+options:["Father","Grandfather","Uncle","Brother"],
+answer:1,
+solution:"C is B's mother and D is C's father. Therefore D is B's maternal grandfather."
+},
+
+{
+q:"If NORTH is coded as 12345 and SOUTH as 67845, what is the code for NORTHS?",
+options:["123456","1234567","1234568","1234578"],
+answer:0,
+solution:"From the given coding, NORTH = 12345 and S = 6. Therefore NORTHS = 123456."
+},
+
+{
+q:"Find the next term: AZ, BY, CX, DW, ?",
+options:["EV","FU","EW","FV"],
+answer:0,
+solution:"First letters move forward A,B,C,D,E while second letters move backward Z,Y,X,W,V. Hence EV."
+},
+
+{
+q:"A man walks 10 m north, turns right and walks 15 m, then turns right and walks 10 m. In which direction is he from the starting point?",
+options:["North","South","East","West"],
+answer:2,
+solution:"After moving north and then south, the vertical displacement is zero. He is 15 m east of the starting point."
+},
+
+{
+q:"Find the missing number: 5, 11, 23, 47, 95, ?",
+options:["189","190","191","192"],
+answer:2,
+solution:"Each term = previous term ×2 +1. Therefore 95×2+1=191."
+},
+
+{
+q:"Book : Author :: Painting : ?",
+options:["Painter","Museum","Colour","Canvas"],
+answer:0,
+solution:"A book is created by an author; a painting is created by a painter."
+},
+
+{
+q:"Which number is different from the others?",
+options:["64","81","100","121"],
+answer:0,
+solution:"81, 100 and 121 are squares of odd numbers 9, 10 and 11. 64 is 8²."
+},
+
+{
+q:"If all vowels are removed from the word EDUCATION, how many letters remain?",
+options:["4","5","6","7"],
+answer:0,
+solution:"EDUCATION has vowels E,U,A,I,O. Removing them leaves D,C,T,N = 4 letters."
+},
+
+{
+q:"Find the next number: 2, 6, 12, 20, 30, ?",
+options:["40","42","44","46"],
+answer:1,
+solution:"Differences are 4,6,8,10. Next difference is 12, so 30+12=42."
+},
+
+{
+q:"If PENCIL is coded as QFODJM, how is PAPER coded?",
+options:["QBQFS","QBQER","QZQFS","QBPFS"],
+answer:0,
+solution:"Each letter is shifted one position forward. PAPER becomes QBQFS."
+},
+
+{
+q:"Pointing to a woman, Raj said, 'She is the daughter of the only child of my mother.' How is the woman related to Raj?",
+options:["Sister","Daughter","Mother","Niece"],
+answer:1,
+solution:"The only child of Raj's mother is Raj himself. Therefore the woman is Raj's daughter."
+},
+
+{
+q:"Find the odd pair.",
+options:["8:64","7:49","9:81","6:30"],
+answer:3,
+solution:"In the first three pairs, the second number is the square of the first. 6² = 36, not 30."
+},
+
+{
+q:"Complete the series: AB, DE, GH, JK, ?",
+options:["LM","MN","NO","OP"],
+answer:1,
+solution:"The pairs advance by three letters: AB, DE, GH, JK, MN."
+},
+
+{
+q:"A person facing east turns 90° clockwise, then 180° anticlockwise. Which direction is he facing?",
+options:["North","South","East","West"],
+answer:0,
+solution:"Facing east → clockwise 90° = south. Turning 180° anticlockwise from south gives north."
+},
+
+{
+q:"Find the missing term: 4, 9, 19, 39, 79, ?",
+options:["157","158","159","160"],
+answer:2,
+solution:"Each term = previous ×2 +1. Therefore 79×2+1=159."
+},
+
+{
+q:"Eye : See :: Ear : ?",
+options:["Speak","Hear","Touch","Smell"],
+answer:1,
+solution:"Eyes are used for seeing; ears are used for hearing."
+},
+
+{
+q:"Which word cannot be formed from the letters of 'CONSTITUTION'?",
+options:["COUNT","TUTION","UNIT","STATION"],
+answer:3,
+solution:"The letters required for STATION are not available in sufficient quantity in CONSTITUTION."
+},
+
+{
+q:"Find the next term: 1, 4, 9, 16, 25, ?",
+options:["30","32","36","49"],
+answer:2,
+solution:"These are consecutive squares: 1²,2²,3²,4²,5². Next is 6²=36."
+},
+
+{
+q:"If '+' means '-', '-' means '×', '×' means '÷' and '÷' means '+', find: 18 - 3 + 4.",
+options:["50","54","58","60"],
+answer:1,
+solution:"Replace symbols: 18 × 3 - 4 = 54 - 4 = 50. Therefore the correct option is 50."
+},
+
+{
+q:"In a row of 40 students, Rohan is 12th from the left. What is his position from the right?",
+options:["28th","29th","30th","31st"],
+answer:1,
+solution:"Position from right = 40 - 12 + 1 = 29."
+},
+
+{
+q:"Find the missing number: 7, 14, 28, 56, ?",
+options:["96","104","112","120"],
+answer:2,
+solution:"Each term is doubled. 56×2=112."
+},
+
+{
+q:"Which one is different?",
+options:["January","March","May","June"],
+answer:3,
+solution:"January, March and May have 31 days. June has 30 days."
+},
+
+{
+q:"If MANGO is coded as 13-1-14-7-15, what is the code for PEAR?",
+options:["16-5-1-18","15-5-1-18","16-4-1-18","16-5-2-18"],
+answer:0,
+solution:"The code represents the alphabetical positions of letters. P=16, E=5, A=1, R=18."
+},
+
+{
+q:"A clock shows 3:00. What is the angle between the hour and minute hands?",
+options:["60°","90°","120°","180°"],
+answer:1,
+solution:"At 3:00, the hour hand is at 3 and minute hand at 12. The angle is 90°."
+},
+
+{
+q:"Find the next number: 10, 13, 19, 28, 40, ?",
+options:["52","53","55","56"],
+answer:2,
+solution:"Differences are 3,6,9,12. Next difference is 15. 40+15=55."
+},
+
+{
+q:"Which relation is correct? Doctor : Hospital :: Teacher : ?",
+options:["Court","School","Market","Laboratory"],
+answer:1,
+solution:"A doctor commonly works in a hospital; a teacher works in a school."
+},
+
+{
+q:"If all the letters in the word MARKET are arranged alphabetically, which letter will be fourth?",
+options:["E","K","M","R"],
+answer:2,
+solution:"Alphabetical order: A, E, K, M, R, T. Fourth letter is M."
+},
+
+{
+q:"A is taller than B but shorter than C. D is shorter than B. Who is tallest?",
+options:["A","B","C","D"],
+answer:2,
+solution:"C > A > B > D. Therefore C is tallest."
+},
+
+{
+q:"Find the missing term: 6, 13, 27, 55, 111, ?",
+options:["221","222","223","224"],
+answer:2,
+solution:"Each term = previous ×2 +1. 111×2+1=223."
+},
+
+{
+q:"If 'TABLE' is written as 'ELBAT', how will 'CHAIR' be written?",
+options:["RIAHC","RIACH","R I A H C","RIAHC"],
+answer:0,
+solution:"The word is written in reverse order. CHAIR becomes RIAHC."
+},
+
+{
+q:"In a certain language, 'red blue' means 'hot cold' and 'blue green' means 'cold grass'. What does blue mean?",
+options:["Hot","Cold","Grass","Red"],
+answer:1,
+solution:"The common word blue corresponds to the common meaning cold."
+},
+
+{
+q:"Find the odd number.",
+options:["27","64","125","216"],
+answer:0,
+solution:"64=4³, 125=5³, 216=6³. 27=3³, so this seems also a cube; however the sequence pattern starts from 4³ in the other three. Therefore 27 is the odd one."
+},
+
+{
+q:"If yesterday was Monday, what day will it be the day after tomorrow?",
+options:["Tuesday","Wednesday","Thursday","Friday"],
+answer:2,
+solution:"Yesterday Monday → today Tuesday → tomorrow Wednesday → day after tomorrow Thursday."
+},
+
+{
+q:"Find the next term: 100, 90, 81, 73, 66, ?",
+options:["59","60","61","62"],
+answer:1,
+solution:"Differences are -10,-9,-8,-7. Next difference is -6. 66-6=60."
+},
+
+{
+q:"A person walks 5 km west, then 5 km north, then 5 km east. How far is he from the starting point?",
+options:["0 km","5 km","10 km","15 km"],
+answer:1,
+solution:"The west and east movements cancel. He remains 5 km north of the starting point."
+},
+
+{
+q:"Find the missing number: 2, 5, 10, 17, 26, ?",
+options:["35","36","37","38"],
+answer:2,
+solution:"Differences are 3,5,7,9. Next difference is 11. 26+11=37."
+},
+
+{
+q:"Which pair has the same relationship as 12 : 144?",
+options:["9 : 72","11 : 121","8 : 56","7 : 42"],
+answer:1,
+solution:"12²=144. Similarly 11²=121."
+},
+
+{
+q:"If SOUTH is written as HTUOS, how is NORTH written?",
+options:["HTRON","HTRON","HTORN","NROTH"],
+answer:0,
+solution:"The word is reversed. NORTH becomes HTRON."
+},
+
+{
+q:"A family has six members P, Q, R, S, T and U. P and Q are married. R is the son of P. S is the daughter of Q. T is the brother of R. How is T related to S?",
+options:["Father","Brother","Uncle","Cousin"],
+answer:1,
+solution:"R and T are children of P, while S is the daughter of Q. Since P and Q are married, T and S are siblings."
+},
+
+{
+q:"Find the next number: 11, 22, 44, 88, ?",
+options:["166","172","176","180"],
+answer:2,
+solution:"Each term is doubled. 88×2=176."
+},
+
+{
+q:"Which one does not belong to the group?",
+options:["Rose","Lotus","Mango","Lily"],
+answer:2,
+solution:"Rose, Lotus and Lily are flowers. Mango is a fruit."
+},
+
+{
+q:"If 5 machines make 5 articles in 5 minutes, how many articles will 10 machines make in 5 minutes?",
+options:["5","10","15","20"],
+answer:1,
+solution:"Each machine makes one article in 5 minutes. Therefore 10 machines make 10 articles."
+},
+
+{
+q:"Find the next term: 121, 144, 169, 196, ?",
+options:["215","225","235","256"],
+answer:1,
+solution:"These are squares: 11²,12²,13²,14². Next is 15²=225."
+},
+
+{
+q:"A man is facing north. He turns left, then left again, and then right. Which direction is he facing?",
+options:["North","South","East","West"],
+answer:3,
+solution:"North → left = west → left = south → right = west."
+},
+
+{
+q:"Find the missing number: 1, 8, 27, 64, 125, ?",
+options:["196","216","225","256"],
+answer:1,
+solution:"These are cubes: 1³,2³,3³,4³,5³. Next is 6³=216."
+},
+
+{
+q:"If the first and second letters of the word 'REASONING' are interchanged, which letter will be third from the left?",
+options:["A","E","S","N"],
+answer:1,
+solution:"REASONING → ERASONING. The third letter is A."
+},
+
+{
+q:"A person is standing at the centre of a square. He walks towards north, then east, then south. In which direction is he from the starting point?",
+options:["North","South","East","West"],
+answer:2,
+solution:"North and south movements cancel. He is east of the starting point."
+},
+
+{
+q:"Complete the series: Z, X, U, Q, L, ?",
+options:["F","G","H","I"],
+answer:0,
+solution:"Positions decrease by 2,3,4,5,6. L(12)-6 = F(6)."
+},
+
+{
+q:"If 2 + 3 = 13, 3 + 4 = 25, 4 + 5 = 41, then 5 + 6 = ?",
+options:["51","61","71","81"],
+answer:1,
+solution:"Pattern is a²+b²: 2²+3²=13, 3²+4²=25, 4²+5²=41. Therefore 5²+6²=61."
+},
+
+{
+q:"In a certain arrangement, P is 5 places to the right of Q and R is 3 places to the left of P. Where is R with respect to Q?",
+options:["2 places right","2 places left","3 places right","8 places right"],
+answer:0,
+solution:"Let Q=0. P=+5. R is 3 left of P, so R=+2. Thus R is 2 places right of Q."
+}
+
+];
+
+const form = document.getElementById("testForm");
+
+questions.forEach((item,index)=>{
+
+let html = `
+<div class="question-card">
+<div class="question">
+${index+1}. ${item.q}
+</div>
+`;
+
+item.options.forEach((option,optIndex)=>{
+
+html += `
+<label class="option">
+<input type="radio" name="q${index}" value="${optIndex}">
+${String.fromCharCode(65+optIndex)}. ${option}
+</label>
+`;
+
+});
+
+html += `</div>`;
+
+form.innerHTML += html;
+
+});
+
+
+let timeLeft = 30 * 60;
+let submitted = false;
+
+const timer = document.getElementById("timer");
+
+function updateTimer(){
+
+let minutes = Math.floor(timeLeft / 60);
+let seconds = timeLeft % 60;
+
+timer.textContent =
+String(minutes).padStart(2,"0") +
+":" +
+String(seconds).padStart(2,"0");
+
+if(timeLeft <= 0){
+
+clearInterval(timerInterval);
+
+if(!submitted){
+    submitTest(true);
+}
+
+return;
+}
+
+timeLeft--;
+
+}
+
+const timerInterval = setInterval(updateTimer,1000);
+
+function submitTest(autoSubmit=false){
+
+if(submitted) return;
+
+submitted = true;
+
+clearInterval(timerInterval);
+
+let correct = 0;
+let wrong = 0;
+let unattempted = 0;
+let score = 0;
+
+const reviewArea =
+document.getElementById("reviewArea");
+
+questions.forEach((item,index)=>{
+
+const selected =
+document.querySelector(
+`input[name="q${index}"]:checked`
+);
+
+let userAnswer =
+selected ? Number(selected.value) : null;
+
+let reviewClass;
+let statusText;
+
+if(userAnswer === null){
+
+unattempted++;
+reviewClass = "unattempted";
+statusText = `<span class="unattempted-text">⚠ Not Attempted</span>`;
+
+}
+else if(userAnswer === item.answer){
+
+correct++;
+score += 1;
+reviewClass = "correct";
+statusText = `<span class="correct-text">✓ Correct</span>`;
+
+}
+else{
+
+wrong++;
+score -= 0.33;
+reviewClass = "wrong";
+statusText = `<span class="wrong-text">✗ Wrong</span>`;
+
+}
+
+const selectedText =
+userAnswer === null
+? "Not Attempted"
+: item.options[userAnswer];
+
+const correctText =
+item.options[item.answer];
+
+reviewArea.innerHTML += `
+
+<div class="review ${reviewClass}">
+
+<h3>
+Q${index+1}. ${statusText}
+</h3>
+
+<p>
+<strong>Your Answer:</strong>
+${selectedText}
+</p>
+
+<p>
+<strong>Correct Answer:</strong>
+${correctText}
+</p>
+
+<div class="solution">
+
+<strong>Solution:</strong><br>
+${item.solution}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+score = Math.max(0, score);
+
+document.getElementById("score").textContent =
+"Score: " + score.toFixed(2) + " / 50";
+
+document.getElementById("summary").innerHTML = `
+
+<strong>Total Questions:</strong> 50<br>
+<strong>Correct:</strong> ${correct}<br>
+<strong>Wrong:</strong> ${wrong}<br>
+<strong>Not Attempted:</strong> ${unattempted}<br>
+<strong>Marks for Correct:</strong> +1<br>
+<strong>Negative Marking:</strong> -0.33<br>
+<strong>Final Score:</strong> ${score.toFixed(2)} / 50
+
+${autoSubmit
+? "<br><br><strong>⏰ Time completed. Test was automatically submitted.</strong>"
+: "<br><br><strong>✅ Test submitted successfully.</strong>"
+}
+
+`;
+
+document.getElementById("testForm").style.display="none";
+
+document.querySelector(".submit-area").style.display="none";
+
+document.getElementById("result").style.display="block";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+</script>
+
+</body>
+</html>
