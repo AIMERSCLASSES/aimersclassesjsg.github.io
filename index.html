@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -608,6 +610,7 @@ footer p{
 }
 
 </style>
+
 </head>
 
 <body>
@@ -694,8 +697,6 @@ alt="AIMERS CLASSES School Entrance Exams">
 </div>
 
 
-<!-- LEFT ARROW -->
-
 <button
 class="slider-arrow prev"
 id="prevBtn"
@@ -706,8 +707,6 @@ aria-label="Previous Slide">
 </button>
 
 
-<!-- RIGHT ARROW -->
-
 <button
 class="slider-arrow next"
 id="nextBtn"
@@ -717,8 +716,6 @@ aria-label="Next Slide">
 
 </button>
 
-
-<!-- DOTS -->
 
 <div class="slider-dots">
 
@@ -2037,8 +2034,10 @@ class="pdf-btn download-btn">
 Practice questions, improve your speed and prepare for examinations.
 </p>
 
+<!-- IMPORTANT: THIS GOES TO TESTS MAIN PAGE -->
+
 <a
-href="mock-test.html"
+href="./tests/index.html"
 class="btn btn-secondary">
 
 Start Mock Test →
@@ -2246,8 +2245,6 @@ let currentSlide = 0;
 let autoSlide;
 
 
-/* SHOW SLIDE */
-
 function showSlide(index){
 
 currentSlide =
@@ -2271,8 +2268,6 @@ index === currentSlide
 }
 
 
-/* NEXT */
-
 function nextSlide(){
 
 showSlide(currentSlide + 1);
@@ -2280,16 +2275,12 @@ showSlide(currentSlide + 1);
 }
 
 
-/* PREVIOUS */
-
 function prevSlide(){
 
 showSlide(currentSlide - 1);
 
 }
 
-
-/* AUTO SLIDE - 5 SECONDS */
 
 function startAutoSlide(){
 
@@ -2304,8 +2295,6 @@ nextSlide,
 }
 
 
-/* NEXT BUTTON */
-
 nextBtn.addEventListener(
 "click",
 function(){
@@ -2318,8 +2307,6 @@ startAutoSlide();
 );
 
 
-/* PREVIOUS BUTTON */
-
 prevBtn.addEventListener(
 "click",
 function(){
@@ -2331,8 +2318,6 @@ startAutoSlide();
 }
 );
 
-
-/* DOT BUTTONS */
 
 dots.forEach(function(dot){
 
@@ -2354,8 +2339,6 @@ startAutoSlide();
 });
 
 
-/* PAUSE ON MOUSE */
-
 slider.addEventListener(
 "mouseenter",
 function(){
@@ -2366,8 +2349,6 @@ clearInterval(autoSlide);
 );
 
 
-/* RESUME */
-
 slider.addEventListener(
 "mouseleave",
 function(){
@@ -2377,8 +2358,6 @@ startAutoSlide();
 }
 );
 
-
-/* MOBILE SWIPE */
 
 let touchStartX = 0;
 
@@ -2431,8 +2410,6 @@ startAutoSlide();
 );
 
 
-/* START */
-
 showSlide(0);
 
 startAutoSlide();
@@ -2440,7 +2417,6 @@ startAutoSlide();
 })();
 
 </script>
-
 
 </body>
 </html>
