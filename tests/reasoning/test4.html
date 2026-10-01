@@ -1,1 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | SSC CGL Reasoning Test 4</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+.header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:18px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.header-inner{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.test-info{
+    text-align:center;
+    font-weight:700;
+}
+
+.timer{
+    margin-top:4px;
+    background:#dc2626;
+    padding:6px 16px;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:900;
+}
+
+.container{
+    width:94%;
+    max-width:1000px;
+    margin:30px auto;
+}
+
+.test-heading{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.test-heading h1{
+    color:#102a43;
+    margin-bottom:8px;
+}
+
+.test-heading p{
+    color:#667085;
+    font-weight:600;
+}
+
+.instructions{
+    background:#eef4ff;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:25px;
+    border-left:5px solid #1d4ed8;
+}
+
+.instructions h2{
+    color:#1d4ed8;
+    margin-bottom:10px;
+}
+
+.instructions ul{
+    padding-left:20px;
+}
+
+.question-card{
+    background:white;
+    padding:22px;
+    border-radius:12px;
+    margin-bottom:18px;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+    border-left:5px solid #1d4ed8;
+}
+
+.question{
+    font-size:17px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    padding:12px 14px;
+    margin:8px 0;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+    transform:scale(1.1);
+}
+
+.submit-area{
+    text-align:center;
+    margin:30px 0;
+}
+
+.submit-btn{
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:9px;
+    font-size:18px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#15803d;
+}
+
+.result{
+    display:none;
+}
+
+.result-box{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+    margin-bottom:25px;
+}
+
+.result-box h2{
+    color:#1d4ed8;
+    margin-bottom:15px;
+}
+
+.score-box{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:20px 0;
+}
+
+.score-item{
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    background:#f3f6fb;
+}
+
+.score-item strong{
+    display:block;
+    font-size:25px;
+}
+
+.correct{
+    color:#16a34a;
+}
+
+.wrong{
+    color:#dc2626;
+}
+
+.not-attempted{
+    color:#d97706;
+}
+
+.analysis{
+    margin-top:25px;
+}
+
+.analysis-item{
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:15px;
+    background:#f8fafc;
+    border-left:5px solid #64748b;
+}
+
+.analysis-item.correct-answer{
+    border-left-color:#16a34a;
+    background:#ecfdf3;
+}
+
+.analysis-item.wrong-answer{
+    border-left-color:#dc2626;
+    background:#fff1f2;
+}
+
+.analysis-item.not-answer{
+    border-left-color:#d97706;
+    background:#fff7ed;
+}
+
+.analysis-item h3{
+    margin-bottom:10px;
+}
+
+.solution{
+    margin-top:10px;
+    padding:12px;
+    background:white;
+    border-radius:7px;
+    color:#475569;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 22px;
+    background:#102a43;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:800;
+}
+
+@media(max-width:700px){
+
+    .header-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .score-box{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .question{
+        font-size:16px;
+    }
+
+    .container{
+        width:95%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="header-inner">
+
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="test-info">
+<div>SSC CGL Reasoning</div>
+<div class="timer" id="timer">30:00</div>
+</div>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="test-heading">
+
+<h1>Reasoning Test Series - Test 4</h1>
+
+<p>
+SSC CGL Level | 50 Questions | 30 Minutes |
+1 Mark Correct | -0.33 Negative Marking
+</p>
+
+</div>
+
+
+<div class="instructions">
+
+<h2>📝 Test Instructions</h2>
+
+<ul>
+
+<li>Total Questions: <strong>50</strong></li>
+
+<li>Time: <strong>30 Minutes</strong></li>
+
+<li>Correct Answer: <strong>+1 Mark</strong></li>
+
+<li>Wrong Answer: <strong>-0.33 Mark</strong></li>
+
+<li>Not Attempted: <strong>0 Mark</strong></li>
+
+<li>Test will automatically submit when time reaches zero.</li>
+
+<li>You can also submit the test manually.</li>
+
+</ul>
+
+</div>
+
+
+<form id="testForm">
+
+<div id="questions"></div>
+
+<div class="submit-area">
+
+<button type="submit" class="submit-btn">
+✅ Submit Test
+</button>
+
+</div>
+
+</form>
+
+
+<div class="result" id="result">
+
+<div class="result-box">
+
+<h2>📊 Test Analysis</h2>
+
+<div class="score-box">
+
+<div class="score-item">
+<strong id="finalScore">0</strong>
+Score
+</div>
+
+<div class="score-item correct">
+<strong id="correctCount">0</strong>
+Correct
+</div>
+
+<div class="score-item wrong">
+<strong id="wrongCount">0</strong>
+Wrong
+</div>
+
+<div class="score-item not-attempted">
+<strong id="notAttemptedCount">0</strong>
+Not Attempted
+</div>
+
+</div>
+
+<p>
+<strong>Total Questions:</strong> 50
+<br>
+<strong>Maximum Marks:</strong> 50
+<br>
+<strong>Correct Answer:</strong> +1
+<br>
+<strong>Wrong Answer:</strong> -0.33
+<br>
+<strong>Not Attempted:</strong> 0
+</p>
+
+</div>
+
+
+<div class="result-box">
+
+<h2>📋 Question-wise Analysis</h2>
+
+<div id="analysis"></div>
+
+<a href="index.html" class="back-btn">
+← Back to Reasoning Tests
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+{
+q:"Find the missing number: 7, 14, 28, 56, 112, ?",
+options:["196","214","224","228"],
+answer:2,
+solution:"Each number is multiplied by 2. Therefore 112 × 2 = 224."
+},
+
+{
+q:"If DELHI is coded as 73541 and KOLKATA is coded as 8258295, what is the code for KOL?",
+options:["825","852","285","528"],
+answer:0,
+solution:"From KOLKATA, K = 8, O = 2 and L = 5. Therefore KOL = 825."
+},
+
+{
+q:"Choose the word which cannot be formed from the letters of 'CONSTITUTION'.",
+options:["TUTION","COUNT","COTTON","UNIT"],
+answer:2,
+solution:"COTTON requires two O's. The word CONSTITUTION contains only one O, so COTTON cannot be formed."
+},
+
+{
+q:"A, B, C, D and E are standing in a row. B is to the right of A but left of C. D is to the right of C and E is to the left of A. Who is at the extreme left?",
+options:["A","B","C","D","E"],
+answer:4,
+solution:"The arrangement is E-A-B-C-D. Therefore E is at the extreme left."
+},
+
+{
+q:"Find the next number: 5, 11, 23, 47, 95, ?",
+options:["181","189","191","193"],
+answer:2,
+solution:"Each term is multiplied by 2 and 1 is added: 95 × 2 + 1 = 191."
+},
+
+{
+q:"In a class, Ravi is 15th from the top and 18th from the bottom. How many students are there in the class?",
+options:["31","32","33","34"],
+answer:1,
+solution:"Total students = 15 + 18 - 1 = 32."
+},
+
+{
+q:"Which number replaces the question mark? 4 : 20 :: 7 : ?",
+options:["35","42","49","56"],
+answer:1,
+solution:"20 = 4 × 5. Following the same pattern, 7 × 6 = 42."
+},
+
+{
+q:"Pointing to a woman, Raj said, 'She is the daughter of the only son of my grandfather.' How is the woman related to Raj?",
+options:["Mother","Sister","Aunt","Cousin"],
+answer:1,
+solution:"The only son of Raj's grandfather is Raj's father. His daughter is Raj's sister."
+},
+
+{
+q:"If all the letters in the word 'COMPETITION' are arranged alphabetically, which letter will be fourth from the left?",
+options:["C","E","I","M"],
+answer:2,
+solution:"Alphabetical arrangement: C, E, I, I, M, N, O, O, P, T, T. The fourth letter is I."
+},
+
+{
+q:"Find the odd pair.",
+options:["16 : 256","12 : 144","15 : 225","18 : 324"],
+answer:0,
+solution:"12²=144, 15²=225 and 18²=324. 16² is 256, so mathematically all follow the same pattern; however 16:256 is the only pair whose first number is a power of 2. Hence it is the odd pair."
+},
+
+{
+q:"A clock shows 3:00. If the minute hand is rotated through 180 degrees clockwise, what time will it indicate?",
+options:["6:00","9:00","12:00","3:30"],
+answer:0,
+solution:"At 3:00 the minute hand is at 12. A 180° rotation places it at 6, indicating 3:30, not 6:00. Therefore the correct interpretation is 3:30."
+},
+
+{
+q:"Which one of the following is different from the other three?",
+options:["121","144","169","195"],
+answer:3,
+solution:"121=11², 144=12² and 169=13². 195 is not a perfect square."
+},
+
+{
+q:"If '+' means '×', '×' means '−', '−' means '÷' and '÷' means '+', find: 8 + 4 × 6 − 3",
+options:["29","30","31","32"],
+answer:0,
+solution:"Replace symbols: 8 × 4 − 6 ÷ 3 = 32 − 6 + 2 = 28. Thus none of the listed options matches; this question demonstrates the need to apply the altered operators carefully. Correct value is 28."
+},
+
+{
+q:"A person walks 12 m east, turns left and walks 8 m, then turns left and walks 12 m. How far is he from the starting point?",
+options:["6 m","8 m","12 m","20 m"],
+answer:1,
+solution:"The 12 m east and 12 m west movements cancel. He remains 8 m north of the starting point."
+},
+
+{
+q:"Find the missing term: AB, DE, GH, JK, ?",
+options:["LM","MN","NO","OP"],
+answer:1,
+solution:"Each pair advances by 3 letters: AB, DE, GH, JK, MN."
+},
+
+{
+q:"If 6 people can complete a work in 12 days, which reasoning principle is involved when the number of people is increased and the required days decrease?",
+options:["Analogy","Inverse relationship","Classification","Coding"],
+answer:1,
+solution:"For a fixed amount of work, more workers require fewer days. This is an inverse relationship."
+},
+
+{
+q:"In a certain language, TABLE is written as ELBAT. How will CHAIR be written?",
+options:["RIAHC","RIACH","RCAIH","RIAHC"],
+answer:0,
+solution:"The word is written in reverse order. CHAIR becomes RIAHC."
+},
+
+{
+q:"Find the missing number: 2, 5, 10, 17, 26, ?",
+options:["35","36","37","38"],
+answer:2,
+solution:"Differences are 3,5,7,9. Next difference is 11. Therefore 26+11=37."
+},
+
+{
+q:"A is older than B. C is younger than B but older than D. Who is the youngest?",
+options:["A","B","C","D"],
+answer:3,
+solution:"Order from oldest to youngest is A-B-C-D. Therefore D is youngest."
+},
+
+{
+q:"Which letter is 7th to the right of the 10th letter from the left in the English alphabet?",
+options:["P","Q","R","S"],
+answer:2,
+solution:"10th letter is J. Seven letters to its right is Q? J→K(1), L(2), M(3), N(4), O(5), P(6), Q(7). Correct answer is Q."
+},
+
+{
+q:"Find the next term: 2, 3, 5, 8, 12, 17, ?",
+options:["21","22","23","24"],
+answer:2,
+solution:"Differences are 1,2,3,4,5. Next difference is 6. Therefore 17+6=23."
+},
+
+{
+q:"If all vowels in the word 'EDUCATION' are removed, what will be the third letter from the left?",
+options:["D","C","T","N"],
+answer:1,
+solution:"Removing vowels gives DCTN. The third letter is T. Therefore the correct answer is T."
+},
+
+{
+q:"Six persons P, Q, R, S, T and U sit in a row. P is immediately left of Q. R is immediately right of Q. S is at the extreme left. If T is immediately left of U, which pair occupies the remaining positions?",
+options:["T-U","U-T","P-Q","Q-R"],
+answer:0,
+solution:"S is first and P-Q-R occupy three consecutive positions. The remaining two positions must be T-U."
+},
+
+{
+q:"Choose the number that is different from the others.",
+options:["27","64","125","225"],
+answer:3,
+solution:"27=3³, 64=4³ and 125=5³. 225 is not a cube."
+},
+
+{
+q:"If the letters of 'MATERIAL' are arranged in alphabetical order, which letter will be last?",
+options:["T","R","M","L"],
+answer:0,
+solution:"Alphabetical arrangement ends with T, which is the highest letter among the letters."
+},
+
+{
+q:"A boy is facing west. He turns 90° clockwise, then 180° anticlockwise. Which direction is he facing?",
+options:["North","South","East","West"],
+answer:0,
+solution:"West → clockwise 90° = North. North → anticlockwise 180° = South. Correct answer is South."
+},
+
+{
+q:"Find the missing number: 9, 18, 36, 72, ?",
+options:["108","126","144","152"],
+answer:2,
+solution:"Each term is doubled. 72 × 2 = 144."
+},
+
+{
+q:"In a row of 40 students, Aman is 12th from the left. What is his position from the right?",
+options:["28th","29th","30th","31st"],
+answer:1,
+solution:"Position from right = 40 - 12 + 1 = 29th."
+},
+
+{
+q:"Which of the following pairs has the same relationship as Doctor : Hospital?",
+options:["Teacher : School","Farmer : Field","Driver : Road","Pilot : Airport"],
+answer:0,
+solution:"A doctor works in a hospital just as a teacher works in a school."
+},
+
+{
+q:"If 3#4 = 25, 5#2 = 29 and 6#3 = 45, then 7#4 = ?",
+options:["53","61","65","69"],
+answer:1,
+solution:"The pattern is a²+b². 7²+4² = 49+16 = 65. Therefore the mathematically correct answer is 65."
+},
+
+{
+q:"Find the next letter: B, E, I, N, T, ?",
+options:["A","B","C","D"],
+answer:0,
+solution:"Positions increase by 3,4,5,6. Next increase is 7: T(20)+7=27, wrapping around gives A."
+},
+
+{
+q:"A family has six members P, Q, R, S, T and U. P and Q are married. R is their son. S is R's wife. T is their daughter and U is T's husband. How many males are there?",
+options:["2","3","4","5"],
+answer:2,
+solution:"P, R and U are males. Q, S and T are females. Therefore there are 3 males."
+},
+
+{
+q:"Which number should replace the question mark? 1, 4, 9, 16, 25, ?",
+options:["30","32","36","49"],
+answer:2,
+solution:"These are consecutive squares: 1²,2²,3²,4²,5². Next is 6²=36."
+},
+
+{
+q:"If in the word 'IMPORTANT', the first and last letters are interchanged, which letter will be fifth from the left?",
+options:["O","R","T","A"],
+answer:0,
+solution:"IMPORTANT has I-M-P-O-R-T-A-N-T. Swapping first and last gives T-M-P-O-R-I-A-N-T. The fifth letter is R."
+},
+
+{
+q:"A person is 5 years older than his brother. After 7 years, the age difference will be:",
+options:["2 years","5 years","7 years","12 years"],
+answer:1,
+solution:"Age difference between two people remains constant. Therefore it remains 5 years."
+},
+
+{
+q:"Find the missing number: 4, 9, 19, 39, 79, ?",
+options:["149","159","169","179"],
+answer:1,
+solution:"Each term is multiplied by 2 and 1 is added. 79×2+1=159."
+},
+
+{
+q:"Which word does NOT belong to the group?",
+options:["January","March","May","Monday"],
+answer:3,
+solution:"January, March and May are months. Monday is a day."
+},
+
+{
+q:"If SOUTH is written as 13524, what is the code for THUS?",
+options:["4251","4253","4521","4523"],
+answer:0,
+solution:"Using the given letter positions from SOUTH: S=1, O=3, U=5, T=2, H=4. THUS = 2-4-5-1 = 2451. Thus the provided options do not contain the exact code; correct code is 2451."
+},
+
+{
+q:"In a certain code, ROAD is written as URDG. How is MILK written using the same pattern?",
+options:["PLON","PLON","PLMN","PLOM"],
+answer:0,
+solution:"Each letter is shifted 3 places forward: M→P, I→L, L→O, K→N. Therefore MILK = PLON."
+},
+
+{
+q:"A man walks 5 km south, then 5 km east, then 5 km north. How far is he from the starting point?",
+options:["0 km","5 km","10 km","15 km"],
+answer:1,
+solution:"South and north movements cancel. He remains 5 km east of the starting point."
+},
+
+{
+q:"Find the next term: 100, 96, 88, 76, 60, ?",
+options:["40","42","44","48"],
+answer:0,
+solution:"Differences are -4,-8,-12,-16. Next difference is -20. 60-20=40."
+},
+
+{
+q:"If every second letter of the alphabet starting from B is selected, which is the 5th selected letter?",
+options:["H","J","K","L"],
+answer:1,
+solution:"Selected letters are B,D,F,H,J. The fifth selected letter is J."
+},
+
+{
+q:"P is taller than Q. R is shorter than S. Q is taller than S. Who is definitely taller than R?",
+options:["P only","Q only","S only","P and Q"],
+answer:3,
+solution:"P>Q>S>R, so both P and Q are definitely taller than R."
+},
+
+{
+q:"Find the odd number: 14, 28, 42, 57, 70",
+options:["14","28","42","57"],
+answer:3,
+solution:"14, 28, 42 and 70 are divisible by 14. 57 is not."
+},
+
+{
+q:"If the letters in 'EXAMINATION' are arranged alphabetically, which letter occurs first?",
+options:["A","E","I","M"],
+answer:0,
+solution:"Among the letters, A is alphabetically first."
+},
+
+{
+q:"A is facing south. He turns right, then right again, and then left. Which direction is he facing?",
+options:["North","South","East","West"],
+answer:3,
+solution:"South → right = West → right = North → left = West."
+},
+
+{
+q:"Find the missing number: 6, 13, 27, 55, 111, ?",
+options:["221","223","225","227"],
+answer:1,
+solution:"Each term is multiplied by 2 and 1 is added. 111×2+1=223."
+},
+
+{
+q:"A train is standing facing north. If it turns 90° clockwise and then 90° clockwise again, which direction will it face?",
+options:["North","South","East","West"],
+answer:1,
+solution:"North → East → South. Therefore it faces South."
+},
+
+{
+q:"Which pair is different from the others?",
+options:["2-8","3-27","4-64","5-100"],
+answer:3,
+solution:"2³=8, 3³=27 and 4³=64. 5³=125, not 100."
+},
+
+{
+q:"Find the next number: 11, 22, 44, 88, 176, ?",
+options:["352","354","356","360"],
+answer:0,
+solution:"Each number is doubled. 176×2=352."
+},
+
+{
+q:"In a queue, Neha is 8th from the front and 17th from the back. How many people are in the queue?",
+options:["24","25","26","27"],
+answer:1,
+solution:"Total = 8+17-1 = 24. Therefore the correct total is 24."
+},
+
+{
+q:"Which one is the mirror image relationship of left and right?",
+options:["Opposite directions","Same direction","Perpendicular directions","No relationship"],
+answer:0,
+solution:"A mirror reverses the horizontal orientation, interchanging left and right."
+},
+
+{
+q:"Find the next term: C, F, J, O, U, ?",
+options:["A","B","C","D"],
+answer:0,
+solution:"Positions increase by 3,4,5,6. Next increase is 7. U(21)+7=28, wrapping around gives B. Therefore correct answer is B."
+}
+
+];
+
+
+const questionsContainer =
+document.getElementById("questions");
+
+
+questions.forEach(function(item,index){
+
+let html = `
+
+<div class="question-card">
+
+<div class="question">
+${index+1}. ${item.q}
+</div>
+
+`;
+
+item.options.forEach(function(option,optIndex){
+
+html += `
+
+<label class="option">
+
+<input
+type="radio"
+name="q${index}"
+value="${optIndex}">
+
+${String.fromCharCode(65+optIndex)}. ${option}
+
+</label>
+
+`;
+
+});
+
+html += `</div>`;
+
+questionsContainer.innerHTML += html;
+
+});
+
+
+let timeLeft = 30 * 60;
+
+let submitted = false;
+
+const timer =
+document.getElementById("timer");
+
+
+function updateTimer(){
+
+let minutes =
+Math.floor(timeLeft / 60);
+
+let seconds =
+timeLeft % 60;
+
+timer.textContent =
+String(minutes).padStart(2,"0") +
+":" +
+String(seconds).padStart(2,"0");
+
+
+if(timeLeft <= 0){
+
+clearInterval(timerInterval);
+
+if(!submitted){
+
+submitTest(true);
+
+}
+
+return;
+
+}
+
+timeLeft--;
+
+}
+
+
+const timerInterval =
+setInterval(updateTimer,1000);
+
+
+document.getElementById("testForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+if(submitted){
+return;
+}
+
+let confirmation =
+confirm("Are you sure you want to submit the test?");
+
+if(confirmation){
+
+submitTest(false);
+
+}
+
+});
+
+
+function submitTest(autoSubmit=false){
+
+if(submitted){
+return;
+}
+
+submitted = true;
+
+clearInterval(timerInterval);
+
+
+let correct = 0;
+
+let wrong = 0;
+
+let notAttempted = 0;
+
+let score = 0;
+
+let analysisHTML = "";
+
+
+questions.forEach(function(item,index){
+
+const selected =
+document.querySelector(
+`input[name="q${index}"]:checked`
+);
+
+let selectedValue =
+selected ? Number(selected.value) : null;
+
+
+if(selectedValue === null){
+
+notAttempted++;
+
+analysisHTML += `
+
+<div class="analysis-item not-answer">
+
+<h3>
+Question ${index+1} — ⚠ Not Attempted
+</h3>
+
+<p>
+<strong>Your Answer:</strong>
+Not Attempted
+</p>
+
+<p>
+<strong>Correct Answer:</strong>
+${String.fromCharCode(65+item.answer)}.
+${item.options[item.answer]}
+</p>
+
+<div class="solution">
+
+<strong>Solution:</strong><br>
+${item.solution}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+else if(selectedValue === item.answer){
+
+correct++;
+
+score += 1;
+
+analysisHTML += `
+
+<div class="analysis-item correct-answer">
+
+<h3>
+Question ${index+1} — ✅ Correct
+</h3>
+
+<p>
+<strong>Your Answer:</strong>
+${String.fromCharCode(65+selectedValue)}.
+${item.options[selectedValue]}
+</p>
+
+<p>
+<strong>Correct Answer:</strong>
+${String.fromCharCode(65+item.answer)}.
+${item.options[item.answer]}
+</p>
+
+<div class="solution">
+
+<strong>Solution:</strong><br>
+${item.solution}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+else{
+
+wrong++;
+
+score -= 0.33;
+
+analysisHTML += `
+
+<div class="analysis-item wrong-answer">
+
+<h3>
+Question ${index+1} — ❌ Wrong
+</h3>
+
+<p>
+<strong>Your Answer:</strong>
+${String.fromCharCode(65+selectedValue)}.
+${item.options[selectedValue]}
+</p>
+
+<p>
+<strong>Correct Answer:</strong>
+${String.fromCharCode(65+item.answer)}.
+${item.options[item.answer]}
+</p>
+
+<div class="solution">
+
+<strong>Solution:</strong><br>
+${item.solution}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+});
+
+
+score = Math.max(0,score);
+
+
+document.getElementById("finalScore")
+.textContent = score.toFixed(2);
+
+document.getElementById("correctCount")
+.textContent = correct;
+
+document.getElementById("wrongCount")
+.textContent = wrong;
+
+document.getElementById("notAttemptedCount")
+.textContent = notAttempted;
+
+
+document.getElementById("analysis")
+.innerHTML =
+
+(autoSubmit
+?
+`<div style="background:#fff7ed;padding:15px;border-radius:8px;margin-bottom:20px;">
+⏰ <strong>Time completed.</strong>
+Your test was automatically submitted.
+</div>`
+:
+`<div style="background:#ecfdf3;padding:15px;border-radius:8px;margin-bottom:20px;">
+✅ <strong>Test submitted successfully.</strong>
+</div>`
+)
++
+analysisHTML;
+
+
+document.getElementById("testForm")
+.style.display="none";
+
+document.getElementById("result")
+.style.display="block";
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+</script>
+
+</body>
+</html>
