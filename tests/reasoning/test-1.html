@@ -1,1 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | Reasoning Test 1</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+}
+
+.container{
+    width:92%;
+    max-width:900px;
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:18px 0;
+}
+
+.header-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.timer{
+    background:#fff;
+    color:#1d4ed8;
+    padding:10px 16px;
+    border-radius:8px;
+    font-weight:900;
+    font-size:18px;
+}
+
+/* TEST */
+
+.test-section{
+    padding:40px 0;
+}
+
+.test-header{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 7px 25px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.test-header h1{
+    color:#102a43;
+    margin-bottom:7px;
+}
+
+.test-header p{
+    color:#667085;
+}
+
+/* QUESTION */
+
+.question-card{
+    background:white;
+    padding:28px;
+    border-radius:15px;
+    box-shadow:0 7px 25px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.question-number{
+    color:#1d4ed8;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.option{
+    display:block;
+    background:#f8fafc;
+    border:2px solid #e5e7eb;
+    padding:14px;
+    margin:10px 0;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:#1d4ed8;
+    background:#eef4ff;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+/* BUTTONS */
+
+.buttons{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:20px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    padding:12px 20px;
+    border-radius:8px;
+    font-weight:800;
+    font-size:15px;
+}
+
+.previous{
+    background:#64748b;
+    color:white;
+}
+
+.next{
+    background:#1d4ed8;
+    color:white;
+}
+
+.submit{
+    background:#16a34a;
+    color:white;
+}
+
+/* RESULT */
+
+#result{
+    display:none;
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 7px 25px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+#result h2{
+    color:#1d4ed8;
+    margin-bottom:15px;
+}
+
+.score{
+    font-size:30px;
+    font-weight:900;
+    color:#16a34a;
+    margin:15px 0;
+}
+
+.back{
+    display:inline-block;
+    margin-top:20px;
+    background:#1d4ed8;
+    color:white;
+    padding:12px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:800;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .header-content{
+        flex-direction:column;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="container header-content">
+
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="timer">
+⏱ <span id="timer">30:00</span>
+</div>
+
+</div>
+
+</header>
+
+
+<!-- TEST -->
+
+<section class="test-section">
+
+<div class="container">
+
+
+<div class="test-header">
+
+<h1>
+🧠 Reasoning Test Series – 1
+</h1>
+
+<p>
+Total Questions: 10 | Time: 30 Minutes
+</p>
+
+</div>
+
+
+<!-- QUESTION AREA -->
+
+<div id="quiz"></div>
+
+
+<!-- RESULT -->
+
+<div id="result">
+
+<h2>
+🎉 Test Completed!
+</h2>
+
+<p>
+Your Score
+</p>
+
+<div class="score" id="score">
+0 / 10
+</div>
+
+<p id="percentage">
+</p>
+
+<a href="index.html" class="back">
+← Back to Reasoning Tests
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<script>
+
+/* ================= QUESTIONS ================= */
+
+const questions = [
+
+{
+question:"If CAT is coded as DBU, then DOG is coded as?",
+options:["EPH","EOG","DPH","FPH"],
+answer:0
+},
+
+{
+question:"Find the next number: 2, 4, 8, 16, ?",
+options:["24","30","32","36"],
+answer:2
+},
+
+{
+question:"Which one is different from the others?",
+options:["Apple","Mango","Potato","Banana"],
+answer:2
+},
+
+{
+question:"If SOUTH is written as TPVUI, how is NORTH written?",
+options:["OPSUI","OPSUH","NPSUI","OPRUI"],
+answer:0
+},
+
+{
+question:"Find the missing number: 3, 6, 12, 24, ?",
+options:["36","42","48","52"],
+answer:2
+},
+
+{
+question:"A is taller than B. B is taller than C. Who is shortest?",
+options:["A","B","C","Cannot say"],
+answer:2
+},
+
+{
+question:"Which number comes next? 5, 10, 15, 20, ?",
+options:["22","25","30","35"],
+answer:1
+},
+
+{
+question:"If BOOK is coded as CPPL, then PEN is coded as?",
+options:["QFO","QEM","PFN","QFN"],
+answer:0
+},
+
+{
+question:"Choose the odd one out.",
+options:["Square","Triangle","Circle","Rectangle"],
+answer:2
+},
+
+{
+question:"Complete the series: A, C, E, G, ?",
+options:["H","I","J","K"],
+answer:1
+}
+
+];
+
+
+/* ================= VARIABLES ================= */
+
+let currentQuestion = 0;
+
+let userAnswers = new Array(questions.length).fill(null);
+
+let timeLeft = 30 * 60;
+
+let timerInterval;
+
+
+/* ================= SHOW QUESTION ================= */
+
+function showQuestion(){
+
+const q = questions[currentQuestion];
+
+let html = `
+
+<div class="question-card">
+
+<div class="question-number">
+
+Question ${currentQuestion + 1} of ${questions.length}
+
+</div>
+
+<div class="question">
+
+${q.question}
+
+</div>
+
+`;
+
+q.options.forEach((option,index)=>{
+
+const checked =
+userAnswers[currentQuestion] === index
+? "checked"
+: "";
+
+html += `
+
+<label class="option">
+
+<input
+type="radio"
+name="answer"
+value="${index}"
+${checked}
+>
+
+${option}
+
+</label>
+
+`;
+
+});
+
+
+html += `
+
+<div class="buttons">
+
+<button
+class="previous"
+onclick="previousQuestion()"
+${currentQuestion === 0 ? "disabled" : ""}>
+
+← Previous
+
+</button>
+
+`;
+
+if(currentQuestion === questions.length - 1){
+
+html += `
+
+<button
+class="submit"
+onclick="submitTest()">
+
+Submit Test ✓
+
+</button>
+
+`;
+
+}else{
+
+html += `
+
+<button
+class="next"
+onclick="nextQuestion()">
+
+Next →
+
+</button>
+
+`;
+
+}
+
+html += `
+
+</div>
+
+</div>
+
+`;
+
+document.getElementById("quiz").innerHTML = html;
+
+}
+
+
+/* ================= SAVE ANSWER ================= */
+
+function saveAnswer(){
+
+const selected =
+document.querySelector(
+'input[name="answer"]:checked'
+);
+
+if(selected){
+
+userAnswers[currentQuestion] =
+Number(selected.value);
+
+}
+
+}
+
+
+/* ================= NEXT ================= */
+
+function nextQuestion(){
+
+saveAnswer();
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+showQuestion();
+
+}
+
+}
+
+
+/* ================= PREVIOUS ================= */
+
+function previousQuestion(){
+
+saveAnswer();
+
+if(currentQuestion > 0){
+
+currentQuestion--;
+
+showQuestion();
+
+}
+
+}
+
+
+/* ================= SUBMIT ================= */
+
+function submitTest(){
+
+saveAnswer();
+
+clearInterval(timerInterval);
+
+let correct = 0;
+
+questions.forEach((question,index)=>{
+
+if(userAnswers[index] === question.answer){
+
+correct++;
+
+}
+
+});
+
+let percentage =
+(correct / questions.length) * 100;
+
+document.getElementById("quiz").style.display="none";
+
+document.getElementById("result").style.display="block";
+
+document.getElementById("score").innerText =
+correct + " / " + questions.length;
+
+document.getElementById("percentage").innerText =
+"Percentage: " + percentage + "%";
+
+}
+
+
+/* ================= TIMER ================= */
+
+function startTimer(){
+
+timerInterval =
+setInterval(function(){
+
+timeLeft--;
+
+let minutes =
+Math.floor(timeLeft / 60);
+
+let seconds =
+timeLeft % 60;
+
+seconds =
+seconds < 10
+? "0" + seconds
+: seconds;
+
+document.getElementById("timer").innerText =
+minutes + ":" + seconds;
+
+if(timeLeft <= 0){
+
+clearInterval(timerInterval);
+
+alert("Time is over! Your test will be submitted.");
+
+submitTest();
+
+}
+
+},1000);
+
+}
+
+
+/* ================= START ================= */
+
+showQuestion();
+
+startTimer();
+
+</script>
+
+</body>
+
+</html>
