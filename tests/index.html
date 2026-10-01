@@ -2,10 +2,16 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>AIMERS CLASSES | Online Mock Tests</title>
+
+<meta name="description"
+content="AIMERS CLASSES Online Mock Tests - Reasoning, Maths, General Awareness, Current Affairs, Full Mock Tests and Olympiad Tests.">
 
 <style>
 
@@ -15,33 +21,64 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     background:#f5f7fb;
     color:#172033;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
 .container{
     width:92%;
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
 }
+
+
+/* ================= HEADER ================= */
 
 header{
     background:linear-gradient(135deg,#102a43,#1d4ed8);
     color:white;
-    padding:20px 0;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
 }
 
 .nav{
+    min-height:75px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-img{
+    width:52px;
+    height:52px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid #ffd43b;
+    background:white;
 }
 
 .logo{
-    font-size:25px;
+    font-size:24px;
     font-weight:900;
+    letter-spacing:1px;
 }
 
 .logo span{
@@ -56,16 +93,20 @@ header{
     font-weight:800;
 }
 
+
+/* ================= HERO ================= */
+
 .hero{
-    text-align:center;
+    background:linear-gradient(135deg,#eaf2ff,#ffffff);
     padding:55px 0;
-    background:linear-gradient(135deg,#eaf2ff,#fff);
+    text-align:center;
 }
 
 .hero h1{
     font-size:42px;
     color:#102a43;
     margin-bottom:10px;
+    font-weight:900;
 }
 
 .hero h1 span{
@@ -77,37 +118,67 @@ header{
     font-size:17px;
 }
 
-section{
-    padding:50px 0;
+
+/* ================= SUBJECT SECTION ================= */
+
+.subject-section{
+    padding:60px 0 80px;
 }
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:32px;
+    color:#102a43;
+    margin-bottom:8px;
+}
+
+.section-title p{
+    color:#6b7280;
+}
+
+
+/* ================= SUBJECT GRID ================= */
 
 .subject-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:22px;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
 }
 
 .subject-card{
     background:white;
-    padding:30px;
-    border-radius:16px;
-    box-shadow:0 7px 25px rgba(0,0,0,.08);
-    border-top:5px solid #1d4ed8;
+    border-radius:18px;
+    padding:32px 25px;
+    text-align:center;
+    box-shadow:0 8px 28px rgba(0,0,0,.08);
+    border-top:6px solid #1d4ed8;
     transition:.3s;
 }
 
 .subject-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 14px 30px rgba(0,0,0,.12);
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.14);
 }
 
-.subject-card h2{
+.subject-icon{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.subject-card h3{
     color:#102a43;
+    font-size:23px;
     margin-bottom:10px;
 }
 
 .subject-card p{
     color:#667085;
+    font-size:14px;
+    min-height:48px;
     margin-bottom:20px;
 }
 
@@ -115,16 +186,24 @@ section{
     display:inline-block;
     background:#1d4ed8;
     color:white;
-    padding:11px 18px;
+    padding:11px 20px;
     border-radius:8px;
     font-weight:800;
+    transition:.3s;
 }
+
+.open-btn:hover{
+    background:#102a43;
+}
+
+
+/* ================= FOOTER ================= */
 
 footer{
     background:#0f172a;
     color:white;
-    text-align:center;
     padding:30px 0;
+    text-align:center;
 }
 
 footer h3{
@@ -134,13 +213,29 @@ footer h3{
 
 footer p{
     color:#cbd5e1;
+    font-size:14px;
 }
 
-@media(max-width:650px){
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .subject-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
 
     .nav{
         flex-direction:column;
-        gap:15px;
+        padding:15px 0;
+    }
+
+    .hero{
+        padding:40px 15px;
     }
 
     .hero h1{
@@ -157,18 +252,36 @@ footer p{
 
 </head>
 
+
 <body>
+
+
+<!-- ================= HEADER ================= -->
 
 <header>
 
 <div class="container nav">
 
+<div class="brand">
+
+<img
+src="../logo.jpg"
+alt="AIMERS CLASSES Logo"
+class="logo-img">
+
 <div class="logo">
 AIMERS <span>CLASSES</span>
 </div>
 
-<a href="../index.html" class="back-btn">
-← Back to Website
+</div>
+
+
+<a
+href="../index.html"
+class="back-btn">
+
+← Main Website
+
 </a>
 
 </div>
@@ -176,16 +289,19 @@ AIMERS <span>CLASSES</span>
 </header>
 
 
+
+<!-- ================= HERO ================= -->
+
 <section class="hero">
 
 <div class="container">
 
 <h1>
-📝 <span>Online Mock Tests</span>
+📝 Online <span>Mock Tests</span>
 </h1>
 
 <p>
-Choose your subject and start your test series.
+Choose a subject and start your test series
 </p>
 
 </div>
@@ -193,113 +309,192 @@ Choose your subject and start your test series.
 </section>
 
 
-<section>
+
+<!-- ================= SUBJECTS ================= -->
+
+<section class="subject-section">
 
 <div class="container">
+
+
+<div class="section-title">
+
+<h2>
+📚 Select Your Test Category
+</h2>
+
+<p>
+Choose a category below to view all available test series.
+</p>
+
+</div>
+
+
 
 <div class="subject-grid">
 
 
+
 <!-- REASONING -->
 
-<div class="subject-card">
+<a
+href="./reasoning/index.html"
+class="subject-card">
 
-<h2>🧠 REASONING</h2>
+<div class="subject-icon">
+🧠
+</div>
+
+<h3>
+REASONING
+</h3>
 
 <p>
-Reasoning practice tests and test series.
+Logical reasoning, verbal reasoning,
+non-verbal reasoning and practice tests.
 </p>
 
-<a href="reasoning/index.html" class="open-btn">
-Open Reasoning →
+<span class="open-btn">
+View Test Series →
+</span>
+
 </a>
 
-</div>
 
 
 <!-- MATHS -->
 
-<div class="subject-card">
+<a
+href="./maths/index.html"
+class="subject-card">
 
-<h2>📐 MATHS</h2>
+<div class="subject-icon">
+📐
+</div>
+
+<h3>
+MATHS
+</h3>
 
 <p>
-Mathematics practice tests and test series.
+Arithmetic, algebra, geometry,
+quantitative aptitude and practice tests.
 </p>
 
-<a href="maths/index.html" class="open-btn">
-Open Maths →
+<span class="open-btn">
+View Test Series →
+</span>
+
 </a>
 
-</div>
 
 
 <!-- GENERAL AWARENESS -->
 
-<div class="subject-card">
+<a
+href="./general-awareness/index.html"
+class="subject-card">
 
-<h2>🌎 GENERAL AWARENESS</h2>
+<div class="subject-icon">
+🌍
+</div>
+
+<h3>
+GENERAL AWARENESS
+</h3>
 
 <p>
-General Awareness practice tests.
+Static GK, history, geography, polity,
+science and general knowledge tests.
 </p>
 
-<a href="general-awareness/index.html" class="open-btn">
-Open General Awareness →
+<span class="open-btn">
+View Test Series →
+</span>
+
 </a>
 
-</div>
 
 
 <!-- CURRENT AFFAIRS -->
 
-<div class="subject-card">
+<a
+href="./current-affairs/index.html"
+class="subject-card">
 
-<h2>📰 CURRENT AFFAIRS</h2>
+<div class="subject-icon">
+📰
+</div>
+
+<h3>
+CURRENT AFFAIRS
+</h3>
 
 <p>
-Current Affairs MCQ test series.
+Monthly current affairs, MCQs and
+latest examination practice tests.
 </p>
 
-<a href="current-affairs/index.html" class="open-btn">
-Open Current Affairs →
+<span class="open-btn">
+View Test Series →
+</span>
+
 </a>
 
-</div>
 
 
 <!-- FULL MOCK TEST -->
 
-<div class="subject-card">
+<a
+href="./full-mock-test/index.html"
+class="subject-card">
 
-<h2>🎯 FULL MOCK TEST</h2>
+<div class="subject-icon">
+📝
+</div>
+
+<h3>
+FULL MOCK TEST
+</h3>
 
 <p>
-Complete examination mock tests.
+Complete examination mock tests
+with multiple sections and questions.
 </p>
 
-<a href="full-mock-test/index.html" class="open-btn">
-Open Full Mock Test →
+<span class="open-btn">
+View Test Series →
+</span>
+
 </a>
 
-</div>
 
 
 <!-- OLYMPIAD -->
 
-<div class="subject-card">
+<a
+href="./olympiad-test/index.html"
+class="subject-card">
 
-<h2>🏆 OLYMPIAD TEST</h2>
+<div class="subject-icon">
+🏆
+</div>
+
+<h3>
+OLYMPIAD TEST
+</h3>
 
 <p>
-Olympiad examination practice tests.
+Olympiad preparation tests for school
+students and competitive practice.
 </p>
 
-<a href="olympiad-test/index.html" class="open-btn">
-Open Olympiad Test →
+<span class="open-btn">
+View Test Series →
+</span>
+
 </a>
 
-</div>
 
 
 </div>
@@ -308,20 +503,34 @@ Open Olympiad Test →
 
 </section>
 
+
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
 <div class="container">
 
-<h3>AIMERS CLASSES</h3>
+<h3>
+AIMERS CLASSES
+</h3>
 
-<p>Aim High • Achieve High</p>
+<p>
+Aim High • Achieve High
+</p>
 
-<p>Online Mock Test Portal</p>
+<p>
+Online Mock Tests | Practice Tests | Test Series
+</p>
+
+<p style="margin-top:12px;">
+© 2026 AIMERS CLASSES. All Rights Reserved.
+</p>
 
 </div>
 
 </footer>
+
 
 </body>
 
