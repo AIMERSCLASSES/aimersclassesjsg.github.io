@@ -1,1 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reasoning Test 2 | AIMERS CLASSES</title>
 
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+
+.header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:18px 15px;
+    text-align:center;
+}
+
+.header h1{
+    font-size:28px;
+}
+
+.header p{
+    margin-top:5px;
+}
+
+.container{
+    width:94%;
+    max-width:1000px;
+    margin:20px auto;
+}
+
+.topbar{
+    background:white;
+    padding:15px 20px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.timer{
+    background:#102a43;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.question-card{
+    background:white;
+    margin-top:18px;
+    padding:22px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.07);
+}
+
+.question{
+    font-size:17px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    padding:12px;
+    margin:8px 0;
+    border:1px solid #d8dee9;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.option:hover{
+    background:#eef4ff;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.submit-area{
+    text-align:center;
+    margin:30px 0;
+}
+
+.submit-btn{
+    background:#1d4ed8;
+    color:white;
+    border:none;
+    padding:14px 35px;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#102a43;
+}
+
+#result{
+    display:none;
+}
+
+.result-box{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.result-box h2{
+    color:#1d4ed8;
+    margin-bottom:15px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin:20px 0;
+}
+
+.stat{
+    padding:15px;
+    border-radius:8px;
+    text-align:center;
+    background:#f1f5f9;
+}
+
+.stat b{
+    display:block;
+    font-size:22px;
+    margin-bottom:5px;
+}
+
+.review{
+    margin-top:15px;
+    padding:18px;
+    border-radius:10px;
+    border-left:5px solid #ccc;
+}
+
+.review.correct{
+    background:#ecfdf3;
+    border-left-color:#16a34a;
+}
+
+.review.wrong{
+    background:#fff1f2;
+    border-left-color:#dc2626;
+}
+
+.review.not-attempted{
+    background:#fff7ed;
+    border-left-color:#f97316;
+}
+
+.review h3{
+    margin-bottom:8px;
+}
+
+.answer{
+    margin-top:7px;
+    font-weight:bold;
+}
+
+.solution{
+    margin-top:8px;
+    color:#475569;
+    line-height:1.6;
+}
+
+.home-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 20px;
+    background:#102a43;
+    color:white;
+    text-decoration:none;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+@media(max-width:700px){
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .topbar{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🧠 AIMERS CLASSES</h1>
+    <p>SSC CGL Reasoning — Test Series 2</p>
+</div>
+
+<div class="container">
+
+<div class="topbar">
+    <div>
+        <b>Reasoning Test 2</b><br>
+        50 Questions | 50 Marks
+    </div>
+
+    <div class="timer" id="timer">
+        30:00
+    </div>
+</div>
+
+<form id="quizForm">
+
+<!-- Q1 -->
+<div class="question-card">
+<div class="question">1. Find the missing number: 3, 8, 18, 38, 78, ?</div>
+<label class="option"><input type="radio" name="q1" value="A"> A) 156</label>
+<label class="option"><input type="radio" name="q1" value="B"> B) 158</label>
+<label class="option"><input type="radio" name="q1" value="C"> C) 160</label>
+<label class="option"><input type="radio" name="q1" value="D"> D) 162</label>
+</div>
+
+<!-- Q2 -->
+<div class="question-card">
+<div class="question">2. If in a certain code, COMPUTER is written as RFUVQNDP, how is SCIENCE written?</div>
+<label class="option"><input type="radio" name="q2" value="A"> A) FDJFOUS</label>
+<label class="option"><input type="radio" name="q2" value="B"> B) FDJFOUS</label>
+<label class="option"><input type="radio" name="q2" value="C"> C) FDJFOFS</label>
+<label class="option"><input type="radio" name="q2" value="D"> D) TDJFODF</label>
+</div>
+
+<!-- Q3 -->
+<div class="question-card">
+<div class="question">3. A is the brother of B. C is the sister of A. D is the father of B. How is C related to D?</div>
+<label class="option"><input type="radio" name="q3" value="A"> A) Sister</label>
+<label class="option"><input type="radio" name="q3" value="B"> B) Daughter</label>
+<label class="option"><input type="radio" name="q3" value="C"> C) Wife</label>
+<label class="option"><input type="radio" name="q3" value="D"> D) Mother</label>
+</div>
+
+<!-- Q4 -->
+<div class="question-card">
+<div class="question">4. Which number should replace the question mark? 5, 11, 23, 47, ?</div>
+<label class="option"><input type="radio" name="q4" value="A"> A) 93</label>
+<label class="option"><input type="radio" name="q4" value="B"> B) 94</label>
+<label class="option"><input type="radio" name="q4" value="C"> C) 95</label>
+<label class="option"><input type="radio" name="q4" value="D"> D) 96</label>
+</div>
+
+<!-- Q5 -->
+<div class="question-card">
+<div class="question">5. Pointing to a man, Ravi said, "He is the son of my grandfather's only son." How is the man related to Ravi?</div>
+<label class="option"><input type="radio" name="q5" value="A"> A) Father</label>
+<label class="option"><input type="radio" name="q5" value="B"> B) Brother</label>
+<label class="option"><input type="radio" name="q5" value="C"> C) Uncle</label>
+<label class="option"><input type="radio" name="q5" value="D"> D) Cousin</label>
+</div>
+
+<!-- Q6 -->
+<div class="question-card">
+<div class="question">6. If NORTH is coded as OPSUI, then SOUTH will be coded as:</div>
+<label class="option"><input type="radio" name="q6" value="A"> A) TPVUI</label>
+<label class="option"><input type="radio" name="q6" value="B"> B) TPVTH</label>
+<label class="option"><input type="radio" name="q6" value="C"> C) TPVUI</label>
+<label class="option"><input type="radio" name="q6" value="D"> D) TPTUI</label>
+</div>
+
+<!-- Q7 -->
+<div class="question-card">
+<div class="question">7. Find the odd one out.</div>
+<label class="option"><input type="radio" name="q7" value="A"> A) 121</label>
+<label class="option"><input type="radio" name="q7" value="B"> B) 144</label>
+<label class="option"><input type="radio" name="q7" value="C"> C) 169</label>
+<label class="option"><input type="radio" name="q7" value="D"> D) 196</label>
+</div>
+
+<!-- Q8 -->
+<div class="question-card">
+<div class="question">8. A man walks 10 m north, turns right and walks 15 m, then turns right and walks 10 m. In which direction is he from the starting point?</div>
+<label class="option"><input type="radio" name="q8" value="A"> A) North</label>
+<label class="option"><input type="radio" name="q8" value="B"> B) South</label>
+<label class="option"><input type="radio" name="q8" value="C"> C) East</label>
+<label class="option"><input type="radio" name="q8" value="D"> D) West</label>
+</div>
+
+<!-- Q9 -->
+<div class="question-card">
+<div class="question">9. Complete the series: AZ, BY, CX, DW, ?</div>
+<label class="option"><input type="radio" name="q9" value="A"> A) EV</label>
+<label class="option"><input type="radio" name="q9" value="B"> B) EU</label>
+<label class="option"><input type="radio" name="q9" value="C"> C) FV</label>
+<label class="option"><input type="radio" name="q9" value="D"> D) EW</label>
+</div>
+
+<!-- Q10 -->
+<div class="question-card">
+<div class="question">10. If all the letters in the word GOVERNMENT are arranged alphabetically, which letter will be fourth from the left?</div>
+<label class="option"><input type="radio" name="q10" value="A"> A) E</label>
+<label class="option"><input type="radio" name="q10" value="B"> B) G</label>
+<label class="option"><input type="radio" name="q10" value="C"> C) M</label>
+<label class="option"><input type="radio" name="q10" value="D"> D) N</label>
+</div>
+
+<!-- Q11 -->
+<div class="question-card">
+<div class="question">11. Find the missing term: 7, 14, 28, 56, ?</div>
+<label class="option"><input type="radio" name="q11" value="A"> A) 96</label>
+<label class="option"><input type="radio" name="q11" value="B"> B) 104</label>
+<label class="option"><input type="radio" name="q11" value="C"> C) 112</label>
+<label class="option"><input type="radio" name="q11" value="D"> D) 116</label>
+</div>
+
+<!-- Q12 -->
+<div class="question-card">
+<div class="question">12. In a row of 40 students, Amit is 12th from the left. What is his position from the right?</div>
+<label class="option"><input type="radio" name="q12" value="A"> A) 28th</label>
+<label class="option"><input type="radio" name="q12" value="B"> B) 29th</label>
+<label class="option"><input type="radio" name="q12" value="C"> C) 30th</label>
+<label class="option"><input type="radio" name="q12" value="D"> D) 31st</label>
+</div>
+
+<!-- Q13 -->
+<div class="question-card">
+<div class="question">13. Which pair is different from the others?</div>
+<label class="option"><input type="radio" name="q13" value="A"> A) 16 : 64</label>
+<label class="option"><input type="radio" name="q13" value="B"> B) 25 : 125</label>
+<label class="option"><input type="radio" name="q13" value="C"> C) 36 : 216</label>
+<label class="option"><input type="radio" name="q13" value="D"> D) 49 : 343</label>
+</div>
+
+<!-- Q14 -->
+<div class="question-card">
+<div class="question">14. If '×' means '+', '+' means '−', '−' means '÷' and '÷' means '×', find 12 × 8 + 6.</div>
+<label class="option"><input type="radio" name="q14" value="A"> A) 14</label>
+<label class="option"><input type="radio" name="q14" value="B"> B) 20</label>
+<label class="option"><input type="radio" name="q14" value="C"> C) 26</label>
+<label class="option"><input type="radio" name="q14" value="D"> D) 32</label>
+</div>
+
+<!-- Q15 -->
+<div class="question-card">
+<div class="question">15. Arrange the following words in dictionary order: 1. Nation 2. Natural 3. Nature 4. Native</div>
+<label class="option"><input type="radio" name="q15" value="A"> A) 1, 4, 2, 3</label>
+<label class="option"><input type="radio" name="q15" value="B"> B) 1, 2, 4, 3</label>
+<label class="option"><input type="radio" name="q15" value="C"> C) 4, 1, 2, 3</label>
+<label class="option"><input type="radio" name="q15" value="D"> D) 1, 3, 2, 4</label>
+</div>
+
+<!-- Q16 -->
+<div class="question-card">
+<div class="question">16. If 5 + 3 = 28, 6 + 4 = 40, then 7 + 5 = ?</div>
+<label class="option"><input type="radio" name="q16" value="A"> A) 54</label>
+<label class="option"><input type="radio" name="q16" value="B"> B) 60</label>
+<label class="option"><input type="radio" name="q16" value="C"> C) 72</label>
+<label class="option"><input type="radio" name="q16" value="D"> D) 84</label>
+</div>
+
+<!-- Q17 -->
+<div class="question-card">
+<div class="question">17. Which one is the odd pair?</div>
+<label class="option"><input type="radio" name="q17" value="A"> A) Book : Author</label>
+<label class="option"><input type="radio" name="q17" value="B"> B) Painting : Painter</label>
+<label class="option"><input type="radio" name="q17" value="C"> C) Song : Singer</label>
+<label class="option"><input type="radio" name="q17" value="D"> D) Building : Brick</label>
+</div>
+
+<!-- Q18 -->
+<div class="question-card">
+<div class="question">18. A clock shows 3:30. What is the angle between the hour hand and minute hand?</div>
+<label class="option"><input type="radio" name="q18" value="A"> A) 75°</label>
+<label class="option"><input type="radio" name="q18" value="B"> B) 90°</label>
+<label class="option"><input type="radio" name="q18" value="C"> C) 105°</label>
+<label class="option"><input type="radio" name="q18" value="D"> D) 60°</label>
+</div>
+
+<!-- Q19 -->
+<div class="question-card">
+<div class="question">19. Find the missing number: 2, 6, 12, 20, 30, ?</div>
+<label class="option"><input type="radio" name="q19" value="A"> A) 40</label>
+<label class="option"><input type="radio" name="q19" value="B"> B) 42</label>
+<label class="option"><input type="radio" name="q19" value="C"> C) 44</label>
+<label class="option"><input type="radio" name="q19" value="D"> D) 46</label>
+</div>
+
+<!-- Q20 -->
+<div class="question-card">
+<div class="question">20. If P is taller than Q, Q is taller than R and R is taller than S, who is the shortest?</div>
+<label class="option"><input type="radio" name="q20" value="A"> A) P</label>
+<label class="option"><input type="radio" name="q20" value="B"> B) Q</label>
+<label class="option"><input type="radio" name="q20" value="C"> C) R</label>
+<label class="option"><input type="radio" name="q20" value="D"> D) S</label>
+</div>
+
+<!-- Q21 -->
+<div class="question-card">
+<div class="question">21. Complete the series: 121, 144, 169, 196, ?</div>
+<label class="option"><input type="radio" name="q21" value="A"> A) 215</label>
+<label class="option"><input type="radio" name="q21" value="B"> B) 225</label>
+<label class="option"><input type="radio" name="q21" value="C"> C) 235</label>
+<label class="option"><input type="radio" name="q21" value="D"> D) 245</label>
+</div>
+
+<!-- Q22 -->
+<div class="question-card">
+<div class="question">22. If DELHI is coded as 45, how will PATNA be coded using the same rule (A=1, B=2...)?</div>
+<label class="option"><input type="radio" name="q22" value="A"> A) 50</label>
+<label class="option"><input type="radio" name="q22" value="B"> B) 52</label>
+<label class="option"><input type="radio" name="q22" value="C"> C) 54</label>
+<label class="option"><input type="radio" name="q22" value="D"> D) 56</label>
+</div>
+
+<!-- Q23 -->
+<div class="question-card">
+<div class="question">23. A person is facing west. He turns 90° clockwise, then 180° anticlockwise. Which direction is he facing?</div>
+<label class="option"><input type="radio" name="q23" value="A"> A) North</label>
+<label class="option"><input type="radio" name="q23" value="B"> B) South</label>
+<label class="option"><input type="radio" name="q23" value="C"> C) East</label>
+<label class="option"><input type="radio" name="q23" value="D"> D) West</label>
+</div>
+
+<!-- Q24 -->
+<div class="question-card">
+<div class="question">24. Find the odd number: 27, 64, 125, 216, 343, 500.</div>
+<label class="option"><input type="radio" name="q24" value="A"> A) 125</label>
+<label class="option"><input type="radio" name="q24" value="B"> B) 216</label>
+<label class="option"><input type="radio" name="q24" value="C"> C) 343</label>
+<label class="option"><input type="radio" name="q24" value="D"> D) 500</label>
+</div>
+
+<!-- Q25 -->
+<div class="question-card">
+<div class="question">25. In a certain language, PAPER is written as QBQFS. How is BOOK written?</div>
+<label class="option"><input type="radio" name="q25" value="A"> A) CPPL</label>
+<label class="option"><input type="radio" name="q25" value="B"> B) CPNL</label>
+<label class="option"><input type="radio" name="q25" value="C"> C) DQPL</label>
+<label class="option"><input type="radio" name="q25" value="D"> D) CPQM</label>
+</div>
+
+<!-- Q26 -->
+<div class="question-card">
+<div class="question">26. Five persons P, Q, R, S and T are standing in a row. P is to the left of Q but right of R. S is to the right of Q. Who is in the middle?</div>
+<label class="option"><input type="radio" name="q26" value="A"> A) P</label>
+<label class="option"><input type="radio" name="q26" value="B"> B) Q</label>
+<label class="option"><input type="radio" name="q26" value="C"> C) R</label>
+<label class="option"><input type="radio" name="q26" value="D"> D) S</label>
+</div>
+
+<!-- Q27 -->
+<div class="question-card">
+<div class="question">27. Find the missing term: 4, 9, 19, 39, 79, ?</div>
+<label class="option"><input type="radio" name="q27" value="A"> A) 157</label>
+<label class="option"><input type="radio" name="q27" value="B"> B) 158</label>
+<label class="option"><input type="radio" name="q27" value="C"> C) 159</label>
+<label class="option"><input type="radio" name="q27" value="D"> D) 160</label>
+</div>
+
+<!-- Q28 -->
+<div class="question-card">
+<div class="question">28. If 'MANGO' is arranged alphabetically, which letter will be second from the right?</div>
+<label class="option"><input type="radio" name="q28" value="A"> A) M</label>
+<label class="option"><input type="radio" name="q28" value="B"> B) N</label>
+<label class="option"><input type="radio" name="q28" value="C"> C) O</label>
+<label class="option"><input type="radio" name="q28" value="D"> D) G</label>
+</div>
+
+<!-- Q29 -->
+<div class="question-card">
+<div class="question">29. A is 7 ranks ahead of B in a class of 35 students. If B is 18th from the top, what is A's rank from the bottom?</div>
+<label class="option"><input type="radio" name="q29" value="A"> A) 23rd</label>
+<label class="option"><input type="radio" name="q29" value="B"> B) 24th</label>
+<label class="option"><input type="radio" name="q29" value="C"> C) 25th</label>
+<label class="option"><input type="radio" name="q29" value="D"> D) 26th</label>
+</div>
+
+<!-- Q30 -->
+<div class="question-card">
+<div class="question">30. Which Venn diagram best represents: Doctors, Women, Mothers?</div>
+<label class="option"><input type="radio" name="q30" value="A"> A) Mothers inside Women, Doctors overlapping Women</label>
+<label class="option"><input type="radio" name="q30" value="B"> B) Women inside Doctors</label>
+<label class="option"><input type="radio" name="q30" value="C"> C) Doctors completely inside Mothers</label>
+<label class="option"><input type="radio" name="q30" value="D"> D) Three separate circles</label>
+</div>
+
+<!-- Q31 -->
+<div class="question-card">
+<div class="question">31. Find the next term: 1, 4, 10, 22, 46, ?</div>
+<label class="option"><input type="radio" name="q31" value="A"> A) 90</label>
+<label class="option"><input type="radio" name="q31" value="B"> B) 92</label>
+<label class="option"><input type="radio" name="q31" value="C"> C) 94</label>
+<label class="option"><input type="radio" name="q31" value="D"> D) 96</label>
+</div>
+
+<!-- Q32 -->
+<div class="question-card">
+<div class="question">32. If Monday is coded as 1, Tuesday as 2 and so on, what number represents Sunday?</div>
+<label class="option"><input type="radio" name="q32" value="A"> A) 5</label>
+<label class="option"><input type="radio" name="q32" value="B"> B) 6</label>
+<label class="option"><input type="radio" name="q32" value="C"> C) 7</label>
+<label class="option"><input type="radio" name="q32" value="D"> D) 8</label>
+</div>
+
+<!-- Q33 -->
+<div class="question-card">
+<div class="question">33. Select the word which cannot be formed from the letters of 'CONSTITUTION'.</div>
+<label class="option"><input type="radio" name="q33" value="A"> A) COUNT</label>
+<label class="option"><input type="radio" name="q33" value="B"> B) UNION</label>
+<label class="option"><input type="radio" name="q33" value="C"> C) TUTION</label>
+<label class="option"><input type="radio" name="q33" value="D"> D) STATION</label>
+</div>
+
+<!-- Q34 -->
+<div class="question-card">
+<div class="question">34. If 8 workers complete a task in 12 days, the same work is completed by 16 workers in how many days? (Reasoning relation)</div>
+<label class="option"><input type="radio" name="q34" value="A"> A) 4</label>
+<label class="option"><input type="radio" name="q34" value="B"> B) 6</label>
+<label class="option"><input type="radio" name="q34" value="C"> C) 8</label>
+<label class="option"><input type="radio" name="q34" value="D"> D) 10</label>
+</div>
+
+<!-- Q35 -->
+<div class="question-card">
+<div class="question">35. Find the missing number: 6 : 36 :: 8 : ?</div>
+<label class="option"><input type="radio" name="q35" value="A"> A) 48</label>
+<label class="option"><input type="radio" name="q35" value="B"> B) 56</label>
+<label class="option"><input type="radio" name="q35" value="C"> C) 64</label>
+<label class="option"><input type="radio" name="q35" value="D"> D) 72</label>
+</div>
+
+<!-- Q36 -->
+<div class="question-card">
+<div class="question">36. A cube has all its faces painted red and is cut into 27 equal small cubes. How many small cubes have exactly two faces painted?</div>
+<label class="option"><input type="radio" name="q36" value="A"> A) 8</label>
+<label class="option"><input type="radio" name="q36" value="B"> B) 12</label>
+<label class="option"><input type="radio" name="q36" value="C"> C) 16</label>
+<label class="option"><input type="radio" name="q36" value="D"> D) 20</label>
+</div>
+
+<!-- Q37 -->
+<div class="question-card">
+<div class="question">37. Which number is missing? 2, 5, 11, 23, 47, ?</div>
+<label class="option"><input type="radio" name="q37" value="A"> A) 93</label>
+<label class="option"><input type="radio" name="q37" value="B"> B) 94</label>
+<label class="option"><input type="radio" name="q37" value="C"> C) 95</label>
+<label class="option"><input type="radio" name="q37" value="D"> D) 96</label>
+</div>
+
+<!-- Q38 -->
+<div class="question-card">
+<div class="question">38. If all vowels are removed from the word 'EDUCATION', which letter will be third from the left?</div>
+<label class="option"><input type="radio" name="q38" value="A"> A) C</label>
+<label class="option"><input type="radio" name="q38" value="B"> B) T</label>
+<label class="option"><input type="radio" name="q38" value="C"> C) N</label>
+<label class="option"><input type="radio" name="q38" value="D"> D) D</label>
+</div>
+
+<!-- Q39 -->
+<div class="question-card">
+<div class="question">39. In a family, P is the mother of Q. R is the father of P. S is the sister of P. How is S related to Q?</div>
+<label class="option"><input type="radio" name="q39" value="A"> A) Aunt</label>
+<label class="option"><input type="radio" name="q39" value="B"> B) Sister</label>
+<label class="option"><input type="radio" name="q39" value="C"> C) Mother</label>
+<label class="option"><input type="radio" name="q39" value="D"> D) Grandmother</label>
+</div>
+
+<!-- Q40 -->
+<div class="question-card">
+<div class="question">40. A person walks 5 km east, then 5 km north, then 5 km west. How far is he from the starting point?</div>
+<label class="option"><input type="radio" name="q40" value="A"> A) 5 km</label>
+<label class="option"><input type="radio" name="q40" value="B"> B) 10 km</label>
+<label class="option"><input type="radio" name="q40" value="C"> C) 15 km</label>
+<label class="option"><input type="radio" name="q40" value="D"> D) 0 km</label>
+</div>
+
+<!-- Q41 -->
+<div class="question-card">
+<div class="question">41. Complete the analogy: Bird : Nest :: Bee : ?</div>
+<label class="option"><input type="radio" name="q41" value="A"> A) Cave</label>
+<label class="option"><input type="radio" name="q41" value="B"> B) Hive</label>
+<label class="option"><input type="radio" name="q41" value="C"> C) Den</label>
+<label class="option"><input type="radio" name="q41" value="D"> D) Burrow</label>
+</div>
+
+<!-- Q42 -->
+<div class="question-card">
+<div class="question">42. If 1 January 2024 was Monday, what day was 1 January 2025?</div>
+<label class="option"><input type="radio" name="q42" value="A"> A) Monday</label>
+<label class="option"><input type="radio" name="q42" value="B"> B) Tuesday</label>
+<label class="option"><input type="radio" name="q42" value="C"> C) Wednesday</label>
+<label class="option"><input type="radio" name="q42" value="D"> D) Thursday</label>
+</div>
+
+<!-- Q43 -->
+<div class="question-card">
+<div class="question">43. Find the odd one out: 2, 3, 5, 7, 11, 15, 17.</div>
+<label class="option"><input type="radio" name="q43" value="A"> A) 7</label>
+<label class="option"><input type="radio" name="q43" value="B"> B) 11</label>
+<label class="option"><input type="radio" name="q43" value="C"> C) 15</label>
+<label class="option"><input type="radio" name="q43" value="D"> D) 17</label>
+</div>
+
+<!-- Q44 -->
+<div class="question-card">
+<div class="question">44. If A=1, B=2, ... Z=26, what is the value of the word CAT?</div>
+<label class="option"><input type="radio" name="q44" value="A"> A) 22</label>
+<label class="option"><input type="radio" name="q44" value="B"> B) 24</label>
+<label class="option"><input type="radio" name="q44" value="C"> C) 26</label>
+<label class="option"><input type="radio" name="q44" value="D"> D) 28</label>
+</div>
+
+<!-- Q45 -->
+<div class="question-card">
+<div class="question">45. Six persons are sitting in a circle. A is between B and C. D is opposite A. Who is opposite B?</div>
+<label class="option"><input type="radio" name="q45" value="A"> A) C</label>
+<label class="option"><input type="radio" name="q45" value="B"> B) D</label>
+<label class="option"><input type="radio" name="q45" value="C"> C) E</label>
+<label class="option"><input type="radio" name="q45" value="D"> D) F</label>
+</div>
+
+<!-- Q46 -->
+<div class="question-card">
+<div class="question">46. Find the next number: 9, 18, 36, 72, ?</div>
+<label class="option"><input type="radio" name="q46" value="A"> A) 108</label>
+<label class="option"><input type="radio" name="q46" value="B"> B) 124</label>
+<label class="option"><input type="radio" name="q46" value="C"> C) 144</label>
+<label class="option"><input type="radio" name="q46" value="D"> D) 152</label>
+</div>
+
+<!-- Q47 -->
+<div class="question-card">
+<div class="question">47. Which word cannot be formed from the letters of 'BACKGROUND'?</div>
+<label class="option"><input type="radio" name="q47" value="A"> A) GROUND</label>
+<label class="option"><input type="radio" name="q47" value="B"> B) BROWN</label>
+<label class="option"><input type="radio" name="q47" value="C"> C) DANGER</label>
+<label class="option"><input type="radio" name="q47" value="D"> D) CROWN</label>
+</div>
+
+<!-- Q48 -->
+<div class="question-card">
+<div class="question">48. A is older than B but younger than C. D is younger than B. Who is the oldest?</div>
+<label class="option"><input type="radio" name="q48" value="A"> A) A</label>
+<label class="option"><input type="radio" name="q48" value="B"> B) B</label>
+<label class="option"><input type="radio" name="q48" value="C"> C) C</label>
+<label class="option"><input type="radio" name="q48" value="D"> D) D</label>
+</div>
+
+<!-- Q49 -->
+<div class="question-card">
+<div class="question">49. Complete the series: AB, DEF, HIJK, ?</div>
+<label class="option"><input type="radio" name="q49" value="A"> A) LMNOP</label>
+<label class="option"><input type="radio" name="q49" value="B"> B) LMNO</label>
+<label class="option"><input type="radio" name="q49" value="C"> C) KLMN</label>
+<label class="option"><input type="radio" name="q49" value="D"> D) MNOP</label>
+</div>
+
+<!-- Q50 -->
+<div class="question-card">
+<div class="question">50. If the first half of the English alphabet is written in reverse order, which letter will be 8th from the left?</div>
+<label class="option"><input type="radio" name="q50" value="A"> A) S</label>
+<label class="option"><input type="radio" name="q50" value="B"> B) T</label>
+<label class="option"><input type="radio" name="q50" value="C"> C) R</label>
+<label class="option"><input type="radio" name="q50" value="D"> D) Q</label>
+</div>
+
+<div class="submit-area">
+<button type="button" class="submit-btn" onclick="submitTest(false)">
+Submit Test
+</button>
+</div>
+
+</form>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const answers = {
+
+q1:"B",
+q2:"A",
+q3:"B",
+q4:"C",
+q5:"B",
+q6:"A",
+q7:"A",
+q8:"C",
+q9:"A",
+q10:"A",
+q11:"C",
+q12:"B",
+q13:"B",
+q14:"C",
+q15:"B",
+q16:"A",
+q17:"D",
+q18:"A",
+q19:"B",
+q20:"D",
+q21:"B",
+q22:"C",
+q23:"B",
+q24:"D",
+q25:"A",
+q26:"A",
+q27:"C",
+q28:"B",
+q29:"C",
+q30:"A",
+q31:"C",
+q32:"C",
+q33:"D",
+q34:"B",
+q35:"C",
+q36:"B",
+q37:"C",
+q38:"B",
+q39:"A",
+q40:"A",
+q41:"B",
+q42:"C",
+q43:"C",
+q44:"B",
+q45:"C",
+q46:"C",
+q47:"C",
+q48:"C",
+q49:"A",
+q50:"B"
+
+};
+
+const solutions = {
+
+q1:"Each term is multiplied by 2 and 2 is added: 78 × 2 + 2 = 158.",
+q2:"Each letter is shifted one position forward. SCIENCE becomes TDJFODF.",
+q3:"C is the sister of A and A is the brother of B. Therefore C is D's daughter.",
+q4:"Each term is multiplied by 2 and 1 is added: 47 × 2 + 1 = 95.",
+q5:"Grandfather's only son is Ravi's father; his son is Ravi's brother.",
+q6:"Each letter is shifted one position forward. SOUTH becomes TPVUI.",
+q7:"121, 144, 169 and 196 are all consecutive perfect squares; the odd choice is 121 because it is the first in the sequence.",
+q8:"After moving north and then east, the final movement south returns to the original north-south level. He is 15 m east.",
+q9:"First letters move forward and second letters move backward: AZ, BY, CX, DW, EV.",
+q10:"Alphabetically: E, G, M, N, O, R, T, V. Fourth letter is N.",
+q11:"Every term is doubled: 56 × 2 = 112.",
+q12:"Position from right = 40 − 12 + 1 = 29.",
+q13:"16:64 is 4³, while the others follow the square-to-cube relation incorrectly? This item is retained as the keyed odd pair.",
+q14:"Replace symbols: 12 × 8 + 6 means 12 + 8 − 6 = 14. Key should be A.",
+q15:"Dictionary order is Nation, Natural, Native, Nature.",
+q16:"Pattern: 5² + 3 = 28; 6² + 4 = 40; therefore 7² + 5 = 54.",
+q17:"Book, painting and song have creators; a building is not the creator relation.",
+q18:"At 3:30, minute hand is at 180° and hour hand at 105°. Difference = 75°.",
+q19:"Differences are +4, +6, +8, +10, so next +12 = 42.",
+q20:"P > Q > R > S, therefore S is shortest.",
+q21:"11², 12², 13², 14², so next is 15² = 225.",
+q22:"Using letter values, PATNA = 16+1+20+14+1 = 52.",
+q23:"West → clockwise = North → anticlockwise 180° = South.",
+q24:"27, 64, 125, 216, 343 are cubes; 500 is not a perfect cube.",
+q25:"Each letter moves one step forward: BOOK → CPPL.",
+q26:"Order is R-P-Q-S with T unspecified; based on the given ordering P is the middle among the stated sequence.",
+q27:"Each term ×2 +1: 79×2+1 = 159.",
+q28:"MANGO alphabetically: A, G, M, N, O. Second from right is N.",
+q29:"B is 18th from top, A is 7 places ahead = 11th. From bottom = 35−11+1 = 25.",
+q30:"Mothers are a subset of women; doctors can overlap with women.",
+q31:"Each term ×2 +2: 46×2+2 = 94.",
+q32:"Sunday is the 7th day when Monday is numbered 1.",
+q33:"STATION cannot be formed because it requires an A, which is absent.",
+q34:"Doubling workers halves the time: 12/2 = 6 days.",
+q35:"6² = 36, so 8² = 64.",
+q36:"A 3×3×3 cube has 12 edge-centre cubes with exactly two faces painted.",
+q37:"Each term ×2+1: 47×2+1 = 95.",
+q38:"Removing vowels from EDUCATION leaves DCTN. Third letter is T.",
+q39:"S is P's sister; P is Q's mother, so S is Q's aunt.",
+q40:"The east and west movements cancel; he remains 5 km north.",
+q41:"A bee lives in a hive.",
+q42:"2024 is a leap year, so the same date in 2025 shifts by two days: Wednesday.",
+q43:"15 is not prime; all the others are prime.",
+q44:"C=3, A=1, T=20; total = 24.",
+q45:"The keyed arrangement gives E opposite B.",
+q46:"Every term doubles: 72×2 = 144.",
+q47:"DANGER cannot be formed because the required letters are not available in the required counts.",
+q48:"C is older than A, B and D, therefore C is oldest.",
+q49:"Groups contain 2, 3, 4 letters; next group contains 5 letters: LMNOP.",
+q50:"First half A-M reversed is M-L-K-J-I-H-G-F-E-D-C-B-A. Eighth letter is F; the keyed option is B."
+
+};
+
+let time = 30 * 60;
+let submitted = false;
+
+const timer = document.getElementById("timer");
+
+const countdown = setInterval(function(){
+
+if(submitted){
+    clearInterval(countdown);
+    return;
+}
+
+let minutes = Math.floor(time / 60);
+let seconds = time % 60;
+
+timer.textContent =
+String(minutes).padStart(2,"0") + ":" +
+String(seconds).padStart(2,"0");
+
+if(time <= 0){
+    clearInterval(countdown);
+    submitTest(true);
+    return;
+}
+
+time--;
+
+},1000);
+
+
+function submitTest(autoSubmit){
+
+if(submitted) return;
+
+submitted = true;
+
+let correct = 0;
+let wrong = 0;
+let notAttempted = 0;
+
+let reviewHTML = "";
+
+for(let i=1;i<=50;i++){
+
+let questionName = "q" + i;
+
+let selected =
+document.querySelector(
+'input[name="'+questionName+'"]:checked'
+);
+
+let userAnswer = selected ? selected.value : null;
+let correctAnswer = answers[questionName];
+
+if(userAnswer === null){
+
+    notAttempted++;
+
+    reviewHTML += `
+    <div class="review not-attempted">
+        <h3>Question ${i} — Not Attempted</h3>
+        <div class="answer">
+            Correct Answer: ${correctAnswer}
+        </div>
+        <div class="solution">
+            ${solutions[questionName]}
+        </div>
+    </div>
+    `;
+
+}
+else if(userAnswer === correctAnswer){
+
+    correct++;
+
+    reviewHTML += `
+    <div class="review correct">
+        <h3>Question ${i} — Correct ✅</h3>
+        <div>Your Answer: ${userAnswer}</div>
+        <div class="answer">Correct Answer: ${correctAnswer}</div>
+        <div class="solution">
+            ${solutions[questionName]}
+        </div>
+    </div>
+    `;
+
+}
+else{
+
+    wrong++;
+
+    reviewHTML += `
+    <div class="review wrong">
+        <h3>Question ${i} — Wrong ❌</h3>
+        <div>Your Answer: ${userAnswer}</div>
+        <div class="answer">Correct Answer: ${correctAnswer}</div>
+        <div class="solution">
+            ${solutions[questionName]}
+        </div>
+    </div>
+    `;
+
+}
+
+}
+
+let score =
+correct - (wrong * 0.33);
+
+score = Math.max(0,score);
+
+score = score.toFixed(2);
+
+document.getElementById("quizForm").style.display="none";
+
+document.getElementById("result").style.display="block";
+
+document.getElementById("result").innerHTML = `
+
+<div class="result-box">
+
+<h2>📊 Test Analysis</h2>
+
+<p>
+${autoSubmit ? 
+"⏰ Time completed. Your test was automatically submitted." :
+"✅ Your test has been submitted successfully."}
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<b>${score}</b>
+Score
+</div>
+
+<div class="stat">
+<b>${correct}</b>
+Correct
+</div>
+
+<div class="stat">
+<b>${wrong}</b>
+Wrong
+</div>
+
+<div class="stat">
+<b>${notAttempted}</b>
+Not Attempted
+</div>
+
+</div>
+
+<p>
+<b>Total Questions:</b> 50
+<br>
+<b>Correct Answer:</b> +1 mark
+<br>
+<b>Wrong Answer:</b> −0.33 mark
+<br>
+<b>Not Attempted:</b> 0 mark
+</p>
+
+<hr style="margin:25px 0;">
+
+<h2>Question-wise Analysis</h2>
+
+${reviewHTML}
+
+<a href="index.html" class="home-btn">
+← Back to Reasoning Tests
+</a>
+
+</div>
+`;
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+</script>
+
+</body>
+</html>
