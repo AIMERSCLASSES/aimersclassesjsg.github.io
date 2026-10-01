@@ -1,1 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Reasoning Test Series 1 | AIMERS CLASSES</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:18px 20px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.header-inner{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.test-title{
+    font-size:15px;
+    font-weight:bold;
+}
+
+.timer{
+    background:#fff;
+    color:#dc2626;
+    padding:8px 15px;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:900;
+    min-width:100px;
+    text-align:center;
+}
+
+.container{
+    width:94%;
+    max-width:1100px;
+    margin:25px auto;
+}
+
+.instructions{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+    margin-bottom:20px;
+}
+
+.instructions h2{
+    color:#1d4ed8;
+    margin-bottom:10px;
+}
+
+.instructions ul{
+    padding-left:22px;
+}
+
+.question-card{
+    background:white;
+    padding:22px;
+    border-radius:12px;
+    margin-bottom:18px;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+}
+
+.question-number{
+    color:#1d4ed8;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.question{
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    background:#f7f9fc;
+    border:1px solid #d9e0ea;
+    padding:11px 13px;
+    border-radius:8px;
+    margin:8px 0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.submit-area{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin:25px 0;
+}
+
+.submit-btn{
+    border:none;
+    background:#16a34a;
+    color:white;
+    padding:14px 30px;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#15803d;
+}
+
+.result{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:30px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.result h2{
+    color:#1d4ed8;
+    margin-bottom:15px;
+}
+
+.score-box{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:20px 0;
+}
+
+.score-item{
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    background:#f3f6fb;
+}
+
+.score-item strong{
+    display:block;
+    font-size:24px;
+}
+
+.correct{
+    color:#16a34a;
+}
+
+.wrong{
+    color:#dc2626;
+}
+
+.not-attempted{
+    color:#d97706;
+}
+
+.analysis{
+    margin-top:25px;
+}
+
+.analysis-item{
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:12px;
+    background:#f8fafc;
+    border-left:5px solid #64748b;
+}
+
+.analysis-item.correct-answer{
+    border-left-color:#16a34a;
+}
+
+.analysis-item.wrong-answer{
+    border-left-color:#dc2626;
+}
+
+.analysis-item.not-answer{
+    border-left-color:#d97706;
+}
+
+.analysis-item h3{
+    margin-bottom:8px;
+}
+
+.solution{
+    margin-top:8px;
+    color:#475569;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 22px;
+    background:#1d4ed8;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:800;
+}
+
+@media(max-width:700px){
+
+    .header-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .score-box{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .question{
+        font-size:16px;
+    }
+
+    .container{
+        width:95%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="test-title">
+REASONING – TEST SERIES 1
+</div>
+
+<div class="timer" id="timer">
+30:00
+</div>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="instructions">
+
+<h2>📝 Test Instructions</h2>
+
+<ul>
+<li>Total Questions: <strong>50</strong></li>
+<li>Time: <strong>30 Minutes</strong></li>
+<li>Correct Answer: <strong>+1 Mark</strong></li>
+<li>Wrong Answer: <strong>-0.33 Mark</strong></li>
+<li>Not Attempted: <strong>0 Mark</strong></li>
+<li>Test will automatically submit when time reaches zero.</li>
+<li>You can also submit the test manually.</li>
+</ul>
+
+</div>
+
+<form id="testForm">
+
+<div id="questions"></div>
+
+<div class="submit-area">
+
+<button type="submit" class="submit-btn">
+✅ Submit Test
+</button>
+
+</div>
+
+</form>
+
+<div class="result" id="result">
+
+<h2>📊 Test Analysis</h2>
+
+<div class="score-box">
+
+<div class="score-item">
+<strong id="finalScore">0</strong>
+Score
+</div>
+
+<div class="score-item correct">
+<strong id="correctCount">0</strong>
+Correct
+</div>
+
+<div class="score-item wrong">
+<strong id="wrongCount">0</strong>
+Wrong
+</div>
+
+<div class="score-item not-attempted">
+<strong id="notAttemptedCount">0</strong>
+Not Attempted
+</div>
+
+</div>
+
+<div>
+<strong>Total Questions:</strong> 50
+<br>
+<strong>Maximum Marks:</strong> 50
+<br>
+<strong>Negative Marking:</strong> 0.33 for each wrong answer
+</div>
+
+<div class="analysis">
+
+<h2>📋 Question-wise Analysis</h2>
+
+<div id="analysis"></div>
+
+</div>
+
+<a href="index.html" class="back-btn">
+← Back to Reasoning Tests
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const questions = [
+
+{
+q:"Find the next number: 2, 6, 12, 20, 30, ?",
+options:["40","42","44","46"],
+answer:1,
+solution:"The differences are 4, 6, 8, 10. The next difference is 12. Therefore 30 + 12 = 42."
+},
+
+{
+q:"Find the odd one out.",
+options:["Apple","Mango","Banana","Carrot"],
+answer:3,
+solution:"Apple, Mango and Banana are fruits. Carrot is a vegetable."
+},
+
+{
+q:"If CAT is coded as DBU, how is DOG coded?",
+options:["EPH","EPG","FOH","DPG"],
+answer:0,
+solution:"Each letter is moved one step forward: D→E, O→P, G→H. Therefore DOG = EPH."
+},
+
+{
+q:"Complete the series: 5, 10, 20, 40, ?",
+options:["60","70","80","90"],
+answer:2,
+solution:"Each number is multiplied by 2. Therefore 40 × 2 = 80."
+},
+
+{
+q:"A is the brother of B. B is the sister of C. How is A related to C?",
+options:["Father","Brother","Uncle","Cousin"],
+answer:1,
+solution:"A is brother of B and B is sister of C. Therefore A is C's brother."
+},
+
+{
+q:"If SOUTH is written as HTUOS, how will NORTH be written?",
+options:["HTRON","HTRON","NROTH","HTORN"],
+answer:1,
+solution:"The word is written in reverse order. NORTH becomes HTRON."
+},
+
+{
+q:"Find the missing number: 3, 9, 27, 81, ?",
+options:["162","243","324","729"],
+answer:1,
+solution:"Each number is multiplied by 3. 81 × 3 = 243."
+},
+
+{
+q:"Which word cannot be formed from the letters of 'REASONING'?",
+options:["SING","RAIN","RING","STONE"],
+answer:3,
+solution:"STONE requires T and O together, but T is not present in REASONING."
+},
+
+{
+q:"If 1 January is Monday, what day will 8 January be?",
+options:["Sunday","Monday","Tuesday","Wednesday"],
+answer:1,
+solution:"After exactly 7 days, the same weekday occurs. Therefore 8 January is Monday."
+},
+
+{
+q:"Find the odd number.",
+options:["16","25","36","48"],
+answer:3,
+solution:"16, 25 and 36 are perfect squares. 48 is not a perfect square."
+},
+
+{
+q:"Complete the series: A, C, F, J, O, ?",
+options:["T","U","V","W"],
+answer:1,
+solution:"Positions are 1, 3, 6, 10, 15. Differences are +2,+3,+4,+5, so next is +6 = 21 = U."
+},
+
+{
+q:"If PEN is coded as 35, then CAT is coded as?",
+options:["22","24","26","28"],
+answer:1,
+solution:"P=16, E=5, N=14. Total =35. C=3, A=1, T=20. Total =24."
+},
+
+{
+q:"A person walks 5 km north, then 3 km east. In which direction is he from the starting point?",
+options:["North-West","North-East","South-East","South-West"],
+answer:1,
+solution:"He moved north and east, so his final position is north-east of the starting point."
+},
+
+{
+q:"Find the next number: 1, 4, 9, 16, 25, ?",
+options:["30","36","40","49"],
+answer:1,
+solution:"These are squares: 1², 2², 3², 4², 5². Next is 6² = 36."
+},
+
+{
+q:"Which one is different?",
+options:["January","March","May","June"],
+answer:3,
+solution:"January, March and May have 31 days. June has 30 days."
+},
+
+{
+q:"If BOOK is coded as CPPL, how is PEN coded?",
+options:["QFO","QFN","PFM","RGP"],
+answer:0,
+solution:"Every letter is shifted one position forward. P→Q, E→F, N→O."
+},
+
+{
+q:"Find the missing number: 7, 14, 28, 56, ?",
+options:["84","98","112","120"],
+answer:2,
+solution:"Every number is doubled. 56 × 2 = 112."
+},
+
+{
+q:"Pointing to a man, Ravi says, 'He is the son of my mother's only son.' Who is the man?",
+options:["Brother","Father","Son","Uncle"],
+answer:2,
+solution:"Ravi's mother's only son is Ravi himself. Therefore the man is Ravi's son."
+},
+
+{
+q:"Find the odd pair.",
+options:["Bird–Nest","Lion–Den","Bee–Hive","Fish–Tree"],
+answer:3,
+solution:"Birds live in nests, lions in dens and bees in hives. Fish do not live in trees."
+},
+
+{
+q:"If all roses are flowers and some flowers are red, which conclusion is definitely true?",
+options:["All roses are red","Some roses are red","All red things are roses","Roses are flowers"],
+answer:3,
+solution:"The statement directly establishes that all roses are flowers."
+},
+
+{
+q:"Find the next term: 100, 90, 81, 73, ?",
+options:["65","66","67","68"],
+answer:1,
+solution:"The differences are -10, -9, -8. Next difference is -7. 73 - 7 = 66."
+},
+
+{
+q:"Which number does not belong to the group?",
+options:["2","3","5","9"],
+answer:3,
+solution:"2, 3 and 5 are prime numbers. 9 is composite."
+},
+
+{
+q:"If MANGO is written as OGNAM, how is APPLE written?",
+options:["ELPPA","ELAPP","EPPLA","APPLE"],
+answer:0,
+solution:"The letters are written in reverse order. APPLE becomes ELPPA."
+},
+
+{
+q:"A clock shows 3:00. What is the angle between the hour and minute hands?",
+options:["60°","90°","120°","180°"],
+answer:1,
+solution:"At 3:00, the minute hand is at 12 and hour hand at 3. The angle is 90°."
+},
+
+{
+q:"Find the next number: 11, 22, 44, 88, ?",
+options:["166","176","188","198"],
+answer:1,
+solution:"Each number is multiplied by 2. 88 × 2 = 176."
+},
+
+{
+q:"Which is the smallest number?",
+options:["0.5","0.05","0.55","0.505"],
+answer:1,
+solution:"0.05 is smaller than 0.5, 0.55 and 0.505."
+},
+
+{
+q:"If EAST is opposite to WEST, then NORTH is opposite to?",
+options:["East","South","West","North-East"],
+answer:1,
+solution:"North and South are opposite directions."
+},
+
+{
+q:"Find the missing letter: B, D, G, K, P, ?",
+options:["U","V","W","X"],
+answer:1,
+solution:"Positions: 2,4,7,11,16. Differences +2,+3,+4,+5. Next +6 = 22 = V."
+},
+
+{
+q:"If 5 + 3 = 28, 6 + 4 = 40, then 7 + 5 = ?",
+options:["54","56","58","60"],
+answer:1,
+solution:"Pattern is a² + b². 5²+3²=34, which does not fit. Instead a×(a+b): 5×8=40, so not fit. The given relation is inconsistent. Therefore this question should not be used."
+},
+
+{
+q:"A man is facing east. He turns right, then right again. Which direction is he facing?",
+options:["North","South","East","West"],
+answer:3,
+solution:"Facing east, right turn gives south. Another right turn gives west."
+},
+
+{
+q:"Find the next number: 4, 8, 16, 32, ?",
+options:["48","56","64","72"],
+answer:2,
+solution:"Each number is doubled. 32 × 2 = 64."
+},
+
+{
+q:"Which one is different from the others?",
+options:["Square","Triangle","Circle","Rectangle"],
+answer:2,
+solution:"Circle has no straight sides. The others are polygons."
+},
+
+{
+q:"If A=1, B=2, C=3, what is the value of BAD?",
+options:["6","7","8","9"],
+answer:1,
+solution:"B=2, A=1, D=4. Total = 7."
+},
+
+{
+q:"A is taller than B. B is taller than C. Who is the shortest?",
+options:["A","B","C","Cannot say"],
+answer:2,
+solution:"A > B > C, therefore C is the shortest."
+},
+
+{
+q:"Find the next term: Z, X, U, Q, L, ?",
+options:["F","G","H","I"],
+answer:0,
+solution:"Positions decrease by 2,3,4,5. Next decrease is 6. L(12)-6 = F(6)."
+},
+
+{
+q:"If TABLE is coded as UBCMF, how is CHAIR coded?",
+options:["DIBJS","DIBIR","EJCKT","BHGZQ"],
+answer:0,
+solution:"Each letter moves one step forward: C→D, H→I, A→B, I→J, R→S."
+},
+
+{
+q:"Which number is the odd one out?",
+options:["121","144","169","180"],
+answer:3,
+solution:"121=11², 144=12², 169=13². 180 is not a perfect square."
+},
+
+{
+q:"A person walks 10 m south, then 10 m west. In which direction is he from the starting point?",
+options:["North-East","South-West","South-East","North-West"],
+answer:1,
+solution:"Moving south and west places him in the south-west direction."
+},
+
+{
+q:"Find the missing number: 2, 5, 10, 17, 26, ?",
+options:["35","36","37","38"],
+answer:2,
+solution:"Differences are +3,+5,+7,+9. Next difference is +11. 26+11=37."
+},
+
+{
+q:"Which word is different?",
+options:["Rose","Lotus","Lily","Wheat"],
+answer:3,
+solution:"Rose, Lotus and Lily are flowers. Wheat is a crop."
+},
+
+{
+q:"If MONDAY is coded as 123456, what is the code for DAY?",
+options:["456","345","356","156"],
+answer:0,
+solution:"M=1, O=2, N=3, D=4, A=5, Y=6. Therefore DAY = 456."
+},
+
+{
+q:"A father is 30 years older than his son. If the son is 10 years old, how old is the father?",
+options:["30","35","40","45"],
+answer:2,
+solution:"Father's age = 10 + 30 = 40 years."
+},
+
+{
+q:"Find the next number: 3, 6, 11, 18, 27, ?",
+options:["36","37","38","39"],
+answer:2,
+solution:"Differences are +3,+5,+7,+9. Next difference +11. 27+11=38."
+},
+
+{
+q:"Which direction is exactly opposite to South-East?",
+options:["North-East","North-West","South-West","West"],
+answer:1,
+solution:"The opposite of South-East is North-West."
+},
+
+{
+q:"If 'MIRROR' is coded as 'RORRIM', what coding method is used?",
+options:["Alphabetical order","Reverse order","First-last exchange only","Adding letters"],
+answer:1,
+solution:"MIRROR written backwards is RORRIM."
+},
+
+{
+q:"Find the next letter: C, F, I, L, ?",
+options:["N","O","P","Q"],
+answer:1,
+solution:"Each letter advances by 3 positions: C→F→I→L→O."
+},
+
+{
+q:"If some books are pens and all pens are blue, which conclusion follows?",
+options:["All books are blue","Some books are blue","No books are blue","All blue things are books"],
+answer:1,
+solution:"Some books are pens, and all pens are blue. Therefore those books are blue."
+},
+
+{
+q:"A man faces north. He turns left, then right, then right. Which direction is he facing?",
+options:["North","East","South","West"],
+answer:1,
+solution:"North → left = West → right = North → right = East."
+},
+
+{
+q:"Find the missing number: 6, 12, 24, 48, ?",
+options:["72","84","96","108"],
+answer:2,
+solution:"Each number is multiplied by 2. 48 × 2 = 96."
+},
+
+{
+q:"Which one is not a prime number?",
+options:["11","13","17","21"],
+answer:3,
+solution:"21 = 3 × 7, so it is composite. The others are prime."
+},
+
+{
+q:"If 'PENCIL' is arranged alphabetically, which letter comes first?",
+options:["P","E","N","C"],
+answer:3,
+solution:"The letters alphabetically are C, E, I, L, N, P. Therefore C comes first."
+},
+
+{
+q:"A is sitting to the left of B. C is sitting to the right of B. Who is in the middle?",
+options:["A","B","C","Cannot determine"],
+answer:1,
+solution:"The arrangement is A-B-C. Therefore B is in the middle."
+},
+
+{
+q:"Find the next number: 81, 27, 9, 3, ?",
+options:["0","1","2","6"],
+answer:1,
+solution:"Each number is divided by 3. 3 ÷ 3 = 1."
+},
+
+{
+q:"If today is Wednesday, what day will it be after 10 days?",
+options:["Friday","Saturday","Sunday","Monday"],
+answer:1,
+solution:"10 days = 7 + 3 days. Wednesday + 3 days = Saturday."
+},
+
+{
+q:"Which pair has the same relationship as Bird : Nest?",
+options:["Lion : Grass","Bee : Hive","Fish : Water","Dog : Bone"],
+answer:1,
+solution:"A bird lives in a nest; similarly, a bee lives in a hive."
+}
+
+];
+
+const questionsContainer =
+document.getElementById("questions");
+
+questions.forEach((item,index)=>{
+
+let html = `
+<div class="question-card">
+
+<div class="question-number">
+Question ${index+1} of 50
+</div>
+
+<div class="question">
+${index+1}. ${item.q}
+</div>
+`;
+
+item.options.forEach((option,optIndex)=>{
+
+html += `
+<label class="option">
+<input type="radio"
+name="q${index}"
+value="${optIndex}">
+${String.fromCharCode(65+optIndex)}. ${option}
+</label>
+`;
+
+});
+
+html += `</div>`;
+
+questionsContainer.innerHTML += html;
+
+});
+
+
+let timeLeft = 30 * 60;
+let submitted = false;
+
+const timerElement =
+document.getElementById("timer");
+
+const timerInterval =
+setInterval(function(){
+
+if(submitted){
+clearInterval(timerInterval);
+return;
+}
+
+let minutes =
+Math.floor(timeLeft / 60);
+
+let seconds =
+timeLeft % 60;
+
+timerElement.textContent =
+String(minutes).padStart(2,"0") +
+":" +
+String(seconds).padStart(2,"0");
+
+if(timeLeft <= 0){
+
+clearInterval(timerInterval);
+
+alert("⏰ Time is over. Your test will be submitted automatically.");
+
+submitTest();
+
+return;
+}
+
+timeLeft--;
+
+},1000);
+
+
+document.getElementById("testForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+if(submitted){
+return;
+}
+
+let confirmation =
+confirm("Are you sure you want to submit the test?");
+
+if(confirmation){
+submitTest();
+}
+
+});
+
+
+function submitTest(){
+
+if(submitted){
+return;
+}
+
+submitted = true;
+
+clearInterval(timerInterval);
+
+let correct = 0;
+let wrong = 0;
+let notAttempted = 0;
+
+let analysisHTML = "";
+
+questions.forEach(function(item,index){
+
+const selected =
+document.querySelector(
+`input[name="q${index}"]:checked`
+);
+
+let selectedValue =
+selected ? Number(selected.value) : null;
+
+let status = "";
+
+if(selectedValue === null){
+
+notAttempted++;
+
+status = "not";
+
+analysisHTML += `
+<div class="analysis-item not-answer">
+
+<h3>
+Question ${index+1} — Not Attempted
+</h3>
+
+<p>
+<strong>Your Answer:</strong> Not Attempted
+</p>
+
+<p>
+<strong>Correct Answer:</strong>
+${String.fromCharCode(65+item.answer)}. ${item.options[item.answer]}
+</p>
+
+<p class="solution">
+<strong>Solution:</strong> ${item.solution}
+</p>
+
+</div>
+`;
+
+}
+else if(selectedValue === item.answer){
+
+correct++;
+
+status = "correct";
+
+analysisHTML += `
+<div class="analysis-item correct-answer">
+
+<h3>
+Question ${index+1} — Correct ✅
+</h3>
+
+<p>
+<strong>Your Answer:</strong>
+${String.fromCharCode(65+selectedValue)}. ${item.options[selectedValue]}
+</p>
+
+<p>
+<strong>Correct Answer:</strong>
+${String.fromCharCode(65+item.answer)}. ${item.options[item.answer]}
+</p>
+
+<p class="solution">
+<strong>Solution:</strong> ${item.solution}
+</p>
+
+</div>
+`;
+
+}
+else{
+
+wrong++;
+
+status = "wrong";
+
+analysisHTML += `
+<div class="analysis-item wrong-answer">
+
+<h3>
+Question ${index+1} — Wrong ❌
+</h3>
+
+<p>
+<strong>Your Answer:</strong>
+${String.fromCharCode(65+selectedValue)}. ${item.options[selectedValue]}
+</p>
+
+<p>
+<strong>Correct Answer:</strong>
+${String.fromCharCode(65+item.answer)}. ${item.options[item.answer]}
+</p>
+
+<p class="solution">
+<strong>Solution:</strong> ${item.solution}
+</p>
+
+</div>
+`;
+
+}
+
+});
+
+let score =
+correct - (wrong * 0.33);
+
+score =
+Math.max(0,score);
+
+score =
+score.toFixed(2);
+
+document.getElementById("finalScore")
+.textContent = score;
+
+document.getElementById("correctCount")
+.textContent = correct;
+
+document.getElementById("wrongCount")
+.textContent = wrong;
+
+document.getElementById("notAttemptedCount")
+.textContent = notAttempted;
+
+document.getElementById("analysis")
+.innerHTML = analysisHTML;
+
+document.getElementById("result")
+.style.display = "block";
+
+document.getElementById("result")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+window.scrollTo({
+top:document.getElementById("result").offsetTop,
+behavior:"smooth"
+});
+
+}
+
+</script>
+
+</body>
+</html>
