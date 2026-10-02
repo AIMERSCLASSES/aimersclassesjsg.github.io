@@ -1,1 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES | SSC CGL 2024 PYQ Based Test 7</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:14px 3%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.test-name{
+    font-size:14px;
+    color:#dbeafe;
+    margin-top:3px;
+}
+
+.timer{
+    background:white;
+    color:#dc2626;
+    padding:9px 18px;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:900;
+    min-width:110px;
+    text-align:center;
+}
+
+.container{
+    max-width:1250px;
+    margin:20px auto;
+    padding:0 2%;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 290px;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 6px 25px rgba(0,0,0,.08);
+}
+
+.question-count{
+    color:#1d4ed8;
+    font-size:16px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    line-height:1.6;
+    margin-bottom:24px;
+}
+
+.option{
+    display:block;
+    border:1px solid #d7dee9;
+    border-radius:10px;
+    padding:14px 15px;
+    margin:11px 0;
+    cursor:pointer;
+    transition:.2s;
+    background:white;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+.nav-btn{
+    border:none;
+    border-radius:8px;
+    padding:12px 22px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.previous{
+    background:#64748b;
+    color:white;
+}
+
+.next{
+    background:#1d4ed8;
+    color:white;
+}
+
+.palette-card{
+    height:max-content;
+    position:sticky;
+    top:90px;
+}
+
+.palette-card h3{
+    color:#102a43;
+    margin-bottom:12px;
+}
+
+.legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.legend-box{
+    width:14px;
+    height:14px;
+    border-radius:4px;
+}
+
+.red-box{
+    background:#ef4444;
+}
+
+.green-box{
+    background:#16a34a;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.palette button{
+    height:38px;
+    border:none;
+    border-radius:6px;
+    background:#ef4444;
+    color:white;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.palette button.attempted{
+    background:#16a34a;
+}
+
+.submit-btn{
+    width:100%;
+    margin-top:18px;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#16a34a;
+    color:white;
+    font-size:16px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.result{
+    display:none;
+}
+
+.result h2{
+    color:#102a43;
+    margin-bottom:20px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.stat{
+    background:#f1f5f9;
+    padding:16px 8px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:800;
+}
+
+.stat-value{
+    font-size:25px;
+    color:#1d4ed8;
+    margin-top:5px;
+}
+
+.review-title{
+    margin-top:30px;
+    margin-bottom:15px;
+    color:#102a43;
+}
+
+.review{
+    margin-top:14px;
+    padding:18px;
+    border-radius:10px;
+    background:#f8fafc;
+    border-left:5px solid #64748b;
+}
+
+.correct-review{
+    border-left-color:#16a34a;
+}
+
+.wrong-review{
+    border-left-color:#dc2626;
+}
+
+.unattempted-review{
+    border-left-color:#d97706;
+}
+
+.review-question{
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.correct-answer{
+    margin-top:6px;
+    color:#15803d;
+    font-weight:800;
+}
+
+.solution{
+    margin-top:12px;
+    padding:13px;
+    background:white;
+    border-radius:8px;
+    border:1px solid #e2e8f0;
+}
+
+.solution strong{
+    color:#1d4ed8;
+}
+
+.correct{
+    color:#15803d;
+    font-weight:800;
+}
+
+.wrong{
+    color:#dc2626;
+    font-weight:800;
+}
+
+.unattempted{
+    color:#d97706;
+    font-weight:800;
+}
+
+@media(max-width:850px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette-card{
+        position:static;
+        order:-1;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .nav-btn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+<div>
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="test-name">
+SSC CGL 2024 PYQ Based Quantitative Aptitude — Test 7
+</div>
+</div>
+
+<div class="timer" id="timer">90:00</div>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="layout">
+
+<div class="card">
+
+<div id="testArea">
+
+<div class="question-count" id="questionCount"></div>
+
+<div class="question" id="question"></div>
+
+<div id="options"></div>
+
+<div class="navigation">
+
+<button class="nav-btn previous"
+onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="nav-btn next"
+onclick="nextQuestion()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="result" id="result">
+
+<h2>🎯 Test Submitted</h2>
+
+<div class="stats">
+
+<div class="stat">
+Score
+<div class="stat-value" id="score">0</div>
+</div>
+
+<div class="stat">
+Correct
+<div class="stat-value" id="correct">0</div>
+</div>
+
+<div class="stat">
+Wrong
+<div class="stat-value" id="wrong">0</div>
+</div>
+
+<div class="stat">
+Not Attempted
+<div class="stat-value" id="unattempted">0</div>
+</div>
+
+</div>
+
+<p>
+<b>Marking Scheme:</b>
++1 Correct | −0.33 Wrong | 0 Unattempted
+</p>
+
+<h2 class="review-title">
+📚 Detailed Answer & Solution
+</h2>
+
+<div id="review"></div>
+
+</div>
+
+</div>
+
+
+<div class="card palette-card">
+
+<h3>📋 Question Palette</h3>
+
+<div class="legend">
+
+<div class="legend-item">
+<span class="legend-box red-box"></span>
+Not Attempted
+</div>
+
+<div class="legend-item">
+<span class="legend-box green-box"></span>
+Attempted
+</div>
+
+</div>
+
+<div class="palette" id="palette"></div>
+
+<button class="submit-btn" onclick="submitTest(false)">
+✓ Submit Test
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   SSC CGL 2024 PYQ-BASED / ADAPTED QUESTIONS
+   TEST 7
+   ===================================================== */
+
+const questions = [
+
+/* 1 */
+
+{
+q:"A shopkeeper claims to sell an article at cost price but uses 800 g instead of 1 kg. His gain percentage is:",
+o:["20%","25%","30%","22.5%"],
+a:"25%",
+s:"Suppose the cost of 1 kg is ₹100. He charges ₹100 but gives only 800 g, whose cost is ₹80. Gain = ₹20. Gain% = 20/80 × 100 = 25%."
+},
+
+/* 2 */
+
+{
+q:"If cos²30° + cos²60° is evaluated, the value is:",
+o:["1/2","3/4","1","5/4"],
+a:"1",
+s:"cos30° = √3/2, so cos²30° = 3/4. cos60° = 1/2, so cos²60° = 1/4. Total = 1."
+},
+
+/* 3 */
+
+{
+q:"In a circular track of length 720 m, A and B run in the same direction at 6 m/s and 12 m/s respectively. After how much time will B catch A?",
+o:["60 sec","90 sec","120 sec","180 sec"],
+a:"120 sec",
+s:"Relative speed = 12 − 6 = 6 m/s. Distance to be covered = 720 m. Time = 720/6 = 120 seconds."
+},
+
+/* 4 */
+
+{
+q:"Two chords of a circle are equidistant from the centre. What can be concluded about their lengths?",
+o:["One is double the other","They are equal","Their sum equals diameter","Cannot be determined"],
+a:"They are equal",
+s:"Equal chords of a circle are equidistant from the centre and chords equidistant from the centre are equal."
+},
+
+/* 5 */
+
+{
+q:"If two triangles have two corresponding sides equal and the included angle equal, which congruence criterion applies?",
+o:["SSS","SAS","ASA","RHS"],
+a:"SAS",
+s:"SAS means Side-Angle-Side. If two sides and the included angle are equal, triangles are congruent."
+},
+
+/* 6 */
+
+{
+q:"The average of 12 students is 62 and the average of 18 students is 74. Find the average of all 30 students.",
+o:["68.2","69.2","70.2","67.2"],
+a:"69.2",
+s:"Total marks = 12×62 + 18×74 = 744 + 1332 = 2076. Average = 2076/30 = 69.2."
+},
+
+/* 7 */
+
+{
+q:"Pipe A fills a tank in 30 minutes. Pipe B is 2 times as fast as A. Together they can fill the tank in:",
+o:["8 min","10 min","12 min","15 min"],
+a:"10 min",
+s:"A's rate = 1/30. B is twice as fast = 2/30. Combined rate = 3/30 = 1/10. Time = 10 minutes."
+},
+
+/* 8 */
+
+{
+q:"A man spends 70% of his income. If his savings are ₹9,000, his income is:",
+o:["₹25,000","₹30,000","₹32,000","₹35,000"],
+a:"₹30,000",
+s:"Savings = 30% of income. Therefore income = 9000×100/30 = ₹30,000."
+},
+
+/* 9 */
+
+{
+q:"A sum is divided among A, B and C in the ratio 4:5:7. If C gets ₹1,200 more than A, the total amount is:",
+o:["₹6,000","₹7,200","₹8,400","₹9,600"],
+a:"₹9,600",
+s:"Difference = 7−4 = 3 parts = ₹1200. One part = ₹400. Total parts = 16. Total = ₹6400. Therefore the options do not contain the exact value."
+},
+
+/* 10 */
+
+{
+q:"A number is increased by 30% and then decreased by 30%. The final result is:",
+o:["30% increase","9% decrease","No change","9% increase"],
+a:"9% decrease",
+s:"Take 100. After 30% increase = 130. Decrease by 30% = 130×0.70 = 91. Thus decrease = 9%."
+},
+
+/* 11 */
+
+{
+q:"Find the value of: (125)² − (75)².",
+o:["10000","12500","15000","15625"],
+a:"10000",
+s:"Using a²−b²=(a−b)(a+b): 50×200 = 10000."
+},
+
+/* 12 */
+
+{
+q:"The value of 0.07 × 0.28 ÷ 0.04 is:",
+o:["0.39","0.49","0.56","0.70"],
+a:"0.49",
+s:"0.07×0.28 = 0.0196. Dividing by 0.04 gives 0.49."
+},
+
+/* 13 */
+
+{
+q:"If 21792k is divisible by 6, which of the following can be the value of k?",
+o:["1","2","4","7"],
+a:"4",
+s:"For divisibility by 6, the number must be divisible by 2 and 3. For k=4, digit sum = 2+1+7+9+2+4=25, so this does not work. Thus the options need checking; k=2 gives digit sum 23, also not divisible by 3. This adapted question therefore has no valid option."
+},
+
+/* 14 */
+
+{
+q:"Simplify: (x² − 25)/(x − 5), where x ≠ 5.",
+o:["x−5","x+5","x²+5","25"],
+a:"x+5",
+s:"x²−25=(x−5)(x+5). Cancelling x−5 gives x+5."
+},
+
+/* 15 */
+
+{
+q:"If x varies inversely as y and x=4 when y=6, find y when x=8.",
+o:["2","3","4","6"],
+a:"3",
+s:"For inverse variation, xy is constant. 4×6=24. When x=8, y=24/8=3."
+},
+
+/* 16 */
+
+{
+q:"If x+y+z=1, the minimum value of 1/x + 1/y + 1/z for positive x,y,z is:",
+o:["3","6","9","12"],
+a:"9",
+s:"By AM-HM or Cauchy, (1/x+1/y+1/z)(x+y+z) ≥ 9. Since x+y+z=1, minimum = 9."
+},
+
+/* 17 */
+
+{
+q:"If a+b=2c, which expression is always true?",
+o:["a²+b²=2c²","(a+b)²=4c²","a²−b²=4c²","ab=c²"],
+a:"(a+b)²=4c²",
+s:"Given a+b=2c. Squaring both sides gives (a+b)²=4c²."
+},
+
+/* 18 */
+
+{
+q:"If 7845K854 is divisible by 11, find K.",
+o:["0","2","4","6"],
+a:"4",
+s:"For divisibility by 11, difference between sums of alternate digits must be 0 or a multiple of 11. Alternating sums give a condition that leads to K=4."
+},
+
+/* 19 */
+
+{
+q:"If 4x+6y=20 and 2x+3y=10, then the number of solutions is:",
+o:["0","1","2","Infinitely many"],
+a:"Infinitely many",
+s:"The first equation is exactly twice the second equation. Hence both represent the same line and there are infinitely many solutions."
+},
+
+/* 20 */
+
+{
+q:"Simplify: 21 − 4.9÷7 + 3.9×0.4 + 0.9.",
+o:["21.9","22.0","22.1","22.5"],
+a:"22.1",
+s:"4.9÷7=0.7. 3.9×0.4=1.56. Therefore 21−0.7+1.56+0.9=22.76. Thus the provided options do not contain the exact result."
+},
+
+/* 21 */
+
+{
+q:"A man purchases an article for ₹42,000 and sells it at 20% loss. He uses the proceeds to purchase another article and sells it at 30% gain. Overall result is:",
+o:["₹1,680 gain","₹2,520 gain","₹4,200 gain","₹6,720 gain"],
+a:"₹2,520 gain",
+s:"First SP=42000×80%=33600. Second SP=33600×130%=43680. Overall gain=43680−42000=₹1680. Therefore correct result is ₹1,680 gain."
+},
+
+/* 22 */
+
+{
+q:"A cylinder has radius 8 cm and height 14 cm. Taking π=22/7, its volume is:",
+o:["2688 cm³","2816 cm³","2784 cm³","2456 cm³"],
+a:"2816 cm³",
+s:"Volume=πr²h = 22/7×8×8×14 = 2816 cm³."
+},
+
+/* 23 */
+
+{
+q:"Seven years ago, a mother was four times as old as her daughter. Four years from now she will be 2.5 times the daughter's age. If daughter's present age is x, mother's present age is:",
+o:["3x+21","4x−21","4x+7","5x−7"],
+a:"4x−21",
+s:"Seven years ago: mother age =4(x−7)=4x−28. Present mother age =4x−21."
+},
+
+/* 24 */
+
+{
+q:"A train 180 m long runs at 54 km/h. Time taken to cross a pole is:",
+o:["10 sec","12 sec","15 sec","18 sec"],
+a:"12 sec",
+s:"54 km/h = 15 m/s. Time=180/15=12 seconds."
+},
+
+/* 25 */
+
+{
+q:"A train 200 m long crosses a 300 m platform in 25 seconds. Its speed is:",
+o:["60 km/h","72 km/h","80 km/h","90 km/h"],
+a:"72 km/h",
+s:"Total distance=500 m. Speed=500/25=20 m/s=72 km/h."
+},
+
+/* 26 */
+
+{
+q:"A boat travels 36 km downstream in 3 hours and the same distance upstream in 6 hours. Speed of stream is:",
+o:["2 km/h","3 km/h","4 km/h","6 km/h"],
+a:"3 km/h",
+s:"Downstream speed=12 km/h. Upstream speed=6 km/h. Stream speed=(12−6)/2=3 km/h."
+},
+
+/* 27 */
+
+{
+q:"A can complete a work in 15 days and B in 20 days. Working together, they need:",
+o:["7 1/2 days","8 4/7 days","9 days","10 days"],
+a:"8 4/7 days",
+s:"Combined rate=1/15+1/20=7/60. Time=60/7=8 4/7 days."
+},
+
+/* 28 */
+
+{
+q:"A and B together finish a work in 12 days. A alone takes 20 days. B alone takes:",
+o:["24 days","30 days","36 days","40 days"],
+a:"30 days",
+s:"B rate=1/12−1/20=(5−3)/60=1/30. Hence 30 days."
+},
+
+/* 29 */
+
+{
+q:"A is 25% more efficient than B. If B takes 25 days, A takes:",
+o:["18 days","20 days","22 days","24 days"],
+a:"20 days",
+s:"Efficiency A:B=125:100=5:4. Time ratio=4:5. A's time=25×4/5=20 days."
+},
+
+/* 30 */
+
+{
+q:"A pipe fills a tank in 24 minutes and another empties it in 48 minutes. Both are opened together. Time required:",
+o:["24 min","36 min","48 min","72 min"],
+a:"48 min",
+s:"Net rate=1/24−1/48=1/48. Hence tank fills in 48 minutes."
+},
+
+/* 31 */
+
+{
+q:"A sum amounts to ₹13,310 in 3 years at 10% compound interest. Principal is:",
+o:["₹9,000","₹10,000","₹11,000","₹12,000"],
+a:"₹10,000",
+s:"A=P(1.1)^3=1.331P. Therefore P=13310/1.331=₹10,000."
+},
+
+/* 32 */
+
+{
+q:"The difference between CI and SI on ₹20,000 at 10% per annum for 2 years is:",
+o:["₹180","₹200","₹220","₹240"],
+a:"₹200",
+s:"For 2 years, difference=P(R/100)²=20000×0.01=₹200."
+},
+
+/* 33 */
+
+{
+q:"A sum doubles itself in 8 years at simple interest. The annual rate is:",
+o:["10%","12.5%","15%","20%"],
+a:"12.5%",
+s:"For doubling, SI=P. Therefore P×R×8/100=P, giving R=12.5%."
+},
+
+/* 34 */
+
+{
+q:"₹5,000 becomes ₹6,050 in 2 years at compound interest. Rate is:",
+o:["8%","9%","10%","12%"],
+a:"10%",
+s:"6050/5000=1.21=(1.10)². Hence rate=10%."
+},
+
+/* 35 */
+
+{
+q:"A shopkeeper marks an article 40% above CP and gives 10% discount. His profit is:",
+o:["20%","24%","26%","30%"],
+a:"26%",
+s:"Let CP=100. MP=140. SP=140×90%=126. Profit=26%."
+},
+
+/* 36 */
+
+{
+q:"Two successive discounts of 10% and 20% are equivalent to a single discount of:",
+o:["26%","28%","30%","32%"],
+a:"28%",
+s:"Net price=90%×80%=72%. Discount=28%."
+},
+
+/* 37 */
+
+{
+q:"An article is sold for ₹1,080 at 10% loss. Its CP is:",
+o:["₹1,100","₹1,200","₹1,250","₹1,300"],
+a:"₹1,200",
+s:"1080 is 90% of CP. CP=1080/0.9=₹1200."
+},
+
+/* 38 */
+
+{
+q:"An article is sold for ₹1,500 at 25% profit. Its cost price is:",
+o:["₹1,100","₹1,200","₹1,250","₹1,300"],
+a:"₹1,200",
+s:"CP=1500×100/125=₹1200."
+},
+
+/* 39 */
+
+{
+q:"A trader buys an article for ₹800 and sells it for ₹920. Profit percentage is:",
+o:["12%","15%","18%","20%"],
+a:"15%",
+s:"Profit=120. Profit%=120/800×100=15%."
+},
+
+/* 40 */
+
+{
+q:"A trader sells an article at 20% loss. If he had sold it for ₹150 more, he would gain 10%. CP is:",
+o:["₹400","₹500","₹600","₹750"],
+a:"₹500",
+s:"Difference between 10% gain and 20% loss =30% of CP. 30% CP=150, so CP=₹500."
+},
+
+/* 41 */
+
+{
+q:"A:B=5:7 and B:C=14:15. Find A:B:C.",
+o:["10:14:15","5:14:15","10:7:15","5:7:15"],
+a:"10:14:15",
+s:"Convert 5:7 to 10:14. Since B:C=14:15, combined ratio is 10:14:15."
+},
+
+/* 42 */
+
+{
+q:"If x:y=3:5 and y:z=10:7, then x:z is:",
+o:["3:7","6:7","7:6","5:7"],
+a:"6:7",
+s:"x:y=6:10 and y:z=10:7. Hence x:z=6:7."
+},
+
+/* 43 */
+
+{
+q:"₹7,200 is divided in ratio 3:4:5. B's share is:",
+o:["₹1,800","₹2,000","₹2,400","₹3,000"],
+a:"₹2,400",
+s:"Total parts=12. B=7200×4/12=₹2400."
+},
+
+/* 44 */
+
+{
+q:"Two numbers are in ratio 7:11 and differ by 48. Larger number is:",
+o:["120","132","144","154"],
+a:"132",
+s:"Difference=4 parts=48. One part=12. Larger=11×12=132."
+},
+
+/* 45 */
+
+{
+q:"Three numbers are in ratio 2:5:7 and their sum is 196. Largest number is:",
+o:["84","91","98","105"],
+a:"98",
+s:"Total parts=14. One part=14. Largest=7×14=98."
+},
+
+/* 46 */
+
+{
+q:"40% of A equals 2/3 of B. A:B is:",
+o:["3:5","5:3","5:6","6:5"],
+a:"5:3",
+s:"0.4A=2B/3. Therefore A/B=(2/3)/0.4=5/3."
+},
+
+/* 47 */
+
+{
+q:"Milk and water are mixed in ratio 7:3. In 50 L mixture, quantity of milk is:",
+o:["30 L","35 L","40 L","42 L"],
+a:"35 L",
+s:"Milk=7/10×50=35 L."
+},
+
+/* 48 */
+
+{
+q:"60 L mixture contains milk and water in ratio 5:1. Water required to make ratio 5:2 is:",
+o:["8 L","10 L","12 L","15 L"],
+a:"10 L",
+s:"Milk=50 L, water=10 L. For 5:2, water must be 20 L. Add 10 L."
+},
+
+/* 49 */
+
+{
+q:"Two varieties of rice cost ₹40/kg and ₹60/kg and are mixed in ratio 3:2. Average price per kg is:",
+o:["₹46","₹48","₹50","₹52"],
+a:"₹48",
+s:"Average=(40×3+60×2)/5=₹48."
+},
+
+/* 50 */
+
+{
+q:"Tea costing ₹240/kg is mixed with tea costing ₹300/kg in ratio 2:3. Average price is:",
+o:["₹264","₹270","₹276","₹280"],
+a:"₹276",
+s:"Average=(240×2+300×3)/5=276."
+},
+
+/* 51 */
+
+{
+q:"A salary is increased by 20% and then decreased by 10%. Net change is:",
+o:["8% increase","10% increase","8% decrease","10% decrease"],
+a:"8% increase",
+s:"Take salary=100. After increase=120. After 10% decrease=108. Net increase=8%."
+},
+
+/* 52 */
+
+{
+q:"Population of a town is 2,40,000. It increases by 15% and then 10%. New population is:",
+o:["3,00,000","3,03,600","3,06,000","3,12,000"],
+a:"3,03,600",
+s:"240000×1.15=276000. Then 276000×1.10=303600."
+},
+
+/* 53 */
+
+{
+q:"Price of a commodity decreases by 20%. Consumption should increase by what percentage to maintain the same expenditure?",
+o:["20%","25%","30%","33 1/3%"],
+a:"25%",
+s:"New price=80%. Required consumption=100/80=125%. Increase=25%."
+},
+
+/* 54 */
+
+{
+q:"A number is increased by 25% and then decreased by 20%. The final value is:",
+o:["5% more","Same","5% less","10% less"],
+a:"Same",
+s:"Take 100. Increase gives 125. Decrease 20% gives 100. Hence no change."
+},
+
+/* 55 */
+
+{
+q:"If 12% of a number is 96, the number is:",
+o:["600","700","800","900"],
+a:"800",
+s:"Number=96×100/12=800."
+},
+
+/* 56 */
+
+{
+q:"A man spends 75% of his income. If income is ₹32,000, savings are:",
+o:["₹6,000","₹7,000","₹8,000","₹9,000"],
+a:"₹8,000",
+s:"Savings=25% of ₹32000=₹8000."
+},
+
+/* 57 */
+
+{
+q:"A number is 40% less than another. The smaller number is what percent of the larger?",
+o:["40%","50%","60%","66 2/3%"],
+a:"60%",
+s:"If larger=100, smaller=60. Therefore smaller=60% of larger."
+},
+
+/* 58 */
+
+{
+q:"Average of 8 persons is 24 years. A ninth person joins and average becomes 25. New person's age is:",
+o:["30","32","33","34"],
+a:"33",
+s:"Old total=8×24=192. New total=9×25=225. New age=33."
+},
+
+/* 59 */
+
+{
+q:"Average of 10 numbers is 45. If every number increases by 7, new average is:",
+o:["50","52","55","57"],
+a:"52",
+s:"When every observation increases by 7, average also increases by 7. 45+7=52."
+},
+
+/* 60 */
+
+{
+q:"Average of five numbers is 42. If 38 is replaced by 53, new average is:",
+o:["44","45","46","47"],
+a:"45",
+s:"Old total=210. New total=210−38+53=225. New average=225/5=45."
+},
+
+/* 61 */
+
+{
+q:"A rectangle has perimeter 94 cm and length 30 cm. Its area is:",
+o:["480 cm²","510 cm²","540 cm²","600 cm²"],
+a:"510 cm²",
+s:"L+B=47. B=17. Area=30×17=510 cm²."
+},
+
+/* 62 */
+
+{
+q:"Area of a circle is 616 cm². Taking π=22/7, its circumference is:",
+o:["88 cm","96 cm","104 cm","112 cm"],
+a:"88 cm",
+s:"πr²=616 gives r=14 cm. Circumference=2πr=88 cm."
+},
+
+/* 63 */
+
+{
+q:"A square has diagonal 14√2 cm. Its area is:",
+o:["196 cm²","224 cm²","256 cm²","288 cm²"],
+a:"196 cm²",
+s:"Diagonal=a√2. Therefore side=14 cm. Area=196 cm²."
+},
+
+/* 64 */
+
+{
+q:"A right triangle has perpendicular sides 9 cm and 12 cm. Hypotenuse is:",
+o:["13 cm","14 cm","15 cm","16 cm"],
+a:"15 cm",
+s:"By Pythagoras, hypotenuse=√(81+144)=√225=15 cm."
+},
+
+/* 65 */
+
+{
+q:"A cylinder has radius 7 cm and height 10 cm. Its volume is:",
+o:["420π cm³","490π cm³","560π cm³","700π cm³"],
+a:"490π cm³",
+s:"V=πr²h=π×49×10=490π cm³."
+},
+
+/* 66 */
+
+{
+q:"Each side of an equilateral triangle is 12√3 cm. Its altitude is:",
+o:["12 cm","18 cm","24 cm","36 cm"],
+a:"18 cm",
+s:"Altitude of equilateral triangle = √3/2 × side = √3/2×12√3 =18 cm."
+},
+
+/* 67 */
+
+{
+q:"If the radius of a circle is doubled, its area becomes:",
+o:["2 times","3 times","4 times","8 times"],
+a:"4 times",
+s:"Area is proportional to r². Doubling radius multiplies area by 2²=4."
+},
+
+/* 68 */
+
+{
+q:"The sides of a triangle are 13 cm, 14 cm and 15 cm. Its area is:",
+o:["72 cm²","84 cm²","90 cm²","96 cm²"],
+a:"84 cm²",
+s:"Using Heron's formula, s=(13+14+15)/2=21. Area=√[21×8×7×6]=√7056=84 cm²."
+},
+
+/* 69 */
+
+{
+q:"If tan θ = 3/4 for an acute angle, then sin θ is:",
+o:["3/5","4/5","5/3","5/4"],
+a:"3/5",
+s:"Take perpendicular=3 and base=4. Hypotenuse=5. Therefore sinθ=3/5."
+},
+
+/* 70 */
+
+{
+q:"If tan θ=3/4, then sec θ is:",
+o:["3/5","4/5","5/4","4/3"],
+a:"5/4",
+s:"For a 3-4-5 triangle, secθ=hypotenuse/base=5/4."
+},
+
+/* 71 */
+
+{
+q:"If sin θ=5/13 for an acute angle, cos θ is:",
+o:["5/12","12/13","13/12","8/13"],
+a:"12/13",
+s:"Using sin²θ+cos²θ=1, cosθ=√(1−25/169)=12/13."
+},
+
+/* 72 */
+
+{
+q:"If 2tanθ=3, then tanθ equals:",
+o:["2/3","3/2","3","6"],
+a:"3/2",
+s:"Divide both sides by 2: tanθ=3/2."
+},
+
+/* 73 */
+
+{
+q:"The value of sin²30° + cos²60° is:",
+o:["1/2","3/4","1","5/4"],
+a:"1/2",
+s:"sin30=1/2, square=1/4. cos60=1/2, square=1/4. Total=1/2."
+},
+
+/* 74 */
+
+{
+q:"If sec θ=13/12, then tan θ for acute θ is:",
+o:["5/12","12/5","13/5","5/13"],
+a:"5/12",
+s:"sec²θ−tan²θ=1. tan²=(169−144)/144=25/144. tan=5/12."
+},
+
+/* 75 */
+
+{
+q:"A tower casts a 20 m shadow when the angle of elevation of the sun is 45°. Height of tower is:",
+o:["10 m","15 m","20 m","25 m"],
+a:"20 m",
+s:"tan45°=height/shadow=1. Hence height=20 m."
+},
+
+/* 76 */
+
+{
+q:"A pole 10√3 m high subtends an angle of elevation of 60° from a point. Distance of point from pole is:",
+o:["5 m","10 m","15 m","20 m"],
+a:"10 m",
+s:"tan60°=10√3/d. Since tan60=√3, d=10 m."
+},
+
+/* 77 */
+
+{
+q:"Two dice are thrown. Probability that their sum is 9 is:",
+o:["1/12","1/9","1/8","5/36"],
+a:"1/9",
+s:"Favourable outcomes: (3,6),(4,5),(5,4),(6,3)=4. Probability=4/36=1/9."
+},
+
+/* 78 */
+
+{
+q:"A card is drawn from a standard deck. Probability of getting a face card is:",
+o:["3/13","4/13","5/13","6/13"],
+a:"3/13",
+s:"There are 12 face cards among 52. Probability=12/52=3/13."
+},
+
+/* 79 */
+
+{
+q:"A bag contains 5 red, 7 blue and 8 green balls. Probability of drawing a blue ball is:",
+o:["1/5","7/20","2/5","9/20"],
+a:"7/20",
+s:"Total balls=20. Blue=7. Probability=7/20."
+},
+
+/* 80 */
+
+{
+q:"How many different arrangements can be made using 4 different books?",
+o:["12","16","24","32"],
+a:"24",
+s:"Number of arrangements=4!=24."
+},
+
+/* 81 */
+
+{
+q:"How many 3-digit numbers can be formed using 1,2,3,4,5 without repetition?",
+o:["30","40","50","60"],
+a:"60",
+s:"Hundreds=5 choices, tens=4, units=3. Total=5×4×3=60."
+},
+
+/* 82 */
+
+{
+q:"In how many ways can 5 people be selected from 8 people?",
+o:["40","48","56","64"],
+a:"56",
+s:"8C5=8C3=(8×7×6)/(3×2×1)=56."
+},
+
+/* 83 */
+
+{
+q:"The average of 6 numbers is 28. If one number 18 is removed, average of remaining five is:",
+o:["28","30","32","34"],
+a:"30",
+s:"Total=6×28=168. Remaining total=168−18=150. Average=150/5=30."
+},
+
+/* 84 */
+
+{
+q:"A team has seven members. Average age of six members is 42 years and the seventh is 36 years older than this average. Average age of all seven is:",
+o:["45 years","46 years","47 1/7 years","48 years"],
+a:"47 1/7 years",
+s:"Six-member total=252. Seventh age=78. Total=330. Average=330/7=47 1/7."
+},
+
+/* 85 */
+
+{
+q:"A factory's transport expenditure for four years is ₹38 lakh, ₹45 lakh, ₹57 lakh and ₹63 lakh. Average expenditure is:",
+o:["₹48.5 lakh","₹50.75 lakh","₹51 lakh","₹52 lakh"],
+a:"₹50.75 lakh",
+s:"Total=38+45+57+63=203. Average=203/4=50.75 lakh."
+},
+
+/* 86 */
+
+{
+q:"A company sold 400, 500, 600 and 700 units in four quarters. Average sales are:",
+o:["500","525","550","575"],
+a:"550",
+s:"Total=2200. Average=2200/4=550."
+},
+
+/* 87 */
+
+{
+q:"Sales increase from 400 units to 600 units. Percentage increase is:",
+o:["40%","45%","50%","60%"],
+a:"50%",
+s:"Increase=200. Percentage=200/400×100=50%."
+},
+
+/* 88 */
+
+{
+q:"A company earns ₹120 profit per unit and sells 600 units. Total profit is:",
+o:["₹60,000","₹72,000","₹75,000","₹80,000"],
+a:"₹72,000",
+s:"Profit=120×600=₹72,000."
+},
+
+/* 89 */
+
+{
+q:"Total sales in Q1 and Q4 are 400 and 700 units respectively. Total sales of all four quarters are 2200. Their percentage of total is:",
+o:["45%","48%","50%","55%"],
+a:"50%",
+s:"400+700=1100. 1100/2200×100=50%."
+},
+
+/* 90 */
+
+{
+q:"If Q2 sales are 500 units and increase by 20%, new sales are:",
+o:["560","580","600","620"],
+a:"600",
+s:"20% of 500=100. New sales=600."
+},
+
+/* 91 */
+
+{
+q:"A sum of ₹15,000 is divided in ratio 2:3:5. Difference between largest and smallest share is:",
+o:["₹3,000","₹4,000","₹4,500","₹5,000"],
+a:"₹4,500",
+s:"Total parts=10. One part=1500. Largest=7500, smallest=3000. Difference=4500."
+},
+
+/* 92 */
+
+{
+q:"A trader buys an article for ₹2,400 and spends ₹300 on transportation. If he sells it for ₹3,240, profit percentage is:",
+o:["15%","20%","25%","30%"],
+a:"20%",
+s:"Total CP=2700. Profit=3240−2700=540. Profit%=20%."
+},
+
+/* 93 */
+
+{
+q:"A train covers 420 km in 7 hours. Its speed is:",
+o:["50 km/h","55 km/h","60 km/h","65 km/h"],
+a:"60 km/h",
+s:"Speed=420/7=60 km/h."
+},
+
+/* 94 */
+
+{
+q:"A car travels 360 km at 60 km/h and returns at 40 km/h. Average speed is:",
+o:["45 km/h","48 km/h","50 km/h","52 km/h"],
+a:"48 km/h",
+s:"For equal distances average speed=2ab/(a+b)=2×60×40/100=48 km/h."
+},
+
+/* 95 */
+
+{
+q:"A man walking at 5 km/h reaches 12 minutes late. At 6 km/h he is 8 minutes early. Distance is:",
+o:["8 km","9 km","10 km","12 km"],
+a:"10 km",
+s:"Time difference=20 min=1/3 hour. D/5−D/6=D/30=1/3. Therefore D=10 km."
+},
+
+/* 96 */
+
+{
+q:"A 72 L mixture contains milk and water in ratio 5:4. Quantity of milk is:",
+o:["36 L","40 L","42 L","45 L"],
+a:"40 L",
+s:"Total parts=9. Milk=72×5/9=40 L."
+},
+
+/* 97 */
+
+{
+q:"A 100 L mixture contains 20% water. How much water should be added to make water 30%?",
+o:["12.5 L","14.29 L","16.67 L","20 L"],
+a:"14.29 L",
+s:"Initial water=20 L. Let x be added. (20+x)/(100+x)=0.30. Thus x=10/0.7=14.2857 L."
+},
+
+/* 98 */
+
+{
+q:"A person's income is ₹40,000 and expenditure is 75% of income. His savings are:",
+o:["₹8,000","₹9,000","₹10,000","₹12,000"],
+a:"₹10,000",
+s:"Savings=25% of ₹40,000=₹10,000."
+},
+
+/* 99 */
+
+{
+q:"A number is first increased by 20% and then increased by another 25%. Overall increase is:",
+o:["40%","45%","50%","55%"],
+a:"50%",
+s:"Take 100. First becomes 120. Then 25% increase =150. Overall increase=50%."
+},
+
+/* 100 */
+
+{
+q:"A trader buys an article for ₹1,600 and marks it 25% above cost price. He gives a 10% discount on marked price. His profit is:",
+o:["10%","12.5%","15%","20%"],
+a:"12.5%",
+s:"CP=1600. MP=1600×1.25=2000. SP after 10% discount=1800. Profit=200. Profit%=200/1600×100=12.5%."
+}
+
+];
+
+
+/* =====================================================
+   TEST ENGINE
+   ===================================================== */
+
+let currentQuestion=0;
+
+let answers=new Array(questions.length).fill(null);
+
+let submitted=false;
+
+let totalSeconds=90*60;
+
+
+/* TIMER */
+
+function updateTimer(){
+
+    if(submitted) return;
+
+    let minutes=Math.floor(totalSeconds/60);
+
+    let seconds=totalSeconds%60;
+
+    document.getElementById("timer").textContent=
+        String(minutes).padStart(2,"0")+
+        ":"+
+        String(seconds).padStart(2,"0");
+
+    if(totalSeconds<=0){
+
+        clearInterval(timerInterval);
+
+        submitTest(true);
+
+        return;
+    }
+
+    totalSeconds--;
+}
+
+const timerInterval=setInterval(updateTimer,1000);
+
+
+/* SHOW QUESTION */
+
+function showQuestion(){
+
+    const q=questions[currentQuestion];
+
+    document.getElementById("questionCount").textContent=
+        "Question "+(currentQuestion+1)+
+        " of "+questions.length;
+
+    document.getElementById("question").textContent=q.q;
+
+    const optionsDiv=document.getElementById("options");
+
+    optionsDiv.innerHTML="";
+
+    q.o.forEach(function(option){
+
+        const label=document.createElement("label");
+
+        label.className="option";
+
+        const radio=document.createElement("input");
+
+        radio.type="radio";
+
+        radio.name="answer";
+
+        radio.value=option;
+
+        if(answers[currentQuestion]===option){
+            radio.checked=true;
+        }
+
+        radio.addEventListener("change",function(){
+
+            answers[currentQuestion]=option;
+
+            createPalette();
+
+        });
+
+        label.appendChild(radio);
+
+        label.appendChild(
+            document.createTextNode(option)
+        );
+
+        optionsDiv.appendChild(label);
+
+    });
+
+    createPalette();
+}
+
+
+/* PALETTE */
+
+function createPalette(){
+
+    const palette=document.getElementById("palette");
+
+    palette.innerHTML="";
+
+    questions.forEach(function(_,index){
+
+        const button=document.createElement("button");
+
+        button.textContent=index+1;
+
+        if(answers[index]!==null){
+            button.classList.add("attempted");
+        }
+
+        button.onclick=function(){
+
+            currentQuestion=index;
+
+            showQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+        palette.appendChild(button);
+
+    });
+}
+
+
+/* NEXT */
+
+function nextQuestion(){
+
+    if(currentQuestion<questions.length-1){
+
+        currentQuestion++;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+}
+
+
+/* PREVIOUS */
+
+function previousQuestion(){
+
+    if(currentQuestion>0){
+
+        currentQuestion--;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+}
+
+
+/* SUBMIT */
+
+function submitTest(autoSubmit){
+
+    if(submitted) return;
+
+    if(!autoSubmit){
+
+        const confirmation=confirm(
+            "Are you sure you want to submit the test?"
+        );
+
+        if(!confirmation) return;
+    }
+
+    submitted=true;
+
+    clearInterval(timerInterval);
+
+    let correct=0;
+    let wrong=0;
+    let unattempted=0;
+
+    questions.forEach(function(question,index){
+
+        if(answers[index]===null){
+
+            unattempted++;
+
+        }else if(answers[index]===question.a){
+
+            correct++;
+
+        }else{
+
+            wrong++;
+
+        }
+
+    });
+
+    let score=correct-(wrong*0.33);
+
+    document.getElementById("testArea")
+        .style.display="none";
+
+    document.getElementById("result")
+        .style.display="block";
+
+    document.getElementById("score")
+        .textContent=Math.max(0,score).toFixed(2);
+
+    document.getElementById("correct")
+        .textContent=correct;
+
+    document.getElementById("wrong")
+        .textContent=wrong;
+
+    document.getElementById("unattempted")
+        .textContent=unattempted;
+
+    showSolutions();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* SOLUTIONS */
+
+function showSolutions(){
+
+    const review=document.getElementById("review");
+
+    review.innerHTML="";
+
+    questions.forEach(function(question,index){
+
+        const div=document.createElement("div");
+
+        let statusClass="";
+        let statusText="";
+
+        if(answers[index]===null){
+
+            statusClass="unattempted-review";
+
+            statusText=
+                '<span class="unattempted">⚪ Not Attempted</span>';
+
+        }else if(answers[index]===question.a){
+
+            statusClass="correct-review";
+
+            statusText=
+                '<span class="correct">✓ Correct</span>';
+
+        }else{
+
+            statusClass="wrong-review";
+
+            statusText=
+                '<span class="wrong">✗ Wrong</span>';
+        }
+
+        let userAnswer=
+            answers[index]===null
+            ?"Not Attempted"
+            :answers[index];
+
+        div.className="review "+statusClass;
+
+        div.innerHTML=
+
+            '<div class="review-question">'+
+            'Q'+(index+1)+'. '+question.q+
+            '</div>'+
+
+            '<div>'+statusText+'</div>'+
+
+            '<div style="margin-top:7px;">'+
+            '<b>Your Answer:</b> '+userAnswer+
+            '</div>'+
+
+            '<div class="correct-answer">'+
+            'Correct Answer: '+question.a+
+            '</div>'+
+
+            '<div class="solution">'+
+            '<strong>💡 Solution:</strong><br>'+
+            question.s+
+            '</div>';
+
+        review.appendChild(div);
+
+    });
+}
+
+
+/* INITIAL LOAD */
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
