@@ -1,1 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES - Indian Polity Test 1</title>
 
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fa;
+    color:#222;
+}
+
+header{
+    background:#17365d;
+    color:white;
+    padding:16px 20px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+header h1{
+    margin:0;
+    font-size:25px;
+}
+
+header p{
+    margin:6px 0 0;
+    font-size:14px;
+}
+
+.container{
+    max-width:1200px;
+    margin:20px auto;
+    display:flex;
+    gap:20px;
+    padding:0 15px;
+}
+
+.main{
+    flex:1;
+    min-width:0;
+}
+
+.sidebar{
+    width:260px;
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    height:max-content;
+    position:sticky;
+    top:95px;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+
+.sidebar h3{
+    margin-top:0;
+    text-align:center;
+    color:#17365d;
+}
+
+.timer{
+    background:#fff3cd;
+    color:#856404;
+    padding:12px;
+    border-radius:8px;
+    text-align:center;
+    font-size:21px;
+    font-weight:bold;
+    margin-bottom:14px;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qnum{
+    border:1px solid #bbb;
+    background:#f7f7f7;
+    padding:8px 3px;
+    border-radius:5px;
+    cursor:pointer;
+    text-align:center;
+    font-size:13px;
+}
+
+.qnum:hover{
+    background:#dcecff;
+}
+
+.qnum.attempted{
+    background:#28a745;
+    color:white;
+    border-color:#218838;
+}
+
+.legend{
+    margin-top:15px;
+    font-size:12px;
+}
+
+.legend span{
+    display:inline-block;
+    width:14px;
+    height:14px;
+    vertical-align:middle;
+    margin-right:5px;
+    border:1px solid #aaa;
+}
+
+.green{
+    background:#28a745!important;
+}
+
+.white{
+    background:#f7f7f7;
+}
+
+.top-info{
+    background:white;
+    padding:14px;
+    border-radius:8px;
+    margin-bottom:15px;
+    box-shadow:0 2px 5px rgba(0,0,0,.08);
+    font-size:14px;
+    line-height:1.6;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    padding:22px;
+    margin-bottom:18px;
+    box-shadow:0 2px 7px rgba(0,0,0,.10);
+    scroll-margin-top:90px;
+}
+
+.question-title{
+    font-weight:bold;
+    font-size:17px;
+    line-height:1.5;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    padding:11px 13px;
+    margin:8px 0;
+    border:1px solid #ddd;
+    border-radius:7px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#eef5ff;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.solution{
+    display:none;
+    margin-top:15px;
+    padding:13px;
+    border-radius:7px;
+    background:#eef8ee;
+    border-left:4px solid #28a745;
+    line-height:1.55;
+}
+
+.correct{
+    color:#16852b;
+    font-weight:bold;
+}
+
+.result{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    margin-bottom:20px;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+
+.result h2{
+    color:#17365d;
+}
+
+#submitBtn{
+    width:100%;
+    padding:15px;
+    background:#17365d;
+    color:white;
+    border:0;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    margin:10px 0 30px;
+}
+
+#submitBtn:hover{
+    background:#0d2745;
+}
+
+#submitBtn:disabled{
+    background:#777;
+    cursor:not-allowed;
+}
+
+@media(max-width:800px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        position:sticky;
+        top:0;
+        z-index:50;
+    }
+
+    .palette{
+        grid-template-columns:repeat(10,1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>AIMERS CLASSES</h1>
+<p>SSC CGL Indian Polity Mock Test - TEST 1 | 100 Questions | 60 Minutes</p>
+</header>
+
+<div class="container">
+
+<main class="main">
+
+<div class="top-info">
+<b>Instructions:</b><br>
+1. Total Questions: <b>100</b><br>
+2. Time: <b>60 Minutes</b><br>
+3. Each question carries 1 mark.<br>
+4. Select one option for each question.<br>
+5. Attempted questions will automatically turn <b>GREEN</b> in the question palette.<br>
+6. After submission, score and detailed solutions will be displayed.
+</div>
+
+<div id="result" class="result"></div>
+
+<div id="questions"></div>
+
+<button id="submitBtn" onclick="submitTest()">
+SUBMIT TEST
+</button>
+
+</main>
+
+<aside class="sidebar">
+
+<div class="timer">
+⏱ TIME<br>
+<span id="timer">60:00</span>
+</div>
+
+<h3>Question Palette</h3>
+
+<div class="palette" id="palette"></div>
+
+<div class="legend">
+<p>
+<span class="white"></span>
+Not Attempted
+</p>
+
+<p>
+<span class="green"></span>
+Attempted
+</p>
+</div>
+
+</aside>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   INDIAN POLITY TEST 1
+   SSC CGL LEVEL
+   100 QUESTIONS
+===================================================== */
+
+const questions = [
+
+{
+q:"The Constitution of India was adopted by the Constituent Assembly on:",
+o:["15 August 1947","26 November 1949","26 January 1950","9 December 1946"],
+a:1,
+e:"The Constitution of India was adopted on 26 November 1949. It came into force on 26 January 1950."
+},
+
+{
+q:"The Constitution of India came into force on:",
+o:["15 August 1947","26 November 1949","26 January 1950","2 October 1950"],
+a:2,
+e:"The Constitution came into force on 26 January 1950. The date was chosen to commemorate the declaration of Purna Swaraj in 1930."
+},
+
+{
+q:"Who was the Chairman of the Drafting Committee of the Constituent Assembly?",
+o:["Jawaharlal Nehru","Rajendra Prasad","B. R. Ambedkar","Sardar Patel"],
+a:2,
+e:"Dr. B. R. Ambedkar was the Chairman of the Drafting Committee."
+},
+
+{
+q:"Who served as the Constitutional Adviser to the Constituent Assembly?",
+o:["B. N. Rau","K. M. Munshi","Alladi Krishnaswami Ayyar","N. Gopalaswami Ayyangar"],
+a:0,
+e:"Sir B. N. Rau served as the Constitutional Adviser to the Constituent Assembly."
+},
+
+{
+q:"The Constituent Assembly of India was formed under the:",
+o:["Cripps Mission","Cabinet Mission Plan","Mountbatten Plan","Indian Independence Act"],
+a:1,
+e:"The Constituent Assembly was constituted under the Cabinet Mission Plan of 1946."
+},
+
+{
+q:"The first meeting of the Constituent Assembly was held on:",
+o:["9 December 1946","15 August 1947","26 November 1949","26 January 1950"],
+a:0,
+e:"The Constituent Assembly first met on 9 December 1946."
+},
+
+{
+q:"Who was the temporary Chairman of the Constituent Assembly?",
+o:["Rajendra Prasad","Sachchidananda Sinha","B. R. Ambedkar","Jawaharlal Nehru"],
+a:1,
+e:"Dr. Sachchidananda Sinha served as the temporary Chairman of the Constituent Assembly."
+},
+
+{
+q:"Who was elected as the permanent President of the Constituent Assembly?",
+o:["Jawaharlal Nehru","B. R. Ambedkar","Rajendra Prasad","Sardar Patel"],
+a:2,
+e:"Dr. Rajendra Prasad was elected President of the Constituent Assembly."
+},
+
+{
+q:"The Objective Resolution was moved by:",
+o:["B. R. Ambedkar","Jawaharlal Nehru","Rajendra Prasad","Sardar Patel"],
+a:1,
+e:"Jawaharlal Nehru moved the Objective Resolution on 13 December 1946."
+},
+
+{
+q:"The Objective Resolution ultimately became the basis of the:",
+o:["Fundamental Rights","Preamble","Directive Principles","Fundamental Duties"],
+a:1,
+e:"The ideals contained in the Objective Resolution became the basis of the Preamble."
+},
+
+{
+q:"Which part of the Constitution contains the Fundamental Rights?",
+o:["Part II","Part III","Part IV","Part V"],
+a:1,
+e:"Fundamental Rights are contained in Part III, Articles 12 to 35."
+},
+
+{
+q:"Fundamental Rights in the Indian Constitution were mainly inspired by the Constitution of:",
+o:["USA","UK","Ireland","Canada"],
+a:0,
+e:"The idea of Fundamental Rights was borrowed mainly from the US Constitution."
+},
+
+{
+q:"The Directive Principles of State Policy were inspired by the Constitution of:",
+o:["Ireland","USA","Canada","Australia"],
+a:0,
+e:"The Directive Principles were inspired by the Irish Constitution."
+},
+
+{
+q:"The idea of a parliamentary form of government was borrowed from:",
+o:["USA","UK","Ireland","Russia"],
+a:1,
+e:"India adopted the parliamentary system largely from the British constitutional system."
+},
+
+{
+q:"The concept of a federal system with a strong Centre was influenced by:",
+o:["Canada","USA","Ireland","France"],
+a:0,
+e:"The Canadian Constitution influenced India's federal structure with a strong central government."
+},
+
+{
+q:"The idea of Fundamental Duties was borrowed from:",
+o:["USA","USSR","UK","Ireland"],
+a:1,
+e:"Fundamental Duties were inspired by the Constitution of the former USSR."
+},
+
+{
+q:"The Preamble declares India to be a:",
+o:["Sovereign Socialist Secular Democratic Republic","Federal Socialist Monarchy","Sovereign Parliamentary Kingdom","Unitary Democratic Republic"],
+a:0,
+e:"The Preamble describes India as a Sovereign Socialist Secular Democratic Republic."
+},
+
+{
+q:"The words 'Socialist' and 'Secular' were added to the Preamble by the:",
+o:["42nd Amendment","44th Amendment","73rd Amendment","86th Amendment"],
+a:0,
+e:"The 42nd Constitutional Amendment Act, 1976 added the words Socialist, Secular and Integrity."
+},
+
+{
+q:"The Preamble was held to be a part of the Constitution in:",
+o:["Golaknath case","Kesavananda Bharati case","Minerva Mills case","Maneka Gandhi case"],
+a:1,
+e:"In Kesavananda Bharati v. State of Kerala (1973), the Supreme Court held that the Preamble is part of the Constitution."
+},
+
+{
+q:"Which Article deals with equality before law?",
+o:["Article 12","Article 14","Article 16","Article 18"],
+a:1,
+e:"Article 14 guarantees equality before law and equal protection of laws."
+},
+
+{
+q:"Article 15 prohibits discrimination on grounds including:",
+o:["Religion, race, caste, sex and place of birth","Only religion","Only caste","Only language"],
+a:0,
+e:"Article 15 prohibits discrimination on specified grounds including religion, race, caste, sex and place of birth."
+},
+
+{
+q:"Equality of opportunity in public employment is guaranteed under:",
+o:["Article 14","Article 15","Article 16","Article 17"],
+a:2,
+e:"Article 16 provides equality of opportunity in matters of public employment."
+},
+
+{
+q:"Untouchability is abolished under:",
+o:["Article 14","Article 15","Article 17","Article 18"],
+a:2,
+e:"Article 17 abolishes untouchability and forbids its practice in any form."
+},
+
+{
+q:"Abolition of titles is provided under:",
+o:["Article 16","Article 17","Article 18","Article 19"],
+a:2,
+e:"Article 18 abolishes titles except military and academic distinctions."
+},
+
+{
+q:"Which Article guarantees six freedoms to citizens?",
+o:["Article 14","Article 19","Article 20","Article 21"],
+a:1,
+e:"Article 19 guarantees six freedoms to citizens, subject to reasonable restrictions."
+},
+
+{
+q:"Protection in respect of conviction for offences is guaranteed under:",
+o:["Article 19","Article 20","Article 21","Article 22"],
+a:1,
+e:"Article 20 provides safeguards against ex-post-facto laws, double jeopardy and self-incrimination."
+},
+
+{
+q:"Protection of life and personal liberty is guaranteed under:",
+o:["Article 19","Article 20","Article 21","Article 22"],
+a:2,
+e:"Article 21 states that no person shall be deprived of life or personal liberty except according to procedure established by law."
+},
+
+{
+q:"The Right to Education is guaranteed under:",
+o:["Article 19","Article 21A","Article 32","Article 45"],
+a:1,
+e:"Article 21A provides free and compulsory education to children aged 6 to 14 years."
+},
+
+{
+q:"The Right to Constitutional Remedies is provided under:",
+o:["Article 30","Article 32","Article 44","Article 51"],
+a:1,
+e:"Article 32 provides the right to move the Supreme Court for enforcement of Fundamental Rights."
+},
+
+{
+q:"Dr. B. R. Ambedkar described which Article as the 'heart and soul' of the Constitution?",
+o:["Article 14","Article 19","Article 21","Article 32"],
+a:3,
+e:"Dr. Ambedkar described Article 32 as the heart and soul of the Constitution."
+},
+
+{
+q:"Which writ means 'produce the body'?",
+o:["Mandamus","Habeas Corpus","Certiorari","Quo Warranto"],
+a:1,
+e:"Habeas Corpus literally means 'to have the body' and is used to secure release from unlawful detention."
+},
+
+{
+q:"Which writ commands a public authority to perform a public duty?",
+o:["Mandamus","Habeas Corpus","Prohibition","Certiorari"],
+a:0,
+e:"Mandamus is issued to command a public authority to perform a legal public duty."
+},
+
+{
+q:"Which writ is issued to prevent a lower court from exceeding its jurisdiction?",
+o:["Mandamus","Prohibition","Habeas Corpus","Quo Warranto"],
+a:1,
+e:"Prohibition is issued by a superior court to prevent an inferior court or tribunal from exceeding its jurisdiction."
+},
+
+{
+q:"Which writ is used to challenge a person's right to hold a public office?",
+o:["Habeas Corpus","Mandamus","Quo Warranto","Certiorari"],
+a:2,
+e:"Quo Warranto means 'by what authority' and challenges unlawful occupation of a public office."
+},
+
+{
+q:"Fundamental Duties are mentioned in:",
+o:["Part III","Part IV","Part IVA","Part V"],
+a:2,
+e:"Fundamental Duties are contained in Part IVA, Article 51A."
+},
+
+{
+q:"Fundamental Duties were added to the Constitution by the:",
+o:["42nd Amendment","44th Amendment","52nd Amendment","73rd Amendment"],
+a:0,
+e:"The 42nd Amendment Act, 1976 added Fundamental Duties."
+},
+
+{
+q:"At present, the Constitution contains how many Fundamental Duties?",
+o:["9","10","11","12"],
+a:2,
+e:"There are 11 Fundamental Duties. The 11th duty relating to children's education was added by the 86th Amendment."
+},
+
+{
+q:"Directive Principles of State Policy are contained in:",
+o:["Part II","Part III","Part IV","Part IVA"],
+a:2,
+e:"DPSPs are contained in Part IV, Articles 36 to 51."
+},
+
+{
+q:"Directive Principles are:",
+o:["Justiciable","Non-justiciable","Criminal laws","Fundamental Rights"],
+a:1,
+e:"Directive Principles are non-justiciable, meaning they cannot ordinarily be directly enforced by courts."
+},
+
+{
+q:"Which Article directs the State to organize village panchayats?",
+o:["Article 40","Article 44","Article 48","Article 50"],
+a:0,
+e:"Article 40 directs the State to organize village panchayats."
+},
+
+{
+q:"Uniform Civil Code is mentioned in:",
+o:["Article 40","Article 44","Article 48","Article 51"],
+a:1,
+e:"Article 44 directs the State to secure a Uniform Civil Code for citizens."
+},
+
+{
+q:"Separation of judiciary from executive is mentioned in:",
+o:["Article 48","Article 50","Article 51","Article 39"],
+a:1,
+e:"Article 50 directs the State to separate the judiciary from the executive in the public services of the State."
+},
+
+{
+q:"The President of India is elected by:",
+o:["Direct vote of citizens","Electoral college","Parliament only","Supreme Court"],
+a:1,
+e:"The President is elected by an electoral college consisting of elected MPs and elected MLAs of States and certain Union Territories."
+},
+
+{
+q:"The minimum age required to become President of India is:",
+o:["25 years","30 years","35 years","40 years"],
+a:2,
+e:"Article 58 requires a candidate for President to be at least 35 years old."
+},
+
+{
+q:"The President of India holds office for:",
+o:["4 years","5 years","6 years","7 years"],
+a:1,
+e:"The President holds office for five years from the date of entering office."
+},
+
+{
+q:"The President can be removed from office by:",
+o:["No-confidence motion","Impeachment","Judicial review","Censure motion"],
+a:1,
+e:"The President can be removed by impeachment for violation of the Constitution."
+},
+
+{
+q:"The impeachment of the President can be initiated in:",
+o:["Lok Sabha only","Rajya Sabha only","Either House of Parliament","Supreme Court"],
+a:2,
+e:"The impeachment charge may be initiated by either House of Parliament."
+},
+
+{
+q:"The Vice-President of India is the ex-officio Chairman of:",
+o:["Lok Sabha","Rajya Sabha","NITI Aayog","Finance Commission"],
+a:1,
+e:"The Vice-President serves as the ex-officio Chairman of the Rajya Sabha."
+},
+
+{
+q:"The Vice-President is elected by:",
+o:["Elected MPs only","Members of both Houses of Parliament","MLAs only","Citizens directly"],
+a:1,
+e:"The Vice-President is elected by members of both Houses of Parliament."
+},
+
+{
+q:"The Prime Minister is appointed by the:",
+o:["President","Chief Justice","Lok Sabha Speaker","Rajya Sabha Chairman"],
+a:0,
+e:"The President appoints the Prime Minister, normally the leader of the majority party or coalition in the Lok Sabha."
+},
+
+{
+q:"The Council of Ministers is collectively responsible to:",
+o:["President","Rajya Sabha","Lok Sabha","Supreme Court"],
+a:2,
+e:"Under Article 75, the Council of Ministers is collectively responsible to the Lok Sabha."
+},
+
+{
+q:"The maximum strength of the Council of Ministers, including the Prime Minister, is:",
+o:["10% of Lok Sabha","15% of Lok Sabha","20% of Lok Sabha","25% of Lok Sabha"],
+a:1,
+e:"The 91st Amendment limits the size of the Council of Ministers to 15% of the total strength of the Lok Sabha."
+},
+
+{
+q:"The Attorney General of India is appointed by the:",
+o:["Prime Minister","President","Chief Justice of India","Parliament"],
+a:1,
+e:"The Attorney General is appointed by the President under Article 76."
+},
+
+{
+q:"The Attorney General has the right to:",
+o:["Vote in Parliament","Participate in parliamentary proceedings without voting","Dissolve Lok Sabha","Appoint judges"],
+a:1,
+e:"The Attorney General can speak and participate in proceedings of Parliament and its committees but cannot vote merely by virtue of that office."
+},
+
+{
+q:"The Parliament of India consists of:",
+o:["President and Lok Sabha only","President and Rajya Sabha only","President, Rajya Sabha and Lok Sabha","Lok Sabha and Supreme Court"],
+a:2,
+e:"Article 79 states that Parliament consists of the President and two Houses: Rajya Sabha and Lok Sabha."
+},
+
+{
+q:"The maximum strength of the Rajya Sabha is:",
+o:["238","245","250","252"],
+a:2,
+e:"The Constitution provides a maximum strength of 250 members for the Rajya Sabha."
+},
+
+{
+q:"The maximum strength of the Lok Sabha under the Constitution is:",
+o:["545","550","552","560"],
+a:2,
+e:"The constitutional maximum strength was 552. The nominated Anglo-Indian seats were removed by the 104th Amendment."
+},
+
+{
+q:"The normal term of the Lok Sabha is:",
+o:["4 years","5 years","6 years","7 years"],
+a:1,
+e:"The normal term of the Lok Sabha is five years unless dissolved earlier."
+},
+
+{
+q:"The Rajya Sabha is:",
+o:["A temporary House","A permanent House","Dissolved every five years","Dissolved during emergency"],
+a:1,
+e:"Rajya Sabha is a permanent House and is not subject to dissolution."
+},
+
+{
+q:"One-third of the members of Rajya Sabha retire after every:",
+o:["1 year","2 years","3 years","5 years"],
+a:1,
+e:"Approximately one-third of Rajya Sabha members retire every two years."
+},
+
+{
+q:"The minimum age for membership of Lok Sabha is:",
+o:["21 years","25 years","30 years","35 years"],
+a:1,
+e:"A person must be at least 25 years old to contest for Lok Sabha."
+},
+
+{
+q:"The minimum age for membership of Rajya Sabha is:",
+o:["25 years","30 years","35 years","40 years"],
+a:1,
+e:"A candidate for Rajya Sabha must be at least 30 years old."
+},
+
+{
+q:"Who presides over the Lok Sabha?",
+o:["President","Speaker","Vice-President","Prime Minister"],
+a:1,
+e:"The Speaker presides over the Lok Sabha."
+},
+
+{
+q:"Who is the ex-officio Chairman of the Rajya Sabha?",
+o:["President","Prime Minister","Vice-President","Speaker"],
+a:2,
+e:"The Vice-President is the ex-officio Chairman of Rajya Sabha."
+},
+
+{
+q:"A Money Bill can be introduced only in:",
+o:["Rajya Sabha","Lok Sabha","Either House","Joint sitting"],
+a:1,
+e:"A Money Bill can be introduced only in the Lok Sabha and only with the President's prior recommendation."
+},
+
+{
+q:"Who decides whether a bill is a Money Bill?",
+o:["President","Prime Minister","Lok Sabha Speaker","Rajya Sabha Chairman"],
+a:2,
+e:"The decision of the Lok Sabha Speaker on whether a bill is a Money Bill is constitutionally significant and certified by the Speaker."
+},
+
+{
+q:"The Rajya Sabha can delay a Money Bill for a maximum period of:",
+o:["7 days","14 days","30 days","6 months"],
+a:1,
+e:"Rajya Sabha must return a Money Bill within 14 days."
+},
+
+{
+q:"A joint sitting of Parliament is presided over by the:",
+o:["President","Vice-President","Speaker of Lok Sabha","Prime Minister"],
+a:2,
+e:"The Speaker of the Lok Sabha presides over a joint sitting of Parliament."
+},
+
+{
+q:"A joint sitting is NOT applicable to:",
+o:["Ordinary Bills","Money Bills","Financial Bills","Bills other than constitutional amendment bills"],
+a:1,
+e:"There is no joint sitting for Money Bills. Constitutional Amendment Bills also cannot be resolved through joint sitting."
+},
+
+{
+q:"The quorum to constitute a meeting of either House of Parliament is:",
+o:["One-fifth","One-tenth","One-third","Half"],
+a:1,
+e:"The quorum is one-tenth of the total number of members of the House."
+},
+
+{
+q:"The Supreme Court of India was established in:",
+o:["1947","1949","1950","1952"],
+a:2,
+e:"The Supreme Court came into existence on 28 January 1950."
+},
+
+{
+q:"The Supreme Court is a Court of Record under:",
+o:["Article 129","Article 130","Article 136","Article 143"],
+a:0,
+e:"Article 129 declares the Supreme Court to be a Court of Record."
+},
+
+{
+q:"The retirement age of a Supreme Court judge is:",
+o:["60 years","62 years","65 years","68 years"],
+a:2,
+e:"A Supreme Court judge retires at the age of 65."
+},
+
+{
+q:"The retirement age of a High Court judge is:",
+o:["60 years","62 years","65 years","68 years"],
+a:1,
+e:"A High Court judge retires at the age of 62."
+},
+
+{
+q:"Judicial review means:",
+o:["Review of election results","Power of courts to examine constitutionality of laws","Review of budgets","Review of administrative promotions"],
+a:1,
+e:"Judicial review allows courts to examine whether laws and executive actions conform to the Constitution."
+},
+
+{
+q:"The Supreme Court has original jurisdiction in disputes between:",
+o:["Citizens and companies","Centre and States","Two private individuals","Political parties"],
+a:1,
+e:"The Supreme Court has original jurisdiction over certain federal disputes involving the Union and States."
+},
+
+{
+q:"The power of the Supreme Court to issue writs for Fundamental Rights is under:",
+o:["Article 32","Article 131","Article 136","Article 226"],
+a:0,
+e:"Article 32 empowers the Supreme Court to issue writs for enforcement of Fundamental Rights."
+},
+
+{
+q:"High Courts can issue writs under:",
+o:["Article 32","Article 136","Article 226","Article 360"],
+a:2,
+e:"Article 226 gives High Courts power to issue writs for Fundamental Rights and for other legal purposes."
+},
+
+{
+q:"The Governor of a State is appointed by the:",
+o:["Chief Minister","President","State Legislature","Prime Minister"],
+a:1,
+e:"The Governor is appointed by the President."
+},
+
+{
+q:"The minimum age for appointment as Governor is:",
+o:["25 years","30 years","35 years","40 years"],
+a:2,
+e:"A person must be at least 35 years old to be appointed Governor."
+},
+
+{
+q:"The Governor normally holds office for:",
+o:["4 years","5 years","6 years","7 years"],
+a:1,
+e:"The Governor normally holds office for five years, subject to the pleasure of the President."
+},
+
+{
+q:"The Chief Minister of a State is appointed by the:",
+o:["President","Governor","Speaker","Chief Justice"],
+a:1,
+e:"The Governor appoints the Chief Minister."
+},
+
+{
+q:"The State Council of Ministers is collectively responsible to:",
+o:["Governor","Legislative Assembly","Legislative Council","President"],
+a:1,
+e:"The State Council of Ministers is collectively responsible to the Legislative Assembly."
+},
+
+{
+q:"The Election Commission of India is mentioned in:",
+o:["Article 280","Article 324","Article 356","Article 360"],
+a:1,
+e:"Article 324 provides for the Election Commission of India."
+},
+
+{
+q:"The Comptroller and Auditor General of India is mentioned in:",
+o:["Article 76","Article 148","Article 280","Article 324"],
+a:1,
+e:"Article 148 provides for the office of the Comptroller and Auditor General."
+},
+
+{
+q:"The Finance Commission is constituted under:",
+o:["Article 280","Article 324","Article 148","Article 315"],
+a:0,
+e:"Article 280 provides for the Finance Commission."
+},
+
+{
+q:"The Union Public Service Commission is mentioned in:",
+o:["Article 280","Article 315","Article 324","Article 360"],
+a:1,
+e:"Article 315 provides for Public Service Commissions for the Union and States."
+},
+
+{
+q:"The Finance Commission is appointed by the:",
+o:["Prime Minister","President","Parliament","CAG"],
+a:1,
+e:"The President constitutes the Finance Commission, normally every five years."
+},
+
+{
+q:"The 73rd Constitutional Amendment is associated with:",
+o:["Municipalities","Panchayati Raj","Fundamental Duties","GST"],
+a:1,
+e:"The 73rd Amendment gave constitutional status to Panchayati Raj institutions."
+},
+
+{
+q:"The 74th Constitutional Amendment is associated with:",
+o:["Municipalities","Panchayats","Emergency provisions","Election Commission"],
+a:0,
+e:"The 74th Amendment gave constitutional status to urban local bodies or municipalities."
+},
+
+{
+q:"The Panchayati Raj system is dealt with in:",
+o:["Part IX","Part IXA","Part X","Part XI"],
+a:0,
+e:"Part IX of the Constitution deals with Panchayats."
+},
+
+{
+q:"The Eleventh Schedule of the Constitution contains:",
+o:["18 subjects","22 subjects","29 subjects","30 subjects"],
+a:2,
+e:"The Eleventh Schedule contains 29 subjects related to Panchayats."
+},
+
+{
+q:"The Twelfth Schedule contains:",
+o:["18 subjects","22 subjects","29 subjects","30 subjects"],
+a:0,
+e:"The Twelfth Schedule contains 18 subjects related to municipalities."
+},
+
+{
+q:"The voting age in India was reduced from 21 to 18 years by the:",
+o:["42nd Amendment","44th Amendment","61st Amendment","73rd Amendment"],
+a:2,
+e:"The 61st Constitutional Amendment Act, 1988 reduced the voting age from 21 to 18 years."
+},
+
+{
+q:"The Anti-Defection Law was introduced by the:",
+o:["42nd Amendment","44th Amendment","52nd Amendment","61st Amendment"],
+a:2,
+e:"The 52nd Amendment Act, 1985 added the Tenth Schedule containing anti-defection provisions."
+},
+
+{
+q:"The Anti-Defection provisions are contained in the:",
+o:["Ninth Schedule","Tenth Schedule","Eleventh Schedule","Twelfth Schedule"],
+a:1,
+e:"The Anti-Defection Law is contained in the Tenth Schedule."
+},
+
+{
+q:"The GST was introduced through the:",
+o:["101st Constitutional Amendment","100th Constitutional Amendment","102nd Constitutional Amendment","103rd Constitutional Amendment"],
+a:0,
+e:"The 101st Constitutional Amendment Act, 2016 introduced the constitutional framework for GST."
+},
+
+{
+q:"The National Emergency can be proclaimed under:",
+o:["Article 352","Article 356","Article 360","Article 365"],
+a:0,
+e:"Article 352 deals with National Emergency."
+},
+
+{
+q:"President's Rule in a State is imposed under:",
+o:["Article 352","Article 356","Article 360","Article 365"],
+a:1,
+e:"Article 356 deals with failure of constitutional machinery in a State and is commonly called President's Rule."
+},
+
+{
+q:"Financial Emergency is provided under:",
+o:["Article 352","Article 356","Article 360","Article 365"],
+a:2,
+e:"Article 360 provides for Financial Emergency."
+},
+
+{
+q:"The first National Emergency in India was proclaimed in:",
+o:["1962","1965","1971","1975"],
+a:0,
+e:"The first National Emergency was proclaimed in 1962 during the India-China war."
+},
+
+{
+q:"The 44th Amendment changed the grounds for National Emergency from 'internal disturbance' to:",
+o:["Armed rebellion","Civil war","Political instability","Internal aggression"],
+a:0,
+e:"The 44th Amendment replaced 'internal disturbance' with 'armed rebellion' as a ground for National Emergency."
+},
+
+{
+q:"Which Fundamental Right cannot be suspended even during a National Emergency after the 44th Amendment?",
+o:["Article 14","Articles 20 and 21","Article 19","Article 16"],
+a:1,
+e:"The 44th Amendment ensured that rights under Articles 20 and 21 cannot be suspended even during an Emergency."
+},
+
+{
+q:"The procedure for amendment of the Constitution is mainly provided in:",
+o:["Article 32","Article 368","Article 356","Article 360"],
+a:1,
+e:"Article 368 deals with the constitutional amendment procedure."
+},
+
+{
+q:"The Basic Structure doctrine was established in:",
+o:["Golaknath case","Kesavananda Bharati case","Maneka Gandhi case","Minerva Mills case"],
+a:1,
+e:"The Basic Structure doctrine was established by the Supreme Court in Kesavananda Bharati v. State of Kerala in 1973."
+},
+
+{
+q:"Which of the following is part of the Basic Structure doctrine?",
+o:["Limited government and judicial review","Unlimited parliamentary power","Suspension of elections","Abolition of judicial review"],
+a:0,
+e:"The Supreme Court has recognized features such as supremacy of the Constitution, rule of law, judicial review and democracy as elements of the basic structure."
+},
+
+{
+q:"The 42nd Constitutional Amendment is often called:",
+o:["Mini Constitution","People's Constitution","Federal Constitution","Judicial Constitution"],
+a:0,
+e:"The 42nd Amendment made extensive changes to the Constitution and is popularly known as the Mini Constitution."
+},
+
+{
+q:"The 44th Constitutional Amendment was enacted mainly to:",
+o:["Strengthen emergency safeguards and reverse several 42nd Amendment changes","Introduce Panchayati Raj","Introduce GST","Create the Election Commission"],
+a:0,
+e:"The 44th Amendment introduced important safeguards concerning Emergency provisions and reversed several changes made by the 42nd Amendment."
+},
+
+{
+q:"Which Schedule deals with allocation of seats in Rajya Sabha?",
+o:["Third Schedule","Fourth Schedule","Fifth Schedule","Sixth Schedule"],
+a:1,
+e:"The Fourth Schedule deals with allocation of seats in the Council of States."
+},
+
+{
+q:"The Eighth Schedule of the Constitution deals with:",
+o:["Languages","Anti-defection","Tribal areas","Municipalities"],
+a:0,
+e:"The Eighth Schedule lists the recognized languages of the Constitution."
+},
+
+{
+q:"How many languages are currently included in the Eighth Schedule?",
+o:["18","20","22","24"],
+a:2,
+e:"The Eighth Schedule currently contains 22 languages."
+},
+
+{
+q:"The Fifth Schedule deals with:",
+o:["Scheduled Areas and Scheduled Tribes","Languages","Panchayats","Municipalities"],
+a:0,
+e:"The Fifth Schedule deals with administration and control of Scheduled Areas and Scheduled Tribes in specified states."
+},
+
+{
+q:"The Sixth Schedule primarily deals with tribal areas in:",
+o:["Northeastern states","All states","Only central India","Only Jammu and Kashmir"],
+a:0,
+e:"The Sixth Schedule provides special arrangements for tribal areas in Assam, Meghalaya, Tripura and Mizoram."
+},
+
+{
+q:"The Ninth Schedule was added to the Constitution by the:",
+o:["First Amendment","42nd Amendment","44th Amendment","52nd Amendment"],
+a:0,
+e:"The Ninth Schedule was added by the First Constitutional Amendment Act, 1951."
+},
+
+{
+q:"The Ninth Schedule was originally created mainly to protect:",
+o:["Land reform laws","Election laws","Emergency laws","Tax laws only"],
+a:0,
+e:"The Ninth Schedule was initially intended to protect land reform legislation from certain judicial challenges."
+},
+
+{
+q:"The Supreme Court's power of judicial review is considered part of:",
+o:["Basic Structure","Directive Principles only","Fundamental Duties only","Preamble only"],
+a:0,
+e:"Judicial review has been recognized by the Supreme Court as a component of the Constitution's basic structure."
+},
+
+{
+q:"The National Commission for Scheduled Castes is established under:",
+o:["Article 338","Article 340","Article 342","Article 344"],
+a:0,
+e:"Article 338 provides for the National Commission for Scheduled Castes."
+},
+
+{
+q:"The National Commission for Scheduled Tribes is established under:",
+o:["Article 338","Article 338A","Article 340","Article 342"],
+a:1,
+e:"Article 338A provides for the National Commission for Scheduled Tribes."
+},
+
+{
+q:"The National Commission for Backward Classes received constitutional status through the:",
+o:["101st Amendment","102nd Amendment","103rd Amendment","104th Amendment"],
+a:1,
+e:"The 102nd Constitutional Amendment Act, 2018 gave constitutional status to the NCBC."
+},
+
+{
+q:"The 103rd Constitutional Amendment introduced reservation for:",
+o:["Economically Weaker Sections","Women only","Scheduled Tribes only","Minorities only"],
+a:0,
+e:"The 103rd Amendment introduced up to 10% reservation for Economically Weaker Sections in education and public employment."
+},
+
+{
+q:"The President's ordinance-making power is provided under:",
+o:["Article 123","Article 213","Article 356","Article 360"],
+a:0,
+e:"Article 123 gives the President power to promulgate ordinances when Parliament is not in session."
+},
+
+{
+q:"The Governor's ordinance-making power is provided under:",
+o:["Article 123","Article 213","Article 214","Article 226"],
+a:1,
+e:"Article 213 provides the Governor with ordinance-making power when the State Legislature is not in session."
+},
+
+{
+q:"A Presidential ordinance must be approved by Parliament within:",
+o:["14 days","30 days","6 weeks of reassembly","6 months"],
+a:2,
+e:"An ordinance ceases to operate six weeks after Parliament reassembles unless approved earlier."
+},
+
+{
+q:"The Council of Ministers is headed by the:",
+o:["President","Prime Minister","Cabinet Secretary","Vice-President"],
+a:1,
+e:"The Prime Minister heads the Council of Ministers."
+},
+
+{
+q:"The Cabinet is:",
+o:["The entire civil service","The inner core of the Council of Ministers","A parliamentary committee","The Supreme Court"],
+a:1,
+e:"The Cabinet is the smaller and most important decision-making body within the Council of Ministers."
+},
+
+{
+q:"The 91st Constitutional Amendment is associated with:",
+o:["Limiting the size of ministries and strengthening anti-defection provisions","GST","Panchayati Raj","Voting age"],
+a:0,
+e:"The 91st Amendment limited the size of the Council of Ministers to 15% of the strength of the House and strengthened anti-defection provisions."
+},
+
+{
+q:"The Inter-State Council is provided under:",
+o:["Article 263","Article 280","Article 312","Article 356"],
+a:0,
+e:"Article 263 provides for the establishment of an Inter-State Council."
+},
+
+{
+q:"The All India Services can be created under:",
+o:["Article 312","Article 315","Article 320","Article 324"],
+a:0,
+e:"Article 312 provides for creation of All India Services by Parliament after a Rajya Sabha resolution."
+},
+
+{
+q:"The Rajya Sabha can authorize Parliament to create an All India Service by passing a resolution supported by:",
+o:["Simple majority","Two-thirds of members present and voting","Three-fourths of total membership","Unanimous vote"],
+a:1,
+e:"The resolution must be supported by not less than two-thirds of the members present and voting."
+}
+
+];
+
+
+/* =====================================================
+   VERIFY QUESTION COUNT
+===================================================== */
+
+console.log("Total Questions:",questions.length);
+
+
+/* =====================================================
+   CREATE QUESTIONS
+===================================================== */
+
+const qContainer=document.getElementById("questions");
+const palette=document.getElementById("palette");
+
+questions.forEach((item,index)=>{
+
+    const card=document.createElement("div");
+
+    card.className="card";
+    card.id="q"+(index+1);
+
+    let html=`
+
+    <div class="question-title">
+    Q${index+1}. ${item.q}
+    </div>
+
+    `;
+
+    item.o.forEach((option,oi)=>{
+
+        html+=`
+
+        <label class="option">
+
+        <input
+        type="radio"
+        name="q${index}"
+        value="${oi}"
+        onchange="markAttempted(${index})"
+        >
+
+        <b>${String.fromCharCode(65+oi)}.</b>
+        ${option}
+
+        </label>
+
+        `;
+
+    });
+
+    html+=`
+
+    <div class="solution" id="solution${index}">
+
+        <div class="correct">
+
+        Correct Answer:
+        ${String.fromCharCode(65+item.a)}.
+        ${item.o[item.a]}
+
+        </div>
+
+        <div style="margin-top:7px;">
+
+        <b>Explanation:</b>
+        ${item.e}
+
+        </div>
+
+    </div>
+
+    `;
+
+    card.innerHTML=html;
+
+    qContainer.appendChild(card);
+
+
+    const btn=document.createElement("div");
+
+    btn.className="qnum";
+
+    btn.id="num"+index;
+
+    btn.innerText=index+1;
+
+    btn.onclick=()=>{
+
+        document
+        .getElementById("q"+(index+1))
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    };
+
+    palette.appendChild(btn);
+
+});
+
+
+/* =====================================================
+   ATTEMPTED QUESTION MARKING
+===================================================== */
+
+function markAttempted(index){
+
+    document
+    .getElementById("num"+index)
+    .classList.add("attempted");
+
+}
+
+
+/* =====================================================
+   TIMER - 60 MINUTES
+===================================================== */
+
+let time=60*60;
+
+let submitted=false;
+
+const timerInterval=setInterval(()=>{
+
+    if(submitted)return;
+
+    const minutes=Math.floor(time/60);
+
+    const seconds=time%60;
+
+    document.getElementById("timer").innerText=
+        String(minutes).padStart(2,"0")
+        +":"
+        +
+        String(seconds).padStart(2,"0");
+
+
+    if(time<=0){
+
+        clearInterval(timerInterval);
+
+        submitTest(true);
+
+        return;
+
+    }
+
+    time--;
+
+},1000);
+
+
+/* =====================================================
+   SUBMIT TEST
+===================================================== */
+
+function submitTest(auto=false){
+
+    if(submitted)return;
+
+
+    if(!auto){
+
+        const confirmation=confirm(
+            "Are you sure you want to submit the test?"
+        );
+
+        if(!confirmation)return;
+
+    }
+
+
+    submitted=true;
+
+    clearInterval(timerInterval);
+
+
+    let score=0;
+
+    let attempted=0;
+
+
+    questions.forEach((item,index)=>{
+
+        const selected=document.querySelector(
+            `input[name="q${index}"]:checked`
+        );
+
+        const solution=
+            document.getElementById("solution"+index);
+
+        solution.style.display="block";
+
+
+        if(selected){
+
+            attempted++;
+
+            const selectedValue=
+                parseInt(selected.value);
+
+
+            if(selectedValue===item.a){
+
+                score++;
+
+            }
+
+        }
+
+    });
+
+
+    const total=questions.length;
+
+    const unattempted=
+        total-attempted;
+
+    const wrong=
+        attempted-score;
+
+    const percentage=
+        ((score/total)*100).toFixed(2);
+
+
+    let performance="";
+
+    if(score>=90){
+
+        performance="Excellent";
+
+    }
+    else if(score>=75){
+
+        performance="Very Good";
+
+    }
+    else if(score>=60){
+
+        performance="Good";
+
+    }
+    else if(score>=40){
+
+        performance="Needs Improvement";
+
+    }
+    else{
+
+        performance="Keep Practising";
+
+    }
+
+
+    const result=
+        document.getElementById("result");
+
+
+    result.innerHTML=`
+
+    <h2>INDIAN POLITY TEST 1 RESULT</h2>
+
+    <h3>
+    Score: ${score} / ${total}
+    </h3>
+
+    <p>
+    <b>Percentage:</b> ${percentage}%
+    </p>
+
+    <p>
+    <b>Attempted:</b> ${attempted}
+    </p>
+
+    <p>
+    <b>Correct:</b> ${score}
+    </p>
+
+    <p>
+    <b>Wrong:</b> ${wrong}
+    </p>
+
+    <p>
+    <b>Unattempted:</b> ${unattempted}
+    </p>
+
+    <p>
+    <b>Performance:</b> ${performance}
+    </p>
+
+    ${
+        auto
+        ?
+        `
+        <p style="
+        color:#c62828;
+        font-weight:bold;
+        ">
+        ⏰ TIME OVER - TEST AUTOMATICALLY SUBMITTED
+        </p>
+        `
+        :
+        ""
+    }
+
+    `;
+
+
+    result.style.display="block";
+
+
+    const submitBtn=
+        document.getElementById("submitBtn");
+
+    submitBtn.disabled=true;
+
+    submitBtn.innerText=
+        "TEST SUBMITTED";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
