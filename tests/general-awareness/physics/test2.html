@@ -1,1 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AIMERS CLASSES | Physics Test 2</title>
 
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#172033;line-height:1.6}
+header{background:linear-gradient(135deg,#102a43,#1d4ed8);color:#fff;padding:14px 3%;position:sticky;top:0;z-index:1000;box-shadow:0 4px 15px rgba(0,0,0,.18)}
+.header{max-width:1250px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:24px;font-weight:900}.logo span{color:#ffd43b}
+.name{font-size:13px;color:#dbeafe}
+.timer{background:#fff;color:#dc2626;padding:8px 18px;border-radius:8px;font-size:21px;font-weight:900}
+.container{max-width:1250px;margin:20px auto;padding:0 2%}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:20px}
+.card{background:#fff;border-radius:15px;padding:25px;box-shadow:0 6px 25px rgba(0,0,0,.08)}
+.count{color:#1d4ed8;font-weight:900;margin-bottom:12px}
+.question{font-size:20px;font-weight:700;margin-bottom:22px}
+.option{display:block;border:1px solid #d7dee9;border-radius:10px;padding:13px;margin:10px 0;cursor:pointer;background:#fff}
+.option:hover{background:#eef4ff;border-color:#1d4ed8}
+.option input{margin-right:10px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:25px}
+.nav button,.submit{border:0;border-radius:8px;padding:12px 22px;font-weight:800;cursor:pointer}
+.prev{background:#64748b;color:#fff}.next{background:#1d4ed8;color:#fff}
+.palette-card{height:max-content;position:sticky;top:95px}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.palette button{height:38px;border:0;border-radius:6px;background:#ef4444;color:#fff;font-weight:800;cursor:pointer}
+.palette button.done{background:#16a34a}
+.legend{font-size:12px;margin:12px 0}.submit{width:100%;margin-top:18px;background:#16a34a;color:#fff}
+.result{display:none}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.stat{background:#f1f5f9;padding:14px;text-align:center;border-radius:10px;font-weight:800}
+.val{font-size:24px;color:#1d4ed8}.review{padding:17px;margin:13px 0;border-radius:10px;background:#f8fafc;border-left:5px solid #64748b}
+.rCorrect{border-left-color:#16a34a}.rWrong{border-left-color:#dc2626}.rNA{border-left-color:#d97706}
+.ca{color:#15803d;font-weight:800;margin-top:6px}.sol{background:#fff;padding:12px;margin-top:10px;border-radius:7px;border:1px solid #e2e8f0}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.palette-card{position:static;order:-1}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.header{flex-direction:column;text-align:center}.timer{width:100%}.card{padding:18px}.question{font-size:18px}.nav{flex-direction:column}.nav button{width:100%}}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header">
+<div>
+<div class="logo">AIMERS <span>CLASSES</span></div>
+<div class="name">GENERAL AWARENESS | PHYSICS TEST 2 | SSC CGL LEVEL</div>
+</div>
+<div class="timer" id="timer">60:00</div>
+</div>
+</header>
+
+<div class="container">
+<div class="layout">
+
+<div class="card">
+
+<div id="test">
+<div class="count" id="count"></div>
+<div class="question" id="question"></div>
+<div id="options"></div>
+
+<div class="nav">
+<button class="nav prev" onclick="previous()">← Previous</button>
+<button class="nav next" onclick="next()">Next →</button>
+</div>
+</div>
+
+<div class="result" id="result">
+<h2>🎯 Physics Test 2 Submitted</h2>
+
+<div class="stats">
+<div class="stat">Score<div class="val" id="score">0</div></div>
+<div class="stat">Correct<div class="val" id="correct">0</div></div>
+<div class="stat">Wrong<div class="val" id="wrong">0</div></div>
+<div class="stat">Not Attempted<div class="val" id="na">0</div></div>
+</div>
+
+<p><b>Marking:</b> +1 correct | −0.33 wrong | 0 unattempted</p>
+<h2 style="margin-top:25px">📚 Detailed Solutions</h2>
+<div id="review"></div>
+</div>
+
+</div>
+
+<div class="card palette-card">
+<h3>📋 Question Palette</h3>
+<div class="legend">
+🔴 Not Attempted &nbsp;&nbsp; 🟢 Attempted
+</div>
+<div class="palette" id="palette"></div>
+<button class="submit" onclick="submitTest(false)">✓ Submit Test</button>
+</div>
+
+</div>
+</div>
+
+<script>
+
+const questions=[
+
+/* 1 */
+{q:"The SI unit of acceleration is:",o:["m/s","m/s²","km/h","N"],a:"m/s²",s:"Acceleration is the change in velocity per unit time. Its SI unit is metre per second squared (m/s²)."},
+
+/* 2 */
+{q:"Which quantity has the same dimensions as pressure?",o:["Force","Energy/volume","Momentum","Power"],a:"Energy/volume",s:"Pressure = Force/Area. Energy/volume also has dimensions ML⁻¹T⁻², the same as pressure."},
+
+/* 3 */
+{q:"The dimensional formula of force is:",o:["MLT⁻¹","MLT⁻²","ML²T⁻²","ML⁻¹T⁻²"],a:"MLT⁻²",s:"Force = mass × acceleration. Therefore dimensions are M × LT⁻² = MLT⁻²."},
+
+/* 4 */
+{q:"Which instrument is used to measure very small lengths accurately?",o:["Metre scale","Vernier calipers","Stopwatch","Spring balance"],a:"Vernier calipers",s:"Vernier calipers can measure small lengths, diameters and depths with greater precision than an ordinary metre scale."},
+
+/* 5 */
+{q:"A screw gauge is primarily used to measure:",o:["Large distances","Very small thickness or diameter","Temperature","Mass"],a:"Very small thickness or diameter",s:"A screw gauge is designed for precise measurement of small dimensions such as wire diameter."},
+
+/* 6 */
+{q:"The least count of an instrument means:",o:["Maximum measurement","Minimum measurement that can be measured accurately","Average measurement","Zero error"],a:"Minimum measurement that can be measured accurately",s:"Least count is the smallest value that an instrument can measure or resolve."},
+
+/* 7 */
+{q:"Which of the following is dimensionless?",o:["Velocity","Strain","Force","Energy"],a:"Strain",s:"Strain is the ratio of change in dimension to original dimension, so its dimensions cancel."},
+
+/* 8 */
+{q:"Relative density has:",o:["Unit kg/m³","Unit N/m²","No unit","Unit joule"],a:"No unit",s:"Relative density is the ratio of two densities and therefore has no unit."},
+
+/* 9 */
+{q:"A body moving in a circular path with constant speed has:",o:["Zero acceleration","Centripetal acceleration","Constant linear velocity","No force"],a:"Centripetal acceleration",s:"Even when speed is constant, direction of velocity changes continuously. This produces centripetal acceleration toward the centre."},
+
+/* 10 */
+{q:"Centripetal force is directed:",o:["Away from centre","Towards centre","Tangentially","Vertically upward"],a:"Towards centre",s:"The centripetal force required for circular motion always acts towards the centre of the circular path."},
+
+/* 11 */
+{q:"If the radius of circular motion is doubled while speed remains constant, centripetal acceleration becomes:",o:["Double","Half","Four times","Same"],a:"Half",s:"Centripetal acceleration a=v²/r. Doubling r makes acceleration half."},
+
+/* 12 */
+{q:"A stone tied to a string is whirled in a circle. If the string breaks, the stone moves:",o:["Towards centre","Along tangent","Vertically downward only","Randomly"],a:"Along tangent",s:"At the instant the string breaks, the stone continues in the direction of its instantaneous velocity, which is tangential."},
+
+/* 13 */
+{q:"The tendency of a body to resist change in its state of motion depends on its:",o:["Speed","Mass","Volume","Shape"],a:"Mass",s:"Mass is a measure of inertia. Greater mass means greater resistance to change in motion."},
+
+/* 14 */
+{q:"Frictional force generally acts:",o:["In direction of motion","Opposite relative motion","Vertically upward","Always downward"],a:"Opposite relative motion",s:"Friction opposes relative motion or the tendency of relative motion between surfaces."},
+
+/* 15 */
+{q:"Which friction is generally the least?",o:["Static friction","Sliding friction","Rolling friction","Limiting friction"],a:"Rolling friction",s:"Rolling friction is generally much smaller than sliding friction, which is why wheels make movement easier."},
+
+/* 16 */
+{q:"Lubricants reduce friction by:",o:["Increasing roughness","Separating contacting surfaces","Increasing weight","Increasing pressure only"],a:"Separating contacting surfaces",s:"Lubricants form a thin layer between surfaces and reduce direct contact, thereby reducing friction."},
+
+/* 17 */
+{q:"The coefficient of friction is:",o:["Dimensionless","Measured in newton","Measured in joule","Measured in pascal"],a:"Dimensionless",s:"Coefficient of friction is the ratio of frictional force to normal reaction, so it has no dimensions."},
+
+/* 18 */
+{q:"A rocket moves upward mainly due to:",o:["Newton's first law","Newton's third law","Archimedes' principle","Ohm's law"],a:"Newton's third law",s:"Hot gases are expelled downward, producing an equal and opposite reaction that pushes the rocket upward."},
+
+/* 19 */
+{q:"Recoil of a gun is an example of conservation of:",o:["Energy only","Momentum","Temperature","Pressure"],a:"Momentum",s:"Before firing total momentum is approximately zero. Bullet momentum forward is balanced by gun momentum backward."},
+
+/* 20 */
+{q:"A person jumps from a boat to the shore. The boat moves backward because of:",o:["Conservation of momentum","Buoyancy only","Heat","Pressure"],a:"Conservation of momentum",s:"The forward momentum of the person is balanced by backward momentum of the boat."},
+
+/* 21 */
+{q:"Work done by centripetal force in uniform circular motion is:",o:["Maximum","Zero","Negative","Infinite"],a:"Zero",s:"Centripetal force is perpendicular to instantaneous displacement, so W=Fs cos90°=0."},
+
+/* 22 */
+{q:"The work-energy theorem states that net work done equals change in:",o:["Potential energy","Kinetic energy","Mass","Momentum only"],a:"Kinetic energy",s:"The net work done on a body equals the change in its kinetic energy."},
+
+/* 23 */
+{q:"Power can also be expressed as:",o:["Force × velocity","Force/velocity","Mass × velocity","Energy × time"],a:"Force × velocity",s:"Instantaneous power P = F·v when force and velocity are in the same direction."},
+
+/* 24 */
+{q:"One horsepower is approximately:",o:["76 W","746 W","1000 W","500 W"],a:"746 W",s:"One mechanical horsepower is approximately 746 watts."},
+
+/* 25 */
+{q:"A machine has efficiency 80%. If input energy is 500 J, useful output energy is:",o:["100 J","250 J","400 J","625 J"],a:"400 J",s:"Efficiency = output/input ×100. Output = 0.80×500 = 400 J."},
+
+/* 26 */
+{q:"Efficiency of a practical machine is always:",o:["Greater than 100%","Equal to 200%","Less than or equal to 100%","Zero always"],a:"Less than or equal to 100%",s:"Due to energy losses, practical machines cannot deliver more useful energy than the input."},
+
+/* 27 */
+{q:"The mechanical advantage of a machine is:",o:["Load/Effort","Effort/Load","Distance/Time","Work/Time"],a:"Load/Effort",s:"Mechanical advantage = load lifted / effort applied."},
+
+/* 28 */
+{q:"A lever in which the fulcrum lies between effort and load is:",o:["First-class lever","Second-class lever","Third-class lever","Hydraulic lever"],a:"First-class lever",s:"In a first-class lever, the fulcrum is positioned between the load and effort, e.g. scissors."},
+
+/* 29 */
+{q:"A wheelbarrow is an example of:",o:["First-class lever","Second-class lever","Third-class lever","Pulley"],a:"Second-class lever",s:"In a wheelbarrow, the load lies between the fulcrum at the wheel and the effort applied at the handles."},
+
+/* 30 */
+{q:"Human forearm operated by the biceps is generally a:",o:["First-class lever","Second-class lever","Third-class lever","Fixed pulley"],a:"Third-class lever",s:"In the human forearm, effort from the biceps acts between the elbow fulcrum and the load in the hand."},
+
+/* 31 */
+{q:"The gravitational force between two bodies becomes one-fourth if the distance between them is:",o:["Doubled","Halved","Tripled","Unchanged"],a:"Doubled",s:"According to Newton's law of gravitation, F is inversely proportional to r². Doubling r makes F one-fourth."},
+
+/* 32 */
+{q:"If the masses of two bodies are both doubled while distance remains same, gravitational force becomes:",o:["Half","Double","Four times","One-fourth"],a:"Four times",s:"F is proportional to m1m2. Doubling both masses gives 2×2=4 times the force."},
+
+/* 33 */
+{q:"The universal gravitational constant is denoted by:",o:["g","G","R","K"],a:"G",s:"G is the universal gravitational constant, while g denotes acceleration due to gravity."},
+
+/* 34 */
+{q:"The value of g is maximum at:",o:["Equator","Poles","Centre of Earth","All places same"],a:"Poles",s:"Earth's rotation and its slightly flattened shape cause g to be greater at the poles than at the equator."},
+
+/* 35 */
+{q:"The value of g at the centre of Earth is approximately:",o:["9.8 m/s²","4.9 m/s²","Zero","Infinite"],a:"Zero",s:"At the exact centre of Earth, gravitational pulls from all directions cancel, giving net g approximately zero."},
+
+/* 36 */
+{q:"As altitude above Earth's surface increases, acceleration due to gravity:",o:["Increases","Decreases","Remains exactly same","Becomes infinite"],a:"Decreases",s:"The distance from Earth's centre increases with altitude, so gravitational acceleration decreases."},
+
+/* 37 */
+{q:"An artificial satellite remains in orbit because gravity provides:",o:["Heat","Centripetal force","Electric force","Friction"],a:"Centripetal force",s:"Earth's gravitational attraction continuously bends the satellite's path and provides centripetal force."},
+
+/* 38 */
+{q:"A satellite appears weightless in orbit because it and everything inside it are:",o:["Outside gravity","In continuous free fall","At zero velocity","Far from Earth completely"],a:"In continuous free fall",s:"Orbiting objects are continuously falling towards Earth while moving forward, producing apparent weightlessness."},
+
+/* 39 */
+{q:"The orbital velocity of a satellite depends mainly on:",o:["Mass of satellite only","Radius of orbit and Earth's mass","Colour of satellite","Shape of satellite only"],a:"Radius of orbit and Earth's mass",s:"For a circular orbit, v=√(GM/r), so orbital velocity depends on Earth's mass and orbital radius, not satellite mass."},
+
+/* 40 */
+{q:"The centre of mass of a uniform spherical body is located at:",o:["Its surface","Its centre","Any point outside","Top only"],a:"Its centre",s:"For a uniform sphere, symmetry places the centre of mass at its geometrical centre."},
+
+/* 41 */
+{q:"The density of water is maximum at approximately:",o:["0°C","4°C","25°C","100°C"],a:"4°C",s:"Water has maximum density at about 4°C. This anomalous expansion is important for aquatic life in cold regions."},
+
+/* 42 */
+{q:"Why does ice float on water?",o:["Ice is denser","Ice is less dense than water","Ice has no mass","Water has no density"],a:"Ice is less dense than water",s:"Due to hydrogen bonding and its open crystal structure, ice has lower density than liquid water."},
+
+/* 43 */
+{q:"The pressure at a point in a liquid depends on:",o:["Depth only","Density, gravity and depth","Colour only","Surface area only"],a:"Density, gravity and depth",s:"Liquid pressure is P=ρgh, so it depends on density, gravitational acceleration and depth."},
+
+/* 44 */
+{q:"The principle of transmission of pressure in an enclosed fluid is:",o:["Pascal's law","Hooke's law","Boyle's law","Snell's law"],a:"Pascal's law",s:"Pascal's law states that pressure applied to an enclosed fluid is transmitted undiminished in all directions."},
+
+/* 45 */
+{q:"Hydraulic brakes work mainly on:",o:["Pascal's law","Newton's first law","Law of reflection","Joule's law"],a:"Pascal's law",s:"Pressure applied to brake fluid is transmitted through the fluid to the brake mechanisms."},
+
+/* 46 */
+{q:"The upward force exerted by a fluid on an immersed body is called:",o:["Weight","Buoyant force","Friction","Tension"],a:"Buoyant force",s:"A fluid exerts an upward force on an immersed object called buoyant or upthrust force."},
+
+/* 47 */
+{q:"A body sinks in a liquid when its density is:",o:["Less than liquid","Greater than liquid","Equal to zero","Always equal"],a:"Greater than liquid",s:"If the object's density exceeds the liquid's density, its weight exceeds the maximum buoyant force and it sinks."},
+
+/* 48 */
+{q:"The phenomenon responsible for the floating of ships is mainly:",o:["Buoyancy","Magnetism","Radiation","Electricity"],a:"Buoyancy",s:"Ships displace enough water to produce a buoyant force equal to their weight."},
+
+/* 49 */
+{q:"A sharp knife cuts better because it produces:",o:["Less pressure","More pressure for the same force","No force","Less density"],a:"More pressure for the same force",s:"Pressure = force/area. A sharp edge has very small area, producing greater pressure."},
+
+/* 50 */
+{q:"Snow shoes are broad so that they:",o:["Increase pressure","Decrease pressure on snow","Increase weight","Increase friction only"],a:"Decrease pressure on snow",s:"Broad shoes increase contact area and therefore reduce pressure, preventing the person from sinking deeply."},
+
+/* 51 */
+{q:"The first law of thermodynamics is essentially a statement of conservation of:",o:["Mass","Energy","Momentum","Charge"],a:"Energy",s:"The first law relates heat, work and internal energy and expresses conservation of energy."},
+
+/* 52 */
+{q:"The zeroth law of thermodynamics provides the basis for measurement of:",o:["Mass","Temperature","Pressure","Charge"],a:"Temperature",s:"The zeroth law establishes thermal equilibrium and provides the basis for defining temperature."},
+
+/* 53 */
+{q:"The temperature at which Celsius and Fahrenheit scales show the same numerical value is:",o:["−40°","0°","40°","100°"],a:"−40°",s:"−40°C equals −40°F, making this the common numerical point of the two scales."},
+
+/* 54 */
+{q:"100°C on the Fahrenheit scale is:",o:["100°F","180°F","212°F","273°F"],a:"212°F",s:"F = 9C/5 + 32. For 100°C, F=180+32=212°F."},
+
+/* 55 */
+{q:"The temperature 300 K is approximately:",o:["27°C","0°C","100°C","300°C"],a:"27°C",s:"Celsius temperature = Kelvin −273. Thus 300 K is approximately 27°C."},
+
+/* 56 */
+{q:"Heat capacity is defined as heat required to raise temperature of:",o:["Unit mass by 1°C","Whole body by 1°C","Unit volume by 1°C","Only water by 1°C"],a:"Whole body by 1°C",s:"Heat capacity is the amount of heat required to raise the temperature of an entire body by one degree."},
+
+/* 57 */
+{q:"Which material generally has high specific heat capacity and is used in cooling systems?",o:["Water","Copper","Iron","Lead"],a:"Water",s:"Water has a relatively high specific heat capacity, allowing it to absorb considerable heat with comparatively small temperature rise."},
+
+/* 58 */
+{q:"Sea breeze generally blows:",o:["From land to sea during day","From sea to land during day","Only at night","From mountains to sea"],a:"From sea to land during day",s:"During daytime land heats faster than sea. Warm air rises over land and cooler air from sea moves towards land."},
+
+/* 59 */
+{q:"Land breeze generally occurs:",o:["During daytime","At night","Only at noon","Never"],a:"At night",s:"At night land cools faster than water, so cooler air flows from land towards the sea."},
+
+/* 60 */
+{q:"Woollen clothes keep us warm because wool:",o:["Produces heat","Traps air","Increases body temperature chemically","Is a metal"],a:"Traps air",s:"Wool fibres trap air, and air is a poor conductor of heat, reducing heat loss from the body."},
+
+/* 61 */
+{q:"The phenomenon of change of frequency due to relative motion between source and observer is:",o:["Doppler effect","Photoelectric effect","Compton effect","Hall effect"],a:"Doppler effect",s:"The Doppler effect is the apparent change in observed frequency caused by relative motion between source and observer."},
+
+/* 62 */
+{q:"When a source of sound approaches a stationary observer, the observed frequency:",o:["Decreases","Increases","Becomes zero","Remains always same"],a:"Increases",s:"As the source approaches, wavefronts reach the observer more frequently, so observed frequency increases."},
+
+/* 63 */
+{q:"The minimum time interval required to hear a distinct echo is approximately:",o:["0.01 s","0.1 s","1 s","10 s"],a:"0.1 s",s:"The human ear generally requires about 0.1 second separation between original and reflected sound for a distinct echo."},
+
+/* 64 */
+{q:"For an echo to be heard distinctly, the reflecting surface should be approximately at least:",o:["1.7 m away","17 m away","170 m away","0.17 m away"],a:"17 m away",s:"Using sound speed about 340 m/s and minimum time 0.1 s, total path is 34 m, so distance to reflector is about 17 m."},
+
+/* 65 */
+{q:"The phenomenon of beats is produced by two sound waves having:",o:["Exactly same frequency only","Slightly different frequencies","Very high amplitudes only","No frequency"],a:"Slightly different frequencies",s:"Beats are periodic variations in loudness produced by superposition of waves of slightly different frequencies."},
+
+/* 66 */
+{q:"The number of beats per second equals:",o:["Sum of frequencies","Difference of frequencies","Product of frequencies","Average frequency"],a:"Difference of frequencies",s:"Beat frequency = |f1−f2|."},
+
+/* 67 */
+{q:"A closed organ pipe produces:",o:["Only odd harmonics","Only even harmonics","All harmonics equally","No harmonics"],a:"Only odd harmonics",s:"An ideal closed pipe supports the fundamental and odd harmonics: 1st, 3rd, 5th, etc."},
+
+/* 68 */
+{q:"The natural frequency of an object depends on:",o:["Its physical properties","Only its colour","Only surrounding light","Only its weight"],a:"Its physical properties",s:"Natural frequency depends on factors such as mass, dimensions, stiffness and material properties."},
+
+/* 69 */
+{q:"Resonance occurs when:",o:["Driving frequency equals natural frequency","Driving frequency is zero","Amplitude is zero","There is no vibration"],a:"Driving frequency equals natural frequency",s:"At resonance, the driving frequency matches the natural frequency and oscillation amplitude becomes large."},
+
+/* 70 */
+{q:"Ultrasound is used in medical imaging mainly because it:",o:["Is visible","Can be reflected by internal tissues","Has no energy","Travels only in vacuum"],a:"Can be reflected by internal tissues",s:"Ultrasonic waves are reflected differently by boundaries between tissues, allowing internal structures to be imaged."},
+
+/* 71 */
+{q:"The refractive index of a medium is defined as:",o:["v/c","c/v","c×v","c+v"],a:"c/v",s:"Absolute refractive index n = speed of light in vacuum / speed of light in medium = c/v."},
+
+/* 72 */
+{q:"When light enters glass from air, its speed:",o:["Increases","Decreases","Becomes zero","Remains unchanged"],a:"Decreases",s:"Glass is optically denser than air, so light travels more slowly in glass."},
+
+/* 73 */
+{q:"When light travels from air into glass, its frequency:",o:["Increases","Decreases","Remains unchanged","Becomes zero"],a:"Remains unchanged",s:"The frequency of light is determined by the source and remains unchanged during refraction. Its speed and wavelength change."},
+
+/* 74 */
+{q:"When light enters a denser medium, its wavelength:",o:["Increases","Decreases","Remains same","Becomes infinite"],a:"Decreases",s:"Since v=fλ and frequency remains constant while speed decreases, wavelength decreases."},
+
+/* 75 */
+{q:"The critical angle is the angle of incidence in the denser medium for which angle of refraction is:",o:["0°","45°","90°","180°"],a:"90°",s:"At the critical angle, the refracted ray travels along the boundary, making 90° with the normal."},
+
+/* 76 */
+{q:"A prism separates white light into colours due to:",o:["Dispersion","Magnetism","Conduction","Heating"],a:"Dispersion",s:"Different colours have different refractive indices in glass, causing white light to split into its component colours."},
+
+/* 77 */
+{q:"In a prism, which colour deviates the most?",o:["Red","Yellow","Green","Violet"],a:"Violet",s:"Violet has the shortest wavelength and experiences the greatest deviation in a glass prism."},
+
+/* 78 */
+{q:"In a prism, which colour deviates the least?",o:["Violet","Blue","Green","Red"],a:"Red",s:"Red light has the longest wavelength among visible colours and experiences the least deviation."},
+
+/* 79 */
+{q:"A rainbow is seen opposite the Sun because of:",o:["Reflection and refraction in raindrops","Magnetism","Electric conduction","Sound reflection"],a:"Reflection and refraction in raindrops",s:"Sunlight enters raindrops, is refracted and dispersed, internally reflected, and refracted again on exit."},
+
+/* 80 */
+{q:"A periscope works mainly using:",o:["Plane mirrors","Convex lenses only","Concave lenses only","Magnets"],a:"Plane mirrors",s:"A simple periscope uses two plane mirrors inclined at 45° to reflect light to the observer."},
+
+/* 81 */
+{q:"The SI unit of magnetic flux is:",o:["Tesla","Weber","Henry","Ampere"],a:"Weber",s:"Magnetic flux is measured in Weber (Wb). Tesla is the unit of magnetic flux density."},
+
+/* 82 */
+{q:"The magnetic field inside a long solenoid is approximately:",o:["Uniform","Zero always","Random","Only circular"],a:"Uniform",s:"A sufficiently long solenoid produces an approximately uniform magnetic field inside it."},
+
+/* 83 */
+{q:"The strength of magnetic field inside a solenoid increases when:",o:["Number of turns per unit length increases","Current decreases to zero","Length increases without changing turns","There is no current"],a:"Number of turns per unit length increases",s:"For a solenoid, magnetic field B is proportional to nI, where n is turns per unit length."},
+
+/* 84 */
+{q:"The rule used to determine direction of magnetic field around a current-carrying straight conductor is:",o:["Right-hand thumb rule","Left-hand rule only","Fleming's left-hand rule","Lenz's rule only"],a:"Right-hand thumb rule",s:"If the right thumb points in the direction of current, curled fingers indicate the magnetic field direction."},
+
+/* 85 */
+{q:"Fleming's left-hand rule is used to determine direction of:",o:["Force on a current-carrying conductor","Induced current only","Heat flow","Light"],a:"Force on a current-carrying conductor",s:"Fleming's left-hand rule gives the direction of force on a current-carrying conductor placed in a magnetic field."},
+
+/* 86 */
+{q:"Fleming's right-hand rule is associated with:",o:["Electric motor","Generator and induced current","Thermometer","Pressure"],a:"Generator and induced current",s:"Fleming's right-hand rule gives the direction of induced current when a conductor moves in a magnetic field."},
+
+/* 87 */
+{q:"Lenz's law determines the direction of:",o:["Induced current","Gravity","Friction","Heat conduction"],a:"Induced current",s:"Lenz's law states that induced current flows in a direction that opposes the change producing it."},
+
+/* 88 */
+{q:"The resistance of an ideal voltmeter is:",o:["Zero","Very high","One ohm","Very low"],a:"Very high",s:"A voltmeter should draw negligible current from the circuit, so it is designed with very high resistance."},
+
+/* 89 */
+{q:"The resistance of an ideal ammeter is:",o:["Very high","Very low","Infinite","One megohm"],a:"Very low",s:"An ammeter is connected in series and should not significantly alter circuit current, so its resistance is very low."},
+
+/* 90 */
+{q:"Kirchhoff's junction rule is based on conservation of:",o:["Energy","Charge","Mass only","Temperature"],a:"Charge",s:"At a circuit junction, total current entering equals total current leaving, expressing conservation of electric charge."},
+
+/* 91 */
+{q:"Kirchhoff's loop rule is based on conservation of:",o:["Energy","Mass","Charge only","Momentum"],a:"Energy",s:"The algebraic sum of potential changes around a closed circuit is zero, reflecting conservation of energy."},
+
+/* 92 */
+{q:"In a series circuit, the current through each resistor is:",o:["Different always","Same","Zero","Infinite"],a:"Same",s:"There is only one path for charge flow in a series circuit, so current is the same through all components."},
+
+/* 93 */
+{q:"In a parallel circuit, the potential difference across each branch is:",o:["Same","Always zero","Always different","Infinite"],a:"Same",s:"All branches of a parallel circuit are connected across the same two points, so their potential difference is the same."},
+
+/* 94 */
+{q:"Household electrical appliances are connected in parallel mainly so that:",o:["Each receives same supply voltage and works independently","Current becomes zero","Resistance becomes infinite","All appliances must switch together"],a:"Each receives same supply voltage and works independently",s:"Parallel connection gives each appliance the supply voltage and allows independent operation."},
+
+/* 95 */
+{q:"The earth wire in an electrical installation is mainly used for:",o:["Increasing voltage","Safety against electric shock","Increasing power","Reducing frequency"],a:"Safety against electric shock",s:"The earth wire provides a low-resistance path for fault current and helps protect users from electric shock."},
+
+/* 96 */
+{q:"The phenomenon of superconductivity is associated with:",o:["Very high resistance","Zero electrical resistance below a critical temperature","Very high temperature only","Complete insulation"],a:"Zero electrical resistance below a critical temperature",s:"A superconductor exhibits essentially zero electrical resistance below its critical temperature."},
+
+/* 97 */
+{q:"Which particle is negatively charged?",o:["Proton","Neutron","Electron","Positron"],a:"Electron",s:"The electron carries one negative elementary charge."},
+
+/* 98 */
+{q:"Isotopes are atoms of the same element having:",o:["Same mass number only","Same atomic number but different mass numbers","Different atomic numbers and same mass","No protons"],a:"Same atomic number but different mass numbers",s:"Isotopes have the same number of protons but different numbers of neutrons, giving different mass numbers."},
+
+/* 99 */
+{q:"The nuclear force is generally:",o:["Very weak and long range","Very strong and short range","Only gravitational","Only electromagnetic"],a:"Very strong and short range",s:"The nuclear force binds nucleons together and is very strong but acts over a very short range."},
+
+/* 100 */
+{q:"Which law explains the relationship between pressure and volume of a fixed mass of gas at constant temperature?",o:["Charles' law","Boyle's law","Ohm's law","Hooke's law"],a:"Boyle's law",s:"Boyle's law states that for a fixed mass of gas at constant temperature, pressure is inversely proportional to volume: PV=constant."}
+
+];
+
+let current=0;
+let answers=new Array(questions.length).fill(null);
+let submitted=false;
+let seconds=3600;
+
+function show(){
+ let q=questions[current];
+
+ document.getElementById("count").textContent=
+ "Question "+(current+1)+" of "+questions.length;
+
+ document.getElementById("question").textContent=q.q;
+
+ let box=document.getElementById("options");
+ box.innerHTML="";
+
+ q.o.forEach(opt=>{
+   let label=document.createElement("label");
+   label.className="option";
+
+   let input=document.createElement("input");
+   input.type="radio";
+   input.name="answer";
+   input.value=opt;
+
+   if(answers[current]===opt) input.checked=true;
+
+   input.onchange=()=>{
+      answers[current]=opt;
+      palette();
+   };
+
+   label.appendChild(input);
+   label.appendChild(document.createTextNode(opt));
+   box.appendChild(label);
+ });
+
+ palette();
+}
+
+function palette(){
+ let p=document.getElementById("palette");
+ p.innerHTML="";
+
+ questions.forEach((q,i)=>{
+   let b=document.createElement("button");
+   b.textContent=i+1;
+
+   if(answers[i]!==null)b.classList.add("done");
+
+   b.onclick=()=>{
+      current=i;
+      show();
+      window.scrollTo({top:0,behavior:"smooth"});
+   };
+
+   p.appendChild(b);
+ });
+}
+
+function next(){
+ if(current<questions.length-1){
+   current++;
+   show();
+   window.scrollTo({top:0,behavior:"smooth"});
+ }
+}
+
+function previous(){
+ if(current>0){
+   current--;
+   show();
+   window.scrollTo({top:0,behavior:"smooth"});
+ }
+}
+
+function timer(){
+ if(submitted)return;
+
+ let m=Math.floor(seconds/60);
+ let s=seconds%60;
+
+ document.getElementById("timer").textContent=
+ String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+
+ if(seconds<=0){
+   submitTest(true);
+   return;
+ }
+
+ seconds--;
+}
+
+setInterval(timer,1000);
+
+function submitTest(auto){
+
+ if(submitted)return;
+
+ if(!auto){
+   if(!confirm("Are you sure you want to submit Physics Test 2?"))return;
+ }
+
+ submitted=true;
+
+ let correct=0;
+ let wrong=0;
+ let na=0;
+
+ questions.forEach((q,i)=>{
+   if(answers[i]===null)na++;
+   else if(answers[i]===q.a)correct++;
+   else wrong++;
+ });
+
+ let score=correct-(wrong/3);
+
+ document.getElementById("test").style.display="none";
+ document.getElementById("result").style.display="block";
+
+ document.getElementById("score").textContent=score.toFixed(2);
+ document.getElementById("correct").textContent=correct;
+ document.getElementById("wrong").textContent=wrong;
+ document.getElementById("na").textContent=na;
+
+ showReview();
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showReview(){
+
+ let r=document.getElementById("review");
+ r.innerHTML="";
+
+ questions.forEach((q,i)=>{
+
+   let div=document.createElement("div");
+
+   let cls="";
+   let status="";
+
+   if(answers[i]===null){
+      cls="rNA";
+      status='<b style="color:#d97706">⚪ Not Attempted</b>';
+   }
+   else if(answers[i]===q.a){
+      cls="rCorrect";
+      status='<b style="color:#15803d">✓ Correct</b>';
+   }
+   else{
+      cls="rWrong";
+      status='<b style="color:#dc2626">✗ Wrong</b>';
+   }
+
+   div.className="review "+cls;
+
+   div.innerHTML=
+   "<b>Q"+(i+1)+". "+q.q+"</b><br><br>"+
+   status+
+   "<br><b>Your Answer:</b> "+
+   (answers[i]===null?"Not Attempted":answers[i])+
+   '<div class="ca">Correct Answer: '+q.a+"</div>"+
+   '<div class="sol"><b>💡 Solution:</b><br>'+q.s+"</div>";
+
+   r.appendChild(div);
+ });
+}
+
+show();
+
+</script>
+
+</body>
+</html>
