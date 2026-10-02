@@ -1,1 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES - History Test 1</title>
 
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fa;
+    color:#222;
+}
+
+header{
+    background:#17365d;
+    color:white;
+    padding:16px 20px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+header h1{
+    margin:0;
+    font-size:25px;
+}
+
+header p{
+    margin:6px 0 0;
+    font-size:14px;
+}
+
+.container{
+    max-width:1200px;
+    margin:20px auto;
+    display:flex;
+    gap:20px;
+    padding:0 15px;
+}
+
+.main{
+    flex:1;
+    min-width:0;
+}
+
+.sidebar{
+    width:260px;
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    height:max-content;
+    position:sticky;
+    top:95px;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+
+.sidebar h3{
+    margin-top:0;
+    text-align:center;
+    color:#17365d;
+}
+
+.timer{
+    background:#fff3cd;
+    color:#856404;
+    padding:12px;
+    border-radius:8px;
+    text-align:center;
+    font-size:21px;
+    font-weight:bold;
+    margin-bottom:14px;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qnum{
+    border:1px solid #bbb;
+    background:#f7f7f7;
+    padding:8px 3px;
+    border-radius:5px;
+    cursor:pointer;
+    text-align:center;
+    font-size:13px;
+}
+
+.qnum:hover{
+    background:#dcecff;
+}
+
+.qnum.attempted{
+    background:#28a745;
+    color:white;
+    border-color:#218838;
+}
+
+.legend{
+    margin-top:15px;
+    font-size:12px;
+}
+
+.legend span{
+    display:inline-block;
+    width:14px;
+    height:14px;
+    vertical-align:middle;
+    margin-right:5px;
+    border:1px solid #aaa;
+}
+
+.green{
+    background:#28a745!important;
+}
+
+.white{
+    background:#f7f7f7;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    padding:22px;
+    margin-bottom:18px;
+    box-shadow:0 2px 7px rgba(0,0,0,.10);
+    scroll-margin-top:90px;
+}
+
+.question-title{
+    font-weight:bold;
+    font-size:17px;
+    line-height:1.5;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    padding:11px 13px;
+    margin:8px 0;
+    border:1px solid #ddd;
+    border-radius:7px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#eef5ff;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.solution{
+    display:none;
+    margin-top:15px;
+    padding:13px;
+    border-radius:7px;
+    background:#eef8ee;
+    border-left:4px solid #28a745;
+}
+
+.correct{
+    color:#16852b;
+    font-weight:bold;
+}
+
+#submitBtn{
+    width:100%;
+    padding:15px;
+    background:#17365d;
+    color:white;
+    border:0;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    margin:10px 0 30px;
+}
+
+#submitBtn:hover{
+    background:#0d2745;
+}
+
+#submitBtn:disabled{
+    background:#777;
+    cursor:not-allowed;
+}
+
+.result{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    margin-bottom:20px;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+
+.result h2{
+    color:#17365d;
+}
+
+.top-info{
+    background:#fff;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:15px;
+    box-shadow:0 2px 5px rgba(0,0,0,.08);
+    font-size:14px;
+}
+
+@media(max-width:800px){
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        position:sticky;
+        top:0;
+        z-index:50;
+    }
+
+    .palette{
+        grid-template-columns:repeat(10,1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>AIMERS CLASSES</h1>
+    <p>SSC CGL History Mock Test - TEST 1 | 100 Questions | 60 Minutes</p>
+</header>
+
+<div class="container">
+
+<main class="main">
+
+<div class="top-info">
+<b>Instructions:</b>
+Attempt all 100 questions. Each question carries 1 mark.
+No negative marking in this practice test.
+Select an option and click <b>SUBMIT TEST</b> to see your score and explanations.
+</div>
+
+<div id="result" class="result"></div>
+
+<div id="questions"></div>
+
+<button id="submitBtn" onclick="submitTest()">SUBMIT TEST</button>
+
+</main>
+
+<aside class="sidebar">
+
+<div class="timer">
+⏱ TIME<br>
+<span id="timer">60:00</span>
+</div>
+
+<h3>Question Palette</h3>
+
+<div class="palette" id="palette"></div>
+
+<div class="legend">
+<p><span class="white"></span> Not Attempted</p>
+<p><span class="green"></span> Attempted</p>
+</div>
+
+</aside>
+
+</div>
+
+<script>
+
+const questions = [
+
+{
+q:"The Great Bath of the Indus Valley Civilization was discovered at which site?",
+o:["Harappa","Mohenjo-daro","Lothal","Dholavira"],
+a:1,
+e:"The Great Bath is one of the most important structures discovered at Mohenjo-daro in present-day Sindh, Pakistan."
+},
+
+{
+q:"Which Harappan site is famous for its dockyard?",
+o:["Kalibangan","Lothal","Rakhigarhi","Banawali"],
+a:1,
+e:"Lothal in Gujarat is famous for its ancient dockyard and evidence of maritime trade."
+},
+
+{
+q:"Which metal was not known to the people of the Indus Valley Civilization?",
+o:["Copper","Bronze","Gold","Iron"],
+a:3,
+e:"The Harappans knew copper, bronze and gold, but iron was not in common use during the mature Harappan period."
+},
+
+{
+q:"The script of the Indus Valley Civilization is:",
+o:["Fully deciphered","Partially deciphered","Undeciphered","Greek"],
+a:2,
+e:"The Indus script has not yet been conclusively deciphered."
+},
+
+{
+q:"Which Harappan site is located in present-day Haryana?",
+o:["Rakhigarhi","Lothal","Dholavira","Mohenjo-daro"],
+a:0,
+e:"Rakhigarhi, located in Haryana, is one of the major Harappan sites."
+},
+
+{
+q:"Which animal is generally regarded as absent from the Harappan seals?",
+o:["Bull","Elephant","Rhinoceros","Horse"],
+a:3,
+e:"Horse remains and representations are extremely limited and debated in the mature Harappan archaeological record, unlike animals such as bulls, elephants and rhinoceroses."
+},
+
+{
+q:"The oldest Veda is:",
+o:["Samaveda","Yajurveda","Rigveda","Atharvaveda"],
+a:2,
+e:"Rigveda is the oldest of the four Vedas."
+},
+
+{
+q:"The Rigvedic people were mainly associated with the region of:",
+o:["Deccan","Sapta Sindhu","Tamilakam","Bengal"],
+a:1,
+e:"The early Rigvedic region was centered around the northwestern Indian subcontinent, especially the Sapta Sindhu region."
+},
+
+{
+q:"Which Veda is mainly associated with melodies and chants?",
+o:["Rigveda","Samaveda","Yajurveda","Atharvaveda"],
+a:1,
+e:"Samaveda contains verses arranged primarily for singing during rituals."
+},
+
+{
+q:"The Gayatri Mantra is found in:",
+o:["Rigveda","Samaveda","Yajurveda","Atharvaveda"],
+a:0,
+e:"The Gayatri Mantra occurs in Rigveda, Mandala 3, Sukta 62."
+},
+
+{
+q:"Which Veda deals extensively with sacrificial formulae?",
+o:["Rigveda","Yajurveda","Samaveda","Atharvaveda"],
+a:1,
+e:"Yajurveda contains prose and verse formulae used by priests during sacrifices."
+},
+
+{
+q:"Who is traditionally regarded as the author of Arthashastra?",
+o:["Kalidasa","Kautilya","Banabhatta","Panini"],
+a:1,
+e:"Arthashastra is traditionally attributed to Kautilya, also known as Chanakya or Vishnugupta."
+},
+
+{
+q:"Who founded the Mauryan Empire?",
+o:["Ashoka","Bindusara","Chandragupta Maurya","Bimbisara"],
+a:2,
+e:"Chandragupta Maurya founded the Mauryan Empire around the late 4th century BCE."
+},
+
+{
+q:"Megasthenes visited the court of:",
+o:["Ashoka","Chandragupta Maurya","Harsha","Kanishka"],
+a:1,
+e:"Megasthenes was the Greek ambassador to the court of Chandragupta Maurya."
+},
+
+{
+q:"Megasthenes wrote:",
+o:["Indica","Arthashastra","Rajatarangini","Mudrarakshasa"],
+a:0,
+e:"Megasthenes wrote Indica, describing aspects of Mauryan India."
+},
+
+{
+q:"Who succeeded Chandragupta Maurya?",
+o:["Ashoka","Bindusara","Dasharatha","Samprati"],
+a:1,
+e:"Bindusara succeeded Chandragupta Maurya."
+},
+
+{
+q:"The Kalinga War was fought during the reign of:",
+o:["Chandragupta Maurya","Bindusara","Ashoka","Pushyamitra"],
+a:2,
+e:"Ashoka fought the Kalinga War around 261 BCE. Its devastation influenced his later policy and patronage of Buddhism."
+},
+
+{
+q:"Which Mauryan ruler embraced Buddhism after the Kalinga War?",
+o:["Bindusara","Ashoka","Chandragupta Maurya","Brihadratha"],
+a:1,
+e:"Ashoka increasingly supported Buddhism after the Kalinga War and promoted dhamma."
+},
+
+{
+q:"The Lion Capital at Sarnath was erected during the reign of:",
+o:["Chandragupta Maurya","Ashoka","Kanishka","Samudragupta"],
+a:1,
+e:"The famous Lion Capital at Sarnath is associated with Ashoka and is now India's State Emblem."
+},
+
+{
+q:"The language commonly used in most Ashokan inscriptions was:",
+o:["Sanskrit","Prakrit","Tamil","Persian"],
+a:1,
+e:"Most Ashokan edicts were written in Prakrit languages, generally using Brahmi script."
+},
+
+{
+q:"Which script was used in most Ashokan inscriptions?",
+o:["Brahmi","Devanagari","Persian","Kharosthi exclusively"],
+a:0,
+e:"Brahmi was the principal script used for Ashoka's inscriptions, while Kharosthi was used in the northwest."
+},
+
+{
+q:"Who deciphered the Brahmi script in the 19th century?",
+o:["Alexander Cunningham","James Prinsep","John Marshall","William Jones"],
+a:1,
+e:"James Prinsep successfully deciphered Brahmi and Kharosthi inscriptions in the 1830s."
+},
+
+{
+q:"The founder of the Gupta dynasty is generally considered to be:",
+o:["Chandragupta I","Sri Gupta","Samudragupta","Kumaragupta"],
+a:1,
+e:"Sri Gupta is generally regarded as the founder of the Gupta dynasty."
+},
+
+{
+q:"Which Gupta ruler assumed the title 'Maharajadhiraja' and greatly expanded the kingdom?",
+o:["Sri Gupta","Chandragupta I","Skandagupta","Vishnugupta"],
+a:1,
+e:"Chandragupta I adopted the title Maharajadhiraja and laid the foundation for Gupta imperial expansion."
+},
+
+{
+q:"The Allahabad Pillar inscription is an important source for the reign of:",
+o:["Samudragupta","Chandragupta II","Skandagupta","Kumaragupta"],
+a:0,
+e:"The Allahabad Pillar inscription, composed by Harishena, describes the achievements of Samudragupta."
+},
+
+{
+q:"Samudragupta is often described by historians as:",
+o:["Napoleon of India","Akbar of India","Alexander of India","Caesar of India"],
+a:0,
+e:"Historian V. A. Smith famously compared Samudragupta to Napoleon because of his military campaigns."
+},
+
+{
+q:"Who is known as Vikramaditya among the Gupta rulers?",
+o:["Samudragupta","Chandragupta II","Kumaragupta","Skandagupta"],
+a:1,
+e:"Chandragupta II is traditionally associated with the title Vikramaditya."
+},
+
+{
+q:"Which Chinese traveller visited India during the reign of Chandragupta II?",
+o:["Fa-Hien","Hiuen Tsang","I-Tsing","Al-Biruni"],
+a:0,
+e:"Fa-Hien visited India during the reign of Chandragupta II and wrote about Indian society and Buddhism."
+},
+
+{
+q:"Nalanda University is traditionally associated with the reign of:",
+o:["Kumaragupta I","Chandragupta Maurya","Harsha","Rajendra Chola"],
+a:0,
+e:"Kumaragupta I is traditionally credited with establishing Nalanda, although its development continued under later rulers."
+},
+
+{
+q:"The Gupta period is often called the:",
+o:["Dark Age of India","Golden Age of ancient India","Age of Revolution","Iron Age"],
+a:1,
+e:"The Gupta period is often described as a golden age because of significant developments in literature, science, mathematics and art."
+},
+
+{
+q:"Who wrote Aryabhatiya?",
+o:["Varahamihira","Aryabhata","Brahmagupta","Bhaskaracharya"],
+a:1,
+e:"Aryabhata wrote Aryabhatiya, a major work on mathematics and astronomy."
+},
+
+{
+q:"Aryabhata stated that the apparent daily movement of stars is due to:",
+o:["Movement of the Sun","Rotation of the Earth","Rotation of the Moon","Movement of planets only"],
+a:1,
+e:"Aryabhata recognized Earth's rotation as an explanation for the apparent daily motion of the celestial sphere."
+},
+
+{
+q:"Who wrote Abhijnanasakuntalam?",
+o:["Kalidasa","Banabhatta","Tulsidas","Bharavi"],
+a:0,
+e:"Abhijnanasakuntalam is a famous Sanskrit drama by Kalidasa."
+},
+
+{
+q:"The Ajanta caves are primarily associated with:",
+o:["Jainism","Buddhism","Islam","Sikhism"],
+a:1,
+e:"The Ajanta caves contain important Buddhist paintings, sculptures and monastic architecture."
+},
+
+{
+q:"The Ellora caves represent:",
+o:["Only Buddhism","Only Hinduism","Buddhism, Hinduism and Jainism","Only Jainism"],
+a:2,
+e:"Ellora contains monuments belonging to Buddhist, Hindu and Jain traditions."
+},
+
+{
+q:"The famous Kailasa temple at Ellora was built under the:",
+o:["Rashtrakutas","Cholas","Guptas","Palas"],
+a:0,
+e:"The Kailasa temple at Ellora was commissioned by the Rashtrakuta ruler Krishna I."
+},
+
+{
+q:"Who founded the Chola imperial power in the medieval period?",
+o:["Rajendra I","Rajaraja I","Vijayalaya Chola","Karikala"],
+a:2,
+e:"Vijayalaya Chola established Chola power at Thanjavur in the 9th century."
+},
+
+{
+q:"The Brihadeshwara Temple at Thanjavur was built by:",
+o:["Rajendra I","Rajaraja I","Vijayalaya","Kulottunga I"],
+a:1,
+e:"Rajaraja Chola I constructed the Brihadeshwara Temple at Thanjavur."
+},
+
+{
+q:"Which Chola ruler led naval expeditions towards Southeast Asia?",
+o:["Rajaraja I","Rajendra I","Vijayalaya","Aditya I"],
+a:1,
+e:"Rajendra Chola I conducted notable naval campaigns against Srivijaya in Southeast Asia."
+},
+
+{
+q:"The Chola administration is particularly noted for:",
+o:["Village self-government","Iqtadari system","Mansabdari system","Zamindari system"],
+a:0,
+e:"Chola inscriptions provide evidence of organized village assemblies and local self-government."
+},
+
+{
+q:"Who founded the Delhi Sultanate's Mamluk or Slave dynasty?",
+o:["Iltutmish","Qutb-ud-din Aibak","Balban","Razia"],
+a:1,
+e:"Qutb-ud-din Aibak established the Mamluk dynasty after the death of Muhammad Ghori."
+},
+
+{
+q:"Qutb-ud-din Aibak was succeeded by:",
+o:["Iltutmish","Balban","Razia","Alauddin Khalji"],
+a:0,
+e:"Iltutmish succeeded Aibak and consolidated the Delhi Sultanate."
+},
+
+{
+q:"Who completed the construction of the Qutub Minar to a substantial extent?",
+o:["Qutb-ud-din Aibak","Iltutmish","Balban","Alauddin Khalji"],
+a:1,
+e:"Aibak began the Qutub Minar and Iltutmish completed major portions of it."
+},
+
+{
+q:"Who was the first and only woman ruler of the Delhi Sultanate?",
+o:["Nur Jahan","Razia Sultan","Chand Bibi","Rani Durgavati"],
+a:1,
+e:"Razia Sultan ruled the Delhi Sultanate from 1236 to 1240."
+},
+
+{
+q:"Which Sultan introduced a strong centralized monarchy and the policy of 'blood and iron'?",
+o:["Balban","Alauddin Khalji","Muhammad bin Tughlaq","Firoz Shah Tughlaq"],
+a:0,
+e:"Ghiyasuddin Balban emphasized royal authority and is associated with the policy popularly described as blood and iron."
+},
+
+{
+q:"Who introduced market control measures in the Delhi Sultanate?",
+o:["Balban","Alauddin Khalji","Iltutmish","Firoz Shah Tughlaq"],
+a:1,
+e:"Alauddin Khalji introduced extensive market regulations and price controls."
+},
+
+{
+q:"Alauddin Khalji's market reforms were mainly intended to:",
+o:["Promote foreign trade","Maintain a large army at relatively low cost","Abolish agriculture","Encourage temple construction"],
+a:1,
+e:"Controlled prices helped Alauddin maintain a large standing army without proportionately increasing soldiers' salaries."
+},
+
+{
+q:"Who shifted the capital from Delhi to Daulatabad and later reversed the decision?",
+o:["Alauddin Khalji","Muhammad bin Tughlaq","Firoz Shah Tughlaq","Balban"],
+a:1,
+e:"Muhammad bin Tughlaq ordered the transfer of the capital to Daulatabad and subsequently restored Delhi's importance."
+},
+
+{
+q:"Muhammad bin Tughlaq introduced token currency mainly using:",
+o:["Gold only","Silver only","Copper and brass","Iron only"],
+a:2,
+e:"Muhammad bin Tughlaq introduced token currency using copper and brass coins, but the experiment failed largely because of counterfeiting."
+},
+
+{
+q:"Who founded the Vijayanagara Empire?",
+o:["Harihara and Bukka","Krishnadevaraya and Bukka","Deva Raya and Harihara","Rama Raya and Bukka"],
+a:0,
+e:"Harihara and Bukka founded the Vijayanagara Empire in the 14th century."
+},
+
+{
+q:"The capital of the Vijayanagara Empire was:",
+o:["Hampi","Madurai","Warangal","Bijapur"],
+a:0,
+e:"Hampi was the principal capital of the Vijayanagara Empire."
+},
+
+{
+q:"The greatest ruler of the Tuluva dynasty of Vijayanagara was:",
+o:["Devaraya I","Krishnadevaraya","Harihara II","Achyuta Deva Raya"],
+a:1,
+e:"Krishnadevaraya is regarded as the most prominent ruler of the Tuluva dynasty."
+},
+
+{
+q:"Who wrote the Telugu work Amuktamalyada?",
+o:["Krishnadevaraya","Tenali Rama","Allasani Peddana","Nannaya"],
+a:0,
+e:"Krishnadevaraya himself authored Amuktamalyada in Telugu."
+},
+
+{
+q:"The Battle of Talikota was fought in:",
+o:["1526","1556","1565","1576"],
+a:2,
+e:"The Battle of Talikota took place in 1565 and dealt a major blow to the Vijayanagara Empire."
+},
+
+{
+q:"Who founded the Mughal Empire in India?",
+o:["Akbar","Babur","Humayun","Sher Shah"],
+a:1,
+e:"Babur founded the Mughal Empire after defeating Ibrahim Lodi in the First Battle of Panipat in 1526."
+},
+
+{
+q:"The First Battle of Panipat was fought in:",
+o:["1526","1556","1761","1540"],
+a:0,
+e:"The First Battle of Panipat was fought in 1526 between Babur and Ibrahim Lodi."
+},
+
+{
+q:"Babur defeated Ibrahim Lodi with the help of:",
+o:["Naval warfare","Field artillery and effective tactics","Elephant cavalry only","Portuguese troops"],
+a:1,
+e:"Babur used field artillery, matchlocks and tactical formations such as tulughma and araba."
+},
+
+{
+q:"Who wrote Baburnama?",
+o:["Abul Fazl","Babur","Gulbadan Begum","Badauni"],
+a:1,
+e:"Baburnama is the memoir of Babur, originally written in Chagatai Turkish."
+},
+
+{
+q:"Humayun was defeated by Sher Shah Suri in the Battle of Kannauj in:",
+o:["1526","1539","1540","1556"],
+a:2,
+e:"Humayun was decisively defeated by Sher Shah at Kannauj in 1540."
+},
+
+{
+q:"Sher Shah Suri is particularly remembered for improvements in:",
+o:["Roads and administration","Naval warfare only","Temple architecture","European trade"],
+a:0,
+e:"Sher Shah developed roads, sarais, postal arrangements, revenue administration and currency reforms."
+},
+
+{
+q:"The silver coin introduced and standardized by Sher Shah was known as:",
+o:["Dinar","Rupiya","Tanka","Mohur"],
+a:1,
+e:"Sher Shah's silver rupiya became an important precursor of the modern rupee."
+},
+
+{
+q:"Who was the Mughal emperor during the Battle of Haldighati?",
+o:["Babur","Akbar","Jahangir","Shah Jahan"],
+a:1,
+e:"The Battle of Haldighati was fought in 1576 during Akbar's reign between Mughal forces and Maharana Pratap's forces."
+},
+
+{
+q:"The Battle of Haldighati was fought between Mughal forces and:",
+o:["Shivaji","Maharana Pratap","Rana Sanga","Raja Man Singh"],
+a:1,
+e:"Maharana Pratap of Mewar fought the Mughal forces commanded by Raja Man Singh in the Battle of Haldighati."
+},
+
+{
+q:"Akbar abolished the jizya in:",
+o:["1564","1575","1580","1605"],
+a:0,
+e:"Akbar abolished the jizya tax on non-Muslims in 1564."
+},
+
+{
+q:"Akbar's policy of religious tolerance is often associated with:",
+o:["Sulh-i-kul","Din-i-Ilahi only","Iqtadari","Zabt"],
+a:0,
+e:"Sulh-i-kul means universal peace and is associated with Akbar's policy of broad religious tolerance."
+},
+
+{
+q:"Who was the author of Akbarnama?",
+o:["Abul Fazl","Faizi","Badauni","Abdul Hamid Lahori"],
+a:0,
+e:"Abul Fazl wrote Akbarnama, including the Ain-i-Akbari as its third volume."
+},
+
+{
+q:"Ain-i-Akbari was written by:",
+o:["Abul Fazl","Badauni","Faizi","Nizamuddin Ahmad"],
+a:0,
+e:"Ain-i-Akbari, a detailed administrative and statistical account of Akbar's empire, was written by Abul Fazl."
+},
+
+{
+q:"The Mansabdari system was developed and organized under:",
+o:["Babur","Akbar","Aurangzeb","Sher Shah"],
+a:1,
+e:"Akbar organized the Mansabdari system as an important administrative and military institution."
+},
+
+{
+q:"In the Mughal administrative system, 'Zat' indicated:",
+o:["Personal rank of a mansabdar","Number of horses only","Land revenue","Religious status"],
+a:0,
+e:"Zat represented the personal rank and status of a mansabdar."
+},
+
+{
+q:"The Taj Mahal was built by:",
+o:["Akbar","Jahangir","Shah Jahan","Aurangzeb"],
+a:2,
+e:"Shah Jahan commissioned the Taj Mahal at Agra in memory of Mumtaz Mahal."
+},
+
+{
+q:"The Taj Mahal is located on the bank of the:",
+o:["Ganga","Yamuna","Narmada","Godavari"],
+a:1,
+e:"The Taj Mahal stands on the southern bank of the Yamuna River at Agra."
+},
+
+{
+q:"Who was the last major Mughal emperor?",
+o:["Shah Jahan","Aurangzeb","Bahadur Shah I","Muhammad Shah"],
+a:1,
+e:"Aurangzeb was the last Mughal ruler generally regarded as a major emperor in terms of territorial extent."
+},
+
+{
+q:"Who founded the Maratha kingdom and is associated with the coronation at Raigad in 1674?",
+o:["Shivaji","Sambhaji","Bajirao I","Balaji Vishwanath"],
+a:0,
+e:"Shivaji was crowned at Raigad in 1674 and established an independent Maratha kingdom."
+},
+
+{
+q:"Shivaji's council of eight ministers was called:",
+o:["Navratna","Ashtapradhan","Panchayat","Diwan-i-Khas"],
+a:1,
+e:"The Ashtapradhan was Shivaji's council of eight principal ministers."
+},
+
+{
+q:"The Treaty of Purandar was signed in:",
+o:["1665","1674","1680","1707"],
+a:0,
+e:"The Treaty of Purandar was concluded in 1665 between Shivaji and the Mughal forces under Jai Singh I."
+},
+
+{
+q:"The Battle of Plassey was fought in:",
+o:["1757","1764","1773","1784"],
+a:0,
+e:"The Battle of Plassey was fought on 23 June 1757 between Siraj-ud-daulah and the forces of the East India Company led by Robert Clive."
+},
+
+{
+q:"The Battle of Plassey resulted in the defeat of:",
+o:["Mir Qasim","Siraj-ud-daulah","Shah Alam II","Tipu Sultan"],
+a:1,
+e:"Siraj-ud-daulah, the Nawab of Bengal, was defeated at Plassey."
+},
+
+{
+q:"The Battle of Buxar was fought in:",
+o:["1757","1764","1772","1781"],
+a:1,
+e:"The Battle of Buxar was fought in 1764 and strengthened Company power in eastern India."
+},
+
+{
+q:"The Battle of Buxar was fought between the East India Company and an alliance including:",
+o:["Mir Qasim, Shuja-ud-daulah and Shah Alam II","Siraj-ud-daulah and Tipu Sultan","Ranjit Singh and Haidar Ali","Marathas and Mysore"],
+a:0,
+e:"The alliance consisted of Mir Qasim, Shuja-ud-daulah of Awadh and Mughal emperor Shah Alam II."
+},
+
+{
+q:"The Diwani rights of Bengal, Bihar and Orissa were granted to the East India Company in:",
+o:["1757","1764","1765","1773"],
+a:2,
+e:"In 1765, Shah Alam II granted the Company the Diwani rights for Bengal, Bihar and Orissa."
+},
+
+{
+q:"The Permanent Settlement was introduced by:",
+o:["Warren Hastings","Lord Cornwallis","Lord Wellesley","Lord Dalhousie"],
+a:1,
+e:"Lord Cornwallis introduced the Permanent Settlement in Bengal in 1793."
+},
+
+{
+q:"The Permanent Settlement mainly recognized:",
+o:["Zamindars as revenue collectors with fixed land revenue obligations","Ryots as direct owners everywhere","Village communities as sole owners","Company officials as landlords"],
+a:0,
+e:"The Permanent Settlement fixed the land revenue demand and recognized zamindars as hereditary revenue intermediaries, subject to payment of the assessed revenue."
+},
+
+{
+q:"The Ryotwari system was associated particularly with:",
+o:["Thomas Munro","Lord Cornwallis","Lord Curzon","Lord Ripon"],
+a:0,
+e:"Thomas Munro played a major role in developing and implementing the Ryotwari system in parts of southern India."
+},
+
+{
+q:"The Subsidiary Alliance system was introduced by:",
+o:["Lord Wellesley","Lord Dalhousie","Lord Cornwallis","Lord Hastings"],
+a:0,
+e:"Lord Wellesley developed the Subsidiary Alliance system to expand British political control."
+},
+
+{
+q:"The Doctrine of Lapse is associated with:",
+o:["Lord Dalhousie","Lord Wellesley","Lord Canning","Lord Curzon"],
+a:0,
+e:"Lord Dalhousie used the Doctrine of Lapse to annex certain princely states lacking a recognized natural heir."
+},
+
+{
+q:"The Revolt of 1857 began at:",
+o:["Delhi","Meerut","Kanpur","Lucknow"],
+a:1,
+e:"The Revolt of 1857 began at Meerut on 10 May 1857."
+},
+
+{
+q:"The immediate cause of the Revolt of 1857 was associated with:",
+o:["Introduction of railways","Greased cartridges","Permanent Settlement","Partition of Bengal"],
+a:1,
+e:"The controversy over cartridges believed to be greased with cow and pig fat became the immediate trigger for the revolt."
+},
+
+{
+q:"Who was declared the symbolic emperor by the rebels during the Revolt of 1857?",
+o:["Bahadur Shah II","Akbar II","Shah Alam II","Wajid Ali Shah"],
+a:0,
+e:"Bahadur Shah II, also known as Bahadur Shah Zafar, was proclaimed the symbolic leader of the revolt."
+},
+
+{
+q:"Who led the revolt at Kanpur in 1857?",
+o:["Rani Lakshmibai","Nana Sahib","Kunwar Singh","Begum Hazrat Mahal"],
+a:1,
+e:"Nana Sahib was a major leader of the revolt at Kanpur."
+},
+
+{
+q:"Rani Lakshmibai was associated with the revolt at:",
+o:["Jhansi","Kanpur","Lucknow","Delhi"],
+a:0,
+e:"Rani Lakshmibai led resistance at Jhansi during the Revolt of 1857."
+},
+
+{
+q:"Who led the revolt in Bihar during 1857?",
+o:["Kunwar Singh","Nana Sahib","Tatya Tope","Bakht Khan"],
+a:0,
+e:"Kunwar Singh of Jagdishpur was a prominent leader of the 1857 revolt in Bihar."
+},
+
+{
+q:"The Government of India Act, 1858 transferred power from:",
+o:["British Crown to Company","East India Company to British Crown","Indian princes to Company","Parliament to Company"],
+a:1,
+e:"The Government of India Act 1858 ended Company rule and transferred administration to the British Crown."
+},
+
+{
+q:"The Indian National Congress was founded in:",
+o:["1885","1887","1905","1911"],
+a:0,
+e:"The Indian National Congress was founded in 1885."
+},
+
+{
+q:"The first session of the Indian National Congress was held at:",
+o:["Calcutta","Bombay","Madras","Allahabad"],
+a:1,
+e:"The first INC session was held in Bombay in 1885 under the presidency of W. C. Bonnerjee."
+},
+
+{
+q:"Who was the first president of the Indian National Congress?",
+o:["Dadabhai Naoroji","W.C. Bonnerjee","A.O. Hume","Surendranath Banerjee"],
+a:1,
+e:"Womesh Chandra Bonnerjee presided over the first session of the Indian National Congress."
+},
+
+{
+q:"The Partition of Bengal was announced by:",
+o:["Lord Curzon","Lord Ripon","Lord Canning","Lord Minto"],
+a:0,
+e:"Lord Curzon announced the partition of Bengal in 1905."
+},
+
+{
+q:"The Swadeshi Movement was launched mainly in response to:",
+o:["Rowlatt Act","Partition of Bengal","Simon Commission","Salt Law"],
+a:1,
+e:"The Swadeshi Movement developed as a major response to the 1905 partition of Bengal."
+},
+
+{
+q:"The Muslim League was founded in 1906 at:",
+o:["Lahore","Dhaka","Aligarh","Lucknow"],
+a:1,
+e:"The All-India Muslim League was founded at Dhaka in 1906."
+},
+
+{
+q:"The Surat Split in the Congress occurred in:",
+o:["1905","1907","1911","1916"],
+a:1,
+e:"The Congress split between Moderates and Extremists occurred at the Surat session in 1907."
+},
+
+{
+q:"The Home Rule Movement in India was associated with:",
+o:["Annie Besant and Bal Gangadhar Tilak","Gandhi and Nehru only","Subhas Bose and Patel","Dadabhai Naoroji and Gokhale"],
+a:0,
+e:"Annie Besant and Bal Gangadhar Tilak were the principal leaders of the Home Rule Movement in India."
+},
+
+{
+q:"Mahatma Gandhi returned to India from South Africa in:",
+o:["1911","1915","1919","1920"],
+a:1,
+e:"Gandhi returned to India in January 1915 after his South African struggle."
+},
+
+{
+q:"Gandhi's first major satyagraha in India was at:",
+o:["Champaran","Kheda","Ahmedabad","Bardoli"],
+a:0,
+e:"The Champaran Satyagraha of 1917 was Gandhi's first major satyagraha in India."
+},
+
+{
+q:"The Champaran Satyagraha was related to:",
+o:["Indigo cultivation","Salt tax","Mill wages","Forest rights"],
+a:0,
+e:"The Champaran movement opposed oppressive indigo cultivation arrangements imposed on peasants."
+},
+
+{
+q:"The Kheda Satyagraha of 1918 was mainly related to:",
+o:["Land revenue","Indigo","Salt production","Textile imports"],
+a:0,
+e:"Gandhi supported peasants in Kheda who sought suspension of land revenue because of crop failure."
+},
+
+{
+q:"The Rowlatt Act was passed in:",
+o:["1917","1919","1920","1922"],
+a:1,
+e:"The Rowlatt Act was enacted in 1919 and allowed detention without normal trial safeguards."
+},
+
+{
+q:"The Jallianwala Bagh massacre took place on:",
+o:["13 April 1919","15 August 1919","26 January 1920","10 May 1920"],
+a:0,
+e:"On 13 April 1919, troops under General Dyer fired on a gathering at Jallianwala Bagh in Amritsar."
+},
+
+{
+q:"The Non-Cooperation Movement was launched in:",
+o:["1919","1920","1922","1930"],
+a:1,
+e:"The Non-Cooperation Movement was formally launched by the Congress in 1920."
+},
+
+{
+q:"The Non-Cooperation Movement was withdrawn after:",
+o:["Jallianwala Bagh","Chauri Chaura incident","Simon Commission","Dandi March"],
+a:1,
+e:"Gandhi withdrew the movement in 1922 after the violent Chauri Chaura incident."
+},
+
+{
+q:"The Simon Commission came to India in:",
+o:["1927","1928","1929","1930"],
+a:1,
+e:"The Simon Commission arrived in India in 1928. It had no Indian member, leading to widespread protests."
+},
+
+{
+q:"The slogan 'Simon Go Back' was associated with opposition to:",
+o:["Cripps Mission","Simon Commission","Cabinet Mission","Mountbatten Plan"],
+a:1,
+e:"Indian nationalists protested the Simon Commission with the slogan 'Simon Go Back'."
+},
+
+{
+q:"The Civil Disobedience Movement began with:",
+o:["Champaran March","Dandi March","Quit India Movement","Kheda Satyagraha"],
+a:1,
+e:"Gandhi began the Civil Disobedience Movement in 1930 with the Salt March from Sabarmati Ashram to Dandi."
+},
+
+{
+q:"The Dandi March was related to:",
+o:["Indigo cultivation","Salt law","Land revenue","Factory wages"],
+a:1,
+e:"The Dandi March challenged the British monopoly and taxation of salt."
+},
+
+{
+q:"The Gandhi-Irwin Pact was signed in:",
+o:["1929","1930","1931","1932"],
+a:2,
+e:"The Gandhi-Irwin Pact was signed in March 1931."
+},
+
+{
+q:"The Poona Pact of 1932 was signed between Mahatma Gandhi and:",
+o:["Jawaharlal Nehru","B.R. Ambedkar","Muhammad Ali Jinnah","Rajendra Prasad"],
+a:1,
+e:"The Poona Pact was reached between Gandhi and B.R. Ambedkar regarding representation of the Depressed Classes."
+},
+
+{
+q:"The Government of India Act, 1935 provided for:",
+o:["Provincial autonomy","Complete independence","Immediate partition","Abolition of provinces"],
+a:0,
+e:"The Government of India Act 1935 introduced provincial autonomy and proposed a federation, among other provisions."
+},
+
+{
+q:"The Quit India Movement was launched in:",
+o:["1939","1940","1942","1946"],
+a:2,
+e:"The Quit India Movement was launched by the Congress in August 1942."
+},
+
+{
+q:"The slogan 'Do or Die' was given during:",
+o:["Non-Cooperation Movement","Civil Disobedience Movement","Quit India Movement","Swadeshi Movement"],
+a:2,
+e:"Gandhi gave the call of 'Do or Die' during the Quit India Movement in 1942."
+},
+
+{
+q:"The Indian National Army was reorganized under the leadership of:",
+o:["Subhas Chandra Bose","Jawaharlal Nehru","Sardar Patel","Rajendra Prasad"],
+a:0,
+e:"Subhas Chandra Bose reorganized and led the Indian National Army, popularly known as the Azad Hind Fauj."
+},
+
+{
+q:"The Cabinet Mission came to India in:",
+o:["1942","1945","1946","1947"],
+a:2,
+e:"The Cabinet Mission arrived in India in 1946 to discuss the transfer of power and constitutional arrangements."
+},
+
+{
+q:"The Mountbatten Plan was announced in:",
+o:["1945","1946","1947","1948"],
+a:2,
+e:"Lord Mountbatten announced the plan for partition and transfer of power on 3 June 1947."
+},
+
+{
+q:"India became independent on:",
+o:["26 January 1947","15 August 1947","26 November 1947","15 August 1948"],
+a:1,
+e:"India became independent on 15 August 1947."
+},
+
+{
+q:"The Constitution of India was adopted by the Constituent Assembly on:",
+o:["15 August 1947","26 November 1949","26 January 1950","15 August 1950"],
+a:1,
+e:"The Constitution was adopted on 26 November 1949."
+},
+
+{
+q:"The Constitution of India came into force on:",
+o:["15 August 1947","26 November 1949","26 January 1950","2 October 1950"],
+a:2,
+e:"The Constitution came into force on 26 January 1950."
+}
+
+];
+
+console.log("Total Questions:", questions.length);
+
+const qContainer=document.getElementById("questions");
+const palette=document.getElementById("palette");
+
+questions.forEach((item,index)=>{
+
+    const card=document.createElement("div");
+    card.className="card";
+    card.id="q"+(index+1);
+
+    let html=`
+    <div class="question-title">
+        Q${index+1}. ${item.q}
+    </div>
+    `;
+
+    item.o.forEach((option,oi)=>{
+
+        html+=`
+        <label class="option">
+            <input type="radio"
+                   name="q${index}"
+                   value="${oi}"
+                   onchange="markAttempted(${index})">
+            <b>${String.fromCharCode(65+oi)}.</b> ${option}
+        </label>
+        `;
+
+    });
+
+    html+=`
+    <div class="solution" id="solution${index}">
+        <div class="correct">
+            Correct Answer:
+            ${String.fromCharCode(65+item.a)}. ${item.o[item.a]}
+        </div>
+
+        <div style="margin-top:6px;">
+            <b>Explanation:</b> ${item.e}
+        </div>
+    </div>
+    `;
+
+    card.innerHTML=html;
+    qContainer.appendChild(card);
+
+    const btn=document.createElement("div");
+
+    btn.className="qnum";
+    btn.id="num"+index;
+    btn.innerText=index+1;
+
+    btn.onclick=()=>{
+        document.getElementById("q"+(index+1))
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    };
+
+    palette.appendChild(btn);
+});
+
+
+function markAttempted(index){
+
+    document.getElementById("num"+index)
+    .classList.add("attempted");
+
+}
+
+
+let time=60*60;
+let submitted=false;
+
+const timerInterval=setInterval(()=>{
+
+    if(submitted)return;
+
+    let minutes=Math.floor(time/60);
+    let seconds=time%60;
+
+    document.getElementById("timer").innerText=
+        String(minutes).padStart(2,"0")+":"+
+        String(seconds).padStart(2,"0");
+
+    if(time<=0){
+
+        clearInterval(timerInterval);
+
+        submitTest(true);
+
+    }
+
+    time--;
+
+},1000);
+
+
+function submitTest(auto=false){
+
+    if(submitted)return;
+
+    if(!auto){
+
+        const confirmSubmit=confirm(
+            "Are you sure you want to submit the test?"
+        );
+
+        if(!confirmSubmit)return;
+    }
+
+    submitted=true;
+
+    clearInterval(timerInterval);
+
+    let score=0;
+    let attempted=0;
+
+    questions.forEach((item,index)=>{
+
+        const selected=document.querySelector(
+            `input[name="q${index}"]:checked`
+        );
+
+        const solution=document.getElementById("solution"+index);
+
+        solution.style.display="block";
+
+        if(selected){
+
+            attempted++;
+
+            const selectedValue=parseInt(selected.value);
+
+            if(selectedValue===item.a){
+                score++;
+            }
+
+        }
+
+    });
+
+
+    const unattempted=
+        questions.length-attempted;
+
+    const percentage=
+        (score/questions.length*100).toFixed(2);
+
+    let performance="";
+
+    if(score>=90){
+
+        performance="Excellent";
+
+    }else if(score>=75){
+
+        performance="Very Good";
+
+    }else if(score>=60){
+
+        performance="Good";
+
+    }else if(score>=40){
+
+        performance="Needs Improvement";
+
+    }else{
+
+        performance="Keep Practising";
+
+    }
+
+
+    const result=document.getElementById("result");
+
+    result.innerHTML=`
+
+    <h2>HISTORY TEST 1 RESULT</h2>
+
+    <h3>Score: ${score} / 100</h3>
+
+    <p>
+        <b>Percentage:</b> ${percentage}%
+    </p>
+
+    <p>
+        <b>Attempted:</b> ${attempted}
+    </p>
+
+    <p>
+        <b>Unattempted:</b> ${unattempted}
+    </p>
+
+    <p>
+        <b>Performance:</b> ${performance}
+    </p>
+
+    ${
+        auto
+        ?
+        `<p style="color:#c62828;font-weight:bold;">
+        Time Over - Test Automatically Submitted
+        </p>`
+        :
+        ""
+    }
+
+    `;
+
+    result.style.display="block";
+
+    document.getElementById("submitBtn").disabled=true;
+
+    document.getElementById("submitBtn").innerText=
+        "TEST SUBMITTED";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
