@@ -1,1 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES | Biology Test 1</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:15px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 12px rgba(0,0,0,.2);
+}
+
+.header-inner{
+    max-width:1300px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.test-title{
+    font-size:17px;
+    font-weight:bold;
+}
+
+.timer{
+    background:#fff;
+    color:#d90429;
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:900;
+    min-width:125px;
+    text-align:center;
+}
+
+.main{
+    max-width:1300px;
+    margin:25px auto;
+    padding:0 15px;
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:25px;
+}
+
+.question-box{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.question-number{
+    color:#1d4ed8;
+    font-size:18px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:20px;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.option{
+    border:2px solid #dbe3ef;
+    border-radius:9px;
+    padding:13px 15px;
+    cursor:pointer;
+    transition:.2s;
+    background:#fff;
+    font-size:16px;
+}
+
+.option:hover{
+    border-color:#1d4ed8;
+    background:#f0f5ff;
+}
+
+.option.selected{
+    border-color:#1d4ed8;
+    background:#e8f0ff;
+    font-weight:bold;
+}
+
+.option input{
+    display:none;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+    gap:10px;
+}
+
+.nav-btn,
+.submit-btn{
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:800;
+    font-size:15px;
+}
+
+.prev-btn{
+    background:#64748b;
+    color:white;
+}
+
+.next-btn{
+    background:#1d4ed8;
+    color:white;
+}
+
+.submit-btn{
+    background:#16a34a;
+    color:white;
+    width:100%;
+    margin-top:20px;
+}
+
+.palette-box{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    height:max-content;
+    position:sticky;
+    top:100px;
+}
+
+.palette-box h3{
+    margin-bottom:15px;
+    color:#102a43;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+}
+
+.p-btn{
+    width:42px;
+    height:42px;
+    border-radius:6px;
+    border:1px solid #cbd5e1;
+    background:#e5e7eb;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.p-btn.current{
+    border:3px solid #1d4ed8;
+}
+
+.p-btn.attempted{
+    background:#22c55e;
+    color:white;
+}
+
+.legend{
+    margin-top:18px;
+    font-size:13px;
+}
+
+.legend div{
+    margin:7px 0;
+}
+
+.box{
+    display:inline-block;
+    width:15px;
+    height:15px;
+    border-radius:3px;
+    vertical-align:middle;
+    margin-right:5px;
+}
+
+.green{
+    background:#22c55e;
+}
+
+.grey{
+    background:#e5e7eb;
+}
+
+.blue{
+    background:#fff;
+    border:3px solid #1d4ed8;
+}
+
+.result{
+    display:none;
+    background:white;
+    max-width:1000px;
+    margin:30px auto;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 25px rgba(0,0,0,.1);
+}
+
+.result h2{
+    color:#102a43;
+    margin-bottom:10px;
+}
+
+.score{
+    font-size:25px;
+    font-weight:900;
+    color:#16a34a;
+    margin-bottom:25px;
+    line-height:1.7;
+}
+
+.review{
+    border-top:1px solid #ddd;
+    padding:18px 0;
+}
+
+.review-question{
+    font-weight:800;
+    font-size:17px;
+    margin-bottom:10px;
+}
+
+.correct{
+    color:#15803d;
+    font-weight:bold;
+}
+
+.wrong{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+.solution{
+    margin-top:8px;
+    background:#f8fafc;
+    border-left:4px solid #1d4ed8;
+    padding:10px;
+    line-height:1.5;
+}
+
+#quiz{
+    display:block;
+}
+
+@media(max-width:900px){
+
+    .main{
+        grid-template-columns:1fr;
+    }
+
+    .palette-box{
+        position:relative;
+        top:0;
+    }
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        flex-direction:column;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .question-box{
+        padding:18px;
+    }
+
+    .palette{
+        grid-template-columns:repeat(10,1fr);
+    }
+
+    .p-btn{
+        width:30px;
+        height:30px;
+        font-size:11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+<div>
+<div class="logo">AIMERS <span>CLASSES</span></div>
+<div class="test-title">BIOLOGY TEST 1 | SSC CGL LEVEL</div>
+</div>
+
+<div class="timer" id="timer">
+60:00
+</div>
+
+</div>
+
+</header>
+
+
+<div id="quiz">
+
+<div class="main">
+
+<div class="question-box">
+
+<div class="question-number" id="questionNumber">
+Question 1 of 100
+</div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+<div class="navigation">
+
+<button class="nav-btn prev-btn" onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="nav-btn next-btn" onclick="nextQuestion()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="palette-box">
+
+<h3>Question Palette</h3>
+
+<div class="palette" id="palette"></div>
+
+<div class="legend">
+
+<div>
+<span class="box green"></span>
+Attempted
+</div>
+
+<div>
+<span class="box grey"></span>
+Not Attempted
+</div>
+
+<div>
+<span class="box blue"></span>
+Current Question
+</div>
+
+</div>
+
+<button class="submit-btn" onclick="submitTest()">
+SUBMIT TEST
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="result" id="result">
+
+<h2>BIOLOGY TEST 1 RESULT</h2>
+
+<div class="score" id="score"></div>
+
+<div id="review"></div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+{
+q:"Which is the basic structural and functional unit of life?",
+o:["Tissue","Cell","Organ","Nucleus"],
+a:1,
+s:"The cell is the basic structural and functional unit of all living organisms."
+},
+
+{
+q:"Who is known as the father of modern cell biology?",
+o:["Robert Hooke","Robert Brown","Anton van Leeuwenhoek","Matthias Schleiden"],
+a:2,
+s:"Antonie van Leeuwenhoek was the first to observe and describe living cells and microorganisms using a microscope."
+},
+
+{
+q:"Who coined the term 'cell' after observing cork?",
+o:["Robert Hooke","Schwann","Virchow","Darwin"],
+a:0,
+s:"Robert Hooke observed thin slices of cork in 1665 and coined the term cell because the structures resembled small rooms."
+},
+
+{
+q:"Which organelle is known as the powerhouse of the cell?",
+o:["Ribosome","Mitochondria","Golgi apparatus","Lysosome"],
+a:1,
+s:"Mitochondria produce ATP through cellular respiration and are therefore called the powerhouse of the cell."
+},
+
+{
+q:"Which organelle is responsible for protein synthesis?",
+o:["Ribosome","Lysosome","Vacuole","Centrosome"],
+a:0,
+s:"Ribosomes are the cellular structures responsible for protein synthesis."
+},
+
+{
+q:"Which organelle is known as the suicide bag of the cell?",
+o:["Ribosome","Lysosome","Golgi body","Nucleus"],
+a:1,
+s:"Lysosomes contain digestive enzymes and can digest cellular components, hence they are called suicide bags."
+},
+
+{
+q:"Which cell organelle modifies, packages and transports proteins?",
+o:["Mitochondria","Golgi apparatus","Ribosome","Chloroplast"],
+a:1,
+s:"The Golgi apparatus modifies, sorts and packages proteins and other materials for transport."
+},
+
+{
+q:"Which organelle contains chlorophyll?",
+o:["Mitochondria","Chloroplast","Nucleus","Lysosome"],
+a:1,
+s:"Chlorophyll is present in chloroplasts of green plants and absorbs light energy for photosynthesis."
+},
+
+{
+q:"Which structure controls the activities of a cell?",
+o:["Cell wall","Nucleus","Vacuole","Ribosome"],
+a:1,
+s:"The nucleus contains genetic material and regulates many cellular activities."
+},
+
+{
+q:"The plasma membrane is mainly composed of:",
+o:["Cellulose and starch","Lipids and proteins","DNA and RNA","Chitin and protein"],
+a:1,
+s:"The plasma membrane is primarily a phospholipid bilayer containing proteins."
+},
+
+{
+q:"Which structure is present in plant cells but generally absent in animal cells?",
+o:["Cell membrane","Nucleus","Cell wall","Mitochondria"],
+a:2,
+s:"Plant cells possess a cellulose cell wall, whereas animal cells do not."
+},
+
+{
+q:"Which tissue transports water in plants?",
+o:["Phloem","Xylem","Parenchyma","Collenchyma"],
+a:1,
+s:"Xylem transports water and dissolved minerals from roots towards other parts of the plant."
+},
+
+{
+q:"Which tissue transports food in plants?",
+o:["Xylem","Phloem","Sclerenchyma","Epidermis"],
+a:1,
+s:"Phloem transports prepared food, mainly sugars, from leaves to other parts."
+},
+
+{
+q:"Which plant tissue is responsible for growth?",
+o:["Meristematic tissue","Sclerenchyma","Parenchyma","Cork"],
+a:0,
+s:"Meristematic tissues contain actively dividing cells and are responsible for plant growth."
+},
+
+{
+q:"Which meristem increases the length of a plant?",
+o:["Lateral meristem","Apical meristem","Cork cambium","Secondary meristem"],
+a:1,
+s:"Apical meristems are located at root and shoot tips and increase the length of plants."
+},
+
+{
+q:"Which meristem increases the girth of a plant?",
+o:["Apical meristem","Lateral meristem","Intercalary meristem","Protoderm"],
+a:1,
+s:"Lateral meristems such as vascular cambium increase the thickness or girth of stems."
+},
+
+{
+q:"Photosynthesis mainly occurs in which organelle?",
+o:["Mitochondria","Chloroplast","Golgi apparatus","Ribosome"],
+a:1,
+s:"Photosynthesis takes place mainly in chloroplasts because they contain chlorophyll."
+},
+
+{
+q:"Which gas is absorbed by plants during photosynthesis?",
+o:["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],
+a:1,
+s:"Plants absorb carbon dioxide from the atmosphere as a raw material for photosynthesis."
+},
+
+{
+q:"Which gas is released during photosynthesis?",
+o:["Carbon dioxide","Oxygen","Nitrogen","Methane"],
+a:1,
+s:"Oxygen is released as a by-product of the light reactions of photosynthesis."
+},
+
+{
+q:"Which pigment is primarily responsible for photosynthesis?",
+o:["Haemoglobin","Chlorophyll","Melanin","Keratin"],
+a:1,
+s:"Chlorophyll absorbs light energy and is the primary photosynthetic pigment in green plants."
+},
+
+{
+q:"The opening and closing of stomata is controlled by:",
+o:["Root hairs","Guard cells","Xylem cells","Phloem cells"],
+a:1,
+s:"Guard cells surround stomatal pores and regulate their opening and closing."
+},
+
+{
+q:"Which process involves loss of water vapour from plant leaves?",
+o:["Respiration","Transpiration","Photosynthesis","Germination"],
+a:1,
+s:"Transpiration is the loss of water vapour mainly through stomata in leaves."
+},
+
+{
+q:"Which hormone promotes cell elongation in plants?",
+o:["Auxin","Ethylene","Abscisic acid","Cytokinin"],
+a:0,
+s:"Auxin promotes cell elongation and plays an important role in plant growth and tropic responses."
+},
+
+{
+q:"Which plant hormone promotes fruit ripening?",
+o:["Auxin","Ethylene","Cytokinin","Gibberellin"],
+a:1,
+s:"Ethylene is a gaseous plant hormone that promotes fruit ripening."
+},
+
+{
+q:"Which plant hormone promotes cell division?",
+o:["Cytokinin","Ethylene","Auxin","Abscisic acid"],
+a:0,
+s:"Cytokinins stimulate cell division and are important in plant growth."
+},
+
+{
+q:"Which hormone is mainly associated with stomatal closure during water stress?",
+o:["Auxin","Abscisic acid","Gibberellin","Cytokinin"],
+a:1,
+s:"Abscisic acid promotes stomatal closure and helps plants respond to water stress."
+},
+
+{
+q:"Which process converts glucose into energy in cells?",
+o:["Respiration","Photosynthesis","Transpiration","Osmosis"],
+a:0,
+s:"Cellular respiration breaks down glucose and releases usable energy in the form of ATP."
+},
+
+{
+q:"In aerobic respiration, the final electron acceptor is:",
+o:["Carbon dioxide","Oxygen","Glucose","Nitrogen"],
+a:1,
+s:"In aerobic respiration, oxygen acts as the final electron acceptor in the electron transport chain."
+},
+
+{
+q:"Where does glycolysis occur?",
+o:["Nucleus","Cytoplasm","Mitochondrial matrix","Golgi apparatus"],
+a:1,
+s:"Glycolysis takes place in the cytoplasm and converts glucose into pyruvate."
+},
+
+{
+q:"The Krebs cycle occurs mainly in the:",
+o:["Cytoplasm","Mitochondrial matrix","Nucleus","Chloroplast"],
+a:1,
+s:"In eukaryotic cells, the Krebs cycle takes place in the mitochondrial matrix."
+},
+
+{
+q:"Which molecule is called the energy currency of the cell?",
+o:["DNA","ATP","RNA","Glucose"],
+a:1,
+s:"ATP stores and transfers energy for cellular processes and is therefore called the energy currency."
+},
+
+{
+q:"Which vitamin is synthesized in the human skin in the presence of sunlight?",
+o:["Vitamin A","Vitamin B12","Vitamin C","Vitamin D"],
+a:3,
+s:"Sunlight enables the skin to synthesize vitamin D from precursor molecules."
+},
+
+{
+q:"Deficiency of vitamin A causes:",
+o:["Scurvy","Night blindness","Rickets","Beriberi"],
+a:1,
+s:"Vitamin A deficiency can impair vision, especially in dim light, causing night blindness."
+},
+
+{
+q:"Deficiency of vitamin C causes:",
+o:["Rickets","Scurvy","Beriberi","Pellagra"],
+a:1,
+s:"Vitamin C deficiency causes scurvy, characterized by bleeding gums and poor wound healing."
+},
+
+{
+q:"Deficiency of vitamin D in children causes:",
+o:["Scurvy","Rickets","Beriberi","Night blindness"],
+a:1,
+s:"Vitamin D deficiency causes defective bone mineralisation and rickets in children."
+},
+
+{
+q:"Deficiency of vitamin B1 causes:",
+o:["Beriberi","Scurvy","Rickets","Goitre"],
+a:0,
+s:"Vitamin B1, or thiamine, deficiency causes beriberi."
+},
+
+{
+q:"Vitamin B12 deficiency may lead to:",
+o:["Megaloblastic anaemia","Scurvy","Rickets","Night blindness"],
+a:0,
+s:"Vitamin B12 is required for normal red blood cell formation; deficiency can cause megaloblastic anaemia."
+},
+
+{
+q:"Which vitamin is important for blood clotting?",
+o:["Vitamin A","Vitamin C","Vitamin K","Vitamin D"],
+a:2,
+s:"Vitamin K is essential for the synthesis of several blood-clotting proteins."
+},
+
+{
+q:"Which vitamin is also known as tocopherol?",
+o:["Vitamin E","Vitamin K","Vitamin C","Vitamin B1"],
+a:0,
+s:"Vitamin E is chemically known as tocopherol."
+},
+
+{
+q:"Which mineral is essential for haemoglobin formation?",
+o:["Calcium","Iron","Iodine","Sodium"],
+a:1,
+s:"Iron is an essential component of haemoglobin and is required for oxygen transport."
+},
+
+{
+q:"Iodine deficiency commonly causes:",
+o:["Goitre","Rickets","Scurvy","Anaemia"],
+a:0,
+s:"Iodine is needed for thyroid hormone synthesis; deficiency can cause enlargement of the thyroid gland called goitre."
+},
+
+{
+q:"Which mineral is important for bones and teeth?",
+o:["Calcium","Iron","Sodium","Iodine"],
+a:0,
+s:"Calcium is a major structural component of bones and teeth."
+},
+
+{
+q:"Which enzyme begins carbohydrate digestion in the mouth?",
+o:["Pepsin","Salivary amylase","Trypsin","Lipase"],
+a:1,
+s:"Salivary amylase begins the digestion of starch in the mouth."
+},
+
+{
+q:"Pepsin acts mainly on:",
+o:["Proteins","Fats","Vitamins","Minerals"],
+a:0,
+s:"Pepsin is a stomach enzyme that digests proteins into smaller peptides."
+},
+
+{
+q:"Which enzyme digests fats?",
+o:["Lipase","Amylase","Pepsin","Maltase"],
+a:0,
+s:"Lipase breaks down fats into fatty acids and glycerol or related products."
+},
+
+{
+q:"Trypsin is produced by the:",
+o:["Liver","Pancreas","Stomach","Large intestine"],
+a:1,
+s:"The pancreas secretes trypsinogen, which is activated to trypsin in the small intestine."
+},
+
+{
+q:"Bile is produced by the:",
+o:["Gall bladder","Liver","Pancreas","Stomach"],
+a:1,
+s:"The liver produces bile, which is stored and concentrated in the gall bladder."
+},
+
+{
+q:"Bile helps in the digestion of fats by:",
+o:["Breaking proteins","Emulsifying fats","Digesting starch","Absorbing glucose"],
+a:1,
+s:"Bile salts emulsify large fat globules into smaller droplets, increasing the surface area for lipase."
+},
+
+{
+q:"Most absorption of digested nutrients occurs in the:",
+o:["Stomach","Small intestine","Large intestine","Oesophagus"],
+a:1,
+s:"The small intestine has villi and is the major site of nutrient absorption."
+},
+
+{
+q:"Finger-like projections in the small intestine are called:",
+o:["Alveoli","Villi","Nephrons","Axons"],
+a:1,
+s:"Villi increase the absorptive surface area of the small intestine."
+},
+
+{
+q:"Which organ stores bile?",
+o:["Liver","Gall bladder","Pancreas","Stomach"],
+a:1,
+s:"The gall bladder stores and concentrates bile produced by the liver."
+},
+
+{
+q:"Which organ is primarily responsible for pumping blood throughout the body?",
+o:["Liver","Heart","Kidney","Lung"],
+a:1,
+s:"The heart is a muscular organ that pumps blood through the circulatory system."
+},
+
+{
+q:"How many chambers does the human heart have?",
+o:["Two","Three","Four","Five"],
+a:2,
+s:"The human heart has four chambers: two atria and two ventricles."
+},
+
+{
+q:"Which blood vessels carry blood away from the heart?",
+o:["Veins","Arteries","Capillaries","Venules"],
+a:1,
+s:"Arteries carry blood away from the heart, while veins carry blood towards it."
+},
+
+{
+q:"Which blood vessels generally carry deoxygenated blood to the heart?",
+o:["Arteries","Veins","Capillaries","Arterioles"],
+a:1,
+s:"Most veins carry deoxygenated blood toward the heart; pulmonary veins are the major exception."
+},
+
+{
+q:"Which artery carries deoxygenated blood?",
+o:["Aorta","Pulmonary artery","Renal artery","Coronary artery"],
+a:1,
+s:"The pulmonary artery carries deoxygenated blood from the right ventricle to the lungs."
+},
+
+{
+q:"Which vein carries oxygenated blood?",
+o:["Vena cava","Pulmonary vein","Renal vein","Hepatic vein"],
+a:1,
+s:"Pulmonary veins carry oxygenated blood from the lungs to the left atrium."
+},
+
+{
+q:"Which is the largest artery in the human body?",
+o:["Pulmonary artery","Aorta","Carotid artery","Renal artery"],
+a:1,
+s:"The aorta is the largest artery and carries oxygenated blood from the left ventricle to the body."
+},
+
+{
+q:"Which blood cells are mainly responsible for oxygen transport?",
+o:["White blood cells","Red blood cells","Platelets","Plasma cells"],
+a:1,
+s:"Red blood cells contain haemoglobin, which binds and transports oxygen."
+},
+
+{
+q:"Which blood cells help in fighting infections?",
+o:["RBCs","WBCs","Platelets","Erythrocytes"],
+a:1,
+s:"White blood cells participate in immune defence against pathogens."
+},
+
+{
+q:"Which blood component helps in clotting?",
+o:["Plasma","Platelets","RBCs","Lymphocytes"],
+a:1,
+s:"Platelets aggregate at sites of injury and help initiate blood clot formation."
+},
+
+{
+q:"The liquid component of blood is called:",
+o:["Plasma","Lymph","Serum only","Haemoglobin"],
+a:0,
+s:"Plasma is the liquid matrix of blood in which cells and dissolved substances are suspended."
+},
+
+{
+q:"Which blood group is known as the universal donor for red blood cell transfusion?",
+o:["AB positive","O negative","A positive","B negative"],
+a:1,
+s:"O negative red blood cells lack A, B and Rh(D) antigens and are commonly considered the universal donor type for RBC transfusion."
+},
+
+{
+q:"Which blood group is known as the universal recipient for red blood cell transfusion?",
+o:["O negative","A negative","AB positive","B positive"],
+a:2,
+s:"AB positive individuals have A, B and Rh(D) antigens and are commonly considered universal recipients for RBC transfusion."
+},
+
+{
+q:"Which organ removes nitrogenous wastes from the blood?",
+o:["Heart","Kidney","Lung","Stomach"],
+a:1,
+s:"The kidneys filter blood and remove nitrogenous wastes such as urea."
+},
+
+{
+q:"The functional unit of the kidney is:",
+o:["Neuron","Nephron","Alveolus","Villus"],
+a:1,
+s:"The nephron is the structural and functional unit of the kidney."
+},
+
+{
+q:"Urea is mainly formed in the:",
+o:["Kidney","Liver","Lung","Spleen"],
+a:1,
+s:"The liver converts toxic ammonia into urea through the urea cycle."
+},
+
+{
+q:"Urine is stored temporarily in the:",
+o:["Kidney","Urinary bladder","Ureter","Urethra"],
+a:1,
+s:"The urinary bladder stores urine before it is expelled through the urethra."
+},
+
+{
+q:"Which hormone regulates blood glucose level by lowering it?",
+o:["Adrenaline","Insulin","Thyroxine","Glucagon"],
+a:1,
+s:"Insulin lowers blood glucose by promoting glucose uptake and storage."
+},
+
+{
+q:"Insulin is secreted by the:",
+o:["Thyroid","Pancreas","Adrenal gland","Pituitary"],
+a:1,
+s:"Insulin is produced by beta cells of the islets of Langerhans in the pancreas."
+},
+
+{
+q:"Which hormone increases blood glucose level?",
+o:["Insulin","Glucagon","Melatonin","Calcitonin"],
+a:1,
+s:"Glucagon raises blood glucose mainly by stimulating glycogen breakdown and glucose production in the liver."
+},
+
+{
+q:"Which gland is called the master gland?",
+o:["Thyroid","Pituitary","Adrenal","Pancreas"],
+a:1,
+s:"The pituitary gland controls several other endocrine glands and is traditionally called the master gland."
+},
+
+{
+q:"Which hormone is secreted by the thyroid gland?",
+o:["Insulin","Thyroxine","Adrenaline","Insulin"],
+a:1,
+s:"The thyroid gland produces thyroid hormones, chiefly thyroxine (T4)."
+},
+
+{
+q:"Thyroxine synthesis requires:",
+o:["Iron","Iodine","Calcium","Sodium"],
+a:1,
+s:"Iodine is an essential component of thyroid hormones."
+},
+
+{
+q:"Adrenaline is secreted by the:",
+o:["Adrenal glands","Thyroid gland","Pituitary gland","Pancreas"],
+a:0,
+s:"Adrenaline, or epinephrine, is secreted mainly by the adrenal medulla."
+},
+
+{
+q:"Which part of the brain controls balance and posture?",
+o:["Cerebrum","Cerebellum","Medulla","Hypothalamus"],
+a:1,
+s:"The cerebellum coordinates balance, posture and fine muscular movements."
+},
+
+{
+q:"Which part of the brain controls involuntary activities such as heartbeat and breathing?",
+o:["Cerebrum","Medulla oblongata","Cerebellum","Corpus callosum"],
+a:1,
+s:"The medulla oblongata regulates vital involuntary functions including breathing and heart rate."
+},
+
+{
+q:"Which is the largest part of the human brain?",
+o:["Cerebellum","Cerebrum","Medulla","Pons"],
+a:1,
+s:"The cerebrum is the largest part of the human brain and is involved in higher mental functions."
+},
+
+{
+q:"The basic functional unit of the nervous system is:",
+o:["Neuron","Nephron","Alveolus","Axon"],
+a:0,
+s:"The neuron is the basic structural and functional unit of the nervous system."
+},
+
+{
+q:"Which part of a neuron receives signals?",
+o:["Axon","Dendrite","Myelin sheath","Synapse"],
+a:1,
+s:"Dendrites receive signals from other neurons or sensory receptors."
+},
+
+{
+q:"Which part of a neuron generally carries impulses away from the cell body?",
+o:["Dendrite","Axon","Nucleus","Cell wall"],
+a:1,
+s:"The axon conducts nerve impulses away from the cell body."
+},
+
+{
+q:"Which sense organ is responsible for vision?",
+o:["Ear","Eye","Nose","Tongue"],
+a:1,
+s:"The eye is the organ of vision."
+},
+
+{
+q:"Which part of the eye controls the amount of light entering it?",
+o:["Retina","Iris","Lens","Cornea"],
+a:1,
+s:"The iris controls pupil size and therefore regulates the amount of light entering the eye."
+},
+
+{
+q:"The image is formed on the:",
+o:["Cornea","Retina","Iris","Pupil"],
+a:1,
+s:"The retina contains photoreceptors and receives the focused image."
+},
+
+{
+q:"Which cells of the retina are responsible for colour vision?",
+o:["Rods","Cones","Neurons only","Platelets"],
+a:1,
+s:"Cone cells are responsible for colour vision and detailed vision in bright light."
+},
+
+{
+q:"Which cells of the retina help in dim-light vision?",
+o:["Cones","Rods","Lymphocytes","Neurons"],
+a:0,
+s:"Rod cells are highly sensitive to low light and are important for night vision."
+},
+
+{
+q:"Which part of the ear is responsible for maintaining balance?",
+o:["Cochlea","Semicircular canals","Eardrum","Auditory canal"],
+a:1,
+s:"The semicircular canals detect rotational movements and help maintain balance."
+},
+
+{
+q:"The cochlea is associated with:",
+o:["Hearing","Balance","Smell","Vision"],
+a:0,
+s:"The cochlea contains sensory structures involved in hearing."
+},
+
+{
+q:"Which organ is responsible for the sense of smell?",
+o:["Nose","Tongue","Ear","Skin"],
+a:0,
+s:"The nose contains olfactory receptors that detect odour molecules."
+},
+
+{
+q:"Which organ is primarily responsible for taste?",
+o:["Tongue","Nose","Eye","Ear"],
+a:0,
+s:"Taste buds located mainly on the tongue detect different taste sensations."
+},
+
+{
+q:"Which disease is caused by Plasmodium?",
+o:["Malaria","Typhoid","Tuberculosis","Cholera"],
+a:0,
+s:"Malaria is caused by parasites of the genus Plasmodium and transmitted by infected female Anopheles mosquitoes."
+},
+
+{
+q:"Malaria is transmitted by:",
+o:["Male Anopheles mosquito","Female Anopheles mosquito","Housefly","Aedes mosquito"],
+a:1,
+s:"The female Anopheles mosquito is the vector that transmits malaria parasites."
+},
+
+{
+q:"Dengue is primarily transmitted by:",
+o:["Aedes mosquito","Anopheles mosquito","Housefly","Sandfly"],
+a:0,
+s:"Dengue virus is mainly transmitted by Aedes mosquitoes, especially Aedes aegypti."
+},
+
+{
+q:"Which disease is caused by a bacterium?",
+o:["Tuberculosis","AIDS","Dengue","Malaria"],
+a:0,
+s:"Tuberculosis is caused mainly by the bacterium Mycobacterium tuberculosis."
+},
+
+{
+q:"AIDS is caused by:",
+o:["HIV","HBV","Plasmodium","Salmonella"],
+a:0,
+s:"AIDS is caused by human immunodeficiency virus (HIV)."
+},
+
+{
+q:"Which disease is caused by a virus?",
+o:["Measles","Tuberculosis","Typhoid","Cholera"],
+a:0,
+s:"Measles is caused by the measles virus."
+},
+
+{
+q:"Which disease is commonly caused by contaminated water and food?",
+o:["Cholera","Malaria","Dengue","Rabies"],
+a:0,
+s:"Cholera is an intestinal infection commonly transmitted through contaminated food or water."
+},
+
+{
+q:"Which bacterium causes typhoid?",
+o:["Salmonella typhi","Vibrio cholerae","Mycobacterium tuberculosis","Clostridium tetani"],
+a:0,
+s:"Typhoid fever is caused by Salmonella enterica serovar Typhi, commonly called Salmonella typhi."
+},
+
+{
+q:"Which bacterium causes cholera?",
+o:["Vibrio cholerae","Salmonella typhi","E. coli","Bacillus subtilis"],
+a:0,
+s:"Cholera is caused by the bacterium Vibrio cholerae."
+},
+
+{
+q:"Which disease is caused by a protozoan?",
+o:["Malaria","Influenza","Tuberculosis","Measles"],
+a:0,
+s:"Malaria is caused by Plasmodium, a protozoan parasite."
+},
+
+{
+q:"Which disease is caused by deficiency of insulin or impaired insulin action?",
+o:["Diabetes mellitus","Goitre","Rickets","Scurvy"],
+a:0,
+s:"Diabetes mellitus results from insufficient insulin production, impaired insulin action, or both."
+},
+
+{
+q:"Which disease affects the lungs and is caused by Mycobacterium tuberculosis?",
+o:["Tuberculosis","Pneumonia only","Malaria","Dengue"],
+a:0,
+s:"Tuberculosis is an infectious disease caused by Mycobacterium tuberculosis and commonly affects the lungs."
+},
+
+{
+q:"Which disease is commonly associated with vitamin C deficiency?",
+o:["Scurvy","Rickets","Beriberi","Pellagra"],
+a:0,
+s:"Scurvy results from severe vitamin C deficiency."
+},
+
+{
+q:"Which organism is commonly used in the production of curd?",
+o:["Lactobacillus","Plasmodium","Rhizobium","Yeast"],
+a:0,
+s:"Lactobacillus bacteria ferment lactose into lactic acid during curd formation."
+},
+
+{
+q:"Which microorganism is commonly used in bread making?",
+o:["Yeast","Virus","Protozoa","Algae"],
+a:0,
+s:"Yeast ferments sugars and produces carbon dioxide, causing bread dough to rise."
+},
+
+{
+q:"Which microorganism is commonly used in alcohol production?",
+o:["Yeast","Lactobacillus","Virus","Amoeba"],
+a:0,
+s:"Yeast converts sugars into ethanol and carbon dioxide through fermentation."
+},
+
+{
+q:"Which bacterium fixes atmospheric nitrogen in the roots of leguminous plants?",
+o:["Rhizobium","Lactobacillus","E. coli","Vibrio"],
+a:0,
+s:"Rhizobium lives symbiotically in root nodules of legumes and fixes atmospheric nitrogen."
+},
+
+{
+q:"Which part of a flower develops into the fruit after fertilisation?",
+o:["Ovule","Ovary","Anther","Stigma"],
+a:1,
+s:"After fertilisation, the ovary generally develops into the fruit."
+},
+
+{
+q:"Which part of a flower develops into the seed?",
+o:["Ovary","Ovule","Stigma","Anther"],
+a:1,
+s:"After fertilisation, the ovule develops into the seed."
+},
+
+{
+q:"The male reproductive part of a flower is called:",
+o:["Carpel","Stamen","Sepal","Petal"],
+a:1,
+s:"The stamen is the male reproductive part of a flower and consists mainly of anther and filament."
+},
+
+{
+q:"The female reproductive part of a flower is called:",
+o:["Stamen","Carpel","Petal","Sepal"],
+a:1,
+s:"The carpel or pistil is the female reproductive structure of a flower."
+},
+
+{
+q:"Which structure produces pollen grains?",
+o:["Stigma","Anther","Ovary","Ovule"],
+a:1,
+s:"Pollen grains are produced in the anthers of flowers."
+},
+
+{
+q:"Which process involves transfer of pollen from anther to stigma?",
+o:["Fertilisation","Pollination","Germination","Respiration"],
+a:1,
+s:"Pollination is the transfer of pollen grains from anther to stigma."
+},
+
+{
+q:"Fusion of male and female gametes is called:",
+o:["Pollination","Fertilisation","Germination","Transpiration"],
+a:1,
+s:"Fertilisation is the fusion of male and female gametes to form a zygote."
+},
+
+{
+q:"The fertilised egg is called:",
+o:["Embryo","Zygote","Gamete","Foetus"],
+a:1,
+s:"The cell formed immediately after fusion of male and female gametes is the zygote."
+},
+
+{
+q:"Which type of cell division produces gametes?",
+o:["Mitosis","Meiosis","Binary fission","Budding"],
+a:1,
+s:"Meiosis reduces chromosome number by half and produces haploid gametes."
+},
+
+{
+q:"Which type of cell division is mainly responsible for growth and repair?",
+o:["Meiosis","Mitosis","Fertilisation","Binary fission"],
+a:1,
+s:"Mitosis produces genetically similar daughter cells and supports growth and tissue repair."
+},
+
+{
+q:"Human beings normally have how many pairs of chromosomes?",
+o:["22","23","24","46"],
+a:1,
+s:"Humans normally have 23 pairs of chromosomes, or 46 chromosomes in total."
+},
+
+{
+q:"Which chromosome combination normally determines a male human?",
+o:["XX","XY","YY","XO"],
+a:1,
+s:"Typically, human males have XY sex chromosomes, while females have XX."
+},
+
+{
+q:"Which chromosome combination normally determines a female human?",
+o:["XY","XX","YY","XO"],
+a:1,
+s:"Typically, human females have XX sex chromosomes."
+},
+
+{
+q:"Who is known as the father of genetics?",
+o:["Charles Darwin","Gregor Mendel","Louis Pasteur","Watson"],
+a:1,
+s:"Gregor Mendel established fundamental laws of inheritance through experiments on pea plants."
+},
+
+{
+q:"The basic unit of heredity is:",
+o:["Chromosome","Gene","Cell","Tissue"],
+a:1,
+s:"A gene is a unit of heredity that carries information influencing a particular trait."
+},
+
+{
+q:"DNA stands for:",
+o:["Deoxyribonucleic acid","Dinitrogen acid","Deoxyribose nucleic atom","Dinucleic acid"],
+a:0,
+s:"DNA stands for deoxyribonucleic acid."
+},
+
+{
+q:"RNA stands for:",
+o:["Ribonucleic acid","Ribose nitrogen acid","Reactive nucleic acid","Ribonitric acid"],
+a:0,
+s:"RNA stands for ribonucleic acid."
+},
+
+{
+q:"Which molecule carries genetic information in most living organisms?",
+o:["DNA","ATP","Glucose","Lipids"],
+a:0,
+s:"DNA is the principal hereditary material in most organisms."
+},
+
+{
+q:"Which nitrogenous base is present in RNA but not DNA?",
+o:["Thymine","Uracil","Cytosine","Guanine"],
+a:1,
+s:"RNA contains uracil in place of thymine, which is found in DNA."
+},
+
+{
+q:"Which nitrogenous base is present in DNA but generally replaced by uracil in RNA?",
+o:["Adenine","Thymine","Guanine","Cytosine"],
+a:1,
+s:"DNA contains thymine, whereas RNA generally contains uracil instead."
+},
+
+{
+q:"Which branch of biology deals with heredity and variation?",
+o:["Ecology","Genetics","Taxonomy","Physiology"],
+a:1,
+s:"Genetics is the branch of biology concerned with heredity and variation."
+},
+
+{
+q:"Which branch of biology deals with classification of organisms?",
+o:["Taxonomy","Ecology","Anatomy","Embryology"],
+a:0,
+s:"Taxonomy deals with identification, naming and classification of organisms."
+},
+
+{
+q:"Which branch of biology studies interactions between organisms and their environment?",
+o:["Genetics","Ecology","Cytology","Histology"],
+a:1,
+s:"Ecology studies relationships among organisms and between organisms and their environment."
+},
+
+{
+q:"Which is the largest level of biological organisation among the following?",
+o:["Cell","Tissue","Organ","Organ system"],
+a:3,
+s:"An organ system consists of multiple organs working together to perform major body functions."
+},
+
+{
+q:"The study of tissues is called:",
+o:["Histology","Cytology","Ecology","Taxonomy"],
+a:0,
+s:"Histology is the microscopic study of tissues."
+},
+
+{
+q:"The study of cells is called:",
+o:["Cytology","Histology","Genetics","Physiology"],
+a:0,
+s:"Cytology is the study of cells."
+},
+
+{
+q:"Which organ is the largest internal organ of the human body?",
+o:["Heart","Liver","Kidney","Lung"],
+a:1,
+s:"The liver is the largest internal organ of the human body."
+},
+
+{
+q:"Which is the largest organ of the human body?",
+o:["Liver","Skin","Heart","Lung"],
+a:1,
+s:"Skin is the largest organ of the human body by surface area and weight."
+},
+
+{
+q:"Which organ helps in detoxification and metabolism of many substances?",
+o:["Liver","Heart","Spleen","Pancreas"],
+a:0,
+s:"The liver performs numerous metabolic and detoxification functions."
+},
+
+{
+q:"Which organ produces digestive enzymes and insulin?",
+o:["Liver","Pancreas","Kidney","Spleen"],
+a:1,
+s:"The pancreas has both digestive exocrine functions and endocrine functions including insulin secretion."
+},
+
+{
+q:"Which organ is primarily responsible for gas exchange in humans?",
+o:["Heart","Lungs","Kidneys","Liver"],
+a:1,
+s:"The lungs exchange oxygen and carbon dioxide between the air and blood."
+},
+
+{
+q:"Gas exchange in the lungs occurs mainly in:",
+o:["Bronchi","Alveoli","Trachea","Larynx"],
+a:1,
+s:"Alveoli are tiny air sacs surrounded by capillaries where oxygen and carbon dioxide are exchanged."
+},
+
+{
+q:"The windpipe is known as:",
+o:["Oesophagus","Trachea","Bronchus","Pharynx"],
+a:1,
+s:"The trachea is commonly called the windpipe and carries air toward the bronchi."
+},
+
+{
+q:"Which structure prevents food from entering the windpipe?",
+o:["Epiglottis","Alveolus","Diaphragm","Larynx"],
+a:0,
+s:"The epiglottis helps cover the airway during swallowing and prevents food from entering the trachea."
+},
+
+{
+q:"The main muscle involved in breathing is:",
+o:["Biceps","Diaphragm","Triceps","Deltoid"],
+a:1,
+s:"The diaphragm contracts and relaxes to change the volume of the thoracic cavity during breathing."
+},
+
+{
+q:"Which system is responsible for transporting hormones throughout the body?",
+o:["Digestive system","Circulatory system","Skeletal system","Respiratory system"],
+a:1,
+s:"Hormones are released into the bloodstream and transported to target tissues."
+},
+
+{
+q:"Which system provides support and protection to the body?",
+o:["Skeletal system","Digestive system","Respiratory system","Endocrine system"],
+a:0,
+s:"The skeletal system supports the body and protects vital organs."
+},
+
+{
+q:"How many bones are present in an adult human skeleton approximately?",
+o:["106","206","306","406"],
+a:1,
+s:"An adult human skeleton typically has 206 bones."
+},
+
+{
+q:"Which is the longest bone in the human body?",
+o:["Tibia","Femur","Humerus","Radius"],
+a:1,
+s:"The femur, or thigh bone, is the longest and strongest bone in the human body."
+},
+
+{
+q:"Which is the smallest bone in the human body?",
+o:["Stapes","Femur","Tibia","Ulna"],
+a:0,
+s:"The stapes, located in the middle ear, is the smallest bone in the human body."
+},
+
+{
+q:"Which type of muscle is found in the heart?",
+o:["Skeletal muscle","Cardiac muscle","Smooth muscle","Voluntary muscle"],
+a:1,
+s:"The heart is composed mainly of specialised cardiac muscle."
+},
+
+{
+q:"Which muscles are generally under voluntary control?",
+o:["Skeletal muscles","Cardiac muscles","Smooth muscles","Visceral muscles"],
+a:0,
+s:"Skeletal muscles are generally under conscious or voluntary control."
+},
+
+{
+q:"Which muscles are found in the walls of the intestine?",
+o:["Skeletal muscles","Smooth muscles","Cardiac muscles","Striated voluntary muscles"],
+a:1,
+s:"Smooth muscles in the intestinal wall contract involuntarily to move food through the digestive tract."
+},
+
+{
+q:"Which connective tissue connects muscle to bone?",
+o:["Ligament","Tendon","Cartilage","Adipose tissue"],
+a:1,
+s:"Tendons connect muscles to bones."
+},
+
+{
+q:"Which connective tissue connects bone to bone?",
+o:["Tendon","Ligament","Cartilage","Blood"],
+a:1,
+s:"Ligaments connect bones to other bones at joints."
+}
+
+];
+
+let currentQuestion = 0;
+let answers = new Array(questions.length).fill(null);
+let submitted = false;
+let timeLeft = 60 * 60;
+
+const questionText =
+document.getElementById("questionText");
+
+const questionNumber =
+document.getElementById("questionNumber");
+
+const optionsDiv =
+document.getElementById("options");
+
+const palette =
+document.getElementById("palette");
+
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    questionNumber.innerText =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        questions.length;
+
+    questionText.innerText = q.q;
+
+    optionsDiv.innerHTML = "";
+
+    q.o.forEach((option,index)=>{
+
+        const label =
+        document.createElement("label");
+
+        label.className =
+            "option" +
+            (answers[currentQuestion] === index
+            ? " selected"
+            : "");
+
+        label.innerHTML =
+        `<input type="radio"
+        name="question"
+        value="${index}">
+        <b>${String.fromCharCode(65+index)}.</b>
+        ${option}`;
+
+        label.onclick = function(){
+
+            answers[currentQuestion] = index;
+
+            document
+            .querySelectorAll(".option")
+            .forEach(x =>
+                x.classList.remove("selected")
+            );
+
+            label.classList.add("selected");
+
+            updatePalette();
+
+        };
+
+        optionsDiv.appendChild(label);
+
+    });
+
+    updatePalette();
+}
+
+
+function createPalette(){
+
+    palette.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const btn =
+        document.createElement("button");
+
+        btn.className = "p-btn";
+
+        btn.innerText = index + 1;
+
+        btn.onclick = function(){
+
+            currentQuestion = index;
+
+            loadQuestion();
+
+        };
+
+        palette.appendChild(btn);
+
+    });
+
+}
+
+
+function updatePalette(){
+
+    const buttons =
+    document.querySelectorAll(".p-btn");
+
+    buttons.forEach((btn,index)=>{
+
+        btn.classList.remove("current");
+        btn.classList.remove("attempted");
+
+        if(answers[index] !== null){
+            btn.classList.add("attempted");
+        }
+
+        if(index === currentQuestion){
+            btn.classList.add("current");
+        }
+
+    });
+
+}
+
+
+function nextQuestion(){
+
+    if(currentQuestion <
+       questions.length - 1){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+    }
+
+}
+
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+    }
+
+}
+
+
+function submitTest(){
+
+    if(submitted) return;
+
+    const unanswered =
+    answers.filter(x => x === null).length;
+
+    const confirmSubmit =
+    confirm(
+        "Are you sure you want to submit the test?\n\n" +
+        "Attempted: " +
+        (questions.length - unanswered) +
+        "\nNot Attempted: " +
+        unanswered
+    );
+
+    if(!confirmSubmit) return;
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+
+    questions.forEach((q,index)=>{
+
+        if(answers[index] === q.a){
+            correct++;
+        }
+
+    });
+
+    const attempted =
+        questions.length - unanswered;
+
+    const wrong =
+        attempted - correct;
+
+    const percentage =
+        ((correct / questions.length) * 100)
+        .toFixed(2);
+
+    document.getElementById("quiz")
+    .style.display = "none";
+
+    document.getElementById("result")
+    .style.display = "block";
+
+    document.getElementById("score")
+    .innerHTML =
+    `Score: ${correct} / ${questions.length}
+    <br>
+    Percentage: ${percentage}%
+    <br>
+    Attempted: ${attempted}
+    | Wrong: ${wrong}
+    | Not Attempted: ${unanswered}`;
+
+    showReview();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function showReview(){
+
+    const review =
+    document.getElementById("review");
+
+    review.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const div =
+        document.createElement("div");
+
+        div.className = "review";
+
+        let status = "";
+
+        if(answers[index] === null){
+
+            status =
+            `<div class="wrong">
+            Not Attempted
+            </div>`;
+
+        }
+        else if(answers[index] === q.a){
+
+            status =
+            `<div class="correct">
+            ✓ Correct
+            </div>`;
+
+        }
+        else{
+
+            status =
+            `<div class="wrong">
+            ✗ Wrong
+            </div>`;
+
+        }
+
+        div.innerHTML = `
+
+        <div class="review-question">
+        Q${index+1}. ${q.q}
+        </div>
+
+        ${status}
+
+        <div>
+        <b>Your Answer:</b>
+        ${
+            answers[index] === null
+            ? "Not Attempted"
+            : q.o[answers[index]]
+        }
+        </div>
+
+        <div class="correct">
+        <b>Correct Answer:</b>
+        ${q.o[q.a]}
+        </div>
+
+        <div class="solution">
+        <b>Solution:</b>
+        ${q.s}
+        </div>
+
+        `;
+
+        review.appendChild(div);
+
+    });
+
+}
+
+
+function updateTimer(){
+
+    let minutes =
+    Math.floor(timeLeft / 60);
+
+    let seconds =
+    timeLeft % 60;
+
+    document.getElementById("timer")
+    .innerText =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+    if(timeLeft <= 0){
+
+        clearInterval(timerInterval);
+
+        if(!submitted){
+
+            alert(
+                "Time is over. Your test will be submitted automatically."
+            );
+
+            submitTest();
+
+        }
+
+        return;
+
+    }
+
+    timeLeft--;
+
+}
+
+
+createPalette();
+
+loadQuestion();
+
+updateTimer();
+
+const timerInterval =
+setInterval(updateTimer,1000);
+
+</script>
+
+</body>
+</html>
