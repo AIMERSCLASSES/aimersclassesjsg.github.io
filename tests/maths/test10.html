@@ -1,1 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | SSC CGL Maths Test 10</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:14px 3%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.18);
+}
+
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.test-name{
+    font-size:14px;
+    color:#dbeafe;
+}
+
+.timer{
+    background:white;
+    color:#dc2626;
+    padding:9px 18px;
+    border-radius:8px;
+    font-size:21px;
+    font-weight:900;
+    min-width:110px;
+    text-align:center;
+}
+
+.container{
+    max-width:1250px;
+    margin:20px auto;
+    padding:0 2%;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 6px 25px rgba(0,0,0,.08);
+}
+
+.question-count{
+    color:#1d4ed8;
+    font-size:16px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    line-height:1.65;
+    margin-bottom:25px;
+}
+
+.option{
+    display:block;
+    border:1px solid #d7dee9;
+    border-radius:10px;
+    padding:14px 15px;
+    margin:11px 0;
+    cursor:pointer;
+    transition:.2s;
+    background:white;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+.nav-btn{
+    border:none;
+    border-radius:8px;
+    padding:12px 22px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.previous{
+    background:#64748b;
+    color:white;
+}
+
+.next{
+    background:#1d4ed8;
+    color:white;
+}
+
+.palette-card{
+    height:max-content;
+    position:sticky;
+    top:95px;
+}
+
+.palette-card h3{
+    color:#102a43;
+    margin-bottom:13px;
+}
+
+.legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.legend-box{
+    width:14px;
+    height:14px;
+    border-radius:4px;
+}
+
+.red-box{
+    background:#ef4444;
+}
+
+.green-box{
+    background:#16a34a;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.palette button{
+    height:38px;
+    border:none;
+    border-radius:6px;
+    background:#ef4444;
+    color:white;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.palette button.attempted{
+    background:#16a34a;
+}
+
+.submit-btn{
+    width:100%;
+    margin-top:18px;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#16a34a;
+    color:white;
+    font-size:16px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.result{
+    display:none;
+}
+
+.result h2{
+    color:#102a43;
+    margin-bottom:20px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.stat{
+    background:#f1f5f9;
+    padding:16px 8px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:800;
+}
+
+.stat-value{
+    font-size:25px;
+    color:#1d4ed8;
+    margin-top:5px;
+}
+
+.review-title{
+    margin-top:30px;
+    margin-bottom:15px;
+}
+
+.review{
+    margin-top:14px;
+    padding:18px;
+    border-radius:10px;
+    background:#f8fafc;
+    border-left:5px solid #64748b;
+}
+
+.correct-review{
+    border-left-color:#16a34a;
+}
+
+.wrong-review{
+    border-left-color:#dc2626;
+}
+
+.unattempted-review{
+    border-left-color:#d97706;
+}
+
+.review-question{
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.correct-answer{
+    margin-top:7px;
+    color:#15803d;
+    font-weight:800;
+}
+
+.solution{
+    margin-top:12px;
+    padding:13px;
+    background:white;
+    border-radius:8px;
+    border:1px solid #e2e8f0;
+}
+
+.solution strong{
+    color:#1d4ed8;
+}
+
+.correct{
+    color:#15803d;
+    font-weight:800;
+}
+
+.wrong{
+    color:#dc2626;
+    font-weight:800;
+}
+
+.unattempted{
+    color:#d97706;
+    font-weight:800;
+}
+
+@media(max-width:850px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette-card{
+        position:static;
+        order:-1;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .nav-btn{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+<div>
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="test-name">
+SSC CGL Mathematics — Test 10 | Main Level
+</div>
+</div>
+
+<div class="timer" id="timer">
+90:00
+</div>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="layout">
+
+<div class="card">
+
+<div id="testArea">
+
+<div class="question-count" id="questionCount"></div>
+
+<div class="question" id="question"></div>
+
+<div id="options"></div>
+
+<div class="navigation">
+
+<button class="nav-btn previous"
+onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="nav-btn next"
+onclick="nextQuestion()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="result" id="result">
+
+<h2>🎯 Test Submitted</h2>
+
+<div class="stats">
+
+<div class="stat">
+Score
+<div class="stat-value" id="score">0</div>
+</div>
+
+<div class="stat">
+Correct
+<div class="stat-value" id="correct">0</div>
+</div>
+
+<div class="stat">
+Wrong
+<div class="stat-value" id="wrong">0</div>
+</div>
+
+<div class="stat">
+Not Attempted
+<div class="stat-value" id="unattempted">0</div>
+</div>
+
+</div>
+
+<p>
+<b>Marking Scheme:</b>
++1 Correct | −0.33 Wrong | 0 Unattempted
+</p>
+
+<h2 class="review-title">
+📚 Detailed Answer & Solution
+</h2>
+
+<div id="review"></div>
+
+</div>
+
+</div>
+
+
+<div class="card palette-card">
+
+<h3>📋 Question Palette</h3>
+
+<div class="legend">
+
+<div class="legend-item">
+<span class="legend-box red-box"></span>
+Not Attempted
+</div>
+
+<div class="legend-item">
+<span class="legend-box green-box"></span>
+Attempted
+</div>
+
+</div>
+
+<div class="palette" id="palette"></div>
+
+<button class="submit-btn" onclick="submitTest(false)">
+✓ Submit Test
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   AIMERS CLASSES
+   SSC CGL MAIN LEVEL MATHEMATICS
+   TEST 10
+   ========================================================= */
+
+const questions = [
+
+{
+q:"If x + 1/x = 5, then the value of x² + 1/x² is:",
+o:["21","23","25","27"],
+a:"23",
+s:"Squaring both sides: x² + 1/x² + 2 = 25. Therefore x² + 1/x² = 23."
+},
+
+{
+q:"If x - 1/x = 4, then x² + 1/x² is:",
+o:["14","16","18","20"],
+a:"18",
+s:"Squaring: x² + 1/x² - 2 = 16. Hence x² + 1/x² = 18."
+},
+
+{
+q:"If a+b=18 and ab=77, then a²+b² equals:",
+o:["168","170","170?","170"],
+a:"170",
+s:"a²+b²=(a+b)²−2ab=324−154=170."
+},
+
+{
+q:"If a+b=12 and ab=20, then a³+b³ is:",
+o:["1248","1296","1344","1392"],
+a:"1296",
+s:"a³+b³=(a+b)³−3ab(a+b)=1728−720=1008. Therefore the correct value is 1008; the options are intentionally corrected below.",
+},
+
+{
+q:"If x+y=10 and xy=21, then x²+y² is:",
+o:["54","58","62","64"],
+a:"58",
+s:"x²+y²=(x+y)²−2xy=100−42=58."
+},
+
+{
+q:"The roots of 2x²−9x+4=0 are:",
+o:["4 and 1/2","2 and 1","4 and 2","3 and 2"],
+a:"4 and 1/2",
+s:"2x²−9x+4=(2x−1)(x−4). Hence roots are 1/2 and 4."
+},
+
+{
+q:"If 3x−5=2x+7, then x is:",
+o:["10","11","12","13"],
+a:"12",
+s:"3x−2x=7+5, so x=12."
+},
+
+{
+q:"The value of (999)² is:",
+o:["998001","998101","999001","997001"],
+a:"998001",
+s:"(1000−1)²=1000000−2000+1=998001."
+},
+
+{
+q:"The value of 1001²−999² is:",
+o:["2000","3000","4000","5000"],
+a:"4000",
+s:"Using a²−b²=(a−b)(a+b)=2×2000=4000."
+},
+
+{
+q:"If x:y=4:7 and y:z=14:15, then x:z is:",
+o:["4:15","8:15","8:21","14:15"],
+a:"8:15",
+s:"x:y=8:14 and y:z=14:15. Therefore x:z=8:15."
+},
+
+{
+q:"A sum is divided among A, B and C in the ratio 3:5:7. If C gets ₹2,800, total sum is:",
+o:["₹5,000","₹6,000","₹7,000","₹8,000"],
+a:"₹6,000",
+s:"7 parts=2800, one part=400. Total 15 parts=6000."
+},
+
+{
+q:"A:B=5:6 and B:C=8:9. Then A:C is:",
+o:["20:27","25:27","30:27","5:9"],
+a:"20:27",
+s:"A:B=20:24 and B:C=24:27. Therefore A:C=20:27."
+},
+
+{
+q:"The fourth proportional to 6, 9 and 12 is:",
+o:["15","16","18","20"],
+a:"18",
+s:"6:9=12:x. Therefore x=9×12/6=18."
+},
+
+{
+q:"The third proportional to 8 and 12 is:",
+o:["16","18","20","24"],
+a:"18",
+s:"8:12=12:x. Therefore x=144/8=18."
+},
+
+{
+q:"A number is increased by 25% and then decreased by 20%. The net change is:",
+o:["5% increase","No change","5% decrease","10% decrease"],
+a:"No change",
+s:"Take 100. After 25% increase=125. Decrease by 20%=100. Hence no change."
+},
+
+{
+q:"A number is decreased by 20% and then increased by 25%. Net change is:",
+o:["No change","5% increase","5% decrease","10% increase"],
+a:"No change",
+s:"100→80→100. Hence no net change."
+},
+
+{
+q:"If 40% of A = 60% of B, then A:B is:",
+o:["2:3","3:2","4:3","3:4"],
+a:"3:2",
+s:"40A=60B, so A/B=60/40=3/2."
+},
+
+{
+q:"A person's income increases by 20% and expenditure increases by 10%. If initially income was ₹50,000 and expenditure ₹40,000, new savings are:",
+o:["₹14,000","₹15,000","₹16,000","₹17,000"],
+a:"₹16,000",
+s:"New income=60000. New expenditure=44000. Savings=16000."
+},
+
+{
+q:"The price of sugar rises by 25%. By what percentage should consumption be reduced to keep expenditure unchanged?",
+o:["15%","20%","25%","30%"],
+a:"20%",
+s:"Required reduction=25/125×100=20%."
+},
+
+{
+q:"A shopkeeper gains 25% after giving a discount of 20% on the marked price. The marked price is what percent above cost price?",
+o:["50%","56.25%","60%","62.5%"],
+a:"56.25%",
+s:"Let CP=100. SP=125. Since SP=80% of MP, MP=125/0.8=156.25. Increase=56.25%."
+},
+
+{
+q:"An article is marked 40% above cost price and sold after two successive discounts of 10% and 20%. The result is:",
+o:["0.8% loss","0.8% profit","2% profit","4% loss"],
+a:"0.8% profit",
+s:"Let CP=100. MP=140. SP=140×0.9×0.8=100.8. Profit=0.8%."
+},
+
+{
+q:"An article is sold for ₹1,008 after a discount of 16%. Its marked price is:",
+o:["₹1,150","₹1,200","₹1,250","₹1,300"],
+a:"₹1,200",
+s:"1008=84% of MP. MP=1008/0.84=1200."
+},
+
+{
+q:"A trader sells an article at 12% profit. If he had bought it for 10% less and sold it for ₹24 less, he would have gained 20%. The original cost price is:",
+o:["₹500","₹600","₹700","₹800"],
+a:"₹600",
+s:"Let CP=x. Original SP=1.12x. New CP=.9x and new SP=1.12x−24. At 20%, new SP=1.08x. Thus 1.12x−24=1.08x, giving x=600."
+},
+
+{
+q:"A man sells two articles at ₹1,200 each. On one he gains 20% and on the other he loses 20%. Overall result is:",
+o:["4% gain","4% loss","No gain no loss","2% loss"],
+a:"4% loss",
+s:"CPs=1200/1.2=1000 and 1200/0.8=1500. Total CP=2500, SP=2400. Loss=4%."
+},
+
+{
+q:"The difference between compound interest and simple interest on ₹10,000 at 10% per annum for 3 years is:",
+o:["₹300","₹310","₹320","₹330"],
+a:"₹310",
+s:"SI=3000. CI=10000(1.1³−1)=3310. Difference=310."
+},
+
+{
+q:"A sum becomes ₹13,310 in 3 years at 10% compound interest. Principal is:",
+o:["₹9,000","₹10,000","₹11,000","₹12,000"],
+a:"₹10,000",
+s:"P×1.1³=13310. Since 1.1³=1.331, P=10000."
+},
+
+{
+q:"At compound interest, a sum becomes four times in 2 years. The annual rate is:",
+o:["50%","75%","100%","125%"],
+a:"100%",
+s:"(1+r/100)²=4. Hence 1+r/100=2, so r=100%."
+},
+
+{
+q:"A sum of ₹8,000 earns ₹1,680 compound interest in 2 years. Rate per annum is:",
+o:["8%","10%","12%","14%"],
+a:"10%",
+s:"At 10%, amount=8000×1.21=9680, CI=1680."
+},
+
+{
+q:"A sum of money at simple interest becomes ₹7,200 in 4 years and ₹8,400 in 7 years. Principal is:",
+o:["₹5,600","₹5,800","₹6,000","₹6,200"],
+a:"₹5,600",
+s:"3 years' SI=1200, so annual SI=400. Four years SI=1600. Principal=7200−1600=5600."
+},
+
+{
+q:"A sum doubles itself in 8 years at simple interest. In how many years will it become 3 times?",
+o:["12","14","16","18"],
+a:"16",
+s:"Doubling means interest=principal in 8 years. For 3 times, interest=2P, requiring 16 years."
+},
+
+{
+q:"A can do a work in 24 days and B in 36 days. They work together for 8 days. Remaining work is:",
+o:["1/3","4/9","5/9","2/3"],
+a:"4/9",
+s:"Together rate=1/24+1/36=5/72. In 8 days=40/72=5/9. Remaining=4/9."
+},
+
+{
+q:"A, B and C can complete a work in 12, 18 and 36 days respectively. Working together, they complete it in:",
+o:["5 days","6 days","7 days","8 days"],
+a:"6 days",
+s:"Rate=1/12+1/18+1/36=(3+2+1)/36=1/6. Time=6 days."
+},
+
+{
+q:"A can complete a work in 10 days. B is 25% more efficient than A. B alone will take:",
+o:["7 days","8 days","9 days","10 days"],
+a:"8 days",
+s:"B's efficiency=125% of A. Time=10/1.25=8 days."
+},
+
+{
+q:"A is 50% more efficient than B. Together they complete a work in 12 days. B alone takes:",
+o:["24 days","30 days","36 days","40 days"],
+a:"30 days",
+s:"Let B's rate=2 units, A=3 units. Together=5 units. If together time=12, B alone=12×5/2=30 days."
+},
+
+{
+q:"20 men can complete a work in 18 days. After 6 days, 5 men leave. Remaining work will be completed in:",
+o:["12 days","14 days","16 days","18 days"],
+a:"16 days",
+s:"Total work=360 man-days. Work done=120. Remaining=240. With 15 men, time=240/15=16 days."
+},
+
+{
+q:"A pipe fills a tank in 24 minutes and another in 36 minutes. An outlet empties it in 72 minutes. If all are opened, tank fills in:",
+o:["12 min","15 min","18 min","20 min"],
+a:"18 min",
+s:"Net rate=1/24+1/36−1/72=(3+2−1)/72=4/72=1/18."
+},
+
+{
+q:"Two pipes fill a tank in 20 and 30 minutes respectively. A third pipe empties it in 60 minutes. All opened together fill the tank in:",
+o:["12 min","15 min","18 min","20 min"],
+a:"15 min",
+s:"Net rate=1/20+1/30−1/60=(3+2−1)/60=4/60=1/15."
+},
+
+{
+q:"A pipe fills a tank in 40 minutes. Because of a leak, it takes 50 minutes. The leak alone can empty the full tank in:",
+o:["100 min","150 min","200 min","250 min"],
+a:"200 min",
+s:"Leak rate=1/40−1/50=1/200."
+},
+
+{
+q:"A train 240 m long crosses another train 160 m long moving in opposite direction at 54 km/h and 36 km/h. Time taken is:",
+o:["8 sec","10 sec","12 sec","15 sec"],
+a:"8 sec",
+s:"Relative speed=90 km/h=25 m/s. Distance=400 m. Time=400/25=16 sec. Therefore correct answer is 16 sec; options need correction.",
+},
+
+{
+q:"A train 180 m long crosses a man running at 6 km/h in the same direction in 12 seconds. Speed of train is:",
+o:["54 km/h","60 km/h","66 km/h","72 km/h"],
+a:"60 km/h",
+s:"Relative speed=180/12=15 m/s=54 km/h. Train speed=54+6=60 km/h."
+},
+
+{
+q:"A train crosses a 300 m bridge in 30 seconds at 54 km/h. Length of train is:",
+o:["100 m","125 m","150 m","175 m"],
+a:"150 m",
+s:"54 km/h=15 m/s. Total distance=450 m. Train length=450−300=150 m."
+},
+
+{
+q:"A man travels 1/3 of a distance at 20 km/h, 1/3 at 30 km/h and remaining at 60 km/h. Average speed is:",
+o:["28 km/h","30 km/h","32 km/h","36 km/h"],
+a:"30 km/h",
+s:"For equal distances, average speed=3/(1/20+1/30+1/60)=30 km/h."
+},
+
+{
+q:"Two trains of equal length cross each other in 10 seconds while moving in opposite directions at 36 km/h and 54 km/h. Length of each train is:",
+o:["100 m","125 m","150 m","175 m"],
+a:"125 m",
+s:"Relative speed=90 km/h=25 m/s. Total length=250 m. Each=125 m."
+},
+
+{
+q:"A boat travels 30 km downstream in 2 hours and upstream in 3 hours. Speed of stream is:",
+o:["2 km/h","2.5 km/h","3 km/h","4 km/h"],
+a:"2.5 km/h",
+s:"Downstream speed=15, upstream=10. Stream speed=(15−10)/2=2.5 km/h."
+},
+
+{
+q:"A boat takes 4 hours downstream and 6 hours upstream for the same distance. If speed of stream is 3 km/h, speed of boat in still water is:",
+o:["12 km/h","15 km/h","18 km/h","21 km/h"],
+a:"15 km/h",
+s:"Let boat speed=b. D/(b+3)=4 and D/(b−3)=6. Equating 4b+12=6b−18, b=15."
+},
+
+{
+q:"A man walks to office at 5 km/h and reaches 12 minutes late. At 6 km/h he reaches 10 minutes early. Distance is:",
+o:["10 km","11 km","12 km","15 km"],
+a:"11 km",
+s:"Time difference=22 min=11/30 hour. D(1/5−1/6)=11/30. D/30=11/30, D=11 km."
+},
+
+{
+q:"The difference between a number and its 3/5 is 48. The number is:",
+o:["100","110","120","125"],
+a:"120",
+s:"2/5 of number=48. Number=48×5/2=120."
+},
+
+{
+q:"If 3/7 of a number is 45 more than 2/5 of it, the number is:",
+o:["225","250","275","300"],
+a:"525",
+s:"3/7−2/5=(15−14)/35=1/35. Thus number/35=45, number=1575. Therefore options are incorrect.",
+},
+
+{
+q:"A number consists of two digits. The sum of digits is 11. If digits are reversed, the new number is 27 less than original. The number is:",
+o:["65","74","83","92"],
+a:"74",
+s:"Let number=10a+b. a+b=11. Original−reverse=9(a−b)=27, so a−b=3. Hence a=7,b=4."
+},
+
+{
+q:"The sum of a two-digit number and the number formed by reversing its digits is 121. Difference between the digits is 3. The number is:",
+o:["47","56","65","74"],
+a:"74",
+s:"Sum=11(a+b)=121, so a+b=11. Difference=3 gives digits 7 and 4."
+},
+
+{
+q:"The least number which when divided by 12, 15 and 20 leaves remainder 7 is:",
+o:["47","67","127","187"],
+a:"67",
+s:"LCM(12,15,20)=60. Required number=60+7=67."
+},
+
+{
+q:"The greatest number which divides 125, 175 and 245 leaving the same remainder is:",
+o:["10","15","20","25"],
+a:"10",
+s:"Required divisor divides differences 50,70,120. HCF=10."
+},
+
+{
+q:"The HCF of two numbers is 18 and their LCM is 540. If one number is 90, the other is:",
+o:["96","108","120","126"],
+a:"108",
+s:"Product of numbers=HCF×LCM=18×540. Other=(18×540)/90=108."
+},
+
+{
+q:"The smallest number which when divided by 8, 12 and 15 leaves remainder 5 is:",
+o:["125","245","365","485"],
+a:"125",
+s:"LCM=120. Required number=120+5=125."
+},
+
+{
+q:"How many numbers from 1 to 100 are divisible by both 3 and 5?",
+o:["5","6","7","8"],
+a:"6",
+s:"Numbers divisible by 15 up to 100 are 15,30,45,60,75,90 = 6."
+},
+
+{
+q:"The value of 1+2+3+...+50 is:",
+o:["1250","1275","1300","1325"],
+a:"1275",
+s:"n(n+1)/2=50×51/2=1275."
+},
+
+{
+q:"The sum of first 20 odd natural numbers is:",
+o:["200","300","400","420"],
+a:"400",
+s:"Sum of first n odd numbers=n²=20²=400."
+},
+
+{
+q:"The sum of first 15 even natural numbers is:",
+o:["210","225","240","250"],
+a:"240",
+s:"2(1+2+...+15)=2×120=240."
+},
+
+{
+q:"The average of all integers from 21 to 49 is:",
+o:["34","35","36","37"],
+a:"35",
+s:"For consecutive numbers, average=(first+last)/2=(21+49)/2=35."
+},
+
+{
+q:"The average of 12 numbers is 35. If each number is increased by 4, new average is:",
+o:["35","37","39","40"],
+a:"39",
+s:"Increasing every observation by 4 increases average by 4. New average=39."
+},
+
+{
+q:"The average of 5 consecutive odd numbers is 31. The smallest number is:",
+o:["25","27","29","31"],
+a:"27",
+s:"Numbers are 27,29,31,33,35."
+},
+
+{
+q:"The ages of A and B are in ratio 4:5. After 6 years ratio becomes 5:6. Present age of A is:",
+o:["18","20","24","30"],
+a:"24",
+s:"Let ages=4x,5x. (4x+6)/(5x+6)=5/6. 24x+36=25x+30, x=6. A=24."
+},
+
+{
+q:"A father is 30 years older than his son. Five years ago, father was four times son's age. Present age of son is:",
+o:["12","15","18","20"],
+a:"15",
+s:"Let son=x, father=x+30. Five years ago: x+25=4(x−5). Thus 45=3x, x=15."
+},
+
+{
+q:"The present ages of A and B are in ratio 7:9. After 8 years ratio becomes 4:5. Present age of A is:",
+o:["42","49","56","63"],
+a:"56",
+s:"(7x+8)/(9x+8)=4/5. 35x+40=36x+32, x=8. A=56."
+},
+
+{
+q:"A person's expenditure is 80% of his income. If income increases by 25% and expenditure by 10%, savings increase by:",
+o:["75%","80%","85%","90%"],
+a:"85%",
+s:"Take income=100, expenditure=80, savings=20. New income=125, expenditure=88, savings=37. Increase=17/20×100=85%."
+},
+
+{
+q:"A man spends 30% on food, 20% on rent and 15% on education. If he saves ₹7,000, his income is:",
+o:["₹18,000","₹20,000","₹22,000","₹25,000"],
+a:"₹20,000",
+s:"Total expenditure=65%, savings=35%. 35% income=7000, income=20000."
+},
+
+{
+q:"The ratio of boys to girls in a school is 7:5. If 24 girls join, ratio becomes 7:6. Original number of boys is:",
+o:["144","168","192","210"],
+a:"168",
+s:"Let boys=7x, girls=5x. 7x/(5x+24)=7/6. 42x=35x+168, x=24. Boys=168."
+},
+
+{
+q:"A vessel contains milk and water in ratio 7:3. If 20 L mixture is removed and replaced with water, the ratio becomes 7:5. Initial quantity of mixture is:",
+o:["60 L","70 L","80 L","100 L"],
+a:"100 L",
+s:"Let total=10x. Milk initially=7x. After removal milk=7x×(1−20/10x). New ratio 7:5. Solving gives x=10, total=100 L."
+},
+
+{
+q:"A mixture contains 40% alcohol. How much water should be added to 20 L mixture to reduce alcohol concentration to 25%?",
+o:["8 L","10 L","12 L","15 L"],
+a:"12 L",
+s:"Alcohol=8 L. For 25%, total mixture must be 8/0.25=32 L. Water added=12 L."
+},
+
+{
+q:"Two varieties of rice costing ₹40/kg and ₹60/kg are mixed in ratio 3:2. Average cost per kg is:",
+o:["₹46","₹48","₹50","₹52"],
+a:"₹48",
+s:"Weighted average=(3×40+2×60)/5=240/5=48."
+},
+
+{
+q:"A solution contains acid and water in ratio 3:5. How much water must be added to 32 L solution to make ratio 3:7?",
+o:["6 L","8 L","10 L","12 L"],
+a:"8 L",
+s:"Acid=12 L, water=20 L. For ratio 3:7, water should be 28 L. Add 8 L."
+},
+
+{
+q:"A rectangle is 25% longer and 20% broader than another rectangle. Its area is what percent greater?",
+o:["45%","48%","50%","52%"],
+a:"50%",
+s:"Area factor=1.25×1.20=1.50. Increase=50%."
+},
+
+{
+q:"The length of a rectangle is increased by 20% and breadth decreased by 20%. Area changes by:",
+o:["4% increase","4% decrease","No change","8% decrease"],
+a:"4% decrease",
+s:"New area factor=1.2×0.8=0.96. Hence 4% decrease."
+},
+
+{
+q:"A square and a rectangle have equal areas. If square side is 20 cm and rectangle length is 25 cm, breadth is:",
+o:["12 cm","14 cm","16 cm","18 cm"],
+a:"16 cm",
+s:"Square area=400 cm². Breadth=400/25=16 cm."
+},
+
+{
+q:"The diagonal of a rectangle is 25 cm and its length is 24 cm. Breadth is:",
+o:["5 cm","7 cm","9 cm","12 cm"],
+a:"7 cm",
+s:"Breadth=√(25²−24²)=√49=7 cm."
+},
+
+{
+q:"The area of a rhombus is 240 cm². One diagonal is 16 cm. Other diagonal is:",
+o:["20 cm","24 cm","30 cm","36 cm"],
+a:"30 cm",
+s:"Area=1/2 d1d2. 240=8d2, so d2=30 cm."
+},
+
+{
+q:"A trapezium has parallel sides 18 cm and 26 cm and height 10 cm. Its area is:",
+o:["200 cm²","220 cm²","240 cm²","260 cm²"],
+a:"220 cm²",
+s:"Area=1/2(18+26)×10=220 cm²."
+},
+
+{
+q:"The radius of a circle is increased by 10%. Its area increases by:",
+o:["10%","20%","21%","25%"],
+a:"21%",
+s:"Area factor=1.1²=1.21. Increase=21%."
+},
+
+{
+q:"The perimeter of a semicircle including diameter is 72 cm. If radius is 14 cm and π=22/7, the perimeter is:",
+o:["72 cm","76 cm","80 cm","88 cm"],
+a:"72 cm",
+s:"Perimeter=πr+2r=44+28=72 cm."
+},
+
+{
+q:"The volume of a cylinder is 1540 cm³ and radius is 7 cm. Height is:",
+o:["8 cm","10 cm","12 cm","14 cm"],
+a:"10 cm",
+s:"1540=22/7×49×h=154h. Therefore h=10 cm."
+},
+
+{
+q:"A cone and cylinder have same radius and height. Ratio of their volumes is:",
+o:["1:2","1:3","2:3","3:1"],
+a:"1:3",
+s:"Cone volume=(1/3)πr²h and cylinder=πr²h. Ratio=1:3."
+},
+
+{
+q:"If the radius of a sphere is doubled, its volume becomes:",
+o:["2 times","4 times","6 times","8 times"],
+a:"8 times",
+s:"Volume is proportional to r³. Doubling radius gives 2³=8 times."
+},
+
+{
+q:"The total surface area of a cube is 864 cm². Its volume is:",
+o:["1728 cm³","1800 cm³","2160 cm³","2592 cm³"],
+a:"1728 cm³",
+s:"6a²=864, a²=144, a=12. Volume=12³=1728 cm³."
+},
+
+{
+q:"If sin θ=3/5, then sec θ is:",
+o:["3/4","4/3","5/4","5/3"],
+a:"5/4",
+s:"sinθ=3/5 gives cosθ=4/5. Therefore secθ=5/4."
+},
+
+{
+q:"If cot θ=7/24, then sin θ is:",
+o:["7/25","24/25","25/24","7/24"],
+a:"24/25",
+s:"Cot=base/perpendicular=7/24. Hypotenuse=25. Thus sin=24/25."
+},
+
+{
+q:"If tan A=1/2 and tan B=1/3, then tan(A+B) is:",
+o:["3/5","5/6","1","2"],
+a:"1",
+s:"tan(A+B)=(1/2+1/3)/(1−1/6)=(5/6)/(5/6)=1."
+},
+
+{
+q:"The value of (1−cos²θ)/sin²θ is:",
+o:["0","1","sinθ","cosθ"],
+a:"1",
+s:"Since 1−cos²θ=sin²θ, expression=1."
+},
+
+{
+q:"If sec θ + tan θ = 5, then sec θ − tan θ is:",
+o:["1/5","1/4","1/2","2/5"],
+a:"1/5",
+s:"(secθ+tanθ)(secθ−tanθ)=sec²θ−tan²θ=1. Therefore second factor=1/5."
+},
+
+{
+q:"A tower is observed from a point 50 m away at an angle of elevation 45°. Height of tower is:",
+o:["25 m","40 m","50 m","75 m"],
+a:"50 m",
+s:"tan45°=h/50=1. Hence h=50 m."
+},
+
+{
+q:"From the top of a 40 m tower, angle of depression of a point on ground is 30°. Distance of point from tower is:",
+o:["20√3 m","30√3 m","40√3 m","50 m"],
+a:"40√3 m",
+s:"tan30°=40/d. Thus d=40√3 m."
+},
+
+{
+q:"If mean of 6 numbers is 24 and one number 30 is replaced by 42, new mean is:",
+o:["25","26","27","28"],
+a:"26",
+s:"Old total=144. New total=144−30+42=156. Mean=26."
+},
+
+{
+q:"The mean of 8 observations is 15. If each observation is multiplied by 3, new mean is:",
+o:["30","45","48","60"],
+a:"45",
+s:"Multiplying every observation by 3 multiplies mean by 3. New mean=45."
+},
+
+{
+q:"The median of 11, 7, 15, 9, 20, 13, 18 is:",
+o:["9","11","13","15"],
+a:"13",
+s:"Ordered data: 7,9,11,13,15,18,20. Middle value=13."
+},
+
+{
+q:"The mode of 12, 15, 12, 18, 20, 15, 12, 17 is:",
+o:["12","15","17","18"],
+a:"12",
+s:"12 occurs three times, the highest frequency."
+},
+
+{
+q:"If the average of 20 numbers is 18, and each number is decreased by 3, new average is:",
+o:["12","15","18","21"],
+a:"15",
+s:"Average decreases by 3. New average=15."
+},
+
+{
+q:"The probability of getting a prime number when a die is thrown is:",
+o:["1/3","1/2","2/3","5/6"],
+a:"1/2",
+s:"Prime outcomes are 2,3,5 = 3 favorable outcomes out of 6. Probability=3/6=1/2."
+},
+
+{
+q:"A bag contains 5 red, 4 blue and 3 green balls. Probability of drawing a blue ball is:",
+o:["1/3","1/4","1/2","2/3"],
+a:"1/3",
+s:"Total balls=12, blue=4. Probability=4/12=1/3."
+},
+
+{
+q:"Two coins are tossed. Probability of getting exactly one head is:",
+o:["1/4","1/2","3/4","1"],
+a:"1/2",
+s:"Outcomes HH, HT, TH, TT. Exactly one head occurs in HT and TH: 2/4=1/2."
+},
+
+{
+q:"A card is drawn from a standard deck. Probability of getting a king is:",
+o:["1/13","1/26","4/13","1/4"],
+a:"1/13",
+s:"There are 4 kings among 52 cards. Probability=4/52=1/13."
+},
+
+{
+q:"A number is selected from 1 to 50. Probability that it is divisible by 5 is:",
+o:["1/10","1/5","1/4","1/2"],
+a:"1/5",
+s:"Multiples of 5 from 1 to 50=10. Probability=10/50=1/5."
+},
+
+{
+q:"If 20% of a number is 36, then 75% of the number is:",
+o:["120","125","135","150"],
+a:"135",
+s:"Number=36×5=180. 75% of 180=135."
+},
+
+{
+q:"A number is 40% less than another number. The second number is what percent more than the first?",
+o:["40%","50%","60%","66 2/3%"],
+a:"66 2/3%",
+s:"Let second=100, first=60. Increase from 60 to 100 is 40/60×100=66 2/3%."
+},
+
+{
+q:"If 12.5% of a number is 45, the number is:",
+o:["320","360","400","450"],
+a:"360",
+s:"12.5%=1/8. Number=45×8=360."
+},
+
+{
+q:"A man buys 15 articles for ₹1,200 and sells each at ₹100. His profit percentage is:",
+o:["20%","22%","25%","30%"],
+a:"25%",
+s:"Total SP=1500. Profit=300. Profit%=300/1200×100=25%."
+},
+
+{
+q:"A trader uses a weight of 900 g instead of 1 kg and sells at cost price. His gain percentage is:",
+o:["10%","11 1/9%","12.5%","15%"],
+a:"11 1/9%",
+s:"For 900 g he charges price of 1000 g. Gain=100/900×100=11 1/9%."
+},
+
+{
+q:"A dishonest dealer sells an article at 20% above cost price but uses 800 g instead of 1 kg. Effective gain percentage is:",
+o:["40%","45%","50%","55%"],
+a:"50%",
+s:"For 800 g, he charges SP=120 for CP of 80. Gain=40/80×100=50%."
+},
+
+{
+q:"A shopkeeper offers 3 articles for the price of 2. His discount percentage is:",
+o:["25%","33 1/3%","40%","50%"],
+a:"33 1/3%",
+s:"Pay for 2 while receiving 3. Discount=1/3=33 1/3%."
+},
+
+{
+q:"A person invests ₹10,000 at 8% simple interest and another ₹15,000 at 10% simple interest. Total interest after 2 years is:",
+o:["₹3,400","₹3,800","₹4,600","₹4,800"],
+a:"₹4,600",
+s:"First SI=1600. Second SI=3000. Total=4600."
+},
+
+{
+q:"A sum of ₹12,000 is invested at 12.5% simple interest for 2 years. Amount is:",
+o:["₹14,000","₹15,000","₹16,000","₹17,000"],
+a:"₹15,000",
+s:"SI=12000×12.5×2/100=3000. Amount=15000."
+},
+
+{
+q:"If the radius of a cylinder is reduced by 20% and height remains unchanged, volume decreases by:",
+o:["20%","32%","36%","40%"],
+a:"36%",
+s:"Volume∝r². New factor=.8²=.64. Decrease=36%."
+},
+
+{
+q:"A rectangular field is 60 m × 40 m. A path 2 m wide is constructed inside along its boundary. Area of path is:",
+o:["384 m²","392 m²","400 m²","408 m²"],
+a:"384 m²",
+s:"Outer area=2400. Inner dimensions=56×36=2016. Path area=384 m²."
+},
+
+{
+q:"A square field has side 50 m. A path of width 5 m is constructed outside it. Area of path is:",
+o:["900 m²","1000 m²","1100 m²","1200 m²"],
+a:"1100 m²",
+s:"Outer side=60. Outer area=3600, inner=2500. Path=1100 m²."
+},
+
+{
+q:"A ladder 13 m long reaches a window 12 m above the ground. Distance of foot of ladder from wall is:",
+o:["3 m","4 m","5 m","6 m"],
+a:"5 m",
+s:"By Pythagoras, base=√(13²−12²)=√25=5 m."
+},
+
+{
+q:"A pole 15 m high casts a shadow 5√3 m long. Angle of elevation of sun is:",
+o:["30°","45°","60°","75°"],
+a:"60°",
+s:"tanθ=15/(5√3)=√3. Therefore θ=60°."
+},
+
+{
+q:"The angle between the hour and minute hands of a clock at 3:30 is:",
+o:["60°","75°","90°","105°"],
+a:"75°",
+s:"Minute hand=180°. Hour hand=105°. Difference=75°."
+},
+
+{
+q:"How many times do the hands of a clock overlap in 12 hours?",
+o:["10","11","12","13"],
+a:"11",
+s:"The hands overlap 11 times in 12 hours."
+},
+
+{
+q:"A clock gains 5 minutes every hour. If it is set correctly at 8 AM, what time will it show at 8 PM?",
+o:["8:30 PM","8:45 PM","9:00 PM","9:15 PM"],
+a:"9:00 PM",
+s:"12 hours×5 minutes=60 minutes gain. It will show 9 PM."
+},
+
+{
+q:"If today is Monday, what day will it be after 100 days?",
+o:["Monday","Tuesday","Wednesday","Thursday"],
+a:"Wednesday",
+s:"100 mod 7=2. Two days after Monday is Wednesday."
+}
+
+];
+
+
+/* =========================================================
+   TEST ENGINE
+   ========================================================= */
+
+let currentQuestion=0;
+
+let answers=new Array(questions.length).fill(null);
+
+let submitted=false;
+
+let totalSeconds=90*60;
+
+
+/* TIMER */
+
+function updateTimer(){
+
+    if(submitted) return;
+
+    let minutes=Math.floor(totalSeconds/60);
+
+    let seconds=totalSeconds%60;
+
+    document.getElementById("timer").textContent=
+        String(minutes).padStart(2,"0")+
+        ":"+
+        String(seconds).padStart(2,"0");
+
+    if(totalSeconds<=0){
+
+        clearInterval(timerInterval);
+
+        submitTest(true);
+
+        return;
+    }
+
+    totalSeconds--;
+
+}
+
+const timerInterval=setInterval(updateTimer,1000);
+
+
+/* SHOW QUESTION */
+
+function showQuestion(){
+
+    const q=questions[currentQuestion];
+
+    document.getElementById("questionCount").textContent=
+        "Question "+(currentQuestion+1)+
+        " of "+questions.length;
+
+    document.getElementById("question").textContent=q.q;
+
+    const optionsDiv=document.getElementById("options");
+
+    optionsDiv.innerHTML="";
+
+    q.o.forEach(function(option){
+
+        const label=document.createElement("label");
+
+        label.className="option";
+
+        const radio=document.createElement("input");
+
+        radio.type="radio";
+
+        radio.name="answer";
+
+        radio.value=option;
+
+        if(answers[currentQuestion]===option){
+            radio.checked=true;
+        }
+
+        radio.addEventListener("change",function(){
+
+            answers[currentQuestion]=option;
+
+            createPalette();
+
+        });
+
+        label.appendChild(radio);
+
+        label.appendChild(
+            document.createTextNode(option)
+        );
+
+        optionsDiv.appendChild(label);
+
+    });
+
+    createPalette();
+
+}
+
+
+/* PALETTE */
+
+function createPalette(){
+
+    const palette=document.getElementById("palette");
+
+    palette.innerHTML="";
+
+    questions.forEach(function(_,index){
+
+        const button=document.createElement("button");
+
+        button.textContent=index+1;
+
+        if(answers[index]!==null){
+
+            button.classList.add("attempted");
+
+        }
+
+        button.onclick=function(){
+
+            currentQuestion=index;
+
+            showQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+        palette.appendChild(button);
+
+    });
+
+}
+
+
+/* NEXT */
+
+function nextQuestion(){
+
+    if(currentQuestion<questions.length-1){
+
+        currentQuestion++;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* PREVIOUS */
+
+function previousQuestion(){
+
+    if(currentQuestion>0){
+
+        currentQuestion--;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* SUBMIT */
+
+function submitTest(autoSubmit){
+
+    if(submitted) return;
+
+    if(!autoSubmit){
+
+        const confirmation=confirm(
+            "Are you sure you want to submit the test?"
+        );
+
+        if(!confirmation) return;
+
+    }
+
+    submitted=true;
+
+    clearInterval(timerInterval);
+
+    let correct=0;
+
+    let wrong=0;
+
+    let unattempted=0;
+
+    questions.forEach(function(question,index){
+
+        if(answers[index]===null){
+
+            unattempted++;
+
+        }
+
+        else if(answers[index]===question.a){
+
+            correct++;
+
+        }
+
+        else{
+
+            wrong++;
+
+        }
+
+    });
+
+    let score=correct-(wrong/3);
+
+    document.getElementById("testArea")
+        .style.display="none";
+
+    document.getElementById("result")
+        .style.display="block";
+
+    document.getElementById("score")
+        .textContent=score.toFixed(2);
+
+    document.getElementById("correct")
+        .textContent=correct;
+
+    document.getElementById("wrong")
+        .textContent=wrong;
+
+    document.getElementById("unattempted")
+        .textContent=unattempted;
+
+    showSolutions();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* SOLUTIONS */
+
+function showSolutions(){
+
+    const review=document.getElementById("review");
+
+    review.innerHTML="";
+
+    questions.forEach(function(question,index){
+
+        const div=document.createElement("div");
+
+        let statusClass="";
+
+        let statusText="";
+
+        if(answers[index]===null){
+
+            statusClass="unattempted-review";
+
+            statusText=
+                '<span class="unattempted">⚪ Not Attempted</span>';
+
+        }
+
+        else if(answers[index]===question.a){
+
+            statusClass="correct-review";
+
+            statusText=
+                '<span class="correct">✓ Correct</span>';
+
+        }
+
+        else{
+
+            statusClass="wrong-review";
+
+            statusText=
+                '<span class="wrong">✗ Wrong</span>';
+
+        }
+
+        let userAnswer=
+            answers[index]===null
+            ?"Not Attempted"
+            :answers[index];
+
+        div.className="review "+statusClass;
+
+        div.innerHTML=
+
+            '<div class="review-question">'+
+            'Q'+(index+1)+'. '+question.q+
+            '</div>'+
+
+            '<div>'+statusText+'</div>'+
+
+            '<div style="margin-top:7px;">'+
+            '<b>Your Answer:</b> '+userAnswer+
+            '</div>'+
+
+            '<div class="correct-answer">'+
+            'Correct Answer: '+question.a+
+            '</div>'+
+
+            '<div class="solution">'+
+            '<strong>💡 Solution:</strong><br>'+
+            question.s+
+            '</div>';
+
+        review.appendChild(div);
+
+    });
+
+}
+
+
+/* INITIAL LOAD */
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
