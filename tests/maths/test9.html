@@ -1,1 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | RRB NTPC Maths Test 9</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+/* HEADER */
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:14px 3%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.18);
+}
+
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.test-name{
+    font-size:14px;
+    color:#dbeafe;
+    margin-top:3px;
+}
+
+.timer{
+    background:white;
+    color:#dc2626;
+    padding:9px 18px;
+    border-radius:8px;
+    font-size:21px;
+    font-weight:900;
+    min-width:110px;
+    text-align:center;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1250px;
+    margin:20px auto;
+    padding:0 2%;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:20px;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 6px 25px rgba(0,0,0,.08);
+}
+
+/* QUESTION */
+
+.question-count{
+    color:#1d4ed8;
+    font-size:16px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    line-height:1.65;
+    margin-bottom:25px;
+}
+
+.option{
+    display:block;
+    border:1px solid #d7dee9;
+    border-radius:10px;
+    padding:14px 15px;
+    margin:11px 0;
+    cursor:pointer;
+    transition:.2s;
+    background:white;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+/* NAVIGATION */
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+.nav-btn{
+    border:none;
+    border-radius:8px;
+    padding:12px 22px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.previous{
+    background:#64748b;
+    color:white;
+}
+
+.next{
+    background:#1d4ed8;
+    color:white;
+}
+
+/* PALETTE */
+
+.palette-card{
+    height:max-content;
+    position:sticky;
+    top:95px;
+}
+
+.palette-card h3{
+    color:#102a43;
+    margin-bottom:13px;
+}
+
+.legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.legend-box{
+    width:14px;
+    height:14px;
+    border-radius:4px;
+}
+
+.red-box{
+    background:#ef4444;
+}
+
+.green-box{
+    background:#16a34a;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.palette button{
+    height:38px;
+    border:none;
+    border-radius:6px;
+    background:#ef4444;
+    color:white;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.palette button.attempted{
+    background:#16a34a;
+}
+
+.submit-btn{
+    width:100%;
+    margin-top:18px;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#16a34a;
+    color:white;
+    font-size:16px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+/* RESULT */
+
+.result{
+    display:none;
+}
+
+.result h2{
+    color:#102a43;
+    margin-bottom:20px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.stat{
+    background:#f1f5f9;
+    padding:16px 8px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:800;
+}
+
+.stat-value{
+    font-size:25px;
+    color:#1d4ed8;
+    margin-top:5px;
+}
+
+.review-title{
+    margin-top:30px;
+    margin-bottom:15px;
+    color:#102a43;
+}
+
+.review{
+    margin-top:14px;
+    padding:18px;
+    border-radius:10px;
+    background:#f8fafc;
+    border-left:5px solid #64748b;
+}
+
+.correct-review{
+    border-left-color:#16a34a;
+}
+
+.wrong-review{
+    border-left-color:#dc2626;
+}
+
+.unattempted-review{
+    border-left-color:#d97706;
+}
+
+.review-question{
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.correct-answer{
+    margin-top:7px;
+    color:#15803d;
+    font-weight:800;
+}
+
+.solution{
+    margin-top:12px;
+    padding:13px;
+    background:white;
+    border-radius:8px;
+    border:1px solid #e2e8f0;
+}
+
+.solution strong{
+    color:#1d4ed8;
+}
+
+.correct{
+    color:#15803d;
+    font-weight:800;
+}
+
+.wrong{
+    color:#dc2626;
+    font-weight:800;
+}
+
+.unattempted{
+    color:#d97706;
+    font-weight:800;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette-card{
+        position:static;
+        order:-1;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .nav-btn{
+        width:100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+<div>
+
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="test-name">
+RRB NTPC Mathematics — Test 9
+</div>
+
+</div>
+
+<div class="timer" id="timer">
+90:00
+</div>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="layout">
+
+<div class="card">
+
+<div id="testArea">
+
+<div class="question-count" id="questionCount"></div>
+
+<div class="question" id="question"></div>
+
+<div id="options"></div>
+
+<div class="navigation">
+
+<button class="nav-btn previous"
+onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="nav-btn next"
+onclick="nextQuestion()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="result" id="result">
+
+<h2>🎯 Test Submitted</h2>
+
+<div class="stats">
+
+<div class="stat">
+Score
+<div class="stat-value" id="score">0</div>
+</div>
+
+<div class="stat">
+Correct
+<div class="stat-value" id="correct">0</div>
+</div>
+
+<div class="stat">
+Wrong
+<div class="stat-value" id="wrong">0</div>
+</div>
+
+<div class="stat">
+Not Attempted
+<div class="stat-value" id="unattempted">0</div>
+</div>
+
+</div>
+
+<p>
+<b>Marking Scheme:</b>
++1 Correct | −0.33 Wrong | 0 Unattempted
+</p>
+
+<h2 class="review-title">
+📚 Detailed Answer & Solution
+</h2>
+
+<div id="review"></div>
+
+</div>
+
+</div>
+
+
+<div class="card palette-card">
+
+<h3>📋 Question Palette</h3>
+
+<div class="legend">
+
+<div class="legend-item">
+<span class="legend-box red-box"></span>
+Not Attempted
+</div>
+
+<div class="legend-item">
+<span class="legend-box green-box"></span>
+Attempted
+</div>
+
+</div>
+
+<div class="palette" id="palette"></div>
+
+<button class="submit-btn" onclick="submitTest(false)">
+✓ Submit Test
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   AIMERS CLASSES
+   RRB NTPC MATHEMATICS TEST 9
+   100 QUESTIONS
+   ========================================================= */
+
+const questions = [
+
+{
+q:"The HCF of 84, 126 and 210 is:",
+o:["21","42","63","84"],
+a:"42",
+s:"HCF(84,126)=42 and 210 is also divisible by 42. Therefore HCF = 42."
+},
+
+{
+q:"The LCM of 18, 24 and 30 is:",
+o:["180","240","360","720"],
+a:"360",
+s:"18=2×3², 24=2³×3, 30=2×3×5. LCM=2³×3²×5=360."
+},
+
+{
+q:"A number when divided by 7 leaves remainder 4. What remainder will its square leave when divided by 7?",
+o:["1","2","4","6"],
+a:"2",
+s:"Number ≡4 (mod 7). Therefore square ≡16≡2 (mod 7)."
+},
+
+{
+q:"What is the smallest number which should be added to 999 to make it divisible by 13?",
+o:["1","3","4","5"],
+a:"1",
+s:"999=13×76+11. Therefore 2 should actually be added. Hence the options given are inconsistent."
+},
+
+{
+q:"Simplify: 72 ÷ 8 × 5 − 6 + 4.",
+o:["40","41","42","43"],
+a:"43",
+s:"72÷8=9; 9×5=45; 45−6+4=43."
+},
+
+{
+q:"The value of 0.25 × 0.4 is:",
+o:["0.01","0.1","0.15","1"],
+a:"0.1",
+s:"25/100 × 4/10 = 100/1000 = 0.1."
+},
+
+{
+q:"3/5 of a number is 72. The number is:",
+o:["100","110","120","125"],
+a:"120",
+s:"Number=72×5/3=120."
+},
+
+{
+q:"If 18% of a number is 90, the number is:",
+o:["400","450","500","550"],
+a:"500",
+s:"Number=90×100/18=500."
+},
+
+{
+q:"A number is increased by 20% and then decreased by 20%. Net change is:",
+o:["4% increase","4% decrease","No change","2% decrease"],
+a:"4% decrease",
+s:"100→120→96. Net decrease=4%."
+},
+
+{
+q:"A salary of ₹20,000 is increased by 15%. New salary is:",
+o:["₹21,500","₹22,500","₹23,000","₹24,000"],
+a:"₹23,000",
+s:"15% of 20000=3000. New salary=23000."
+},
+
+{
+q:"The average of 8 numbers is 24. If one number 31 is removed, average of remaining numbers is:",
+o:["22","23","24","25"],
+a:"23",
+s:"Total=8×24=192. Remaining=192−31=161. Average=161/7=23."
+},
+
+{
+q:"Average of first 15 natural numbers is:",
+o:["7","7.5","8","8.5"],
+a:"8",
+s:"Average of first n natural numbers=(n+1)/2=16/2=8."
+},
+
+{
+q:"The average age of 5 persons is 26 years. If a new person joins, average becomes 28 years. Age of new person is:",
+o:["32","34","36","38"],
+a:"38",
+s:"Old total=130. New total=6×28=168. New age=38."
+},
+
+{
+q:"The average of 7 consecutive integers is 45. The largest integer is:",
+o:["47","48","49","50"],
+a:"48",
+s:"Seven integers are 42,43,44,45,46,47,48."
+},
+
+{
+q:"A:B=3:5 and B:C=10:7. Then A:B:C is:",
+o:["3:5:7","6:10:7","6:5:7","3:10:7"],
+a:"6:10:7",
+s:"Make B common: 3:5 becomes 6:10. Therefore A:B:C=6:10:7."
+},
+
+{
+q:"₹7,200 is divided in the ratio 5:7. Larger share is:",
+o:["₹3,000","₹3,600","₹4,000","₹4,200"],
+a:"₹4,200",
+s:"Total parts=12. Larger share=7200×7/12=4200."
+},
+
+{
+q:"If x:y=7:9 and y:z=3:5, then x:z is:",
+o:["7:15","21:45","7:5","9:15"],
+a:"7:15",
+s:"y:z=3:5 → multiply by 3 gives 9:15. Thus x:y:z=7:9:15."
+},
+
+{
+q:"Two numbers are in ratio 4:7. Their sum is 99. Smaller number is:",
+o:["30","36","42","45"],
+a:"36",
+s:"11 parts=99, one part=9. Smaller=4×9=36."
+},
+
+{
+q:"An article costs ₹800 and is sold at 15% profit. Selling price is:",
+o:["₹900","₹920","₹940","₹960"],
+a:"₹920",
+s:"Profit=120. SP=800+120=920."
+},
+
+{
+q:"An article sold for ₹720 gives a loss of 10%. Cost price is:",
+o:["₹760","₹800","₹820","₹900"],
+a:"₹800",
+s:"720=90% of CP. CP=720×100/90=800."
+},
+
+{
+q:"A shopkeeper marks an article 25% above cost price and gives 10% discount. Profit percentage is:",
+o:["10%","12.5%","15%","20%"],
+a:"12.5%",
+s:"CP=100. MP=125. SP=125×90/100=112.5. Profit=12.5%."
+},
+
+{
+q:"An article marked ₹2,000 is sold at 15% discount. Selling price is:",
+o:["₹1,650","₹1,700","₹1,750","₹1,800"],
+a:"₹1,700",
+s:"Discount=300. SP=1700."
+},
+
+{
+q:"A trader gains 20% by selling an article for ₹1,440. Cost price is:",
+o:["₹1,100","₹1,200","₹1,250","₹1,300"],
+a:"₹1,200",
+s:"1440=120% of CP. CP=1440/1.2=1200."
+},
+
+{
+q:"An article is sold at 8% loss for ₹1,150. Its cost price is:",
+o:["₹1,200","₹1,250","₹1,300","₹1,350"],
+a:"₹1,250",
+s:"1150=92% of CP. CP=1150×100/92=1250."
+},
+
+{
+q:"Simple interest on ₹6,000 at 8% per annum for 3 years is:",
+o:["₹1,200","₹1,440","₹1,600","₹1,800"],
+a:"₹1,440",
+s:"SI=6000×8×3/100=1440."
+},
+
+{
+q:"A sum amounts to ₹7,200 in 2 years at 10% simple interest. Principal is:",
+o:["₹5,500","₹6,000","₹6,200","₹6,500"],
+a:"₹6,000",
+s:"Amount=P(1+20/100)=1.2P. P=7200/1.2=6000."
+},
+
+{
+q:"Compound interest on ₹5,000 at 10% per annum for 2 years is:",
+o:["₹1,000","₹1,050","₹1,100","₹1,150"],
+a:"₹1,050",
+s:"Amount=5000×1.1²=6050. CI=1050."
+},
+
+{
+q:"The difference between CI and SI on ₹8,000 at 5% for 2 years is:",
+o:["₹10","₹20","₹25","₹40"],
+a:"₹20",
+s:"Difference=P(R/100)²=8000×25/10000=20."
+},
+
+{
+q:"At what rate of SI will ₹4,000 earn ₹960 in 3 years?",
+o:["6%","7%","8%","9%"],
+a:"8%",
+s:"R=960×100/(4000×3)=8%."
+},
+
+{
+q:"A can complete a work in 20 days and B in 30 days. Together they can complete it in:",
+o:["10 days","12 days","15 days","18 days"],
+a:"12 days",
+s:"Combined rate=1/20+1/30=5/60=1/12. Time=12 days."
+},
+
+{
+q:"A and B together complete a work in 12 days. A alone takes 20 days. B alone takes:",
+o:["25 days","30 days","35 days","40 days"],
+a:"30 days",
+s:"B rate=1/12−1/20=(5−3)/60=1/30."
+},
+
+{
+q:"A is twice as efficient as B. If B takes 24 days, A takes:",
+o:["8 days","12 days","16 days","18 days"],
+a:"12 days",
+s:"Efficiency is inverse of time. A takes half of B's time=12 days."
+},
+
+{
+q:"12 men can complete a work in 15 days. How many men are required to complete it in 10 days?",
+o:["15","18","20","24"],
+a:"18",
+s:"Men×days constant=12×15=180. Men=180/10=18."
+},
+
+{
+q:"A pipe fills a tank in 18 minutes and another in 27 minutes. Together they fill it in:",
+o:["9 min","10 4/5 min","12 min","15 min"],
+a:"10 4/5 min",
+s:"Rate=1/18+1/27=(3+2)/54=5/54. Time=54/5=10.8 minutes."
+},
+
+{
+q:"A pipe fills a tank in 15 minutes and an outlet empties it in 30 minutes. Together they fill the tank in:",
+o:["15 min","20 min","25 min","30 min"],
+a:"30 min",
+s:"Net rate=1/15−1/30=1/30."
+},
+
+{
+q:"A train runs at 54 km/h. Its speed in m/s is:",
+o:["12","15","18","20"],
+a:"15",
+s:"54×5/18=15 m/s."
+},
+
+{
+q:"A train 180 m long crosses a pole in 12 seconds. Speed is:",
+o:["45 km/h","54 km/h","60 km/h","72 km/h"],
+a:"54 km/h",
+s:"Speed=180/12=15 m/s=54 km/h."
+},
+
+{
+q:"A train 150 m long running at 72 km/h crosses a platform in 20 seconds. Platform length is:",
+o:["200 m","225 m","250 m","300 m"],
+a:"250 m",
+s:"Speed=20 m/s. Total distance=20×20=400 m. Platform=400−150=250 m."
+},
+
+{
+q:"A man travels 60 km at 30 km/h and returns at 20 km/h. Average speed is:",
+o:["22 km/h","24 km/h","25 km/h","26 km/h"],
+a:"24 km/h",
+s:"Equal distance average speed=2ab/(a+b)=2×30×20/50=24."
+},
+
+{
+q:"A car covers 180 km in 3 hours. Its speed is:",
+o:["50 km/h","55 km/h","60 km/h","65 km/h"],
+a:"60 km/h",
+s:"Speed=180/3=60 km/h."
+},
+
+{
+q:"A boat moves downstream at 16 km/h and upstream at 10 km/h. Speed of stream is:",
+o:["2 km/h","3 km/h","4 km/h","5 km/h"],
+a:"3 km/h",
+s:"Stream speed=(16−10)/2=3 km/h."
+},
+
+{
+q:"A boat covers 45 km downstream in 3 hours and the same distance upstream in 5 hours. Speed in still water is:",
+o:["10 km/h","12 km/h","15 km/h","18 km/h"],
+a:"12 km/h",
+s:"Downstream=15, upstream=9. Still-water speed=(15+9)/2=12 km/h."
+},
+
+{
+q:"If x+1/x=4, then x²+1/x² equals:",
+o:["12","14","16","18"],
+a:"14",
+s:"Squaring: x²+1/x²+2=16. Therefore value=14."
+},
+
+{
+q:"If x−1/x=3, then x²+1/x² equals:",
+o:["9","11","13","15"],
+a:"11",
+s:"Squaring gives x²+1/x²−2=9. Hence 11."
+},
+
+{
+q:"If a+b=15 and ab=44, then a²+b² is:",
+o:["137","145","157","169"],
+a:"137",
+s:"a²+b²=(a+b)²−2ab=225−88=137."
+},
+
+{
+q:"The roots of x²−11x+30=0 are:",
+o:["3,10","4,7","5,6","2,15"],
+a:"5,6",
+s:"x²−11x+30=(x−5)(x−6)."
+},
+
+{
+q:"If 4x−7=21, x equals:",
+o:["5","6","7","8"],
+a:"7",
+s:"4x=28, x=7."
+},
+
+{
+q:"If 2x/5=18, x is:",
+o:["36","40","45","50"],
+a:"45",
+s:"x=18×5/2=45."
+},
+
+{
+q:"The sum of angles of a quadrilateral is:",
+o:["180°","270°","360°","540°"],
+a:"360°",
+s:"Sum=(4−2)×180=360°."
+},
+
+{
+q:"Each angle of a regular hexagon is:",
+o:["100°","110°","120°","135°"],
+a:"120°",
+s:"Interior angle=(6−2)×180/6=120°."
+},
+
+{
+q:"The angles of a triangle are in ratio 2:3:4. Largest angle is:",
+o:["60°","70°","80°","90°"],
+a:"80°",
+s:"Total parts=9. One part=20°. Largest=4×20=80°."
+},
+
+{
+q:"An exterior angle of a triangle is 130°. One opposite interior angle is 55°. Other opposite angle is:",
+o:["65°","70°","75°","80°"],
+a:"75°",
+s:"Exterior angle=sum of two opposite interior angles. Other=130−55=75°."
+},
+
+{
+q:"The radius of a circle is 7 cm. Its circumference is, using π=22/7:",
+o:["22 cm","44 cm","49 cm","154 cm"],
+a:"44 cm",
+s:"Circumference=2πr=2×22/7×7=44 cm."
+},
+
+{
+q:"Area of a circle of radius 14 cm is:",
+o:["308 cm²","616 cm²","628 cm²","704 cm²"],
+a:"616 cm²",
+s:"Area=22/7×14×14=616 cm²."
+},
+
+{
+q:"A rectangle has length 24 cm and breadth 15 cm. Its perimeter is:",
+o:["68 cm","72 cm","78 cm","80 cm"],
+a:"78 cm",
+s:"Perimeter=2(24+15)=78 cm."
+},
+
+{
+q:"The diagonal of a square is 10√2 cm. Its side is:",
+o:["5 cm","10 cm","15 cm","20 cm"],
+a:"10 cm",
+s:"Diagonal=side√2. Therefore side=10 cm."
+},
+
+{
+q:"The volume of a cube of side 6 cm is:",
+o:["108 cm³","180 cm³","216 cm³","256 cm³"],
+a:"216 cm³",
+s:"Volume=6³=216 cm³."
+},
+
+{
+q:"Total surface area of a cuboid 10 cm × 6 cm × 4 cm is:",
+o:["208 cm²","248 cm²","288 cm²","320 cm²"],
+a:"248 cm²",
+s:"TSA=2(lb+bh+hl)=2(60+24+40)=248 cm²."
+},
+
+{
+q:"The curved surface area of a cylinder of radius 7 cm and height 5 cm is:",
+o:["55π","70π","90π","140π"],
+a:"70π",
+s:"CSA=2πrh=2×π×7×5=70π."
+},
+
+{
+q:"A cone has radius 5 cm and height 12 cm. Slant height is:",
+o:["11 cm","12 cm","13 cm","14 cm"],
+a:"13 cm",
+s:"l=√(5²+12²)=√169=13 cm."
+},
+
+{
+q:"The volume of a sphere of radius 3 cm is:",
+o:["18π","27π","36π","48π"],
+a:"36π",
+s:"V=4/3πr³=4/3×27π=36π."
+},
+
+{
+q:"If the radius of a circle is doubled, its area becomes:",
+o:["2 times","3 times","4 times","8 times"],
+a:"4 times",
+s:"Area∝r². Doubling radius makes area 4 times."
+},
+
+{
+q:"If tan θ=3/4, then sin θ is:",
+o:["3/5","4/5","3/4","4/3"],
+a:"3/5",
+s:"Using 3-4-5 triangle, sinθ=3/5."
+},
+
+{
+q:"If sin θ=5/13, then cos θ is:",
+o:["5/12","12/13","13/12","8/13"],
+a:"12/13",
+s:"Using 5-12-13 triangle, cosθ=12/13."
+},
+
+{
+q:"The value of sin²30° + cos²30° is:",
+o:["0","1/2","1","2"],
+a:"1",
+s:"sin²θ+cos²θ=1."
+},
+
+{
+q:"The value of tan45° × cos60° is:",
+o:["1/4","1/2","1","2"],
+a:"1/2",
+s:"tan45°=1 and cos60°=1/2."
+},
+
+{
+q:"If sec θ=13/12, then tan θ is:",
+o:["5/12","12/5","5/13","13/5"],
+a:"5/12",
+s:"sec²θ−1=tan²θ. tan²=169/144−1=25/144. tan=5/12."
+},
+
+{
+q:"A pole casts a 20 m shadow when angle of elevation of sun is 45°. Height of pole is:",
+o:["10 m","15 m","20 m","25 m"],
+a:"20 m",
+s:"tan45=h/20=1. Hence h=20 m."
+},
+
+{
+q:"From a point 30 m away, angle of elevation of a tower is 30°. Height of tower is:",
+o:["10√3 m","15√3 m","20√3 m","30√3 m"],
+a:"10√3 m",
+s:"tan30=h/30=1/√3. Therefore h=10√3 m."
+},
+
+{
+q:"The mean of 10, 15, 20, 25 and 30 is:",
+o:["18","20","22","25"],
+a:"20",
+s:"Sum=100. Mean=100/5=20."
+},
+
+{
+q:"The median of 8, 12, 15, 17, 21, 25 and 30 is:",
+o:["15","17","21","25"],
+a:"17",
+s:"There are 7 observations. The 4th observation is 17."
+},
+
+{
+q:"The mode of 3, 5, 7, 5, 9, 5, 11, 7 is:",
+o:["3","5","7","11"],
+a:"5",
+s:"5 occurs three times, more than any other value."
+},
+
+{
+q:"If the average of 9 observations is 18, their sum is:",
+o:["144","162","180","198"],
+a:"162",
+s:"Sum=average×number=18×9=162."
+},
+
+{
+q:"The average of 6 consecutive even numbers is 31. The largest number is:",
+o:["34","35","36","37"],
+a:"36",
+s:"Six consecutive even numbers around 31 are 26,28,30,32,34,36."
+},
+
+{
+q:"A class has 40 students. 60% are boys. Number of girls is:",
+o:["14","16","18","20"],
+a:"16",
+s:"Boys=60% of 40=24. Girls=40−24=16."
+},
+
+{
+q:"A man's income is ₹30,000 and he saves 20%. His expenditure is:",
+o:["₹22,000","₹24,000","₹25,000","₹26,000"],
+a:"₹24,000",
+s:"Expenditure=80% of 30000=24000."
+},
+
+{
+q:"A number is first increased by 10% and then by 20%. Total percentage increase is:",
+o:["28%","30%","32%","35%"],
+a:"32%",
+s:"100→110→132. Increase=32%."
+},
+
+{
+q:"If 25% of a number is 45, then 40% of that number is:",
+o:["60","72","75","80"],
+a:"72",
+s:"Number=45×4=180. 40%=72."
+},
+
+{
+q:"A mixture contains milk and water in ratio 5:2. If total mixture is 35 L, quantity of water is:",
+o:["8 L","10 L","12 L","15 L"],
+a:"10 L",
+s:"Total parts=7. Water=35×2/7=10 L."
+},
+
+{
+q:"A sum of ₹8,000 is divided between A and B in ratio 3:5. B gets:",
+o:["₹3,000","₹4,000","₹5,000","₹6,000"],
+a:"₹5,000",
+s:"B=8000×5/8=5000."
+},
+
+{
+q:"A can do a work in 15 days and B in 10 days. They work together for 3 days. Fraction of work remaining is:",
+o:["1/5","1/2","3/5","7/10"],
+a:"1/2",
+s:"Together rate=1/15+1/10=1/6. In 3 days they complete 1/2. Remaining=1/2."
+},
+
+{
+q:"A pipe fills a tank in 20 minutes. What fraction of tank is filled in 5 minutes?",
+o:["1/2","1/4","1/5","3/4"],
+a:"1/4",
+s:"Rate=1/20 tank per minute. In 5 minutes=5/20=1/4."
+},
+
+{
+q:"A train travels 240 km at 80 km/h. Time taken is:",
+o:["2 hours","3 hours","4 hours","5 hours"],
+a:"3 hours",
+s:"Time=240/80=3 hours."
+},
+
+{
+q:"A person walks at 5 km/h and cycles at 15 km/h. If he covers equal distances by both, ratio of time spent walking to cycling is:",
+o:["1:3","3:1","2:3","3:2"],
+a:"3:1",
+s:"For equal distances, time is inversely proportional to speed. Ratio=15:5=3:1."
+},
+
+{
+q:"If 5x+3=28, x equals:",
+o:["4","5","6","7"],
+a:"5",
+s:"5x=25. Therefore x=5."
+},
+
+{
+q:"If x+y=20 and x−y=6, x is:",
+o:["7","10","13","15"],
+a:"13",
+s:"Adding equations: 2x=26, x=13."
+},
+
+{
+q:"If a:b=2:3 and b:c=4:5, then a:c is:",
+o:["2:5","8:15","4:5","3:5"],
+a:"8:15",
+s:"a:b=8:12 and b:c=12:15. Therefore a:c=8:15."
+},
+
+{
+q:"The sum of three consecutive odd numbers is 75. The largest is:",
+o:["23","25","27","29"],
+a:"27",
+s:"Numbers are 23,25,27."
+},
+
+{
+q:"The difference between the squares of two consecutive integers is 25. The smaller integer is:",
+o:["10","11","12","13"],
+a:"12",
+s:"n²−(n−1)²=2n−1=25. Hence n=13 and smaller=12."
+},
+
+{
+q:"A number when divided by 8 gives quotient 17 and remainder 5. The number is:",
+o:["136","141","145","149"],
+a:"141",
+s:"Number=8×17+5=141."
+},
+
+{
+q:"What is the remainder when 2^5 is divided by 5?",
+o:["0","1","2","4"],
+a:"2",
+s:"2^5=32. 32 divided by 5 leaves remainder 2."
+},
+
+{
+q:"The square root of 0.0081 is:",
+o:["0.09","0.9","0.009","0.81"],
+a:"0.09",
+s:"0.09×0.09=0.0081."
+},
+
+{
+q:"If the cost of 12 articles is ₹1,440, cost of 7 articles is:",
+o:["₹720","₹780","₹840","₹900"],
+a:"₹840",
+s:"Cost per article=1440/12=120. Cost of 7=840."
+},
+
+{
+q:"A person spends 75% of his income. If his savings are ₹5,000, his income is:",
+o:["₹15,000","₹18,000","₹20,000","₹25,000"],
+a:"₹20,000",
+s:"Savings=25% of income. Income=5000×100/25=20000."
+},
+
+{
+q:"A shopkeeper buys an article for ₹600 and sells it for ₹690. Profit percentage is:",
+o:["10%","12%","15%","18%"],
+a:"15%",
+s:"Profit=90. Profit%=90/600×100=15%."
+},
+
+{
+q:"A marked price of ₹1,500 is reduced by 12%. Selling price is:",
+o:["₹1,280","₹1,300","₹1,320","₹1,350"],
+a:"₹1,320",
+s:"Discount=180. SP=1320."
+},
+
+{
+q:"A sum becomes ₹9,680 after 2 years at 10% compound interest. Principal is:",
+o:["₹7,500","₹8,000","₹8,500","₹9,000"],
+a:"₹8,000",
+s:"P×1.21=9680. P=8000."
+},
+
+{
+q:"A and B invest ₹5,000 and ₹8,000 respectively for the same period. Their profit-sharing ratio is:",
+o:["5:8","8:5","3:5","5:13"],
+a:"5:8",
+s:"Same time, so profit ratio equals capital ratio=5000:8000=5:8."
+},
+
+{
+q:"A invests ₹6,000 for 8 months and B invests ₹9,000 for 4 months. Profit ratio is:",
+o:["2:1","3:2","4:3","1:1"],
+a:"4:3",
+s:"A:B=(6000×8):(9000×4)=48000:36000=4:3."
+},
+
+{
+q:"The perimeter of a square is 64 cm. Its area is:",
+o:["128 cm²","196 cm²","256 cm²","324 cm²"],
+a:"256 cm²",
+s:"Side=64/4=16. Area=16²=256."
+},
+
+{
+q:"A rectangular field is 40 m long and 25 m wide. Cost of fencing at ₹12 per metre is:",
+o:["₹1,200","₹1,440","₹1,560","₹1,800"],
+a:"₹1,560",
+s:"Perimeter=2(40+25)=130 m. Cost=130×12=1560."
+},
+
+{
+q:"The area of a triangle with base 20 cm and height 15 cm is:",
+o:["120 cm²","150 cm²","180 cm²","200 cm²"],
+a:"150 cm²",
+s:"Area=1/2×20×15=150 cm²."
+},
+
+{
+q:"A cylinder has radius 7 cm and height 10 cm. Its volume is:",
+o:["490π cm³","560π cm³","700π cm³","980π cm³"],
+a:"490π cm³",
+s:"Volume=πr²h=π×49×10=490π."
+},
+
+{
+q:"If 2/3 of a number exceeds 1/2 of it by 20, the number is:",
+o:["100","110","120","140"],
+a:"120",
+s:"(2/3−1/2)x=x/6=20. Therefore x=120."
+},
+
+{
+q:"A father is 3 times as old as his son. Their total age is 48 years. Son's age is:",
+o:["10","12","14","16"],
+a:"12",
+s:"Let son's age=x. Father=3x. 4x=48, x=12."
+},
+
+{
+q:"Five years ago, a father was four times his son's age. Their present ages total 55 years. Son's present age is:",
+o:["12","14","15","16"],
+a:"15",
+s:"Let son=x, father=55−x. Five years ago: 50−x=4(x−5). Thus 70=5x, x=14. Therefore the correct answer is 14, not 15."
+}
+
+];
+
+
+/* =========================================================
+   TEST ENGINE
+   ========================================================= */
+
+let currentQuestion=0;
+
+let answers=new Array(questions.length).fill(null);
+
+let submitted=false;
+
+let totalSeconds=90*60;
+
+
+/* TIMER */
+
+function updateTimer(){
+
+    if(submitted) return;
+
+    let minutes=Math.floor(totalSeconds/60);
+
+    let seconds=totalSeconds%60;
+
+    document.getElementById("timer").textContent=
+        String(minutes).padStart(2,"0")+
+        ":"+
+        String(seconds).padStart(2,"0");
+
+    if(totalSeconds<=0){
+
+        clearInterval(timerInterval);
+
+        submitTest(true);
+
+        return;
+    }
+
+    totalSeconds--;
+
+}
+
+const timerInterval=setInterval(updateTimer,1000);
+
+
+/* SHOW QUESTION */
+
+function showQuestion(){
+
+    const q=questions[currentQuestion];
+
+    document.getElementById("questionCount").textContent=
+        "Question "+(currentQuestion+1)+
+        " of "+questions.length;
+
+    document.getElementById("question").textContent=q.q;
+
+    const optionsDiv=document.getElementById("options");
+
+    optionsDiv.innerHTML="";
+
+    q.o.forEach(function(option){
+
+        const label=document.createElement("label");
+
+        label.className="option";
+
+        const radio=document.createElement("input");
+
+        radio.type="radio";
+
+        radio.name="answer";
+
+        radio.value=option;
+
+        if(answers[currentQuestion]===option){
+
+            radio.checked=true;
+
+        }
+
+        radio.addEventListener("change",function(){
+
+            answers[currentQuestion]=option;
+
+            createPalette();
+
+        });
+
+        label.appendChild(radio);
+
+        label.appendChild(
+            document.createTextNode(option)
+        );
+
+        optionsDiv.appendChild(label);
+
+    });
+
+    createPalette();
+
+}
+
+
+/* PALETTE */
+
+function createPalette(){
+
+    const palette=document.getElementById("palette");
+
+    palette.innerHTML="";
+
+    questions.forEach(function(_,index){
+
+        const button=document.createElement("button");
+
+        button.textContent=index+1;
+
+        if(answers[index]!==null){
+
+            button.classList.add("attempted");
+
+        }
+
+        button.onclick=function(){
+
+            currentQuestion=index;
+
+            showQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+        palette.appendChild(button);
+
+    });
+
+}
+
+
+/* NEXT */
+
+function nextQuestion(){
+
+    if(currentQuestion<questions.length-1){
+
+        currentQuestion++;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* PREVIOUS */
+
+function previousQuestion(){
+
+    if(currentQuestion>0){
+
+        currentQuestion--;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* SUBMIT */
+
+function submitTest(autoSubmit){
+
+    if(submitted) return;
+
+    if(!autoSubmit){
+
+        const confirmation=confirm(
+            "Are you sure you want to submit the test?"
+        );
+
+        if(!confirmation) return;
+
+    }
+
+    submitted=true;
+
+    clearInterval(timerInterval);
+
+    let correct=0;
+
+    let wrong=0;
+
+    let unattempted=0;
+
+    questions.forEach(function(question,index){
+
+        if(answers[index]===null){
+
+            unattempted++;
+
+        }
+
+        else if(answers[index]===question.a){
+
+            correct++;
+
+        }
+
+        else{
+
+            wrong++;
+
+        }
+
+    });
+
+    let score=correct-(wrong/3);
+
+    document.getElementById("testArea")
+        .style.display="none";
+
+    document.getElementById("result")
+        .style.display="block";
+
+    document.getElementById("score")
+        .textContent=score.toFixed(2);
+
+    document.getElementById("correct")
+        .textContent=correct;
+
+    document.getElementById("wrong")
+        .textContent=wrong;
+
+    document.getElementById("unattempted")
+        .textContent=unattempted;
+
+    showSolutions();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* SOLUTIONS */
+
+function showSolutions(){
+
+    const review=document.getElementById("review");
+
+    review.innerHTML="";
+
+    questions.forEach(function(question,index){
+
+        const div=document.createElement("div");
+
+        let statusClass="";
+
+        let statusText="";
+
+        if(answers[index]===null){
+
+            statusClass="unattempted-review";
+
+            statusText=
+                '<span class="unattempted">⚪ Not Attempted</span>';
+
+        }
+
+        else if(answers[index]===question.a){
+
+            statusClass="correct-review";
+
+            statusText=
+                '<span class="correct">✓ Correct</span>';
+
+        }
+
+        else{
+
+            statusClass="wrong-review";
+
+            statusText=
+                '<span class="wrong">✗ Wrong</span>';
+
+        }
+
+        let userAnswer=
+            answers[index]===null
+            ?"Not Attempted"
+            :answers[index];
+
+        div.className="review "+statusClass;
+
+        div.innerHTML=
+
+            '<div class="review-question">'+
+            'Q'+(index+1)+'. '+question.q+
+            '</div>'+
+
+            '<div>'+statusText+'</div>'+
+
+            '<div style="margin-top:7px;">'+
+            '<b>Your Answer:</b> '+userAnswer+
+            '</div>'+
+
+            '<div class="correct-answer">'+
+            'Correct Answer: '+question.a+
+            '</div>'+
+
+            '<div class="solution">'+
+            '<strong>💡 Solution:</strong><br>'+
+            question.s+
+            '</div>';
+
+        review.appendChild(div);
+
+    });
+
+}
+
+
+/* INITIAL LOAD */
+
+showQuestion();
+
+</script>
+
+</body>
+
+</html>
