@@ -1,1 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | Physics Test 1</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:14px 3%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.18);
+}
+
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.test-name{
+    font-size:14px;
+    color:#dbeafe;
+}
+
+.timer{
+    background:white;
+    color:#dc2626;
+    padding:9px 18px;
+    border-radius:8px;
+    font-size:21px;
+    font-weight:900;
+    min-width:110px;
+    text-align:center;
+}
+
+.container{
+    max-width:1250px;
+    margin:20px auto;
+    padding:0 2%;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 6px 25px rgba(0,0,0,.08);
+}
+
+.question-count{
+    color:#1d4ed8;
+    font-size:16px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    line-height:1.65;
+    margin-bottom:25px;
+}
+
+.option{
+    display:block;
+    border:1px solid #d7dee9;
+    border-radius:10px;
+    padding:14px 15px;
+    margin:11px 0;
+    cursor:pointer;
+    transition:.2s;
+    background:white;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+.nav-btn{
+    border:none;
+    border-radius:8px;
+    padding:12px 22px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.previous{
+    background:#64748b;
+    color:white;
+}
+
+.next{
+    background:#1d4ed8;
+    color:white;
+}
+
+.palette-card{
+    height:max-content;
+    position:sticky;
+    top:95px;
+}
+
+.palette-card h3{
+    color:#102a43;
+    margin-bottom:13px;
+}
+
+.legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.legend-box{
+    width:14px;
+    height:14px;
+    border-radius:4px;
+}
+
+.red-box{
+    background:#ef4444;
+}
+
+.green-box{
+    background:#16a34a;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.palette button{
+    height:38px;
+    border:none;
+    border-radius:6px;
+    background:#ef4444;
+    color:white;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.palette button.attempted{
+    background:#16a34a;
+}
+
+.submit-btn{
+    width:100%;
+    margin-top:18px;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#16a34a;
+    color:white;
+    font-size:16px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.result{
+    display:none;
+}
+
+.result h2{
+    color:#102a43;
+    margin-bottom:20px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.stat{
+    background:#f1f5f9;
+    padding:16px 8px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:800;
+}
+
+.stat-value{
+    font-size:25px;
+    color:#1d4ed8;
+    margin-top:5px;
+}
+
+.review-title{
+    margin-top:30px;
+    margin-bottom:15px;
+}
+
+.review{
+    margin-top:14px;
+    padding:18px;
+    border-radius:10px;
+    background:#f8fafc;
+    border-left:5px solid #64748b;
+}
+
+.correct-review{
+    border-left-color:#16a34a;
+}
+
+.wrong-review{
+    border-left-color:#dc2626;
+}
+
+.unattempted-review{
+    border-left-color:#d97706;
+}
+
+.review-question{
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.correct-answer{
+    margin-top:7px;
+    color:#15803d;
+    font-weight:800;
+}
+
+.solution{
+    margin-top:12px;
+    padding:13px;
+    background:white;
+    border-radius:8px;
+    border:1px solid #e2e8f0;
+}
+
+.solution strong{
+    color:#1d4ed8;
+}
+
+.correct{
+    color:#15803d;
+    font-weight:800;
+}
+
+.wrong{
+    color:#dc2626;
+    font-weight:800;
+}
+
+.unattempted{
+    color:#d97706;
+    font-weight:800;
+}
+
+@media(max-width:850px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette-card{
+        position:static;
+        order:-1;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .nav-btn{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+<div>
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="test-name">
+GENERAL AWARENESS | PHYSICS TEST 1 | SSC CGL LEVEL
+</div>
+</div>
+
+<div class="timer" id="timer">
+60:00
+</div>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="layout">
+
+<div class="card">
+
+<div id="testArea">
+
+<div class="question-count" id="questionCount"></div>
+
+<div class="question" id="question"></div>
+
+<div id="options"></div>
+
+<div class="navigation">
+
+<button class="nav-btn previous"
+onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="nav-btn next"
+onclick="nextQuestion()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="result" id="result">
+
+<h2>🎯 Physics Test 1 Submitted</h2>
+
+<div class="stats">
+
+<div class="stat">
+Score
+<div class="stat-value" id="score">0</div>
+</div>
+
+<div class="stat">
+Correct
+<div class="stat-value" id="correct">0</div>
+</div>
+
+<div class="stat">
+Wrong
+<div class="stat-value" id="wrong">0</div>
+</div>
+
+<div class="stat">
+Not Attempted
+<div class="stat-value" id="unattempted">0</div>
+</div>
+
+</div>
+
+<p>
+<b>Marking Scheme:</b>
++1 Correct | −0.33 Wrong | 0 Unattempted
+</p>
+
+<h2 class="review-title">
+📚 Detailed Answer & Solution
+</h2>
+
+<div id="review"></div>
+
+</div>
+
+</div>
+
+
+<div class="card palette-card">
+
+<h3>📋 Question Palette</h3>
+
+<div class="legend">
+
+<div class="legend-item">
+<span class="legend-box red-box"></span>
+Not Attempted
+</div>
+
+<div class="legend-item">
+<span class="legend-box green-box"></span>
+Attempted
+</div>
+
+</div>
+
+<div class="palette" id="palette"></div>
+
+<button class="submit-btn" onclick="submitTest(false)">
+✓ Submit Test
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   AIMERS CLASSES
+   GENERAL AWARENESS - PHYSICS TEST 1
+   100 QUESTIONS
+   TIME: 60 MINUTES
+   ========================================================= */
+
+const questions = [
+
+{
+q:"The SI unit of force is:",
+o:["Joule","Newton","Watt","Pascal"],
+a:"Newton",
+s:"The SI unit of force is Newton (N). One Newton is the force required to produce an acceleration of 1 m/s² in a mass of 1 kg."
+},
+
+{
+q:"Which of the following is a scalar quantity?",
+o:["Velocity","Displacement","Speed","Acceleration"],
+a:"Speed",
+s:"Speed has magnitude only, so it is a scalar. Velocity, displacement and acceleration are vector quantities."
+},
+
+{
+q:"Which physical quantity is measured in pascal?",
+o:["Force","Pressure","Energy","Power"],
+a:"Pressure",
+s:"The SI unit of pressure is Pascal (Pa), which is equal to N/m²."
+},
+
+{
+q:"The dimensional formula of velocity is:",
+o:["[LT⁻¹]","[LT⁻²]","[MLT⁻¹]","[ML²T⁻²]"],
+a:"[LT⁻¹]",
+s:"Velocity = displacement/time. Therefore its dimensions are L/T = [LT⁻¹]."
+},
+
+{
+q:"Which one is a vector quantity?",
+o:["Mass","Temperature","Time","Momentum"],
+a:"Momentum",
+s:"Momentum = mass × velocity. Since velocity is a vector, momentum is also a vector."
+},
+
+{
+q:"A body travels 20 m in 4 seconds. Its average speed is:",
+o:["4 m/s","5 m/s","6 m/s","8 m/s"],
+a:"5 m/s",
+s:"Average speed = total distance/total time = 20/4 = 5 m/s."
+},
+
+{
+q:"A body starts from rest and accelerates at 2 m/s² for 5 seconds. Its final velocity is:",
+o:["5 m/s","8 m/s","10 m/s","12 m/s"],
+a:"10 m/s",
+s:"Using v = u + at, v = 0 + 2×5 = 10 m/s."
+},
+
+{
+q:"A body moving at 20 m/s is brought to rest in 5 seconds. Its acceleration is:",
+o:["−2 m/s²","−4 m/s²","4 m/s²","5 m/s²"],
+a:"−4 m/s²",
+s:"a = (v−u)/t = (0−20)/5 = −4 m/s²."
+},
+
+{
+q:"The slope of a velocity-time graph represents:",
+o:["Distance","Displacement","Acceleration","Force"],
+a:"Acceleration",
+s:"Acceleration is the rate of change of velocity with time. Hence the slope of a velocity-time graph gives acceleration."
+},
+
+{
+q:"The area under a velocity-time graph represents:",
+o:["Acceleration","Displacement","Force","Power"],
+a:"Displacement",
+s:"The area under a velocity-time graph gives displacement."
+},
+
+{
+q:"A car covers equal distances at 30 km/h and 60 km/h. Its average speed is:",
+o:["40 km/h","45 km/h","50 km/h","48 km/h"],
+a:"40 km/h",
+s:"For equal distances, average speed = 2uv/(u+v) = 2×30×60/90 = 40 km/h."
+},
+
+{
+q:"If a body moves with uniform velocity, its acceleration is:",
+o:["1 m/s²","Zero","Constant but non-zero","Infinite"],
+a:"Zero",
+s:"Uniform velocity means velocity does not change with time. Therefore acceleration is zero."
+},
+
+{
+q:"Newton's first law of motion is also known as the law of:",
+o:["Acceleration","Momentum","Inertia","Gravitation"],
+a:"Inertia",
+s:"Newton's first law states that a body remains at rest or in uniform motion unless acted upon by an external unbalanced force. It is called the law of inertia."
+},
+
+{
+q:"According to Newton's second law, force is equal to:",
+o:["mv","ma","m/a","v/m"],
+a:"ma",
+s:"Newton's second law gives F = ma, where m is mass and a is acceleration."
+},
+
+{
+q:"Newton's third law states that every action has:",
+o:["A smaller reaction","An equal and opposite reaction","A larger reaction","No reaction"],
+a:"An equal and opposite reaction",
+s:"For every action, there is an equal and opposite reaction."
+},
+
+{
+q:"A force of 10 N acts on a body of mass 2 kg. Its acceleration is:",
+o:["2 m/s²","5 m/s²","10 m/s²","20 m/s²"],
+a:"5 m/s²",
+s:"Using F = ma, a = F/m = 10/2 = 5 m/s²."
+},
+
+{
+q:"Momentum of a body of mass 5 kg moving at 4 m/s is:",
+o:["10 kg m/s","15 kg m/s","20 kg m/s","25 kg m/s"],
+a:"20 kg m/s",
+s:"Momentum p = mv = 5×4 = 20 kg m/s."
+},
+
+{
+q:"Impulse is equal to:",
+o:["Change in momentum","Change in velocity","Force × mass","Mass × acceleration"],
+a:"Change in momentum",
+s:"Impulse = force × time = change in momentum."
+},
+
+{
+q:"Why does a passenger fall forward when a moving bus suddenly stops?",
+o:["Gravity","Inertia of motion","Inertia of rest","Friction"],
+a:"Inertia of motion",
+s:"The lower part of the body stops with the bus while the upper part tends to continue moving forward due to inertia of motion."
+},
+
+{
+q:"Seat belts in cars are used mainly because of:",
+o:["Gravity","Inertia","Pressure","Buoyancy"],
+a:"Inertia",
+s:"During sudden braking, the passenger tends to move forward due to inertia. Seat belts prevent this forward motion."
+},
+
+{
+q:"The SI unit of work is:",
+o:["Newton","Joule","Watt","Pascal"],
+a:"Joule",
+s:"Work = force × displacement in the direction of force. Its SI unit is Joule."
+},
+
+{
+q:"A force of 20 N moves an object through 5 m in its direction. Work done is:",
+o:["25 J","50 J","100 J","200 J"],
+a:"100 J",
+s:"Work = F×s = 20×5 = 100 J."
+},
+
+{
+q:"If displacement is zero, work done by a force is:",
+o:["Always zero","Always positive","Always negative","Infinite"],
+a:"Always zero",
+s:"Work = F s cosθ. If displacement s=0, work is zero."
+},
+
+{
+q:"The rate of doing work is called:",
+o:["Energy","Power","Force","Momentum"],
+a:"Power",
+s:"Power is the rate at which work is done. P = W/t."
+},
+
+{
+q:"The SI unit of power is:",
+o:["Joule","Newton","Watt","Volt"],
+a:"Watt",
+s:"The SI unit of power is Watt (W), equal to one joule per second."
+},
+
+{
+q:"A machine does 600 J of work in 10 seconds. Its power is:",
+o:["50 W","60 W","100 W","600 W"],
+a:"60 W",
+s:"Power = work/time = 600/10 = 60 W."
+},
+
+{
+q:"Kinetic energy of a body depends on:",
+o:["Mass only","Velocity only","Mass and square of velocity","Height only"],
+a:"Mass and square of velocity",
+s:"Kinetic energy K = 1/2 mv². Thus it depends on mass and square of velocity."
+},
+
+{
+q:"A body of mass 2 kg moves at 3 m/s. Its kinetic energy is:",
+o:["3 J","6 J","9 J","18 J"],
+a:"9 J",
+s:"K = 1/2 mv² = 1/2×2×9 = 9 J."
+},
+
+{
+q:"Potential energy due to height is given by:",
+o:["mv","mgh","1/2mv²","ma"],
+a:"mgh",
+s:"Gravitational potential energy near Earth's surface is PE = mgh."
+},
+
+{
+q:"If the speed of a body is doubled, its kinetic energy becomes:",
+o:["Two times","Three times","Four times","Eight times"],
+a:"Four times",
+s:"Kinetic energy is proportional to v². Doubling velocity makes kinetic energy 2² = 4 times."
+},
+
+{
+q:"The energy possessed by a stretched spring is:",
+o:["Kinetic energy","Elastic potential energy","Chemical energy","Nuclear energy"],
+a:"Elastic potential energy",
+s:"A stretched or compressed spring stores elastic potential energy."
+},
+
+{
+q:"The law of conservation of energy states that energy:",
+o:["Can be created only","Can be destroyed only","Can neither be created nor destroyed","Always decreases"],
+a:"Can neither be created nor destroyed",
+s:"Energy can change from one form to another, but total energy remains conserved."
+},
+
+{
+q:"The value of acceleration due to gravity near Earth's surface is approximately:",
+o:["8.9 m/s²","9.8 m/s²","10.8 m/s²","12.8 m/s²"],
+a:"9.8 m/s²",
+s:"The standard approximate value of g near Earth's surface is 9.8 m/s²."
+},
+
+{
+q:"The weight of an object is:",
+o:["m/g","mg","m+g","m−g"],
+a:"mg",
+s:"Weight is the gravitational force acting on a body. W = mg."
+},
+
+{
+q:"Mass of an object on the Moon compared with Earth is:",
+o:["One-sixth","Six times","Zero","Same"],
+a:"Same",
+s:"Mass is the amount of matter and remains unchanged. Weight becomes approximately one-sixth on the Moon."
+},
+
+{
+q:"The weight of an object on the Moon is approximately:",
+o:["Same as Earth","Half of Earth","One-sixth of Earth","Six times Earth"],
+a:"One-sixth of Earth",
+s:"Moon's gravitational acceleration is approximately one-sixth that of Earth, so weight is approximately one-sixth."
+},
+
+{
+q:"Escape velocity from Earth's surface is approximately:",
+o:["5.6 km/s","8.4 km/s","11.2 km/s","15.2 km/s"],
+a:"11.2 km/s",
+s:"The escape velocity from Earth's surface is approximately 11.2 km/s."
+},
+
+{
+q:"A geostationary satellite revolves around Earth in approximately:",
+o:["12 hours","18 hours","24 hours","48 hours"],
+a:"24 hours",
+s:"A geostationary satellite has an orbital period equal to Earth's rotational period, approximately 24 hours."
+},
+
+{
+q:"The force that keeps planets in their orbits around the Sun is:",
+o:["Magnetic force","Electrostatic force","Gravitational force","Nuclear force"],
+a:"Gravitational force",
+s:"The Sun's gravitational attraction provides the centripetal force needed for planetary orbits."
+},
+
+{
+q:"The SI unit of density is:",
+o:["g/cm³","kg/m³","kg/cm³","N/m³"],
+a:"kg/m³",
+s:"Density = mass/volume. In SI units, kg/m³ is used."
+},
+
+{
+q:"An object floats in water when its average density is:",
+o:["Greater than water","Equal to or less than water","Always greater","Zero only"],
+a:"Equal to or less than water",
+s:"An object floats when its average density is less than or equal to the density of the liquid."
+},
+
+{
+q:"Archimedes' principle is related to:",
+o:["Magnetic force","Buoyant force","Friction","Electric current"],
+a:"Buoyant force",
+s:"Archimedes' principle states that the upward buoyant force equals the weight of fluid displaced by an immersed body."
+},
+
+{
+q:"A hydrometer is used to measure:",
+o:["Pressure","Relative density of liquids","Temperature","Humidity"],
+a:"Relative density of liquids",
+s:"A hydrometer measures the relative density or specific gravity of liquids."
+},
+
+{
+q:"A barometer is used to measure:",
+o:["Blood pressure","Atmospheric pressure","Water pressure","Electric pressure"],
+a:"Atmospheric pressure",
+s:"A barometer measures atmospheric pressure."
+},
+
+{
+q:"The pressure exerted by a liquid increases with:",
+o:["Decrease in depth","Increase in depth","Decrease in density only","Decrease in gravity"],
+a:"Increase in depth",
+s:"Liquid pressure is P = ρgh, so pressure increases with depth."
+},
+
+{
+q:"Why are dams made thicker at the bottom?",
+o:["Water is colder there","Pressure increases with depth","Water is lighter there","Gravity is zero there"],
+a:"Pressure increases with depth",
+s:"Hydrostatic pressure increases with depth, so the lower portion of a dam experiences greater pressure."
+},
+
+{
+q:"The SI unit of temperature is:",
+o:["Celsius","Fahrenheit","Kelvin","Calorie"],
+a:"Kelvin",
+s:"Kelvin is the SI base unit of thermodynamic temperature."
+},
+
+{
+q:"0°C is equal to:",
+o:["273.15 K","100 K","212 K","32 K"],
+a:"273.15 K",
+s:"Temperature in Kelvin = temperature in Celsius + 273.15. Therefore 0°C = 273.15 K."
+},
+
+{
+q:"The normal human body temperature is approximately:",
+o:["27°C","32°C","37°C","42°C"],
+a:"37°C",
+s:"Normal average human body temperature is approximately 37°C."
+},
+
+{
+q:"The instrument used to measure temperature is:",
+o:["Barometer","Thermometer","Hygrometer","Ammeter"],
+a:"Thermometer",
+s:"A thermometer is used to measure temperature."
+},
+
+{
+q:"Heat is transferred through solids mainly by:",
+o:["Conduction","Convection","Radiation","Reflection"],
+a:"Conduction",
+s:"In solids, heat is mainly transferred through conduction."
+},
+
+{
+q:"Heat from the Sun reaches Earth mainly through:",
+o:["Conduction","Convection","Radiation","Diffusion"],
+a:"Radiation",
+s:"Space is essentially a vacuum, so conduction and convection cannot transfer heat from the Sun. Radiation does."
+},
+
+{
+q:"Convection occurs mainly in:",
+o:["Solids only","Liquids and gases","Vacuum only","Metals only"],
+a:"Liquids and gases",
+s:"Convection involves bulk movement of fluids, so it occurs mainly in liquids and gases."
+},
+
+{
+q:"The SI unit of specific heat capacity is:",
+o:["J kg⁻¹ K⁻¹","J kg K","N/m²","W/m"],
+a:"J kg⁻¹ K⁻¹",
+s:"Specific heat capacity is energy required per unit mass per unit temperature rise, so its SI unit is J kg⁻¹ K⁻¹."
+},
+
+{
+q:"During melting of ice, the temperature:",
+o:["Increases continuously","Decreases","Remains constant until melting is complete","Becomes zero Kelvin"],
+a:"Remains constant until melting is complete",
+s:"During a phase change, supplied heat is used as latent heat, so temperature remains constant."
+},
+
+{
+q:"The heat required to change a solid into liquid at constant temperature is called:",
+o:["Specific heat","Latent heat of fusion","Latent heat of vaporisation","Heat capacity"],
+a:"Latent heat of fusion",
+s:"Latent heat of fusion is the heat required to convert a unit mass of solid into liquid at its melting point without temperature change."
+},
+
+{
+q:"The boiling point of water at normal atmospheric pressure is:",
+o:["0°C","50°C","100°C","212°C below zero"],
+a:"100°C",
+s:"Water boils at 100°C or 373 K at standard atmospheric pressure."
+},
+
+{
+q:"A black surface is generally a good:",
+o:["Absorber and emitter of heat","Reflector only","Insulator only","Conductor only"],
+a:"Absorber and emitter of heat",
+s:"Black and dull surfaces are good absorbers and good emitters of thermal radiation."
+},
+
+{
+q:"Sound cannot travel through:",
+o:["Air","Water","Steel","Vacuum"],
+a:"Vacuum",
+s:"Sound is a mechanical wave and requires a material medium. It cannot travel through vacuum."
+},
+
+{
+q:"The speed of sound is greatest in:",
+o:["Gases","Liquids","Solids","Vacuum"],
+a:"Solids",
+s:"Particles are more closely packed in solids, allowing mechanical vibrations to travel faster."
+},
+
+{
+q:"The approximate speed of sound in air at room temperature is:",
+o:["150 m/s","340 m/s","500 m/s","1000 m/s"],
+a:"340 m/s",
+s:"At approximately 20°C, the speed of sound in air is about 343 m/s, commonly taken as 340 m/s."
+},
+
+{
+q:"The pitch of a sound depends mainly on its:",
+o:["Amplitude","Frequency","Speed","Intensity"],
+a:"Frequency",
+s:"Pitch is determined by frequency. Higher frequency means higher pitch."
+},
+
+{
+q:"Loudness of sound is related mainly to:",
+o:["Amplitude","Frequency only","Wavelength only","Velocity"],
+a:"Amplitude",
+s:"Greater amplitude means greater intensity and generally greater loudness."
+},
+
+{
+q:"The unit of frequency is:",
+o:["Decibel","Hertz","Watt","Pascal"],
+a:"Hertz",
+s:"Frequency is measured in Hertz (Hz), equal to cycles per second."
+},
+
+{
+q:"The audible frequency range for a normal human ear is approximately:",
+o:["2 Hz–200 Hz","20 Hz–20,000 Hz","200 Hz–2,000 Hz","2,000 Hz–200,000 Hz"],
+a:"20 Hz–20,000 Hz",
+s:"A normal human ear can hear approximately from 20 Hz to 20 kHz."
+},
+
+{
+q:"A sound wave having frequency above 20,000 Hz is called:",
+o:["Infrasonic","Ultrasonic","Audible","Supersonic"],
+a:"Ultrasonic",
+s:"Ultrasonic waves have frequencies above 20 kHz."
+},
+
+{
+q:"A sound wave having frequency below 20 Hz is called:",
+o:["Ultrasonic","Infrasonic","Supersonic","Audible"],
+a:"Infrasonic",
+s:"Infrasonic waves have frequencies below 20 Hz."
+},
+
+{
+q:"Echo is produced due to:",
+o:["Refraction of sound","Reflection of sound","Absorption of sound","Diffraction only"],
+a:"Reflection of sound",
+s:"An echo is a reflected sound heard separately from the original sound."
+},
+
+{
+q:"SONAR uses:",
+o:["Infrared rays","Ultrasonic waves","Radio waves","Visible light"],
+a:"Ultrasonic waves",
+s:"SONAR uses ultrasonic sound waves to detect underwater objects and measure distances."
+},
+
+{
+q:"The phenomenon of bending of light when it passes from one medium to another is:",
+o:["Reflection","Refraction","Diffraction","Dispersion"],
+a:"Refraction",
+s:"Refraction is the change in direction of light due to a change in its speed when entering another medium."
+},
+
+{
+q:"The speed of light in vacuum is approximately:",
+o:["3×10⁶ m/s","3×10⁷ m/s","3×10⁸ m/s","3×10⁹ m/s"],
+a:"3×10⁸ m/s",
+s:"The speed of light in vacuum is approximately 3×10⁸ m/s."
+},
+
+{
+q:"According to the law of reflection, angle of incidence is:",
+o:["Greater than angle of reflection","Less than angle of reflection","Equal to angle of reflection","Always 90°"],
+a:"Equal to angle of reflection",
+s:"The law of reflection states that angle of incidence equals angle of reflection."
+},
+
+{
+q:"A plane mirror forms an image that is:",
+o:["Real and inverted","Virtual and erect","Real and erect","Virtual and inverted"],
+a:"Virtual and erect",
+s:"A plane mirror forms a virtual, erect image of the same size as the object."
+},
+
+{
+q:"The image formed by a convex mirror is always:",
+o:["Real and inverted","Virtual and erect","Real and enlarged","Inverted and enlarged"],
+a:"Virtual and erect",
+s:"A convex mirror always produces a virtual, erect and diminished image."
+},
+
+{
+q:"A concave mirror is commonly used as a shaving mirror because it can produce:",
+o:["A diminished image only","An enlarged erect image when object is close","Only an inverted image","No image"],
+a:"An enlarged erect image when object is close",
+s:"When an object is placed between the pole and focus of a concave mirror, it forms a virtual, erect and magnified image."
+},
+
+{
+q:"A convex lens is also known as a:",
+o:["Diverging lens","Converging lens","Plane lens","Cylindrical mirror"],
+a:"Converging lens",
+s:"A convex lens converges parallel rays of light towards its principal focus."
+},
+
+{
+q:"A concave lens is also known as a:",
+o:["Converging lens","Diverging lens","Cylindrical lens only","Reflecting lens"],
+a:"Diverging lens",
+s:"A concave lens diverges parallel incident rays."
+},
+
+{
+q:"The power of a lens is measured in:",
+o:["Tesla","Dioptre","Ohm","Watt"],
+a:"Dioptre",
+s:"The power of a lens is measured in dioptre (D), with P=1/f when f is in metres."
+},
+
+{
+q:"A lens has focal length 0.5 m. Its power is:",
+o:["+0.5 D","+1 D","+2 D","−2 D"],
+a:"+2 D",
+s:"P=1/f=1/0.5=+2 D. Positive power indicates a converging convex lens."
+},
+
+{
+q:"A rainbow is mainly produced due to:",
+o:["Reflection only","Dispersion of sunlight","Absorption","Magnetism"],
+a:"Dispersion of sunlight",
+s:"A rainbow results from refraction, internal reflection and dispersion of sunlight by water droplets."
+},
+
+{
+q:"The colour having the longest wavelength in visible light is:",
+o:["Violet","Blue","Green","Red"],
+a:"Red",
+s:"Among visible colours, red has the longest wavelength and violet the shortest."
+},
+
+{
+q:"The colour having the highest frequency among visible light is:",
+o:["Red","Yellow","Green","Violet"],
+a:"Violet",
+s:"Frequency increases as wavelength decreases. Violet has the shortest wavelength and highest frequency among visible colours."
+},
+
+{
+q:"Myopia is corrected using:",
+o:["Convex lens","Concave lens","Cylindrical mirror","Plane glass"],
+a:"Concave lens",
+s:"Myopia or short-sightedness is corrected using a concave lens, which diverges incoming rays before they reach the eye."
+},
+
+{
+q:"Hypermetropia is corrected using:",
+o:["Concave lens","Convex lens","Plane mirror","Prism only"],
+a:"Convex lens",
+s:"Hypermetropia or long-sightedness is corrected using a convex converging lens."
+},
+
+{
+q:"The SI unit of electric current is:",
+o:["Volt","Ampere","Ohm","Coulomb"],
+a:"Ampere",
+s:"Ampere (A) is the SI unit of electric current."
+},
+
+{
+q:"The SI unit of electric charge is:",
+o:["Ampere","Volt","Coulomb","Ohm"],
+a:"Coulomb",
+s:"Electric charge is measured in Coulomb (C)."
+},
+
+{
+q:"The potential difference between two points is measured by:",
+o:["Ammeter","Voltmeter","Galvanometer only","Barometer"],
+a:"Voltmeter",
+s:"A voltmeter measures potential difference between two points."
+},
+
+{
+q:"An ammeter is connected in a circuit:",
+o:["In parallel","In series","Without connection","Across a battery only"],
+a:"In series",
+s:"An ammeter measures current flowing through a circuit, so it is connected in series."
+},
+
+{
+q:"A voltmeter is connected:",
+o:["In series","In parallel","Only with switch","Only with resistor in series"],
+a:"In parallel",
+s:"A voltmeter measures potential difference across a component and is therefore connected in parallel."
+},
+
+{
+q:"Ohm's law is expressed as:",
+o:["V=IR","P=VI²","I=VR","R=VI"],
+a:"V=IR",
+s:"Ohm's law states that at constant temperature, potential difference V is directly proportional to current I, giving V=IR."
+},
+
+{
+q:"A resistor of 10 Ω carries a current of 2 A. Potential difference is:",
+o:["5 V","10 V","20 V","40 V"],
+a:"20 V",
+s:"Using V=IR, V=2×10=20 V."
+},
+
+{
+q:"Two resistors of 2 Ω and 3 Ω are connected in series. Equivalent resistance is:",
+o:["1 Ω","5 Ω","6 Ω","2.5 Ω"],
+a:"5 Ω",
+s:"For series connection, resistances add: R=2+3=5 Ω."
+},
+
+{
+q:"Two resistors of 6 Ω and 3 Ω are connected in parallel. Equivalent resistance is:",
+o:["1 Ω","2 Ω","3 Ω","9 Ω"],
+a:"2 Ω",
+s:"1/R=1/6+1/3=1/6+2/6=3/6=1/2. Therefore R=2 Ω."
+},
+
+{
+q:"Electrical power is given by:",
+o:["P=VI","P=V/I","P=I/V","P=R/I"],
+a:"P=VI",
+s:"Electrical power is the rate of electrical energy consumption and is P=VI."
+},
+
+{
+q:"A 100 W bulb operates for 10 hours. Energy consumed is:",
+o:["0.1 kWh","1 kWh","10 kWh","100 kWh"],
+a:"1 kWh",
+s:"Energy = power × time = 100 W × 10 h = 1000 Wh = 1 kWh."
+},
+
+{
+q:"The commercial unit of electrical energy is:",
+o:["Joule","Watt","Kilowatt-hour","Volt"],
+a:"Kilowatt-hour",
+s:"Electrical energy supplied to consumers is commonly measured in kilowatt-hour (kWh)."
+},
+
+{
+q:"A fuse wire is generally made of a material having:",
+o:["High melting point","Low melting point","Zero resistance","Very high density only"],
+a:"Low melting point",
+s:"A fuse should melt quickly when excessive current flows, so it has a relatively low melting point."
+},
+
+{
+q:"The magnetic field around a straight current-carrying conductor consists of:",
+o:["Straight lines","Concentric circles","Parabolas","No field"],
+a:"Concentric circles",
+s:"The magnetic field around a straight current-carrying conductor forms concentric circles around the conductor."
+},
+
+{
+q:"The SI unit of magnetic field is:",
+o:["Weber","Tesla","Henry","Gauss only"],
+a:"Tesla",
+s:"Tesla (T) is the SI unit of magnetic flux density or magnetic field."
+},
+
+{
+q:"An electric motor converts:",
+o:["Mechanical energy into electrical energy","Electrical energy into mechanical energy","Heat into light","Chemical into nuclear energy"],
+a:"Electrical energy into mechanical energy",
+s:"An electric motor uses electrical energy to produce mechanical motion."
+},
+
+{
+q:"An electric generator converts:",
+o:["Electrical energy into mechanical energy","Mechanical energy into electrical energy","Heat into sound","Light into heat"],
+a:"Mechanical energy into electrical energy",
+s:"An electric generator produces electrical energy from mechanical energy using electromagnetic induction."
+},
+
+{
+q:"The phenomenon on which an electric generator works is:",
+o:["Electrolysis","Electromagnetic induction","Photoelectric effect","Thermal expansion"],
+a:"Electromagnetic induction",
+s:"Faraday's law of electromagnetic induction is the basic principle of an electric generator."
+},
+
+{
+q:"A transformer works on the principle of:",
+o:["Electromagnetic induction","Electrolysis","Heating effect","Chemical effect"],
+a:"Electromagnetic induction",
+s:"A transformer transfers electrical energy between coils through mutual electromagnetic induction."
+},
+
+{
+q:"A step-up transformer increases:",
+o:["Current only","Voltage","Resistance only","Frequency"],
+a:"Voltage",
+s:"A step-up transformer increases secondary voltage while ideally reducing current. Frequency remains unchanged."
+},
+
+{
+q:"Which radiation has the highest penetrating power among alpha, beta and gamma rays?",
+o:["Alpha","Beta","Gamma","All equal"],
+a:"Gamma",
+s:"Gamma rays have the highest penetrating power among the three common nuclear radiations."
+},
+
+{
+q:"The charge on an alpha particle is:",
+o:["+2e","+e","−e","Zero"],
+a:"+2e",
+s:"An alpha particle is a helium nucleus containing two protons and two neutrons, so its charge is +2e."
+},
+
+{
+q:"Beta radiation consists mainly of:",
+o:["Helium nuclei","Electrons or positrons","Neutrons only","Photons only"],
+a:"Electrons or positrons",
+s:"Beta radiation consists of high-speed electrons (β−) or positrons (β+)."
+},
+
+{
+q:"Gamma rays are:",
+o:["Charged particles","Electromagnetic radiation","Helium nuclei","Electrons"],
+a:"Electromagnetic radiation",
+s:"Gamma rays are high-energy electromagnetic radiation and have no charge or rest mass."
+},
+
+{
+q:"The phenomenon in which an unstable atomic nucleus emits radiation spontaneously is called:",
+o:["Radioactivity","Reflection","Refraction","Ionisation only"],
+a:"Radioactivity",
+s:"Radioactivity is the spontaneous disintegration of unstable atomic nuclei accompanied by emission of radiation."
+},
+
+{
+q:"The half-life of a radioactive substance is the time required for:",
+o:["All nuclei to decay","Half the radioactive nuclei to decay","Double the nuclei","Temperature to halve"],
+a:"Half the radioactive nuclei to decay",
+s:"Half-life is the time in which half of the original radioactive nuclei undergo decay."
+},
+
+{
+q:"Which particle has no electric charge?",
+o:["Proton","Electron","Neutron","Alpha particle"],
+a:"Neutron",
+s:"A neutron is electrically neutral, whereas proton is positive and electron is negative."
+},
+
+{
+q:"The atomic number of an element represents the number of:",
+o:["Neutrons","Protons","Protons + neutrons","Electrons + neutrons"],
+a:"Protons",
+s:"Atomic number Z equals the number of protons in the nucleus."
+},
+
+{
+q:"Nuclear fission is the process in which:",
+o:["Light nuclei combine","A heavy nucleus splits into smaller nuclei","Electrons combine","Atoms lose all electrons"],
+a:"A heavy nucleus splits into smaller nuclei",
+s:"In nuclear fission, a heavy nucleus such as uranium-235 splits into smaller nuclei, releasing energy and neutrons."
+},
+
+{
+q:"Nuclear fusion is the process in which:",
+o:["Heavy nuclei split","Light nuclei combine to form a heavier nucleus","Electrons split","Atoms evaporate"],
+a:"Light nuclei combine to form a heavier nucleus",
+s:"Nuclear fusion involves combining light nuclei at extremely high temperatures and releases large amounts of energy."
+},
+
+{
+q:"The energy produced in the Sun is mainly due to:",
+o:["Nuclear fission","Nuclear fusion","Chemical combustion","Electric resistance"],
+a:"Nuclear fusion",
+s:"The Sun generates energy mainly through nuclear fusion, in which hydrogen nuclei ultimately form helium."
+},
+
+{
+q:"The photoelectric effect demonstrates the:",
+o:["Wave nature only of matter","Particle nature of light","Gravitational nature of light","Magnetic nature only"],
+a:"Particle nature of light",
+s:"The photoelectric effect is explained by treating light as photons, demonstrating its particle nature."
+},
+
+{
+q:"The energy of a photon is given by:",
+o:["E=mc²","E=hf","E=ma","E=IR"],
+a:"E=hf",
+s:"According to Planck's quantum theory, photon energy E = hf, where h is Planck's constant and f is frequency."
+},
+
+{
+q:"Which electromagnetic radiation is commonly used in TV remote controls?",
+o:["Ultraviolet","Infrared","Gamma","X-rays"],
+a:"Infrared",
+s:"TV and many other remote controls use infrared radiation for communication."
+},
+
+{
+q:"X-rays are commonly used for:",
+o:["Checking bone fractures","Cooking food","Generating electricity","Measuring humidity"],
+a:"Checking bone fractures",
+s:"X-rays penetrate soft tissues more readily than bones, allowing doctors to obtain images of bones."
+},
+
+{
+q:"Ultraviolet radiation is strongly absorbed by:",
+o:["Oxygen only","Ozone layer","Nitrogen only","Carbon dioxide only"],
+a:"Ozone layer",
+s:"The ozone layer absorbs a significant portion of harmful ultraviolet radiation from the Sun."
+},
+
+{
+q:"Which electromagnetic radiation has the shortest wavelength?",
+o:["Radio waves","Microwaves","Visible light","Gamma rays"],
+a:"Gamma rays",
+s:"Gamma rays have the shortest wavelengths and highest frequencies among electromagnetic radiation."
+},
+
+{
+q:"Which electromagnetic radiation is used in radar systems?",
+o:["Microwaves","Ultraviolet","Gamma rays","Visible light"],
+a:"Microwaves",
+s:"Radar systems commonly use microwaves because they can travel long distances and reflect from objects."
+},
+
+{
+q:"The main reason a pressure cooker cooks food faster is that:",
+o:["Pressure decreases","Boiling point of water increases","Water freezes faster","Heat capacity becomes zero"],
+a:"Boiling point of water increases",
+s:"Higher pressure inside the cooker raises the boiling point of water, allowing food to cook at a higher temperature."
+},
+
+{
+q:"Why does water in an earthen pot become cool?",
+o:["Water absorbs sunlight","Evaporation through pores causes cooling","Pot generates cold","Conduction stops completely"],
+a:"Evaporation through pores causes cooling",
+s:"Water seeps through tiny pores and evaporates from the surface. Evaporation removes heat and cools the remaining water."
+},
+
+{
+q:"Why are cooking utensils generally made of metals?",
+o:["Metals are poor conductors","Metals are good conductors of heat","Metals cannot melt","Metals have no density"],
+a:"Metals are good conductors of heat",
+s:"Good thermal conductivity allows heat to spread quickly through metal utensils."
+},
+
+{
+q:"The handles of cooking utensils are often made of plastic or wood because these materials are:",
+o:["Good conductors","Poor conductors of heat","Highly magnetic","Highly radioactive"],
+a:"Poor conductors of heat",
+s:"Plastic and wood are poor conductors, so they reduce heat transfer to the hand."
+},
+
+{
+q:"A person standing in front of a plane mirror moves 2 m towards it. The distance between the person and the image changes by:",
+o:["1 m","2 m","4 m","8 m"],
+a:"4 m",
+s:"The image also moves 2 m towards the mirror relative to its original position. Therefore the person-image separation decreases by 2+2=4 m."
+},
+
+{
+q:"If an object is placed at the centre of curvature of a concave mirror, its image is:",
+o:["At focus and highly diminished","At centre of curvature, same size and inverted","Behind the mirror and erect","At infinity"],
+a:"At centre of curvature, same size and inverted",
+s:"For an object at C of a concave mirror, the image is formed at C, real, inverted and of the same size."
+},
+
+{
+q:"The focal length of a spherical mirror is:",
+o:["Equal to radius of curvature","Half the radius of curvature","Twice the radius","Four times radius"],
+a:"Half the radius of curvature",
+s:"For a spherical mirror, f = R/2."
+},
+
+{
+q:"Which phenomenon explains why the sky appears blue?",
+o:["Reflection","Scattering of light","Total internal reflection","Dispersion only"],
+a:"Scattering of light",
+s:"Shorter wavelengths such as blue are scattered more strongly by molecules in the atmosphere, making the sky appear blue."
+},
+
+{
+q:"The apparent bending of a pencil partly immersed in water is due to:",
+o:["Reflection","Refraction","Diffraction","Polarisation"],
+a:"Refraction",
+s:"Light changes speed and direction when it passes between water and air, causing the pencil to appear bent."
+},
+
+{
+q:"Total internal reflection can occur when light travels:",
+o:["From rarer to denser medium only","From denser to rarer medium at an angle greater than critical angle","Only through vacuum","Only through glass to glass"],
+a:"From denser to rarer medium at an angle greater than critical angle",
+s:"Total internal reflection occurs when light travels from a denser to a rarer medium and the angle of incidence exceeds the critical angle."
+},
+
+{
+q:"Optical fibres work mainly on the principle of:",
+o:["Diffraction","Total internal reflection","Dispersion","Photoelectric effect"],
+a:"Total internal reflection",
+s:"Light signals are guided through optical fibres by repeated total internal reflection."
+},
+
+{
+q:"The resistance of a metallic conductor generally increases when:",
+o:["Temperature decreases","Temperature increases","Length becomes zero","Voltage becomes zero"],
+a:"Temperature increases",
+s:"For most metals, resistance increases with increase in temperature."
+},
+
+{
+q:"If the length of a wire is doubled while its cross-sectional area remains unchanged, its resistance becomes:",
+o:["Half","Same","Double","Four times"],
+a:"Double",
+s:"Resistance R=ρL/A. Doubling L doubles R."
+},
+
+{
+q:"If the cross-sectional area of a wire is doubled while length remains constant, its resistance becomes:",
+o:["Double","Half","Four times","Same"],
+a:"Half",
+s:"Since R=ρL/A, doubling A makes resistance half."
+},
+
+{
+q:"A material that allows electric current to pass through it easily is called:",
+o:["Insulator","Conductor","Semiconductor only","Dielectric"],
+a:"Conductor",
+s:"Conductors contain charge carriers that move relatively freely and allow current to pass."
+},
+
+{
+q:"Which of the following is a semiconductor?",
+o:["Copper","Silicon","Silver","Aluminium"],
+a:"Silicon",
+s:"Silicon is a widely used semiconductor material in electronic devices."
+},
+
+{
+q:"LED stands for:",
+o:["Light Emitting Diode","Light Energy Device","Low Energy Diode","Light Electronic Display"],
+a:"Light Emitting Diode",
+s:"LED stands for Light Emitting Diode."
+},
+
+{
+q:"A diode primarily allows current to flow:",
+o:["Equally in both directions","Preferentially in one direction","Only in vacuum","Only at zero voltage"],
+a:"Preferentially in one direction",
+s:"A semiconductor diode conducts readily in forward bias and blocks current substantially in reverse bias."
+},
+
+{
+q:"The device used to store electric charge is:",
+o:["Resistor","Capacitor","Ammeter","Transformer"],
+a:"Capacitor",
+s:"A capacitor stores electrical charge and electrical energy in an electric field."
+},
+
+{
+q:"The SI unit of capacitance is:",
+o:["Farad","Henry","Tesla","Weber"],
+a:"Farad",
+s:"Capacitance is measured in Farad (F)."
+},
+
+{
+q:"The SI unit of inductance is:",
+o:["Farad","Henry","Tesla","Ohm"],
+a:"Henry",
+s:"Inductance is measured in Henry (H)."
+},
+
+{
+q:"The force between two electric charges is described by:",
+o:["Newton's law of cooling","Coulomb's law","Ohm's law","Faraday's law"],
+a:"Coulomb's law",
+s:"Coulomb's law gives the electrostatic force between two point charges."
+},
+
+{
+q:"The SI unit of electric potential difference is:",
+o:["Ampere","Volt","Coulomb","Ohm"],
+a:"Volt",
+s:"Potential difference is measured in Volt (V)."
+},
+
+{
+q:"One kilowatt-hour is equal to:",
+o:["3.6×10³ J","3.6×10⁴ J","3.6×10⁵ J","3.6×10⁶ J"],
+a:"3.6×10⁶ J",
+s:"1 kWh = 1000 W × 3600 s = 3.6×10⁶ J."
+},
+
+{
+q:"A 60 W bulb and a 100 W bulb are connected to the same voltage supply. Which draws more current?",
+o:["60 W bulb","100 W bulb","Both same","Neither"],
+a:"100 W bulb",
+s:"For the same voltage, P=VI, so I=P/V. The 100 W bulb draws more current."
+},
+
+{
+q:"The heating effect of electric current is described by:",
+o:["Joule's law","Newton's law","Snell's law","Hooke's law"],
+a:"Joule's law",
+s:"Joule's law states that heat produced by a current is H=I²Rt."
+},
+
+{
+q:"A fuse protects an electrical circuit from:",
+o:["Low temperature","Excessive current","Low voltage only","Magnetic field only"],
+a:"Excessive current",
+s:"A fuse melts when current exceeds a safe limit and breaks the circuit."
+},
+
+{
+q:"Which device is used to convert AC into DC?",
+o:["Transformer","Rectifier","Motor","Generator"],
+a:"Rectifier",
+s:"A rectifier, usually using diodes, converts alternating current into direct current."
+},
+
+{
+q:"AC stands for:",
+o:["Alternating Current","Active Current","Applied Charge","Automatic Current"],
+a:"Alternating Current",
+s:"AC means Alternating Current, whose direction and magnitude vary periodically."
+},
+
+{
+q:"DC stands for:",
+o:["Direct Current","Dynamic Current","Double Current","Digital Current"],
+a:"Direct Current",
+s:"DC means Direct Current, which flows predominantly in one direction."
+},
+
+{
+q:"The phenomenon of persistence of vision is used in:",
+o:["Television and cinema","Barometer","Thermometer","Ammeter"],
+a:"Television and cinema",
+s:"Persistence of vision allows rapidly changing images to appear as continuous motion."
+},
+
+{
+q:"A simple pendulum has a time period depending mainly on:",
+o:["Mass of bob","Length and acceleration due to gravity","Colour of bob","Shape only"],
+a:"Length and acceleration due to gravity",
+s:"For small oscillations, T=2π√(L/g), so the time period depends on length and g, not on mass."
+},
+
+{
+q:"If the length of a simple pendulum is increased four times, its time period becomes:",
+o:["Half","Two times","Four times","Eight times"],
+a:"Two times",
+s:"T is proportional to √L. If L becomes 4L, T becomes √4=2 times."
+},
+
+{
+q:"A body oscillating about its mean position exhibits:",
+o:["Periodic motion","Only translational motion","Only random motion","No motion"],
+a:"Periodic motion",
+s:"Oscillatory motion repeats itself about a mean position at regular intervals, making it periodic."
+}
+
+];
+
+
+/* =========================================================
+   TEST ENGINE
+   ========================================================= */
+
+let currentQuestion = 0;
+
+let answers = new Array(questions.length).fill(null);
+
+let submitted = false;
+
+let totalSeconds = 60 * 60;
+
+
+/* ================= TIMER ================= */
+
+function updateTimer(){
+
+    if(submitted) return;
+
+    let minutes = Math.floor(totalSeconds / 60);
+
+    let seconds = totalSeconds % 60;
+
+    document.getElementById("timer").textContent =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+    if(totalSeconds <= 0){
+
+        clearInterval(timerInterval);
+
+        submitTest(true);
+
+        return;
+    }
+
+    totalSeconds--;
+
+}
+
+const timerInterval = setInterval(updateTimer,1000);
+
+
+/* ================= SHOW QUESTION ================= */
+
+function showQuestion(){
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionCount").textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        questions.length;
+
+    document.getElementById("question").textContent = q.q;
+
+    const optionsDiv = document.getElementById("options");
+
+    optionsDiv.innerHTML = "";
+
+    q.o.forEach(function(option){
+
+        const label = document.createElement("label");
+
+        label.className = "option";
+
+        const radio = document.createElement("input");
+
+        radio.type = "radio";
+
+        radio.name = "answer";
+
+        radio.value = option;
+
+        if(answers[currentQuestion] === option){
+
+            radio.checked = true;
+
+        }
+
+        radio.addEventListener("change",function(){
+
+            answers[currentQuestion] = option;
+
+            createPalette();
+
+        });
+
+        label.appendChild(radio);
+
+        label.appendChild(
+            document.createTextNode(option)
+        );
+
+        optionsDiv.appendChild(label);
+
+    });
+
+    createPalette();
+
+}
+
+
+/* ================= PALETTE ================= */
+
+function createPalette(){
+
+    const palette = document.getElementById("palette");
+
+    palette.innerHTML = "";
+
+    questions.forEach(function(_,index){
+
+        const button = document.createElement("button");
+
+        button.textContent = index + 1;
+
+        if(answers[index] !== null){
+
+            button.classList.add("attempted");
+
+        }
+
+        button.onclick = function(){
+
+            currentQuestion = index;
+
+            showQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+        palette.appendChild(button);
+
+    });
+
+}
+
+
+/* ================= NEXT ================= */
+
+function nextQuestion(){
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* ================= PREVIOUS ================= */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* ================= SUBMIT ================= */
+
+function submitTest(autoSubmit){
+
+    if(submitted) return;
+
+    if(!autoSubmit){
+
+        const confirmation = confirm(
+            "Are you sure you want to submit the Physics Test?"
+        );
+
+        if(!confirmation) return;
+
+    }
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+
+    let wrong = 0;
+
+    let unattempted = 0;
+
+    questions.forEach(function(question,index){
+
+        if(answers[index] === null){
+
+            unattempted++;
+
+        }
+
+        else if(answers[index] === question.a){
+
+            correct++;
+
+        }
+
+        else{
+
+            wrong++;
+
+        }
+
+    });
+
+    let score = correct - (wrong / 3);
+
+    document.getElementById("testArea")
+        .style.display = "none";
+
+    document.getElementById("result")
+        .style.display = "block";
+
+    document.getElementById("score")
+        .textContent = score.toFixed(2);
+
+    document.getElementById("correct")
+        .textContent = correct;
+
+    document.getElementById("wrong")
+        .textContent = wrong;
+
+    document.getElementById("unattempted")
+        .textContent = unattempted;
+
+    showSolutions();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ================= SOLUTIONS ================= */
+
+function showSolutions(){
+
+    const review = document.getElementById("review");
+
+    review.innerHTML = "";
+
+    questions.forEach(function(question,index){
+
+        const div = document.createElement("div");
+
+        let statusClass = "";
+
+        let statusText = "";
+
+        if(answers[index] === null){
+
+            statusClass = "unattempted-review";
+
+            statusText =
+                '<span class="unattempted">⚪ Not Attempted</span>';
+
+        }
+
+        else if(answers[index] === question.a){
+
+            statusClass = "correct-review";
+
+            statusText =
+                '<span class="correct">✓ Correct</span>';
+
+        }
+
+        else{
+
+            statusClass = "wrong-review";
+
+            statusText =
+                '<span class="wrong">✗ Wrong</span>';
+
+        }
+
+        let userAnswer =
+            answers[index] === null
+            ? "Not Attempted"
+            : answers[index];
+
+        div.className = "review " + statusClass;
+
+        div.innerHTML =
+
+            '<div class="review-question">' +
+            'Q' + (index + 1) + '. ' +
+            question.q +
+            '</div>' +
+
+            '<div>' +
+            statusText +
+            '</div>' +
+
+            '<div style="margin-top:7px;">' +
+            '<b>Your Answer:</b> ' +
+            userAnswer +
+            '</div>' +
+
+            '<div class="correct-answer">' +
+            'Correct Answer: ' +
+            question.a +
+            '</div>' +
+
+            '<div class="solution">' +
+            '<strong>💡 Solution:</strong><br>' +
+            question.s +
+            '</div>';
+
+        review.appendChild(div);
+
+    });
+
+}
+
+
+/* ================= INITIAL LOAD ================= */
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
