@@ -1,1 +1,5276 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | Chemistry Test 1</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:14px 3%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.18);
+}
+
+.header{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.name{
+    font-size:13px;
+    color:#dbeafe;
+}
+
+.timer{
+    background:white;
+    color:#dc2626;
+    padding:8px 18px;
+    border-radius:8px;
+    font-size:21px;
+    font-weight:900;
+    min-width:105px;
+    text-align:center;
+}
+
+.container{
+    max-width:1250px;
+    margin:20px auto;
+    padding:0 2%;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 6px 25px rgba(0,0,0,.08);
+}
+
+.count{
+    color:#1d4ed8;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:22px;
+}
+
+.option{
+    display:block;
+    border:1px solid #d7dee9;
+    border-radius:10px;
+    padding:13px;
+    margin:10px 0;
+    cursor:pointer;
+    background:#fff;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+.nav button,
+.submit{
+    border:0;
+    border-radius:8px;
+    padding:12px 22px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.prev{
+    background:#64748b;
+    color:#fff;
+}
+
+.next{
+    background:#1d4ed8;
+    color:#fff;
+}
+
+.palette-card{
+    height:max-content;
+    position:sticky;
+    top:95px;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+    margin-top:12px;
+}
+
+.palette button{
+    height:38px;
+    border:0;
+    border-radius:6px;
+    background:#ef4444;
+    color:#fff;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.palette button.done{
+    background:#16a34a;
+}
+
+.legend{
+    font-size:12px;
+    margin:12px 0;
+}
+
+.submit{
+    width:100%;
+    margin-top:18px;
+    background:#16a34a;
+    color:#fff;
+}
+
+.result{
+    display:none;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin:20px 0;
+}
+
+.stat{
+    background:#f1f5f9;
+    padding:14px;
+    text-align:center;
+    border-radius:10px;
+    font-weight:800;
+}
+
+.val{
+    font-size:24px;
+    color:#1d4ed8;
+}
+
+.review{
+    padding:17px;
+    margin:13px 0;
+    border-radius:10px;
+    background:#f8fafc;
+    border-left:5px solid #64748b;
+}
+
+.rCorrect{
+    border-left-color:#16a34a;
+}
+
+.rWrong{
+    border-left-color:#dc2626;
+}
+
+.rNA{
+    border-left-color:#d97706;
+}
+
+.ca{
+    color:#15803d;
+    font-weight:800;
+    margin-top:6px;
+}
+
+.sol{
+    background:#fff;
+    padding:12px;
+    margin-top:10px;
+    border-radius:7px;
+    border:1px solid #e2e8f0;
+}
+
+@media(max-width:850px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette-card{
+        position:static;
+        order:-1;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .nav{
+        flex-direction:column;
+    }
+
+    .nav button{
+        width:100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="header">
+
+<div>
+
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="name">
+GENERAL AWARENESS | CHEMISTRY TEST 1 | SSC CGL LEVEL
+</div>
+
+</div>
+
+<div class="timer" id="timer">
+60:00
+</div>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="layout">
+
+
+<div class="card">
+
+
+<div id="test">
+
+<div class="count" id="count"></div>
+
+<div class="question" id="question"></div>
+
+<div id="options"></div>
+
+
+<div class="nav">
+
+<button class="prev" onclick="previous()">
+← Previous
+</button>
+
+<button class="next" onclick="next()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="result" id="result">
+
+<h2>
+🎯 Chemistry Test 1 Submitted
+</h2>
+
+
+<div class="stats">
+
+<div class="stat">
+Score
+<div class="val" id="score">0</div>
+</div>
+
+<div class="stat">
+Correct
+<div class="val" id="correct">0</div>
+</div>
+
+<div class="stat">
+Wrong
+<div class="val" id="wrong">0</div>
+</div>
+
+<div class="stat">
+Not Attempted
+<div class="val" id="na">0</div>
+</div>
+
+</div>
+
+
+<p>
+<b>Marking:</b>
++1 Correct | −0.33 Wrong | 0 Unattempted
+</p>
+
+
+<h2 style="margin-top:25px">
+📚 Detailed Solutions
+</h2>
+
+<div id="review"></div>
+
+</div>
+
+</div>
+
+
+<div class="card palette-card">
+
+<h3>
+📋 Question Palette
+</h3>
+
+<div class="legend">
+🔴 Not Attempted &nbsp;&nbsp; 🟢 Attempted
+</div>
+
+<div class="palette" id="palette"></div>
+
+<button class="submit" onclick="submitTest(false)">
+✓ Submit Test
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+
+const questions = [
+
+{
+q:"The smallest unit of an element that retains all the chemical properties of that element is:",
+o:["Molecule","Atom","Ion","Electron"],
+a:"Atom",
+s:"An atom is the smallest unit of an element that retains the chemical properties of that element."
+},
+
+{
+q:"The atomic number of an element represents the number of:",
+o:["Neutrons","Protons","Nucleons","Protons + neutrons"],
+a:"Protons",
+s:"Atomic number is equal to the number of protons present in the nucleus of an atom."
+},
+
+{
+q:"The mass number of an atom is equal to:",
+o:["Protons only","Neutrons only","Protons + neutrons","Electrons + protons"],
+a:"Protons + neutrons",
+s:"Mass number is the total number of protons and neutrons present in the nucleus."
+},
+
+{
+q:"Which subatomic particle has no electrical charge?",
+o:["Electron","Proton","Neutron","Positron"],
+a:"Neutron",
+s:"A neutron is electrically neutral, whereas a proton is positive and an electron is negative."
+},
+
+{
+q:"The charge on an electron is:",
+o:["Positive","Negative","Neutral","Variable"],
+a:"Negative",
+s:"An electron carries one unit of negative elementary charge."
+},
+
+{
+q:"Who discovered the electron?",
+o:["Rutherford","J.J. Thomson","Chadwick","Bohr"],
+a:"J.J. Thomson",
+s:"J.J. Thomson discovered the electron through cathode ray experiments."
+},
+
+{
+q:"Who discovered the neutron?",
+o:["Rutherford","James Chadwick","J.J. Thomson","Bohr"],
+a:"James Chadwick",
+s:"James Chadwick discovered the neutron in 1932."
+},
+
+{
+q:"Rutherford's experiment led to the discovery of:",
+o:["Electron shell","Atomic nucleus","Neutron","Isotope"],
+a:"Atomic nucleus",
+s:"Rutherford's alpha-particle scattering experiment established the existence of a small, dense, positively charged nucleus."
+},
+
+{
+q:"The maximum number of electrons that can occupy the K shell is:",
+o:["2","8","18","32"],
+a:"2",
+s:"According to the 2n² rule, for K shell n=1, maximum electrons = 2(1)² = 2."
+},
+
+{
+q:"The maximum number of electrons in the L shell is:",
+o:["2","8","18","32"],
+a:"8",
+s:"For L shell n=2, maximum electrons = 2n² = 2×4 = 8."
+},
+
+{
+q:"Which of the following is an isotope of hydrogen?",
+o:["Helium","Deuterium","Lithium","Boron"],
+a:"Deuterium",
+s:"Deuterium is an isotope of hydrogen containing one proton and one neutron."
+},
+
+{
+q:"Hydrogen has how many naturally occurring isotopes?",
+o:["2","3","4","5"],
+a:"3",
+s:"The three commonly known isotopes of hydrogen are protium, deuterium and tritium."
+},
+
+{
+q:"The isotope of hydrogen that is radioactive is:",
+o:["Protium","Deuterium","Tritium","Hydrogen-1"],
+a:"Tritium",
+s:"Tritium (hydrogen-3) contains one proton and two neutrons and is radioactive."
+},
+
+{
+q:"The periodic table was first successfully arranged according to increasing atomic mass by:",
+o:["Mendeleev","Moseley","Bohr","Rutherford"],
+a:"Mendeleev",
+s:"Dmitri Mendeleev arranged elements primarily according to increasing atomic mass and recurring properties."
+},
+
+{
+q:"The modern periodic law is based on:",
+o:["Atomic mass","Atomic number","Mass number","Density"],
+a:"Atomic number",
+s:"Moseley's work established that periodic properties are a function of atomic number."
+},
+
+{
+q:"The modern periodic table contains how many groups?",
+o:["8","18","16","20"],
+a:"18",
+s:"The modern periodic table consists of 18 vertical groups."
+},
+
+{
+q:"The modern periodic table contains how many periods?",
+o:["5","6","7","8"],
+a:"7",
+s:"There are seven horizontal periods in the modern periodic table."
+},
+
+{
+q:"Which group contains the noble gases?",
+o:["Group 1","Group 2","Group 17","Group 18"],
+a:"Group 18",
+s:"Helium, neon, argon and other noble gases occupy Group 18."
+},
+
+{
+q:"Which of the following is an alkali metal?",
+o:["Calcium","Sodium","Aluminium","Magnesium"],
+a:"Sodium",
+s:"Sodium belongs to Group 1, the alkali metals."
+},
+
+{
+q:"Which of the following is an alkaline earth metal?",
+o:["Sodium","Potassium","Calcium","Chlorine"],
+a:"Calcium",
+s:"Calcium belongs to Group 2, known as alkaline earth metals."
+},
+
+{
+q:"Halogens belong to which group?",
+o:["Group 1","Group 2","Group 17","Group 18"],
+a:"Group 17",
+s:"Fluorine, chlorine, bromine and iodine are halogens and belong to Group 17."
+},
+
+{
+q:"The most electronegative element is:",
+o:["Oxygen","Chlorine","Fluorine","Nitrogen"],
+a:"Fluorine",
+s:"Fluorine has the highest electronegativity among all elements."
+},
+
+{
+q:"Which is the most reactive non-metal?",
+o:["Oxygen","Fluorine","Chlorine","Sulphur"],
+a:"Fluorine",
+s:"Fluorine is the most reactive non-metal because of its high electronegativity and small atomic size."
+},
+
+{
+q:"Which of the following is a metalloid?",
+o:["Sodium","Silicon","Calcium","Chlorine"],
+a:"Silicon",
+s:"Silicon exhibits properties intermediate between metals and non-metals and is classified as a metalloid."
+},
+
+{
+q:"Which element is liquid at room temperature?",
+o:["Mercury","Iron","Aluminium","Copper"],
+a:"Mercury",
+s:"Mercury is a metal that remains liquid at ordinary room temperature."
+},
+
+{
+q:"Which non-metal is liquid at room temperature?",
+o:["Chlorine","Bromine","Iodine","Sulphur"],
+a:"Bromine",
+s:"Bromine is a reddish-brown liquid non-metal at room temperature."
+},
+
+{
+q:"The chemical formula of common salt is:",
+o:["NaOH","NaCl","Na₂CO₃","KCl"],
+a:"NaCl",
+s:"Common salt is sodium chloride, with chemical formula NaCl."
+},
+
+{
+q:"The chemical formula of baking soda is:",
+o:["Na₂CO₃","NaHCO₃","NaOH","CaCO₃"],
+a:"NaHCO₃",
+s:"Baking soda is sodium hydrogen carbonate, NaHCO₃."
+},
+
+{
+q:"The chemical formula of washing soda is:",
+o:["NaCl","NaHCO₃","Na₂CO₃·10H₂O","CaCO₃"],
+a:"Na₂CO₃·10H₂O",
+s:"Washing soda is sodium carbonate decahydrate, Na₂CO₃·10H₂O."
+},
+
+{
+q:"Plaster of Paris is chemically:",
+o:["CaCO₃","CaSO₄·½H₂O","CaO","Ca(OH)₂"],
+a:"CaSO₄·½H₂O",
+s:"Plaster of Paris is calcium sulphate hemihydrate, CaSO₄·½H₂O."
+},
+
+{
+q:"The chemical formula of quicklime is:",
+o:["CaO","CaCO₃","Ca(OH)₂","CaCl₂"],
+a:"CaO",
+s:"Quicklime is calcium oxide, CaO."
+},
+
+{
+q:"Slaked lime is:",
+o:["CaO","CaCO₃","Ca(OH)₂","CaCl₂"],
+a:"Ca(OH)₂",
+s:"Slaked lime is calcium hydroxide, Ca(OH)₂."
+},
+
+{
+q:"Limestone is mainly composed of:",
+o:["CaO","CaCO₃","CaSO₄","Na₂CO₃"],
+a:"CaCO₃",
+s:"Limestone mainly consists of calcium carbonate, CaCO₃."
+},
+
+{
+q:"Marble is mainly:",
+o:["Calcium carbonate","Sodium chloride","Calcium oxide","Magnesium sulphate"],
+a:"Calcium carbonate",
+s:"Marble is a crystalline form of calcium carbonate."
+},
+
+{
+q:"The main constituent of vinegar is:",
+o:["Hydrochloric acid","Acetic acid","Sulphuric acid","Nitric acid"],
+a:"Acetic acid",
+s:"Vinegar contains dilute acetic acid, CH₃COOH."
+},
+
+{
+q:"The acid present in curd is:",
+o:["Acetic acid","Lactic acid","Citric acid","Oxalic acid"],
+a:"Lactic acid",
+s:"Lactic acid is produced during fermentation of milk and is present in curd."
+},
+
+{
+q:"The acid present in lemon is mainly:",
+o:["Citric acid","Acetic acid","Lactic acid","Formic acid"],
+a:"Citric acid",
+s:"Citrus fruits such as lemons contain significant amounts of citric acid."
+},
+
+{
+q:"The acid present in ant sting is:",
+o:["Formic acid","Acetic acid","Citric acid","Sulphuric acid"],
+a:"Formic acid",
+s:"Ant venom contains formic acid, which causes the characteristic irritation of an ant sting."
+},
+
+{
+q:"The acid present in gastric juice is:",
+o:["HCl","H₂SO₄","HNO₃","CH₃COOH"],
+a:"HCl",
+s:"Hydrochloric acid is present in the stomach and helps digestion while providing an acidic medium."
+},
+
+{
+q:"A solution with pH 7 is:",
+o:["Acidic","Basic","Neutral","Strongly acidic"],
+a:"Neutral",
+s:"At 25°C, a pH of 7 represents a neutral solution."
+},
+
+{
+q:"A solution having pH less than 7 is:",
+o:["Basic","Acidic","Neutral","Saline only"],
+a:"Acidic",
+s:"Acidic solutions have pH values below 7."
+},
+
+{
+q:"A solution having pH greater than 7 is:",
+o:["Acidic","Basic","Neutral","Always salty"],
+a:"Basic",
+s:"Basic or alkaline solutions have pH values above 7 at ordinary conditions."
+},
+
+{
+q:"Which indicator turns pink in a basic solution?",
+o:["Methyl orange","Phenolphthalein","Litmus only","Turmeric never"],
+a:"Phenolphthalein",
+s:"Phenolphthalein is colourless in acidic medium and turns pink in basic medium."
+},
+
+{
+q:"Methyl orange becomes red in:",
+o:["Acidic medium","Basic medium","Neutral water only","Alcohol only"],
+a:"Acidic medium",
+s:"Methyl orange is red in acidic conditions and yellow in alkaline conditions."
+},
+
+{
+q:"Blue litmus turns red in:",
+o:["Base","Acid","Salt only","Distilled water"],
+a:"Acid",
+s:"Acids turn blue litmus paper red."
+},
+
+{
+q:"Red litmus turns blue in:",
+o:["Acid","Base","Neutral solution","Sugar solution"],
+a:"Base",
+s:"Bases turn red litmus paper blue."
+},
+
+{
+q:"A reaction between an acid and a base producing salt and water is called:",
+o:["Oxidation","Neutralisation","Reduction","Combustion"],
+a:"Neutralisation",
+s:"Acid + base → salt + water is called a neutralisation reaction."
+},
+
+{
+q:"Which gas is released when an acid reacts with a carbonate?",
+o:["Hydrogen","Oxygen","Carbon dioxide","Nitrogen"],
+a:"Carbon dioxide",
+s:"Acid + carbonate produces salt, water and carbon dioxide."
+},
+
+{
+q:"When zinc reacts with dilute hydrochloric acid, the gas evolved is:",
+o:["Oxygen","Hydrogen","Carbon dioxide","Chlorine"],
+a:"Hydrogen",
+s:"Zn + 2HCl → ZnCl₂ + H₂. Therefore hydrogen gas is released."
+},
+
+{
+q:"Which gas burns with a 'pop' sound?",
+o:["Oxygen","Hydrogen","Nitrogen","Carbon dioxide"],
+a:"Hydrogen",
+s:"Hydrogen is highly combustible and gives a characteristic pop sound when tested with a burning splint."
+},
+
+{
+q:"Which gas turns limewater milky?",
+o:["Oxygen","Hydrogen","Carbon dioxide","Nitrogen"],
+a:"Carbon dioxide",
+s:"CO₂ reacts with limewater to form insoluble calcium carbonate, making the solution milky."
+},
+
+{
+q:"The gas used by plants during photosynthesis is:",
+o:["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],
+a:"Carbon dioxide",
+s:"Plants use carbon dioxide and water to produce glucose during photosynthesis."
+},
+
+{
+q:"The gas released during photosynthesis is mainly:",
+o:["Carbon dioxide","Oxygen","Nitrogen","Hydrogen"],
+a:"Oxygen",
+s:"Oxygen is released as a by-product of photosynthesis."
+},
+
+{
+q:"The most abundant gas in Earth's atmosphere is:",
+o:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
+a:"Nitrogen",
+s:"Nitrogen makes up approximately 78% of Earth's atmosphere."
+},
+
+{
+q:"The second most abundant gas in Earth's atmosphere is:",
+o:["Oxygen","Nitrogen","Carbon dioxide","Argon"],
+a:"Oxygen",
+s:"Oxygen constitutes approximately 21% of Earth's atmosphere."
+},
+
+{
+q:"The gas mainly responsible for the greenhouse effect among the following is:",
+o:["Carbon dioxide","Nitrogen","Helium","Hydrogen"],
+a:"Carbon dioxide",
+s:"Carbon dioxide is an important greenhouse gas that absorbs infrared radiation."
+},
+
+{
+q:"Ozone is an allotrope of:",
+o:["Hydrogen","Oxygen","Nitrogen","Carbon"],
+a:"Oxygen",
+s:"Ozone has the molecular formula O₃, while ordinary oxygen is O₂."
+},
+
+{
+q:"The ozone layer is mainly present in:",
+o:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],
+a:"Stratosphere",
+s:"The ozone layer is concentrated mainly in the stratosphere."
+},
+
+{
+q:"CFCs are mainly responsible for:",
+o:["Ozone depletion","Increasing oxygen","Formation of salt","Hardening of water"],
+a:"Ozone depletion",
+s:"Chlorofluorocarbons release chlorine radicals in the stratosphere that catalytically destroy ozone."
+},
+
+{
+q:"Which of the following is a greenhouse gas?",
+o:["Methane","Nitrogen","Helium","Neon"],
+a:"Methane",
+s:"Methane is a potent greenhouse gas."
+},
+
+{
+q:"The process of conversion of a solid directly into gas is:",
+o:["Fusion","Sublimation","Condensation","Freezing"],
+a:"Sublimation",
+s:"Sublimation is the direct conversion of a solid into vapour without passing through the liquid state."
+},
+
+{
+q:"The conversion of gas directly into solid is called:",
+o:["Sublimation","Deposition","Evaporation","Fusion"],
+a:"Deposition",
+s:"Deposition is the direct conversion of a gas into a solid."
+},
+
+{
+q:"The process of conversion of liquid into vapour below its boiling point is:",
+o:["Evaporation","Condensation","Freezing","Sublimation"],
+a:"Evaporation",
+s:"Evaporation is a surface phenomenon in which liquid molecules escape into the vapour phase."
+},
+
+{
+q:"Boiling is a:",
+o:["Surface phenomenon only","Bulk phenomenon","Chemical reaction always","Nuclear reaction"],
+a:"Bulk phenomenon",
+s:"Boiling occurs throughout the liquid, unlike evaporation which occurs mainly at the surface."
+},
+
+{
+q:"The boiling point of water at normal atmospheric pressure is:",
+o:["0°C","50°C","100°C","212°C only"],
+a:"100°C",
+s:"Pure water boils at 100°C at standard atmospheric pressure."
+},
+
+{
+q:"The freezing point of water at normal atmospheric pressure is:",
+o:["0°C","4°C","32°C only","100°C"],
+a:"0°C",
+s:"Pure water freezes at 0°C under normal atmospheric pressure."
+},
+
+{
+q:"Which metal is the best conductor of electricity among the following?",
+o:["Copper","Iron","Lead","Mercury"],
+a:"Copper",
+s:"Copper has very high electrical conductivity and is widely used in electrical wiring."
+},
+
+{
+q:"Which metal is commonly used for electrical wiring because of its good conductivity and ductility?",
+o:["Copper","Sodium","Calcium","Mercury"],
+a:"Copper",
+s:"Copper combines high electrical conductivity with ductility, making it suitable for wires."
+},
+
+{
+q:"Which metal is liquid at room temperature and was traditionally used in thermometers?",
+o:["Mercury","Iron","Copper","Aluminium"],
+a:"Mercury",
+s:"Mercury remains liquid over a wide temperature range and was traditionally used in thermometers."
+},
+
+{
+q:"Which metal is stored under kerosene because it reacts vigorously with air and water?",
+o:["Sodium","Copper","Iron","Gold"],
+a:"Sodium",
+s:"Sodium is highly reactive and is stored under kerosene to prevent contact with air and moisture."
+},
+
+{
+q:"Which metal reacts vigorously with cold water?",
+o:["Sodium","Copper","Silver","Gold"],
+a:"Sodium",
+s:"Sodium reacts vigorously with water to form sodium hydroxide and hydrogen."
+},
+
+{
+q:"Which metal does not react readily with dilute hydrochloric acid?",
+o:["Zinc","Magnesium","Iron","Copper"],
+a:"Copper",
+s:"Copper lies below hydrogen in the activity series and does not normally displace hydrogen from dilute HCl."
+},
+
+{
+q:"Which is the most reactive metal among the following?",
+o:["Potassium","Copper","Silver","Gold"],
+a:"Potassium",
+s:"Potassium is near the top of the reactivity series and is highly reactive."
+},
+
+{
+q:"Which is a noble metal?",
+o:["Gold","Sodium","Potassium","Calcium"],
+a:"Gold",
+s:"Gold is chemically unreactive and is classified as a noble metal."
+},
+
+{
+q:"The main ore of aluminium is:",
+o:["Bauxite","Haematite","Galena","Cinnabar"],
+a:"Bauxite",
+s:"Bauxite is the principal ore from which aluminium is extracted."
+},
+
+{
+q:"Haematite is an important ore of:",
+o:["Iron","Copper","Aluminium","Zinc"],
+a:"Iron",
+s:"Haematite is mainly Fe₂O₃ and is an important iron ore."
+},
+
+{
+q:"Cinnabar is an ore of:",
+o:["Mercury","Iron","Copper","Aluminium"],
+a:"Mercury",
+s:"Cinnabar is mercury(II) sulphide, HgS, and is the principal ore of mercury."
+},
+
+{
+q:"Galena is an important ore of:",
+o:["Lead","Zinc","Iron","Aluminium"],
+a:"Lead",
+s:"Galena is lead sulphide, PbS, and is a major ore of lead."
+},
+
+{
+q:"The process of coating iron with zinc to prevent rusting is called:",
+o:["Galvanisation","Alloying","Roasting","Distillation"],
+a:"Galvanisation",
+s:"Galvanisation protects iron or steel by coating it with a layer of zinc."
+},
+
+{
+q:"Rust is mainly:",
+o:["Hydrated iron(III) oxide","Iron sulphide","Iron chloride","Pure iron"],
+a:"Hydrated iron(III) oxide",
+s:"Rust consists mainly of hydrated iron(III) oxide formed by corrosion of iron in the presence of oxygen and moisture."
+},
+
+{
+q:"Rusting of iron requires:",
+o:["Only oxygen","Only water","Oxygen and moisture","Only carbon dioxide"],
+a:"Oxygen and moisture",
+s:"Iron rusts in the presence of both oxygen and water/moisture."
+},
+
+{
+q:"Stainless steel mainly contains iron, chromium and:",
+o:["Nickel","Sodium","Potassium","Mercury"],
+a:"Nickel",
+s:"Stainless steel commonly contains iron, chromium and nickel, though exact composition varies by grade."
+},
+
+{
+q:"Brass is an alloy of:",
+o:["Copper and zinc","Copper and tin","Iron and carbon","Aluminium and copper"],
+a:"Copper and zinc",
+s:"Brass is primarily an alloy of copper and zinc."
+},
+
+{
+q:"Bronze is mainly an alloy of:",
+o:["Copper and tin","Copper and zinc","Iron and carbon","Lead and zinc"],
+a:"Copper and tin",
+s:"Traditional bronze is primarily composed of copper and tin."
+},
+
+{
+q:"Steel is primarily an alloy of iron and:",
+o:["Carbon","Zinc","Copper","Aluminium"],
+a:"Carbon",
+s:"Steel is mainly iron with carbon and, depending on grade, other alloying elements."
+},
+
+{
+q:"The process of heating an ore strongly in excess air is called:",
+o:["Calcination","Roasting","Reduction","Electrolysis"],
+a:"Roasting",
+s:"Roasting involves heating sulphide ores in excess air, generally converting them into oxides."
+},
+
+{
+q:"The process of heating carbonate ores in limited or no air is:",
+o:["Roasting","Calcination","Electrolysis","Distillation"],
+a:"Calcination",
+s:"Calcination involves heating carbonate or hydrated ores in limited or no air to form oxides."
+},
+
+{
+q:"The process of obtaining a metal from its molten compound using electricity is:",
+o:["Electrolysis","Filtration","Sublimation","Decantation"],
+a:"Electrolysis",
+s:"Electrolysis uses electrical energy to decompose ionic compounds and obtain metals such as aluminium."
+},
+
+{
+q:"The chemical formula of ammonia is:",
+o:["NH₃","NH₄","NO₂","N₂O"],
+a:"NH₃",
+s:"Ammonia contains one nitrogen atom and three hydrogen atoms, giving formula NH₃."
+},
+
+{
+q:"The characteristic smell of rotten eggs is due to:",
+o:["Hydrogen sulphide","Ammonia","Carbon dioxide","Methane"],
+a:"Hydrogen sulphide",
+s:"Hydrogen sulphide (H₂S) has a characteristic rotten-egg smell."
+},
+
+{
+q:"The gas with a pungent smell used in some household cleaners is:",
+o:["Ammonia","Oxygen","Hydrogen","Nitrogen"],
+a:"Ammonia",
+s:"Ammonia has a strong pungent smell and is used in various cleaning products."
+},
+
+{
+q:"The chemical formula of methane is:",
+o:["CH₄","C₂H₆","C₂H₄","CH₃OH"],
+a:"CH₄",
+s:"Methane is the simplest alkane and has formula CH₄."
+},
+
+{
+q:"The simplest alkene is:",
+o:["Methane","Ethene","Ethyne","Propane"],
+a:"Ethene",
+s:"Ethene (C₂H₄) is the simplest alkene containing a carbon-carbon double bond."
+},
+
+{
+q:"The simplest alkyne is:",
+o:["Methane","Ethane","Ethene","Ethyne"],
+a:"Ethyne",
+s:"Ethyne (C₂H₂), commonly called acetylene, is the simplest alkyne."
+},
+
+{
+q:"The functional group −OH is characteristic of:",
+o:["Alcohols","Aldehydes","Ketones","Carboxylic acids only"],
+a:"Alcohols",
+s:"The hydroxyl group (−OH) is the characteristic functional group of alcohols."
+},
+
+{
+q:"The functional group −COOH is characteristic of:",
+o:["Alcohols","Carboxylic acids","Alkenes","Amines"],
+a:"Carboxylic acids",
+s:"Carboxylic acids contain the carboxyl functional group −COOH."
+},
+
+{
+q:"Ethanol is commonly known as:",
+o:["Ethyl alcohol","Methyl alcohol","Formic acid","Acetone"],
+a:"Ethyl alcohol",
+s:"Ethanol, C₂H₅OH, is commonly called ethyl alcohol."
+},
+
+{
+q:"Methanol is also known as:",
+o:["Wood alcohol","Grain alcohol","Vinegar","Acetone"],
+a:"Wood alcohol",
+s:"Methanol was historically called wood alcohol because it was obtained from destructive distillation of wood."
+},
+
+{
+q:"Which alcohol is highly poisonous and can cause blindness?",
+o:["Methanol","Ethanol","Glycerol","Propanol"],
+a:"Methanol",
+s:"Methanol is highly toxic. Its metabolites can cause severe metabolic poisoning and blindness."
+},
+
+{
+q:"The polymer used in many plastic bags is:",
+o:["Polyethylene","Nylon","PVC","Bakelite"],
+a:"Polyethylene",
+s:"Polyethylene is a common polymer used in bags, packaging and many household products."
+},
+
+{
+q:"PVC stands for:",
+o:["Polyvinyl chloride","Polyvinyl carbonate","Polyvinyl calcium","Polyvalent carbon"],
+a:"Polyvinyl chloride",
+s:"PVC stands for polyvinyl chloride, a widely used synthetic polymer."
+},
+
+{
+q:"Bakelite is a:",
+o:["Thermosetting polymer","Metal","Ceramic","Natural fibre"],
+a:"Thermosetting polymer",
+s:"Bakelite is a thermosetting phenol-formaldehyde resin used in electrical switches and handles."
+},
+
+{
+q:"Nylon is a:",
+o:["Synthetic polymer","Metal alloy","Natural sugar","Ceramic"],
+a:"Synthetic polymer",
+s:"Nylon is a synthetic polyamide polymer used in fibres, ropes and many engineering applications."
+},
+
+{
+q:"The process by which small molecules combine to form a polymer is called:",
+o:["Polymerisation","Neutralisation","Oxidation","Hydrolysis"],
+a:"Polymerisation",
+s:"Polymerisation is the chemical process in which monomers combine to form long-chain polymers."
+},
+
+{
+q:"Which vitamin is also known as ascorbic acid?",
+o:["Vitamin A","Vitamin B12","Vitamin C","Vitamin D"],
+a:"Vitamin C",
+s:"Vitamin C is chemically known as ascorbic acid."
+},
+
+{
+q:"Which vitamin contains cobalt?",
+o:["Vitamin C","Vitamin B12","Vitamin A","Vitamin K"],
+a:"Vitamin B12",
+s:"Vitamin B12 contains cobalt at the centre of its corrin ring structure."
+},
+
+{
+q:"The deficiency of iodine mainly causes:",
+o:["Goitre","Scurvy","Rickets","Beriberi"],
+a:"Goitre",
+s:"Iodine deficiency can enlarge the thyroid gland and cause goitre."
+},
+
+{
+q:"The deficiency of vitamin C causes:",
+o:["Scurvy","Rickets","Night blindness","Beriberi"],
+a:"Scurvy",
+s:"Vitamin C deficiency causes scurvy, characterised by problems such as bleeding gums and poor wound healing."
+},
+
+{
+q:"The deficiency of vitamin D causes:",
+o:["Rickets","Scurvy","Goitre","Anaemia only"],
+a:"Rickets",
+s:"Vitamin D deficiency in children can cause rickets and impaired bone mineralisation."
+},
+
+{
+q:"Which chemical is commonly used to disinfect drinking water?",
+o:["Chlorine","Nitrogen","Hydrogen","Helium"],
+a:"Chlorine",
+s:"Chlorine and chlorine-based compounds are widely used to disinfect drinking water by killing microorganisms."
+},
+
+{
+q:"The bleaching action of chlorine is mainly due to:",
+o:["Oxidation","Reduction","Neutralisation","Polymerisation"],
+a:"Oxidation",
+s:"Chlorine forms substances such as hypochlorous acid in water, which oxidise coloured substances and microorganisms."
+},
+
+{
+q:"The chemical used in photography as a fixing agent is:",
+o:["Sodium thiosulphate","Sodium chloride","Calcium carbonate","Potassium nitrate"],
+a:"Sodium thiosulphate",
+s:"Sodium thiosulphate is used as a photographic fixer because it dissolves unreacted silver halides."
+},
+
+{
+q:"The main constituent of natural gas is:",
+o:["Methane","Ethane","Propane","Butane"],
+a:"Methane",
+s:"Methane is the major component of natural gas."
+},
+
+{
+q:"LPG mainly contains:",
+o:["Propane and butane","Methane only","Hydrogen only","Carbon dioxide"],
+a:"Propane and butane",
+s:"Liquefied petroleum gas mainly consists of hydrocarbons such as propane and butane."
+},
+
+{
+q:"CNG mainly consists of:",
+o:["Methane","Butane","Propane only","Ethene"],
+a:"Methane",
+s:"Compressed natural gas consists predominantly of methane."
+},
+
+{
+q:"The calorific value of a fuel is the amount of heat produced by:",
+o:["Complete combustion of unit quantity of fuel","Melting of fuel","Freezing of fuel","Partial combustion only"],
+a:"Complete combustion of unit quantity of fuel",
+s:"Calorific value is the heat released by complete combustion of a unit mass or volume of fuel."
+},
+
+{
+q:"Which of the following is generally considered a cleaner fuel?",
+o:["CNG","Coal","Wood","High-sulphur fuel oil"],
+a:"CNG",
+s:"CNG generally produces fewer particulates and lower emissions of several pollutants than many conventional solid and liquid fossil fuels."
+},
+
+{
+q:"The chemical reaction in which a substance gains oxygen is called:",
+o:["Oxidation","Reduction","Neutralisation","Hydrolysis"],
+a:"Oxidation",
+s:"In the classical definition, addition of oxygen to a substance is oxidation."
+},
+
+{
+q:"The chemical reaction in which a substance loses oxygen is called:",
+o:["Oxidation","Reduction","Neutralisation","Combustion"],
+a:"Reduction",
+s:"Loss of oxygen from a substance is described as reduction."
+},
+
+{
+q:"A substance that speeds up a chemical reaction without being consumed is called:",
+o:["Catalyst","Reactant","Solvent","Product"],
+a:"Catalyst",
+s:"A catalyst changes the rate of a reaction without being permanently consumed in the overall reaction."
+},
+
+{
+q:"The catalyst used in the Haber process is mainly:",
+o:["Iron","Copper","Nickel","Platinum"],
+a:"Iron",
+s:"The Haber process for ammonia synthesis uses an iron-based catalyst."
+},
+
+{
+q:"The Haber process is used for industrial manufacture of:",
+o:["Ammonia","Sulphuric acid","Nitric acid","Sodium hydroxide"],
+a:"Ammonia",
+s:"The Haber process combines nitrogen and hydrogen under suitable conditions to produce ammonia."
+},
+
+{
+q:"The Contact process is used to manufacture:",
+o:["Sulphuric acid","Ammonia","Sodium chloride","Methane"],
+a:"Sulphuric acid",
+s:"The Contact process is the major industrial method for producing sulphuric acid."
+},
+
+{
+q:"The Solvay process is associated with the manufacture of:",
+o:["Sodium carbonate","Ammonia only","Copper","Iron"],
+a:"Sodium carbonate",
+s:"The Solvay process is an industrial process for manufacturing sodium carbonate (soda ash)."
+},
+
+{
+q:"Hard water mainly contains salts of:",
+o:["Calcium and magnesium","Sodium and potassium","Iron and copper only","Gold and silver"],
+a:"Calcium and magnesium",
+s:"Hardness of water is mainly caused by dissolved calcium and magnesium ions."
+},
+
+{
+q:"Temporary hardness of water is mainly due to:",
+o:["Bicarbonates of calcium and magnesium","Chlorides of sodium","Nitrates of potassium","Sulphates of sodium only"],
+a:"Bicarbonates of calcium and magnesium",
+s:"Temporary hardness is mainly caused by calcium and magnesium bicarbonates and can be removed by boiling."
+},
+
+{
+q:"Permanent hardness of water is mainly due to:",
+o:["Chlorides and sulphates of calcium and magnesium","Bicarbonates only","Sodium chloride","Potassium nitrate"],
+a:"Chlorides and sulphates of calcium and magnesium",
+s:"Permanent hardness is associated mainly with calcium and magnesium sulphates and chlorides."
+},
+
+{
+q:"Which method can remove temporary hardness of water?",
+o:["Boiling","Freezing","Filtration through cloth only","Adding sand"],
+a:"Boiling",
+s:"Heating decomposes bicarbonates and precipitates insoluble carbonates, reducing temporary hardness."
+},
+
+{
+q:"Soap does not lather easily with hard water because it forms:",
+o:["Scum","Sugar","Oxygen","Alcohol"],
+a:"Scum",
+s:"Soap reacts with calcium and magnesium ions in hard water to form insoluble salts called scum."
+},
+
+{
+q:"Detergents are generally more effective than soaps in hard water because:",
+o:["They do not readily form insoluble scum with Ca²⁺ and Mg²⁺","They contain no carbon","They are always acids","They contain only water"],
+a:"They do not readily form insoluble scum with Ca²⁺ and Mg²⁺",
+s:"Synthetic detergents generally remain effective in hard water because their calcium and magnesium salts are more soluble."
+},
+
+{
+q:"The process of removing dissolved salts from seawater to obtain fresh water is:",
+o:["Desalination","Distillation only always","Filtration","Sedimentation"],
+a:"Desalination",
+s:"Desalination removes dissolved salts from seawater, commonly by reverse osmosis or distillation."
+},
+
+{
+q:"Reverse osmosis uses a:",
+o:["Semipermeable membrane","Magnet","Metal rod","Filter paper only"],
+a:"Semipermeable membrane",
+s:"Reverse osmosis forces water through a semipermeable membrane while rejecting many dissolved salts."
+},
+
+{
+q:"Which chemical is commonly called caustic soda?",
+o:["NaOH","NaCl","Na₂CO₃","KOH"],
+a:"NaOH",
+s:"Sodium hydroxide (NaOH) is commonly known as caustic soda."
+},
+
+{
+q:"Which chemical is commonly called caustic potash?",
+o:["KOH","NaOH","KCl","Ca(OH)₂"],
+a:"KOH",
+s:"Potassium hydroxide (KOH) is known as caustic potash."
+},
+
+{
+q:"The chemical formula of bleaching powder is commonly represented as:",
+o:["CaOCl₂","CaCO₃","NaCl","CaSO₄"],
+a:"CaOCl₂",
+s:"Bleaching powder is conventionally represented as calcium oxychloride, CaOCl₂, though its composition is more complex."
+},
+
+{
+q:"Which gas is commonly used in fire extinguishers because it does not support combustion?",
+o:["Carbon dioxide","Oxygen","Hydrogen","Chlorine"],
+a:"Carbon dioxide",
+s:"CO₂ is non-combustible and denser than air, so it can help smother fires."
+},
+
+{
+q:"The major component of biogas is:",
+o:["Methane","Oxygen","Nitrogen","Hydrogen"],
+a:"Methane",
+s:"Biogas produced by anaerobic decomposition contains methane as its major combustible component."
+},
+
+{
+q:"The process of conversion of sugar into alcohol by microorganisms is called:",
+o:["Fermentation","Distillation","Sublimation","Neutralisation"],
+a:"Fermentation",
+s:"Yeast converts sugars into ethanol and carbon dioxide during alcoholic fermentation."
+},
+
+{
+q:"The enzyme responsible for conversion of starch into maltose is:",
+o:["Amylase","Pepsin","Lipase","Trypsin"],
+a:"Amylase",
+s:"Amylase breaks down starch into smaller carbohydrates, including maltose."
+},
+
+{
+q:"Pepsin helps in digestion of:",
+o:["Proteins","Fats only","Starch only","Minerals"],
+a:"Proteins",
+s:"Pepsin is a proteolytic enzyme in the stomach that helps digest proteins."
+},
+
+{
+q:"Lipase mainly helps digest:",
+o:["Fats","Proteins","Starch","Mineral salts"],
+a:"Fats",
+s:"Lipase catalyses the breakdown of fats into fatty acids and glycerol."
+},
+
+{
+q:"The main chemical component of bones and teeth is:",
+o:["Calcium phosphate","Sodium chloride","Potassium nitrate","Calcium chloride"],
+a:"Calcium phosphate",
+s:"Bones and teeth contain substantial amounts of calcium phosphate, particularly in the mineral hydroxyapatite."
+},
+
+{
+q:"The chemical formula of carbon dioxide is:",
+o:["CO","CO₂","C₂O","C₂O₂"],
+a:"CO₂",
+s:"One carbon atom combines with two oxygen atoms to form carbon dioxide."
+},
+
+{
+q:"Carbon monoxide is dangerous because it:",
+o:["Combines strongly with haemoglobin","Provides extra oxygen","Is completely harmless","Kills bacteria only"],
+a:"Combines strongly with haemoglobin",
+s:"Carbon monoxide binds strongly with haemoglobin to form carboxyhaemoglobin and reduces oxygen transport in blood."
+},
+
+{
+q:"The valency of oxygen is generally:",
+o:["1","2","3","4"],
+a:"2",
+s:"Oxygen generally forms two bonds or gains two electrons to complete its valence shell."
+},
+
+{
+q:"The valency of sodium is:",
+o:["1","2","3","4"],
+a:"1",
+s:"Sodium has one valence electron and commonly loses it to form Na⁺, so its valency is 1."
+},
+
+{
+q:"The valency of aluminium is:",
+o:["1","2","3","4"],
+a:"3",
+s:"Aluminium commonly loses three electrons to form Al³⁺, giving it valency 3."
+},
+
+{
+q:"An ionic bond is formed by:",
+o:["Transfer of electrons","Sharing of protons","Sharing of neutrons","Transfer of nuclei"],
+a:"Transfer of electrons",
+s:"An ionic bond results from electron transfer, usually from a metal to a non-metal, followed by electrostatic attraction."
+},
+
+{
+q:"A covalent bond is formed by:",
+o:["Sharing of electrons","Complete transfer of electrons always","Sharing of protons","Loss of neutrons"],
+a:"Sharing of electrons",
+s:"Covalent bonds form when atoms share one or more pairs of electrons."
+},
+
+{
+q:"Which compound contains an ionic bond?",
+o:["NaCl","CH₄","CO₂","O₂"],
+a:"NaCl",
+s:"Sodium chloride consists of Na⁺ and Cl⁻ ions held together by electrostatic attraction."
+},
+
+{
+q:"Which molecule contains a triple covalent bond?",
+o:["O₂","N₂","H₂O","CH₄"],
+a:"N₂",
+s:"The two nitrogen atoms in N₂ share three pairs of electrons, forming a triple bond."
+},
+
+{
+q:"The bond in O₂ is:",
+o:["Single","Double","Triple","Ionic"],
+a:"Double",
+s:"The two oxygen atoms share two pairs of electrons, forming a double covalent bond."
+},
+
+{
+q:"The chemical formula of sulphuric acid is:",
+o:["H₂SO₄","HCl","HNO₃","H₂CO₃"],
+a:"H₂SO₄",
+s:"Sulphuric acid has the molecular formula H₂SO₄."
+},
+
+{
+q:"The chemical formula of nitric acid is:",
+o:["HNO₃","H₂SO₄","HCl","H₂CO₃"],
+a:"HNO₃",
+s:"Nitric acid has the chemical formula HNO₃."
+},
+
+{
+q:"The chemical formula of hydrochloric acid is:",
+o:["HCl","H₂SO₄","HNO₃","NaCl"],
+a:"HCl",
+s:"Hydrochloric acid is an aqueous solution of hydrogen chloride, HCl."
+},
+
+{
+q:"Which acid is known as oil of vitriol?",
+o:["Sulphuric acid","Nitric acid","Hydrochloric acid","Acetic acid"],
+a:"Sulphuric acid",
+s:"Concentrated sulphuric acid has historically been called oil of vitriol."
+},
+
+{
+q:"Aqua regia is a mixture of concentrated:",
+o:["HCl and HNO₃","H₂SO₄ and HCl","HNO₃ and H₂SO₄","HCl and CH₃COOH"],
+a:"HCl and HNO₃",
+s:"Aqua regia is a mixture of concentrated hydrochloric acid and nitric acid, traditionally in a 3:1 volume ratio."
+},
+
+{
+q:"Aqua regia is capable of dissolving:",
+o:["Gold","Sodium chloride","Glass only","Carbon dioxide"],
+a:"Gold",
+s:"Aqua regia can dissolve noble metals such as gold because of its strongly oxidising and complexing action."
+},
+
+{
+q:"Which element is present in all organic compounds?",
+o:["Carbon","Sodium","Calcium","Iron"],
+a:"Carbon",
+s:"Organic chemistry primarily deals with carbon compounds, and carbon is the defining element of organic compounds."
+},
+
+{
+q:"The ability of carbon to form long chains with itself is called:",
+o:["Catenation","Ionisation","Neutralisation","Hydration"],
+a:"Catenation",
+s:"Catenation is the ability of carbon atoms to form stable covalent bonds with other carbon atoms, producing chains and rings."
+},
+
+{
+q:"The general formula of alkanes is:",
+o:["CₙH₂ₙ₊₂","CₙH₂ₙ","CₙH₂ₙ₋₂","CₙHₙ"],
+a:"CₙH₂ₙ₊₂",
+s:"Acyclic saturated hydrocarbons or alkanes follow the general formula CₙH₂ₙ₊₂."
+},
+
+{
+q:"The general formula of alkenes is:",
+o:["CₙH₂ₙ₊₂","CₙH₂ₙ","CₙH₂ₙ₋₂","CₙHₙ₊₂"],
+a:"CₙH₂ₙ",
+s:"Acyclic alkenes containing one double bond generally have formula CₙH₂ₙ."
+},
+
+{
+q:"The general formula of alkynes is:",
+o:["CₙH₂ₙ₊₂","CₙH₂ₙ","CₙH₂ₙ₋₂","CₙHₙ"],
+a:"CₙH₂ₙ₋₂",
+s:"Acyclic alkynes containing one triple bond generally have formula CₙH₂ₙ₋₂."
+},
+
+{
+q:"The chemical formula of glucose is:",
+o:["C₆H₁₂O₆","C₁₂H₂₂O₁₁","C₂H₅OH","CH₄"],
+a:"C₆H₁₂O₆",
+s:"Glucose is a six-carbon monosaccharide with formula C₆H₁₂O₆."
+},
+
+{
+q:"The chemical formula of sucrose is:",
+o:["C₆H₁₂O₆","C₁₂H₂₂O₁₁","CH₄","C₂H₅OH"],
+a:"C₁₂H₂₂O₁₁",
+s:"Sucrose is a disaccharide composed of glucose and fructose and has formula C₁₂H₂₂O₁₁."
+},
+
+{
+q:"The common name of sodium bicarbonate is:",
+o:["Baking soda","Washing soda","Bleaching powder","Caustic soda"],
+a:"Baking soda",
+s:"Sodium bicarbonate, NaHCO₃, is commonly called baking soda."
+},
+
+{
+q:"The common name of sodium carbonate decahydrate is:",
+o:["Washing soda","Baking soda","Caustic soda","Plaster of Paris"],
+a:"Washing soda",
+s:"Na₂CO₃·10H₂O is called washing soda."
+},
+
+{
+q:"Which chemical is used in the manufacture of glass, soap and paper?",
+o:["Sodium carbonate","Sodium chloride only","Methane","Oxygen"],
+a:"Sodium carbonate",
+s:"Sodium carbonate has important industrial applications in glass, detergents, paper and chemicals."
+},
+
+{
+q:"The main constituent of glass is:",
+o:["Silica","Sodium chloride","Calcium oxide only","Carbon"],
+a:"Silica",
+s:"Silica (SiO₂) is the major component of ordinary glass, with other oxides added depending on the type of glass."
+},
+
+{
+q:"Silica has the chemical formula:",
+o:["SiO₂","SiO","SO₂","CO₂"],
+a:"SiO₂",
+s:"Silica is silicon dioxide, SiO₂."
+},
+
+{
+q:"Which gas is used in welding because it produces a very hot flame with oxygen?",
+o:["Acetylene","Methane","Carbon dioxide","Nitrogen"],
+a:"Acetylene",
+s:"Acetylene burns with oxygen to produce a very hot flame used in oxy-acetylene welding."
+},
+
+{
+q:"The chemical formula of acetylene is:",
+o:["C₂H₂","C₂H₄","C₂H₆","CH₄"],
+a:"C₂H₂",
+s:"Acetylene is ethyne, an alkyne with formula C₂H₂."
+},
+
+{
+q:"Which of the following is an example of a physical change?",
+o:["Melting of ice","Rusting of iron","Burning of paper","Digestion of food"],
+a:"Melting of ice",
+s:"Melting of ice changes its physical state without producing a new chemical substance."
+},
+
+{
+q:"Which of the following is a chemical change?",
+o:["Rusting of iron","Melting of wax","Boiling water","Breaking glass"],
+a:"Rusting of iron",
+s:"Rusting produces a new substance, hydrated iron oxide, and is therefore a chemical change."
+},
+
+{
+q:"A reaction in which heat is released is called:",
+o:["Endothermic","Exothermic","Neutral","Reversible only"],
+a:"Exothermic",
+s:"Exothermic reactions release heat energy to the surroundings."
+},
+
+{
+q:"A reaction in which heat is absorbed is called:",
+o:["Exothermic","Endothermic","Combustion only","Neutralisation only"],
+a:"Endothermic",
+s:"Endothermic reactions absorb energy from the surroundings."
+},
+
+{
+q:"Burning of fuel is generally:",
+o:["Exothermic","Endothermic","Neither","Only physical"],
+a:"Exothermic",
+s:"Combustion releases heat and usually light, making it an exothermic process."
+},
+
+{
+q:"The breakdown of a compound into simpler substances by heat is called:",
+o:["Thermal decomposition","Neutralisation","Polymerisation","Hydration"],
+a:"Thermal decomposition",
+s:"Thermal decomposition occurs when heat causes a compound to break into simpler substances."
+},
+
+{
+q:"Electrolysis of water produces:",
+o:["Hydrogen and oxygen","Nitrogen and oxygen","Carbon dioxide and oxygen","Hydrogen and nitrogen"],
+a:"Hydrogen and oxygen",
+s:"Water decomposes during electrolysis into hydrogen at the cathode and oxygen at the anode."
+},
+
+{
+q:"During electrolysis of water, the volume ratio of hydrogen to oxygen is:",
+o:["1:1","2:1","1:2","3:1"],
+a:"2:1",
+s:"The molecular formula H₂O shows that electrolysis produces twice as much hydrogen as oxygen by volume."
+},
+
+{
+q:"The electrode connected to the positive terminal in an electrolytic cell is:",
+o:["Cathode","Anode","Salt bridge","Electrolyte"],
+a:"Anode",
+s:"In an electrolytic cell, the anode is connected to the positive terminal of the external power source."
+},
+
+{
+q:"The electrode connected to the negative terminal in an electrolytic cell is:",
+o:["Anode","Cathode","Salt bridge","Diaphragm"],
+a:"Cathode",
+s:"In an electrolytic cell, the cathode is connected to the negative terminal."
+},
+
+{
+q:"Oxidation takes place at the:",
+o:["Anode","Cathode","Salt bridge","Both equally"],
+a:"Anode",
+s:"The general electrochemical rule is 'AnOx' — oxidation occurs at the anode."
+},
+
+{
+q:"Reduction takes place at the:",
+o:["Anode","Cathode","Electrolyte only","Salt bridge"],
+a:"Cathode",
+s:"The general rule is 'RedCat' — reduction occurs at the cathode."
+},
+
+{
+q:"The process of coating one metal over another using electrolysis is:",
+o:["Electroplating","Roasting","Calcination","Distillation"],
+a:"Electroplating",
+s:"Electroplating deposits a thin layer of one metal onto another using an electrolytic process."
+},
+
+{
+q:"Chromium plating is commonly done to:",
+o:["Improve appearance and corrosion resistance","Make metal edible","Reduce atomic number","Produce oxygen"],
+a:"Improve appearance and corrosion resistance",
+s:"Chromium plating provides a shiny surface and improves resistance to corrosion and wear."
+},
+
+{
+q:"Which gas is evolved when an active metal reacts with dilute acid?",
+o:["Hydrogen","Oxygen","Nitrogen","Chlorine"],
+a:"Hydrogen",
+s:"Reactive metals above hydrogen in the activity series displace hydrogen from dilute acids."
+},
+
+{
+q:"Which metal is commonly extracted by electrolysis because it is highly reactive?",
+o:["Aluminium","Copper","Silver","Gold"],
+a:"Aluminium",
+s:"Aluminium is too reactive to be extracted economically by ordinary chemical reduction and is obtained by electrolysis of alumina."
+},
+
+{
+q:"The process of separating petroleum into useful fractions is:",
+o:["Fractional distillation","Filtration","Sublimation","Crystallisation"],
+a:"Fractional distillation",
+s:"Crude petroleum is separated into fractions based mainly on differences in boiling points."
+},
+
+{
+q:"Petroleum is often called:",
+o:["Black gold","White gold","Green gold","Red gold"],
+a:"Black gold",
+s:"Petroleum is popularly called black gold because of its dark colour and high economic value."
+},
+
+{
+q:"Which fraction of petroleum is commonly used as aviation fuel?",
+o:["Kerosene","Petrol","Bitumen","Lubricating oil"],
+a:"Kerosene",
+s:"Kerosene fractions are refined to produce aviation turbine fuel and related products."
+},
+
+{
+q:"Bitumen is mainly used for:",
+o:["Road surfacing","Cooking","Drinking water","Making oxygen"],
+a:"Road surfacing",
+s:"Bitumen is a heavy petroleum product widely used in road construction and waterproofing."
+},
+
+{
+q:"The octane number is associated with the quality of:",
+o:["Petrol","Coal","Kerosene only","Natural gas only"],
+a:"Petrol",
+s:"Octane number indicates the resistance of petrol to knocking in spark-ignition engines."
+},
+
+{
+q:"The cetane number is associated with the quality of:",
+o:["Diesel","Petrol","LPG","Coal"],
+a:"Diesel",
+s:"Cetane number measures ignition quality of diesel fuel in compression-ignition engines."
+},
+
+{
+q:"Which of the following is a renewable fuel?",
+o:["Biogas","Coal","Petroleum","Natural gas"],
+a:"Biogas",
+s:"Biogas can be produced continuously from renewable organic waste through anaerobic digestion."
+},
+
+{
+q:"The major acid present in acid rain is formed mainly from oxides of:",
+o:["Sulphur and nitrogen","Hydrogen and helium","Sodium and potassium","Calcium and magnesium"],
+a:"Sulphur and nitrogen",
+s:"Sulphur dioxide and nitrogen oxides react in the atmosphere to form sulphuric and nitric acids, contributing to acid rain."
+},
+
+{
+q:"Which pollutant is primarily responsible for photochemical smog?",
+o:["Nitrogen oxides and hydrocarbons","Oxygen","Nitrogen only","Water vapour"],
+a:"Nitrogen oxides and hydrocarbons",
+s:"Photochemical smog forms through sunlight-driven reactions involving nitrogen oxides and volatile organic compounds."
+},
+
+{
+q:"The gas responsible for the characteristic smell of rotten eggs is:",
+o:["H₂S","CO₂","SO₂","NH₃"],
+a:"H₂S",
+s:"Hydrogen sulphide has the characteristic odour of rotten eggs."
+},
+
+{
+q:"Sulphur dioxide is mainly released by burning:",
+o:["Sulphur-containing fossil fuels","Pure hydrogen","Water","Helium"],
+a:"Sulphur-containing fossil fuels",
+s:"Combustion of sulphur-containing coal and petroleum products releases sulphur dioxide."
+},
+
+{
+q:"Which gas is responsible for acid rain along with sulphur dioxide?",
+o:["Nitrogen oxides","Oxygen","Hydrogen","Helium"],
+a:"Nitrogen oxides",
+s:"Nitrogen oxides can form nitric acid in atmospheric moisture and contribute to acid rain."
+},
+
+{
+q:"The chemical used as an antacid is generally a:",
+o:["Base","Strong acid","Neutral gas","Metal only"],
+a:"Base",
+s:"Antacids are basic substances that neutralise excess hydrochloric acid in the stomach."
+},
+
+{
+q:"Milk of magnesia is:",
+o:["Magnesium hydroxide","Calcium hydroxide","Sodium hydroxide","Aluminium oxide"],
+a:"Magnesium hydroxide",
+s:"Milk of magnesia is a suspension of magnesium hydroxide, Mg(OH)₂, used as an antacid and laxative."
+},
+
+{
+q:"The chemical formula of magnesium hydroxide is:",
+o:["MgOH","Mg(OH)₂","Mg₂OH","MgO₂"],
+a:"Mg(OH)₂",
+s:"Magnesium has valency 2 and hydroxide has valency 1, giving Mg(OH)₂."
+},
+
+{
+q:"Which compound is commonly used as a drying agent for gases?",
+o:["Concentrated sulphuric acid","Sodium chloride","Sugar","Water"],
+a:"Concentrated sulphuric acid",
+s:"Concentrated sulphuric acid is strongly hygroscopic and can remove moisture from many gases."
+},
+
+{
+q:"The chemical property of absorbing moisture from air is called:",
+o:["Hygroscopicity","Radioactivity","Volatility","Neutrality"],
+a:"Hygroscopicity",
+s:"A hygroscopic substance absorbs moisture from its surroundings."
+},
+
+{
+q:"A substance that absorbs water vapour and dissolves in the absorbed water is called:",
+o:["Deliquescent","Efflorescent","Inert","Catalyst"],
+a:"Deliquescent",
+s:"Deliquescent substances absorb enough atmospheric moisture to dissolve and form a solution."
+},
+
+{
+q:"A substance that loses water of crystallisation on exposure to air is called:",
+o:["Efflorescent","Deliquescent","Catalyst","Reducing agent"],
+a:"Efflorescent",
+s:"Efflorescent substances lose water of crystallisation to the atmosphere under suitable conditions."
+},
+
+{
+q:"Blue vitriol is:",
+o:["Copper sulphate pentahydrate","Iron sulphate","Zinc sulphate","Sodium sulphate"],
+a:"Copper sulphate pentahydrate",
+s:"Blue vitriol is CuSO₄·5H₂O, hydrated copper sulphate."
+},
+
+{
+q:"Green vitriol is:",
+o:["Ferrous sulphate","Copper sulphate","Zinc sulphate","Sodium sulphate"],
+a:"Ferrous sulphate",
+s:"Green vitriol is hydrated ferrous sulphate, commonly FeSO₄·7H₂O."
+},
+
+{
+q:"White vitriol is:",
+o:["Zinc sulphate","Copper sulphate","Ferrous sulphate","Calcium sulphate"],
+a:"Zinc sulphate",
+s:"White vitriol is zinc sulphate, commonly ZnSO₄·7H₂O."
+},
+
+{
+q:"The chemical formula of gypsum is:",
+o:["CaSO₄·2H₂O","CaSO₄·½H₂O","CaCO₃","CaO"],
+a:"CaSO₄·2H₂O",
+s:"Gypsum is calcium sulphate dihydrate, CaSO₄·2H₂O."
+},
+
+{
+q:"Plaster of Paris is obtained by heating:",
+o:["Gypsum","Limestone","Bauxite","Haematite"],
+a:"Gypsum",
+s:"Heating gypsum partially removes its water of crystallisation to form plaster of Paris."
+},
+
+{
+q:"The blue colour of copper sulphate solution is due to:",
+o:["Copper ions","Sulphate ions only","Sodium ions","Chloride ions"],
+a:"Copper ions",
+s:"Hydrated Cu²⁺ ions are responsible for the characteristic blue colour of aqueous copper sulphate."
+},
+
+{
+q:"Which metal gives a brick-red flame test?",
+o:["Calcium","Sodium","Potassium","Copper"],
+a:"Calcium",
+s:"Calcium salts produce a characteristic brick-red or orange-red flame."
+},
+
+{
+q:"Sodium gives which flame colour?",
+o:["Golden yellow","Brick red","Violet","Green"],
+a:"Golden yellow",
+s:"Sodium compounds produce an intense yellow flame."
+},
+
+{
+q:"Potassium gives which flame colour?",
+o:["Lilac","Yellow","Brick red","Green"],
+a:"Lilac",
+s:"Potassium produces a characteristic lilac or pale violet flame."
+},
+
+{
+q:"Copper salts generally give a flame colour that is:",
+o:["Blue-green","Yellow","Lilac","Brick red"],
+a:"Blue-green",
+s:"Copper compounds can produce a blue-green flame."
+},
+
+{
+q:"Which element is essential for haemoglobin formation?",
+o:["Iron","Sodium","Chlorine","Silicon"],
+a:"Iron",
+s:"Iron is an essential component of haemoglobin and is necessary for oxygen transport in blood."
+},
+
+{
+q:"Which mineral is essential for the formation of thyroid hormones?",
+o:["Iodine","Iron","Calcium","Sodium"],
+a:"Iodine",
+s:"Iodine is required for synthesis of thyroid hormones such as thyroxine."
+},
+
+{
+q:"Which element is essential for healthy bones and teeth?",
+o:["Calcium","Chlorine","Sulphur","Helium"],
+a:"Calcium",
+s:"Calcium is a major mineral component of bones and teeth and plays several physiological roles."
+},
+
+{
+q:"The radioactive isotope commonly used in treatment of thyroid disorders is:",
+o:["Iodine-131","Carbon-12","Oxygen-16","Hydrogen-1"],
+a:"Iodine-131",
+s:"Radioactive iodine-131 is used medically for diagnosis and treatment of certain thyroid conditions."
+},
+
+{
+q:"Carbon-14 is commonly used for:",
+o:["Radiocarbon dating","Treating thyroid cancer","Making steel","Water purification"],
+a:"Radiocarbon dating",
+s:"Carbon-14 dating is used to estimate the age of once-living organic materials."
+},
+
+{
+q:"The half-life of a radioactive substance is the time required for:",
+o:["All atoms to decay","Half the radioactive nuclei to decay","Temperature to halve","Mass to double"],
+a:"Half the radioactive nuclei to decay",
+s:"Half-life is the time required for half of the radioactive nuclei in a sample to undergo decay."
+},
+
+{
+q:"Which radiation has the highest penetrating power among alpha, beta and gamma?",
+o:["Alpha","Beta","Gamma","All equal"],
+a:"Gamma",
+s:"Gamma radiation is highly penetrating compared with alpha and beta radiation."
+},
+
+{
+q:"Which radiation has the greatest ionising power among alpha, beta and gamma?",
+o:["Alpha","Beta","Gamma","All equal"],
+a:"Alpha",
+s:"Alpha particles have relatively high ionising power because of their charge and mass."
+},
+
+{
+q:"The nucleus of a helium atom is called:",
+o:["Alpha particle","Beta particle","Gamma ray","Neutron"],
+a:"Alpha particle",
+s:"An alpha particle consists of two protons and two neutrons, equivalent to a helium nucleus."
+},
+
+{
+q:"Beta radiation mainly consists of:",
+o:["Electrons or positrons","Helium nuclei","Neutrons only","Photons only"],
+a:"Electrons or positrons",
+s:"Beta radiation consists of high-speed electrons (β−) or positrons (β+), depending on the decay."
+},
+
+{
+q:"Gamma rays are:",
+o:["Electromagnetic radiation","Helium nuclei","Electrons","Neutrons"],
+a:"Electromagnetic radiation",
+s:"Gamma rays are high-energy electromagnetic radiation emitted from atomic nuclei."
+},
+
+{
+q:"The unit of radioactivity in SI is:",
+o:["Becquerel","Newton","Joule","Pascal"],
+a:"Becquerel",
+s:"The SI unit of radioactive activity is the becquerel (Bq), equal to one nuclear disintegration per second."
+},
+
+{
+q:"The SI unit of absorbed radiation dose is:",
+o:["Gray","Sievert","Becquerel","Tesla"],
+a:"Gray",
+s:"The gray (Gy) is the SI unit of absorbed radiation dose."
+},
+
+{
+q:"The SI unit used for equivalent radiation dose is:",
+o:["Sievert","Gray","Becquerel","Joule"],
+a:"Sievert",
+s:"The sievert (Sv) measures biological effect or equivalent/effective radiation dose."
+},
+
+{
+q:"Which particle determines the chemical properties of an atom most directly?",
+o:["Valence electrons","Neutrons only","Nucleus only","Protons only"],
+a:"Valence electrons",
+s:"Valence electrons participate in bonding and largely determine an element's chemical behaviour."
+},
+
+{
+q:"The electrons present in the outermost shell are called:",
+o:["Core electrons","Valence electrons","Free neutrons","Nucleons"],
+a:"Valence electrons",
+s:"Electrons in the outermost occupied shell are called valence electrons."
+},
+
+{
+q:"The tendency of an atom to attract shared electrons in a chemical bond is:",
+o:["Electronegativity","Ionisation only","Density","Valency only"],
+a:"Electronegativity",
+s:"Electronegativity measures the tendency of an atom to attract bonding electrons toward itself."
+},
+
+{
+q:"The energy required to remove the most loosely bound electron from an isolated gaseous atom is:",
+o:["Ionisation energy","Electron affinity","Bond energy","Lattice energy"],
+a:"Ionisation energy",
+s:"Ionisation energy is the energy required to remove an electron from a gaseous atom."
+},
+
+{
+q:"The energy change associated with addition of an electron to a neutral gaseous atom is related to:",
+o:["Electron affinity","Ionisation energy only","Boiling point","Density"],
+a:"Electron affinity",
+s:"Electron affinity describes the energy change when an electron is added to a neutral gaseous atom."
+},
+
+{
+q:"Which element has the electronic configuration 2,8,1?",
+o:["Sodium","Magnesium","Neon","Potassium"],
+a:"Sodium",
+s:"2+8+1 = 11 electrons, corresponding to sodium with atomic number 11."
+},
+
+{
+q:"Which element has electronic configuration 2,8,7?",
+o:["Chlorine","Fluorine","Argon","Sulphur"],
+a:"Chlorine",
+s:"2+8+7 = 17 electrons, corresponding to chlorine."
+},
+
+{
+q:"Which element has a completely filled outer shell among the following?",
+o:["Neon","Sodium","Magnesium","Chlorine"],
+a:"Neon",
+s:"Neon has electronic configuration 2,8, with a completely filled valence shell."
+},
+
+{
+q:"Noble gases are generally chemically unreactive because:",
+o:["They have stable valence shells","They have no electrons","They have no nuclei","They are all metals"],
+a:"They have stable valence shells",
+s:"Noble gases have very stable electron configurations, so they have little tendency to gain, lose or share electrons."
+},
+
+{
+q:"The chemical formula of ozone is:",
+o:["O₂","O₃","O₄","O"],
+a:"O₃",
+s:"Ozone is a triatomic allotrope of oxygen with molecular formula O₃."
+},
+
+{
+q:"Which allotrope of carbon is the hardest natural substance?",
+o:["Graphite","Diamond","Fullerene","Coal"],
+a:"Diamond",
+s:"Diamond has a three-dimensional network of strong covalent bonds and is the hardest naturally occurring material."
+},
+
+{
+q:"Which allotrope of carbon conducts electricity well?",
+o:["Diamond","Graphite","Charcoal only","Fullerene only"],
+a:"Graphite",
+s:"Graphite has delocalised electrons between its layers, allowing it to conduct electricity."
+},
+
+{
+q:"Graphite is used as a lubricant because:",
+o:["Its layers can slide over one another","It is a liquid","It has no carbon","It is highly radioactive"],
+a:"Its layers can slide over one another",
+s:"Graphite has weak forces between its layers, allowing them to slide easily over one another."
+},
+
+{
+q:"Fullerenes are allotropes of:",
+o:["Carbon","Sulphur","Oxygen","Nitrogen"],
+a:"Carbon",
+s:"Fullerenes are molecular allotropes of carbon, including structures such as C₆₀."
+},
+
+{
+q:"The process of converting vegetable oil into vanaspati using hydrogen is called:",
+o:["Hydrogenation","Oxidation","Neutralisation","Fermentation"],
+a:"Hydrogenation",
+s:"Hydrogenation adds hydrogen to unsaturated vegetable oils, usually in the presence of a catalyst such as nickel."
+},
+
+{
+q:"The catalyst commonly used in hydrogenation of vegetable oils is:",
+o:["Nickel","Iron","Copper","Zinc"],
+a:"Nickel",
+s:"Finely divided nickel is commonly used as a catalyst for hydrogenation of vegetable oils."
+},
+
+{
+q:"Rancidity of fats and oils is mainly caused by:",
+o:["Oxidation","Reduction","Neutralisation","Hydration"],
+a:"Oxidation",
+s:"Exposure of fats and oils to oxygen can produce unpleasant-smelling and tasting oxidation products, causing rancidity."
+},
+
+{
+q:"Which gas is used to fill food packets to reduce oxidation?",
+o:["Nitrogen","Oxygen","Hydrogen","Chlorine"],
+a:"Nitrogen",
+s:"Nitrogen is relatively inert and is used in modified-atmosphere packaging to reduce oxidation and spoilage."
+},
+
+{
+q:"The chemical used as a preservative in many food products is:",
+o:["Sodium benzoate","Sodium chloride only","Calcium oxide","Copper sulphate"],
+a:"Sodium benzoate",
+s:"Sodium benzoate is widely used as a food preservative, especially in acidic foods and beverages."
+},
+
+{
+q:"The chemical formula of sodium benzoate is:",
+o:["C₇H₅NaO₂","NaCl","NaHCO₃","C₆H₁₂O₆"],
+a:"C₇H₅NaO₂",
+s:"Sodium benzoate is the sodium salt of benzoic acid and has formula C₇H₅NaO₂."
+},
+
+{
+q:"Which acid is commonly used in soft drinks to provide acidity?",
+o:["Carbonic acid","Sulphuric acid","Hydrochloric acid","Nitric acid"],
+a:"Carbonic acid",
+s:"Carbon dioxide dissolved under pressure forms carbonic acid, contributing to the acidity of carbonated drinks."
+},
+
+{
+q:"The fizz in carbonated beverages is mainly due to:",
+o:["Carbon dioxide","Oxygen","Nitrogen","Hydrogen"],
+a:"Carbon dioxide",
+s:"Carbon dioxide is dissolved under pressure in carbonated beverages and escapes as bubbles when pressure is released."
+},
+
+{
+q:"Which gas is used in the manufacture of fertilizers and explosives and is also a component of nitric acid production?",
+o:["Ammonia","Helium","Neon","Argon"],
+a:"Ammonia",
+s:"Ammonia is an important industrial raw material for nitrogen fertilizers and can be oxidised to produce nitric acid."
+},
+
+{
+q:"Urea is mainly used as:",
+o:["Nitrogenous fertiliser","Insecticide only","Fuel","Solvent"],
+a:"Nitrogenous fertiliser",
+s:"Urea contains a high percentage of nitrogen and is widely used as a nitrogen fertiliser."
+},
+
+{
+q:"The chemical formula of urea is:",
+o:["CO(NH₂)₂","NH₄Cl","NH₃","CaCO₃"],
+a:"CO(NH₂)₂",
+s:"Urea has molecular formula CO(NH₂)₂."
+},
+
+{
+q:"Which fertilizer is known as muriate of potash?",
+o:["Potassium chloride","Potassium nitrate","Ammonium sulphate","Urea"],
+a:"Potassium chloride",
+s:"Muriate of potash is the common agricultural name for potassium chloride (KCl)."
+},
+
+{
+q:"Ammonium sulphate is mainly used as:",
+o:["Nitrogen fertiliser","Fuel","Solvent","Antacid"],
+a:"Nitrogen fertiliser",
+s:"Ammonium sulphate supplies nitrogen and sulphur to plants and is used as a fertiliser."
+},
+
+{
+q:"The process of conversion of atmospheric nitrogen into compounds usable by plants is called:",
+o:["Nitrogen fixation","Denitrification","Combustion","Sublimation"],
+a:"Nitrogen fixation",
+s:"Nitrogen fixation converts atmospheric N₂ into biologically usable nitrogen compounds, often through microorganisms."
+},
+
+{
+q:"Rhizobium bacteria are associated with:",
+o:["Nitrogen fixation","Photosynthesis","Alcohol production","Rusting"],
+a:"Nitrogen fixation",
+s:"Rhizobium bacteria living in root nodules of legumes fix atmospheric nitrogen into usable forms."
+},
+
+{
+q:"The chemical formula of ozone-depleting CFC commonly known as Freon-12 is:",
+o:["CCl₂F₂","CH₄","CO₂","NH₃"],
+a:"CCl₂F₂",
+s:"Dichlorodifluoromethane, CCl₂F₂, was widely used as a refrigerant and is a CFC."
+},
+
+{
+q:"Which of the following is an example of a noble gas?",
+o:["Argon","Chlorine","Oxygen","Nitrogen"],
+a:"Argon",
+s:"Argon belongs to Group 18 and is a noble gas."
+},
+
+{
+q:"Helium is used in balloons because it is:",
+o:["Less dense than air and non-flammable","Highly flammable","Heavier than air","Highly reactive"],
+a:"Less dense than air and non-flammable",
+s:"Helium is lighter than air and chemically inert, making it safer than hydrogen for balloons."
+},
+
+{
+q:"Which gas is used in electric bulbs to prevent oxidation of the filament?",
+o:["Argon","Oxygen","Hydrogen chloride","Carbon dioxide only"],
+a:"Argon",
+s:"Argon is an inert gas and is commonly used inside incandescent bulbs to reduce oxidation and evaporation of the filament."
+},
+
+{
+q:"The filament of an incandescent electric bulb is generally made of:",
+o:["Tungsten","Copper","Aluminium","Iron"],
+a:"Tungsten",
+s:"Tungsten has a very high melting point, making it suitable for incandescent lamp filaments."
+},
+
+{
+q:"Which metal has the highest melting point among the following?",
+o:["Tungsten","Mercury","Aluminium","Sodium"],
+a:"Tungsten",
+s:"Tungsten has an exceptionally high melting point of about 3422°C."
+},
+
+{
+q:"Which metal has the lowest melting point among the following?",
+o:["Mercury","Iron","Copper","Tungsten"],
+a:"Mercury",
+s:"Mercury has a melting point below room temperature and is liquid under ordinary conditions."
+},
+
+{
+q:"Which non-metal is a good conductor of electricity?",
+o:["Graphite","Sulphur","Phosphorus","Iodine"],
+a:"Graphite",
+s:"Graphite is an exception among non-metals because its delocalised electrons allow electrical conduction."
+},
+
+{
+q:"Which element is liquid at room temperature and is a non-metal?",
+o:["Bromine","Sulphur","Carbon","Phosphorus"],
+a:"Bromine",
+s:"Bromine is the only non-metallic element that is liquid under ordinary room conditions."
+},
+
+{
+q:"Which element is stored under water because it can ignite in air?",
+o:["White phosphorus","Sulphur","Carbon","Iodine"],
+a:"White phosphorus",
+s:"White phosphorus is highly reactive and is stored under water to prevent contact with oxygen."
+},
+
+{
+q:"The poisonous form of phosphorus that glows in air is:",
+o:["White phosphorus","Red phosphorus","Black phosphorus","Violet phosphorus"],
+a:"White phosphorus",
+s:"White phosphorus is highly reactive, poisonous and can show faint chemiluminescence in air."
+},
+
+{
+q:"Red phosphorus is used on the striking surface of:",
+o:["Safety matchboxes","Electric bulbs","Batteries only","Thermometers"],
+a:"Safety matchboxes",
+s:"Red phosphorus is used on the striking surface of safety matches because it is more stable than white phosphorus."
+},
+
+{
+q:"Which gas is essential for combustion?",
+o:["Oxygen","Nitrogen","Carbon dioxide","Helium"],
+a:"Oxygen",
+s:"Oxygen supports combustion, although it itself is not generally considered a fuel."
+},
+
+{
+q:"A substance that burns in oxygen is called:",
+o:["Combustible substance","Catalyst","Solvent","Electrolyte"],
+a:"Combustible substance",
+s:"A combustible substance can undergo combustion in the presence of oxygen and release energy."
+},
+
+{
+q:"The minimum temperature at which a substance catches fire is called:",
+o:["Ignition temperature","Boiling point","Melting point","Freezing point"],
+a:"Ignition temperature",
+s:"Ignition temperature is the minimum temperature at which a substance catches fire and begins sustained combustion."
+},
+
+{
+q:"A flame with insufficient oxygen generally produces:",
+o:["More carbon monoxide and soot","Only oxygen","No heat","Only water"],
+a:"More carbon monoxide and soot",
+s:"Incomplete combustion caused by insufficient oxygen can produce carbon monoxide and carbon particles (soot)."
+},
+
+{
+q:"Complete combustion of a hydrocarbon generally produces:",
+o:["Carbon dioxide and water","Carbon monoxide only","Hydrogen only","Nitrogen and oxygen"],
+a:"Carbon dioxide and water",
+s:"When hydrocarbons burn completely in sufficient oxygen, carbon is oxidised to CO₂ and hydrogen to H₂O."
+},
+
+{
+q:"Which of the following is an oxidising agent?",
+o:["Potassium permanganate","Hydrogen","Carbon monoxide","Sodium metal"],
+a:"Potassium permanganate",
+s:"Potassium permanganate (KMnO₄) is a strong oxidising agent used in many chemical reactions."
+},
+
+{
+q:"The chemical formula of potassium permanganate is:",
+o:["KMnO₄","K₂MnO₄","KClO₃","KMnO₂"],
+a:"KMnO₄",
+s:"Potassium permanganate has the formula KMnO₄."
+},
+
+{
+q:"The purple colour of potassium permanganate is due to:",
+o:["Permanganate ion","Potassium ion","Oxygen only","Hydrogen"],
+a:"Permanganate ion",
+s:"The MnO₄⁻ permanganate ion gives potassium permanganate its intense purple colour."
+},
+
+{
+q:"The formula of potassium dichromate is:",
+o:["K₂Cr₂O₇","KCrO₄","K₂CrO₄","KCr₂O₇"],
+a:"K₂Cr₂O₇",
+s:"Potassium dichromate has the chemical formula K₂Cr₂O₇."
+},
+
+{
+q:"The colour of potassium dichromate crystals is generally:",
+o:["Orange","Purple","Blue","Green"],
+a:"Orange",
+s:"Potassium dichromate is characteristically orange."
+},
+
+{
+q:"Which chemical is used as an oxidising agent in laboratory and water treatment applications?",
+o:["KMnO₄","NaCl","Sugar","Ethanol"],
+a:"KMnO₄",
+s:"Potassium permanganate is a strong oxidising agent used in laboratory chemistry and certain water-treatment applications."
+},
+
+{
+q:"The oxidation state of oxygen in most compounds is:",
+o:["−2","+2","−1","0"],
+a:"−2",
+s:"Oxygen usually has oxidation state −2, with notable exceptions such as peroxides and compounds with fluorine."
+},
+
+{
+q:"The oxidation state of hydrogen in most compounds is:",
+o:["+1","−1","0","+2"],
+a:"+1",
+s:"Hydrogen generally has oxidation state +1 in compounds with non-metals; it is −1 in many metal hydrides."
+},
+
+{
+q:"The oxidation state of an element in its free elemental form is:",
+o:["+1","−1","0","+2"],
+a:"0",
+s:"An element in its free, uncombined form has oxidation state zero."
+},
+
+{
+q:"Which of the following is a reducing agent?",
+o:["Hydrogen","Oxygen","Potassium permanganate","Chlorine"],
+a:"Hydrogen",
+s:"Hydrogen can act as a reducing agent by removing oxygen from certain metal oxides."
+},
+
+{
+q:"The reaction in which one element displaces another element from its compound is called:",
+o:["Displacement reaction","Combination reaction","Decomposition reaction","Neutralisation only"],
+a:"Displacement reaction",
+s:"In a displacement reaction, a more reactive element replaces a less reactive element from its compound."
+},
+
+{
+q:"Zn + CuSO₄ → ZnSO₄ + Cu is an example of:",
+o:["Displacement reaction","Combination reaction","Decomposition","Neutralisation"],
+a:"Displacement reaction",
+s:"Zinc is more reactive than copper and displaces copper from copper sulphate solution."
+},
+
+{
+q:"CaCO₃ → CaO + CO₂ is an example of:",
+o:["Decomposition reaction","Combination reaction","Displacement","Neutralisation"],
+a:"Decomposition reaction",
+s:"One compound breaks down into two simpler substances, so it is a decomposition reaction."
+},
+
+{
+q:"CaO + H₂O → Ca(OH)₂ is an example of:",
+o:["Combination reaction","Decomposition","Displacement","Redox only"],
+a:"Combination reaction",
+s:"Two substances combine to form a single product, calcium hydroxide."
+},
+
+{
+q:"A reaction involving exchange of ions between two compounds is generally called:",
+o:["Double displacement","Combination","Decomposition","Combustion"],
+a:"Double displacement",
+s:"In a double displacement reaction, ions of two compounds exchange partners."
+},
+
+{
+q:"AgNO₃ + NaCl → AgCl + NaNO₃ is an example of:",
+o:["Double displacement","Combination","Combustion","Decomposition"],
+a:"Double displacement",
+s:"Silver nitrate and sodium chloride exchange ions, producing insoluble AgCl precipitate and sodium nitrate."
+},
+
+{
+q:"The insoluble solid formed during a chemical reaction in solution is called:",
+o:["Precipitate","Catalyst","Solvent","Electrolyte"],
+a:"Precipitate",
+s:"A precipitate is an insoluble solid that forms from a solution during a chemical reaction."
+},
+
+{
+q:"The white precipitate formed when silver nitrate reacts with sodium chloride is:",
+o:["AgCl","Ag₂O","NaCl","AgNO₃"],
+a:"AgCl",
+s:"Ag⁺ combines with Cl⁻ to form insoluble silver chloride, AgCl, a white precipitate."
+},
+
+{
+q:"Which gas is liberated when a metal carbonate reacts with dilute acid?",
+o:["CO₂","H₂","O₂","N₂"],
+a:"CO₂",
+s:"Metal carbonates react with acids to produce salt, water and carbon dioxide."
+},
+
+{
+q:"Which gas is liberated when a metal sulphide reacts with dilute acid?",
+o:["H₂S","CO₂","O₂","NH₃"],
+a:"H₂S",
+s:"Metal sulphides react with dilute acids to produce hydrogen sulphide gas."
+},
+
+{
+q:"The pungent gas ammonia turns moist red litmus:",
+o:["Blue","Green","Yellow","Black"],
+a:"Blue",
+s:"Ammonia is basic and turns moist red litmus paper blue."
+},
+
+{
+q:"Hydrogen chloride gas turns moist blue litmus:",
+o:["Red","Blue","Green","Yellow"],
+a:"Red",
+s:"HCl dissolves in moisture to form hydrochloric acid, which turns blue litmus red."
+},
+
+{
+q:"Which gas is heavier than air and is used in some fire extinguishers?",
+o:["Carbon dioxide","Hydrogen","Helium","Methane"],
+a:"Carbon dioxide",
+s:"CO₂ is denser than air and does not support combustion, making it useful in certain fire extinguishing systems."
+},
+
+{
+q:"Which gas is lighter than air?",
+o:["Hydrogen","Carbon dioxide","Oxygen","Chlorine"],
+a:"Hydrogen",
+s:"Hydrogen is the lightest element and its gas is much less dense than air."
+},
+
+{
+q:"Which gas is used in advertising signs to produce a reddish-orange glow?",
+o:["Neon","Helium","Argon","Nitrogen"],
+a:"Neon",
+s:"Neon gas produces a characteristic reddish-orange glow in discharge tubes."
+},
+
+{
+q:"Which noble gas is commonly used in welding as an inert shielding gas?",
+o:["Argon","Neon","Helium only","Radon"],
+a:"Argon",
+s:"Argon provides an inert atmosphere that prevents unwanted reactions during welding."
+},
+
+{
+q:"Which noble gas is radioactive?",
+o:["Radon","Helium","Neon","Argon"],
+a:"Radon",
+s:"Radon is a naturally occurring radioactive noble gas produced in the decay series of uranium and thorium."
+},
+
+{
+q:"The most abundant element in the universe is:",
+o:["Hydrogen","Oxygen","Carbon","Nitrogen"],
+a:"Hydrogen",
+s:"Hydrogen is the most abundant element in the universe."
+},
+
+{
+q:"The most abundant element in Earth's crust by mass is:",
+o:["Oxygen","Silicon","Aluminium","Iron"],
+a:"Oxygen",
+s:"Oxygen constitutes the largest fraction of Earth's crust by mass."
+},
+
+{
+q:"The second most abundant element in Earth's crust by mass is:",
+o:["Silicon","Iron","Aluminium","Calcium"],
+a:"Silicon",
+s:"Silicon is the second most abundant element in Earth's crust by mass."
+},
+
+{
+q:"The most abundant metal in Earth's crust is:",
+o:["Aluminium","Iron","Copper","Sodium"],
+a:"Aluminium",
+s:"Aluminium is the most abundant metal in Earth's crust."
+},
+
+{
+q:"The chemical symbol for tungsten is:",
+o:["W","T","Tu","Wo"],
+a:"W",
+s:"Tungsten has the symbol W, derived from its historical name wolfram."
+},
+
+{
+q:"The chemical symbol for sodium is:",
+o:["S","Na","So","Sd"],
+a:"Na",
+s:"The symbol Na comes from the Latin name natrium."
+},
+
+{
+q:"The chemical symbol for potassium is:",
+o:["P","K","Po","Pt"],
+a:"K",
+s:"The symbol K comes from the Latin name kalium."
+},
+
+{
+q:"The chemical symbol for iron is:",
+o:["I","Fe","Ir","In"],
+a:"Fe",
+s:"Iron has the symbol Fe, derived from the Latin word ferrum."
+},
+
+{
+q:"The chemical symbol for silver is:",
+o:["Si","Ag","S","Au"],
+a:"Ag",
+s:"Silver has the symbol Ag, derived from the Latin word argentum."
+},
+
+{
+q:"The chemical symbol for gold is:",
+o:["G","Au","Go","Ag"],
+a:"Au",
+s:"Gold has the symbol Au, derived from the Latin word aurum."
+},
+
+{
+q:"The chemical symbol for lead is:",
+o:["L","Pb","Ld","Le"],
+a:"Pb",
+s:"Lead has the symbol Pb, derived from the Latin word plumbum."
+},
+
+{
+q:"The chemical symbol for mercury is:",
+o:["Me","Hg","Mc","Hy"],
+a:"Hg",
+s:"Mercury has the symbol Hg, derived from its Latin name hydrargyrum."
+},
+
+{
+q:"Which element has the symbol K?",
+o:["Calcium","Potassium","Krypton","Copper"],
+a:"Potassium",
+s:"K is the chemical symbol for potassium."
+},
+
+{
+q:"Which element has atomic number 6?",
+o:["Carbon","Nitrogen","Oxygen","Boron"],
+a:"Carbon",
+s:"Carbon has atomic number 6, meaning it has six protons."
+},
+
+{
+q:"Which element has atomic number 8?",
+o:["Nitrogen","Oxygen","Carbon","Fluorine"],
+a:"Oxygen",
+s:"Oxygen has atomic number 8."
+},
+
+{
+q:"Which element has atomic number 17?",
+o:["Chlorine","Sulphur","Argon","Fluorine"],
+a:"Chlorine",
+s:"Chlorine has 17 protons and therefore atomic number 17."
+},
+
+{
+q:"Which element has atomic number 18?",
+o:["Argon","Chlorine","Potassium","Neon"],
+a:"Argon",
+s:"Argon has 18 protons and atomic number 18."
+},
+
+{
+q:"The molecular mass of water (H₂O) is approximately:",
+o:["16 u","18 u","20 u","22 u"],
+a:"18 u",
+s:"H₂O = 2(1) + 16 = 18 atomic mass units approximately."
+},
+
+{
+q:"The molecular mass of carbon dioxide is approximately:",
+o:["28 u","32 u","44 u","48 u"],
+a:"44 u",
+s:"CO₂ = 12 + 2(16) = 44 u."
+},
+
+{
+q:"The molecular mass of oxygen gas O₂ is:",
+o:["16 u","32 u","18 u","44 u"],
+a:"32 u",
+s:"One oxygen atom has approximate atomic mass 16 u, so O₂ has mass 32 u."
+},
+
+{
+q:"One mole of any substance contains approximately:",
+o:["6.022 × 10²³ particles","3 × 10⁸ particles","9.8 × 10² particles","1.6 × 10⁻¹⁹ particles"],
+a:"6.022 × 10²³ particles",
+s:"Avogadro's number is approximately 6.022 × 10²³ particles per mole."
+},
+
+{
+q:"Avogadro's number is represented by:",
+o:["Nₐ","N₀","A₀","Z"],
+a:"Nₐ",
+s:"Avogadro's constant is conventionally represented by Nₐ."
+},
+
+{
+q:"The SI unit of amount of substance is:",
+o:["Mole","Gram","Kilogram","Litre"],
+a:"Mole",
+s:"The mole is the SI base unit for amount of substance."
+},
+
+{
+q:"The molar mass of oxygen gas O₂ is approximately:",
+o:["16 g/mol","32 g/mol","18 g/mol","44 g/mol"],
+a:"32 g/mol",
+s:"O₂ contains two oxygen atoms, so its molar mass is approximately 32 g/mol."
+},
+
+{
+q:"The molar mass of carbon dioxide is:",
+o:["18 g/mol","28 g/mol","44 g/mol","32 g/mol"],
+a:"44 g/mol",
+s:"CO₂ has molar mass 12 + 16 + 16 = 44 g/mol."
+},
+
+{
+q:"At standard conditions, one mole of an ideal gas occupies approximately:",
+o:["22.4 L","2.24 L","224 L","11.2 L"],
+a:"22.4 L",
+s:"At 0°C and 1 atm, one mole of an ideal gas occupies approximately 22.4 litres."
+},
+
+{
+q:"The law stating that equal volumes of gases at the same temperature and pressure contain equal numbers of molecules is:",
+o:["Avogadro's law","Boyle's law","Charles' law","Dalton's law"],
+a:"Avogadro's law",
+s:"Avogadro's law states that equal volumes of gases at the same temperature and pressure contain equal numbers of molecules."
+},
+
+{
+q:"Boyle's law relates pressure and volume at constant:",
+o:["Temperature","Pressure","Mass only","Density only"],
+a:"Temperature",
+s:"For a fixed mass of gas at constant temperature, pressure is inversely proportional to volume."
+},
+
+{
+q:"Charles' law relates volume and temperature at constant:",
+o:["Pressure","Volume","Density","Mass only"],
+a:"Pressure",
+s:"Charles' law states that the volume of a fixed mass of gas is directly proportional to absolute temperature at constant pressure."
+},
+
+{
+q:"Dalton's law concerns:",
+o:["Partial pressures of gases","Solid density","Acid strength","Metal reactivity"],
+a:"Partial pressures of gases",
+s:"Dalton's law states that the total pressure of a mixture of non-reacting gases equals the sum of their partial pressures."
+},
+
+{
+q:"Which gas law states that pressure is directly proportional to absolute temperature at constant volume?",
+o:["Gay-Lussac's law","Boyle's law","Charles' law","Avogadro's law"],
+a:"Gay-Lussac's law",
+s:"At constant volume, pressure of a fixed amount of gas is directly proportional to its absolute temperature."
+},
+
+{
+q:"The universal gas constant R is approximately:",
+o:["8.314 J mol⁻¹ K⁻¹","9.8 J","6.022 J","1.6 J"],
+a:"8.314 J mol⁻¹ K⁻¹",
+s:"The SI value of the universal gas constant R is approximately 8.314 J mol⁻¹ K⁻¹."
+},
+
+{
+q:"The pH of pure water at 25°C is approximately:",
+o:["5","7","9","14"],
+a:"7",
+s:"Pure water is neutral at 25°C and has pH approximately 7."
+},
+
+{
+q:"The pH scale generally ranges from:",
+o:["0 to 14","1 to 10","0 to 7 only","7 to 14 only"],
+a:"0 to 14",
+s:"The commonly used aqueous pH scale ranges approximately from 0 to 14."
+},
+
+{
+q:"Which is a strong acid?",
+o:["Hydrochloric acid","Acetic acid","Carbonic acid","Formic acid"],
+a:"Hydrochloric acid",
+s:"Hydrochloric acid is a strong acid that ionises extensively in aqueous solution."
+},
+
+{
+q:"Which is a weak acid?",
+o:["Acetic acid","Hydrochloric acid","Nitric acid","Perchloric acid"],
+a:"Acetic acid",
+s:"Acetic acid is a weak acid and only partially ionises in aqueous solution."
+},
+
+{
+q:"Which is a strong base?",
+o:["Sodium hydroxide","Ammonia","Ammonium hydroxide","Acetic acid"],
+a:"Sodium hydroxide",
+s:"NaOH is a strong base and dissociates extensively in water."
+},
+
+{
+q:"Which is a weak base?",
+o:["Ammonia","Sodium hydroxide","Potassium hydroxide","Barium hydroxide"],
+a:"Ammonia",
+s:"Ammonia is a weak base because it reacts partially with water to produce hydroxide ions."
+},
+
+{
+q:"A salt formed from a strong acid and strong base is generally:",
+o:["Neutral in aqueous solution","Always acidic","Always basic","Always insoluble"],
+a:"Neutral in aqueous solution",
+s:"Salts such as NaCl, formed from strong acid HCl and strong base NaOH, generally produce nearly neutral solutions."
+},
+
+{
+q:"A salt formed from a strong acid and weak base generally gives:",
+o:["Acidic solution","Basic solution","Neutral solution always","No solution"],
+a:"Acidic solution",
+s:"For example, NH₄Cl from strong HCl and weak NH₃ produces an acidic solution due to hydrolysis of NH₄⁺."
+},
+
+{
+q:"A salt formed from a weak acid and strong base generally gives:",
+o:["Basic solution","Acidic solution","Neutral solution always","Only gas"],
+a:"Basic solution",
+s:"For example, sodium acetate from weak acetic acid and strong NaOH produces a basic solution due to acetate hydrolysis."
+},
+
+{
+q:"Which salt is commonly used in oral rehydration solutions as a source of sodium?",
+o:["Sodium chloride","Copper sulphate","Lead nitrate","Silver chloride"],
+a:"Sodium chloride",
+s:"Sodium chloride supplies sodium and chloride ions and is an important component of oral rehydration solutions."
+},
+
+{
+q:"The main purpose of an ORS solution is to:",
+o:["Replace water and electrolytes","Increase blood sugar only","Cause dehydration","Provide antibiotics"],
+a:"Replace water and electrolytes",
+s:"ORS helps replace fluids and electrolytes lost during diarrhoea and dehydration."
+},
+
+{
+q:"Which ion is mainly responsible for acidity in aqueous solutions?",
+o:["H⁺","Na⁺","Cl⁻","K⁺"],
+a:"H⁺",
+s:"In the classical aqueous definition, acids increase the concentration of hydrogen ions, represented as H⁺."
+},
+
+{
+q:"Which ion is mainly responsible for basicity in aqueous solutions?",
+o:["OH⁻","H⁺","Na⁺","Cl⁻"],
+a:"OH⁻",
+s:"Arrhenius bases increase the concentration of hydroxide ions, OH⁻, in aqueous solution."
+},
+
+{
+q:"The process of removal of hydrogen from a compound is called:",
+o:["Dehydrogenation","Hydrogenation","Neutralisation","Hydrolysis"],
+a:"Dehydrogenation",
+s:"Dehydrogenation is a reaction in which hydrogen is removed from a compound."
+},
+
+{
+q:"The addition of hydrogen to an unsaturated compound is called:",
+o:["Hydrogenation","Dehydrogenation","Oxidation only","Hydrolysis"],
+a:"Hydrogenation",
+s:"Hydrogenation adds hydrogen across carbon-carbon double or triple bonds."
+},
+
+{
+q:"Which catalyst is used in the Haber process?",
+o:["Iron","Nickel","Platinum","Copper"],
+a:"Iron",
+s:"The Haber process uses an iron-based catalyst to synthesise ammonia from nitrogen and hydrogen."
+},
+
+{
+q:"The raw materials for the Haber process are:",
+o:["Nitrogen and hydrogen","Oxygen and hydrogen","Nitrogen and oxygen","Carbon dioxide and hydrogen"],
+a:"Nitrogen and hydrogen",
+s:"Ammonia is synthesised by reacting N₂ and H₂ under high pressure and suitable temperature with an iron catalyst."
+},
+
+{
+q:"The raw materials for the Contact process include:",
+o:["Sulphur dioxide and oxygen","Nitrogen and hydrogen","Methane and oxygen","Sodium and chlorine"],
+a:"Sulphur dioxide and oxygen",
+s:"In the Contact process, SO₂ is oxidised to SO₃ using oxygen, followed by conversion to sulphuric acid."
+},
+
+{
+q:"The catalyst used in the Contact process is:",
+o:["Vanadium(V) oxide","Iron","Nickel","Copper"],
+a:"Vanadium(V) oxide",
+s:"Vanadium(V) oxide, V₂O₅, is commonly used as the catalyst in the Contact process."
+},
+
+{
+q:"The chemical formula of sulphur dioxide is:",
+o:["SO₂","SO₃","S₂O","H₂S"],
+a:"SO₂",
+s:"Sulphur dioxide contains one sulphur atom and two oxygen atoms."
+},
+
+{
+q:"The chemical formula of sulphur trioxide is:",
+o:["SO₂","SO₃","S₂O₃","H₂SO₄"],
+a:"SO₃",
+s:"Sulphur trioxide contains one sulphur atom and three oxygen atoms."
+},
+
+{
+q:"The chemical formula of ammonia is:",
+o:["NH₃","NH₄Cl","NO₂","N₂H₄"],
+a:"NH₃",
+s:"Ammonia consists of one nitrogen atom bonded to three hydrogen atoms."
+},
+
+{
+q:"The chemical formula of ammonium ion is:",
+o:["NH₄⁺","NH₃","N₂H₄","NH₂⁻"],
+a:"NH₄⁺",
+s:"Ammonium ion is formed when ammonia accepts a proton and has formula NH₄⁺."
+},
+
+{
+q:"The chemical formula of ammonium chloride is:",
+o:["NH₄Cl","NH₃Cl","NH₂Cl","N₂H₄Cl"],
+a:"NH₄Cl",
+s:"Ammonium chloride consists of NH₄⁺ and Cl⁻ ions."
+},
+
+{
+q:"Which gas is commonly used as a refrigerant and is relatively environmentally safer than CFCs?",
+o:["Ammonia","Oxygen","Nitrogen","Carbon monoxide"],
+a:"Ammonia",
+s:"Ammonia is used as a refrigerant in industrial refrigeration systems and has zero ozone depletion potential."
+},
+
+{
+q:"The chemical formula of hydrogen peroxide is:",
+o:["H₂O₂","H₂O","HO₂","H₃O"],
+a:"H₂O₂",
+s:"Hydrogen peroxide contains two hydrogen atoms and two oxygen atoms, H₂O₂."
+},
+
+{
+q:"Hydrogen peroxide is commonly used as:",
+o:["Antiseptic and bleaching agent","Fuel only","Metal alloy","Fertiliser only"],
+a:"Antiseptic and bleaching agent",
+s:"Hydrogen peroxide is used in dilute form as an antiseptic and as a bleaching/oxidising agent."
+},
+
+{
+q:"The decomposition of hydrogen peroxide produces:",
+o:["Water and oxygen","Hydrogen and water","Carbon dioxide and water","Nitrogen and oxygen"],
+a:"Water and oxygen",
+s:"2H₂O₂ → 2H₂O + O₂."
+},
+
+{
+q:"The catalyst commonly used to speed decomposition of hydrogen peroxide is:",
+o:["Manganese dioxide","Sodium chloride","Copper sulphate","Calcium carbonate"],
+a:"Manganese dioxide",
+s:"Manganese dioxide (MnO₂) acts as a catalyst for the decomposition of H₂O₂."
+},
+
+{
+q:"Which substance is used as a drying agent and is also a strong dehydrating agent?",
+o:["Concentrated H₂SO₄","NaCl","CaCO₃","Sugar"],
+a:"Concentrated H₂SO₄",
+s:"Concentrated sulphuric acid strongly attracts water and is used as a dehydrating agent."
+},
+
+{
+q:"Concentrated sulphuric acid chars sugar because it:",
+o:["Removes water","Adds oxygen","Produces sodium","Freezes sugar"],
+a:"Removes water",
+s:"Concentrated H₂SO₄ is a strong dehydrating agent and removes water from sugar, leaving carbon."
+},
+
+{
+q:"Which chemical is used to test for starch?",
+o:["Iodine solution","Benedict's solution","Litmus","Phenolphthalein"],
+a:"Iodine solution",
+s:"Iodine gives starch a characteristic blue-black colour."
+},
+
+{
+q:"Starch gives a blue-black colour with:",
+o:["Iodine","Bromine water","Litmus","Methyl orange"],
+a:"Iodine",
+s:"The iodine-starch complex produces a characteristic blue-black colour."
+},
+
+{
+q:"Benedict's solution is used to test for:",
+o:["Reducing sugars","Proteins only","Starch only","Fats only"],
+a:"Reducing sugars",
+s:"Benedict's reagent can give a coloured precipitate with reducing sugars such as glucose on heating."
+},
+
+{
+q:"Biuret test is used to detect:",
+o:["Proteins","Fats","Starch","Vitamin C"],
+a:"Proteins",
+s:"The Biuret test detects peptide bonds in proteins and gives a violet/purple colour under suitable conditions."
+},
+
+{
+q:"The emulsion test is commonly used to detect:",
+o:["Fats","Proteins","Starch","DNA"],
+a:"Fats",
+s:"The emulsion test uses ethanol and water to identify lipids by formation of a milky emulsion."
+},
+
+{
+q:"Which substance is a natural polymer?",
+o:["Cellulose","PVC","Nylon","Bakelite"],
+a:"Cellulose",
+s:"Cellulose is a natural polysaccharide polymer made from repeating glucose units."
+},
+
+{
+q:"The main component of cotton is:",
+o:["Cellulose","Protein","Nylon","Polyester"],
+a:"Cellulose",
+s:"Cotton fibres are composed predominantly of cellulose."
+},
+
+{
+q:"Natural rubber is a polymer of:",
+o:["Isoprene","Ethene","Vinyl chloride","Styrene"],
+a:"Isoprene",
+s:"Natural rubber is primarily cis-1,4-polyisoprene, a polymer of isoprene."
+},
+
+{
+q:"Vulcanisation of rubber involves heating rubber with:",
+o:["Sulphur","Nitrogen","Oxygen","Chlorine"],
+a:"Sulphur",
+s:"Vulcanisation introduces sulphur cross-links between polymer chains, improving strength and elasticity."
+},
+
+{
+q:"Teflon is chemically:",
+o:["PTFE","PVC","Nylon","Bakelite"],
+a:"PTFE",
+s:"Teflon is polytetrafluoroethylene (PTFE), known for chemical resistance and low friction."
+},
+
+{
+q:"Teflon is widely used for non-stick cookware because it has:",
+o:["Low friction and high chemical resistance","Very high water solubility","High electrical conductivity","High reactivity"],
+a:"Low friction and high chemical resistance",
+s:"PTFE has a very low coefficient of friction and excellent resistance to chemicals and heat."
+},
+
+{
+q:"The monomer of PVC is:",
+o:["Vinyl chloride","Ethene","Styrene","Tetrafluoroethylene"],
+a:"Vinyl chloride",
+s:"PVC is formed by polymerisation of vinyl chloride (chloroethene)."
+},
+
+{
+q:"The monomer of polythene is:",
+o:["Ethene","Ethane","Ethyne","Methane"],
+a:"Ethene",
+s:"Polyethylene is formed by addition polymerisation of ethene molecules."
+},
+
+{
+q:"The monomer of polystyrene is:",
+o:["Styrene","Ethene","Vinyl chloride","Propene"],
+a:"Styrene",
+s:"Polystyrene is produced by polymerisation of styrene."
+},
+
+{
+q:"Which synthetic fibre is known for high strength and is used in ropes and parachutes?",
+o:["Nylon","Cotton","Wool","Rayon only"],
+a:"Nylon",
+s:"Nylon has high strength and abrasion resistance and is used in ropes, parachutes and textiles."
+},
+
+{
+q:"Rayon is commonly called:",
+o:["Artificial silk","Artificial wool","Synthetic cotton only","Natural silk"],
+a:"Artificial silk",
+s:"Rayon is a regenerated cellulose fibre commonly called artificial silk because of its appearance."
+},
+
+{
+q:"Which fibre is known as artificial wool?",
+o:["Acrylic","Rayon","Nylon","Polyester"],
+a:"Acrylic",
+s:"Acrylic fibres resemble wool and are often referred to as artificial wool."
+},
+
+{
+q:"Which polymer is used to make many bottles and packaging materials?",
+o:["PET","Bakelite","Teflon only","Nylon only"],
+a:"PET",
+s:"Polyethylene terephthalate (PET) is widely used in beverage bottles and packaging."
+},
+
+{
+q:"PET stands for:",
+o:["Polyethylene terephthalate","Polyethylene trichloride","Polyester ethylene tetra","Polyether terephthalate"],
+a:"Polyethylene terephthalate",
+s:"PET stands for polyethylene terephthalate, a common polyester."
+},
+
+{
+q:"Which chemical is used in dry cells as an electrolyte paste?",
+o:["Ammonium chloride","Sodium chloride only","Calcium carbonate","Copper sulphate"],
+a:"Ammonium chloride",
+s:"Traditional zinc-carbon dry cells use a paste containing ammonium chloride and zinc chloride."
+},
+
+{
+q:"The electrolyte in a lead-acid battery is:",
+o:["Sulphuric acid","Hydrochloric acid","Nitric acid","Acetic acid"],
+a:"Sulphuric acid",
+s:"Lead-acid batteries use aqueous sulphuric acid as the electrolyte."
+},
+
+{
+q:"The electrodes of a lead-acid battery are mainly made of:",
+o:["Lead and lead dioxide","Copper and zinc","Iron and carbon","Aluminium and copper"],
+a:"Lead and lead dioxide",
+s:"A lead-acid battery uses lead (Pb) and lead dioxide (PbO₂) plates with sulphuric acid electrolyte."
+},
+
+{
+q:"The electrolyte in a nickel-cadmium battery is generally:",
+o:["Potassium hydroxide","Sulphuric acid","Hydrochloric acid","Sodium chloride"],
+a:"Potassium hydroxide",
+s:"Nickel-cadmium cells commonly use potassium hydroxide as the electrolyte."
+},
+
+{
+q:"A dry cell converts:",
+o:["Chemical energy into electrical energy","Electrical energy into chemical energy only","Heat into mass","Light into sound"],
+a:"Chemical energy into electrical energy",
+s:"A primary dry cell generates electrical energy through chemical reactions."
+},
+
+{
+q:"An electrochemical cell that can be recharged is called:",
+o:["Secondary cell","Primary cell","Dry cell only","Fuel only"],
+a:"Secondary cell",
+s:"Secondary cells are rechargeable because their chemical reactions can be reversed by supplying electrical energy."
+},
+
+{
+q:"Which battery is commonly used in automobiles?",
+o:["Lead-acid battery","Dry zinc-carbon cell","Mercury cell only","Lithium coin cell only"],
+a:"Lead-acid battery",
+s:"Automobiles traditionally use rechargeable lead-acid batteries for starting and electrical systems."
+},
+
+{
+q:"Which metal is used in galvanisation?",
+o:["Zinc","Copper","Silver","Gold"],
+a:"Zinc",
+s:"Zinc is coated onto iron or steel during galvanisation to protect it from corrosion."
+},
+
+{
+q:"The sacrificial protection of iron commonly uses:",
+o:["Zinc","Gold","Silver","Platinum"],
+a:"Zinc",
+s:"Zinc is more easily oxidised than iron and acts as a sacrificial metal, protecting the underlying iron."
+},
+
+{
+q:"Which metal is used in making aircraft bodies due to its low density and strength?",
+o:["Aluminium","Lead","Mercury","Sodium"],
+a:"Aluminium",
+s:"Aluminium has low density and useful strength-to-weight characteristics, making it important in aircraft construction."
+},
+
+{
+q:"Duralumin is mainly an alloy based on:",
+o:["Aluminium","Iron","Copper","Lead"],
+a:"Aluminium",
+s:"Duralumin is an aluminium-based alloy containing copper and other elements and is known for strength and low density."
+},
+
+{
+q:"Nichrome is mainly an alloy of:",
+o:["Nickel and chromium","Copper and zinc","Iron and carbon","Aluminium and magnesium"],
+a:"Nickel and chromium",
+s:"Nichrome is primarily nickel and chromium and is used in heating elements due to its high resistance and heat resistance."
+},
+
+{
+q:"Nichrome is used in heating elements because it has:",
+o:["High electrical resistance and high melting point","Very low resistance","Low melting point","High solubility in water"],
+a:"High electrical resistance and high melting point",
+s:"Nichrome produces substantial heat when current passes through it and withstands high temperatures."
+},
+
+{
+q:"Which metal is used for making electrical contacts because of its high conductivity and resistance to corrosion?",
+o:["Silver","Sodium","Calcium","Potassium"],
+a:"Silver",
+s:"Silver has the highest electrical conductivity among metals and good corrosion resistance, making it useful for electrical contacts."
+},
+
+{
+q:"The alloy of mercury with another metal is called:",
+o:["Amalgam","Brass","Bronze","Steel"],
+a:"Amalgam",
+s:"An amalgam is an alloy or mixture of mercury with another metal."
+},
+
+{
+q:"Dental amalgam traditionally contains:",
+o:["Mercury with silver-based alloy","Copper only","Iron only","Aluminium only"],
+a:"Mercury with silver-based alloy",
+s:"Traditional dental amalgam is made by combining mercury with an alloy containing silver and other metals."
+},
+
+{
+q:"The process of obtaining pure metal from an impure metal by electrolysis is called:",
+o:["Electrolytic refining","Roasting","Calcination","Smelting only"],
+a:"Electrolytic refining",
+s:"In electrolytic refining, impure metal is the anode and pure metal is deposited at the cathode."
+},
+
+{
+q:"Copper is purified industrially by:",
+o:["Electrolytic refining","Sublimation","Fractional distillation","Calcination only"],
+a:"Electrolytic refining",
+s:"Impure copper is refined electrolytically to obtain high-purity copper."
+},
+
+{
+q:"In electrolytic refining of copper, the anode is:",
+o:["Impure copper","Pure copper","Carbon only","Zinc"],
+a:"Impure copper",
+s:"The impure copper slab acts as the anode, while pure copper is deposited on the cathode."
+},
+
+{
+q:"In electrolytic refining of copper, the cathode is:",
+o:["Thin sheet of pure copper","Impure copper","Iron rod","Zinc plate"],
+a:"Thin sheet of pure copper",
+s:"Pure copper is deposited on the cathode sheet."
+},
+
+{
+q:"Which gas is released at the cathode during electrolysis of acidified water?",
+o:["Hydrogen","Oxygen","Chlorine","Nitrogen"],
+a:"Hydrogen",
+s:"Hydrogen ions gain electrons at the cathode and form hydrogen gas."
+},
+
+{
+q:"Which gas is released at the anode during electrolysis of acidified water?",
+o:["Oxygen","Hydrogen","Nitrogen","Chlorine"],
+a:"Oxygen",
+s:"Water is oxidised at the anode to produce oxygen gas."
+},
+
+{
+q:"The chemical formula of hydrogen sulphide is:",
+o:["H₂S","HS","H₂SO₄","SO₂"],
+a:"H₂S",
+s:"Hydrogen sulphide contains two hydrogen atoms and one sulphur atom."
+},
+
+{
+q:"The chemical formula of sodium thiosulphate is:",
+o:["Na₂S₂O₃","Na₂SO₄","Na₂SO₃","NaHSO₄"],
+a:"Na₂S₂O₃",
+s:"Sodium thiosulphate has formula Na₂S₂O₃."
+},
+
+{
+q:"Which chemical is called hypo in photography?",
+o:["Sodium thiosulphate","Sodium chloride","Silver nitrate","Potassium nitrate"],
+a:"Sodium thiosulphate",
+s:"Sodium thiosulphate was traditionally called hypo and is used as a photographic fixing agent."
+},
+
+{
+q:"Silver bromide is used in:",
+o:["Traditional photographic films","Fertilizers","Soap","Cement"],
+a:"Traditional photographic films",
+s:"Silver halides such as silver bromide are photosensitive and were used in traditional photographic films."
+},
+
+{
+q:"The blackening of photographic film is mainly due to formation of:",
+o:["Silver","Copper","Iron","Carbon"],
+a:"Silver",
+s:"Light decomposes photosensitive silver halide crystals to produce metallic silver, forming the image."
+},
+
+{
+q:"Which compound is used as a common bleaching agent for hair and textiles?",
+o:["Hydrogen peroxide","Sodium chloride","Calcium carbonate","Methane"],
+a:"Hydrogen peroxide",
+s:"Hydrogen peroxide is an oxidising bleaching agent used for hair and some textiles."
+},
+
+{
+q:"The chemical formula of bleaching powder is commonly written as:",
+o:["CaOCl₂","CaCl₂","CaCO₃","CaSO₄"],
+a:"CaOCl₂",
+s:"Bleaching powder is conventionally represented by the formula CaOCl₂."
+},
+
+{
+q:"The bleaching action of bleaching powder is mainly due to release of:",
+o:["Chlorine/hypochlorous species","Hydrogen","Nitrogen","Helium"],
+a:"Chlorine/hypochlorous species",
+s:"In moist conditions bleaching powder generates active chlorine species that oxidise coloured substances."
+},
+
+{
+q:"Which chemical is used in making matches?",
+o:["Red phosphorus","Sodium chloride","Calcium carbonate only","Copper sulphate"],
+a:"Red phosphorus",
+s:"Red phosphorus is used on the striking surface of safety matches."
+},
+
+{
+q:"Which compound is used in fireworks to produce green colour?",
+o:["Barium compounds","Sodium compounds","Strontium compounds","Copper only"],
+a:"Barium compounds",
+s:"Barium salts commonly produce green colour in fireworks."
+},
+
+{
+q:"Sodium compounds in fireworks generally produce:",
+o:["Yellow colour","Green colour","Blue colour","Purple colour"],
+a:"Yellow colour",
+s:"Sodium salts produce an intense yellow flame."
+},
+
+{
+q:"Strontium compounds in fireworks generally produce:",
+o:["Red colour","Yellow colour","Green colour","Blue-green colour"],
+a:"Red colour",
+s:"Strontium salts are commonly used to produce red colours in fireworks."
+},
+
+{
+q:"Copper compounds can produce which colour in fireworks?",
+o:["Blue-green","Yellow only","Red only","White only"],
+a:"Blue-green",
+s:"Copper compounds are commonly used to generate blue or blue-green colours in fireworks."
+},
+
+{
+q:"Which substance is used to soften hard water in the washing process?",
+o:["Washing soda","Sugar","Ethanol","Benzene"],
+a:"Washing soda",
+s:"Sodium carbonate can precipitate calcium and magnesium ions and therefore helps soften hard water."
+},
+
+{
+q:"Zeolites are used in water treatment mainly for:",
+o:["Ion exchange and softening","Increasing hardness","Adding oxygen","Producing fuel"],
+a:"Ion exchange and softening",
+s:"Zeolites can exchange sodium ions for calcium and magnesium ions, thereby softening water."
+},
+
+{
+q:"The chemical formula of common bleaching agent hydrogen peroxide is:",
+o:["H₂O₂","H₂O","HO","H₃O"],
+a:"H₂O₂",
+s:"Hydrogen peroxide is H₂O₂ and acts as an oxidising and bleaching agent."
+},
+
+{
+q:"Which substance is used as a fire retardant in some applications?",
+o:["Aluminium hydroxide","Sodium chloride","Sugar","Methane"],
+a:"Aluminium hydroxide",
+s:"Aluminium hydroxide can release water on heating and is used as a flame retardant/filler in some materials."
+},
+
+{
+q:"Which gas is produced when sodium bicarbonate is heated?",
+o:["Carbon dioxide","Hydrogen","Oxygen","Nitrogen"],
+a:"Carbon dioxide",
+s:"2NaHCO₃ → Na₂CO₃ + CO₂ + H₂O. Thus carbon dioxide is released."
+},
+
+{
+q:"Baking soda is used in baking because it releases:",
+o:["CO₂","O₂","H₂","N₂"],
+a:"CO₂",
+s:"Sodium bicarbonate releases carbon dioxide when heated or reacted with an acid, helping dough rise."
+},
+
+{
+q:"Baking powder generally contains baking soda and:",
+o:["A suitable edible acid","Copper sulphate","Sodium metal","Sulphuric acid"],
+a:"A suitable edible acid",
+s:"Baking powder contains sodium bicarbonate along with one or more dry edible acids and usually a starch filler."
+},
+
+{
+q:"Which gas makes bread and cakes rise during baking?",
+o:["Carbon dioxide","Oxygen","Nitrogen","Hydrogen"],
+a:"Carbon dioxide",
+s:"Carbon dioxide released from baking powder or yeast forms bubbles that expand during baking."
+},
+
+{
+q:"The main gas produced by yeast during alcoholic fermentation is:",
+o:["Carbon dioxide","Oxygen","Nitrogen","Chlorine"],
+a:"Carbon dioxide",
+s:"Yeast converts sugar into ethanol and carbon dioxide."
+},
+
+{
+q:"Which compound is used as an antiseptic in dilute solution?",
+o:["Potassium permanganate","Sodium chloride only","Calcium carbonate","Copper metal"],
+a:"Potassium permanganate",
+s:"Very dilute potassium permanganate solutions have been used as antiseptic and disinfectant preparations."
+},
+
+{
+q:"The green pigment in plants is:",
+o:["Chlorophyll","Haemoglobin","Carotene only","Melanin"],
+a:"Chlorophyll",
+s:"Chlorophyll is the green photosynthetic pigment that absorbs light energy."
+},
+
+{
+q:"Chlorophyll contains which metal at its centre?",
+o:["Magnesium","Iron","Calcium","Sodium"],
+a:"Magnesium",
+s:"The chlorophyll molecule contains a magnesium ion at the centre of its porphyrin-like ring."
+},
+
+{
+q:"Haemoglobin contains which metal?",
+o:["Iron","Magnesium","Copper","Zinc"],
+a:"Iron",
+s:"The heme group of haemoglobin contains iron, which binds oxygen reversibly."
+},
+
+{
+q:"Insulin is a:",
+o:["Protein hormone","Carbohydrate","Fat","Mineral salt"],
+a:"Protein hormone",
+s:"Insulin is a peptide/protein hormone involved in regulation of blood glucose."
+},
+
+{
+q:"Which element is essential for formation of thyroxine?",
+o:["Iodine","Iron","Calcium","Magnesium"],
+a:"Iodine",
+s:"Iodine is an essential component of thyroid hormones such as thyroxine."
+},
+
+{
+q:"Which element is present in chlorophyll?",
+o:["Magnesium","Iron","Sodium","Potassium"],
+a:"Magnesium",
+s:"Magnesium is located at the centre of the chlorophyll molecule."
+},
+
+{
+q:"Which gas is used by plants during respiration?",
+o:["Oxygen","Nitrogen","Helium","Chlorine"],
+a:"Oxygen",
+s:"Plants carry out cellular respiration using oxygen to release energy from food."
+},
+
+{
+q:"Which gas is released during cellular respiration?",
+o:["Carbon dioxide","Oxygen","Nitrogen","Hydrogen"],
+a:"Carbon dioxide",
+s:"Carbon dioxide is produced as a waste product when organic molecules are oxidised during aerobic respiration."
+},
+
+{
+q:"Which substance is an electrolyte?",
+o:["Sodium chloride solution","Sugar solution only","Kerosene","Benzene"],
+a:"Sodium chloride solution",
+s:"A sodium chloride solution contains mobile ions and conducts electricity, so it is an electrolyte."
+},
+
+{
+q:"A substance that conducts electricity in molten or aqueous state due to ions is called:",
+o:["Electrolyte","Non-electrolyte","Catalyst only","Polymer"],
+a:"Electrolyte",
+s:"Electrolytes produce ions in molten or aqueous form and conduct electric current."
+},
+
+{
+q:"Which of the following is a non-electrolyte in aqueous solution?",
+o:["Sugar","NaCl","HCl","KOH"],
+a:"Sugar",
+s:"Sugar dissolves in water as molecules and does not produce ions in significant concentration, so it is a non-electrolyte."
+},
+
+{
+q:"The conductivity of an electrolyte solution is due to movement of:",
+o:["Ions","Neutrons","Atoms only","Photons"],
+a:"Ions",
+s:"Positive and negative ions move through the solution and carry electric charge."
+},
+
+{
+q:"The process of loss of electrons is called:",
+o:["Oxidation","Reduction","Neutralisation","Hydrolysis"],
+a:"Oxidation",
+s:"Oxidation can be defined electronically as loss of electrons."
+},
+
+{
+q:"The process of gain of electrons is called:",
+o:["Reduction","Oxidation","Combustion","Hydrolysis"],
+a:"Reduction",
+s:"Reduction is defined electronically as gain of electrons."
+},
+
+{
+q:"The mnemonic 'OIL' in redox chemistry stands for:",
+o:["Oxidation Is Loss","Oxygen Is Liquid","Oxidation Is Lowering","Only Ions Lose"],
+a:"Oxidation Is Loss",
+s:"OIL means Oxidation Is Loss of electrons; RIG means Reduction Is Gain."
+},
+
+{
+q:"The mnemonic 'RIG' in redox chemistry stands for:",
+o:["Reduction Is Gain","Reaction Is Gas","Reduction Is Greater","Reactant Is Gone"],
+a:"Reduction Is Gain",
+s:"RIG means Reduction Is Gain of electrons."
+},
+
+{
+q:"Which of the following is a reducing agent?",
+o:["Carbon monoxide","Oxygen","Chlorine","Potassium permanganate"],
+a:"Carbon monoxide",
+s:"Carbon monoxide can reduce metal oxides by combining with oxygen to form carbon dioxide."
+},
+
+{
+q:"Carbon monoxide is used in metallurgy because it:",
+o:["Acts as a reducing agent","Acts only as an acid","Acts as a catalyst always","Is a noble gas"],
+a:"Acts as a reducing agent",
+s:"CO reduces certain metal oxides to metals while itself being oxidised to CO₂."
+},
+
+{
+q:"The reduction of a metal oxide using carbon monoxide produces:",
+o:["Metal and CO₂","Metal and O₂","Salt and water","Acid and base"],
+a:"Metal and CO₂",
+s:"For example, Fe₂O₃ + 3CO → 2Fe + 3CO₂."
+},
+
+{
+q:"The extraction of iron from haematite in a blast furnace uses:",
+o:["Coke, limestone and hot air","Only water","Only oxygen","Only sodium"],
+a:"Coke, limestone and hot air",
+s:"The blast furnace uses coke as fuel/reducing agent, limestone as flux, and hot air to support combustion."
+},
+
+{
+q:"Limestone is added in the blast furnace mainly as:",
+o:["Flux","Fuel","Reducing agent only","Catalyst"],
+a:"Flux",
+s:"Limestone decomposes to calcium oxide, which reacts with silica impurities to form slag."
+},
+
+{
+q:"The slag formed in iron extraction mainly contains:",
+o:["Calcium silicate","Sodium chloride","Copper sulphate","Magnesium chloride"],
+a:"Calcium silicate",
+s:"Calcium oxide reacts with silica impurity to form calcium silicate slag."
+},
+
+{
+q:"The main reducing agent in a blast furnace is:",
+o:["Carbon monoxide","Oxygen","Nitrogen","Hydrogen chloride"],
+a:"Carbon monoxide",
+s:"Carbon monoxide generated from coke reduces iron oxides to iron."
+},
+
+{
+q:"Pig iron is produced in:",
+o:["Blast furnace","Electric bulb","Electrolytic cell only","Distillation column"],
+a:"Blast furnace",
+s:"Pig iron is the crude iron produced by reduction of iron ore in a blast furnace."
+},
+
+{
+q:"The major impurity in pig iron is:",
+o:["Carbon","Gold","Silver","Sodium"],
+a:"Carbon",
+s:"Pig iron contains a relatively high percentage of carbon along with other impurities."
+},
+
+{
+q:"Which gas is produced in the blast furnace and acts as a reducing agent?",
+o:["Carbon monoxide","Oxygen","Nitrogen","Hydrogen chloride"],
+a:"Carbon monoxide",
+s:"Carbon monoxide reduces iron oxides to metallic iron."
+},
+
+{
+q:"Which ore is associated with zinc?",
+o:["Zinc blende","Haematite","Bauxite","Cinnabar"],
+a:"Zinc blende",
+s:"Zinc blende is zinc sulphide, ZnS, and is an important zinc ore."
+},
+
+{
+q:"Zinc blende has the formula:",
+o:["ZnS","ZnO","ZnCO₃","ZnSO₄"],
+a:"ZnS",
+s:"Zinc blende is zinc sulphide, ZnS."
+},
+
+{
+q:"Calamine is an ore associated with:",
+o:["Zinc","Iron","Aluminium","Mercury"],
+a:"Zinc",
+s:"Calamine commonly refers to zinc carbonate, ZnCO₃, an ore of zinc."
+},
+
+{
+q:"Copper pyrites is an ore of:",
+o:["Copper","Iron only","Aluminium","Lead"],
+a:"Copper",
+s:"Copper pyrites or chalcopyrite is CuFeS₂ and is a major copper ore."
+},
+
+{
+q:"The chief ore of silver is often associated with:",
+o:["Argentite","Bauxite","Haematite","Cinnabar"],
+a:"Argentite",
+s:"Argentite is silver sulphide, Ag₂S, historically recognised as an important silver ore."
+},
+
+{
+q:"The process of heating sulphide ore in air is:",
+o:["Roasting","Calcination","Electrolysis","Hydration"],
+a:"Roasting",
+s:"Sulphide ores are heated in excess air during roasting to convert them into oxides."
+},
+
+{
+q:"The process of heating carbonate ore in limited air is:",
+o:["Calcination","Roasting","Electroplating","Fermentation"],
+a:"Calcination",
+s:"Carbonate ores are heated in limited or no air to decompose them into metal oxides and carbon dioxide."
+},
+
+{
+q:"The process of removing gangue from ore is called:",
+o:["Concentration of ore","Neutralisation","Polymerisation","Fermentation"],
+a:"Concentration of ore",
+s:"Concentration or dressing removes unwanted earthy impurities called gangue from an ore."
+},
+
+{
+q:"Froth flotation is mainly used for concentration of:",
+o:["Sulphide ores","Oxide ores only","Carbonates only","Halide ores only"],
+a:"Sulphide ores",
+s:"Froth flotation selectively concentrates sulphide minerals based on their surface properties."
+},
+
+{
+q:"Magnetic separation can be used when the ore or impurity has different:",
+o:["Magnetic properties","Colour only","Taste","Boiling point"],
+a:"Magnetic properties",
+s:"Magnetic separation exploits differences in magnetic susceptibility between ore and gangue."
+},
+
+{
+q:"An alloy is generally:",
+o:["A mixture of metals or a metal with another element","A pure element","Only a gas","Only a compound"],
+a:"A mixture of metals or a metal with another element",
+s:"Alloys are mixtures containing a metal and one or more other elements, often prepared to improve properties."
+},
+
+{
+q:"Which alloy is used in making coins and is based on copper and nickel?",
+o:["Cupro-nickel","Brass","Bronze","Solder"],
+a:"Cupro-nickel",
+s:"Cupro-nickel is an alloy of copper and nickel and is used in some coins and marine applications."
+},
+
+{
+q:"Solder is traditionally an alloy of:",
+o:["Lead and tin","Copper and zinc","Iron and carbon","Aluminium and copper"],
+a:"Lead and tin",
+s:"Traditional soft solder is commonly an alloy of tin and lead, though lead-free solders are widely used today."
+},
+
+{
+q:"German silver is an alloy of:",
+o:["Copper, zinc and nickel","Gold and silver","Iron and carbon","Aluminium and magnesium"],
+a:"Copper, zinc and nickel",
+s:"German silver, despite its name, contains copper, zinc and nickel and does not contain silver."
+},
+
+{
+q:"Which metal is extracted from bauxite?",
+o:["Aluminium","Iron","Copper","Zinc"],
+a:"Aluminium",
+s:"Bauxite is processed to obtain alumina, which is then electrolytically reduced to aluminium."
+},
+
+{
+q:"The chief ore of aluminium is:",
+o:["Bauxite","Cryolite","Haematite","Galena"],
+a:"Bauxite",
+s:"Bauxite is the principal commercial ore of aluminium."
+},
+
+{
+q:"Cryolite is used in aluminium extraction mainly to:",
+o:["Lower the melting point of alumina and improve conductivity","Increase rusting","Produce hydrogen","Make steel"],
+a:"Lower the melting point of alumina and improve conductivity",
+s:"Cryolite acts as a solvent for alumina and lowers the operating temperature while improving the electrolytic mixture."
+},
+
+{
+q:"Alumina is:",
+o:["Aluminium oxide","Aluminium chloride","Aluminium sulphate","Aluminium hydroxide only"],
+a:"Aluminium oxide",
+s:"Alumina is aluminium oxide, Al₂O₃."
+},
+
+{
+q:"The formula of aluminium oxide is:",
+o:["Al₂O₃","AlO","AlO₂","Al₂O"],
+a:"Al₂O₃",
+s:"Aluminium forms Al³⁺ and oxygen forms O²⁻; balancing charges gives Al₂O₃."
+},
+
+{
+q:"Which metal is amphoteric?",
+o:["Aluminium","Sodium","Potassium","Silver"],
+a:"Aluminium",
+s:"Aluminium and its oxide/hydroxide can react with both acids and bases, showing amphoteric behaviour."
+},
+
+{
+q:"Aluminium oxide is:",
+o:["Amphoteric","Strongly acidic only","Strongly basic only","Neutral gas"],
+a:"Amphoteric",
+s:"Al₂O₃ reacts with both acids and strong bases and is therefore amphoteric."
+},
+
+{
+q:"Zinc oxide is:",
+o:["Amphoteric","Only acidic","Only basic","An inert gas"],
+a:"Amphoteric",
+s:"ZnO reacts with both acids and bases, so it is amphoteric."
+},
+
+{
+q:"Which oxide is acidic?",
+o:["CO₂","Na₂O","CaO","MgO"],
+a:"CO₂",
+s:"Carbon dioxide is a non-metal oxide and reacts with water to form carbonic acid."
+},
+
+{
+q:"Which oxide is basic?",
+o:["CaO","CO₂","SO₂","SO₃"],
+a:"CaO",
+s:"Calcium oxide is a metal oxide and reacts with water to form the base calcium hydroxide."
+},
+
+{
+q:"Which oxide is neutral?",
+o:["CO","CO₂","SO₂","CaO"],
+a:"CO",
+s:"Carbon monoxide is generally classified as a neutral oxide because it does not readily react with acids or bases to form salts."
+},
+
+{
+q:"Sulphur dioxide is an example of:",
+o:["Acidic oxide","Basic oxide","Neutral oxide","Amphoteric metal"],
+a:"Acidic oxide",
+s:"SO₂ is a non-metal oxide and reacts with water to form sulphurous acid."
+},
+
+{
+q:"The chemical formula of sulphurous acid is:",
+o:["H₂SO₃","H₂SO₄","H₂S","HSO₃"],
+a:"H₂SO₃",
+s:"Sulphur dioxide dissolves in water to form sulphurous acid, H₂SO₃."
+},
+
+{
+q:"The chemical formula of carbonic acid is:",
+o:["H₂CO₃","HCO₃","H₂CO₂","CO₂"],
+a:"H₂CO₃",
+s:"Carbon dioxide reacts with water reversibly to form carbonic acid, H₂CO₃."
+},
+
+{
+q:"Which gas dissolves in water to form carbonic acid?",
+o:["Carbon dioxide","Oxygen","Nitrogen","Hydrogen"],
+a:"Carbon dioxide",
+s:"CO₂ + H₂O ⇌ H₂CO₃."
+},
+
+{
+q:"Which gas dissolves in water to form sulphurous acid?",
+o:["Sulphur dioxide","Oxygen","Nitrogen","Hydrogen"],
+a:"Sulphur dioxide",
+s:"SO₂ dissolves in water to form sulphurous acid, H₂SO₃."
+},
+
+{
+q:"The chemical formula of nitric oxide is:",
+o:["NO","NO₂","N₂O","N₂O₅"],
+a:"NO",
+s:"Nitric oxide contains one nitrogen atom and one oxygen atom, formula NO."
+},
+
+{
+q:"The brown gas produced in the atmosphere from nitrogen oxides is:",
+o:["NO₂","CO₂","SO₂","NH₃"],
+a:"NO₂",
+s:"Nitrogen dioxide is a reddish-brown gas and an important air pollutant."
+},
+
+{
+q:"Nitrogen dioxide is:",
+o:["A reddish-brown toxic gas","A colourless noble gas","A metal","A solid salt only"],
+a:"A reddish-brown toxic gas",
+s:"NO₂ is a toxic reddish-brown gas associated with combustion and atmospheric pollution."
+},
+
+{
+q:"Which gas contributes to acid rain and photochemical smog?",
+o:["Nitrogen dioxide","Helium","Hydrogen","Neon"],
+a:"Nitrogen dioxide",
+s:"NO₂ participates in atmospheric reactions leading to nitric acid and photochemical smog formation."
+},
+
+{
+q:"The main chemical responsible for the bleaching action of chlorine is formed when chlorine reacts with:",
+o:["Water","Nitrogen","Hydrogen","Methane"],
+a:"Water",
+s:"Chlorine reacts with water to form hydrochloric acid and hypochlorous acid, the latter being a strong oxidising bleaching species."
+},
+
+{
+q:"The reaction Cl₂ + H₂O ⇌ HCl + HClO is an example of:",
+o:["Disproportionation","Combination only","Neutralisation","Polymerisation"],
+a:"Disproportionation",
+s:"Chlorine is simultaneously oxidised to hypochlorous acid and reduced to hydrochloric acid."
+},
+
+{
+q:"A chemical reaction in which the same element is simultaneously oxidised and reduced is called:",
+o:["Disproportionation","Neutralisation","Hydrolysis","Polymerisation"],
+a:"Disproportionation",
+s:"In disproportionation, one species of an element undergoes both oxidation and reduction."
+},
+
+{
+q:"Which halogen is most reactive?",
+o:["Fluorine","Chlorine","Bromine","Iodine"],
+a:"Fluorine",
+s:"Halogen reactivity decreases down Group 17, making fluorine the most reactive."
+},
+
+{
+q:"Which halogen is least reactive among the following?",
+o:["Iodine","Fluorine","Chlorine","Bromine"],
+a:"Iodine",
+s:"Halogen reactivity decreases down the group, so iodine is less reactive than fluorine, chlorine and bromine."
+},
+
+{
+q:"The colour of iodine vapour is:",
+o:["Violet","Green","Yellow","Blue"],
+a:"Violet",
+s:"Iodine vapour has a characteristic violet or purple colour."
+},
+
+{
+q:"Chlorine gas is:",
+o:["Greenish-yellow","Red","Blue","Violet"],
+a:"Greenish-yellow",
+s:"Chlorine is a toxic greenish-yellow gas at room temperature."
+},
+
+{
+q:"Bromine vapour is generally:",
+o:["Reddish-brown","Blue","Green","White"],
+a:"Reddish-brown",
+s:"Bromine is a reddish-brown liquid and its vapour is similarly coloured."
+},
+
+{
+q:"Fluorine gas is:",
+o:["Pale yellow","Green","Red","Blue"],
+a:"Pale yellow",
+s:"Fluorine is a very reactive pale yellow gas."
+},
+
+{
+q:"Which noble gas has the lowest atomic number?",
+o:["Helium","Neon","Argon","Krypton"],
+a:"Helium",
+s:"Helium has atomic number 2 and is the lightest noble gas."
+},
+
+{
+q:"Which noble gas is commonly used in cryogenic applications due to its very low boiling point?",
+o:["Helium","Argon","Neon","Krypton"],
+a:"Helium",
+s:"Liquid helium has an extremely low boiling point and is used for cryogenic cooling."
+},
+
+{
+q:"Which element is named after the planet Uranus?",
+o:["Uranium","Neptunium","Plutonium","Radium"],
+a:"Uranium",
+s:"Uranium was named after the planet Uranus."
+},
+
+{
+q:"Which element was named after the planet Neptune?",
+o:["Neptunium","Uranium","Plutonium","Polonium"],
+a:"Neptunium",
+s:"Neptunium was named after Neptune."
+},
+
+{
+q:"Which element was named after Pluto?",
+o:["Plutonium","Polonium","Uranium","Radium"],
+a:"Plutonium",
+s:"Plutonium was named after Pluto."
+},
+
+{
+q:"Which element was discovered by Marie and Pierre Curie and named after Poland?",
+o:["Polonium","Radium","Uranium","Francium"],
+a:"Polonium",
+s:"Polonium was discovered by Marie and Pierre Curie and named after Marie Curie's homeland, Poland."
+},
+
+{
+q:"Radium is associated with the work of:",
+o:["Marie and Pierre Curie","Newton","Mendeleev","Chadwick"],
+a:"Marie and Pierre Curie",
+s:"Marie and Pierre Curie carried out pioneering work on radioactivity and discovered radium and polonium."
+},
+
+{
+q:"The phenomenon of emission of light by certain substances without significant heat is:",
+o:["Luminescence","Combustion","Conduction","Neutralisation"],
+a:"Luminescence",
+s:"Luminescence refers to light emission not primarily caused by high temperature."
+},
+
+{
+q:"The glow produced by some organisms such as fireflies is called:",
+o:["Bioluminescence","Fluorescence only","Combustion","Incandescence"],
+a:"Bioluminescence",
+s:"Bioluminescence is light produced by living organisms through chemical reactions."
+},
+
+{
+q:"The chemical energy released in a battery is converted into:",
+o:["Electrical energy","Only heat","Only light","Nuclear energy"],
+a:"Electrical energy",
+s:"Electrochemical reactions in a battery produce electrical energy from chemical energy."
+},
+
+{
+q:"A fuel cell directly converts chemical energy into:",
+o:["Electrical energy","Sound energy","Mechanical energy only","Nuclear energy"],
+a:"Electrical energy",
+s:"Fuel cells generate electricity through electrochemical reactions, commonly involving hydrogen and oxygen."
+},
+
+{
+q:"The product of hydrogen-oxygen fuel cell is mainly:",
+o:["Water","Carbon dioxide","Methane","Ammonia"],
+a:"Water",
+s:"In a hydrogen-oxygen fuel cell, hydrogen and oxygen react electrochemically to produce water and electrical energy."
+},
+
+{
+q:"Which gas is used as an inert atmosphere in chemical laboratories?",
+o:["Argon","Oxygen","Chlorine","Hydrogen"],
+a:"Argon",
+s:"Argon is chemically inert and can provide a protective atmosphere for reactions sensitive to oxygen or moisture."
+},
+
+{
+q:"Which element has the symbol Si?",
+o:["Silicon","Silver","Sulphur","Sodium"],
+a:"Silicon",
+s:"Si is the chemical symbol for silicon."
+},
+
+{
+q:"Which element has the symbol S?",
+o:["Sulphur","Silicon","Sodium","Silver"],
+a:"Sulphur",
+s:"S is the chemical symbol for sulphur."
+},
+
+{
+q:"Which element has the symbol Cl?",
+o:["Chlorine","Calcium","Cobalt","Carbon"],
+a:"Chlorine",
+s:"Cl is the chemical symbol for chlorine."
+},
+
+{
+q:"Which element has the symbol Ca?",
+o:["Calcium","Carbon","Cadmium","Cobalt"],
+a:"Calcium",
+s:"Ca is the chemical symbol for calcium."
+},
+
+{
+q:"Which element has the symbol Co?",
+o:["Cobalt","Copper","Carbon","Calcium"],
+a:"Cobalt",
+s:"Co is the chemical symbol for cobalt."
+},
+
+{
+q:"Which element has the symbol Cu?",
+o:["Copper","Calcium","Cobalt","Carbon"],
+a:"Copper",
+s:"Cu is the chemical symbol for copper."
+},
+
+{
+q:"Which element has the symbol Zn?",
+o:["Zinc","Zirconium","Zircon","Zincate"],
+a:"Zinc",
+s:"Zn is the chemical symbol for zinc."
+},
+
+{
+q:"Which element has the symbol Sn?",
+o:["Tin","Sodium","Sulphur","Silicon"],
+a:"Tin",
+s:"Tin has the symbol Sn, derived from the Latin word stannum."
+},
+
+{
+q:"Which element has the symbol Pb?",
+o:["Lead","Platinum","Phosphorus","Polonium"],
+a:"Lead",
+s:"Pb is the chemical symbol for lead, derived from Latin plumbum."
+},
+
+{
+q:"Which element has the symbol Pt?",
+o:["Platinum","Potassium","Plutonium","Phosphorus"],
+a:"Platinum",
+s:"Pt is the chemical symbol for platinum."
+},
+
+{
+q:"Which element has the symbol Hg?",
+o:["Mercury","Hydrogen","Magnesium","Hafnium"],
+a:"Mercury",
+s:"Hg is the chemical symbol for mercury."
+},
+
+{
+q:"Which element has the symbol Mg?",
+o:["Magnesium","Manganese","Mercury","Molybdenum"],
+a:"Magnesium",
+s:"Mg is the chemical symbol for magnesium."
+},
+
+{
+q:"Which element has the symbol Mn?",
+o:["Manganese","Magnesium","Mercury","Molybdenum"],
+a:"Manganese",
+s:"Mn is the chemical symbol for manganese."
+},
+
+{
+q:"Which element has the symbol Cr?",
+o:["Chromium","Carbon","Cobalt","Copper"],
+a:"Chromium",
+s:"Cr is the chemical symbol for chromium."
+},
+
+{
+q:"Which element has the symbol Ni?",
+o:["Nickel","Nitrogen","Neon","Niobium"],
+a:"Nickel",
+s:"Ni is the chemical symbol for nickel."
+},
+
+{
+q:"Which element has the symbol Ag?",
+o:["Silver","Argon","Aluminium","Gold"],
+a:"Silver",
+s:"Ag is the chemical symbol for silver."
+},
+
+{
+q:"Which element has the symbol Au?",
+o:["Gold","Silver","Argon","Aluminium"],
+a:"Gold",
+s:"Au is the chemical symbol for gold."
+},
+
+{
+q:"Which element has the symbol Fe?",
+o:["Iron","Fluorine","Francium","Fermium"],
+a:"Iron",
+s:"Fe is the chemical symbol for iron."
+},
+
+{
+q:"Which element has the symbol Al?",
+o:["Aluminium","Argon","Americium","Alkaline metal"],
+a:"Aluminium",
+s:"Al is the chemical symbol for aluminium."
+},
+
+{
+q:"Which element has the symbol Ne?",
+o:["Neon","Neptunium","Nickel","Nitrogen"],
+a:"Neon",
+s:"Ne is the chemical symbol for neon."
+},
+
+{
+q:"Which element has the symbol Ar?",
+o:["Argon","Arsenic","Aluminium","Argentum"],
+a:"Argon",
+s:"Ar is the chemical symbol for argon."
+},
+
+{
+q:"Which element has the symbol As?",
+o:["Arsenic","Argon","Astatine","Aluminium"],
+a:"Arsenic",
+s:"As is the chemical symbol for arsenic."
+},
+
+{
+q:"Which element has the symbol I?",
+o:["Iodine","Iron","Indium","Iridium"],
+a:"Iodine",
+s:"I is the chemical symbol for iodine."
+},
+
+{
+q:"Which element has the symbol Br?",
+o:["Bromine","Boron","Beryllium","Barium"],
+a:"Bromine",
+s:"Br is the chemical symbol for bromine."
+},
+
+{
+q:"Which element has the symbol F?",
+o:["Fluorine","Francium","Iron","Fermium"],
+a:"Fluorine",
+s:"F is the chemical symbol for fluorine."
+},
+
+{
+q:"Which element has the symbol N?",
+o:["Nitrogen","Neon","Nickel","Nobelium"],
+a:"Nitrogen",
+s:"N is the chemical symbol for nitrogen."
+},
+
+{
+q:"Which element has the symbol O?",
+o:["Oxygen","Osmium","Oganesson","Oxide"],
+a:"Oxygen",
+s:"O is the chemical symbol for oxygen."
+},
+
+{
+q:"Which element has the symbol P?",
+o:["Phosphorus","Potassium","Platinum","Polonium"],
+a:"Phosphorus",
+s:"P is the chemical symbol for phosphorus."
+},
+
+{
+q:"Which element has the symbol K?",
+o:["Potassium","Krypton","Calcium","Kryptonium"],
+a:"Potassium",
+s:"K is the chemical symbol for potassium."
+},
+
+{
+q:"Which element has the symbol Rb?",
+o:["Rubidium","Ruthenium","Radium","Rhenium"],
+a:"Rubidium",
+s:"Rb is the chemical symbol for rubidium."
+},
+
+{
+q:"Which element has the symbol Cs?",
+o:["Cesium","Calcium","Carbon","Chromium"],
+a:"Cesium",
+s:"Cs is the chemical symbol for caesium/cesium."
+},
+
+{
+q:"Which element has the symbol Fr?",
+o:["Francium","Fluorine","Fermium","Iron"],
+a:"Francium",
+s:"Fr is the chemical symbol for francium."
+},
+
+{
+q:"Which element has the symbol Ra?",
+o:["Radium","Radon","Radonium","Rhenium"],
+a:"Radium",
+s:"Ra is the chemical symbol for radium."
+},
+
+{
+q:"Which element has the symbol Rn?",
+o:["Radon","Radium","Rhenium","Rutherfordium"],
+a:"Radon",
+s:"Rn is the chemical symbol for radon."
+},
+
+{
+q:"Which element has the symbol U?",
+o:["Uranium","Uranus","Ununium","Ultrium"],
+a:"Uranium",
+s:"U is the chemical symbol for uranium."
+},
+
+{
+q:"Which element has the symbol Pu?",
+o:["Plutonium","Polonium","Platinum","Phosphorus"],
+a:"Plutonium",
+s:"Pu is the chemical symbol for plutonium."
+},
+
+{
+q:"Which element has the symbol Po?",
+o:["Polonium","Potassium","Polonium only","Polonium is correct"],
+a:"Polonium",
+s:"Po is the chemical symbol for polonium."
+},
+
+{
+q:"Which element has the symbol Th?",
+o:["Thorium","Thallium","Technetium","Titanium"],
+a:"Thorium",
+s:"Th is the chemical symbol for thorium."
+},
+
+{
+q:"Which element has the symbol Ti?",
+o:["Titanium","Tin","Thallium","Thorium"],
+a:"Titanium",
+s:"Ti is the chemical symbol for titanium."
+},
+
+{
+q:"Which element has the symbol W?",
+o:["Tungsten","Tin","Titanium","Thorium"],
+a:"Tungsten",
+s:"W is the chemical symbol for tungsten."
+},
+
+{
+q:"Which element has the symbol Pb?",
+o:["Lead","Platinum","Palladium","Polonium"],
+a:"Lead",
+s:"Pb is the chemical symbol for lead."
+},
+
+{
+q:"Which element has the symbol Pt?",
+o:["Platinum","Potassium","Plutonium","Phosphorus"],
+a:"Platinum",
+s:"Pt is the chemical symbol for platinum."
+},
+
+{
+q:"Which element has the symbol Pd?",
+o:["Palladium","Potassium","Platinum","Polonium"],
+a:"Palladium",
+s:"Pd is the chemical symbol for palladium."
+},
+
+{
+q:"Which element has the symbol Cd?",
+o:["Cadmium","Calcium","Carbon","Cobalt"],
+a:"Cadmium",
+s:"Cd is the chemical symbol for cadmium."
+},
+
+{
+q:"Which element has the symbol Hg?",
+o:["Mercury","Magnesium","Manganese","Hydrogen"],
+a:"Mercury",
+s:"Hg is the chemical symbol for mercury."
+},
+
+{
+q:"Which element has the symbol Sb?",
+o:["Antimony","Silver","Selenium","Samarium"],
+a:"Antimony",
+s:"Sb is the chemical symbol for antimony, derived from Latin stibium."
+},
+
+{
+q:"Which element has the symbol Se?",
+o:["Selenium","Silicon","Silver","Scandium"],
+a:"Selenium",
+s:"Se is the chemical symbol for selenium."
+},
+
+{
+q:"Which element has the symbol Te?",
+o:["Tellurium","Titanium","Technetium","Terbium"],
+a:"Tellurium",
+s:"Te is the chemical symbol for tellurium."
+},
+
+{
+q:"Which element has the symbol Xe?",
+o:["Xenon","Xerium","Xenium","X-ray element"],
+a:"Xenon",
+s:"Xe is the chemical symbol for xenon, a noble gas."
+},
+
+{
+q:"Which element has the symbol Kr?",
+o:["Krypton","Kryptonium","Krypton is correct","Potassium"],
+a:"Krypton",
+s:"Kr is the chemical symbol for krypton, a noble gas."
+},
+
+{
+q:"Which element has the symbol He?",
+o:["Helium","Helenium","Hydrogen","Hafnium"],
+a:"Helium",
+s:"He is the chemical symbol for helium."
+},
+
+{
+q:"Which element has the symbol H?",
+o:["Hydrogen","Helium","Hafnium","Holmium"],
+a:"Hydrogen",
+s:"H is the chemical symbol for hydrogen."
+},
+
+{
+q:"Which element has the symbol Li?",
+o:["Lithium","Lead","Lanthanum","Lutetium"],
+a:"Lithium",
+s:"Li is the chemical symbol for lithium."
+},
+
+{
+q:"Which element has the symbol Be?",
+o:["Beryllium","Boron","Bromine","Berkelium"],
+a:"Beryllium",
+s:"Be is the chemical symbol for beryllium."
+},
+
+{
+q:"Which element has the symbol B?",
+o:["Boron","Bromine","Beryllium","Barium"],
+a:"Boron",
+s:"B is the chemical symbol for boron."
+},
+
+{
+q:"Which element has the symbol C?",
+o:["Carbon","Calcium","Chlorine","Cobalt"],
+a:"Carbon",
+s:"C is the chemical symbol for carbon."
+},
+
+{
+q:"Which element has the symbol O?",
+o:["Oxygen","Osmium","Oganesson","Oxide"],
+a:"Oxygen",
+s:"O is the chemical symbol for oxygen."
+},
+
+{
+q:"Which element has the symbol F?",
+o:["Fluorine","Iron","Francium","Fermium"],
+a:"Fluorine",
+s:"F is the chemical symbol for fluorine."
+},
+
+{
+q:"Which element has the symbol Na?",
+o:["Sodium","Nitrogen","Neon","Nickel"],
+a:"Sodium",
+s:"Na is the chemical symbol for sodium."
+},
+
+{
+q:"Which element has the symbol Mg?",
+o:["Magnesium","Manganese","Mercury","Molybdenum"],
+a:"Magnesium",
+s:"Mg is the chemical symbol for magnesium."
+},
+
+{
+q:"Which element has the symbol Cl?",
+o:["Chlorine","Calcium","Carbon","Cobalt"],
+a:"Chlorine",
+s:"Cl is the chemical symbol for chlorine."
+},
+
+{
+q:"Which element has the symbol Ar?",
+o:["Argon","Arsenic","Aluminium","Actinium"],
+a:"Argon",
+s:"Ar is the chemical symbol for argon."
+},
+
+{
+q:"Which element has the symbol Ca?",
+o:["Calcium","Carbon","Cadmium","Cobalt"],
+a:"Calcium",
+s:"Ca is the chemical symbol for calcium."
+},
+
+{
+q:"Which element has the symbol Sc?",
+o:["Scandium","Silicon","Sulphur","Selenium"],
+a:"Scandium",
+s:"Sc is the chemical symbol for scandium."
+},
+
+{
+q:"Which element has the symbol Cr?",
+o:["Chromium","Carbon","Cobalt","Copper"],
+a:"Chromium",
+s:"Cr is the chemical symbol for chromium."
+},
+
+{
+q:"Which element has the symbol Fe?",
+o:["Iron","Fluorine","Fermium","Francium"],
+a:"Iron",
+s:"Fe is the chemical symbol for iron."
+},
+
+{
+q:"Which element has the symbol Ni?",
+o:["Nickel","Nitrogen","Neon","Niobium"],
+a:"Nickel",
+s:"Ni is the chemical symbol for nickel."
+},
+
+{
+q:"Which element has the symbol Cu?",
+o:["Copper","Calcium","Cobalt","Carbon"],
+a:"Copper",
+s:"Cu is the chemical symbol for copper."
+},
+
+{
+q:"Which element has the symbol Zn?",
+o:["Zinc","Zirconium","Zinc is correct","Zircon"],
+a:"Zinc",
+s:"Zn is the chemical symbol for zinc."
+},
+
+{
+q:"Which element has the symbol Ga?",
+o:["Gallium","Gold","Gadolinium","Germanium"],
+a:"Gallium",
+s:"Ga is the chemical symbol for gallium."
+},
+
+{
+q:"Which element has the symbol Ge?",
+o:["Germanium","Gallium","Gold","Gadolinium"],
+a:"Germanium",
+s:"Ge is the chemical symbol for germanium."
+},
+
+{
+q:"Which element has the symbol As?",
+o:["Arsenic","Argon","Astatine","Aluminium"],
+a:"Arsenic",
+s:"As is the chemical symbol for arsenic."
+},
+
+{
+q:"Which element has the symbol Br?",
+o:["Bromine","Boron","Beryllium","Barium"],
+a:"Bromine",
+s:"Br is the chemical symbol for bromine."
+},
+
+{
+q:"Which element has the symbol Kr?",
+o:["Krypton","Krypton is correct","Kryptonium","Potassium"],
+a:"Krypton",
+s:"Kr is the chemical symbol for krypton."
+},
+
+{
+q:"Which element has the symbol Rb?",
+o:["Rubidium","Ruthenium","Radium","Rhenium"],
+a:"Rubidium",
+s:"Rb is the chemical symbol for rubidium."
+},
+
+{
+q:"Which element has the symbol Sr?",
+o:["Strontium","Sulphur","Silicon","Silver"],
+a:"Strontium",
+s:"Sr is the chemical symbol for strontium."
+},
+
+{
+q:"Which element has the symbol Mo?",
+o:["Molybdenum","Magnesium","Manganese","Mercury"],
+a:"Molybdenum",
+s:"Mo is the chemical symbol for molybdenum."
+},
+
+{
+q:"Which element has the symbol I?",
+o:["Iodine","Iron","Indium","Iridium"],
+a:"Iodine",
+s:"I is the chemical symbol for iodine."
+},
+
+{
+q:"Which element has the symbol Ba?",
+o:["Barium","Boron","Beryllium","Bromine"],
+a:"Barium",
+s:"Ba is the chemical symbol for barium."
+},
+
+{
+q:"Which element has the symbol La?",
+o:["Lanthanum","Lead","Lithium","Lawrencium"],
+a:"Lanthanum",
+s:"La is the chemical symbol for lanthanum."
+},
+
+{
+q:"Which element has the symbol Ce?",
+o:["Cerium","Cesium","Carbon","Calcium"],
+a:"Cerium",
+s:"Ce is the chemical symbol for cerium."
+},
+
+{
+q:"Which element has the symbol Nd?",
+o:["Neodymium","Neon","Nickel","Nobelium"],
+a:"Neodymium",
+s:"Nd is the chemical symbol for neodymium."
+},
+
+{
+q:"Which element has the symbol Eu?",
+o:["Europium","Einsteinium","Erbium","Eunium"],
+a:"Europium",
+s:"Eu is the chemical symbol for europium."
+},
+
+{
+q:"Which element has the symbol Gd?",
+o:["Gadolinium","Gallium","Gold","Germanium"],
+a:"Gadolinium",
+s:"Gd is the chemical symbol for gadolinium."
+},
+
+{
+q:"Which element has the symbol Dy?",
+o:["Dysprosium","Dubnium","Darmstadtium","Dysprosium is correct"],
+a:"Dysprosium",
+s:"Dy is the chemical symbol for dysprosium."
+},
+
+{
+q:"Which element has the symbol Er?",
+o:["Erbium","Europium","Einsteinium","Erbium is correct"],
+a:"Erbium",
+s:"Er is the chemical symbol for erbium."
+},
+
+{
+q:"Which element has the symbol Yb?",
+o:["Ytterbium","Yttrium","Ytterbium is correct","Yttrium oxide"],
+a:"Ytterbium",
+s:"Yb is the chemical symbol for ytterbium."
+},
+
+{
+q:"Which element has the symbol Hf?",
+o:["Hafnium","Holmium","Hydrogen","Hassium"],
+a:"Hafnium",
+s:"Hf is the chemical symbol for hafnium."
+},
+
+{
+q:"Which element has the symbol Ta?",
+o:["Tantalum","Thallium","Tantalum is correct","Titanium"],
+a:"Tantalum",
+s:"Ta is the chemical symbol for tantalum."
+},
+
+{
+q:"Which element has the symbol Re?",
+o:["Rhenium","Radium","Rhenium is correct","Rhodium"],
+a:"Rhenium",
+s:"Re is the chemical symbol for rhenium."
+},
+
+{
+q:"Which element has the symbol Os?",
+o:["Osmium","Oxygen","Osmium is correct","Oganesson"],
+a:"Osmium",
+s:"Os is the chemical symbol for osmium."
+},
+
+{
+q:"Which element has the symbol Ir?",
+o:["Iridium","Iron","Iodine","Iridium is correct"],
+a:"Iridium",
+s:"Ir is the chemical symbol for iridium."
+},
+
+{
+q:"Which element has the symbol Tl?",
+o:["Thallium","Titanium","Thulium","Thorium"],
+a:"Thallium",
+s:"Tl is the chemical symbol for thallium."
+},
+
+{
+q:"Which element has the symbol Bi?",
+o:["Bismuth","Beryllium","Boron","Bismuth is correct"],
+a:"Bismuth",
+s:"Bi is the chemical symbol for bismuth."
+},
+
+{
+q:"Which element has the symbol At?",
+o:["Astatine","Argon","Actinium","Antimony"],
+a:"Astatine",
+s:"At is the chemical symbol for astatine, a radioactive halogen."
+},
+
+{
+q:"Which element has the symbol Rn?",
+o:["Radon","Radium","Rhenium","Rutherfordium"],
+a:"Radon",
+s:"Rn is the chemical symbol for radon."
+},
+
+{
+q:"Which element has the symbol Ac?",
+o:["Actinium","Argon","Aluminium","Americium"],
+a:"Actinium",
+s:"Ac is the chemical symbol for actinium."
+},
+
+{
+q:"Which element has the symbol Th?",
+o:["Thorium","Thallium","Titanium","Technetium"],
+a:"Thorium",
+s:"Th is the chemical symbol for thorium."
+},
+
+{
+q:"Which element has the symbol Pa?",
+o:["Protactinium","Palladium","Polonium","Potassium"],
+a:"Protactinium",
+s:"Pa is the chemical symbol for protactinium."
+},
+
+{
+q:"Which element has the symbol Np?",
+o:["Neptunium","Nickel","Neon","Neodymium"],
+a:"Neptunium",
+s:"Np is the chemical symbol for neptunium."
+},
+
+{
+q:"Which element has the symbol Am?",
+o:["Americium","Aluminium","Americium is correct","Argon"],
+a:"Americium",
+s:"Am is the chemical symbol for americium."
+},
+
+{
+q:"Which element has the symbol Cm?",
+o:["Curium","Chromium","Calcium","Copper"],
+a:"Curium",
+s:"Cm is the chemical symbol for curium."
+},
+
+{
+q:"Which element has the symbol Bk?",
+o:["Berkelium","Beryllium","Bismuth","Bohrium"],
+a:"Berkelium",
+s:"Bk is the chemical symbol for berkelium."
+},
+
+{
+q:"Which element has the symbol Cf?",
+o:["Californium","Carbon","Chlorine","Cobalt"],
+a:"Californium",
+s:"Cf is the chemical symbol for californium."
+},
+
+{
+q:"Which element has the symbol Es?",
+o:["Einsteinium","Europium","Erbium","Einsteinium is correct"],
+a:"Einsteinium",
+s:"Es is the chemical symbol for einsteinium."
+},
+
+{
+q:"Which element has the symbol Fm?",
+o:["Fermium","Fluorine","Francium","Fermium is correct"],
+a:"Fermium",
+s:"Fm is the chemical symbol for fermium."
+},
+
+{
+q:"Which element has the symbol Md?",
+o:["Mendelevium","Magnesium","Molybdenum","Mendelevium is correct"],
+a:"Mendelevium",
+s:"Md is the chemical symbol for mendelevium."
+},
+
+{
+q:"Which element has the symbol No?",
+o:["Nobelium","Nitrogen","Neon","Nickel"],
+a:"Nobelium",
+s:"No is the chemical symbol for nobelium."
+},
+
+{
+q:"Which element has the symbol Lr?",
+o:["Lawrencium","Lanthanum","Lithium","Lead"],
+a:"Lawrencium",
+s:"Lr is the chemical symbol for lawrencium."
+},
+
+{
+q:"Which element has the symbol Rf?",
+o:["Rutherfordium","Radium","Rhenium","Ruthenium"],
+a:"Rutherfordium",
+s:"Rf is the chemical symbol for rutherfordium."
+},
+
+{
+q:"Which element has the symbol Db?",
+o:["Dubnium","Dysprosium","Dubnium is correct","Darmstadtium"],
+a:"Dubnium",
+s:"Db is the chemical symbol for dubnium."
+},
+
+{
+q:"Which element has the symbol Sg?",
+o:["Seaborgium","Silver","Sulphur","Scandium"],
+a:"Seaborgium",
+s:"Sg is the chemical symbol for seaborgium."
+},
+
+{
+q:"Which element has the symbol Bh?",
+o:["Bohrium","Bismuth","Boron","Bohrium is correct"],
+a:"Bohrium",
+s:"Bh is the chemical symbol for bohrium."
+},
+
+{
+q:"Which element has the symbol Hs?",
+o:["Hassium","Hydrogen","Holmium","Hafnium"],
+a:"Hassium",
+s:"Hs is the chemical symbol for hassium."
+},
+
+{
+q:"Which element has the symbol Mt?",
+o:["Meitnerium","Magnesium","Manganese","Mendelevium"],
+a:"Meitnerium",
+s:"Mt is the chemical symbol for meitnerium."
+},
+
+{
+q:"Which element has the symbol Ds?",
+o:["Darmstadtium","Dysprosium","Dubnium","Darmstadtium is correct"],
+a:"Darmstadtium",
+s:"Ds is the chemical symbol for darmstadtium."
+},
+
+{
+q:"Which element has the symbol Rg?",
+o:["Roentgenium","Radium","Rhenium","Rubidium"],
+a:"Roentgenium",
+s:"Rg is the chemical symbol for roentgenium."
+},
+
+{
+q:"Which element has the symbol Cn?",
+o:["Copernicium","Carbon","Calcium","Cobalt"],
+a:"Copernicium",
+s:"Cn is the chemical symbol for copernicium."
+},
+
+{
+q:"Which element has the symbol Nh?",
+o:["Nihonium","Neon","Nickel","Nitrogen"],
+a:"Nihonium",
+s:"Nh is the chemical symbol for nihonium."
+},
+
+{
+q:"Which element has the symbol Fl?",
+o:["Flerovium","Fluorine","Francium","Flerovium is correct"],
+a:"Flerovium",
+s:"Fl is the chemical symbol for flerovium."
+},
+
+{
+q:"Which element has the symbol Mc?",
+o:["Moscovium","Magnesium","Manganese","Mercury"],
+a:"Moscovium",
+s:"Mc is the chemical symbol for moscovium."
+},
+
+{
+q:"Which element has the symbol Lv?",
+o:["Livermorium","Lithium","Lawrencium","Livermorium is correct"],
+a:"Livermorium",
+s:"Lv is the chemical symbol for livermorium."
+},
+
+{
+q:"Which element has the symbol Ts?",
+o:["Tennessine","Titanium","Thorium","Tantalum"],
+a:"Tennessine",
+s:"Ts is the chemical symbol for tennessine, a Group 17 element."
+},
+
+{
+q:"Which element has the symbol Og?",
+o:["Oganesson","Osmium","Oxygen","Oganesson is correct"],
+a:"Oganesson",
+s:"Og is the chemical symbol for oganesson, a Group 18 element."
+}
+
+];
+
+
+/* ===============================
+   TEST ENGINE
+================================ */
+
+let current = 0;
+
+let answers = new Array(questions.length).fill(null);
+
+let submitted = false;
+
+let seconds = 3600;
+
+
+/* SHOW QUESTION */
+
+function show(){
+
+    let q = questions[current];
+
+    document.getElementById("count").textContent =
+        "Question " + (current + 1) +
+        " of " + questions.length;
+
+    document.getElementById("question").textContent =
+        q.q;
+
+    let box =
+        document.getElementById("options");
+
+    box.innerHTML = "";
+
+    q.o.forEach(function(opt){
+
+        let label =
+            document.createElement("label");
+
+        label.className = "option";
+
+        let input =
+            document.createElement("input");
+
+        input.type = "radio";
+
+        input.name = "answer";
+
+        input.value = opt;
+
+        if(answers[current] === opt){
+
+            input.checked = true;
+
+        }
+
+        input.onchange = function(){
+
+            answers[current] = opt;
+
+            palette();
+
+        };
+
+        label.appendChild(input);
+
+        label.appendChild(
+            document.createTextNode(opt)
+        );
+
+        box.appendChild(label);
+
+    });
+
+    palette();
+
+}
+
+
+/* PALETTE */
+
+function palette(){
+
+    let p =
+        document.getElementById("palette");
+
+    p.innerHTML = "";
+
+    questions.forEach(function(q,i){
+
+        let b =
+            document.createElement("button");
+
+        b.textContent = i + 1;
+
+        if(answers[i] !== null){
+
+            b.classList.add("done");
+
+        }
+
+        b.onclick = function(){
+
+            current = i;
+
+            show();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+        p.appendChild(b);
+
+    });
+
+}
+
+
+/* NEXT */
+
+function next(){
+
+    if(current < questions.length - 1){
+
+        current++;
+
+        show();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* PREVIOUS */
+
+function previous(){
+
+    if(current > 0){
+
+        current--;
+
+        show();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* TIMER */
+
+function timer(){
+
+    if(submitted)return;
+
+    let m =
+        Math.floor(seconds / 60);
+
+    let s =
+        seconds % 60;
+
+    document.getElementById("timer")
+        .textContent =
+        String(m).padStart(2,"0")
+        + ":" +
+        String(s).padStart(2,"0");
+
+    if(seconds <= 0){
+
+        submitTest(true);
+
+        return;
+
+    }
+
+    seconds--;
+
+}
+
+setInterval(timer,1000);
+
+
+/* SUBMIT */
+
+function submitTest(auto){
+
+    if(submitted)return;
+
+    if(!auto){
+
+        if(!confirm(
+            "Are you sure you want to submit Chemistry Test 1?"
+        )){
+
+            return;
+
+        }
+
+    }
+
+    submitted = true;
+
+    let correct = 0;
+
+    let wrong = 0;
+
+    let na = 0;
+
+
+    questions.forEach(function(q,i){
+
+        if(answers[i] === null){
+
+            na++;
+
+        }
+        else if(answers[i] === q.a){
+
+            correct++;
+
+        }
+        else{
+
+            wrong++;
+
+        }
+
+    });
+
+
+    let score =
+        correct - (wrong / 3);
+
+
+    document.getElementById("test")
+        .style.display = "none";
+
+    document.getElementById("result")
+        .style.display = "block";
+
+
+    document.getElementById("score")
+        .textContent =
+        score.toFixed(2);
+
+    document.getElementById("correct")
+        .textContent =
+        correct;
+
+    document.getElementById("wrong")
+        .textContent =
+        wrong;
+
+    document.getElementById("na")
+        .textContent =
+        na;
+
+
+    showReview();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* SOLUTIONS */
+
+function showReview(){
+
+    let r =
+        document.getElementById("review");
+
+    r.innerHTML = "";
+
+
+    questions.forEach(function(q,i){
+
+        let div =
+            document.createElement("div");
+
+
+        let cls = "";
+
+        let status = "";
+
+
+        if(answers[i] === null){
+
+            cls = "rNA";
+
+            status =
+                '<b style="color:#d97706">⚪ Not Attempted</b>';
+
+        }
+
+        else if(answers[i] === q.a){
+
+            cls = "rCorrect";
+
+            status =
+                '<b style="color:#15803d">✓ Correct</b>';
+
+        }
+
+        else{
+
+            cls = "rWrong";
+
+            status =
+                '<b style="color:#dc2626">✗ Wrong</b>';
+
+        }
+
+
+        div.className =
+            "review " + cls;
+
+
+        div.innerHTML =
+
+            "<b>Q" +
+            (i+1) +
+            ". " +
+            q.q +
+            "</b><br><br>" +
+
+            status +
+
+            "<br><b>Your Answer:</b> " +
+
+            (
+                answers[i] === null
+                ?
+                "Not Attempted"
+                :
+                answers[i]
+            ) +
+
+            '<div class="ca">' +
+
+            "Correct Answer: " +
+
+            q.a +
+
+            "</div>" +
+
+            '<div class="sol">' +
+
+            "<b>💡 Solution:</b><br>" +
+
+            q.s +
+
+            "</div>";
+
+
+        r.appendChild(div);
+
+    });
+
+}
+
+
+/* START */
+
+show();
+
+</script>
+
+</body>
+
+</html>
