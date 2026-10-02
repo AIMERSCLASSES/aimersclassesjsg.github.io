@@ -1,1 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES | SSC CGL Maths Test 1</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.5;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:#fff;
+    padding:14px 3%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.test-name{
+    font-size:15px;
+    color:#dbeafe;
+    margin-top:2px;
+}
+
+.timer{
+    background:#fff;
+    color:#dc2626;
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:900;
+    min-width:110px;
+    text-align:center;
+}
+
+.container{
+    max-width:1250px;
+    margin:20px auto;
+    padding:0 2%;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 290px;
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 6px 25px rgba(0,0,0,.08);
+}
+
+.question-count{
+    color:#1d4ed8;
+    font-size:16px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    line-height:1.55;
+    margin-bottom:24px;
+}
+
+.option{
+    display:block;
+    border:1px solid #d7dee9;
+    border-radius:10px;
+    padding:14px 15px;
+    margin:11px 0;
+    cursor:pointer;
+    transition:.2s;
+    background:#fff;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+    cursor:pointer;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+.nav-btn{
+    border:none;
+    border-radius:8px;
+    padding:12px 22px;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.previous{
+    background:#64748b;
+    color:#fff;
+}
+
+.next{
+    background:#1d4ed8;
+    color:#fff;
+}
+
+.palette-card{
+    height:max-content;
+    position:sticky;
+    top:90px;
+}
+
+.palette-card h3{
+    color:#102a43;
+    margin-bottom:12px;
+}
+
+.legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.legend-box{
+    width:14px;
+    height:14px;
+    border-radius:4px;
+}
+
+.red-box{
+    background:#ef4444;
+}
+
+.green-box{
+    background:#16a34a;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.palette button{
+    height:38px;
+    border:none;
+    border-radius:6px;
+    background:#ef4444;
+    color:#fff;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.palette button.attempted{
+    background:#16a34a;
+}
+
+.submit-btn{
+    width:100%;
+    margin-top:18px;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#16a34a;
+    color:#fff;
+    font-size:16px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.result{
+    display:none;
+}
+
+.result h2{
+    color:#102a43;
+    margin-bottom:20px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.stat{
+    background:#f1f5f9;
+    padding:16px 8px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:800;
+}
+
+.stat-value{
+    font-size:25px;
+    color:#1d4ed8;
+    margin-top:5px;
+}
+
+.review{
+    margin-top:12px;
+    padding:15px;
+    border-radius:9px;
+    background:#f8fafc;
+    border-left:5px solid #1d4ed8;
+}
+
+.correct{
+    color:#15803d;
+    font-weight:800;
+}
+
+.wrong{
+    color:#dc2626;
+    font-weight:800;
+}
+
+.unattempted{
+    color:#d97706;
+    font-weight:800;
+}
+
+@media(max-width:850px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette-card{
+        position:static;
+        order:-1;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .nav-btn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+<div>
+
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="test-name">
+SSC CGL Mathematics — Test 1 | 100 Questions
+</div>
+
+</div>
+
+<div class="timer" id="timer">
+90:00
+</div>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="layout">
+
+
+<div class="card">
+
+<div id="testArea">
+
+<div class="question-count" id="questionCount"></div>
+
+<div class="question" id="question"></div>
+
+<div id="options"></div>
+
+
+<div class="navigation">
+
+<button
+class="nav-btn previous"
+onclick="previousQuestion()">
+
+← Previous
+
+</button>
+
+
+<button
+class="nav-btn next"
+onclick="nextQuestion()">
+
+Next →
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="result" id="result">
+
+<h2>
+🎯 Test Submitted
+</h2>
+
+<div class="stats">
+
+<div class="stat">
+Score
+<div class="stat-value" id="score">0</div>
+</div>
+
+<div class="stat">
+Correct
+<div class="stat-value" id="correct">0</div>
+</div>
+
+<div class="stat">
+Wrong
+<div class="stat-value" id="wrong">0</div>
+</div>
+
+<div class="stat">
+Not Attempted
+<div class="stat-value" id="unattempted">0</div>
+</div>
+
+</div>
+
+<p>
+<b>Marking Scheme:</b>
++1 correct, −0.33 wrong, 0 unattempted.
+</p>
+
+<div id="review"></div>
+
+</div>
+
+</div>
+
+
+
+<div class="card palette-card">
+
+<h3>
+📋 Question Palette
+</h3>
+
+<div class="legend">
+
+<div class="legend-item">
+<span class="legend-box red-box"></span>
+Not Attempted
+</div>
+
+<div class="legend-item">
+<span class="legend-box green-box"></span>
+Attempted
+</div>
+
+</div>
+
+<div
+class="palette"
+id="palette">
+</div>
+
+<button
+class="submit-btn"
+onclick="submitTest(false)">
+
+✓ Submit Test
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   SSC CGL LEVEL MATHS TEST 1
+   TOTAL = 100 QUESTIONS
+   ===================================================== */
+
+const questions = [
+
+
+{
+q:"A sum amounts to ₹8,640 in 3 years and ₹9,360 in 5 years at simple interest. Find the principal.",
+o:["₹7,200","₹7,560","₹7,800","₹8,000"],
+a:"₹7,560"
+},
+
+{
+q:"A sum of ₹12,000 is invested at 8% p.a. simple interest. What will be the amount after 2 years 6 months?",
+o:["₹14,000","₹14,400","₹14,800","₹15,000"],
+a:"₹14,400"
+},
+
+{
+q:"The compound interest on ₹10,000 at 10% p.a. for 2 years, compounded annually, is:",
+o:["₹2,000","₹2,100","₹2,200","₹2,400"],
+a:"₹2,100"
+},
+
+{
+q:"The difference between CI and SI on ₹8,000 at 5% p.a. for 2 years is:",
+o:["₹10","₹15","₹20","₹25"],
+a:"₹20"
+},
+
+{
+q:"A number is increased by 20% and then decreased by 20%. The net change is:",
+o:["No change","2% decrease","4% decrease","4% increase"],
+a:"4% decrease"
+},
+
+{
+q:"A shopkeeper marks an article 40% above cost price and allows a discount of 15%. His profit percentage is:",
+o:["15%","19%","21%","25%"],
+a:"19%"
+},
+
+{
+q:"An article is sold at a discount of 20% for ₹960. Its marked price is:",
+o:["₹1,100","₹1,150","₹1,200","₹1,250"],
+a:"₹1,200"
+},
+
+{
+q:"A trader gains 25% after allowing a discount of 10% on the marked price. The marked price is what percent of cost price?",
+o:["125%","135%","138.89%","145%"],
+a:"138.89%"
+},
+
+{
+q:"If A:B = 5:7 and B:C = 14:15, then A:B:C is:",
+o:["5:14:15","10:14:15","10:7:15","5:7:15"],
+a:"10:14:15"
+},
+
+{
+q:"A sum of ₹1,260 is divided among A, B and C in the ratio 2:3:4. C's share is:",
+o:["₹420","₹500","₹560","₹630"],
+a:"₹560"
+},
+
+
+{
+q:"The average of 11 numbers is 48. If the average of the first 6 is 42 and that of the last 6 is 55, find the middle number.",
+o:["36","40","42","48"],
+a:"36"
+},
+
+{
+q:"The average age of 8 persons increases by 2 years when a person aged 24 years is replaced by a new person. The age of the new person is:",
+o:["38","40","42","44"],
+a:"40"
+},
+
+{
+q:"The average of 5 consecutive odd integers is 31. The largest integer is:",
+o:["33","35","37","39"],
+a:"35"
+},
+
+{
+q:"A train 180 m long crosses a platform 220 m long in 20 seconds. Its speed is:",
+o:["54 km/h","60 km/h","72 km/h","80 km/h"],
+a:"72 km/h"
+},
+
+{
+q:"A man covers a certain distance at 6 km/h and reaches 10 minutes late. At 8 km/h he reaches 5 minutes early. The distance is:",
+o:["5 km","6 km","7 km","8 km"],
+a:"6 km"
+},
+
+{
+q:"Two trains of lengths 150 m and 250 m run in opposite directions at 54 km/h and 72 km/h. Time taken to cross each other is:",
+o:["10 s","12 s","14 s","16 s"],
+a:"12 s"
+},
+
+{
+q:"A boat travels 36 km downstream in 3 hours and the same distance upstream in 4.5 hours. The speed of the stream is:",
+o:["1.5 km/h","2 km/h","2.5 km/h","3 km/h"],
+a:"1.5 km/h"
+},
+
+{
+q:"A can do a work in 12 days and B in 18 days. Working together, they complete it in:",
+o:["6 days","7.2 days","8 days","9 days"],
+a:"7.2 days"
+},
+
+{
+q:"A and B together can complete a work in 10 days, B and C in 12 days, and C and A in 15 days. A alone can complete it in:",
+o:["20 days","24 days","30 days","36 days"],
+a:"24 days"
+},
+
+{
+q:"A contractor employs 12 men to finish a work in 18 days. After 6 days, 4 men leave. How many more days are needed?",
+o:["12","15","18","20"],
+a:"18"
+},
+
+
+{
+q:"Pipe A fills a tank in 20 minutes and pipe B in 30 minutes. An outlet empties it in 60 minutes. If all are opened together, the tank fills in:",
+o:["10 min","12 min","15 min","18 min"],
+a:"15 min"
+},
+
+{
+q:"A pipe fills a tank in 24 minutes. Due to a leak, it takes 30 minutes. The leak alone can empty the full tank in:",
+o:["90 min","100 min","120 min","150 min"],
+a:"120 min"
+},
+
+{
+q:"If x + 1/x = 5, then x² + 1/x² is:",
+o:["21","23","25","27"],
+a:"23"
+},
+
+{
+q:"If x − 1/x = 3, then x² + 1/x² is:",
+o:["7","9","11","13"],
+a:"11"
+},
+
+{
+q:"If a+b=12 and ab=35, then a²+b² is:",
+o:["64","70","74","84"],
+a:"74"
+},
+
+{
+q:"The value of (0.25)² + (0.5)² is:",
+o:["0.25","0.3125","0.375","0.5"],
+a:"0.3125"
+},
+
+{
+q:"Simplify: 3/5 ÷ 9/25 × 15/2.",
+o:["5/2","25/6","5/3","25/4"],
+a:"25/6"
+},
+
+{
+q:"If 40% of a number exceeds 25% of it by 45, the number is:",
+o:["200","250","300","350"],
+a:"300"
+},
+
+{
+q:"A number is first decreased by 10% and then increased by 20%. It becomes 1,080. The original number was:",
+o:["900","950","1,000","1,050"],
+a:"1,000"
+},
+
+{
+q:"The least number which when divided by 12, 15 and 20 leaves remainder 7 in each case is:",
+o:["47","57","67","127"],
+a:"67"
+},
+
+
+{
+q:"The HCF of two numbers is 16 and their LCM is 480. If one number is 96, the other is:",
+o:["60","70","80","90"],
+a:"80"
+},
+
+{
+q:"The product of two numbers is 5,760 and their HCF is 24. If one number is 96, the other is:",
+o:["50","60","72","80"],
+a:"60"
+},
+
+{
+q:"What least number should be added to 1,234 to make it divisible by 17?",
+o:["5","6","7","8"],
+a:"7"
+},
+
+{
+q:"A number when divided by 296 gives quotient 37 and remainder 11. The number is:",
+o:["10,953","10,963","10,973","11,063"],
+a:"10,963"
+},
+
+{
+q:"The smallest 5-digit number divisible by 72 is:",
+o:["10008","10080","10152","10224"],
+a:"10008"
+},
+
+{
+q:"The sum of two numbers is 84 and their difference is 18. The larger number is:",
+o:["48","51","54","57"],
+a:"51"
+},
+
+{
+q:"Three numbers are in the ratio 2:3:5 and their sum is 160. The difference between largest and smallest is:",
+o:["32","40","48","56"],
+a:"48"
+},
+
+{
+q:"A two-digit number has its digits in the ratio 2:3. If 9 is added to the number, the digits are reversed. The number is:",
+o:["24","36","42","48"],
+a:"24"
+},
+
+{
+q:"The sum of a two-digit number and the number obtained by reversing its digits is 121. The difference between its digits is 3. The number is:",
+o:["47","56","65","74"],
+a:"47"
+},
+
+{
+q:"The diagonal of a rectangle is 25 cm and its length is 24 cm. Its area is:",
+o:["84 cm²","120 cm²","168 cm²","300 cm²"],
+a:"168 cm²"
+},
+
+
+{
+q:"The perimeter of a rectangle is 94 cm and its length is 29 cm. Its area is:",
+o:["486 cm²","522 cm²","540 cm²","580 cm²"],
+a:"522 cm²"
+},
+
+{
+q:"The area of a triangle is 270 cm² and its base is 18 cm. Its height is:",
+o:["20 cm","25 cm","30 cm","36 cm"],
+a:"30 cm"
+},
+
+{
+q:"The sides of a triangle are 13 cm, 14 cm and 15 cm. Its area is:",
+o:["72 cm²","84 cm²","96 cm²","108 cm²"],
+a:"84 cm²"
+},
+
+{
+q:"A circle has circumference 44 cm. Its area is (π=22/7):",
+o:["144 cm²","154 cm²","176 cm²","196 cm²"],
+a:"154 cm²"
+},
+
+{
+q:"The area of a circle is 616 cm². Its circumference is (π=22/7):",
+o:["77 cm","88 cm","99 cm","110 cm"],
+a:"88 cm"
+},
+
+{
+q:"The volume of a cylinder of radius 7 cm and height 10 cm is (π=22/7):",
+o:["1,400 cm³","1,540 cm³","1,640 cm³","1,760 cm³"],
+a:"1,540 cm³"
+},
+
+{
+q:"A cuboid measures 12 cm × 10 cm × 8 cm. Its total surface area is:",
+o:["592 cm²","640 cm²","672 cm²","720 cm²"],
+a:"592 cm²"
+},
+
+{
+q:"The curved surface area of a cylinder of radius 7 cm and height 15 cm is:",
+o:["560 cm²","660 cm²","770 cm²","880 cm²"],
+a:"660 cm²"
+},
+
+{
+q:"If the radius of a circle is increased by 20%, its area increases by:",
+o:["20%","40%","44%","48%"],
+a:"44%"
+},
+
+{
+q:"If the side of a square is increased by 10%, its area increases by:",
+o:["10%","20%","21%","25%"],
+a:"21%"
+},
+
+
+{
+q:"A sum of money is divided among A and B in the ratio 7:9. If B gets ₹360 more than A, the total sum is:",
+o:["₹2,400","₹2,880","₹3,200","₹3,600"],
+a:"₹2,880"
+},
+
+{
+q:"A mixture contains milk and water in ratio 5:2. If 14 litres of water are added, ratio becomes 5:4. Initial quantity of mixture was:",
+o:["35 L","42 L","49 L","56 L"],
+a:"49 L"
+},
+
+{
+q:"A vessel contains 60 L of milk. 12 L is replaced by water, and the operation is repeated once. Quantity of milk left is:",
+o:["36 L","38.4 L","40 L","42 L"],
+a:"38.4 L"
+},
+
+{
+q:"A 40-litre mixture contains milk and water in ratio 7:1. How much water should be added to make ratio 7:3?",
+o:["8 L","10 L","12 L","15 L"],
+a:"10 L"
+},
+
+{
+q:"A man spends 75% of his income. If his savings are ₹6,000, his income is:",
+o:["₹18,000","₹20,000","₹22,000","₹24,000"],
+a:"₹24,000"
+},
+
+{
+q:"A person's income increases by 25% and expenditure by 20%. If the original income was ₹40,000 and expenditure ₹32,000, the percentage increase in savings is:",
+o:["35%","40%","45%","50%"],
+a:"45%"
+},
+
+{
+q:"The price of sugar rises by 25%. By what percentage must consumption be reduced to keep expenditure unchanged?",
+o:["16%","20%","25%","30%"],
+a:"20%"
+},
+
+{
+q:"A 20% discount followed by 10% discount is equivalent to a single discount of:",
+o:["28%","30%","32%","35%"],
+a:"28%"
+},
+
+{
+q:"If the selling price is 80% of the marked price and there is a profit of 20%, then the marked price is what percent of cost price?",
+o:["120%","140%","150%","160%"],
+a:"150%"
+},
+
+{
+q:"A trader uses a weight of 900 g instead of 1 kg and sells at cost price. His gain percentage is:",
+o:["10%","11 1/9%","12.5%","15%"],
+a:"11 1/9%"
+},
+
+
+{
+q:"A dishonest dealer sells an article at 10% loss but uses 20% less weight. His actual gain percentage is:",
+o:["10%","12.5%","15%","20%"],
+a:"12.5%"
+},
+
+{
+q:"A, B and C invest ₹6,000, ₹8,000 and ₹10,000 for 10, 8 and 6 months respectively. Their profit ratio is:",
+o:["15:16:15","3:4:5","5:8:9","6:8:10"],
+a:"15:16:15"
+},
+
+{
+q:"A and B start a business with ₹20,000 and ₹30,000. After 4 months A doubles his capital. If annual profit is ₹33,000, A's share is:",
+o:["₹15,000","₹16,500","₹17,368.42","₹18,000"],
+a:"₹17,368.42"
+},
+
+{
+q:"A can row 12 km downstream in 1 hour and the same distance upstream in 1.5 hours. Speed of boat in still water is:",
+o:["8 km/h","9 km/h","10 km/h","12 km/h"],
+a:"10 km/h"
+},
+
+{
+q:"A man walks 10 km at 5 km/h and returns at 4 km/h. His average speed for the whole journey is:",
+o:["4.44 km/h","4.5 km/h","4.8 km/h","5 km/h"],
+a:"4.44 km/h"
+},
+
+{
+q:"A car covers first half of a distance at 40 km/h and second half at 60 km/h. Average speed is:",
+o:["45 km/h","48 km/h","50 km/h","52 km/h"],
+a:"48 km/h"
+},
+
+{
+q:"A train running at 72 km/h crosses a man in 15 seconds. Its length is:",
+o:["240 m","270 m","300 m","360 m"],
+a:"300 m"
+},
+
+{
+q:"Two trains 120 m and 180 m long run in same direction at 54 km/h and 36 km/h. Time taken by faster train to cross the slower is:",
+o:["45 s","50 s","60 s","75 s"],
+a:"60 s"
+},
+
+{
+q:"A does 1/3 of a work in 5 days. B does 1/4 of the work in 6 days. Together they complete the work in:",
+o:["7.2 days","8 days","9 days","10 days"],
+a:"7.2 days"
+},
+
+{
+q:"A, B and C can do a work in 10, 15 and 30 days respectively. Together they finish it in:",
+o:["4 days","5 days","6 days","7.5 days"],
+a:"5 days"
+},
+
+
+{
+q:"A is twice as efficient as B. Together they complete a work in 12 days. A alone can complete it in:",
+o:["16 days","18 days","20 days","24 days"],
+a:"18 days"
+},
+
+{
+q:"12 men or 18 women can complete a work in 20 days. The efficiency ratio of a man to a woman is:",
+o:["2:3","3:2","4:3","3:4"],
+a:"3:2"
+},
+
+{
+q:"A pipe fills a tank in 15 min, B in 20 min and C empties it in 30 min. If all are opened, time to fill is:",
+o:["8 min","10 min","12 min","15 min"],
+a:"10 min"
+},
+
+{
+q:"Two pipes fill a tank in 18 and 24 minutes. A third pipe empties it in 36 minutes. All together fill the tank in:",
+o:["10 min","12 min","14 min","16 min"],
+a:"12 min"
+},
+
+{
+q:"If 2x/3 = 18, then x is:",
+o:["18","24","27","30"],
+a:"27"
+},
+
+{
+q:"If (x+3)/(x-3)=2, then x is:",
+o:["6","9","12","15"],
+a:"9"
+},
+
+{
+q:"The roots of x²−9x+20=0 are:",
+o:["2,10","4,5","3,7","5,6"],
+a:"4,5"
+},
+
+{
+q:"If x²=49 and x is positive, x is:",
+o:["5","6","7","8"],
+a:"7"
+},
+
+{
+q:"The value of 999² is:",
+o:["998001","998101","999001","999801"],
+a:"998001"
+},
+
+{
+q:"The value of 102²−98² is:",
+o:["400","600","800","1000"],
+a:"800"
+},
+
+
+{
+q:"If a+b=10 and a−b=4, then ab is:",
+o:["18","21","24","28"],
+a:"21"
+},
+
+{
+q:"If x+y=15 and xy=56, then x²+y² is:",
+o:["113","121","169","225"],
+a:"113"
+},
+
+{
+q:"The smallest positive integer which leaves remainder 5 when divided by 8, 12 and 15 is:",
+o:["53","65","77","125"],
+a:"125"
+},
+
+{
+q:"The sum of all integers from 1 to 100 divisible by 3 is:",
+o:["1,650","1,683","1,700","1,750"],
+a:"1,683"
+},
+
+{
+q:"The sum of first 25 natural numbers is:",
+o:["300","325","350","375"],
+a:"325"
+},
+
+{
+q:"The 20th term of AP 5, 9, 13, 17,... is:",
+o:["77","81","85","89"],
+a:"81"
+},
+
+{
+q:"The sum of first 20 terms of AP 3, 7, 11,... is:",
+o:["780","800","820","840"],
+a:"820"
+},
+
+{
+q:"A bag contains 5 red, 4 blue and 3 green balls. Probability of drawing a blue ball is:",
+o:["1/3","1/4","1/2","2/3"],
+a:"1/3"
+},
+
+{
+q:"Two dice are thrown. Probability that the sum is 9 is:",
+o:["1/12","1/9","1/6","1/4"],
+a:"1/9"
+},
+
+{
+q:"A card is drawn from a standard deck. Probability of getting a king or queen is:",
+o:["1/13","2/13","3/13","4/13"],
+a:"2/13"
+},
+
+
+{
+q:"In how many ways can 5 different books be arranged on a shelf?",
+o:["60","100","120","240"],
+a:"120"
+},
+
+{
+q:"How many 3-digit numbers can be formed using digits 1,2,3,4,5 without repetition?",
+o:["30","40","60","100"],
+a:"60"
+},
+
+{
+q:"A committee of 3 is to be selected from 8 persons. Number of ways is:",
+o:["24","48","56","64"],
+a:"56"
+},
+
+{
+q:"A right circular cone has radius 7 cm and height 24 cm. Its slant height is:",
+o:["23 cm","24 cm","25 cm","26 cm"],
+a:"25 cm"
+},
+
+{
+q:"The volume of a sphere of radius 3 cm is:",
+o:["36π cm³","72π cm³","108π cm³","144π cm³"],
+a:"36π cm³"
+},
+
+{
+q:"The curved surface area of a cone of radius 7 cm and slant height 25 cm is:",
+o:["154π cm²","175π cm²","350π cm²","700π cm²"],
+a:"175π cm²"
+},
+
+{
+q:"The distance between points (3,4) and (7,7) is:",
+o:["4","5","6","7"],
+a:"5"
+},
+
+{
+q:"The midpoint of (2,5) and (8,11) is:",
+o:["(4,7)","(5,8)","(6,8)","(5,9)"],
+a:"(5,8)"
+},
+
+{
+q:"The slope of the line joining (2,3) and (6,11) is:",
+o:["1","2","3","4"],
+a:"2"
+}
+
+];
+
+
+/* ================= VARIABLES ================= */
+
+let currentQuestion = 0;
+
+let answers =
+new Array(questions.length).fill(null);
+
+let submitted = false;
+
+
+/* ================= 90 MINUTE TIMER ================= */
+
+let totalSeconds = 90 * 60;
+
+
+function updateTimer(){
+
+    if(submitted){
+        return;
+    }
+
+    let minutes =
+    Math.floor(totalSeconds / 60);
+
+    let seconds =
+    totalSeconds % 60;
+
+    document.getElementById("timer").textContent =
+    String(minutes).padStart(2,"0")
+    + ":"
+    + String(seconds).padStart(2,"0");
+
+
+    if(totalSeconds <= 0){
+
+        clearInterval(timerInterval);
+
+        submitTest(true);
+
+        return;
+    }
+
+    totalSeconds--;
+
+}
+
+
+const timerInterval =
+setInterval(updateTimer,1000);
+
+updateTimer();
+
+
+
+/* ================= SHOW QUESTION ================= */
+
+function showQuestion(){
+
+    const q =
+    questions[currentQuestion];
+
+
+    document.getElementById("questionCount")
+    .textContent =
+    "Question "
+    + (currentQuestion + 1)
+    + " of "
+    + questions.length;
+
+
+    document.getElementById("question")
+    .textContent =
+    q.q;
+
+
+    const optionsDiv =
+    document.getElementById("options");
+
+    optionsDiv.innerHTML = "";
+
+
+    q.o.forEach(function(option){
+
+        const label =
+        document.createElement("label");
+
+        label.className =
+        "option";
+
+
+        const radio =
+        document.createElement("input");
+
+        radio.type =
+        "radio";
+
+        radio.name =
+        "answer";
+
+        radio.value =
+        option;
+
+
+        if(
+        answers[currentQuestion]
+        === option
+        ){
+
+            radio.checked = true;
+
+        }
+
+
+        radio.addEventListener(
+        "change",
+        function(){
+
+            answers[currentQuestion] =
+            option;
+
+            createPalette();
+
+        });
+
+
+        label.appendChild(radio);
+
+        label.appendChild(
+        document.createTextNode(
+        " " + option
+        )
+        );
+
+
+        optionsDiv.appendChild(label);
+
+    });
+
+
+    createPalette();
+
+}
+
+
+
+/* ================= PALETTE ================= */
+
+function createPalette(){
+
+    const palette =
+    document.getElementById("palette");
+
+    palette.innerHTML = "";
+
+
+    questions.forEach(
+    function(_,index){
+
+        const button =
+        document.createElement("button");
+
+
+        button.textContent =
+        index + 1;
+
+
+        if(
+        answers[index] !== null
+        ){
+
+            button.classList.add(
+            "attempted"
+            );
+
+        }
+
+
+        button.onclick =
+        function(){
+
+            currentQuestion =
+            index;
+
+            showQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+
+        palette.appendChild(button);
+
+    });
+
+}
+
+
+
+/* ================= NEXT ================= */
+
+function nextQuestion(){
+
+    if(
+    currentQuestion <
+    questions.length - 1
+    ){
+
+        currentQuestion++;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+
+/* ================= PREVIOUS ================= */
+
+function previousQuestion(){
+
+    if(
+    currentQuestion > 0
+    ){
+
+        currentQuestion--;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+
+/* ================= SUBMIT ================= */
+
+function submitTest(autoSubmit){
+
+    if(submitted){
+        return;
+    }
+
+
+    if(!autoSubmit){
+
+        const confirmSubmit =
+        confirm(
+        "Are you sure you want to submit the test?"
+        );
+
+
+        if(!confirmSubmit){
+            return;
+        }
+
+    }
+
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+
+    let correct = 0;
+
+    let wrong = 0;
+
+    let unattempted = 0;
+
+
+    questions.forEach(
+    function(question,index){
+
+        if(
+        answers[index] === null
+        ){
+
+            unattempted++;
+
+        }
+
+        else if(
+        answers[index] === question.a
+        ){
+
+            correct++;
+
+        }
+
+        else{
+
+            wrong++;
+
+        }
+
+    });
+
+
+    const score =
+    Math.max(
+    0,
+    correct - (wrong * 0.33)
+    );
+
+
+    document.getElementById(
+    "testArea"
+    ).style.display =
+    "none";
+
+
+    document.getElementById(
+    "result"
+    ).style.display =
+    "block";
+
+
+    document.getElementById(
+    "score"
+    ).textContent =
+    score.toFixed(2);
+
+
+    document.getElementById(
+    "correct"
+    ).textContent =
+    correct;
+
+
+    document.getElementById(
+    "wrong"
+    ).textContent =
+    wrong;
+
+
+    document.getElementById(
+    "unattempted"
+    ).textContent =
+    unattempted;
+
+
+    const review =
+    document.getElementById(
+    "review"
+    );
+
+
+    review.innerHTML = "";
+
+
+    questions.forEach(
+    function(question,index){
+
+        let userAnswer =
+        answers[index];
+
+        let status = "";
+
+
+        if(
+        userAnswer === null
+        ){
+
+            userAnswer =
+            "Not Attempted";
+
+            status =
+            '<span class="unattempted">Not Attempted</span>';
+
+        }
+
+        else if(
+        userAnswer === question.a
+        ){
+
+            status =
+            '<span class="correct">Correct ✓</span>';
+
+        }
+
+        else{
+
+            status =
+            '<span class="wrong">Wrong ✗</span>';
+
+        }
+
+
+        review.innerHTML +=
+
+        '<div class="review">' +
+
+        '<b>Q'
+        + (index + 1)
+        + '. '
+        + question.q
+        + '</b><br><br>' +
+
+        'Your Answer: '
+        + userAnswer
+        + '<br>' +
+
+        'Correct Answer: '
+        + question.a
+        + '<br>' +
+
+        status +
+
+        '</div>';
+
+    });
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+
+/* ================= START ================= */
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
