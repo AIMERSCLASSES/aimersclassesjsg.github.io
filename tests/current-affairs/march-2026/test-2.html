@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AIMERS CLASSES | March 2026 Current Affairs Test 2</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -14,9 +17,10 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:#f4f7fb;
     color:#172033;
+    line-height:1.5;
 }
 
 header{
@@ -28,6 +32,11 @@ header{
 
 header h1{
     font-size:25px;
+    font-weight:900;
+}
+
+header p{
+    margin-top:5px;
 }
 
 .container{
@@ -38,27 +47,67 @@ header h1{
 
 .test-info{
     background:white;
-    padding:18px;
+    padding:20px;
     border-radius:12px;
     box-shadow:0 5px 20px rgba(0,0,0,.08);
     margin-bottom:20px;
 }
 
+.test-info h2{
+    color:#102a43;
+    margin-bottom:8px;
+}
+
+.badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:12px;
+}
+
+.badge{
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.blue{
+    background:#dbeafe;
+    color:#1e40af;
+}
+
+.green{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.red{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.gray{
+    background:#e5e7eb;
+    color:#374151;
+}
+
 .timer{
     position:fixed;
-    top:15px;
     right:20px;
+    top:15px;
     background:#dc2626;
     color:white;
     padding:10px 18px;
     border-radius:8px;
-    font-weight:bold;
+    font-weight:900;
     z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
 }
 
 .layout{
     display:grid;
-    grid-template-columns:1fr 280px;
+    grid-template-columns:1fr 290px;
     gap:20px;
 }
 
@@ -67,6 +116,7 @@ header h1{
     padding:25px;
     border-radius:14px;
     box-shadow:0 5px 20px rgba(0,0,0,.08);
+    min-height:420px;
 }
 
 .question{
@@ -78,21 +128,28 @@ header h1{
 }
 
 .question h3{
-    margin-bottom:20px;
     color:#102a43;
+    margin-bottom:22px;
+    font-size:18px;
 }
 
 .option{
     display:block;
-    padding:13px;
+    padding:13px 15px;
     margin:10px 0;
     border:1px solid #dbe2ea;
     border-radius:8px;
     cursor:pointer;
+    transition:.2s;
 }
 
 .option:hover{
     background:#eef5ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:9px;
 }
 
 .palette{
@@ -105,6 +162,11 @@ header h1{
     top:20px;
 }
 
+.palette h3{
+    color:#102a43;
+    margin-bottom:15px;
+}
+
 .palette-grid{
     display:grid;
     grid-template-columns:repeat(5,1fr);
@@ -113,27 +175,48 @@ header h1{
 
 .qno{
     border:1px solid #cbd5e1;
-    padding:8px;
+    background:white;
+    padding:8px 4px;
     text-align:center;
     border-radius:5px;
     cursor:pointer;
-    background:white;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.qno:hover{
+    background:#eff6ff;
 }
 
 .qno.attempted{
     background:#16a34a;
     color:white;
+    border-color:#16a34a;
 }
 
 .qno.current{
     border:3px solid #1d4ed8;
 }
 
+.legend{
+    margin-top:15px;
+    font-size:13px;
+}
+
+.legend p{
+    margin:5px 0;
+}
+
 .buttons{
+    background:white;
+    padding:18px;
+    margin-top:20px;
+    border-radius:12px;
     display:flex;
-    justify-content:space-between;
-    margin-top:25px;
+    flex-wrap:wrap;
+    justify-content:center;
     gap:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
 }
 
 button{
@@ -141,9 +224,13 @@ button{
     padding:12px 20px;
     border-radius:7px;
     cursor:pointer;
-    font-weight:bold;
-    background:#1d4ed8;
+    font-weight:800;
     color:white;
+    background:#1d4ed8;
+}
+
+button:hover{
+    opacity:.9;
 }
 
 .clear{
@@ -158,19 +245,62 @@ button{
     display:none;
     background:white;
     padding:25px;
-    border-radius:14px;
     margin-top:20px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:20px 0;
+}
+
+.result-card{
+    background:#f8fafc;
+    padding:15px;
+    border-radius:8px;
+    text-align:center;
+}
+
+.result-card b{
+    display:block;
+    font-size:23px;
+    margin-top:5px;
 }
 
 .solution{
     background:#f8fafc;
-    padding:15px;
+    padding:16px;
     margin:15px 0;
     border-left:5px solid #16a34a;
     border-radius:8px;
 }
 
-@media(max-width:800px){
+.correct{
+    color:#15803d;
+    font-weight:bold;
+}
+
+footer{
+    margin-top:40px;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+footer h3{
+    color:#ffd43b;
+}
+
+footer p{
+    color:#cbd5e1;
+    margin-top:5px;
+}
+
+@media(max-width:850px){
 
     .layout{
         grid-template-columns:1fr;
@@ -182,58 +312,91 @@ button{
 
     .timer{
         position:static;
-        text-align:center;
-        margin:10px;
+        width:max-content;
+        margin:10px auto;
     }
+
 }
+
+@media(max-width:550px){
+
+    .result-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .question-box{
+        padding:18px;
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
+
 <h1>AIMERS CLASSES</h1>
+
 <p>March 2026 Current Affairs — Test 2</p>
+
 </header>
 
 <div class="timer">
-Time Left: <span id="timer">60:00</span>
+⏱ Time Left: <span id="timer">60:00</span>
 </div>
 
 <div class="container">
 
 <div class="test-info">
-<b>March 2026 Current Affairs — Test 2</b><br>
-100 Questions | SSC • Railway • UPSC<br>
-<b>Correct:</b> +1 Mark &nbsp;
-<b>Wrong:</b> −0.25 Mark &nbsp;
-<b>Unattempted:</b> 0 Mark
+
+<h2>📚 March 2026 Current Affairs — Test 2</h2>
+
+<p>
+SSC • Railway • UPSC • RRB NTPC • Competitive Examinations
+</p>
+
+<div class="badges">
+
+<span class="badge blue">100 Questions</span>
+
+<span class="badge blue">60 Minutes</span>
+
+<span class="badge green">Correct +1</span>
+
+<span class="badge red">Wrong −0.25</span>
+
+<span class="badge gray">Unattempted 0</span>
+
 </div>
+
+</div>
+
 
 <div class="layout">
 
-<div class="question-box" id="questionBox">
-
-<!-- QUESTIONS WILL BE HERE -->
-
-</div>
+<div class="question-box" id="questionBox"></div>
 
 <div class="palette">
 
-<h3>Question Palette</h3>
-
-<br>
+<h3>📝 Question Palette</h3>
 
 <div class="palette-grid" id="palette"></div>
 
-<br>
+<div class="legend">
 
 <p>🟢 Attempted</p>
 <p>⚪ Not Attempted</p>
+<p>🔵 Current Question</p>
 
 </div>
 
 </div>
+
+</div>
+
 
 <div class="buttons">
 
@@ -255,53 +418,2146 @@ Submit Test
 
 </div>
 
+
 <div id="result"></div>
 
 </div>
+
+
+<footer>
+
+<h3>AIMERS CLASSES</h3>
+
+<p>March 2026 Current Affairs Test Series</p>
+
+<p>SSC • Railway • UPSC</p>
+
+</footer>
 
 
 <script>
 
 const questions = [
 
-/* =========================
-   QUESTIONS 1–100
-   ========================= */
-
 {
-q:"Question 1 goes here",
+q:"Which scheme was approved by the Union Cabinet in March 2026 with an outlay of ₹28,840 crore?",
 options:[
-"Option A",
-"Option B",
-"Option C",
-"Option D"
+"Modified UDAN",
+"PM-KISAN",
+"PM Gati Shakti",
+"PM Gram Sadak Yojana"
 ],
 answer:0,
-solution:"Correct Answer: Option A. Explanation goes here."
+solution:"The Union Cabinet approved the Modified UDAN scheme with a total outlay of ₹28,840 crore for the period 2026-27 to 2035-36."
 },
 
 {
-q:"Question 2 goes here",
+q:"The Modified UDAN scheme is primarily associated with which sector?",
 options:[
-"Option A",
-"Option B",
-"Option C",
-"Option D"
+"Regional air connectivity",
+"Railway freight",
+"Road construction",
+"Inland waterways"
 ],
-answer:1,
-solution:"Correct Answer: Option B. Explanation goes here."
+answer:0,
+solution:"UDAN stands for Ude Desh ka Aam Nagrik and focuses on improving regional air connectivity."
 },
 
-/* Continue up to Question 100 */
+{
+q:"For how many years was the Modified UDAN outlay approved?",
+options:[
+"5 years",
+"7 years",
+"10 years",
+"15 years"
+],
+answer:2,
+solution:"The approved period is FY 2026-27 to FY 2035-36, covering ten years."
+},
+
+{
+q:"Who introduced the Foreign Contribution (Regulation) Amendment Bill, 2026 in the Lok Sabha?",
+options:[
+"Nityanand Rai",
+"Amit Shah",
+"Rajnath Singh",
+"Piyush Goyal"
+],
+answer:0,
+solution:"The Foreign Contribution (Regulation) Amendment Bill, 2026 was introduced by Minister of State for Home Nityanand Rai."
+},
+
+{
+q:"The Foreign Contribution (Regulation) Amendment Bill primarily relates to:",
+options:[
+"Foreign contributions received by organisations",
+"Foreign trade tariffs",
+"Foreign exchange reserves",
+"Foreign tourism"
+],
+answer:0,
+solution:"The FCRA framework regulates the acceptance and utilisation of foreign contributions by specified organisations and individuals."
+},
+
+{
+q:"Which survey's Annual Report 2025 was released by MoSPI in March 2026?",
+options:[
+"Periodic Labour Force Survey",
+"Household Consumption Survey",
+"Annual Survey of Industries",
+"National Family Health Survey"
+],
+answer:0,
+solution:"The National Statistical Office released the PLFS Annual Report 2025 on 27 March 2026."
+},
+
+{
+q:"According to the PLFS Annual Report 2025, India's unemployment rate for persons aged 15 years and above under usual status was:",
+options:[
+"2.1%",
+"3.1%",
+"4.1%",
+"5.1%"
+],
+answer:1,
+solution:"The PLFS Annual Report 2025 reported an unemployment rate of 3.1% under usual status for persons aged 15 years and above."
+},
+
+{
+q:"The PLFS is released by which organisation?",
+options:[
+"National Statistical Office",
+"Reserve Bank of India",
+"NITI Aayog",
+"Finance Commission"
+],
+answer:0,
+solution:"The Periodic Labour Force Survey is conducted and released by the National Statistical Office under MoSPI."
+},
+
+{
+q:"Which ministry is responsible for the National Statistical Office?",
+options:[
+"Ministry of Statistics and Programme Implementation",
+"Ministry of Finance",
+"Ministry of Labour",
+"Ministry of Home Affairs"
+],
+answer:0,
+solution:"NSO functions under the Ministry of Statistics and Programme Implementation."
+},
+
+{
+q:"Which Indian state became the second state to implement a Uniform Civil Code according to March 2026 current affairs?",
+options:[
+"Gujarat",
+"Goa",
+"Uttarakhand",
+"Assam"
+],
+answer:0,
+solution:"Gujarat was reported as the second state to implement a Uniform Civil Code, after Uttarakhand."
+},
+
+{
+q:"Which state was the first in independent India to implement a Uniform Civil Code?",
+options:[
+"Goa",
+"Uttarakhand",
+"Gujarat",
+"Maharashtra"
+],
+answer:1,
+solution:"Uttarakhand became the first state in independent India to implement a comprehensive Uniform Civil Code."
+},
+
+{
+q:"The Uniform Civil Code primarily concerns:",
+options:[
+"Common civil laws governing citizens",
+"Common taxation",
+"Common criminal penalties",
+"Common election rules"
+],
+answer:0,
+solution:"A Uniform Civil Code refers to a common set of civil laws governing matters such as marriage, divorce, inheritance and adoption."
+},
+
+{
+q:"Which constitutional provision is associated with the idea of a Uniform Civil Code?",
+options:[
+"Article 44",
+"Article 32",
+"Article 51A",
+"Article 370"
+],
+answer:0,
+solution:"Article 44 of the Directive Principles of State Policy directs the State to endeavour to secure a Uniform Civil Code."
+},
+
+{
+q:"Which major constitutional body report was discussed in March 2026 in relation to Centre-State fiscal relations?",
+options:[
+"16th Finance Commission",
+"15th Finance Commission",
+"Law Commission",
+"Election Commission"
+],
+answer:0,
+solution:"The 16th Finance Commission report was a major constitutional and fiscal development discussed during March 2026."
+},
+
+{
+q:"The Finance Commission is constituted under which Article of the Constitution?",
+options:[
+"Article 280",
+"Article 324",
+"Article 356",
+"Article 368"
+],
+answer:0,
+solution:"Article 280 provides for the constitution of the Finance Commission."
+},
+
+{
+q:"The Finance Commission primarily recommends distribution of tax revenues between:",
+options:[
+"Centre and States",
+"States and Panchayats only",
+"India and foreign countries",
+"RBI and commercial banks"
+],
+answer:0,
+solution:"A key function of the Finance Commission is recommending the distribution of tax revenues between the Union and the States."
+},
+
+{
+q:"Which mission was highlighted in March 2026 for improving rural drinking-water access?",
+options:[
+"Jal Jeevan Mission 2.0",
+"Swachh Bharat Mission 3.0",
+"AMRUT 2.0",
+"PM Krishi Sinchai Yojana"
+],
+answer:0,
+solution:"Jal Jeevan Mission 2.0 was among the important government initiatives highlighted in March 2026."
+},
+
+{
+q:"Jal Jeevan Mission primarily aims to provide:",
+options:[
+"Functional household tap connections",
+"Free electricity",
+"Crop insurance",
+"Urban metro services"
+],
+answer:0,
+solution:"The Jal Jeevan Mission focuses on providing safe and adequate drinking water through functional household tap connections."
+},
+
+{
+q:"Which initiative focuses on developing plug-and-play industrial parks?",
+options:[
+"BHAVYA",
+"PM-SURAJ",
+"PM Vishwakarma",
+"SVAMITVA"
+],
+answer:0,
+solution:"BHAVYA is associated with the development of plug-and-play industrial parks."
+},
+
+{
+q:"The BHAVYA initiative is related primarily to:",
+options:[
+"Industrial infrastructure",
+"Rural housing",
+"School education",
+"Healthcare"
+],
+answer:0,
+solution:"BHAVYA focuses on creating industrial infrastructure with plug-and-play facilities."
+},
+
+{
+q:"How many plug-and-play industrial parks were highlighted under BHAVYA?",
+options:[
+"50",
+"75",
+"100",
+"150"
+],
+answer:2,
+solution:"The March 2026 current-affairs coverage highlighted 100 plug-and-play industrial parks under BHAVYA."
+},
+
+{
+q:"Which major cricket tournament did India win in March 2026?",
+options:[
+"ICC Men's T20 World Cup",
+"ICC Champions Trophy",
+"Asia Cup",
+"World Test Championship"
+],
+answer:0,
+solution:"India won the ICC Men's T20 World Cup 2026."
+},
+
+{
+q:"Which format of cricket is associated with the ICC Men's T20 World Cup?",
+options:[
+"Twenty20",
+"50-over",
+"Test",
+"100-ball"
+],
+answer:0,
+solution:"The T20 World Cup is an international Twenty20 cricket tournament."
+},
+
+{
+q:"Which city was selected to host the 2028 World Athletics Indoor Championships?",
+options:[
+"Bhubaneswar",
+"New Delhi",
+"Mumbai",
+"Ahmedabad"
+],
+answer:0,
+solution:"Bhubaneswar was selected as the host city for the 2028 World Athletics Indoor Championships."
+},
+
+{
+q:"The World Athletics Indoor Championships are organised under which international governing body?",
+options:[
+"World Athletics",
+"IOC",
+"FIFA",
+"ICC"
+],
+answer:0,
+solution:"World Athletics is the international governing body for athletics and organises the World Athletics Indoor Championships."
+},
+
+{
+q:"Which award body announced Fellows and Awardees for 2024 and 2025 in March 2026?",
+options:[
+"Sangeet Natak Akademi",
+"Sahitya Akademi",
+"Lalit Kala Akademi",
+"National Film Awards"
+],
+answer:0,
+solution:"The Sangeet Natak Akademi announced its Fellows and Awardees for 2024 and 2025."
+},
+
+{
+q:"Sangeet Natak Akademi is primarily associated with:",
+options:[
+"Performing arts",
+"Scientific research",
+"Sports",
+"Banking"
+],
+answer:0,
+solution:"Sangeet Natak Akademi is India's national academy for music, dance and drama."
+},
+
+{
+q:"Which body confers the Sahitya Akademi Award?",
+options:[
+"Sahitya Akademi",
+"Jnanpith Foundation",
+"Ministry of Culture directly",
+"National Book Trust"
+],
+answer:0,
+solution:"The Sahitya Akademi presents the Sahitya Akademi Award for outstanding literary works."
+},
+
+{
+q:"The Sahitya Akademi is India's national academy for:",
+options:[
+"Literature",
+"Science",
+"Defence",
+"Athletics"
+],
+answer:0,
+solution:"Sahitya Akademi is India's national academy of letters."
+},
+
+{
+q:"Which Indian city was associated with the inauguration of Noida International Airport in March 2026?",
+options:[
+"Jewar",
+"Agra",
+"Lucknow",
+"Kanpur"
+],
+answer:0,
+solution:"Noida International Airport, located near Jewar in Uttar Pradesh, was formally inaugurated in March 2026."
+},
+
+{
+q:"Noida International Airport is located in which state?",
+options:[
+"Uttar Pradesh",
+"Haryana",
+"Rajasthan",
+"Madhya Pradesh"
+],
+answer:0,
+solution:"Noida International Airport is located in Uttar Pradesh's Gautam Buddha Nagar district."
+},
+
+{
+q:"Which major airport project is also known as Jewar Airport?",
+options:[
+"Noida International Airport",
+"Indira Gandhi International Airport",
+"Rajiv Gandhi International Airport",
+"Chaudhary Charan Singh Airport"
+],
+answer:0,
+solution:"Noida International Airport is popularly known as Jewar Airport because of its location."
+},
+
+{
+q:"Which sector is directly linked with the Noida International Airport project?",
+options:[
+"Civil aviation",
+"Railway manufacturing",
+"Defence production",
+"Shipping"
+],
+answer:0,
+solution:"The airport is a major civil aviation infrastructure project."
+},
+
+{
+q:"Which major economic milestone was reported for India's GST collections in March 2026?",
+options:[
+"₹1 lakh crore",
+"₹1.5 lakh crore",
+"₹2 lakh crore",
+"₹3 lakh crore"
+],
+answer:2,
+solution:"March 2026 saw gross GST collections crossing the ₹2 lakh crore mark according to March current-affairs compilations."
+},
+
+{
+q:"GST stands for:",
+options:[
+"Goods and Services Tax",
+"General Sales Tariff",
+"Government Service Tax",
+"Goods Supply Tariff"
+],
+answer:0,
+solution:"GST stands for Goods and Services Tax."
+},
+
+{
+q:"GST is primarily a:",
+options:[
+"Indirect tax",
+"Direct tax",
+"Corporate dividend",
+"Customs-only tax"
+],
+answer:0,
+solution:"GST is an indirect tax levied on the supply of goods and services."
+},
+
+{
+q:"Which constitutional amendment introduced GST in India?",
+options:[
+"101st Constitutional Amendment",
+"100th Constitutional Amendment",
+"102nd Constitutional Amendment",
+"103rd Constitutional Amendment"
+],
+answer:0,
+solution:"The Goods and Services Tax was introduced through the 101st Constitutional Amendment Act, 2016."
+},
+
+{
+q:"Which body makes recommendations on GST rates and related matters?",
+options:[
+"GST Council",
+"Finance Commission",
+"SEBI",
+"NITI Aayog"
+],
+answer:0,
+solution:"The GST Council is the constitutional body that makes recommendations on GST-related matters."
+},
+
+{
+q:"The GST Council is constituted under which Article?",
+options:[
+"Article 279A",
+"Article 280",
+"Article 324",
+"Article 368"
+],
+answer:0,
+solution:"Article 279A provides for the GST Council."
+},
+
+{
+q:"Which organisation releases India's official Consumer Price Index?",
+options:[
+"National Statistical Office",
+"RBI",
+"SEBI",
+"Finance Commission"
+],
+answer:0,
+solution:"The National Statistical Office under MoSPI releases CPI data."
+},
+
+{
+q:"Which organisation is responsible for monetary policy in India?",
+options:[
+"Reserve Bank of India",
+"SEBI",
+"NITI Aayog",
+"Finance Ministry alone"
+],
+answer:0,
+solution:"The Reserve Bank of India is responsible for monetary policy, through the Monetary Policy Committee framework."
+},
+
+{
+q:"The Monetary Policy Committee of India has how many members?",
+options:[
+"4",
+"5",
+"6",
+"8"
+],
+answer:2,
+solution:"The Monetary Policy Committee consists of six members."
+},
+
+{
+q:"Which institution is India's central bank?",
+options:[
+"Reserve Bank of India",
+"State Bank of India",
+"SEBI",
+"NABARD"
+],
+answer:0,
+solution:"The Reserve Bank of India is India's central bank."
+},
+
+{
+q:"Which body regulates the securities market in India?",
+options:[
+"SEBI",
+"RBI",
+"IRDAI",
+"PFRDA"
+],
+answer:0,
+solution:"The Securities and Exchange Board of India regulates India's securities market."
+},
+
+{
+q:"Which body regulates the insurance sector in India?",
+options:[
+"IRDAI",
+"SEBI",
+"RBI",
+"PFRDA"
+],
+answer:0,
+solution:"IRDAI is the Insurance Regulatory and Development Authority of India."
+},
+
+{
+q:"Which body regulates India's pension sector?",
+options:[
+"PFRDA",
+"SEBI",
+"IRDAI",
+"NABARD"
+],
+answer:0,
+solution:"PFRDA regulates India's pension sector."
+},
+
+{
+q:"Which organisation regulates the banking system in India?",
+options:[
+"RBI",
+"SEBI",
+"TRAI",
+"FSSAI"
+],
+answer:0,
+solution:"The RBI is the principal regulator of India's banking system."
+},
+
+{
+q:"India's Strategic Petroleum Reserve is primarily intended to provide:",
+options:[
+"Energy security",
+"Food security",
+"Cyber security",
+"Water security"
+],
+answer:0,
+solution:"Strategic petroleum reserves are maintained as an energy-security buffer against supply disruptions."
+},
+
+{
+q:"Which ministry is primarily responsible for India's petroleum and natural gas sector?",
+options:[
+"Ministry of Petroleum and Natural Gas",
+"Ministry of Coal",
+"Ministry of Power",
+"Ministry of Commerce"
+],
+answer:0,
+solution:"The Ministry of Petroleum and Natural Gas is the nodal ministry for the petroleum and natural gas sector."
+},
+
+{
+q:"Which international organisation coordinates petroleum-producing countries?",
+options:[
+"OPEC",
+"WTO",
+"OECD",
+"ASEAN"
+],
+answer:0,
+solution:"OPEC is the Organisation of the Petroleum Exporting Countries."
+},
+
+{
+q:"Where is OPEC headquartered?",
+options:[
+"Vienna",
+"Geneva",
+"Paris",
+"New York"
+],
+answer:0,
+solution:"OPEC is headquartered in Vienna, Austria."
+},
+
+{
+q:"Which international organisation is headquartered in Geneva and deals with global trade rules?",
+options:[
+"WTO",
+"WHO",
+"UNESCO",
+"ILO"
+],
+answer:0,
+solution:"The World Trade Organization is headquartered in Geneva and administers international trade agreements."
+},
+
+{
+q:"Which organisation is responsible for global public health within the UN system?",
+options:[
+"WHO",
+"WTO",
+"FAO",
+"ILO"
+],
+answer:0,
+solution:"The World Health Organization is the UN specialised agency responsible for international public health."
+},
+
+{
+q:"WHO headquarters is located in:",
+options:[
+"Geneva",
+"New York",
+"Paris",
+"Rome"
+],
+answer:0,
+solution:"WHO headquarters is in Geneva, Switzerland."
+},
+
+{
+q:"Which organisation is responsible for food and agriculture within the UN system?",
+options:[
+"FAO",
+"WHO",
+"UNESCO",
+"ILO"
+],
+answer:0,
+solution:"FAO stands for Food and Agriculture Organization of the United Nations."
+},
+
+{
+q:"FAO headquarters is located in:",
+options:[
+"Rome",
+"Geneva",
+"Paris",
+"Vienna"
+],
+answer:0,
+solution:"FAO is headquartered in Rome, Italy."
+},
+
+{
+q:"Which UN agency deals primarily with labour standards and employment?",
+options:[
+"ILO",
+"WHO",
+"FAO",
+"UNCTAD"
+],
+answer:0,
+solution:"The International Labour Organization deals with labour standards, employment and social protection."
+},
+
+{
+q:"ILO headquarters is located in:",
+options:[
+"Geneva",
+"Rome",
+"New York",
+"Paris"
+],
+answer:0,
+solution:"The ILO is headquartered in Geneva, Switzerland."
+},
+
+{
+q:"Which international body deals with civil aviation standards?",
+options:[
+"ICAO",
+"IMO",
+"ITU",
+"FAO"
+],
+answer:0,
+solution:"The International Civil Aviation Organization develops international standards and recommended practices for civil aviation."
+},
+
+{
+q:"ICAO headquarters is located in:",
+options:[
+"Montreal",
+"Geneva",
+"London",
+"Paris"
+],
+answer:0,
+solution:"ICAO is headquartered in Montreal, Canada."
+},
+
+{
+q:"Which organisation deals with international maritime affairs?",
+options:[
+"IMO",
+"ICAO",
+"ITU",
+"WMO"
+],
+answer:0,
+solution:"The International Maritime Organization is the UN specialised agency concerned with shipping."
+},
+
+{
+q:"IMO headquarters is located in:",
+options:[
+"London",
+"Geneva",
+"Paris",
+"New York"
+],
+answer:0,
+solution:"The IMO is headquartered in London, United Kingdom."
+},
+
+{
+q:"Which organisation coordinates international telecommunications?",
+options:[
+"ITU",
+"IMO",
+"ICAO",
+"ILO"
+],
+answer:0,
+solution:"The International Telecommunication Union coordinates international telecommunications and ICT standards."
+},
+
+{
+q:"ITU headquarters is located in:",
+options:[
+"Geneva",
+"Paris",
+"Rome",
+"London"
+],
+answer:0,
+solution:"The ITU is headquartered in Geneva, Switzerland."
+},
+
+{
+q:"Which organisation publishes the World Economic Outlook?",
+options:[
+"IMF",
+"World Bank",
+"WTO",
+"UNDP"
+],
+answer:0,
+solution:"The International Monetary Fund publishes the World Economic Outlook."
+},
+
+{
+q:"The headquarters of the IMF is in:",
+options:[
+"Washington, D.C.",
+"New York",
+"Geneva",
+"London"
+],
+answer:0,
+solution:"The IMF is headquartered in Washington, D.C., United States."
+},
+
+{
+q:"Which institution primarily provides development financing to developing countries?",
+options:[
+"World Bank",
+"IMF",
+"WTO",
+"OPEC"
+],
+answer:0,
+solution:"The World Bank Group provides development financing and technical assistance to developing countries."
+},
+
+{
+q:"The World Bank headquarters is located in:",
+options:[
+"Washington, D.C.",
+"Geneva",
+"Paris",
+"London"
+],
+answer:0,
+solution:"The World Bank headquarters is in Washington, D.C."
+},
+
+{
+q:"Which organisation is associated with global financial stability and monetary cooperation?",
+options:[
+"IMF",
+"UNESCO",
+"FAO",
+"ILO"
+],
+answer:0,
+solution:"The IMF promotes international monetary cooperation and financial stability."
+},
+
+{
+q:"Which country is a permanent member of the UN Security Council?",
+options:[
+"India",
+"Japan",
+"Germany",
+"United States"
+],
+answer:3,
+solution:"The five permanent members are the United States, Russia, China, France and the United Kingdom."
+},
+
+{
+q:"How many permanent members are there in the UN Security Council?",
+options:[
+"4",
+"5",
+"6",
+"10"
+],
+answer:1,
+solution:"The UN Security Council has five permanent members."
+},
+
+{
+q:"Which UN body has primary responsibility for international peace and security?",
+options:[
+"UN Security Council",
+"UN General Assembly",
+"UNESCO",
+"UNDP"
+],
+answer:0,
+solution:"The UN Security Council has primary responsibility for maintaining international peace and security."
+},
+
+{
+q:"Which international organisation is responsible for global intellectual property rights administration?",
+options:[
+"WIPO",
+"WTO",
+"WHO",
+"UNDP"
+],
+answer:0,
+solution:"The World Intellectual Property Organization administers international intellectual property treaties and systems."
+},
+
+{
+q:"WIPO headquarters is located in:",
+options:[
+"Geneva",
+"Paris",
+"Vienna",
+"New York"
+],
+answer:0,
+solution:"WIPO is headquartered in Geneva, Switzerland."
+},
+
+{
+q:"Which Indian space organisation conducted major satellite and launch activities during March 2026?",
+options:[
+"ISRO",
+"DRDO",
+"HAL",
+"BARC"
+],
+answer:0,
+solution:"ISRO, India's national space agency, continued major space and satellite activities during March 2026."
+},
+
+{
+q:"ISRO headquarters is located in:",
+options:[
+"Bengaluru",
+"Hyderabad",
+"New Delhi",
+"Chennai"
+],
+answer:0,
+solution:"ISRO headquarters is located in Bengaluru, Karnataka."
+},
+
+{
+q:"Who is the Chairman of ISRO in 2026?",
+options:[
+"V. Narayanan",
+"S. Somanath",
+"K. Sivan",
+"R. Umamaheswaran"
+],
+answer:0,
+solution:"V. Narayanan is the ISRO Chairman in 2026."
+},
+
+{
+q:"Which Indian agency is responsible for defence research and development?",
+options:[
+"DRDO",
+"ISRO",
+"CSIR",
+"ICMR"
+],
+answer:0,
+solution:"DRDO is India's Defence Research and Development Organisation."
+},
+
+{
+q:"DRDO headquarters is located in:",
+options:[
+"New Delhi",
+"Bengaluru",
+"Hyderabad",
+"Pune"
+],
+answer:0,
+solution:"DRDO headquarters is located in New Delhi."
+},
+
+{
+q:"Which organisation is India's premier industrial R&D organisation under the Ministry of Science and Technology?",
+options:[
+"CSIR",
+"DRDO",
+"ISRO",
+"BARC"
+],
+answer:0,
+solution:"CSIR, the Council of Scientific and Industrial Research, is a major Indian R&D network."
+},
+
+{
+q:"CSIR stands for:",
+options:[
+"Council of Scientific and Industrial Research",
+"Central Science and Industrial Research",
+"Council for Scientific Indian Research",
+"Central Society of Industrial Research"
+],
+answer:0,
+solution:"CSIR stands for Council of Scientific and Industrial Research."
+},
+
+{
+q:"Which organisation is responsible for nuclear research under the Department of Atomic Energy?",
+options:[
+"BARC",
+"DRDO",
+"CSIR",
+"ISRO"
+],
+answer:0,
+solution:"Bhabha Atomic Research Centre is a major nuclear research institution under the Department of Atomic Energy."
+},
+
+{
+q:"BARC is located in:",
+options:[
+"Mumbai",
+"Delhi",
+"Hyderabad",
+"Chennai"
+],
+answer:0,
+solution:"BARC is located at Trombay, Mumbai."
+},
+
+{
+q:"Which Indian nuclear programme ultimately aims at large-scale utilisation of thorium?",
+options:[
+"Three-stage nuclear power programme",
+"Green Hydrogen Mission",
+"National Solar Mission",
+"PM-KUSUM"
+],
+answer:0,
+solution:"India's three-stage nuclear programme is designed to ultimately utilise the country's thorium resources."
+},
+
+{
+q:"Who formulated India's three-stage nuclear power programme?",
+options:[
+"Homi J. Bhabha",
+"Vikram Sarabhai",
+"Satish Dhawan",
+"Raja Ramanna"
+],
+answer:0,
+solution:"Dr. Homi J. Bhabha formulated India's three-stage nuclear power programme."
+},
+
+{
+q:"Which stage of India's nuclear programme uses Fast Breeder Reactors?",
+options:[
+"First",
+"Second",
+"Third",
+"Fourth"
+],
+answer:1,
+solution:"Fast Breeder Reactors form the second stage of India's three-stage nuclear programme."
+},
+
+{
+q:"Which fuel is intended to play the central role in the third stage of India's nuclear programme?",
+options:[
+"Thorium-232",
+"Coal",
+"Natural gas",
+"Hydrogen"
+],
+answer:0,
+solution:"The third stage is designed around the utilisation of thorium resources."
+},
+
+{
+q:"Which Indian state was associated with the March 2026 explosion at an explosives factory?",
+options:[
+"Maharashtra",
+"Gujarat",
+"Rajasthan",
+"Odisha"
+],
+answer:0,
+solution:"A major explosives-factory explosion occurred in Nagpur district of Maharashtra in March 2026."
+},
+
+{
+q:"Nagpur is located in which Indian state?",
+options:[
+"Maharashtra",
+"Madhya Pradesh",
+"Chhattisgarh",
+"Telangana"
+],
+answer:0,
+solution:"Nagpur is a major city in Maharashtra."
+},
+
+{
+q:"Which state was associated with the crash of an Indian Air Force Su-30MKI fighter jet in March 2026?",
+options:[
+"Assam",
+"Punjab",
+"Rajasthan",
+"Gujarat"
+],
+answer:0,
+solution:"An Indian Air Force Su-30MKI crashed during a training flight in Karbi Anglong district of Assam in March 2026."
+},
+
+{
+q:"Su-30MKI is a:",
+options:[
+"Fighter aircraft",
+"Transport aircraft",
+"Helicopter",
+"Trainer ship"
+],
+answer:0,
+solution:"The Su-30MKI is a multirole fighter aircraft operated by the Indian Air Force."
+},
+
+{
+q:"Which naval vessel from Iran was permitted to dock at Kochi on humanitarian grounds in March 2026?",
+options:[
+"IRIS Lavan",
+"INS Vikrant",
+"IRIS Dena",
+"IRIS Sahand"
+],
+answer:0,
+solution:"Iranian Navy vessel IRIS Lavan was permitted to dock at Kochi on humanitarian grounds."
+},
+
+{
+q:"Kochi is located in which Indian state?",
+options:[
+"Kerala",
+"Tamil Nadu",
+"Karnataka",
+"Andhra Pradesh"
+],
+answer:0,
+solution:"Kochi is a major port city in Kerala."
+},
+
+{
+q:"Which bilateral relationship saw a significant economic partnership announcement between India and Canada in March 2026?",
+options:[
+"India-Canada",
+"India-France",
+"India-Germany",
+"India-Brazil"
+],
+answer:0,
+solution:"India and Canada announced an agreement aimed at strengthening their economic partnership in March 2026."
+},
+
+{
+q:"Who was the Prime Minister of Canada in the cited March 2026 development?",
+options:[
+"Mark Carney",
+"Justin Trudeau",
+"Pierre Poilievre",
+"Jagmeet Singh"
+],
+answer:0,
+solution:"Mark Carney was Canada's Prime Minister in the cited March 2026 development."
+},
+
+{
+q:"Which country's oil imports by India were specifically discussed in March 2026 amid geopolitical tensions?",
+options:[
+"Russia",
+"Brazil",
+"Norway",
+"Canada"
+],
+answer:0,
+solution:"Russian oil supplies and India's ability to purchase Russian oil were major issues discussed during the March geopolitical developments."
+},
+
+{
+q:"Which region was central to the major geopolitical crisis affecting global energy markets in March 2026?",
+options:[
+"West Asia",
+"South America",
+"Central Asia",
+"West Africa"
+],
+answer:0,
+solution:"The West Asia conflict was a major geopolitical development affecting energy markets and global trade."
+},
+
+{
+q:"Which international organisation is responsible for setting global civil aviation standards?",
+options:[
+"ICAO",
+"IATA",
+"IMO",
+"ITU"
+],
+answer:0,
+solution:"ICAO develops international standards and recommended practices for civil aviation."
+},
+
+{
+q:"IATA primarily represents:",
+options:[
+"Airlines",
+"Railways",
+"Seaports",
+"Oil companies"
+],
+answer:0,
+solution:"The International Air Transport Association represents airlines worldwide."
+},
+
+{
+q:"Which organisation is responsible for international standards in maritime safety?",
+options:[
+"IMO",
+"ICAO",
+"IATA",
+"WTO"
+],
+answer:0,
+solution:"The IMO develops international maritime safety and environmental standards."
+},
+
+{
+q:"Which ministry administers India's civil aviation sector?",
+options:[
+"Ministry of Civil Aviation",
+"Ministry of Railways",
+"Ministry of Commerce",
+"Ministry of Home Affairs"
+],
+answer:0,
+solution:"The Ministry of Civil Aviation is the nodal ministry for India's civil aviation sector."
+},
+
+{
+q:"Which body regulates airports and airlines-related economic matters in India?",
+options:[
+"AERA",
+"SEBI",
+"TRAI",
+"IRDAI"
+],
+answer:0,
+solution:"The Airports Economic Regulatory Authority regulates certain economic aspects of airport services."
+},
+
+{
+q:"Which body regulates telecom services in India?",
+options:[
+"TRAI",
+"SEBI",
+"RBI",
+"FSSAI"
+],
+answer:0,
+solution:"TRAI, the Telecom Regulatory Authority of India, regulates telecom services."
+},
+
+{
+q:"TRAI headquarters is located in:",
+options:[
+"New Delhi",
+"Mumbai",
+"Bengaluru",
+"Hyderabad"
+],
+answer:0,
+solution:"TRAI is headquartered in New Delhi."
+},
+
+{
+q:"Which body regulates food safety standards in India?",
+options:[
+"FSSAI",
+"SEBI",
+"TRAI",
+"RBI"
+],
+answer:0,
+solution:"The Food Safety and Standards Authority of India regulates food safety standards."
+},
+
+{
+q:"FSSAI functions under which ministry?",
+options:[
+"Ministry of Health and Family Welfare",
+"Ministry of Agriculture",
+"Ministry of Commerce",
+"Ministry of Consumer Affairs"
+],
+answer:0,
+solution:"FSSAI functions under the Ministry of Health and Family Welfare."
+},
+
+{
+q:"Which body conducts elections to Parliament and state legislatures in India?",
+options:[
+"Election Commission of India",
+"UPSC",
+"Finance Commission",
+"Law Commission"
+],
+answer:0,
+solution:"The Election Commission of India conducts elections to Parliament, state legislatures and the offices of President and Vice-President."
+},
+
+{
+q:"Which elections were announced in March 2026 according to current-affairs reports?",
+options:[
+"Assam, Kerala, Tamil Nadu, West Bengal and Puducherry",
+"Maharashtra, Gujarat and Goa",
+"Punjab, Haryana and Himachal Pradesh",
+"Rajasthan, Madhya Pradesh and Chhattisgarh"
+],
+answer:0,
+solution:"The Election Commission announced Assembly elections for Assam, Kerala, Tamil Nadu, West Bengal and Puducherry."
+},
+
+{
+q:"How many seats are there in the Kerala Legislative Assembly?",
+options:[
+"120",
+"126",
+"140",
+"147"
+],
+answer:2,
+solution:"The Kerala Legislative Assembly has 140 seats."
+},
+
+{
+q:"How many seats are there in the Assam Legislative Assembly?",
+options:[
+"120",
+"126",
+"140",
+"147"
+],
+answer:1,
+solution:"The Assam Legislative Assembly has 126 seats."
+},
+
+{
+q:"How many seats are there in the Puducherry Legislative Assembly?",
+options:[
+"20",
+"30",
+"40",
+"50"
+],
+answer:1,
+solution:"The Puducherry Legislative Assembly has 30 seats."
+},
+
+{
+q:"Which constitutional body conducts Assembly elections in India?",
+options:[
+"Election Commission of India",
+"Finance Commission",
+"UPSC",
+"State Public Service Commission"
+],
+answer:0,
+solution:"The Election Commission of India conducts elections to state legislative assemblies."
+},
+
+{
+q:"Which constitutional article establishes the Election Commission of India?",
+options:[
+"Article 324",
+"Article 280",
+"Article 356",
+"Article 370"
+],
+answer:0,
+solution:"Article 324 provides for the Election Commission of India."
+},
+
+{
+q:"Which Article deals with the Finance Commission?",
+options:[
+"Article 280",
+"Article 324",
+"Article 315",
+"Article 148"
+],
+answer:0,
+solution:"Article 280 deals with the Finance Commission."
+},
+
+{
+q:"Which Article provides for the Comptroller and Auditor General of India?",
+options:[
+"Article 148",
+"Article 280",
+"Article 324",
+"Article 76"
+],
+answer:0,
+solution:"Article 148 provides for the office of the Comptroller and Auditor General of India."
+},
+
+{
+q:"Which Article provides for the Union Public Service Commission?",
+options:[
+"Article 315",
+"Article 324",
+"Article 280",
+"Article 148"
+],
+answer:0,
+solution:"Article 315 provides for Public Service Commissions for the Union and the States."
+},
+
+{
+q:"Which institution is responsible for auditing Union and State government accounts?",
+options:[
+"CAG",
+"RBI",
+"SEBI",
+"Finance Commission"
+],
+answer:0,
+solution:"The Comptroller and Auditor General of India audits government accounts."
+},
+
+{
+q:"Which scheme is associated with improving regional air connectivity?",
+options:[
+"UDAN",
+"PM-KISAN",
+"PMAY",
+"PMFBY"
+],
+answer:0,
+solution:"UDAN is India's regional connectivity scheme."
+},
+
+{
+q:"The full form of UDAN is:",
+options:[
+"Ude Desh ka Aam Nagrik",
+"Universal Development and Aviation Network",
+"United Domestic Air Network",
+"Udaan Development Aviation Node"
+],
+answer:0,
+solution:"UDAN stands for Ude Desh ka Aam Nagrik."
+},
+
+{
+q:"Which ministry is responsible for the UDAN scheme?",
+options:[
+"Ministry of Civil Aviation",
+"Ministry of Railways",
+"Ministry of Commerce",
+"Ministry of Finance"
+],
+answer:0,
+solution:"The Ministry of Civil Aviation is responsible for the UDAN scheme."
+},
+
+{
+q:"Which organisation conducts the Periodic Labour Force Survey?",
+options:[
+"NSO",
+"RBI",
+"SEBI",
+"NITI Aayog"
+],
+answer:0,
+solution:"The National Statistical Office conducts the PLFS."
+},
+
+{
+q:"PLFS primarily provides data on:",
+options:[
+"Employment and unemployment",
+"Defence expenditure",
+"Rainfall",
+"Foreign policy"
+],
+answer:0,
+solution:"PLFS provides statistics on labour-force participation, worker population and unemployment."
+},
+
+{
+q:"Which body is responsible for India's official national accounts and statistical estimates?",
+options:[
+"NSO",
+"SEBI",
+"RBI",
+"FSSAI"
+],
+answer:0,
+solution:"The National Statistical Office is India's principal official statistical organisation."
+},
+
+{
+q:"Which ministry does the National Statistical Office operate under?",
+options:[
+"MoSPI",
+"Ministry of Finance",
+"Ministry of Labour",
+"Ministry of Home Affairs"
+],
+answer:0,
+solution:"NSO operates under the Ministry of Statistics and Programme Implementation."
+},
+
+{
+q:"Which major rural initiative was linked to self-reliance and rural entrepreneurship in March 2026?",
+options:[
+"Mahatma Gandhi Gram Swaraj Initiative",
+"PM Ujjwala Yojana",
+"PM Fasal Bima Yojana",
+"PM SVANidhi"
+],
+answer:0,
+solution:"The Mahatma Gandhi Gram Swaraj Initiative 2026 was highlighted as an initiative for rural entrepreneurial self-reliance."
+},
+
+{
+q:"Which initiative focuses particularly on tribal empowerment and cultural preservation?",
+options:[
+"Bharat Tribes Fest",
+"UDAN",
+"BHAVYA",
+"PM Gati Shakti"
+],
+answer:0,
+solution:"Bharat Tribes Fest 2026 focused on tribal culture and economic empowerment."
+},
+
+{
+q:"The Van Dhan initiative is primarily associated with:",
+options:[
+"Tribal livelihoods",
+"Urban transport",
+"Air connectivity",
+"Defence exports"
+],
+answer:0,
+solution:"Van Dhan focuses on tribal livelihoods through value addition and marketing of minor forest produce."
+},
+
+{
+q:"PMJVM is associated with:",
+options:[
+"Tribal development",
+"Railway development",
+"Space research",
+"Banking reform"
+],
+answer:0,
+solution:"PMJVM refers to the Pradhan Mantri Janjatiya Vikas Mission, aimed at tribal development."
+},
+
+{
+q:"Which ministry is the nodal ministry for tribal affairs?",
+options:[
+"Ministry of Tribal Affairs",
+"Ministry of Rural Development",
+"Ministry of Culture",
+"Ministry of Home Affairs"
+],
+answer:0,
+solution:"The Ministry of Tribal Affairs is the nodal ministry for tribal development."
+},
+
+{
+q:"Who was identified as India's first woman Naval officer to die in the line of duty?",
+options:[
+"Lieutenant Commander Daisy Tang",
+"Lieutenant Commander Asha",
+"Commander Priya Sharma",
+"Captain Radhika"
+],
+answer:0,
+solution:"Lieutenant Commander Daisy Tang was identified in March current-affairs coverage as India's first woman Naval officer to die in the line of duty."
+},
+
+{
+q:"The Indian Navy comes under which ministry?",
+options:[
+"Ministry of Defence",
+"Ministry of Home Affairs",
+"Ministry of External Affairs",
+"Ministry of Shipping"
+],
+answer:0,
+solution:"The Indian Navy is one of the three armed forces under the Ministry of Defence."
+},
+
+{
+q:"Which three services constitute the Indian Armed Forces?",
+options:[
+"Army, Navy and Air Force",
+"Army, BSF and CRPF",
+"Navy, Coast Guard and CISF",
+"Army, Navy and NDRF"
+],
+answer:0,
+solution:"The three principal armed forces are the Indian Army, Indian Navy and Indian Air Force."
+},
+
+{
+q:"Which force is responsible for maritime security and coastal protection along with the Navy?",
+options:[
+"Indian Coast Guard",
+"CRPF",
+"BSF",
+"CISF"
+],
+answer:0,
+solution:"The Indian Coast Guard has major responsibilities related to maritime law enforcement, coastal security and protection of India's maritime interests."
+},
+
+{
+q:"Which ministry administers the Indian Coast Guard?",
+options:[
+"Ministry of Defence",
+"Ministry of Home Affairs",
+"Ministry of Shipping",
+"Ministry of External Affairs"
+],
+answer:0,
+solution:"The Indian Coast Guard functions under the Ministry of Defence."
+},
+
+{
+q:"Which Indian city is the headquarters of the Eastern Naval Command?",
+options:[
+"Visakhapatnam",
+"Mumbai",
+"Kochi",
+"Chennai"
+],
+answer:0,
+solution:"The Eastern Naval Command is headquartered at Visakhapatnam."
+},
+
+{
+q:"Which city is the headquarters of the Western Naval Command?",
+options:[
+"Mumbai",
+"Kochi",
+"Visakhapatnam",
+"Chennai"
+],
+answer:0,
+solution:"The Western Naval Command is headquartered in Mumbai."
+},
+
+{
+q:"Which city is the headquarters of the Southern Naval Command?",
+options:[
+"Kochi",
+"Mumbai",
+"Chennai",
+"Visakhapatnam"
+],
+answer:0,
+solution:"The Southern Naval Command is headquartered at Kochi."
+},
+
+{
+q:"Which command is considered the training command of the Indian Navy?",
+options:[
+"Southern Naval Command",
+"Western Naval Command",
+"Eastern Naval Command",
+"Central Naval Command"
+],
+answer:0,
+solution:"The Southern Naval Command is the training command of the Indian Navy."
+},
+
+{
+q:"Which city is the headquarters of the Indian Air Force?",
+options:[
+"New Delhi",
+"Bengaluru",
+"Hyderabad",
+"Chandigarh"
+],
+answer:0,
+solution:"The headquarters of the Indian Air Force is located in New Delhi."
+},
+
+{
+q:"Which aircraft was involved in the March 2026 Assam crash?",
+options:[
+"Su-30MKI",
+"Rafale",
+"Tejas",
+"MiG-29"
+],
+answer:0,
+solution:"The aircraft involved was an Indian Air Force Su-30MKI fighter jet."
+},
+
+{
+q:"The Su-30MKI is manufactured in India by:",
+options:[
+"Hindustan Aeronautics Limited",
+"DRDO",
+"Bharat Electronics Limited",
+"ISRO"
+],
+answer:0,
+solution:"HAL manufactures the Su-30MKI aircraft in India under arrangements with Russia's Sukhoi."
+},
+
+{
+q:"HAL headquarters is located in:",
+options:[
+"Bengaluru",
+"New Delhi",
+"Hyderabad",
+"Pune"
+],
+answer:0,
+solution:"Hindustan Aeronautics Limited is headquartered in Bengaluru."
+},
+
+{
+q:"Which Indian company is primarily associated with defence electronics and radars?",
+options:[
+"Bharat Electronics Limited",
+"Indian Oil",
+"SAIL",
+"NTPC"
+],
+answer:0,
+solution:"Bharat Electronics Limited is a major public-sector defence electronics company."
+},
+
+{
+q:"BEL headquarters is located in:",
+options:[
+"Bengaluru",
+"New Delhi",
+"Mumbai",
+"Chennai"
+],
+answer:0,
+solution:"BEL is headquartered in Bengaluru."
+},
+
+{
+q:"Which Indian company is India's major petroleum refining and marketing PSU?",
+options:[
+"Indian Oil Corporation",
+"HAL",
+"BEL",
+"SAIL"
+],
+answer:0,
+solution:"Indian Oil Corporation is one of India's largest petroleum refining and marketing companies."
+},
+
+{
+q:"Which company operates the largest oil refining capacity in India among major PSUs?",
+options:[
+"Indian Oil Corporation",
+"HAL",
+"BEL",
+"BSNL"
+],
+answer:0,
+solution:"Indian Oil Corporation has India's largest refining capacity among major refining companies."
+},
+
+{
+q:"Which public sector company is primarily associated with electricity generation?",
+options:[
+"NTPC",
+"HAL",
+"BEL",
+"LIC"
+],
+answer:0,
+solution:"NTPC is India's largest power-generation utility among public-sector companies."
+},
+
+{
+q:"NTPC headquarters is located in:",
+options:[
+"New Delhi",
+"Mumbai",
+"Bengaluru",
+"Chennai"
+],
+answer:0,
+solution:"NTPC is headquartered in New Delhi."
+},
+
+{
+q:"Which organisation manages India's largest life insurance business?",
+options:[
+"LIC",
+"SEBI",
+"RBI",
+"IRDAI"
+],
+answer:0,
+solution:"Life Insurance Corporation of India is India's largest life insurer."
+},
+
+{
+q:"LIC was established in:",
+options:[
+"1956",
+"1966",
+"1975",
+"1985"
+],
+answer:0,
+solution:"LIC was established in 1956 through nationalisation of life insurance business."
+},
+
+{
+q:"Which organisation regulates India's capital markets?",
+options:[
+"SEBI",
+"RBI",
+"LIC",
+"NABARD"
+],
+answer:0,
+solution:"SEBI regulates the securities and capital markets in India."
+},
+
+{
+q:"SEBI headquarters is located in:",
+options:[
+"Mumbai",
+"New Delhi",
+"Kolkata",
+"Chennai"
+],
+answer:0,
+solution:"SEBI is headquartered in Mumbai."
+},
+
+{
+q:"Which bank is India's largest public-sector bank?",
+options:[
+"State Bank of India",
+"Punjab National Bank",
+"Bank of Baroda",
+"Canara Bank"
+],
+answer:0,
+solution:"State Bank of India is India's largest public-sector bank."
+},
+
+{
+q:"The headquarters of State Bank of India is located in:",
+options:[
+"Mumbai",
+"New Delhi",
+"Chennai",
+"Kolkata"
+],
+answer:0,
+solution:"SBI is headquartered in Mumbai."
+},
+
+{
+q:"Which institution is India's apex development bank for agriculture and rural development?",
+options:[
+"NABARD",
+"SIDBI",
+"EXIM Bank",
+"RBI"
+],
+answer:0,
+solution:"NABARD is India's apex development bank for agriculture and rural development."
+},
+
+{
+q:"NABARD headquarters is located in:",
+options:[
+"Mumbai",
+"New Delhi",
+"Hyderabad",
+"Lucknow"
+],
+answer:0,
+solution:"NABARD is headquartered in Mumbai."
+},
+
+{
+q:"Which institution is the principal financial institution for micro, small and medium enterprises?",
+options:[
+"SIDBI",
+"NABARD",
+"EXIM Bank",
+"LIC"
+],
+answer:0,
+solution:"SIDBI is the principal financial institution for promotion, financing and development of MSMEs."
+},
+
+{
+q:"SIDBI headquarters is located in:",
+options:[
+"Lucknow",
+"Mumbai",
+"New Delhi",
+"Ahmedabad"
+],
+answer:0,
+solution:"SIDBI is headquartered in Lucknow."
+},
+
+{
+q:"Which institution is India's specialised export-import financing institution?",
+options:[
+"EXIM Bank",
+"NABARD",
+"SIDBI",
+"RBI"
+],
+answer:0,
+solution:"Export-Import Bank of India provides financing and support for India's international trade."
+},
+
+{
+q:"EXIM Bank headquarters is located in:",
+options:[
+"Mumbai",
+"New Delhi",
+"Chennai",
+"Hyderabad"
+],
+answer:0,
+solution:"EXIM Bank is headquartered in Mumbai."
+},
+
+{
+q:"Which day is observed as International Women's Day?",
+options:[
+"8 March",
+"10 March",
+"12 March",
+"15 March"
+],
+answer:0,
+solution:"International Women's Day is observed annually on 8 March."
+},
+
+{
+q:"International Women's Day is associated with which UN Sustainable Development Goal?",
+options:[
+"SDG 5",
+"SDG 2",
+"SDG 7",
+"SDG 13"
+],
+answer:0,
+solution:"SDG 5 focuses on achieving gender equality and empowering all women and girls."
+},
+
+{
+q:"World Water Day is observed on:",
+options:[
+"22 March",
+"21 March",
+"24 March",
+"27 March"
+],
+answer:0,
+solution:"World Water Day is observed on 22 March."
+},
+
+{
+q:"World Water Day primarily focuses on:",
+options:[
+"Water and sanitation",
+"Wildlife only",
+"Space research",
+"Trade"
+],
+answer:0,
+solution:"World Water Day raises awareness about freshwater and water-related challenges."
+},
+
+{
+q:"World Tuberculosis Day is observed on:",
+options:[
+"24 March",
+"8 March",
+"22 March",
+"31 March"
+],
+answer:0,
+solution:"World Tuberculosis Day is observed on 24 March."
+},
+
+{
+q:"World TB Day commemorates the discovery of the TB-causing bacterium by:",
+options:[
+"Robert Koch",
+"Louis Pasteur",
+"Alexander Fleming",
+"Edward Jenner"
+],
+answer:0,
+solution:"Robert Koch announced the discovery of Mycobacterium tuberculosis on 24 March 1882."
+},
+
+{
+q:"Which disease is caused by Mycobacterium tuberculosis?",
+options:[
+"Tuberculosis",
+"Malaria",
+"Dengue",
+"Typhoid"
+],
+answer:0,
+solution:"Mycobacterium tuberculosis is the bacterium responsible for tuberculosis."
+},
+
+{
+q:"World Wildlife Day is observed on:",
+options:[
+"3 March",
+"5 March",
+"7 March",
+"10 March"
+],
+answer:0,
+solution:"World Wildlife Day is observed on 3 March."
+},
+
+{
+q:"World Wildlife Day is associated with which international convention?",
+options:[
+"CITES",
+"Ramsar Convention",
+"Basel Convention",
+"Kyoto Protocol"
+],
+answer:0,
+solution:"World Wildlife Day is linked to CITES, the Convention on International Trade in Endangered Species of Wild Fauna and Flora."
+},
+
+{
+q:"National Science Day in India is observed on:",
+options:[
+"28 February",
+"1 March",
+"8 March",
+"15 March"
+],
+answer:0,
+solution:"National Science Day is observed on 28 February to commemorate C.V. Raman's discovery of the Raman Effect."
+},
+
+{
+q:"The Raman Effect was discovered by:",
+options:[
+"C.V. Raman",
+"Homi Bhabha",
+"Vikram Sarabhai",
+"Jagadish Chandra Bose"
+],
+answer:0,
+solution:"Sir C.V. Raman discovered the Raman Effect."
+},
+
+{
+q:"Which Nobel Prize did C.V. Raman receive?",
+options:[
+"Physics",
+"Chemistry",
+"Medicine",
+"Literature"
+],
+answer:0,
+solution:"C.V. Raman received the Nobel Prize in Physics in 1930."
+},
+
+{
+q:"Which March 2026 initiative focused on tribal culture and economic empowerment?",
+options:[
+"Bharat Tribes Fest",
+"Vigyan Mela",
+"Yuva Utsav",
+"Startup Mahakumbh"
+],
+answer:0,
+solution:"Bharat Tribes Fest 2026 highlighted tribal culture, entrepreneurship and economic empowerment."
+},
+
+{
+q:"Which ministry is associated with Bharat Tribes Fest?",
+options:[
+"Ministry of Tribal Affairs",
+"Ministry of Culture",
+"Ministry of Commerce",
+"Ministry of Tourism"
+],
+answer:0,
+solution:"The Ministry of Tribal Affairs is the principal ministry associated with tribal development initiatives."
+},
+
+{
+q:"Which initiative is associated with rural entrepreneurial self-reliance in March 2026?",
+options:[
+"Mahatma Gandhi Gram Swaraj Initiative",
+"BHAVYA",
+"UDAN",
+"Jal Jeevan Mission"
+],
+answer:0,
+solution:"The Mahatma Gandhi Gram Swaraj Initiative 2026 was highlighted for promoting rural entrepreneurial self-reliance."
+},
+
+{
+q:"Which constitutional principle is contained in Article 44?",
+options:[
+"Uniform Civil Code",
+"Right to Education",
+"Freedom of Religion",
+"Equality before Law"
+],
+answer:0,
+solution:"Article 44 directs the State to endeavour to secure a Uniform Civil Code for citizens."
+}
 
 ];
-
 
 let currentQuestion=0;
 let userAnswers=new Array(questions.length).fill(null);
 let timeLeft=60*60;
 let submitted=false;
-
+let timerInterval;
 
 function loadQuestion(){
 
@@ -320,15 +2576,14 @@ div.classList.add("active");
 }
 
 let html=`
-<h3>
-Q${index+1}. ${item.q}
-</h3>
+<h3>Q${index+1}. ${item.q}</h3>
 `;
 
 item.options.forEach((option,optIndex)=>{
 
 html+=`
 <label class="option">
+
 <input
 type="radio"
 name="question${index}"
@@ -336,7 +2591,7 @@ value="${optIndex}"
 ${userAnswers[index]===optIndex?"checked":""}
 onchange="selectAnswer(${index},${optIndex})">
 
-${option}
+${String.fromCharCode(65+optIndex)}. ${option}
 
 </label>
 `;
@@ -353,7 +2608,6 @@ updatePalette();
 
 }
 
-
 function selectAnswer(question,answer){
 
 userAnswers[question]=answer;
@@ -361,7 +2615,6 @@ userAnswers[question]=answer;
 updatePalette();
 
 }
-
 
 function updatePalette(){
 
@@ -388,6 +2641,7 @@ btn.classList.add("current");
 btn.onclick=()=>{
 
 currentQuestion=index;
+
 loadQuestion();
 
 };
@@ -397,7 +2651,6 @@ palette.appendChild(btn);
 });
 
 }
-
 
 function nextQuestion(){
 
@@ -411,7 +2664,6 @@ loadQuestion();
 
 }
 
-
 function previousQuestion(){
 
 if(currentQuestion>0){
@@ -424,7 +2676,6 @@ loadQuestion();
 
 }
 
-
 function clearAnswer(){
 
 userAnswers[currentQuestion]=null;
@@ -433,10 +2684,9 @@ loadQuestion();
 
 }
 
-
 function submitTest(){
 
-if(submitted) return;
+if(submitted)return;
 
 if(!confirm("Are you sure you want to submit the test?")){
 return;
@@ -445,6 +2695,12 @@ return;
 submitted=true;
 
 clearInterval(timerInterval);
+
+calculateResult();
+
+}
+
+function calculateResult(){
 
 let correct=0;
 let wrong=0;
@@ -470,37 +2726,53 @@ wrong++;
 
 });
 
-let score=correct-(wrong*0.25);
+let negative=wrong*0.25;
+
+let score=correct-negative;
 
 let percentage=(score/questions.length)*100;
 
-let result=document.getElementById("result");
+const result=document.getElementById("result");
 
 result.style.display="block";
 
 result.innerHTML=`
 
-<h2>Test Result</h2>
+<h2>🎯 Test Result</h2>
 
-<br>
+<div class="result-grid">
 
-<p><b>Total Questions:</b> ${questions.length}</p>
+<div class="result-card">
+Total
+<b>${questions.length}</b>
+</div>
 
-<p><b>Correct:</b> ${correct}</p>
+<div class="result-card">
+Correct
+<b style="color:#16a34a">${correct}</b>
+</div>
 
-<p><b>Wrong:</b> ${wrong}</p>
+<div class="result-card">
+Wrong
+<b style="color:#dc2626">${wrong}</b>
+</div>
 
-<p><b>Unattempted:</b> ${unanswered}</p>
+<div class="result-card">
+Unattempted
+<b>${unanswered}</b>
+</div>
 
-<p><b>Negative Marking:</b> ${wrong*0.25.toFixed(2)} marks</p>
+</div>
+
+<p><b>Negative Marking:</b> −${negative.toFixed(2)}</p>
 
 <p><b>Final Score:</b> ${score.toFixed(2)} / 100</p>
 
 <p><b>Percentage:</b> ${percentage.toFixed(2)}%</p>
 
-<hr>
+<hr style="margin:25px 0;">
 
-<h2>Solutions</h2>
+<h2>📖 Complete Solutions</h2>
 
 ${questions.map((q,i)=>`
 
@@ -510,8 +2782,10 @@ ${questions.map((q,i)=>`
 
 <br><br>
 
-<b>Correct Answer:</b>
-${q.options[q.answer]}
+<span class="correct">
+Correct Answer:
+${String.fromCharCode(65+q.answer)}. ${q.options[q.answer]}
+</span>
 
 <br><br>
 
@@ -530,7 +2804,6 @@ behavior:"smooth"
 
 }
 
-
 function updateTimer(){
 
 let minutes=Math.floor(timeLeft/60);
@@ -548,7 +2821,9 @@ if(!submitted){
 
 alert("Time is over. Test will be submitted automatically.");
 
-submitTest();
+submitted=true;
+
+calculateResult();
 
 }
 
@@ -560,12 +2835,12 @@ timeLeft--;
 
 }
 
-
-let timerInterval=setInterval(updateTimer,1000);
+timerInterval=setInterval(updateTimer,1000);
 
 loadQuestion();
 
 </script>
 
 </body>
+
 </html>
