@@ -1,1 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES | Geography Test 1</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:15px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 12px rgba(0,0,0,.2);
+}
+
+.header-inner{
+    max-width:1300px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.test-title{
+    font-size:17px;
+    font-weight:bold;
+}
+
+.timer{
+    background:#fff;
+    color:#d90429;
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:900;
+    min-width:125px;
+    text-align:center;
+}
+
+.main{
+    max-width:1300px;
+    margin:25px auto;
+    padding:0 15px;
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:25px;
+}
+
+.question-box{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.question-number{
+    color:#1d4ed8;
+    font-size:18px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:20px;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.option{
+    border:2px solid #dbe3ef;
+    border-radius:9px;
+    padding:13px 15px;
+    cursor:pointer;
+    transition:.2s;
+    background:#fff;
+    font-size:16px;
+}
+
+.option:hover{
+    border-color:#1d4ed8;
+    background:#f0f5ff;
+}
+
+.option.selected{
+    border-color:#1d4ed8;
+    background:#e8f0ff;
+    font-weight:bold;
+}
+
+.option input{
+    display:none;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+    gap:10px;
+}
+
+.nav-btn,
+.submit-btn{
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:800;
+    font-size:15px;
+}
+
+.prev-btn{
+    background:#64748b;
+    color:white;
+}
+
+.next-btn{
+    background:#1d4ed8;
+    color:white;
+}
+
+.submit-btn{
+    background:#16a34a;
+    color:white;
+    width:100%;
+    margin-top:20px;
+}
+
+.palette-box{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    height:max-content;
+    position:sticky;
+    top:100px;
+}
+
+.palette-box h3{
+    margin-bottom:15px;
+    color:#102a43;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+}
+
+.p-btn{
+    width:42px;
+    height:42px;
+    border-radius:6px;
+    border:1px solid #cbd5e1;
+    background:#e5e7eb;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.p-btn.current{
+    border:3px solid #1d4ed8;
+}
+
+.p-btn.attempted{
+    background:#22c55e;
+    color:white;
+}
+
+.legend{
+    margin-top:18px;
+    font-size:13px;
+}
+
+.legend div{
+    margin:7px 0;
+}
+
+.box{
+    display:inline-block;
+    width:15px;
+    height:15px;
+    border-radius:3px;
+    vertical-align:middle;
+    margin-right:5px;
+}
+
+.green{
+    background:#22c55e;
+}
+
+.grey{
+    background:#e5e7eb;
+}
+
+.blue{
+    background:#fff;
+    border:3px solid #1d4ed8;
+}
+
+.result{
+    display:none;
+    background:white;
+    max-width:1000px;
+    margin:30px auto;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 25px rgba(0,0,0,.1);
+}
+
+.result h2{
+    color:#102a43;
+    margin-bottom:10px;
+}
+
+.score{
+    font-size:25px;
+    font-weight:900;
+    color:#16a34a;
+    margin-bottom:25px;
+    line-height:1.7;
+}
+
+.review{
+    border-top:1px solid #ddd;
+    padding:18px 0;
+}
+
+.review-question{
+    font-weight:800;
+    font-size:17px;
+    margin-bottom:10px;
+}
+
+.correct{
+    color:#15803d;
+    font-weight:bold;
+}
+
+.wrong{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+.solution{
+    margin-top:8px;
+    background:#f8fafc;
+    border-left:4px solid #1d4ed8;
+    padding:10px;
+    line-height:1.5;
+}
+
+#quiz{
+    display:block;
+}
+
+@media(max-width:900px){
+    .main{
+        grid-template-columns:1fr;
+    }
+
+    .palette-box{
+        position:relative;
+        top:0;
+    }
+}
+
+@media(max-width:600px){
+    .header-inner{
+        flex-direction:column;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .question-box{
+        padding:18px;
+    }
+
+    .palette{
+        grid-template-columns:repeat(10,1fr);
+    }
+
+    .p-btn{
+        width:30px;
+        height:30px;
+        font-size:11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div>
+<div class="logo">AIMERS <span>CLASSES</span></div>
+<div class="test-title">GEOGRAPHY TEST 1 | SSC CGL LEVEL</div>
+</div>
+
+<div class="timer" id="timer">60:00</div>
+
+</div>
+</header>
+
+<div id="quiz">
+
+<div class="main">
+
+<div class="question-box">
+
+<div class="question-number" id="questionNumber">
+Question 1 of 100
+</div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+<div class="navigation">
+
+<button class="nav-btn prev-btn" onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="nav-btn next-btn" onclick="nextQuestion()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+<div class="palette-box">
+
+<h3>Question Palette</h3>
+
+<div class="palette" id="palette"></div>
+
+<div class="legend">
+
+<div>
+<span class="box green"></span>
+Attempted
+</div>
+
+<div>
+<span class="box grey"></span>
+Not Attempted
+</div>
+
+<div>
+<span class="box blue"></span>
+Current Question
+</div>
+
+</div>
+
+<button class="submit-btn" onclick="submitTest()">
+SUBMIT TEST
+</button>
+
+</div>
+
+</div>
+</div>
+
+<div class="result" id="result">
+
+<h2>GEOGRAPHY TEST 1 RESULT</h2>
+
+<div class="score" id="score"></div>
+
+<div id="review"></div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+{
+q:"The shape of the Earth is best described as:",
+o:["Perfect sphere","Geoid","Flat disc","Perfect ellipsoid"],
+a:1,
+s:"The Earth is described as a geoid because its shape is slightly flattened at the poles and bulged at the equator."
+},
+
+{
+q:"The equatorial diameter of the Earth is approximately:",
+o:["6,378 km","12,742 km","40,075 km","5,100 km"],
+a:0,
+s:"The Earth's equatorial diameter is approximately 12,756 km, while the equatorial radius is about 6,378 km."
+},
+
+{
+q:"The approximate circumference of the Earth along the Equator is:",
+o:["20,000 km","30,000 km","40,075 km","50,000 km"],
+a:2,
+s:"The Earth's equatorial circumference is approximately 40,075 km."
+},
+
+{
+q:"Which latitude passes through the middle of India?",
+o:["Equator","Tropic of Cancer","Tropic of Capricorn","Arctic Circle"],
+a:1,
+s:"The Tropic of Cancer at about 23°30'N passes through the northern part of India."
+},
+
+{
+q:"The Equator is located at:",
+o:["0° latitude","23.5° N","23.5° S","90° latitude"],
+a:0,
+s:"The Equator is the great circle at 0° latitude."
+},
+
+{
+q:"The Prime Meridian passes through:",
+o:["Paris","Greenwich","New York","Tokyo"],
+a:1,
+s:"The Prime Meridian is the 0° longitude line passing through Greenwich near London."
+},
+
+{
+q:"The International Date Line roughly follows:",
+o:["0° longitude","90° E","180° longitude","90° W"],
+a:2,
+s:"The International Date Line generally follows the 180° meridian, with deviations to avoid land areas and political boundaries."
+},
+
+{
+q:"The Earth rotates from:",
+o:["East to west","West to east","North to south","South to north"],
+a:1,
+s:"The Earth rotates on its axis from west to east, which makes the Sun appear to rise in the east."
+},
+
+{
+q:"The rotation of the Earth causes:",
+o:["Seasons","Day and night","Tides only","Earthquakes"],
+a:1,
+s:"Rotation causes the alternation of day and night."
+},
+
+{
+q:"The revolution of the Earth around the Sun takes approximately:",
+o:["24 hours","30 days","365¼ days","12 hours"],
+a:2,
+s:"The Earth takes approximately 365¼ days to complete one revolution around the Sun."
+},
+
+{
+q:"The inclination of Earth's axis is approximately:",
+o:["23.5°","45°","66.5°","90°"],
+a:0,
+s:"Earth's rotational axis is tilted about 23.5° from the perpendicular to its orbital plane."
+},
+
+{
+q:"The Tropic of Capricorn is located at approximately:",
+o:["23.5° N","23.5° S","66.5° N","0°"],
+a:1,
+s:"The Tropic of Capricorn lies at approximately 23.5° south latitude."
+},
+
+{
+q:"The Arctic Circle is located at approximately:",
+o:["23.5° N","66.5° N","66.5° S","90° S"],
+a:1,
+s:"The Arctic Circle lies at approximately 66.5° north latitude."
+},
+
+{
+q:"The Antarctic Circle is located at approximately:",
+o:["66.5° S","23.5° S","90° N","0°"],
+a:0,
+s:"The Antarctic Circle lies at approximately 66.5° south latitude."
+},
+
+{
+q:"Which layer of the Earth is mainly composed of iron and nickel?",
+o:["Crust","Mantle","Core","Lithosphere"],
+a:2,
+s:"The Earth's core is primarily composed of iron and nickel."
+},
+
+{
+q:"The outermost solid layer of the Earth is called:",
+o:["Core","Mantle","Crust","Asthenosphere"],
+a:2,
+s:"The crust is the Earth's outermost solid layer."
+},
+
+{
+q:"The thickest layer of the Earth is:",
+o:["Crust","Mantle","Inner core","Outer core"],
+a:1,
+s:"The mantle is the thickest major layer of the Earth."
+},
+
+{
+q:"The Mohorovičić discontinuity separates:",
+o:["Crust and mantle","Mantle and core","Inner and outer core","Atmosphere and crust"],
+a:0,
+s:"The Moho is the boundary between Earth's crust and mantle."
+},
+
+{
+q:"The Gutenberg discontinuity separates:",
+o:["Crust and mantle","Mantle and outer core","Outer and inner core","Lithosphere and asthenosphere"],
+a:1,
+s:"The Gutenberg discontinuity marks the boundary between the mantle and outer core."
+},
+
+{
+q:"Which layer of the atmosphere is closest to Earth's surface?",
+o:["Stratosphere","Mesosphere","Troposphere","Thermosphere"],
+a:2,
+s:"The troposphere is the lowest atmospheric layer and contains most atmospheric water vapour."
+},
+
+{
+q:"Most weather phenomena occur in the:",
+o:["Troposphere","Stratosphere","Mesosphere","Exosphere"],
+a:0,
+s:"Clouds, rainfall, storms and most weather processes occur in the troposphere."
+},
+
+{
+q:"The ozone layer is mainly found in the:",
+o:["Troposphere","Stratosphere","Mesosphere","Exosphere"],
+a:1,
+s:"The ozone layer is concentrated mainly in the stratosphere."
+},
+
+{
+q:"The coldest atmospheric layer is generally:",
+o:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],
+a:2,
+s:"Temperatures can fall to extremely low levels in the mesosphere."
+},
+
+{
+q:"Which atmospheric layer contains the ionosphere prominently?",
+o:["Troposphere","Thermosphere","Stratosphere","Lithosphere"],
+a:1,
+s:"The ionosphere extends across parts of the upper atmosphere, especially the thermosphere."
+},
+
+{
+q:"The atmosphere is primarily composed of:",
+o:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
+a:1,
+s:"Nitrogen makes up about 78% of Earth's atmosphere."
+},
+
+{
+q:"Oxygen constitutes approximately what percentage of Earth's atmosphere?",
+o:["10%","21%","50%","78%"],
+a:1,
+s:"Oxygen accounts for approximately 21% of the atmosphere by volume."
+},
+
+{
+q:"The gas most responsible for the greenhouse effect among the following is:",
+o:["Carbon dioxide","Nitrogen","Oxygen","Argon"],
+a:0,
+s:"Carbon dioxide is an important greenhouse gas that contributes to warming by absorbing outgoing infrared radiation."
+},
+
+{
+q:"The instrument used to measure atmospheric pressure is:",
+o:["Thermometer","Barometer","Hygrometer","Anemometer"],
+a:1,
+s:"A barometer measures atmospheric pressure."
+},
+
+{
+q:"The instrument used to measure wind speed is:",
+o:["Barometer","Anemometer","Rain gauge","Hygrometer"],
+a:1,
+s:"An anemometer measures wind speed."
+},
+
+{
+q:"The instrument used to measure humidity is:",
+o:["Hygrometer","Barometer","Anemometer","Thermometer"],
+a:0,
+s:"A hygrometer measures atmospheric humidity."
+},
+
+{
+q:"The instrument used to measure rainfall is:",
+o:["Rain gauge","Barometer","Anemometer","Hygrometer"],
+a:0,
+s:"A rain gauge measures the amount of precipitation received."
+},
+
+{
+q:"Lines joining places of equal atmospheric pressure are called:",
+o:["Isotherms","Isobars","Isohyets","Contours"],
+a:1,
+s:"Isobars are lines joining places having equal atmospheric pressure."
+},
+
+{
+q:"Lines joining places of equal temperature are called:",
+o:["Isobars","Isotherms","Isohyets","Contours"],
+a:1,
+s:"Isotherms connect places having equal temperature."
+},
+
+{
+q:"Lines joining places receiving equal rainfall are called:",
+o:["Isobars","Isohyets","Isotherms","Contours"],
+a:1,
+s:"Isohyets join places receiving equal amounts of precipitation."
+},
+
+{
+q:"The normal lapse rate of temperature in the troposphere is approximately:",
+o:["1°C per 100 m","6.5°C per 1000 m","10°C per 1000 m","15°C per 1000 m"],
+a:1,
+s:"The average environmental lapse rate is approximately 6.5°C per kilometre."
+},
+
+{
+q:"The layer of air surrounding the Earth is called:",
+o:["Hydrosphere","Atmosphere","Lithosphere","Biosphere"],
+a:1,
+s:"The atmosphere is the gaseous envelope surrounding Earth."
+},
+
+{
+q:"The solid outer portion of Earth including the crust and uppermost mantle is called:",
+o:["Hydrosphere","Lithosphere","Atmosphere","Biosphere"],
+a:1,
+s:"The lithosphere consists of Earth's crust and the rigid uppermost mantle."
+},
+
+{
+q:"The zone of life on Earth is called:",
+o:["Lithosphere","Biosphere","Atmosphere","Cryosphere"],
+a:1,
+s:"The biosphere includes all regions where living organisms exist."
+},
+
+{
+q:"The largest ocean on Earth is:",
+o:["Atlantic Ocean","Indian Ocean","Pacific Ocean","Arctic Ocean"],
+a:2,
+s:"The Pacific Ocean is the largest and deepest ocean."
+},
+
+{
+q:"The deepest oceanic trench is:",
+o:["Java Trench","Mariana Trench","Tonga Trench","Puerto Rico Trench"],
+a:1,
+s:"The Mariana Trench in the western Pacific contains the deepest known point of the oceans."
+},
+
+{
+q:"The deepest known point of the Earth's oceans is called:",
+o:["Challenger Deep","Java Deep","Tonga Deep","Kuril Deep"],
+a:0,
+s:"Challenger Deep, in the Mariana Trench, is the deepest known point of Earth's oceans."
+},
+
+{
+q:"Which ocean is almost completely surrounded by land?",
+o:["Pacific Ocean","Indian Ocean","Arctic Ocean","Atlantic Ocean"],
+a:2,
+s:"The Arctic Ocean is largely surrounded by landmasses of North America, Europe and Asia."
+},
+
+{
+q:"The largest inland water body in the world is:",
+o:["Lake Superior","Caspian Sea","Lake Victoria","Lake Baikal"],
+a:1,
+s:"The Caspian Sea is the world's largest enclosed inland body of water by area."
+},
+
+{
+q:"The largest freshwater lake by surface area is:",
+o:["Lake Victoria","Lake Superior","Lake Baikal","Caspian Sea"],
+a:1,
+s:"Lake Superior is the world's largest freshwater lake by surface area."
+},
+
+{
+q:"The deepest freshwater lake in the world is:",
+o:["Lake Superior","Lake Victoria","Lake Baikal","Lake Tanganyika"],
+a:2,
+s:"Lake Baikal in Siberia is the world's deepest freshwater lake."
+},
+
+{
+q:"The longest river in India is:",
+o:["Yamuna","Ganga","Godavari","Narmada"],
+a:1,
+s:"The Ganga is the longest river system associated with India and is one of the major rivers of the country."
+},
+
+{
+q:"The longest peninsular river of India is:",
+o:["Krishna","Godavari","Narmada","Mahanadi"],
+a:1,
+s:"The Godavari is the longest river of Peninsular India and is often called the Dakshin Ganga."
+},
+
+{
+q:"Which river is known as the 'Dakshin Ganga'?",
+o:["Krishna","Godavari","Kaveri","Mahanadi"],
+a:1,
+s:"The Godavari is popularly known as the Dakshin Ganga because of its length and importance in southern India."
+},
+
+{
+q:"Which river flows through a rift valley in India?",
+o:["Ganga","Narmada","Yamuna","Brahmaputra"],
+a:1,
+s:"The Narmada flows westward through a rift valley between the Vindhya and Satpura ranges."
+},
+
+{
+q:"Which river is another important west-flowing rift valley river?",
+o:["Godavari","Tapi","Mahanadi","Kaveri"],
+a:1,
+s:"The Tapi or Tapti flows westward through a rift valley south of the Narmada."
+},
+
+{
+q:"The Brahmaputra is known as Tsangpo in:",
+o:["India","Tibet","Bangladesh","Nepal"],
+a:1,
+s:"In Tibet, the Brahmaputra is known as the Yarlung Tsangpo."
+},
+
+{
+q:"The Brahmaputra enters India through:",
+o:["Arunachal Pradesh","Assam","Sikkim","West Bengal"],
+a:0,
+s:"The Brahmaputra enters India through Arunachal Pradesh, where it is known as the Siang/Dihang."
+},
+
+{
+q:"Which river is called the 'Sorrow of Bihar'?",
+o:["Kosi","Son","Gandak","Ganga"],
+a:0,
+s:"The Kosi has historically caused severe floods in Bihar and is therefore called the Sorrow of Bihar."
+},
+
+{
+q:"Which river is known as the 'Sorrow of Bengal'?",
+o:["Damodar","Hooghly","Teesta","Mahanadi"],
+a:0,
+s:"The Damodar historically caused destructive floods in Bengal and came to be known as the Sorrow of Bengal."
+},
+
+{
+q:"The Sundarbans delta is formed mainly by:",
+o:["Ganga-Brahmaputra-Meghna","Godavari-Krishna","Narmada-Tapi","Mahanadi-Brahmani"],
+a:0,
+s:"The Sundarbans is part of the huge Ganga-Brahmaputra-Meghna delta."
+},
+
+{
+q:"The world's largest delta is:",
+o:["Nile Delta","Ganga-Brahmaputra Delta","Mekong Delta","Mississippi Delta"],
+a:1,
+s:"The Ganga-Brahmaputra-Meghna delta is the world's largest delta system."
+},
+
+{
+q:"Which type of drainage pattern resembles the branches of a tree?",
+o:["Radial","Dendritic","Trellis","Rectangular"],
+a:1,
+s:"A dendritic drainage pattern develops where rocks have relatively uniform resistance to erosion and resembles tree branches."
+},
+
+{
+q:"A drainage pattern in which rivers flow outward from a central elevated point is:",
+o:["Dendritic","Radial","Trellis","Rectangular"],
+a:1,
+s:"Radial drainage develops around dome-shaped or volcanic uplands, with streams flowing outward."
+},
+
+{
+q:"A drainage pattern commonly associated with alternating hard and soft rocks is:",
+o:["Dendritic","Trellis","Radial","Centripetal"],
+a:1,
+s:"Trellis drainage commonly develops in regions of folded or alternating resistant and weak rock strata."
+},
+
+{
+q:"A river that flows throughout the year is called:",
+o:["Seasonal river","Perennial river","Ephemeral river","Intermittent river"],
+a:1,
+s:"Perennial rivers have water flow throughout the year, generally due to rainfall, snowmelt or both."
+},
+
+{
+q:"The Himalayan rivers are generally:",
+o:["Seasonal","Perennial","Dry","Short"],
+a:1,
+s:"Many Himalayan rivers are perennial because they receive both rainfall and meltwater from snow and glaciers."
+},
+
+{
+q:"The Peninsular rivers are generally:",
+o:["Perennial only","Seasonal","Glacial","Underground"],
+a:1,
+s:"Most Peninsular rivers depend heavily on monsoon rainfall and therefore show considerable seasonal variation."
+},
+
+{
+q:"Which soil is formed mainly by the deposition of river sediments?",
+o:["Alluvial soil","Black soil","Laterite soil","Red soil"],
+a:0,
+s:"Alluvial soil is formed by sediments deposited by rivers and is widespread in the northern plains."
+},
+
+{
+q:"Black soil is especially suitable for:",
+o:["Cotton","Tea","Jute","Wheat only"],
+a:0,
+s:"Black soil has high moisture-retention capacity and is particularly suitable for cotton cultivation."
+},
+
+{
+q:"Black soil is also known as:",
+o:["Regur soil","Khadar soil","Bhangar soil","Laterite soil"],
+a:0,
+s:"Black cotton soil is commonly called regur soil."
+},
+
+{
+q:"Red soil gets its colour mainly from:",
+o:["Calcium","Iron","Magnesium","Potassium"],
+a:1,
+s:"The red colour of red soil is mainly due to iron compounds."
+},
+
+{
+q:"Laterite soil develops mainly under conditions of:",
+o:["Heavy rainfall and high temperature","Low rainfall","Extreme cold","Desert climate"],
+a:0,
+s:"Laterite soil forms under high temperature and heavy rainfall where intense leaching occurs."
+},
+
+{
+q:"Which soil is most widespread in the northern plains of India?",
+o:["Alluvial soil","Black soil","Laterite soil","Mountain soil"],
+a:0,
+s:"Alluvial soil covers extensive areas of the Indo-Gangetic-Brahmaputra plains."
+},
+
+{
+q:"The process by which fertile topsoil is removed by wind or water is called:",
+o:["Soil erosion","Weathering","Deposition","Humification"],
+a:0,
+s:"Soil erosion is the removal and transport of soil particles by agents such as water and wind."
+},
+
+{
+q:"Contour ploughing is mainly used to:",
+o:["Increase wind speed","Reduce soil erosion","Increase salinity","Remove forests"],
+a:1,
+s:"Contour ploughing follows the natural contours of land and reduces runoff and soil erosion."
+},
+
+{
+q:"Terrace farming is particularly useful in:",
+o:["Hilly areas","Deserts","Coastal plains","Flood plains"],
+a:0,
+s:"Terracing creates step-like fields on slopes and reduces soil erosion and runoff."
+},
+
+{
+q:"The world's largest hot desert is:",
+o:["Gobi","Sahara","Thar","Kalahari"],
+a:1,
+s:"The Sahara is the world's largest hot desert."
+},
+
+{
+q:"The largest desert in India is:",
+o:["Thar Desert","Ladakh Desert","Rann of Kachchh","Deccan Desert"],
+a:0,
+s:"The Thar Desert occupies much of Rajasthan and extends into Pakistan."
+},
+
+{
+q:"The Thar Desert is also called:",
+o:["Great Indian Desert","Great Arabian Desert","Indian Sahara only","Western Desert"],
+a:0,
+s:"The Thar is commonly known as the Great Indian Desert."
+},
+
+{
+q:"Which mountain range is among the youngest fold mountains in the world?",
+o:["Aravallis","Himalayas","Western Ghats","Eastern Ghats"],
+a:1,
+s:"The Himalayas are young fold mountains formed by the collision of the Indian and Eurasian plates."
+},
+
+{
+q:"The highest peak in India is generally identified as:",
+o:["Nanda Devi","Kangchenjunga","Anamudi","Guru Shikhar"],
+a:1,
+s:"Kangchenjunga, on the India-Nepal border, is India's highest peak at about 8,586 m."
+},
+
+{
+q:"The highest peak in the Western Ghats is:",
+o:["Anamudi","Doddabetta","Guru Shikhar","Mahendragiri"],
+a:0,
+s:"Anamudi in Kerala, at about 2,695 m, is the highest peak of the Western Ghats."
+},
+
+{
+q:"The highest peak of the Aravalli Range is:",
+o:["Anamudi","Guru Shikhar","Doddabetta","Kalsubai"],
+a:1,
+s:"Guru Shikhar in Rajasthan is the highest peak of the Aravalli Range."
+},
+
+{
+q:"The oldest fold mountain range in India is:",
+o:["Himalayas","Aravalli Range","Western Ghats","Satpuras"],
+a:1,
+s:"The Aravalli Range is among the oldest fold mountain systems in the world."
+},
+
+{
+q:"The Western Ghats are also known as:",
+o:["Sahyadri","Nilgiri","Shivalik","Purvanchal"],
+a:0,
+s:"The Western Ghats are also called the Sahyadri range."
+},
+
+{
+q:"The Eastern and Western Ghats meet at:",
+o:["Nilgiri Hills","Aravallis","Vindhyas","Satpuras"],
+a:0,
+s:"The Eastern and Western Ghats meet in the Nilgiri Hills region of southern India."
+},
+
+{
+q:"The Western Ghats are generally:",
+o:["Discontinuous","Completely absent","Lower than coastal plains","Located in north India"],
+a:0,
+s:"The Western Ghats form a relatively continuous escarpment along the western side of Peninsular India, though there are gaps."
+},
+
+{
+q:"The Deccan Plateau is located mainly:",
+o:["North of Himalayas","South of Narmada","Only in Rajasthan","Only in Punjab"],
+a:1,
+s:"The Deccan Plateau lies south of the Narmada River and covers a large part of Peninsular India."
+},
+
+{
+q:"The Deccan Trap region is mainly composed of:",
+o:["Granite","Basalt","Limestone","Sandstone"],
+a:1,
+s:"The Deccan Traps were formed by extensive ancient volcanic eruptions and consist mainly of basaltic rocks."
+},
+
+{
+q:"The Meghalaya Plateau is an extension of the:",
+o:["Peninsular Plateau","Himalayas","Indus plain","Coastal plain"],
+a:0,
+s:"The Meghalaya Plateau is geologically related to the Peninsular Plateau."
+},
+
+{
+q:"The Northern Plains of India were formed mainly by:",
+o:["Lava flows","River deposition","Wind erosion","Glacial erosion alone"],
+a:1,
+s:"The Northern Plains are extensive alluvial plains formed by sediments deposited by the Indus, Ganga and Brahmaputra river systems."
+},
+
+{
+q:"The Bhabar belt lies:",
+o:["Along the Himalayan foothills","Along the coast","In the Thar Desert","In the Deccan Plateau"],
+a:0,
+s:"The Bhabar is a porous belt along the Himalayan foothills where streams often disappear underground."
+},
+
+{
+q:"The Terai region is located:",
+o:["South of Bhabar","North of Himalayas","In western Rajasthan","Along eastern coast"],
+a:0,
+s:"The Terai lies south of the Bhabar and is characterized by marshy and swampy conditions."
+},
+
+{
+q:"The older alluvium of the Northern Plains is called:",
+o:["Khadar","Bhangar","Regur","Bhabar"],
+a:1,
+s:"Bhangar refers to older alluvial deposits that lie above the newer floodplain deposits."
+},
+
+{
+q:"The newer alluvium deposited by rivers is called:",
+o:["Bhangar","Khadar","Regur","Terai"],
+a:1,
+s:"Khadar is the newer alluvium deposited in active floodplain areas."
+},
+
+{
+q:"The climate of India is broadly described as:",
+o:["Equatorial","Tropical monsoon","Mediterranean","Tundra"],
+a:1,
+s:"India has a tropical monsoon climate characterized by seasonal reversal of winds and distinct wet and dry periods."
+},
+
+{
+q:"The southwest monsoon normally reaches Kerala around:",
+o:["Early June","Early January","Late September","December"],
+a:0,
+s:"The southwest monsoon generally reaches Kerala around the beginning of June, with some year-to-year variation."
+},
+
+{
+q:"The retreating monsoon gives significant rainfall to:",
+o:["Tamil Nadu coast","Punjab only","Rajasthan only","Ladakh"],
+a:0,
+s:"The northeast or retreating monsoon brings substantial rainfall to Tamil Nadu and the southeast coast."
+},
+
+{
+q:"The Coromandel Coast receives much of its rainfall from:",
+o:["Northeast monsoon","Southwest monsoon only","Western disturbances","Local winds only"],
+a:0,
+s:"Tamil Nadu's Coromandel Coast receives significant rainfall during the northeast monsoon in October-December."
+},
+
+{
+q:"The southwest monsoon has two main branches. They are:",
+o:["Arabian Sea and Bay of Bengal branches","Indian Ocean and Pacific branches","Arabian Sea and Red Sea branches","Bay of Bengal and Pacific branches"],
+a:0,
+s:"The southwest monsoon divides mainly into the Arabian Sea branch and the Bay of Bengal branch."
+},
+
+{
+q:"The wind system responsible for most of India's annual rainfall is:",
+o:["Northeast trade winds","Southwest monsoon","Westerlies","Polar winds"],
+a:1,
+s:"The southwest monsoon provides most of India's annual rainfall."
+},
+
+{
+q:"Which place receives one of the highest average annual rainfalls in the world?",
+o:["Mawsynram","Jaisalmer","Leh","Bikaner"],
+a:0,
+s:"Mawsynram in Meghalaya receives extremely high annual rainfall due to orographic effects and monsoon moisture."
+},
+
+{
+q:"The rain-shadow region of the Western Ghats lies mainly:",
+o:["East of the Ghats","West of the Ghats","North of Himalayas","In Assam"],
+a:0,
+s:"The eastern side of the Western Ghats lies in a rain-shadow region because descending air becomes drier after crossing the mountains."
+},
+
+{
+q:"Which winds cause winter rainfall in northwestern India?",
+o:["Western disturbances","Southwest monsoon","Sea breeze","Loo"],
+a:0,
+s:"Western disturbances are extratropical weather systems that bring winter precipitation to northwestern India."
+},
+
+{
+q:"The hot, dry summer wind blowing over northern India is called:",
+o:["Loo","Kalbaisakhi","Mango shower","Nor'wester"],
+a:0,
+s:"The Loo is a hot and dry wind that blows over northern and northwestern India during summer."
+},
+
+{
+q:"Pre-monsoon showers in Kerala and Karnataka are popularly known as:",
+o:["Mango showers","Kalbaisakhi","Loo","Western disturbances"],
+a:0,
+s:"Mango showers are pre-monsoon thunderstorms and showers in parts of southern India, especially Kerala and Karnataka."
+},
+
+{
+q:"Kalbaisakhi is associated mainly with:",
+o:["West Bengal and Assam","Rajasthan","Punjab","Gujarat"],
+a:0,
+s:"Kalbaisakhi or Nor'westers are violent pre-monsoon thunderstorms common in eastern India, especially West Bengal and Assam."
+},
+
+{
+q:"Which crop is known as a major kharif crop?",
+o:["Rice","Wheat","Gram","Mustard"],
+a:0,
+s:"Rice is a major kharif crop grown mainly with the onset of the monsoon."
+},
+
+{
+q:"Which crop is primarily a rabi crop?",
+o:["Wheat","Rice","Cotton","Jute"],
+a:0,
+s:"Wheat is a major rabi crop sown in winter and harvested in spring."
+},
+
+{
+q:"Which crop requires high temperature and heavy rainfall?",
+o:["Rice","Wheat","Gram","Barley"],
+a:0,
+s:"Rice generally requires high temperature and substantial water availability."
+},
+
+{
+q:"Which crop requires a cool growing season and bright sunshine at ripening?",
+o:["Wheat","Rice","Jute","Rubber"],
+a:0,
+s:"Wheat grows best during a cool growing period followed by dry, sunny conditions at ripening."
+},
+
+{
+q:"India is one of the world's major producers of:",
+o:["Tea","Coffee only","Cocoa only","Olives"],
+a:0,
+s:"India is a major tea-producing country, with important tea regions in Assam, West Bengal and southern India."
+},
+
+{
+q:"The leading tea-producing state of India is traditionally:",
+o:["Assam","Punjab","Rajasthan","Gujarat"],
+a:0,
+s:"Assam is traditionally one of India's leading tea-producing states."
+},
+
+{
+q:"Coffee cultivation in India is concentrated mainly in:",
+o:["Karnataka","Punjab","Bihar","Haryana"],
+a:0,
+s:"Karnataka is India's leading coffee-producing state, followed by Kerala and Tamil Nadu."
+},
+
+{
+q:"Jute cultivation is concentrated mainly in:",
+o:["West Bengal","Rajasthan","Punjab","Maharashtra"],
+a:0,
+s:"West Bengal is India's leading jute-producing region because of its humid climate and fertile alluvial soils."
+},
+
+{
+q:"Cotton grows particularly well in:",
+o:["Black soil","Laterite soil","Mountain soil","Desert soil"],
+a:0,
+s:"Black soil is especially suitable for cotton because it retains moisture well."
+},
+
+{
+q:"Which mineral is the basic raw material for the iron and steel industry?",
+o:["Iron ore","Mica","Limestone only","Bauxite"],
+a:0,
+s:"Iron ore is the principal raw material used to produce iron and steel."
+},
+
+{
+q:"Bauxite is the principal ore of:",
+o:["Iron","Aluminium","Copper","Manganese"],
+a:1,
+s:"Bauxite is the principal ore from which aluminium is extracted."
+},
+
+{
+q:"Mica is widely used in electrical industries because it is:",
+o:["A good conductor","An excellent insulator","Highly magnetic","A fuel"],
+a:1,
+s:"Mica has excellent insulating properties and is therefore important in electrical and electronic industries."
+},
+
+{
+q:"Which state is famous for mica deposits in India?",
+o:["Jharkhand","Punjab","Haryana","Goa"],
+a:0,
+s:"Jharkhand has historically been an important mica-producing region of India."
+},
+
+{
+q:"The mineral-rich plateau of India famous for coal and iron ore is:",
+o:["Chota Nagpur Plateau","Malwa Plateau","Deccan Plateau","Mysore Plateau"],
+a:0,
+s:"The Chota Nagpur Plateau is rich in coal, iron ore, mica, bauxite and other minerals."
+},
+
+{
+q:"Which coal is considered the highest grade among the following?",
+o:["Lignite","Bituminous","Anthracite","Peat"],
+a:2,
+s:"Anthracite has the highest carbon content and is generally considered the highest-grade coal."
+},
+
+{
+q:"The largest coalfield in India among the following is:",
+o:["Jharia","Raniganj","Bokaro","Singrauli"],
+a:0,
+s:"Jharia in Jharkhand is one of India's most important coalfields and is especially known for coking coal."
+},
+
+{
+q:"Petroleum is often referred to as:",
+o:["Black gold","White gold","Green gold","Blue gold"],
+a:0,
+s:"Petroleum is commonly called black gold because of its high economic value."
+},
+
+{
+q:"The oldest oilfield in India is:",
+o:["Digboi","Mumbai High","Ankleshwar","Barmer"],
+a:0,
+s:"Digboi in Assam is India's oldest commercially exploited oilfield."
+},
+
+{
+q:"Mumbai High is located in the:",
+o:["Arabian Sea","Bay of Bengal","Indian Ocean south of Sri Lanka","Gulf of Mannar"],
+a:0,
+s:"Mumbai High is an offshore petroleum field in the Arabian Sea."
+},
+
+{
+q:"Which type of resource is coal?",
+o:["Renewable","Non-renewable","Inexhaustible","Biological only"],
+a:1,
+s:"Coal forms over geological time and is therefore a non-renewable resource."
+},
+
+{
+q:"Solar energy is classified as:",
+o:["Non-renewable","Renewable","Mineral resource","Fossil fuel"],
+a:1,
+s:"Solar energy is continuously replenished by the Sun and is classified as renewable energy."
+},
+
+{
+q:"The largest source of commercial energy in India historically has been:",
+o:["Coal","Solar","Wind","Tidal"],
+a:0,
+s:"Coal has historically been the major source of commercial energy and electricity generation in India."
+},
+
+{
+q:"A tidal power plant uses energy from:",
+o:["Ocean tides","Winds only","Earthquakes","Volcanoes"],
+a:0,
+s:"Tidal power harnesses the rise and fall of sea levels caused primarily by gravitational interactions involving the Moon and Sun."
+},
+
+{
+q:"Which region is known for significant wind energy potential in India?",
+o:["Tamil Nadu","Bihar","Punjab","Jharkhand"],
+a:0,
+s:"Tamil Nadu has substantial wind energy potential and has been an important wind-power-producing state."
+},
+
+{
+q:"The Suez Canal connects:",
+o:["Mediterranean Sea and Red Sea","Atlantic and Pacific","Arabian Sea and Bay of Bengal","Black Sea and Caspian Sea"],
+a:0,
+s:"The Suez Canal connects the Mediterranean Sea with the Red Sea."
+},
+
+{
+q:"The Panama Canal connects:",
+o:["Atlantic and Pacific Oceans","Indian and Pacific Oceans","Atlantic and Indian Oceans","Arctic and Atlantic Oceans"],
+a:0,
+s:"The Panama Canal provides a major artificial waterway between the Atlantic and Pacific Oceans."
+},
+
+{
+q:"The Strait of Malacca lies between:",
+o:["Malay Peninsula and Sumatra","India and Sri Lanka","Africa and Arabia","Europe and Asia Minor"],
+a:0,
+s:"The Strait of Malacca separates the Malay Peninsula from the island of Sumatra."
+},
+
+{
+q:"The Palk Strait separates:",
+o:["India and Sri Lanka","India and Maldives","India and Myanmar","Sri Lanka and Maldives"],
+a:0,
+s:"The Palk Strait lies between southeastern India and northern Sri Lanka."
+},
+
+{
+q:"The Gulf of Mannar lies between:",
+o:["India and Sri Lanka","India and Bangladesh","India and Pakistan","India and Myanmar"],
+a:0,
+s:"The Gulf of Mannar lies between southeastern India and western Sri Lanka."
+},
+
+{
+q:"Which Indian state has the longest coastline?",
+o:["Gujarat","Maharashtra","Tamil Nadu","Andhra Pradesh"],
+a:0,
+s:"Gujarat has the longest coastline among Indian states."
+},
+
+{
+q:"Which Indian state is known for having a very long coastline on the eastern coast?",
+o:["Andhra Pradesh","Punjab","Haryana","Madhya Pradesh"],
+a:0,
+s:"Andhra Pradesh has a long coastline along the Bay of Bengal."
+},
+
+{
+q:"The Lakshadweep Islands are located in the:",
+o:["Arabian Sea","Bay of Bengal","Indian Ocean east of Andaman","Pacific Ocean"],
+a:0,
+s:"Lakshadweep is an archipelago in the Arabian Sea, southwest of India's mainland."
+},
+
+{
+q:"The Andaman and Nicobar Islands are located in the:",
+o:["Bay of Bengal","Arabian Sea","Gulf of Kachchh","Lakshadweep Sea"],
+a:0,
+s:"The Andaman and Nicobar Islands are located in the Bay of Bengal."
+},
+
+{
+q:"Which Indian island group is mainly of coral origin?",
+o:["Lakshadweep","Andaman","Nicobar","Sunderbans"],
+a:0,
+s:"Lakshadweep consists mainly of coral islands and atolls."
+},
+
+{
+q:"The Barren Island of India is famous for being:",
+o:["An active volcano","A coral atoll","A desert island","A glacier"],
+a:0,
+s:"Barren Island in the Andaman Sea is known as India's only confirmed active volcano."
+},
+
+{
+q:"Which type of rocks are formed by cooling and solidification of magma?",
+o:["Sedimentary","Igneous","Metamorphic","Organic"],
+a:1,
+s:"Igneous rocks form when molten magma or lava cools and solidifies."
+},
+
+{
+q:"Which rocks are formed by deposition and compaction of sediments?",
+o:["Igneous","Sedimentary","Metamorphic","Volcanic only"],
+a:1,
+s:"Sedimentary rocks form from deposited sediments that become compacted and cemented."
+},
+
+{
+q:"Marble is a metamorphic form of:",
+o:["Limestone","Granite","Basalt","Sandstone"],
+a:0,
+s:"Marble forms when limestone undergoes metamorphism."
+},
+
+{
+q:"Slate is a metamorphic form commonly derived from:",
+o:["Shale","Granite","Basalt","Limestone"],
+a:0,
+s:"Slate commonly forms through low-grade metamorphism of shale."
+},
+
+{
+q:"The breaking down of rocks at or near Earth's surface is called:",
+o:["Weathering","Erosion","Deposition","Sedimentation"],
+a:0,
+s:"Weathering is the breakdown or alteration of rocks in place by physical, chemical or biological processes."
+},
+
+{
+q:"The transportation of weathered material by natural agents is called:",
+o:["Weathering","Erosion","Deposition","Lithification"],
+a:1,
+s:"Erosion involves the removal and transportation of weathered material by water, wind, ice or gravity."
+},
+
+{
+q:"The deposition of sediments at a new location is called:",
+o:["Erosion","Weathering","Deposition","Metamorphism"],
+a:2,
+s:"Deposition occurs when transported sediments settle and accumulate."
+}
+
+];
+
+let currentQuestion = 0;
+let answers = new Array(questions.length).fill(null);
+let submitted = false;
+let timeLeft = 60 * 60;
+
+const questionText =
+document.getElementById("questionText");
+
+const questionNumber =
+document.getElementById("questionNumber");
+
+const optionsDiv =
+document.getElementById("options");
+
+const palette =
+document.getElementById("palette");
+
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    questionNumber.innerText =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        questions.length;
+
+    questionText.innerText = q.q;
+
+    optionsDiv.innerHTML = "";
+
+    q.o.forEach((option,index)=>{
+
+        const label =
+        document.createElement("label");
+
+        label.className =
+            "option" +
+            (answers[currentQuestion] === index
+            ? " selected"
+            : "");
+
+        label.innerHTML =
+        `<input type="radio"
+        name="question"
+        value="${index}">
+        <b>${String.fromCharCode(65+index)}.</b>
+        ${option}`;
+
+        label.onclick = function(){
+
+            answers[currentQuestion] = index;
+
+            document
+            .querySelectorAll(".option")
+            .forEach(x =>
+                x.classList.remove("selected")
+            );
+
+            label.classList.add("selected");
+
+            updatePalette();
+
+        };
+
+        optionsDiv.appendChild(label);
+
+    });
+
+    updatePalette();
+}
+
+
+function createPalette(){
+
+    palette.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const btn =
+        document.createElement("button");
+
+        btn.className = "p-btn";
+
+        btn.innerText = index + 1;
+
+        btn.onclick = function(){
+
+            currentQuestion = index;
+
+            loadQuestion();
+
+        };
+
+        palette.appendChild(btn);
+
+    });
+
+}
+
+
+function updatePalette(){
+
+    const buttons =
+    document.querySelectorAll(".p-btn");
+
+    buttons.forEach((btn,index)=>{
+
+        btn.classList.remove("current");
+        btn.classList.remove("attempted");
+
+        if(answers[index] !== null){
+            btn.classList.add("attempted");
+        }
+
+        if(index === currentQuestion){
+            btn.classList.add("current");
+        }
+
+    });
+
+}
+
+
+function nextQuestion(){
+
+    if(currentQuestion <
+       questions.length - 1){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+    }
+
+}
+
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+    }
+
+}
+
+
+function submitTest(){
+
+    if(submitted) return;
+
+    const unanswered =
+    answers.filter(x => x === null).length;
+
+    const confirmSubmit =
+    confirm(
+        "Are you sure you want to submit the test?\n\n" +
+        "Attempted: " +
+        (questions.length - unanswered) +
+        "\nNot Attempted: " +
+        unanswered
+    );
+
+    if(!confirmSubmit) return;
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+
+    questions.forEach((q,index)=>{
+
+        if(answers[index] === q.a){
+            correct++;
+        }
+
+    });
+
+    const attempted =
+    questions.length - unanswered;
+
+    const wrong =
+    attempted - correct;
+
+    const percentage =
+    ((correct / questions.length) * 100)
+    .toFixed(2);
+
+    document.getElementById("quiz")
+    .style.display = "none";
+
+    document.getElementById("result")
+    .style.display = "block";
+
+    document.getElementById("score")
+    .innerHTML =
+    `Score: ${correct} / ${questions.length}
+    <br>
+    Percentage: ${percentage}%
+    <br>
+    Attempted: ${attempted}
+    | Wrong: ${wrong}
+    | Not Attempted: ${unanswered}`;
+
+    showReview();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function showReview(){
+
+    const review =
+    document.getElementById("review");
+
+    review.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const div =
+        document.createElement("div");
+
+        div.className = "review";
+
+        let status = "";
+
+        if(answers[index] === null){
+
+            status =
+            `<div class="wrong">
+            Not Attempted
+            </div>`;
+
+        }
+        else if(answers[index] === q.a){
+
+            status =
+            `<div class="correct">
+            ✓ Correct
+            </div>`;
+
+        }
+        else{
+
+            status =
+            `<div class="wrong">
+            ✗ Wrong
+            </div>`;
+
+        }
+
+        div.innerHTML = `
+
+        <div class="review-question">
+        Q${index+1}. ${q.q}
+        </div>
+
+        ${status}
+
+        <div>
+        <b>Your Answer:</b>
+        ${
+            answers[index] === null
+            ? "Not Attempted"
+            : q.o[answers[index]]
+        }
+        </div>
+
+        <div class="correct">
+        <b>Correct Answer:</b>
+        ${q.o[q.a]}
+        </div>
+
+        <div class="solution">
+        <b>Solution:</b>
+        ${q.s}
+        </div>
+
+        `;
+
+        review.appendChild(div);
+
+    });
+
+}
+
+
+function updateTimer(){
+
+    let minutes =
+    Math.floor(timeLeft / 60);
+
+    let seconds =
+    timeLeft % 60;
+
+    document.getElementById("timer")
+    .innerText =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+    if(timeLeft <= 0){
+
+        clearInterval(timerInterval);
+
+        if(!submitted){
+
+            alert(
+                "Time is over. Your test will be submitted automatically."
+            );
+
+            submitTest();
+
+        }
+
+        return;
+
+    }
+
+    timeLeft--;
+
+}
+
+
+createPalette();
+
+loadQuestion();
+
+updateTimer();
+
+const timerInterval =
+setInterval(updateTimer,1000);
+
+</script>
+
+</body>
+</html>
