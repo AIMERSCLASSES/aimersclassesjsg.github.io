@@ -4,6 +4,2427 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | Aim High • Achieve High</title>
+
+<meta name="description" content="AIMERS CLASSES - Classes 3 to 12, ICSE, CBSE, CHSE, Competitive Exams, Spoken English and School Entrance Exams.">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+  line-height:1.6;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:92%;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  background:linear-gradient(135deg,#102a43,#1d4ed8);
+  color:white;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.nav{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-img{
+  width:52px;
+  height:52px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid #ffd43b;
+  background:white;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.logo span{
+  color:#ffd43b;
+}
+
+nav{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+nav a{
+  color:white;
+  font-weight:700;
+  font-size:14px;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:#ffd43b;
+}
+
+/* ================= IMAGE SLIDER ================= */
+
+.hero-slider{
+  width:100%;
+  background:#07182c;
+  position:relative;
+  overflow:hidden;
+}
+
+.slider{
+  width:100%;
+  position:relative;
+}
+
+.slides{
+  display:flex;
+  width:400%;
+  transition:transform .7s ease-in-out;
+}
+
+.slide{
+  width:25%;
+  flex:0 0 25%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#07182c;
+}
+
+.slide img{
+  width:100%;
+  height:auto;
+  max-height:calc(100vh - 72px);
+  object-fit:contain;
+  display:block;
+}
+
+/* ARROWS */
+
+.slider-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:55px;
+  height:55px;
+  border:none;
+  border-radius:50%;
+  background:rgba(7,24,44,.80);
+  color:white;
+  font-size:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:5;
+  transition:.25s;
+}
+
+.slider-arrow:hover{
+  background:#1d4ed8;
+  transform:translateY(-50%) scale(1.08);
+}
+
+.prev{
+  left:20px;
+}
+
+.next{
+  right:20px;
+}
+
+/* DOTS */
+
+.slider-dots{
+  position:absolute;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:9px;
+  z-index:5;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  border:2px solid white;
+  background:rgba(255,255,255,.45);
+  cursor:pointer;
+}
+
+.dot.active{
+  background:#ffd43b;
+  transform:scale(1.2);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  background:linear-gradient(135deg,#eaf2ff,#ffffff);
+  padding:70px 0;
+}
+
+.hero-content{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.hero h1{
+  font-size:48px;
+  line-height:1.15;
+  color:#102a43;
+  margin-bottom:18px;
+  font-weight:900;
+}
+
+.hero h1 span{
+  color:#1d4ed8;
+}
+
+.hero p{
+  font-size:18px;
+  color:#52606d;
+  margin-bottom:25px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 22px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.btn-primary{
+  background:#1d4ed8;
+  color:white;
+}
+
+.btn-secondary{
+  background:white;
+  border:2px solid #1d4ed8;
+  color:#1d4ed8;
+}
+
+.btn-secondary:hover{
+  background:#1d4ed8;
+  color:white;
+}
+
+.hero-box{
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.10);
+  border-top:5px solid #1d4ed8;
+}
+
+.hero-box h3{
+  color:#1d4ed8;
+  margin-bottom:15px;
+  font-size:24px;
+}
+
+.hero-box ul{
+  list-style:none;
+}
+
+.hero-box li{
+  padding:9px 0;
+  border-bottom:1px solid #edf0f5;
+  font-weight:700;
+}
+
+/* ================= GENERAL ================= */
+
+section{
+  padding:65px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.section-title h2{
+  font-size:34px;
+  color:#102a43;
+  margin-bottom:8px;
+  font-weight:900;
+}
+
+.section-title p{
+  color:#6b7280;
+}
+
+/* ================= COURSES ================= */
+
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.course-card{
+  background:white;
+  padding:28px 24px;
+  border-radius:16px;
+  box-shadow:0 7px 25px rgba(0,0,0,.08);
+  border-top:5px solid #1d4ed8;
+  transition:.3s;
+}
+
+.course-card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 15px 35px rgba(0,0,0,.13);
+}
+
+.course-card h3{
+  color:#1d4ed8;
+  margin-bottom:12px;
+  font-size:21px;
+}
+
+.course-card p{
+  color:#4b5563;
+  font-size:14px;
+  font-weight:600;
+}
+
+/* ================= STUDY MATERIAL ================= */
+
+.resource-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.resource{
+  display:block;
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 7px 25px rgba(0,0,0,.07);
+  transition:.3s;
+}
+
+.resource:hover{
+  transform:translateY(-5px);
+}
+
+.resource b{
+  display:block;
+  color:#1d4ed8;
+  font-size:19px;
+  margin-bottom:8px;
+}
+
+.resource span{
+  display:block;
+  color:#667085;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.resource em{
+  color:#102a43;
+  font-style:normal;
+  font-weight:800;
+}
+
+/* ================= PDF ================= */
+
+.pdf-section{
+  background:#eef4ff;
+}
+
+.pdf-group{
+  margin-bottom:45px;
+}
+
+.pdf-group-title{
+  color:#102a43;
+  font-size:27px;
+  margin-bottom:20px;
+  padding-left:14px;
+  border-left:5px solid #1d4ed8;
+}
+
+.pdf-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.pdf-card{
+  background:white;
+  border-radius:15px;
+  padding:25px;
+  box-shadow:0 7px 25px rgba(0,0,0,.08);
+  border-left:5px solid #1d4ed8;
+}
+
+.pdf-card h3{
+  color:#102a43;
+  margin-bottom:8px;
+  font-size:20px;
+}
+
+.pdf-card p{
+  color:#667085;
+  font-size:14px;
+  margin-bottom:18px;
+}
+
+.pdf-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.pdf-btn{
+  display:inline-block;
+  padding:10px 15px;
+  border-radius:7px;
+  font-size:14px;
+  font-weight:800;
+}
+
+.view-btn{
+  background:#1d4ed8;
+  color:white;
+}
+
+.download-btn{
+  background:#16a34a;
+  color:white;
+}
+
+/* ================= CURRENT AFFAIRS ================= */
+
+.current-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.current-card{
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 7px 25px rgba(0,0,0,.07);
+  border-top:4px solid #1d4ed8;
+}
+
+.current-card h3{
+  color:#1d4ed8;
+  margin-bottom:8px;
+}
+
+/* ================= MOCK ================= */
+
+.mock-box{
+  background:linear-gradient(135deg,#102a43,#1d4ed8);
+  color:white;
+  padding:45px;
+  border-radius:18px;
+  text-align:center;
+}
+
+.mock-box h2{
+  font-size:32px;
+  margin-bottom:12px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-section{
+  background:white;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.contact-card{
+  background:#f7f9fc;
+  padding:30px;
+  border-radius:15px;
+}
+
+.contact-card h3{
+  color:#1d4ed8;
+  margin-bottom:15px;
+}
+
+.contact-card p{
+  margin-bottom:10px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#0f172a;
+  color:white;
+  padding:35px 0;
+  text-align:center;
+}
+
+footer h3{
+  color:#ffd43b;
+  margin-bottom:8px;
+}
+
+footer p{
+  color:#cbd5e1;
+  font-size:14px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+  .hero-content{
+    grid-template-columns:1fr;
+  }
+
+  .course-grid,
+  .resource-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .pdf-grid,
+  .current-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .nav{
+    flex-direction:column;
+    padding:15px 0;
+  }
+
+  nav{
+    justify-content:center;
+    gap:10px 13px;
+  }
+
+  nav a{
+    font-size:13px;
+  }
+
+  .slider-arrow{
+    width:42px;
+    height:42px;
+    font-size:25px;
+  }
+
+  .prev{
+    left:8px;
+  }
+
+  .next{
+    right:8px;
+  }
+
+  .slide img{
+    max-height:none;
+  }
+
+  .hero{
+    padding:50px 0;
+  }
+
+  .hero h1{
+    font-size:35px;
+  }
+
+  .course-grid,
+  .resource-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-title h2{
+    font-size:28px;
+  }
+
+  .mock-box{
+    padding:30px 20px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="container nav">
+
+<div class="brand">
+
+<img src="logo.jpg"
+     alt="AIMERS CLASSES Logo"
+     class="logo-img">
+
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+</div>
+
+<nav>
+
+<a href="#home">Home</a>
+<a href="#courses">Courses</a>
+<a href="#study-material">Study Material</a>
+<a href="#current-affairs">Current Affairs</a>
+<a href="#mock-test">Mock Tests</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- ================= 4 IMAGE SLIDER ================= -->
+
+<section class="hero-slider" id="home">
+
+<div class="slider">
+
+<div class="slides" id="slides">
+
+
+<div class="slide">
+
+<img
+src="WhatsApp%20Image%202026-09-28%20at%2010.11.18%20(3).jpeg"
+alt="AIMERS CLASSES Admission Open 2026">
+
+</div>
+
+
+<div class="slide">
+
+<img
+src="WhatsApp%20Image%202026-09-28%20at%2010.11.18%20(2).jpeg"
+alt="AIMERS CLASSES Spoken English">
+
+</div>
+
+
+<div class="slide">
+
+<img
+src="WhatsApp%20Image%202026-09-28%20at%2010.11.18%20(1).jpeg"
+alt="AIMERS CLASSES Competitive Exams">
+
+</div>
+
+
+<div class="slide">
+
+<img
+src="WhatsApp%20Image%202026-09-28%20at%2010.11.18.jpeg"
+alt="AIMERS CLASSES School Entrance Exams">
+
+</div>
+
+
+</div>
+
+
+<button
+class="slider-arrow prev"
+id="prevBtn"
+aria-label="Previous Slide">
+
+&#10094;
+
+</button>
+
+
+<button
+class="slider-arrow next"
+id="nextBtn"
+aria-label="Next Slide">
+
+&#10095;
+
+</button>
+
+
+<div class="slider-dots">
+
+<button class="dot active" data-slide="0"></button>
+<button class="dot" data-slide="1"></button>
+<button class="dot" data-slide="2"></button>
+<button class="dot" data-slide="3"></button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<div>
+
+<h1>
+
+AIMERS <span>CLASSES</span>
+
+<br>
+
+Aim High • Achieve High
+
+</h1>
+
+<p>
+
+Quality education, smart learning and result-oriented preparation
+for school students and competitive examinations.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#study-material"
+class="btn btn-primary">
+
+Explore Study Material
+
+</a>
+
+<a href="#contact"
+class="btn btn-secondary">
+
+Contact Us
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-box">
+
+<h3>📚 What We Offer</h3>
+
+<ul>
+
+<li>✅ Classes 3–12</li>
+
+<li>✅ ICSE • CBSE • CHSE</li>
+
+<li>✅ SSC • Railway • Banking</li>
+
+<li>✅ ASO • OSSC • OSSSC</li>
+
+<li>✅ Navodaya • Sainik • Adarsha • Eklavya</li>
+
+<li>✅ Spoken English & Personality Development</li>
+
+<li>✅ Current Affairs & Mock Tests</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= COURSES ================= -->
+
+<section id="courses">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Our Courses</h2>
+
+<p>
+Complete academic and competitive exam preparation
+</p>
+
+</div>
+
+
+<div class="course-grid">
+
+
+<div class="course-card">
+
+<h3>📘 Classes 3–5</h3>
+
+<p>
+Foundation learning with strong concepts, regular practice
+and school examination support.
+</p>
+
+</div>
+
+
+<div class="course-card">
+
+<h3>📗 Classes 6–10</h3>
+
+<p>
+School syllabus, concept building, tests and examination preparation.
+</p>
+
+</div>
+
+
+<div class="course-card">
+
+<h3>📕 Classes 11–12</h3>
+
+<p>
+Science, Commerce and Arts academic preparation with specimen
+papers and regular tests.
+</p>
+
+</div>
+
+
+<div class="course-card">
+
+<h3>🎯 Competitive Exams</h3>
+
+<p>
+SSC, Railway, Banking, ASO, OSSC, OSSSC and other competitive exams.
+</p>
+
+</div>
+
+
+<div class="course-card">
+
+<h3>🗣️ Spoken English</h3>
+
+<p>
+Speaking, Listening, Reading, Writing, Vocabulary,
+Pronunciation, Interview Preparation and Personality Development.
+</p>
+
+</div>
+
+
+<div class="course-card">
+
+<h3>🏫 School Entrance</h3>
+
+<p>
+Preparation for Jawahar Navodaya, Sainik, Adarsha
+and Eklavya school entrance examinations.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= STUDY MATERIAL ================= -->
+
+<section id="study-material">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Study Material</h2>
+
+<p>
+Notes, PDFs, current affairs and mock tests
+</p>
+
+</div>
+
+
+<div class="resource-grid">
+
+
+<a class="resource" href="#pdf-notes">
+
+<b>📄 PDF Notes</b>
+
+<span>
+Class notes, specimen papers and downloadable PDFs
+</span>
+
+<em>Open ↓</em>
+
+</a>
+
+
+<a class="resource" href="#current-affairs">
+
+<b>📰 Current Affairs</b>
+
+<span>
+Monthly current affairs and MCQ practice
+</span>
+
+<em>Open →</em>
+
+</a>
+
+
+<a class="resource" href="#mock-test">
+
+<b>📝 Mock Tests</b>
+
+<span>
+Practice tests for school and competitive examinations
+</span>
+
+<em>Open →</em>
+
+</a>
+
+
+<a class="resource" href="#contact">
+
+<b>🎥 Video Classes</b>
+
+<span>
+Learning resources and classroom support
+</span>
+
+<em>Contact Us →</em>
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PDF NOTES ================= -->
+
+<section class="pdf-section" id="pdf-notes">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>📄 PDF Notes</h2>
+
+<p>
+Download study material and specimen papers
+</p>
+
+</div>
+
+
+<!-- CLASS 12 ISC 2027 -->
+
+<div class="pdf-group">
+
+<h2 class="pdf-group-title">
+📚 Class 12 ISC – 2027
+</h2>
+
+
+<div class="pdf-grid">
+
+
+<div class="pdf-card">
+
+<h3>
+📘 Class 12 ISC 2027 Specimen Paper
+</h3>
+
+<p>
+Class 12 ISC 2027 complete specimen paper.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>
+📐 Mathematics Class 12 ISC 2027
+</h3>
+
+<p>
+ISC Class 12 Mathematics Specimen Paper 2027.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>
+⚛️ Physics Class 12 ISC 2027
+</h3>
+
+<p>
+ISC Class 12 Physics Specimen Paper 2027.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 2027
+</h3>
+
+<p>
+Class 12 Chemistry Specimen Paper 2027.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%202027%20specimen.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%202027%20specimen.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- CHEMISTRY 2026 -->
+
+<div class="pdf-group">
+
+<h2 class="pdf-group-title">
+🧪 Chemistry Class 12 – 2026
+</h2>
+
+
+<div class="pdf-grid">
+
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 2026 Specimen
+</h3>
+
+<p>
+Chemistry Class 12 2026 Specimen Paper.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%202026%20specimen.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%202026%20specimen.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 Sample Paper 1
+</h3>
+
+<p>
+Chemistry Class 12 Sample Paper 1.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%201.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%201.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 Sample Paper 2
+</h3>
+
+<p>
+Chemistry Class 12 Sample Paper 2.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%202.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%202.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 Sample Paper 3
+</h3>
+
+<p>
+Chemistry Class 12 Sample Paper 3.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%203.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%203.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 Sample Paper 4
+</h3>
+
+<p>
+Chemistry Class 12 Sample Paper 4.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%204.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%204.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 Sample Paper 5
+</h3>
+
+<p>
+Chemistry Class 12 Sample Paper 5.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%205.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%205.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- MATHEMATICS 2026 -->
+
+<div class="pdf-group">
+
+<h2 class="pdf-group-title">
+📐 Mathematics Class 12 – 2026
+</h2>
+
+
+<div class="pdf-grid">
+
+
+<div class="pdf-card">
+
+<h3>📐 Mathematics 2026 – Set 1</h3>
+
+<p>Class 12 Mathematics 2026 Set 1.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20set%201.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="math%20class%2012%202026%20set%201.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>📐 Mathematics 2026 – Set 2</h3>
+
+<p>Class 12 Mathematics 2026 Set 2.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20set%202.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="math%20class%2012%202026%20set%202.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>📐 Mathematics 2026 – Set 3</h3>
+
+<p>Class 12 Mathematics 2026 Set 3.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20set%203.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="math%20class%2012%202026%20set%203.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>📐 Mathematics 2026 – Set 4</h3>
+
+<p>Class 12 Mathematics 2026 Set 4.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20set%204.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="math%20class%2012%202026%20set%204.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>📐 Mathematics 2026 – Set 5</h3>
+
+<p>Class 12 Mathematics 2026 Set 5.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20set%205.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="math%20class%2012%202026%20set%205.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>📐 Mathematics 2026 – Specimen Paper</h3>
+
+<p>Class 12 Mathematics 2026 Specimen Paper.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20specimen.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="math%20class%2012%202026%20specimen.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- PHYSICS 2026 -->
+
+<div class="pdf-group">
+
+<h2 class="pdf-group-title">
+⚛️ Physics Class 12 – 2026
+</h2>
+
+
+<div class="pdf-grid">
+
+
+<div class="pdf-card">
+
+<h3>⚛️ Physics 2026 – Set 1</h3>
+
+<p>Class 12 Physics 2026 Set 1.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="physics%20class%2012%202026%20set%201.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20class%2012%202026%20set%201.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>⚛️ Physics 2026 – Set 2</h3>
+
+<p>Class 12 Physics 2026 Set 2.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="physics%20class%2012%202026%20set%202.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20class%2012%202026%20set%202.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>⚛️ Physics 2026 – Set 3</h3>
+
+<p>Class 12 Physics 2026 Set 3.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="physics%20class%2012%202026%20set%203.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20class%2012%202026%20set%203.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>⚛️ Physics 2026 – Set 4</h3>
+
+<p>Class 12 Physics 2026 Set 4.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="physics%20class%2012%202026%20set%204.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20class%2012%202026%20set%204.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>⚛️ Physics 2026 – Set 5</h3>
+
+<p>Class 12 Physics 2026 Set 5.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="physics%20class%2012%202026%20set%205.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20class%2012%202026%20set%205.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="pdf-card">
+
+<h3>⚛️ Physics 2026 – Specimen Paper</h3>
+
+<p>Class 12 Physics 2026 Specimen Paper.</p>
+
+<div class="pdf-buttons">
+
+<a
+href="physics%20isc%20class%2012%20specimen%202026.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20isc%20class%2012%20specimen%202026.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CURRENT AFFAIRS ================= -->
+
+<section id="current-affairs">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>📰 Current Affairs</h2>
+
+<p>
+Monthly Current Affairs MCQs for examination preparation
+</p>
+
+</div>
+
+
+<div class="current-grid">
+
+
+<div class="current-card">
+
+<h3>March 2026 Current Affairs</h3>
+
+<p>
+March 2026 Current Affairs MCQ PDF.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="MARCH%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="MARCH%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="current-card">
+
+<h3>April 2026 Current Affairs</h3>
+
+<p>
+April 2026 Current Affairs MCQ PDF.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="APRIL%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="APRIL%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="current-card">
+
+<h3>May 2026 Current Affairs</h3>
+
+<p>
+May 2026 Current Affairs MCQ PDF.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="MAY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="MAY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="current-card">
+
+<h3>June 2026 Current Affairs</h3>
+
+<p>
+June 2026 Current Affairs MCQ PDF.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="JUNE%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="JUNE%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="current-card">
+
+<h3>July 2026 Current Affairs</h3>
+
+<p>
+July 2026 Current Affairs MCQ PDF.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="JULY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="JULY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="current-card">
+
+<h3>August 2026 Current Affairs</h3>
+
+<p>
+300 MCQs - August 2026 Current Affairs.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="300_MCQs_August_2026_Current_Affairs.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="300_MCQs_August_2026_Current_Affairs.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MOCK TEST ================= -->
+
+<section id="mock-test">
+
+<div class="container">
+
+<div class="mock-box">
+
+<h2>
+📝 Online Mock Tests
+</h2>
+
+<p>
+Practice questions, improve your speed and prepare for examinations.
+</p>
+
+<!-- IMPORTANT: THIS GOES TO TESTS MAIN PAGE -->
+
+<a
+href="./tests/index.html"
+class="btn btn-secondary">
+
+Start Mock Test →
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section
+class="contact-section"
+id="contact">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+📞 Contact AIMERS CLASSES
+</h2>
+
+<p>
+Admission Open • Limited Seats
+</p>
+
+</div>
+
+
+<div class="contact-grid">
+
+
+<div class="contact-card">
+
+<h3>📍 Address</h3>
+
+<p>
+
+Near Hanuman Mandir,
+
+<br>
+
+Front Lane of SBI ATM,
+
+<br>
+
+Purunabasti,
+
+<br>
+
+District Jharsuguda,
+
+<br>
+
+Odisha
+
+</p>
+
+</div>
+
+
+<div class="contact-card">
+
+<h3>📱 Contact</h3>
+
+<p>
+
+<strong>Phone:</strong>
+
+<a href="tel:7735060804">
+
+7735060804
+
+</a>
+
+</p>
+
+
+<p>
+
+<strong>Alternate:</strong>
+
+<a href="tel:7657040804">
+
+7657040804
+
+</a>
+
+</p>
+
+
+<div
+class="pdf-buttons"
+style="margin-top:15px;">
+
+
+<a
+href="https://wa.me/917735060804"
+target="_blank"
+rel="noopener"
+class="pdf-btn download-btn">
+
+💬 WhatsApp Us
+
+</a>
+
+
+<a
+href="https://www.google.com/maps/search/?api=1&query=Purunabasti%20Jharsuguda%20Odisha"
+target="_blank"
+rel="noopener"
+class="pdf-btn view-btn">
+
+📍 Google Maps
+
+</a>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="container">
+
+<h3>
+AIMERS CLASSES
+</h3>
+
+<p>
+Aim High • Achieve High
+</p>
+
+<p>
+Classes 3–12 | ICSE | CBSE | CHSE
+</p>
+
+<p>
+Competitive Exams:
+SSC | Railway | Banking | ASO | OSSC | OSSSC
+</p>
+
+<p>
+School Entrance Exams:
+Navodaya | Sainik | Adarsha | Eklavya
+</p>
+
+<p>
+Spoken English | Personality Development
+</p>
+
+<p style="margin-top:15px;">
+
+© 2026 AIMERS CLASSES.
+All Rights Reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+
+<!-- ================= SLIDER JAVASCRIPT ================= -->
+
+<script>
+
+(function(){
+
+const slides =
+document.getElementById("slides");
+
+const dots =
+document.querySelectorAll(".dot");
+
+const prevBtn =
+document.getElementById("prevBtn");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+const slider =
+document.querySelector(".hero-slider");
+
+const totalSlides = 4;
+
+let currentSlide = 0;
+
+let autoSlide;
+
+
+function showSlide(index){
+
+currentSlide =
+(index + totalSlides) % totalSlides;
+
+slides.style.transform =
+"translateX(-" +
+(currentSlide * 25) +
+"%)";
+
+
+dots.forEach(function(dot,index){
+
+dot.classList.toggle(
+"active",
+index === currentSlide
+);
+
+});
+
+}
+
+
+function nextSlide(){
+
+showSlide(currentSlide + 1);
+
+}
+
+
+function prevSlide(){
+
+showSlide(currentSlide - 1);
+
+}
+
+
+function startAutoSlide(){
+
+clearInterval(autoSlide);
+
+autoSlide =
+setInterval(
+nextSlide,
+5000
+);
+
+}
+
+
+nextBtn.addEventListener(
+"click",
+function(){
+
+nextSlide();
+
+startAutoSlide();
+
+}
+);
+
+
+prevBtn.addEventListener(
+"click",
+function(){
+
+prevSlide();
+
+startAutoSlide();
+
+}
+);
+
+
+dots.forEach(function(dot){
+
+dot.addEventListener(
+"click",
+function(){
+
+showSlide(
+Number(
+this.dataset.slide
+)
+);
+
+startAutoSlide();
+
+}
+);
+
+});
+
+
+slider.addEventListener(
+"mouseenter",
+function(){
+
+clearInterval(autoSlide);
+
+}
+);
+
+
+slider.addEventListener(
+"mouseleave",
+function(){
+
+startAutoSlide();
+
+}
+);
+
+
+let touchStartX = 0;
+
+let touchEndX = 0;
+
+
+slider.addEventListener(
+"touchstart",
+function(e){
+
+touchStartX =
+e.changedTouches[0].screenX;
+
+},
+{passive:true}
+);
+
+
+slider.addEventListener(
+"touchend",
+function(e){
+
+touchEndX =
+e.changedTouches[0].screenX;
+
+let distance =
+touchEndX - touchStartX;
+
+
+if(
+Math.abs(distance) > 50
+){
+
+if(distance < 0){
+
+nextSlide();
+
+}else{
+
+prevSlide();
+
+}
+
+startAutoSlide();
+
+}
+
+},
+{passive:true}
+);
+
+
+showSlide(0);
+
+startAutoSlide();
+
+})();
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
