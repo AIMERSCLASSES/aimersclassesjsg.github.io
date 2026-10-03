@@ -1,1 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | May Current Affairs Test 02</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f2f5f9;
+    color:#222;
+}
+
+.header{
+    background:linear-gradient(135deg,#0b3d91,#1456c1);
+    color:white;
+    padding:18px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.header h1{
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+.header h2{
+    font-size:20px;
+    font-weight:500;
+}
+
+.header p{
+    margin-top:5px;
+    font-size:14px;
+}
+
+.container{
+    width:95%;
+    max-width:1200px;
+    margin:20px auto;
+}
+
+.top-info{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.timer{
+    font-size:20px;
+    font-weight:bold;
+    color:#d00000;
+}
+
+.progress{
+    font-weight:bold;
+}
+
+.marking{
+    font-size:14px;
+    color:#555;
+    font-weight:bold;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 270px;
+    gap:20px;
+}
+
+.question-box{
+    background:white;
+    border-radius:10px;
+    padding:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    min-height:420px;
+}
+
+.question-number{
+    color:#0b3d91;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.question{
+    font-size:20px;
+    line-height:1.5;
+    font-weight:600;
+    margin-bottom:22px;
+}
+
+.options label{
+    display:block;
+    padding:14px;
+    border:1px solid #d8d8d8;
+    border-radius:8px;
+    margin:10px 0;
+    cursor:pointer;
+    transition:.2s;
+    font-size:17px;
+}
+
+.options label:hover{
+    background:#eef5ff;
+    border-color:#1456c1;
+}
+
+.options input{
+    margin-right:10px;
+    transform:scale(1.2);
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+    gap:10px;
+}
+
+button{
+    border:none;
+    padding:12px 22px;
+    border-radius:7px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.prev{
+    background:#6c757d;
+    color:white;
+}
+
+.next{
+    background:#0b3d91;
+    color:white;
+}
+
+.submit{
+    background:#198754;
+    color:white;
+    width:100%;
+    margin-top:15px;
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.palette{
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    height:max-content;
+    position:sticky;
+    top:125px;
+}
+
+.palette h3{
+    color:#0b3d91;
+    margin-bottom:12px;
+    text-align:center;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qbtn{
+    background:#e9ecef;
+    color:#222;
+    padding:8px 4px;
+    border-radius:5px;
+    font-size:13px;
+}
+
+.qbtn.current{
+    background:#0b3d91;
+    color:white;
+}
+
+.qbtn.attempted{
+    background:#198754;
+    color:white;
+}
+
+.legend{
+    margin-top:15px;
+    font-size:13px;
+    line-height:1.8;
+}
+
+.legend span{
+    display:inline-block;
+    width:13px;
+    height:13px;
+    margin-right:5px;
+    border-radius:3px;
+}
+
+.blue{background:#0b3d91;}
+.green{background:#198754;}
+.grey{background:#e9ecef;border:1px solid #ccc;}
+
+.result{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    margin-top:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.result h2{
+    color:#0b3d91;
+    margin-bottom:15px;
+}
+
+.score{
+    font-size:30px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.result-card{
+    padding:15px;
+    background:#f8f9fa;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.explanation{
+    border-top:1px solid #ddd;
+    padding:15px 0;
+    margin-top:10px;
+}
+
+.correct{
+    color:#198754;
+    font-weight:bold;
+}
+
+.wrong{
+    color:#dc3545;
+    font-weight:bold;
+}
+
+.unattempted{
+    color:#6c757d;
+    font-weight:bold;
+}
+
+.negative-info{
+    background:#fff3cd;
+    padding:12px;
+    border-radius:7px;
+    margin:15px 0;
+    font-weight:bold;
+}
+
+@media(max-width:800px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette{
+        position:static;
+        order:-1;
+    }
+
+    .question-grid{
+        grid-template-columns:repeat(10,1fr);
+    }
+
+    .question-box{
+        padding:18px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+}
+
+@media(max-width:500px){
+
+    .question-grid{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+    .header h1{
+        font-size:22px;
+    }
+
+    .header h2{
+        font-size:17px;
+    }
+
+    .marking{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>AIMERS CLASSES</h1>
+    <h2>MAY CURRENT AFFAIRS – TEST 02</h2>
+    <p>SSC CGL • SSC CHSL • Railway • Competitive Exams</p>
+</div>
+
+<div class="container">
+
+<div class="top-info">
+
+    <div class="progress">
+        Question <span id="currentNo">1</span> / 100
+    </div>
+
+    <div class="marking">
+        +1 Correct &nbsp; | &nbsp; -0.33 Wrong
+    </div>
+
+    <div class="timer">
+        Time Left: <span id="timer">45:00</span>
+    </div>
+
+</div>
+
+<div class="layout">
+
+<div>
+
+<div class="question-box" id="questionBox">
+
+<div class="question-number" id="questionNumber"></div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+<div class="navigation">
+
+<button class="prev"
+onclick="previousQuestion()"
+id="prevBtn">
+← Previous
+</button>
+
+<button class="next"
+onclick="nextQuestion()"
+id="nextBtn">
+Next →
+</button>
+
+</div>
+
+</div>
+
+<button class="submit"
+onclick="submitTest()">
+SUBMIT TEST
+</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<div class="palette">
+
+<h3>Question Palette</h3>
+
+<div class="question-grid" id="questionGrid"></div>
+
+<div class="legend">
+<div><span class="blue"></span> Current Question</div>
+<div><span class="green"></span> Attempted</div>
+<div><span class="grey"></span> Not Attempted</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+const questions = [
+
+/* 1 */
+{
+q:"Who was appointed as the Deputy Governor of the Reserve Bank of India in May 2026?",
+o:["Rohit Jain","Anugraha Narayana Das","Prasoon Joshi","Rajesh Kumar Singh"],
+a:0,
+e:"Rohit Jain was appointed as RBI Deputy Governor for a three-year term."
+},
+
+/* 2 */
+{
+q:"Rohit Jain succeeded which RBI Deputy Governor?",
+o:["T. Rabi Sankar","M. Rajeshwar Rao","Michael Debabrata Patra","R. Gandhi"],
+a:0,
+e:"Rohit Jain succeeded T. Rabi Sankar."
+},
+
+/* 3 */
+{
+q:"Before becoming RBI Deputy Governor, Rohit Jain was serving as:",
+o:["Executive Director at RBI","Finance Secretary","SEBI Chairman","Economic Adviser"],
+a:0,
+e:"Rohit Jain was serving as an Executive Director at the Reserve Bank of India."
+},
+
+/* 4 */
+{
+q:"Who was appointed Controller General of Defence Accounts in May 2026?",
+o:["Anugraha Narayana Das","Rohit Jain","Rajesh Kumar Singh","Ravi K."],
+a:0,
+e:"Anugraha Narayana Das took charge as Controller General of Defence Accounts."
+},
+
+/* 5 */
+{
+q:"Anugraha Narayana Das belongs to which service?",
+o:["Indian Defence Accounts Service","Indian Administrative Service","Indian Revenue Service","Indian Police Service"],
+a:0,
+e:"Anugraha Narayana Das is a 1991-batch Indian Defence Accounts Service officer."
+},
+
+/* 6 */
+{
+q:"Who was appointed President of the National Company Law Tribunal in May 2026?",
+o:["Justice Anupinder Singh Grewal","Justice Sanjiv Khanna","Justice B. R. Gavai","Justice D. Y. Chandrachud"],
+a:0,
+e:"Justice (Retd.) Anupinder Singh Grewal was appointed President of NCLT."
+},
+
+/* 7 */
+{
+q:"NCLT primarily deals with matters relating to:",
+o:["Company law and insolvency","Criminal appeals","Election disputes","Income-tax appeals"],
+a:0,
+e:"The National Company Law Tribunal adjudicates company-law and insolvency-related matters."
+},
+
+/* 8 */
+{
+q:"Who was appointed Chairman of Prasar Bharati in May 2026?",
+o:["Prasoon Joshi","Shashi Shekhar Vempati","Ashutosh Gowariker","Kumar Mangalam Birla"],
+a:0,
+e:"Prasoon Joshi was appointed Chairman of Prasar Bharati."
+},
+
+/* 9 */
+{
+q:"Who was appointed Chairperson of the Central Board of Film Certification?",
+o:["Shashi Shekhar Vempati","Prasoon Joshi","Ashutosh Gowariker","Pankaj Nihalani"],
+a:0,
+e:"Shashi Shekhar Vempati was appointed CBFC Chairperson."
+},
+
+/* 10 */
+{
+q:"What is the full form of CBFC?",
+o:["Central Board of Film Certification","Central Bureau of Film Control","Central Board for Cinema Films","Central Board of Film Classification"],
+a:0,
+e:"CBFC stands for Central Board of Film Certification."
+},
+
+/* 11 */
+{
+q:"Who was appointed Non-Executive Chairman of Vodafone Idea in May 2026?",
+o:["Kumar Mangalam Birla","Ravinder Takkar","Himanshu Kapania","Akshaya Moondra"],
+a:0,
+e:"Kumar Mangalam Birla was appointed Non-Executive Chairman of Vodafone Idea."
+},
+
+/* 12 */
+{
+q:"Kumar Mangalam Birla was appointed chairman of which telecom company?",
+o:["Vodafone Idea","Bharti Airtel","Reliance Jio","BSNL"],
+a:0,
+e:"Kumar Mangalam Birla was appointed Non-Executive Chairman of Vodafone Idea Limited."
+},
+
+/* 13 */
+{
+q:"Who was appointed Festival Director for the 57th International Film Festival of India?",
+o:["Ashutosh Gowariker","Shekhar Kapur","Anurag Kashyap","Karan Johar"],
+a:0,
+e:"Filmmaker Ashutosh Gowariker was appointed Festival Director for the 57th IFFI."
+},
+
+/* 14 */
+{
+q:"The 57th International Film Festival of India is abbreviated as:",
+o:["IFFI","IIFA","NFDC","CBFC"],
+a:0,
+e:"IFFI stands for International Film Festival of India."
+},
+
+/* 15 */
+{
+q:"Who was appointed CMD of Hindustan Aeronautics Limited in May 2026?",
+o:["Ravi K.","D. K. Sunil","R. Vijay Anandh","Sanjay Jha"],
+a:0,
+e:"Ravi K. was appointed the 22nd CMD of Hindustan Aeronautics Limited."
+},
+
+/* 16 */
+{
+q:"Hindustan Aeronautics Limited is headquartered in:",
+o:["Bengaluru","Hyderabad","Pune","New Delhi"],
+a:0,
+e:"HAL is headquartered in Bengaluru, Karnataka."
+},
+
+/* 17 */
+{
+q:"Who became Managing Director and CEO of City Union Bank in May 2026?",
+o:["R. Vijay Anandh","N. Kamakodi","Rohit Jain","Lavanya Mundayur"],
+a:0,
+e:"R. Vijay Anandh took over as MD and CEO of City Union Bank."
+},
+
+/* 18 */
+{
+q:"Which former Prasar Bharati CEO became CBFC Chairperson?",
+o:["Shashi Shekhar Vempati","Prasoon Joshi","R. Vijay Anandh","Ashutosh Gowariker"],
+a:0,
+e:"Shashi Shekhar Vempati, former Prasar Bharati CEO, became CBFC Chairperson."
+},
+
+/* 19 */
+{
+q:"Who were appointed as full-time members of NITI Aayog in May 2026?",
+o:["R. Balasubramaniam and Joram Aniya","Rohit Jain and R. Balasubramaniam","Prasoon Joshi and Joram Aniya","Anugraha Das and R. Balasubramaniam"],
+a:0,
+e:"Dr R. Balasubramaniam and Dr Joram Aniya were appointed full-time members."
+},
+
+/* 20 */
+{
+q:"Dr Joram Aniya is associated with which state?",
+o:["Arunachal Pradesh","Assam","Meghalaya","Nagaland"],
+a:0,
+e:"Dr Joram Aniya is from Arunachal Pradesh."
+},
+
+/* 21 */
+{
+q:"Dr Joram Aniya was noted as the first woman from which community with a PhD in Hindi?",
+o:["Nyishi","Mizo","Khasi","Garo"],
+a:0,
+e:"She was noted as the first Nyishi woman with a PhD in Hindi."
+},
+
+/* 22 */
+{
+q:"Which parliamentary committee is chaired by K. C. Venugopal?",
+o:["Public Accounts Committee","Estimates Committee","Public Undertakings Committee","Committee on Privileges"],
+a:0,
+e:"K. C. Venugopal was listed as chair of the Public Accounts Committee."
+},
+
+/* 23 */
+{
+q:"Who chairs the Committee on Public Undertakings in 2026-27?",
+o:["Baijayant Panda","K. C. Venugopal","Sanjay Jaiswal","Om Birla"],
+a:0,
+e:"Baijayant Panda chairs the Committee on Public Undertakings."
+},
+
+/* 24 */
+{
+q:"Who chairs the Estimates Committee in 2026-27?",
+o:["Dr Sanjay Jaiswal","Baijayant Panda","K. C. Venugopal","Faggan Singh Kulaste"],
+a:0,
+e:"Dr Sanjay Jaiswal chairs the Estimates Committee."
+},
+
+/* 25 */
+{
+q:"Who became Vice Chief of the Naval Staff in May 2026?",
+o:["Vice Admiral Ajay Kochhar","Vice Admiral Krishna Swaminathan","Admiral Dinesh Tripathi","Vice Admiral Sanjay Mahindru"],
+a:0,
+e:"Vice Admiral Ajay Kochhar was appointed Vice Chief of the Naval Staff."
+},
+
+/* 26 */
+{
+q:"Who became Vice Chief of Army Staff in May 2026?",
+o:["Lieutenant General Dheeraj Seth","Lieutenant General N. S. Raja Subramani","General Upendra Dwivedi","Lieutenant General Anindya Sengupta"],
+a:0,
+e:"Lieutenant General Dheeraj Seth was appointed Vice Chief of Army Staff."
+},
+
+/* 27 */
+{
+q:"Which award did two Indian journalists Anand RK and Suparna Sharma receive?",
+o:["Pulitzer Prize","Whitley Award","Booker Prize","Ramon Magsaysay Award"],
+a:0,
+e:"Anand RK and Suparna Sharma received a Pulitzer Prize for their cybercrime investigation."
+},
+
+/* 28 */
+{
+q:"The Pulitzer-recognised work by Anand RK and Suparna Sharma dealt with:",
+o:["Cybercrime","Climate change","Sports corruption","Space exploration"],
+a:0,
+e:"Their recognised work focused on cybercrime."
+},
+
+/* 29 */
+{
+q:"Who won the Whitley Award for Indian Skimmer conservation?",
+o:["Parveen Shaikh","Barkha Subba","Soumya Swaminathan","Major Abhilasha Barak"],
+a:0,
+e:"Parveen Shaikh received the Whitley Award for Indian Skimmer conservation."
+},
+
+/* 30 */
+{
+q:"Indian Skimmer is primarily a:",
+o:["Bird","Mammal","Reptile","Fish"],
+a:0,
+e:"The Indian Skimmer is a distinctive riverine bird."
+},
+
+/* 31 */
+{
+q:"Which scientist was elected a Fellow of the Royal Society in May 2026?",
+o:["Soumya Swaminathan","Gagandeep Kang","Kiran Mazumdar-Shaw","Tessy Thomas"],
+a:0,
+e:"Dr Soumya Swaminathan was elected a Fellow of the Royal Society."
+},
+
+/* 32 */
+{
+q:"Dr Soumya Swaminathan previously served as Chief Scientist of:",
+o:["World Health Organization","UNICEF","UNESCO","World Bank"],
+a:0,
+e:"She served as Chief Scientist of the World Health Organization."
+},
+
+/* 33 */
+{
+q:"Who received the Malcolm Adiseshiah Award 2026?",
+o:["Raghav Das Gaiha","M. Mukundan","Parveen Shaikh","Ashutosh Gowariker"],
+a:0,
+e:"Raghav Das Gaiha was named recipient of the Malcolm Adiseshiah Award 2026."
+},
+
+/* 34 */
+{
+q:"Who was selected for the ONV Literary Award 2026?",
+o:["M. Mukundan","K. Satchidanandan","Raghav Das Gaiha","Prasoon Joshi"],
+a:0,
+e:"Malayalam writer M. Mukundan was selected for the ONV Literary Award."
+},
+
+/* 35 */
+{
+q:"Who received the National Florence Nightingale Awards 2026?",
+o:["Nurses and nursing professionals","Scientists","Teachers","Police officers"],
+a:0,
+e:"The National Florence Nightingale Awards recognise outstanding nursing professionals."
+},
+
+/* 36 */
+{
+q:"Which bank won the Golden Peacock Award mentioned in May 2026?",
+o:["Indian Bank","SBI","Bank of Baroda","Canara Bank"],
+a:0,
+e:"Indian Bank won the Golden Peacock Award mentioned in the May current-affairs reports."
+},
+
+/* 37 */
+{
+q:"Who received Sweden's highest civilian honour according to May 2026 reports?",
+o:["Narendra Modi","Droupadi Murmu","S. Jaishankar","Amit Shah"],
+a:0,
+e:"Prime Minister Narendra Modi received Sweden's highest civilian award."
+},
+
+/* 38 */
+{
+q:"The 2026 International Booker Prize was won by which work?",
+o:["Heart Lamp","Taiwan Travelogue","Tomb of Sand","The Book of Disappearance"],
+a:1,
+e:"Taiwan Travelogue was reported as the International Booker Prize 2026 winner."
+},
+
+/* 39 */
+{
+q:"Which language was the original language of the International Booker winning work Taiwan Travelogue?",
+o:["Chinese","Hindi","Tamil","Malayalam"],
+a:0,
+e:"Taiwan Travelogue is a Chinese-language work."
+},
+
+/* 40 */
+{
+q:"Which country hosted the 3rd India-Nordic Summit in May 2026?",
+o:["Norway","Sweden","Denmark","Finland"],
+a:0,
+e:"The 3rd India-Nordic Summit was held in Oslo, Norway."
+},
+
+/* 41 */
+{
+q:"The capital city of Norway, where the India-Nordic Summit was held, is:",
+o:["Oslo","Stockholm","Helsinki","Copenhagen"],
+a:0,
+e:"Oslo is the capital of Norway."
+},
+
+/* 42 */
+{
+q:"The 11th Quad Foreign Ministers' Meeting was hosted by:",
+o:["India","Japan","Australia","United States"],
+a:0,
+e:"India hosted the 11th Quad Foreign Ministers' Meeting in New Delhi."
+},
+
+/* 43 */
+{
+q:"Which four countries constitute the Quad?",
+o:["India, USA, Japan and Australia","India, Russia, China and Japan","India, UK, France and USA","USA, Canada, Japan and Australia"],
+a:0,
+e:"The Quad consists of India, the United States, Japan and Australia."
+},
+
+/* 44 */
+{
+q:"Which initiative was launched at the 11th Quad Foreign Ministers' Meeting?",
+o:["Indo-Pacific Maritime Surveillance Collaboration","Quad Space Force","Quad Digital Currency","Quad Food Security Bank"],
+a:0,
+e:"The Indo-Pacific Maritime Surveillance Collaboration initiative was launched."
+},
+
+/* 45 */
+{
+q:"What does IPMSC stand for in the May 2026 Quad context?",
+o:["Indo-Pacific Maritime Surveillance Collaboration","International Pacific Maritime Security Council","Indo-Pacific Military Security Command","Indian Pacific Maritime Surveillance Council"],
+a:0,
+e:"IPMSC refers to Indo-Pacific Maritime Surveillance Collaboration."
+},
+
+/* 46 */
+{
+q:"Which initiative did the Quad announce concerning critical minerals?",
+o:["Quad Critical Minerals Initiative","Quad Rare Earth Bank","Quad Mining Mission","Quad Mineral Security Treaty"],
+a:0,
+e:"The Quad announced a Critical Minerals Initiative."
+},
+
+/* 47 */
+{
+q:"India signed a critical minerals framework in May 2026 with:",
+o:["United States","Russia","Japan","France"],
+a:0,
+e:"India and the United States signed a critical minerals framework."
+},
+
+/* 48 */
+{
+q:"Which country signed a defence, cybersecurity and defence-information-sharing MoU with India in May 2026?",
+o:["South Korea","Japan","Vietnam","Australia"],
+a:0,
+e:"India and the Republic of Korea signed the MoU in Seoul."
+},
+
+/* 49 */
+{
+q:"The India-South Korea defence MoU was signed in:",
+o:["Seoul","Busan","New Delhi","Mumbai"],
+a:0,
+e:"The MoU was signed in Seoul."
+},
+
+/* 50 */
+{
+q:"Who represented India in the India-South Korea defence MoU discussions?",
+o:["Rajnath Singh","S. Jaishankar","Amit Shah","Nirmala Sitharaman"],
+a:0,
+e:"Defence Minister Rajnath Singh was involved in the official visit and discussions."
+},
+
+/* 51 */
+{
+q:"Where was multinational military exercise PRAGATI 2026 conducted?",
+o:["Umroi, Meghalaya","Pokhran, Rajasthan","Chandipur, Odisha","Leh, Ladakh"],
+a:0,
+e:"PRAGATI 2026 began at Umroi Military Station near Shillong in Meghalaya."
+},
+
+/* 52 */
+{
+q:"How many countries participated in PRAGATI 2026?",
+o:["13","10","15","12"],
+a:0,
+e:"PRAGATI 2026 involved armed forces personnel from 13 countries."
+},
+
+/* 53 */
+{
+q:"PRAGATI stands for:",
+o:["Partnership for Regional Armies for Growth and Transformation in the Indian Ocean Region","Peaceful Regional Army Growth and Training Initiative","Partnership for Rapid Armed Growth and Tactical Integration","Pacific Regional Army Group Training Initiative"],
+a:0,
+e:"PRAGATI expands to Partnership for Regional Armies for Growth and Transformation in the Indian Ocean Region."
+},
+
+/* 54 */
+{
+q:"Which DRDO missile completed final development trials in May 2026?",
+o:["ULPGM-V3","Agni-VI","BrahMos-II","Pralay-II"],
+a:0,
+e:"DRDO completed final development trials of ULPGM-V3."
+},
+
+/* 55 */
+{
+q:"ULPGM-V3 was tested near which city?",
+o:["Kurnool","Hyderabad","Bengaluru","Visakhapatnam"],
+a:0,
+e:"The trials were conducted at a DRDO test range near Kurnool, Andhra Pradesh."
+},
+
+/* 56 */
+{
+q:"ULPGM-V3 is designed primarily for launch from:",
+o:["Unmanned Aerial Vehicles","Submarines","Warships","Fighter aircraft only"],
+a:0,
+e:"ULPGM-V3 is an Unmanned Aerial Vehicle Launched Precision Guided Missile."
+},
+
+/* 57 */
+{
+q:"Which company supplied UAVs involved in ULPGM-V3 testing?",
+o:["Newspace Research and Technologies","HAL","Bharat Dynamics","Tata Advanced Systems"],
+a:0,
+e:"Newspace Research and Technologies was associated with the UAVs used in the trials."
+},
+
+/* 58 */
+{
+q:"Which Indian organisation launched Mission Drishti?",
+o:["GalaxEye","Pixxel","Skyroot Aerospace","Dhruva Space"],
+a:0,
+e:"GalaxEye launched Mission Drishti."
+},
+
+/* 59 */
+{
+q:"Mission Drishti is notable as India's first:",
+o:["OptoSAR satellite","Navigation satellite","Weather satellite","Communication satellite"],
+a:0,
+e:"Mission Drishti was described as India's first OptoSAR satellite."
+},
+
+/* 60 */
+{
+q:"Mission Drishti was launched using which launch vehicle?",
+o:["Falcon 9","PSLV","GSLV","Falcon Heavy"],
+a:0,
+e:"Mission Drishti was launched on a SpaceX Falcon 9."
+},
+
+/* 61 */
+{
+q:"Approximately what was the mass of Mission Drishti?",
+o:["190 kg","90 kg","290 kg","390 kg"],
+a:0,
+e:"Mission Drishti had a mass of approximately 190 kg."
+},
+
+/* 62 */
+{
+q:"Which company partnered with Sarvam AI on the orbital data-centre satellite Pathfinder?",
+o:["Pixxel","GalaxEye","Skyroot Aerospace","Agnikul Cosmos"],
+a:0,
+e:"Pixxel and Sarvam AI partnered on the Pathfinder orbital data-centre project."
+},
+
+/* 63 */
+{
+q:"What is Pathfinder associated with?",
+o:["Orbital data centre","Lunar rover","Weather forecasting","Deep-sea exploration"],
+a:0,
+e:"Pathfinder is associated with the proposed orbital data-centre satellite."
+},
+
+/* 64 */
+{
+q:"Which Indian space-tech company became a unicorn in May 2026?",
+o:["Skyroot Aerospace","Pixxel","GalaxEye","Dhruva Space"],
+a:0,
+e:"Skyroot Aerospace was reported as India's first space-tech unicorn."
+},
+
+/* 65 */
+{
+q:"Which rocket is being developed by Skyroot Aerospace?",
+o:["Vikram-1","Agni-Prime","SSLV-2","Prithvi-X"],
+a:0,
+e:"Skyroot Aerospace is developing the Vikram series, including Vikram-1."
+},
+
+/* 66 */
+{
+q:"Which Indian company won a hyperspectral contract from the US National Reconnaissance Office?",
+o:["Pixxel","Skyroot Aerospace","GalaxEye","Agnikul Cosmos"],
+a:0,
+e:"Pixxel won a hyperspectral contract from the US National Reconnaissance Office."
+},
+
+/* 67 */
+{
+q:"What type of imagery is Pixxel particularly known for?",
+o:["Hyperspectral imagery","Thermal-only imagery","Sonar imagery","Medical imagery"],
+a:0,
+e:"Pixxel specialises in hyperspectral earth-observation technology."
+},
+
+/* 68 */
+{
+q:"Which organisation invited private firms to take over PSLV operations?",
+o:["IN-SPACe","ISRO Council","DRDO","NSIL only"],
+a:0,
+e:"IN-SPACe invited private firms to participate in taking over PSLV operations."
+},
+
+/* 69 */
+{
+q:"IN-SPACe is mainly concerned with:",
+o:["Promoting and regulating private participation in space activities","Managing railway zones","Defence procurement","Banking regulation"],
+a:0,
+e:"IN-SPACe facilitates and regulates private-sector participation in India's space sector."
+},
+
+/* 70 */
+{
+q:"India's first hydrogen train mentioned in May 2026 was associated with which route?",
+o:["Jind–Sonipat","Delhi–Agra","Mumbai–Pune","Chennai–Bengaluru"],
+a:0,
+e:"The hydrogen train development was associated with the Jind–Sonipat route."
+},
+
+/* 71 */
+{
+q:"Which company announced a semiconductor investment of $3.3 billion in Odisha?",
+o:["Intel","AMD","TSMC","Samsung"],
+a:0,
+e:"Intel was reported in connection with a $3.3 billion semiconductor investment in Odisha."
+},
+
+/* 72 */
+{
+q:"The semiconductor investment mentioned in May 2026 was located in:",
+o:["Odisha","Gujarat","Tamil Nadu","Karnataka"],
+a:0,
+e:"The reported investment was connected with Odisha."
+},
+
+/* 73 */
+{
+q:"Which species was rediscovered in May 2026 according to biodiversity reports?",
+o:["Vaccinium piliferum","Duttaphrynus dhara","Panthera tigris","Rhinoceros unicornis"],
+a:0,
+e:"Vaccinium piliferum was among the species reported as rediscovered."
+},
+
+/* 74 */
+{
+q:"Duttaphrynus dhara is a newly discovered:",
+o:["Toad species","Butterfly species","Snake species","Fish species"],
+a:0,
+e:"Duttaphrynus dhara is a newly described toad species."
+},
+
+/* 75 */
+{
+q:"Duttaphrynus dhara was discovered in which state?",
+o:["Meghalaya","Assam","Sikkim","Nagaland"],
+a:0,
+e:"The species was discovered in the Mawphlang region of Meghalaya."
+},
+
+/* 76 */
+{
+q:"Which Indian state hosted the PRAGATI 2026 military exercise?",
+o:["Meghalaya","Assam","Manipur","Arunachal Pradesh"],
+a:0,
+e:"PRAGATI 2026 was held in Meghalaya."
+},
+
+/* 77 */
+{
+q:"Which state is home to Umroi Military Station?",
+o:["Meghalaya","Nagaland","Mizoram","Tripura"],
+a:0,
+e:"Umroi Military Station is located in Meghalaya."
+},
+
+/* 78 */
+{
+q:"Which new initiative was linked to India's natural farming target of 3.25 million hectares by FY31?",
+o:["Natural Farming Programme","Green Revolution 2.0","National Food Mission","Bharat Krishi Mission"],
+a:0,
+e:"India set a target of 3.25 million hectares under natural farming by FY31."
+},
+
+/* 79 */
+{
+q:"What was India's projected forex reserve level mentioned in May 2026?",
+o:["About US$640 billion","About US$540 billion","About US$740 billion","About US$440 billion"],
+a:0,
+e:"India's forex reserves were reported at around US$640 billion."
+},
+
+/* 80 */
+{
+q:"India's merchandise GST collection for May 2026 was approximately:",
+o:["₹1.94 lakh crore","₹1.54 lakh crore","₹2.14 lakh crore","₹1.24 lakh crore"],
+a:0,
+e:"Gross GST revenue for May 2026 was reported at approximately ₹1.94 lakh crore."
+},
+
+/* 81 */
+{
+q:"What record dividend did RBI transfer to the Government in May 2026?",
+o:["₹2.86 lakh crore","₹1.86 lakh crore","₹3.86 lakh crore","₹2.26 lakh crore"],
+a:0,
+e:"The RBI approved a record ₹2.86 lakh crore dividend transfer."
+},
+
+/* 82 */
+{
+q:"Which institution transferred the record ₹2.86 lakh crore dividend?",
+o:["Reserve Bank of India","SEBI","SBI","NABARD"],
+a:0,
+e:"The Reserve Bank of India transferred the record dividend to the government."
+},
+
+/* 83 */
+{
+q:"India's oil import bill in May 2026 reached approximately:",
+o:["US$22.7 billion","US$12.7 billion","US$32.7 billion","US$17.7 billion"],
+a:0,
+e:"India's oil import bill was reported at approximately US$22.7 billion."
+},
+
+/* 84 */
+{
+q:"Which organisation publishes India's monetary policy decisions?",
+o:["Reserve Bank of India","SEBI","Finance Ministry","NITI Aayog"],
+a:0,
+e:"The Reserve Bank of India conducts monetary policy and publishes its decisions."
+},
+
+/* 85 */
+{
+q:"Which electronic system did NSE launch for dematerialisation and trading of physical gold?",
+o:["Electronic Gold Receipts","Digital Gold Bonds","Gold ETF Plus","National Gold Ledger"],
+a:0,
+e:"NSE launched Electronic Gold Receipts, or EGRs."
+},
+
+/* 86 */
+{
+q:"What does EGR stand for?",
+o:["Electronic Gold Receipt","Electronic Government Reserve","Exchange Gold Registry","Electronic Gold Reserve"],
+a:0,
+e:"EGR stands for Electronic Gold Receipt."
+},
+
+/* 87 */
+{
+q:"Which mechanism did SEBI propose for faster launch of Alternative Investment Funds?",
+o:["GARUDA","PRAGATI","ULIP","BHAVYA"],
+a:0,
+e:"SEBI proposed the GARUDA mechanism for faster AIF launch."
+},
+
+/* 88 */
+{
+q:"GARUDA in the SEBI context refers to:",
+o:["Green-Channel: AIF Rollout Upon Document Acknowledgement","Government AIF Regulatory Unified Digital Access","Gold and Regulatory Unified Digital Application","Green Asset Regulation and Unified Digital Authority"],
+a:0,
+e:"GARUDA expands to Green-Channel: AIF Rollout Upon Document Acknowledgement."
+},
+
+/* 89 */
+{
+q:"What percentage of India's insurance FDI limit was opened under the 2026 change?",
+o:["100%","74%","51%","49%"],
+a:0,
+e:"The insurance sector was opened to 100% foreign direct investment."
+},
+
+/* 90 */
+{
+q:"What is the FDI cap specifically mentioned for LIC?",
+o:["20%","26%","49%","74%"],
+a:0,
+e:"The LIC-specific foreign investment cap was reported as 20%."
+},
+
+/* 91 */
+{
+q:"Which infrastructure milestone was achieved by Indian Railways in May 2026?",
+o:["100th Vande Bharat trainset","100th Vande Bharat route","200th Vande Bharat trainset","50th Vande Bharat route"],
+a:0,
+e:"Indian Railways reached the 100th Vande Bharat trainset milestone."
+},
+
+/* 92 */
+{
+q:"The 100th Vande Bharat trainset was associated with which manufacturing facility?",
+o:["Modern Coach Factory, Raebareli","Integral Coach Factory, Chennai","BEML Bengaluru","Chittaranjan Locomotive Works"],
+a:0,
+e:"The 100th Vande Bharat trainset was associated with Modern Coach Factory, Raebareli."
+},
+
+/* 93 */
+{
+q:"How many cities in India were reported among the world's 100 hottest cities during a May 2026 heat episode?",
+o:["97","87","77","67"],
+a:0,
+e:"Reports stated that 97 of the world's 100 hottest cities were in India during the heat episode."
+},
+
+/* 94 */
+{
+q:"Which natural event arrived in Kerala unusually early in May 2026?",
+o:["Southwest Monsoon","Northeast Monsoon","Western Disturbance","Winter Monsoon"],
+a:0,
+e:"The Southwest Monsoon reached Kerala unusually early in May 2026."
+},
+
+/* 95 */
+{
+q:"The Southwest Monsoon reached Kerala on which date in 2026?",
+o:["24 May","31 May","1 June","20 May"],
+a:0,
+e:"The Southwest Monsoon reached Kerala on 24 May 2026."
+},
+
+/* 96 */
+{
+q:"The 2026 Southwest Monsoon arrival in Kerala was the earliest since:",
+o:["2009","2012","2015","2019"],
+a:0,
+e:"The 2026 arrival was reported as the earliest since 2009."
+},
+
+/* 97 */
+{
+q:"What percentage of Long Period Average did IMD forecast for the 2026 monsoon?",
+o:["94%","96%","102%","89%"],
+a:0,
+e:"The IMD forecast around 94% of the Long Period Average."
+},
+
+/* 98 */
+{
+q:"Which Supreme Court ruling in May 2026 recognised trauma care as a fundamental right?",
+o:["Right to emergency trauma care under Article 21","Right to free medicines under Article 14","Right to universal insurance under Article 19","Right to private healthcare under Article 21"],
+a:0,
+e:"The Supreme Court held access to trauma care to be connected with the fundamental right to life under Article 21."
+},
+
+/* 99 */
+{
+q:"According to NFHS-6 reports, India's total fertility rate fell to:",
+o:["1.9","2.1","2.3","1.6"],
+a:0,
+e:"NFHS-6 reported India's total fertility rate at 1.9, below the replacement level of 2.1."
+},
+
+/* 100 */
+{
+q:"Which new railway zone became India's 18th railway zone in May 2026?",
+o:["South Coast Railway","North East Coast Railway","Western Coastal Railway","Central South Railway"],
+a:0,
+e:"South Coast Railway was reported as India's 18th railway zone."
+}
+
+];
+
+let currentQuestion = 0;
+
+let answers =
+    new Array(questions.length).fill(null);
+
+let submitted = false;
+
+let totalSeconds = 45 * 60;
+
+let timerInterval;
+
+
+/* TIMER */
+
+function startTimer(){
+
+    timerInterval = setInterval(function(){
+
+        if(totalSeconds <= 0){
+
+            clearInterval(timerInterval);
+
+            submitTest(true);
+
+            return;
+        }
+
+        totalSeconds--;
+
+        let minutes =
+            Math.floor(totalSeconds / 60);
+
+        let seconds =
+            totalSeconds % 60;
+
+        document.getElementById("timer").textContent =
+            String(minutes).padStart(2,"0") +
+            ":" +
+            String(seconds).padStart(2,"0");
+
+    },1000);
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("currentNo").textContent =
+        currentQuestion + 1;
+
+    document.getElementById("questionNumber").textContent =
+        "Question " + (currentQuestion + 1);
+
+    document.getElementById("questionText").textContent =
+        q.q;
+
+    const options =
+        document.getElementById("options");
+
+    options.innerHTML = "";
+
+    q.o.forEach((option,index)=>{
+
+        const label =
+            document.createElement("label");
+
+        const input =
+            document.createElement("input");
+
+        input.type = "radio";
+
+        input.name = "answer";
+
+        input.value = index;
+
+        if(answers[currentQuestion] === index){
+
+            input.checked = true;
+
+        }
+
+        input.addEventListener(
+            "change",
+            function(){
+
+                answers[currentQuestion] = index;
+
+                updatePalette();
+
+            }
+        );
+
+        label.appendChild(input);
+
+        label.appendChild(
+            document.createTextNode(
+                String.fromCharCode(65 + index) +
+                ". " +
+                option
+            )
+        );
+
+        options.appendChild(label);
+
+    });
+
+    document.getElementById("prevBtn").disabled =
+        currentQuestion === 0;
+
+    document.getElementById("nextBtn").disabled =
+        currentQuestion === questions.length - 1;
+
+    updatePalette();
+}
+
+
+/* PALETTE */
+
+function createPalette(){
+
+    const grid =
+        document.getElementById("questionGrid");
+
+    grid.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const btn =
+            document.createElement("button");
+
+        btn.className = "qbtn";
+
+        btn.textContent = index + 1;
+
+        btn.onclick = function(){
+
+            currentQuestion = index;
+
+            loadQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+        grid.appendChild(btn);
+
+    });
+
+    updatePalette();
+}
+
+
+function updatePalette(){
+
+    const buttons =
+        document.querySelectorAll(".qbtn");
+
+    buttons.forEach((btn,index)=>{
+
+        btn.className = "qbtn";
+
+        if(index === currentQuestion){
+
+            btn.classList.add("current");
+
+        }
+
+        if(answers[index] !== null){
+
+            btn.classList.add("attempted");
+
+        }
+
+    });
+}
+
+
+/* NEXT */
+
+function nextQuestion(){
+
+    if(currentQuestion <
+       questions.length - 1){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+}
+
+
+/* PREVIOUS */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+}
+
+
+/* SUBMIT */
+
+function submitTest(autoSubmit=false){
+
+    if(submitted) return;
+
+
+    if(!autoSubmit){
+
+        const unanswered =
+            answers.filter(
+                a => a === null
+            ).length;
+
+        if(unanswered > 0){
+
+            const confirmSubmit =
+                confirm(
+                    "You have " +
+                    unanswered +
+                    " unanswered question(s).\n\n" +
+                    "Correct: +1 mark\n" +
+                    "Wrong: -0.33 mark\n" +
+                    "Unattempted: 0 mark\n\n" +
+                    "Do you want to submit?"
+                );
+
+            if(!confirmSubmit) return;
+
+        }
+
+    }
+
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+
+    let correct = 0;
+
+    let wrong = 0;
+
+    let attempted = 0;
+
+
+    questions.forEach((q,index)=>{
+
+        if(answers[index] !== null){
+
+            attempted++;
+
+            if(answers[index] === q.a){
+
+                correct++;
+
+            }else{
+
+                wrong++;
+
+            }
+
+        }
+
+    });
+
+
+    let unattempted =
+        questions.length - attempted;
+
+
+    /* NEGATIVE MARKING */
+
+    let negativeMarks =
+        wrong * 0.33;
+
+
+    let finalScore =
+        correct - negativeMarks;
+
+
+    finalScore =
+        Math.max(0,finalScore);
+
+
+    let percentage =
+        ((finalScore / questions.length) * 100)
+        .toFixed(2);
+
+
+    let resultHTML = `
+
+        <h2>Test Result</h2>
+
+        <div class="negative-info">
+            Negative Marking: 0.33 mark for every wrong answer
+        </div>
+
+        <div class="score">
+            Final Score: ${finalScore.toFixed(2)} / 100
+        </div>
+
+        <div class="result-card">
+
+            <p>
+                <strong>Correct Answers:</strong>
+                ${correct} × 1 = ${(correct).toFixed(2)}
+            </p>
+
+            <p>
+                <strong>Wrong Answers:</strong>
+                ${wrong} × 0.33 = -${negativeMarks.toFixed(2)}
+            </p>
+
+            <p>
+                <strong>Unattempted:</strong>
+                ${unattempted} × 0 = 0
+            </p>
+
+            <hr style="margin:10px 0;">
+
+            <p>
+                <strong>Final Marks:</strong>
+                ${correct} - ${negativeMarks.toFixed(2)}
+                = ${finalScore.toFixed(2)}
+            </p>
+
+            <p>
+                <strong>Percentage:</strong>
+                ${percentage}%
+            </p>
+
+            <p>
+                <strong>Attempted:</strong>
+                ${attempted}
+            </p>
+
+        </div>
+
+        <h3>Detailed Solutions</h3>
+    `;
+
+
+    questions.forEach((q,index)=>{
+
+        const userAnswer =
+            answers[index];
+
+        let status = "";
+
+        if(userAnswer === null){
+
+            status =
+                `<span class="unattempted">
+                    Not Attempted
+                </span>`;
+
+        }
+        else if(userAnswer === q.a){
+
+            status =
+                `<span class="correct">
+                    Correct (+1)
+                </span>`;
+
+        }
+        else{
+
+            status =
+                `<span class="wrong">
+                    Wrong (-0.33)
+                </span>`;
+
+        }
+
+
+        resultHTML += `
+
+        <div class="explanation">
+
+            <p>
+                <strong>
+                    Q${index + 1}. ${q.q}
+                </strong>
+            </p>
+
+            <p>
+                ${status}
+            </p>
+
+            <p>
+                <strong>Your Answer:</strong>
+                ${
+                    userAnswer === null
+                    ? "Not Attempted"
+                    : q.o[userAnswer]
+                }
+            </p>
+
+            <p>
+                <strong>Correct Answer:</strong>
+                ${q.o[q.a]}
+            </p>
+
+            <p>
+                <strong>Solution:</strong>
+                ${q.e}
+            </p>
+
+        </div>
+
+        `;
+
+    });
+
+
+    const result =
+        document.getElementById("result");
+
+    result.innerHTML = resultHTML;
+
+    result.style.display = "block";
+
+
+    document.getElementById("questionBox")
+        .style.display = "none";
+
+
+    document.querySelector(".submit")
+        .style.display = "none";
+
+
+    result.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+createPalette();
+
+loadQuestion();
+
+startTimer();
+
+</script>
+
+</body>
+</html>
