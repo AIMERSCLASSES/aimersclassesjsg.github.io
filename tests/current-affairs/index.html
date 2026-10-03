@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +5,13 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<title>AIMERS CLASSES | Current Affairs 2026</title>
+<title>AIMERS CLASSES | Current Affairs Test Series 2026</title>
 
 <meta name="description"
-content="AIMERS CLASSES Current Affairs 2026 Test Series - March 2026 to December 2026. SSC Railway level tests.">
+content="AIMERS CLASSES Current Affairs Test Series 2026 - March to December 2026. Each month contains two tests of 100 questions with solutions.">
 
 <style>
 
@@ -37,12 +37,6 @@ a{
     color:inherit;
 }
 
-.container{
-    width:92%;
-    max-width:1200px;
-    margin:auto;
-}
-
 
 /* ================= HEADER ================= */
 
@@ -53,10 +47,15 @@ header{
 }
 
 .nav{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
     min-height:75px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     gap:20px;
 }
 
@@ -88,9 +87,19 @@ header{
 .back-btn{
     background:white;
     color:#1d4ed8;
+
     padding:10px 16px;
+
     border-radius:8px;
+
     font-weight:800;
+
+    transition:.3s;
+}
+
+.back-btn:hover{
+    background:#ffd43b;
+    color:#102a43;
 }
 
 
@@ -98,14 +107,19 @@ header{
 
 .hero{
     background:linear-gradient(135deg,#eaf2ff,#ffffff);
-    padding:55px 0;
+
+    padding:55px 15px 45px;
+
     text-align:center;
 }
 
 .hero h1{
     font-size:42px;
+
     color:#102a43;
+
     margin-bottom:10px;
+
     font-weight:900;
 }
 
@@ -115,45 +129,20 @@ header{
 
 .hero p{
     color:#667085;
+
     font-size:17px;
-}
 
-.hero .total{
-    margin-top:8px;
-    font-size:15px;
-    font-weight:bold;
-    color:#1d4ed8;
+    margin-bottom:5px;
 }
 
 
-/* ================= SECTION ================= */
+/* ================= MONTH SECTION ================= */
 
 .month-section{
-    padding:60px 0 80px;
-}
+    width:92%;
+    max-width:1200px;
 
-.section-title{
-    text-align:center;
-    margin-bottom:40px;
-}
-
-.section-title h2{
-    font-size:32px;
-    color:#102a43;
-    margin-bottom:8px;
-}
-
-.section-title p{
-    color:#6b7280;
-}
-
-
-/* ================= MONTH GRID ================= */
-
-.month-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
+    margin:45px auto 80px;
 }
 
 
@@ -161,59 +150,224 @@ header{
 
 .month-card{
     background:white;
-    border-radius:18px;
-    padding:30px 25px;
-    text-align:center;
-    box-shadow:0 8px 28px rgba(0,0,0,.08);
-    border-top:6px solid #1d4ed8;
+
+    margin-bottom:20px;
+
+    border-radius:16px;
+
+    box-shadow:0 7px 25px rgba(0,0,0,.08);
+
+    border-left:6px solid #1d4ed8;
+
+    overflow:hidden;
+
     transition:.3s;
 }
 
 .month-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 15px 35px rgba(0,0,0,.14);
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+
+
+/* ================= MONTH HEADER ================= */
+
+.month-card summary{
+    list-style:none;
+
+    cursor:pointer;
+
+    padding:25px 28px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.month-card summary::-webkit-details-marker{
+    display:none;
+}
+
+.month-left{
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
 }
 
 .month-icon{
-    font-size:48px;
-    margin-bottom:12px;
-}
+    width:60px;
+    height:60px;
 
-.month-card h3{
-    color:#102a43;
-    font-size:24px;
-    margin-bottom:8px;
-}
+    border-radius:50%;
 
-.month-card p{
-    color:#667085;
-    font-size:14px;
-    margin-bottom:18px;
-}
-
-.test-info{
-    display:inline-block;
     background:#eaf2ff;
-    color:#1d4ed8;
-    padding:7px 13px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
 }
 
-.open-btn{
-    display:inline-block;
-    background:#1d4ed8;
-    color:white;
-    padding:11px 22px;
-    border-radius:8px;
-    font-weight:800;
+.month-name h2{
+    color:#102a43;
+
+    font-size:25px;
+
+    margin-bottom:3px;
+}
+
+.month-name p{
+    color:#718096;
+
+    font-size:14px;
+}
+
+.arrow{
+    font-size:25px;
+
+    color:#1d4ed8;
+
+    font-weight:bold;
+
     transition:.3s;
 }
 
-.open-btn:hover{
+.month-card[open] .arrow{
+    transform:rotate(180deg);
+}
+
+
+/* ================= TEST AREA ================= */
+
+.test-area{
+    border-top:1px solid #e5e7eb;
+
+    padding:25px 28px 30px;
+
+    background:#fbfdff;
+}
+
+.test-info{
+    text-align:center;
+
+    color:#64748b;
+
+    margin-bottom:22px;
+
+    font-size:14px;
+}
+
+
+/* ================= TEST GRID ================= */
+
+.test-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+}
+
+
+/* ================= TEST CARD ================= */
+
+.test-card{
+    background:white;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:14px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:0 4px 14px rgba(0,0,0,.05);
+
+    transition:.3s;
+}
+
+.test-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.test-icon{
+    font-size:40px;
+
+    margin-bottom:10px;
+}
+
+.test-card h3{
+    color:#102a43;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.test-card p{
+    color:#667085;
+
+    font-size:14px;
+
+    margin-bottom:18px;
+}
+
+.test-btn{
+    display:inline-block;
+
+    background:#1d4ed8;
+
+    color:white;
+
+    padding:11px 22px;
+
+    border-radius:8px;
+
+    font-weight:800;
+
+    transition:.3s;
+}
+
+.test-btn:hover{
     background:#102a43;
+}
+
+.test-2{
+    background:#0f766e;
+}
+
+.test-2:hover{
+    background:#064e3b;
+}
+
+
+/* ================= STATUS ================= */
+
+.status{
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:4px 10px;
+
+    border-radius:20px;
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+    font-size:12px;
+
+    font-weight:bold;
 }
 
 
@@ -221,37 +375,36 @@ header{
 
 footer{
     background:#0f172a;
+
     color:white;
-    padding:30px 0;
+
+    padding:30px 15px;
+
     text-align:center;
 }
 
 footer h3{
     color:#ffd43b;
+
     margin-bottom:8px;
 }
 
 footer p{
     color:#cbd5e1;
+
     font-size:14px;
+
+    margin:3px 0;
 }
 
 
 /* ================= MOBILE ================= */
 
-@media(max-width:1000px){
-
-    .month-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-
-@media(max-width:650px){
+@media(max-width:700px){
 
     .nav{
         flex-direction:column;
+
         padding:15px 0;
     }
 
@@ -260,10 +413,33 @@ footer p{
     }
 
     .hero h1{
-        font-size:32px;
+        font-size:31px;
     }
 
-    .month-grid{
+    .month-card summary{
+        padding:20px;
+    }
+
+    .month-left{
+        gap:12px;
+    }
+
+    .month-icon{
+        width:50px;
+        height:50px;
+
+        font-size:25px;
+    }
+
+    .month-name h2{
+        font-size:20px;
+    }
+
+    .test-area{
+        padding:20px;
+    }
+
+    .test-grid{
         grid-template-columns:1fr;
     }
 
@@ -281,7 +457,8 @@ footer p{
 
 <header>
 
-<div class="container nav">
+<div class="nav">
+
 
 <div class="brand">
 
@@ -298,12 +475,13 @@ AIMERS <span>CLASSES</span>
 
 
 <a
-href="../index.html"
+href="../../index.html"
 class="back-btn">
 
-← Online Mock Tests
+← Main Website
 
 </a>
+
 
 </div>
 
@@ -315,364 +493,1094 @@ class="back-btn">
 
 <section class="hero">
 
-<div class="container">
-
 <h1>
-📰 Current Affairs <span>2026</span>
+📚 Current Affairs <span>Test Series 2026</span>
 </h1>
 
 <p>
-SSC • Railway • Competitive Exams
+Select a month to access Test 1 and Test 2.
 </p>
 
-<div class="total">
-March 2026 – December 2026 | 20 Tests | 2000 Questions
-</div>
-
-</div>
+<p>
+Each test contains 100 questions with solutions.
+</p>
 
 </section>
 
 
 
-<!-- ================= MONTH SECTION ================= -->
+<!-- ================= MONTHS ================= -->
 
 <section class="month-section">
 
-<div class="container">
 
+<!-- =================================================
+     MARCH 2026
+================================================= -->
 
-<div class="section-title">
+<details class="month-card" open>
 
-<h2>
-📚 Current Affairs Test Series 2026
-</h2>
+<summary>
 
-<p>
-Select a month to access Test 1 and Test 2.
-Each test contains 100 questions with solutions.
-</p>
-
-</div>
-
-
-
-<div class="month-grid">
-
-
-<!-- ================= MARCH 2026 ================= -->
-
-<a href="./march-2026/index.html"
-class="month-card">
+<div class="month-left">
 
 <div class="month-icon">
 🌸
 </div>
 
-<h3>
+<div class="month-name">
+
+<h2>
 March 2026
-</h3>
+</h2>
 
 <p>
 Monthly Current Affairs
 </p>
 
-<div class="test-info">
-2 Tests • 100 Questions Each
 </div>
 
-<br>
+</div>
 
-<span class="open-btn">
-Open March 2026 →
-</span>
+<div class="arrow">
+⌄
+</div>
+
+</summary>
+
+
+<div class="test-area">
+
+<div class="test-info">
+2 Tests • 100 Questions Each • With Solutions
+</div>
+
+
+<div class="test-grid">
+
+
+<!-- TEST 1 -->
+
+<div class="test-card">
+
+<div class="test-icon">
+📝
+</div>
+
+<h3>
+March 2026 — Test 1
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./march-2026/test-1.html"
+class="test-btn">
+
+Start Test 1 →
 
 </a>
 
+<div class="status">
+100 Questions
+</div>
+
+</div>
 
 
-<!-- ================= APRIL 2026 ================= -->
+<!-- TEST 2 -->
 
-<a href="./april-2026/index.html"
-class="month-card">
+<div class="test-card">
+
+<div class="test-icon">
+📚
+</div>
+
+<h3>
+March 2026 — Test 2
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./march-2026/test-2.html"
+class="test-btn test-2">
+
+Start Test 2 →
+
+</a>
+
+<div class="status">
+100 Questions
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</details>
+
+
+
+<!-- =================================================
+     APRIL 2026
+================================================= -->
+
+<details class="month-card">
+
+<summary>
+
+<div class="month-left">
 
 <div class="month-icon">
 🌱
 </div>
 
-<h3>
+<div class="month-name">
+
+<h2>
 April 2026
-</h3>
+</h2>
 
 <p>
 Monthly Current Affairs
 </p>
 
-<div class="test-info">
-2 Tests • 100 Questions Each
 </div>
 
-<br>
+</div>
 
-<span class="open-btn">
-Open April 2026 →
-</span>
+<div class="arrow">
+⌄
+</div>
+
+</summary>
+
+
+<div class="test-area">
+
+<div class="test-info">
+2 Tests • 100 Questions Each • With Solutions
+</div>
+
+<div class="test-grid">
+
+
+<div class="test-card">
+
+<div class="test-icon">
+📝
+</div>
+
+<h3>
+April 2026 — Test 1
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./april-2026/test-1.html"
+class="test-btn">
+
+Start Test 1 →
 
 </a>
 
+<div class="status">
+100 Questions
+</div>
+
+</div>
 
 
-<!-- ================= MAY 2026 ================= -->
+<div class="test-card">
 
-<a href="./may-2026/index.html"
-class="month-card">
+<div class="test-icon">
+📚
+</div>
+
+<h3>
+April 2026 — Test 2
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./april-2026/test-2.html"
+class="test-btn test-2">
+
+Start Test 2 →
+
+</a>
+
+<div class="status">
+100 Questions
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</details>
+
+
+
+<!-- =================================================
+     MAY 2026
+================================================= -->
+
+<details class="month-card">
+
+<summary>
+
+<div class="month-left">
 
 <div class="month-icon">
 ☀️
 </div>
 
-<h3>
+<div class="month-name">
+
+<h2>
 May 2026
-</h3>
+</h2>
 
 <p>
 Monthly Current Affairs
 </p>
 
-<div class="test-info">
-2 Tests • 100 Questions Each
 </div>
 
-<br>
+</div>
 
-<span class="open-btn">
-Open May 2026 →
-</span>
+<div class="arrow">
+⌄
+</div>
 
-</a>
+</summary>
 
 
+<div class="test-area">
 
-<!-- ================= JUNE 2026 ================= -->
+<div class="test-info">
+2 Tests • 100 Questions Each • With Solutions
+</div>
 
-<a href="./june-2026/index.html"
-class="month-card">
+<div class="test-grid">
 
-<div class="month-icon">
-🌦️
+
+<div class="test-card">
+
+<div class="test-icon">
+📝
 </div>
 
 <h3>
+May 2026 — Test 1
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./may-2026/test-1.html"
+class="test-btn">
+
+Start Test 1 →
+
+</a>
+
+<div class="status">
+100 Questions
+</div>
+
+</div>
+
+
+<div class="test-card">
+
+<div class="test-icon">
+📚
+</div>
+
+<h3>
+May 2026 — Test 2
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./may-2026/test-2.html"
+class="test-btn test-2">
+
+Start Test 2 →
+
+</a>
+
+<div class="status">
+100 Questions
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</details>
+
+
+
+<!-- =================================================
+     JUNE 2026
+================================================= -->
+
+<details class="month-card">
+
+<summary>
+
+<div class="month-left">
+
+<div class="month-icon">
+🌤️
+</div>
+
+<div class="month-name">
+
+<h2>
 June 2026
-</h3>
+</h2>
 
 <p>
 Monthly Current Affairs
 </p>
 
-<div class="test-info">
-2 Tests • 100 Questions Each
 </div>
 
-<br>
+</div>
 
-<span class="open-btn">
-Open June 2026 →
-</span>
+<div class="arrow">
+⌄
+</div>
 
-</a>
+</summary>
 
 
+<div class="test-area">
 
-<!-- ================= JULY 2026 ================= -->
+<div class="test-info">
+2 Tests • 100 Questions Each • With Solutions
+</div>
 
-<a href="./july-2026/index.html"
-class="month-card">
+<div class="test-grid">
 
-<div class="month-icon">
-🌧️
+
+<div class="test-card">
+
+<div class="test-icon">
+📝
 </div>
 
 <h3>
+June 2026 — Test 1
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./june-2026/test-1.html"
+class="test-btn">
+
+Start Test 1 →
+
+</a>
+
+</div>
+
+
+<div class="test-card">
+
+<div class="test-icon">
+📚
+</div>
+
+<h3>
+June 2026 — Test 2
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./june-2026/test-2.html"
+class="test-btn test-2">
+
+Start Test 2 →
+
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</details>
+
+
+
+<!-- =================================================
+     JULY 2026
+================================================= -->
+
+<details class="month-card">
+
+<summary>
+
+<div class="month-left">
+
+<div class="month-icon">
+🌻
+</div>
+
+<div class="month-name">
+
+<h2>
 July 2026
-</h3>
+</h2>
 
 <p>
 Monthly Current Affairs
 </p>
 
-<div class="test-info">
-2 Tests • 100 Questions Each
 </div>
 
-<br>
+</div>
 
-<span class="open-btn">
-Open July 2026 →
-</span>
+<div class="arrow">
+⌄
+</div>
 
-</a>
+</summary>
 
 
+<div class="test-area">
 
-<!-- ================= AUGUST 2026 ================= -->
+<div class="test-info">
+2 Tests • 100 Questions Each • With Solutions
+</div>
 
-<a href="./august-2026/index.html"
-class="month-card">
+<div class="test-grid">
 
-<div class="month-icon">
-🇮🇳
+
+<div class="test-card">
+
+<div class="test-icon">
+📝
 </div>
 
 <h3>
-August 2026
+July 2026 — Test 1
 </h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./july-2026/test-1.html"
+class="test-btn">
+
+Start Test 1 →
+
+</a>
+
+</div>
+
+
+<div class="test-card">
+
+<div class="test-icon">
+📚
+</div>
+
+<h3>
+July 2026 — Test 2
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./july-2026/test-2.html"
+class="test-btn test-2">
+
+Start Test 2 →
+
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</details>
+
+
+
+<!-- =================================================
+     AUGUST 2026
+================================================= -->
+
+<details class="month-card">
+
+<summary>
+
+<div class="month-left">
+
+<div class="month-icon">
+🌾
+</div>
+
+<div class="month-name">
+
+<h2>
+August 2026
+</h2>
 
 <p>
 Monthly Current Affairs
 </p>
 
-<div class="test-info">
-2 Tests • 100 Questions Each
 </div>
 
-<br>
+</div>
 
-<span class="open-btn">
-Open August 2026 →
-</span>
+<div class="arrow">
+⌄
+</div>
+
+</summary>
+
+
+<div class="test-area">
+
+<div class="test-info">
+2 Tests • 100 Questions Each • With Solutions
+</div>
+
+<div class="test-grid">
+
+
+<div class="test-card">
+
+<div class="test-icon">
+📝
+</div>
+
+<h3>
+August 2026 — Test 1
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./august-2026/test-1.html"
+class="test-btn">
+
+Start Test 1 →
 
 </a>
 
+</div>
 
 
-<!-- ================= SEPTEMBER 2026 ================= -->
+<div class="test-card">
 
-<a href="./september-2026/index.html"
-class="month-card">
+<div class="test-icon">
+📚
+</div>
+
+<h3>
+August 2026 — Test 2
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./august-2026/test-2.html"
+class="test-btn test-2">
+
+Start Test 2 →
+
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</details>
+
+
+
+<!-- =================================================
+     SEPTEMBER 2026
+================================================= -->
+
+<details class="month-card">
+
+<summary>
+
+<div class="month-left">
 
 <div class="month-icon">
 🍂
 </div>
 
-<h3>
+<div class="month-name">
+
+<h2>
 September 2026
-</h3>
+</h2>
 
 <p>
 Monthly Current Affairs
 </p>
 
-<div class="test-info">
-2 Tests • 100 Questions Each
 </div>
 
-<br>
+</div>
 
-<span class="open-btn">
-Open September 2026 →
-</span>
+<div class="arrow">
+⌄
+</div>
+
+</summary>
+
+
+<div class="test-area">
+
+<div class="test-info">
+2 Tests • 100 Questions Each • With Solutions
+</div>
+
+<div class="test-grid">
+
+
+<div class="test-card">
+
+<div class="test-icon">
+📝
+</div>
+
+<h3>
+September 2026 — Test 1
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./september-2026/test-1.html"
+class="test-btn">
+
+Start Test 1 →
 
 </a>
 
+</div>
 
 
-<!-- ================= OCTOBER 2026 ================= -->
+<div class="test-card">
 
-<a href="./october-2026/index.html"
-class="month-card">
+<div class="test-icon">
+📚
+</div>
+
+<h3>
+September 2026 — Test 2
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./september-2026/test-2.html"
+class="test-btn test-2">
+
+Start Test 2 →
+
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</details>
+
+
+
+<!-- =================================================
+     OCTOBER 2026
+================================================= -->
+
+<details class="month-card">
+
+<summary>
+
+<div class="month-left">
 
 <div class="month-icon">
 🎃
 </div>
 
-<h3>
+<div class="month-name">
+
+<h2>
 October 2026
-</h3>
+</h2>
 
 <p>
 Monthly Current Affairs
 </p>
 
-<div class="test-info">
-2 Tests • 100 Questions Each
 </div>
 
-<br>
+</div>
 
-<span class="open-btn">
-Open October 2026 →
-</span>
+<div class="arrow">
+⌄
+</div>
+
+</summary>
+
+
+<div class="test-area">
+
+<div class="test-info">
+2 Tests • 100 Questions Each • With Solutions
+</div>
+
+<div class="test-grid">
+
+
+<div class="test-card">
+
+<div class="test-icon">
+📝
+</div>
+
+<h3>
+October 2026 — Test 1
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./october-2026/test-1.html"
+class="test-btn">
+
+Start Test 1 →
 
 </a>
 
+</div>
 
 
-<!-- ================= NOVEMBER 2026 ================= -->
+<div class="test-card">
 
-<a href="./november-2026/index.html"
-class="month-card">
+<div class="test-icon">
+📚
+</div>
+
+<h3>
+October 2026 — Test 2
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./october-2026/test-2.html"
+class="test-btn test-2">
+
+Start Test 2 →
+
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</details>
+
+
+
+<!-- =================================================
+     NOVEMBER 2026
+================================================= -->
+
+<details class="month-card">
+
+<summary>
+
+<div class="month-left">
 
 <div class="month-icon">
 🍁
 </div>
 
-<h3>
+<div class="month-name">
+
+<h2>
 November 2026
-</h3>
+</h2>
 
 <p>
 Monthly Current Affairs
 </p>
 
-<div class="test-info">
-2 Tests • 100 Questions Each
 </div>
 
-<br>
+</div>
 
-<span class="open-btn">
-Open November 2026 →
-</span>
+<div class="arrow">
+⌄
+</div>
+
+</summary>
+
+
+<div class="test-area">
+
+<div class="test-info">
+2 Tests • 100 Questions Each • With Solutions
+</div>
+
+<div class="test-grid">
+
+
+<div class="test-card">
+
+<div class="test-icon">
+📝
+</div>
+
+<h3>
+November 2026 — Test 1
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./november-2026/test-1.html"
+class="test-btn">
+
+Start Test 1 →
 
 </a>
 
+</div>
 
 
-<!-- ================= DECEMBER 2026 ================= -->
+<div class="test-card">
 
-<a href="./december-2026/index.html"
-class="month-card">
+<div class="test-icon">
+📚
+</div>
+
+<h3>
+November 2026 — Test 2
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./november-2026/test-2.html"
+class="test-btn test-2">
+
+Start Test 2 →
+
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</details>
+
+
+
+<!-- =================================================
+     DECEMBER 2026
+================================================= -->
+
+<details class="month-card">
+
+<summary>
+
+<div class="month-left">
 
 <div class="month-icon">
 🎄
 </div>
 
-<h3>
+<div class="month-name">
+
+<h2>
 December 2026
-</h3>
+</h2>
 
 <p>
 Monthly Current Affairs
 </p>
 
-<div class="test-info">
-2 Tests • 100 Questions Each
 </div>
 
-<br>
+</div>
 
-<span class="open-btn">
-Open December 2026 →
-</span>
+<div class="arrow">
+⌄
+</div>
+
+</summary>
+
+
+<div class="test-area">
+
+<div class="test-info">
+2 Tests • 100 Questions Each • With Solutions
+</div>
+
+<div class="test-grid">
+
+
+<div class="test-card">
+
+<div class="test-icon">
+📝
+</div>
+
+<h3>
+December 2026 — Test 1
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./december-2026/test-1.html"
+class="test-btn">
+
+Start Test 1 →
 
 </a>
 
+</div>
+
+
+<div class="test-card">
+
+<div class="test-icon">
+📚
+</div>
+
+<h3>
+December 2026 — Test 2
+</h3>
+
+<p>
+100 Current Affairs MCQs
+with detailed solutions.
+</p>
+
+<a
+href="./december-2026/test-2.html"
+class="test-btn test-2">
+
+Start Test 2 →
+
+</a>
+
+</div>
 
 
 </div>
 
 </div>
+
+</details>
+
 
 </section>
 
@@ -681,8 +1589,6 @@ Open December 2026 →
 <!-- ================= FOOTER ================= -->
 
 <footer>
-
-<div class="container">
 
 <h3>
 AIMERS CLASSES
@@ -693,14 +1599,16 @@ Aim High • Achieve High
 </p>
 
 <p>
-Current Affairs | SSC | Railway | Competitive Exams
+Current Affairs Test Series 2026
+</p>
+
+<p>
+March 2026 – December 2026
 </p>
 
 <p style="margin-top:12px;">
 © 2026 AIMERS CLASSES. All Rights Reserved.
 </p>
-
-</div>
 
 </footer>
 
@@ -708,4 +1616,3 @@ Current Affairs | SSC | Railway | Competitive Exams
 </body>
 
 </html>
-```
