@@ -1,1 +1,2683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | June Current Affairs Test 01</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f2f5f9;
+    color:#222;
+}
+
+.header{
+    background:linear-gradient(135deg,#0b3d91,#1456c1);
+    color:white;
+    padding:18px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.header h1{
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+.header h2{
+    font-size:20px;
+    font-weight:500;
+}
+
+.header p{
+    margin-top:5px;
+    font-size:14px;
+}
+
+.container{
+    width:95%;
+    max-width:1200px;
+    margin:20px auto;
+}
+
+.top-info{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.timer{
+    font-size:20px;
+    font-weight:bold;
+    color:#d00000;
+}
+
+.progress{
+    font-weight:bold;
+}
+
+.marking{
+    font-size:14px;
+    color:#555;
+    font-weight:bold;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 270px;
+    gap:20px;
+}
+
+.question-box{
+    background:white;
+    border-radius:10px;
+    padding:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    min-height:420px;
+}
+
+.question-number{
+    color:#0b3d91;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.question{
+    font-size:20px;
+    line-height:1.5;
+    font-weight:600;
+    margin-bottom:22px;
+}
+
+.options label{
+    display:block;
+    padding:14px;
+    border:1px solid #d8d8d8;
+    border-radius:8px;
+    margin:10px 0;
+    cursor:pointer;
+    transition:.2s;
+    font-size:17px;
+}
+
+.options label:hover{
+    background:#eef5ff;
+    border-color:#1456c1;
+}
+
+.options input{
+    margin-right:10px;
+    transform:scale(1.2);
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+    gap:10px;
+}
+
+button{
+    border:none;
+    padding:12px 22px;
+    border-radius:7px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.prev{
+    background:#6c757d;
+    color:white;
+}
+
+.next{
+    background:#0b3d91;
+    color:white;
+}
+
+.submit{
+    background:#198754;
+    color:white;
+    width:100%;
+    margin-top:15px;
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.palette{
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    height:max-content;
+    position:sticky;
+    top:125px;
+}
+
+.palette h3{
+    color:#0b3d91;
+    margin-bottom:12px;
+    text-align:center;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qbtn{
+    background:#e9ecef;
+    color:#222;
+    padding:8px 4px;
+    border-radius:5px;
+    font-size:13px;
+}
+
+.qbtn.current{
+    background:#0b3d91;
+    color:white;
+}
+
+.qbtn.attempted{
+    background:#198754;
+    color:white;
+}
+
+.legend{
+    margin-top:15px;
+    font-size:13px;
+    line-height:1.8;
+}
+
+.legend span{
+    display:inline-block;
+    width:13px;
+    height:13px;
+    margin-right:5px;
+    border-radius:3px;
+}
+
+.blue{
+    background:#0b3d91;
+}
+
+.green{
+    background:#198754;
+}
+
+.grey{
+    background:#e9ecef;
+    border:1px solid #ccc;
+}
+
+.result{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    margin-top:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.result h2{
+    color:#0b3d91;
+    margin-bottom:15px;
+}
+
+.score{
+    font-size:30px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.result-card{
+    padding:15px;
+    background:#f8f9fa;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.explanation{
+    border-top:1px solid #ddd;
+    padding:15px 0;
+    margin-top:10px;
+}
+
+.correct{
+    color:#198754;
+    font-weight:bold;
+}
+
+.wrong{
+    color:#dc3545;
+    font-weight:bold;
+}
+
+.unattempted{
+    color:#6c757d;
+    font-weight:bold;
+}
+
+.negative-info{
+    background:#fff3cd;
+    padding:12px;
+    border-radius:7px;
+    margin:15px 0;
+    font-weight:bold;
+}
+
+@media(max-width:800px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette{
+        position:static;
+        order:-1;
+    }
+
+    .question-grid{
+        grid-template-columns:repeat(10,1fr);
+    }
+
+    .question-box{
+        padding:18px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .question-grid{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+    .header h1{
+        font-size:22px;
+    }
+
+    .header h2{
+        font-size:17px;
+    }
+
+    .marking{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+    <h1>AIMERS CLASSES</h1>
+
+    <h2>JUNE CURRENT AFFAIRS – TEST 01</h2>
+
+    <p>
+        SSC CGL • SSC CHSL • Railway • Competitive Exams
+    </p>
+
+</div>
+
+
+<div class="container">
+
+<div class="top-info">
+
+    <div class="progress">
+        Question <span id="currentNo">1</span> / 100
+    </div>
+
+    <div class="marking">
+        +1 Correct &nbsp; | &nbsp; -0.33 Wrong
+    </div>
+
+    <div class="timer">
+        Time Left: <span id="timer">45:00</span>
+    </div>
+
+</div>
+
+
+<div class="layout">
+
+<div>
+
+<div class="question-box" id="questionBox">
+
+<div class="question-number" id="questionNumber"></div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+
+<div class="navigation">
+
+<button class="prev"
+onclick="previousQuestion()"
+id="prevBtn">
+
+← Previous
+
+</button>
+
+
+<button class="next"
+onclick="nextQuestion()"
+id="nextBtn">
+
+Next →
+
+</button>
+
+</div>
+
+</div>
+
+
+<button class="submit"
+onclick="submitTest()">
+
+SUBMIT TEST
+
+</button>
+
+
+<div class="result" id="result"></div>
+
+</div>
+
+
+<div class="palette">
+
+<h3>Question Palette</h3>
+
+<div class="question-grid" id="questionGrid"></div>
+
+<div class="legend">
+
+<div>
+<span class="blue"></span>
+Current Question
+</div>
+
+<div>
+<span class="green"></span>
+Attempted
+</div>
+
+<div>
+<span class="grey"></span>
+Not Attempted
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+
+const questions = [
+
+{
+q:"Which organisation launched India's first SkyCast system at Indira Gandhi International Airport in June 2026?",
+o:[
+"India Meteorological Department",
+"ISRO",
+"DRDO",
+"Airport Authority of India"
+],
+a:0,
+e:"The India Meteorological Department launched India's first SkyCast system at IGI Airport, New Delhi."
+},
+
+
+{
+q:"Where was India's first SkyCast system launched?",
+o:[
+"IGI Airport, New Delhi",
+"Chhatrapati Shivaji Maharaj Airport",
+"Kempegowda International Airport",
+"Rajiv Gandhi International Airport"
+],
+a:0,
+e:"The first SkyCast system was launched at Indira Gandhi International Airport in New Delhi."
+},
+
+
+{
+q:"Who was assigned additional charge as Chairman of DRDO in June 2026?",
+o:[
+"Rajesh Kumar Singh",
+"Samir V. Kamat",
+"Ajit Doval",
+"R. K. Singh"
+],
+a:0,
+e:"Defence Secretary Rajesh Kumar Singh was assigned additional charge as Secretary DDR&D and Chairman DRDO."
+},
+
+
+{
+q:"Rajesh Kumar Singh belongs to which cadre of the Indian Administrative Service?",
+o:[
+"Kerala",
+"Uttar Pradesh",
+"Rajasthan",
+"Madhya Pradesh"
+],
+a:0,
+e:"Rajesh Kumar Singh is a 1989-batch IAS officer of the Kerala cadre."
+},
+
+
+{
+q:"Who was appointed Executive Director of the World Bank from India in June 2026?",
+o:[
+"Neelkanth Mishra",
+"Parameswaran Iyer",
+"Sanjay Lohiya",
+"Tarun Kapoor"
+],
+a:0,
+e:"Economist Neelkanth Mishra was approved as Executive Director of the World Bank for a three-year tenure."
+},
+
+
+{
+q:"Neelkanth Mishra was serving as Chief Economist of which bank before his World Bank appointment?",
+o:[
+"Axis Bank",
+"State Bank of India",
+"ICICI Bank",
+"HDFC Bank"
+],
+a:0,
+e:"Neelkanth Mishra was Chief Economist at Axis Bank."
+},
+
+
+{
+q:"Who was nominated as Non-Executive Director on the Central Boards of RBI and SBI in June 2026?",
+o:[
+"Sanjay Lohiya",
+"Neelkanth Mishra",
+"Rajesh Kumar Singh",
+"M. Nagaraju"
+],
+a:0,
+e:"Sanjay Lohiya, Secretary of the Department of Financial Services, was nominated to the RBI and SBI boards."
+},
+
+
+{
+q:"Sanjay Lohiya is a 1994-batch IAS officer of which cadre?",
+o:[
+"Assam-Meghalaya",
+"Kerala",
+"Odisha",
+"Bihar"
+],
+a:0,
+e:"Sanjay Lohiya belongs to the Assam-Meghalaya cadre."
+},
+
+
+{
+q:"Who was appointed as the next Director of the Intelligence Bureau in June 2026?",
+o:[
+"Mahesh Dixit",
+"Tapan Kumar Deka",
+"Samant Goel",
+"Ravi Sinha"
+],
+a:0,
+e:"Mahesh Dixit was appointed the next Director of the Intelligence Bureau."
+},
+
+
+{
+q:"Mahesh Dixit belongs to which IPS cadre?",
+o:[
+"Andhra Pradesh",
+"Telangana",
+"Karnataka",
+"Maharashtra"
+],
+a:0,
+e:"Mahesh Dixit is a 1993-batch IPS officer of the Andhra Pradesh cadre."
+},
+
+
+{
+q:"Mahesh Dixit succeeded which officer as IB Director?",
+o:[
+"Tapan Kumar Deka",
+"Ravi Sinha",
+"Arvinda Kumar",
+"Samant Goel"
+],
+a:0,
+e:"Mahesh Dixit succeeded Tapan Kumar Deka."
+},
+
+
+{
+q:"How long is the tenure of Mahesh Dixit as Director of Intelligence Bureau?",
+o:[
+"Two years",
+"Three years",
+"One year",
+"Five years"
+],
+a:0,
+e:"The appointment of Mahesh Dixit as IB Director is for two years."
+},
+
+
+{
+q:"Who received the Birrer-Brookes Award in June 2026?",
+o:[
+"Major Prabhat Mishra",
+"Major Abhilasha Barak",
+"Colonel Sofiya Qureshi",
+"Major Sandeep Kumar"
+],
+a:0,
+e:"Major Prabhat Mishra received the Birrer-Brookes Award for his MMAS thesis."
+},
+
+
+{
+q:"Major Prabhat Mishra belongs to which regiment?",
+o:[
+"22 Kumaon Regiment",
+"5 Gorkha Rifles",
+"17 Rajput",
+"21 Sikh Regiment"
+],
+a:0,
+e:"Major Prabhat Mishra is from the 22 Kumaon Regiment."
+},
+
+
+{
+q:"Major Prabhat Mishra received his awards at which institution?",
+o:[
+"US Army Command and General Staff College",
+"West Point",
+"US Naval Academy",
+"National Defence University"
+],
+a:0,
+e:"The awards were presented at the US Army Command and General Staff College at Fort Leavenworth."
+},
+
+
+{
+q:"How many gallantry awards were conferred by President Droupadi Murmu during Phase-I of Defence Investiture Ceremony 2026?",
+o:[
+"51",
+"41",
+"61",
+"71"
+],
+a:0,
+e:"President Droupadi Murmu conferred 51 gallantry awards."
+},
+
+
+{
+q:"How many Kirti Chakras were among the 51 gallantry awards?",
+o:[
+"7",
+"5",
+"9",
+"11"
+],
+a:0,
+e:"The 51 awards included 7 Kirti Chakras."
+},
+
+
+{
+q:"How many Vir Chakras were conferred during the ceremony?",
+o:[
+"15",
+"12",
+"18",
+"20"
+],
+a:0,
+e:"The ceremony included 15 Vir Chakras."
+},
+
+
+{
+q:"How many Shaurya Chakras were among the 51 gallantry awards?",
+o:[
+"29",
+"25",
+"19",
+"31"
+],
+a:0,
+e:"There were 29 Shaurya Chakras among the 51 awards."
+},
+
+
+{
+q:"Which Gaganyaan astronaut received a Kirti Chakra in June 2026?",
+o:[
+"Prashanth Balakrishnan Nair",
+"Shubhanshu Shukla",
+"Ajit Krishnan",
+"Angad Pratap"
+],
+a:0,
+e:"Air Commodore Prashanth Balakrishnan Nair received the Kirti Chakra."
+},
+
+
+{
+q:"Prashanth Balakrishnan Nair was associated with which mission as a backup astronaut?",
+o:[
+"Axiom-4",
+"Axiom-3",
+"Artemis-II",
+"Shenzhou-20"
+],
+a:0,
+e:"Prashanth Balakrishnan Nair was the backup astronaut for the Axiom-4 mission."
+},
+
+
+{
+q:"Which ministry launched nationwide celebrations for 10 years of PMSMA?",
+o:[
+"Ministry of Health and Family Welfare",
+"Ministry of Women and Child Development",
+"Ministry of Rural Development",
+"Ministry of Education"
+],
+a:0,
+e:"The Ministry of Health and Family Welfare launched celebrations marking 10 years of PMSMA."
+},
+
+
+{
+q:"PMSMA stands for:",
+o:[
+"Pradhan Mantri Surakshit Matritva Abhiyan",
+"Pradhan Mantri Swasth Matritva Abhiyan",
+"Pradhan Mantri Suraksha Matritva Abhiyan",
+"Pradhan Mantri Sehat Matritva Abhiyan"
+],
+a:0,
+e:"PMSMA stands for Pradhan Mantri Surakshit Matritva Abhiyan."
+},
+
+
+{
+q:"In which year was the Pradhan Mantri Surakshit Matritva Abhiyan launched?",
+o:[
+"2016",
+"2014",
+"2018",
+"2020"
+],
+a:0,
+e:"The Pradhan Mantri Surakshit Matritva Abhiyan was launched in 2016."
+},
+
+
+{
+q:"How many major National Highway projects were approved by CCEA in June 2026?",
+o:[
+"4",
+"3",
+"5",
+"6"
+],
+a:0,
+e:"The Cabinet Committee on Economic Affairs approved four major National Highway projects."
+},
+
+
+{
+q:"The four National Highway projects approved in June 2026 were spread across how many states?",
+o:[
+"4",
+"3",
+"5",
+"6"
+],
+a:0,
+e:"The four projects were spread across Odisha, Telangana, Bihar and Madhya Pradesh."
+},
+
+
+{
+q:"What was the approximate value of the four National Highway projects approved by CCEA?",
+o:[
+"₹24,249 crore",
+"₹14,249 crore",
+"₹34,249 crore",
+"₹20,249 crore"
+],
+a:0,
+e:"The projects had a combined estimated cost of more than ₹24,249 crore."
+},
+
+
+{
+q:"Which of the following was NOT among the four states receiving the approved National Highway projects?",
+o:[
+"Rajasthan",
+"Odisha",
+"Telangana",
+"Bihar"
+],
+a:0,
+e:"The four states were Odisha, Telangana, Bihar and Madhya Pradesh."
+},
+
+
+{
+q:"The 29th National Awards for e-Governance 2026 selected how many projects and initiatives?",
+o:[
+"17",
+"15",
+"20",
+"12"
+],
+a:0,
+e:"The 29th National Awards for e-Governance selected 17 projects and initiatives."
+},
+
+
+{
+q:"The National Awards for e-Governance 2026 covered how many award categories?",
+o:[
+"7",
+"5",
+"6",
+"8"
+],
+a:0,
+e:"The awards recognised excellence across seven categories."
+},
+
+
+{
+q:"Where was the National Awards for e-Governance 2026 award ceremony scheduled?",
+o:[
+"Jaipur",
+"New Delhi",
+"Lucknow",
+"Bhopal"
+],
+a:0,
+e:"The award ceremony was scheduled to be held in Jaipur, Rajasthan."
+},
+
+
+{
+q:"What was the incentive amount for a Gold Award under the National Awards for e-Governance?",
+o:[
+"₹10 lakh",
+"₹5 lakh",
+"₹15 lakh",
+"₹20 lakh"
+],
+a:0,
+e:"Gold Awardees receive a trophy, certificate and an incentive of ₹10 lakh."
+},
+
+
+{
+q:"What was the incentive amount for a Silver Award under the National Awards for e-Governance?",
+o:[
+"₹5 lakh",
+"₹2 lakh",
+"₹10 lakh",
+"₹7 lakh"
+],
+a:0,
+e:"Silver Awardees receive a trophy, certificate and an incentive of ₹5 lakh."
+},
+
+
+{
+q:"Which body released the 8th edition of Trade Watch Quarterly in June 2026?",
+o:[
+"NITI Aayog",
+"RBI",
+"SEBI",
+"Ministry of Commerce"
+],
+a:0,
+e:"NITI Aayog released the eighth edition of Trade Watch Quarterly."
+},
+
+
+{
+q:"The 8th Trade Watch Quarterly covered which quarter?",
+o:[
+"January–March 2026",
+"April–June 2026",
+"October–December 2025",
+"July–September 2025"
+],
+a:0,
+e:"The report covered Q4 of FY 2025-26, i.e. January to March 2026."
+},
+
+
+{
+q:"Who was the interim CEO of NITI Aayog mentioned during the release of Trade Watch Quarterly?",
+o:[
+"Nidhi Chhibber",
+"Suman Bery",
+"Amitabh Kant",
+"Rajiv Gauba"
+],
+a:0,
+e:"Nidhi Chhibber was mentioned as the interim CEO of NITI Aayog."
+},
+
+
+{
+q:"Which port was reported to have achieved a 45% reduction in net carbon emissions?",
+o:[
+"V.O. Chidambaranar Port",
+"Jawaharlal Nehru Port",
+"Mundra Port",
+"Paradip Port"
+],
+a:0,
+e:"V.O. Chidambaranar Port Authority reported a 45% reduction in net carbon emissions."
+},
+
+
+{
+q:"V.O. Chidambaranar Port is located in which state?",
+o:[
+"Tamil Nadu",
+"Kerala",
+"Andhra Pradesh",
+"Odisha"
+],
+a:0,
+e:"V.O. Chidambaranar Port is located at Thoothukudi in Tamil Nadu."
+},
+
+
+{
+q:"Who was the Union Minister associated with the announcement concerning V.O. Chidambaranar Port?",
+o:[
+"Sarbananda Sonowal",
+"Manohar Lal",
+"Jyotiraditya Scindia",
+"Rajnath Singh"
+],
+a:0,
+e:"Union Minister Sarbananda Sonowal announced the port's green-maritime achievements."
+},
+
+
+{
+q:"Which organisation is responsible for India's national meteorological services?",
+o:[
+"India Meteorological Department",
+"ISRO",
+"NDMA",
+"CSIR"
+],
+a:0,
+e:"The India Meteorological Department provides India's national meteorological services."
+},
+
+
+{
+q:"The Southwest Monsoon normally marks the beginning of India's:",
+o:[
+"Rainy season",
+"Winter season",
+"Autumn season",
+"Spring season"
+],
+a:0,
+e:"The Southwest Monsoon is the principal rainy season in India."
+},
+
+
+{
+q:"Which body is primarily responsible for issuing India's monsoon forecasts?",
+o:[
+"India Meteorological Department",
+"NITI Aayog",
+"ISRO",
+"RBI"
+],
+a:0,
+e:"The India Meteorological Department issues India's seasonal monsoon forecasts."
+},
+
+
+{
+q:"Which ministry is responsible for the Pradhan Mantri Surakshit Matritva Abhiyan?",
+o:[
+"Ministry of Health and Family Welfare",
+"Ministry of Finance",
+"Ministry of Education",
+"Ministry of Rural Development"
+],
+a:0,
+e:"PMSMA is implemented under the Ministry of Health and Family Welfare."
+},
+
+
+{
+q:"Which of the following is associated with PMSMA?",
+o:[
+"Quality antenatal care",
+"Crop insurance",
+"Road construction",
+"Digital payments"
+],
+a:0,
+e:"PMSMA focuses on assured quality antenatal care for pregnant women."
+},
+
+
+{
+q:"Which organisation's Command and General Staff College is located at Fort Leavenworth?",
+o:[
+"United States Army",
+"United States Navy",
+"United States Air Force",
+"United States Marine Corps"
+],
+a:0,
+e:"The US Army Command and General Staff College is located at Fort Leavenworth, Kansas."
+},
+
+
+{
+q:"Which award recognises outstanding work in military arts and science thesis at CGSOC?",
+o:[
+"Birrer-Brookes Award",
+"MacArthur Medal",
+"Marshall Award",
+"Patton Award"
+],
+a:0,
+e:"The Birrer-Brookes Award recognises an outstanding Master of Military Arts and Science thesis."
+},
+
+
+{
+q:"The General Douglas MacArthur Military Leadership Writing Award is associated with:",
+o:[
+"Military leadership writing",
+"Medical research",
+"Space science",
+"International law"
+],
+a:0,
+e:"The award recognises excellence in military leadership writing."
+},
+
+
+{
+q:"Which Indian Army officer became the first Indian officer to win both the Birrer-Brookes and MacArthur awards?",
+o:[
+"Major Prabhat Mishra",
+"Major Saurabh Sharma",
+"Major Rohit Kumar",
+"Major Vivek Singh"
+],
+a:0,
+e:"Major Prabhat Mishra became the first Indian officer to simultaneously win both awards."
+},
+
+
+{
+q:"How many international officers were among the graduates mentioned at the US Army CGSOC ceremony?",
+o:[
+"120",
+"100",
+"150",
+"92"
+],
+a:0,
+e:"The ceremony included 120 international officers from 92 countries."
+},
+
+
+{
+q:"Which country hosted the US Army Command and General Staff College where Major Prabhat Mishra received his awards?",
+o:[
+"United States",
+"United Kingdom",
+"Canada",
+"France"
+],
+a:0,
+e:"The ceremony took place in the United States."
+},
+
+
+{
+q:"Which department nominated Sanjay Lohiya to the RBI and SBI boards?",
+o:[
+"Department of Financial Services",
+"Department of Revenue",
+"Department of Economic Affairs",
+"Department of Expenditure"
+],
+a:0,
+e:"Sanjay Lohiya was Secretary of the Department of Financial Services."
+},
+
+
+{
+q:"Sanjay Lohiya succeeded whom as Secretary of the Department of Financial Services?",
+o:[
+"M. Nagaraju",
+"Tarun Kapoor",
+"Neelkanth Mishra",
+"Rajesh Kumar Singh"
+],
+a:0,
+e:"Sanjay Lohiya succeeded M. Nagaraju as Secretary, Department of Financial Services."
+},
+
+
+{
+q:"Sanjay Lohiya's nomination to the RBI and SBI boards became effective from:",
+o:[
+"11 June 2026",
+"1 June 2026",
+"15 June 2026",
+"30 June 2026"
+],
+a:0,
+e:"The nomination became effective from 11 June 2026."
+},
+
+
+{
+q:"Which bank was involved in the stake sale by Oman India Joint Investment Fund II mentioned in June 2026?",
+o:[
+"Capital Small Finance Bank",
+"Ujjivan Small Finance Bank",
+"AU Small Finance Bank",
+"Equitas Small Finance Bank"
+],
+a:0,
+e:"Oman India Joint Investment Fund II sold a stake in Capital Small Finance Bank."
+},
+
+
+{
+q:"Oman India Joint Investment Fund II sold approximately what percentage stake in Capital Small Finance Bank?",
+o:[
+"3.65%",
+"5.65%",
+"2.65%",
+"4.65%"
+],
+a:0,
+e:"OIJIF II sold approximately 3.65% stake in Capital Small Finance Bank."
+},
+
+
+{
+q:"The stake sold by OIJIF II was acquired by which fund?",
+o:[
+"Lyptus Punch-Card Fund",
+"Vision Fund II",
+"Future Fund",
+"India Growth Fund"
+],
+a:0,
+e:"Lyptus Punch-Card Fund acquired the entire stake sold by OIJIF II."
+},
+
+
+{
+q:"The Capital Small Finance Bank block deal took place on which exchange?",
+o:[
+"National Stock Exchange",
+"Bombay Stock Exchange",
+"MCX",
+"NCDEX"
+],
+a:0,
+e:"The block deal was executed on the National Stock Exchange of India."
+},
+
+
+{
+q:"Which ministry oversees the Department of Financial Services?",
+o:[
+"Ministry of Finance",
+"Ministry of Commerce",
+"Ministry of Corporate Affairs",
+"Ministry of Home Affairs"
+],
+a:0,
+e:"The Department of Financial Services functions under the Ministry of Finance."
+},
+
+
+{
+q:"Which body is India's central bank?",
+o:[
+"Reserve Bank of India",
+"State Bank of India",
+"SEBI",
+"NABARD"
+],
+a:0,
+e:"The Reserve Bank of India is India's central bank."
+},
+
+
+{
+q:"Which body regulates the securities market in India?",
+o:[
+"SEBI",
+"RBI",
+"IRDAI",
+"PFRDA"
+],
+a:0,
+e:"SEBI is the statutory regulator of India's securities market."
+},
+
+
+{
+q:"Which body regulates insurance in India?",
+o:[
+"IRDAI",
+"SEBI",
+"RBI",
+"NABARD"
+],
+a:0,
+e:"The Insurance Regulatory and Development Authority of India regulates the insurance sector."
+},
+
+
+{
+q:"Which body regulates pension funds in India?",
+o:[
+"PFRDA",
+"RBI",
+"SEBI",
+"IRDAI"
+],
+a:0,
+e:"PFRDA regulates India's pension sector."
+},
+
+
+{
+q:"Which institution is responsible for monetary policy in India?",
+o:[
+"Reserve Bank of India",
+"Ministry of Finance",
+"NITI Aayog",
+"SEBI"
+],
+a:0,
+e:"The Reserve Bank of India is responsible for monetary policy."
+},
+
+
+{
+q:"Which of the following is a function of NITI Aayog?",
+o:[
+"Policy think-tank and strategic policy advice",
+"Issuing currency",
+"Conducting elections",
+"Regulating stock exchanges"
+],
+a:0,
+e:"NITI Aayog serves as the Government of India's policy think tank."
+},
+
+
+{
+q:"Which organisation administers the Intelligence Bureau?",
+o:[
+"Ministry of Home Affairs",
+"Ministry of Defence",
+"Ministry of External Affairs",
+"Cabinet Secretariat"
+],
+a:0,
+e:"The Intelligence Bureau functions under the Ministry of Home Affairs."
+},
+
+
+{
+q:"The Director of Intelligence Bureau heads India's:",
+o:[
+"Internal intelligence agency",
+"Foreign intelligence agency",
+"Election Commission",
+"Central bank"
+],
+a:0,
+e:"The Intelligence Bureau is India's principal domestic/internal intelligence organisation."
+},
+
+
+{
+q:"Which organisation is responsible for India's defence research and development?",
+o:[
+"DRDO",
+"ISRO",
+"BARC",
+"CSIR"
+],
+a:0,
+e:"The Defence Research and Development Organisation conducts defence R&D."
+},
+
+
+{
+q:"DRDO stands for:",
+o:[
+"Defence Research and Development Organisation",
+"Department of Research and Defence Organisation",
+"Defence Resources and Development Office",
+"Department of Research Development and Operations"
+],
+a:0,
+e:"DRDO stands for Defence Research and Development Organisation."
+},
+
+
+{
+q:"Which department's secretary also serves as Chairman of DRDO?",
+o:[
+"Department of Defence Research and Development",
+"Department of Space",
+"Department of Science and Technology",
+"Department of Atomic Energy"
+],
+a:0,
+e:"The Secretary, Department of Defence Research and Development, also serves as Chairman DRDO."
+},
+
+
+{
+q:"Which airport is officially named after Indira Gandhi?",
+o:[
+"Delhi International Airport",
+"Mumbai International Airport",
+"Kolkata International Airport",
+"Hyderabad International Airport"
+],
+a:0,
+e:"Indira Gandhi International Airport is located in New Delhi."
+},
+
+
+{
+q:"Which state is home to Fort Leavenworth?",
+o:[
+"Kansas",
+"Texas",
+"California",
+"Virginia"
+],
+a:0,
+e:"Fort Leavenworth is located in Kansas, USA."
+},
+
+
+{
+q:"Which city is the headquarters of NITI Aayog?",
+o:[
+"New Delhi",
+"Mumbai",
+"Bengaluru",
+"Hyderabad"
+],
+a:0,
+e:"NITI Aayog is headquartered in New Delhi."
+},
+
+
+{
+q:"Which city is the headquarters of the Reserve Bank of India?",
+o:[
+"Mumbai",
+"New Delhi",
+"Kolkata",
+"Chennai"
+],
+a:0,
+e:"The central office of RBI is in Mumbai."
+},
+
+
+{
+q:"Which city is the headquarters of SEBI?",
+o:[
+"Mumbai",
+"New Delhi",
+"Ahmedabad",
+"Chennai"
+],
+a:0,
+e:"SEBI is headquartered in Mumbai."
+},
+
+
+{
+q:"Which city is the headquarters of IRDAI?",
+o:[
+"Hyderabad",
+"Mumbai",
+"New Delhi",
+"Bengaluru"
+],
+a:0,
+e:"IRDAI is headquartered in Hyderabad."
+},
+
+
+{
+q:"Which city is the headquarters of PFRDA?",
+o:[
+"New Delhi",
+"Mumbai",
+"Chennai",
+"Kolkata"
+],
+a:0,
+e:"PFRDA is headquartered in New Delhi."
+},
+
+
+{
+q:"Which ministry is responsible for ports, shipping and waterways?",
+o:[
+"Ministry of Ports, Shipping and Waterways",
+"Ministry of Road Transport",
+"Ministry of Railways",
+"Ministry of Commerce"
+],
+a:0,
+e:"The Ministry of Ports, Shipping and Waterways oversees these sectors."
+},
+
+
+{
+q:"V.O. Chidambaranar Port is also associated with which city?",
+o:[
+"Thoothukudi",
+"Kochi",
+"Chennai",
+"Visakhapatnam"
+],
+a:0,
+e:"V.O. Chidambaranar Port is located at Thoothukudi, Tamil Nadu."
+},
+
+
+{
+q:"Which environmental goal is reflected in the green maritime development of ports?",
+o:[
+"Reduction of carbon emissions",
+"Increase in coal imports",
+"Expansion of plastic use",
+"Increase in diesel consumption"
+],
+a:0,
+e:"Green maritime development focuses on reducing emissions and improving environmental sustainability."
+},
+
+
+{
+q:"Which of the following is an example of an e-Governance initiative?",
+o:[
+"Digital public service delivery",
+"Manual record keeping only",
+"Cash-only government payments",
+"Paper-only certificates"
+],
+a:0,
+e:"E-Governance uses digital technology to improve public service delivery."
+},
+
+
+{
+q:"Which department organises the National Awards for e-Governance?",
+o:[
+"Department of Administrative Reforms and Public Grievances",
+"Department of Revenue",
+"Department of Space",
+"Department of Financial Services"
+],
+a:0,
+e:"DARPG under the Ministry of Personnel, Public Grievances and Pensions organises the awards."
+},
+
+
+{
+q:"DARPG functions under which ministry?",
+o:[
+"Ministry of Personnel, Public Grievances and Pensions",
+"Ministry of Home Affairs",
+"Ministry of Finance",
+"Ministry of Education"
+],
+a:0,
+e:"DARPG functions under the Ministry of Personnel, Public Grievances and Pensions."
+},
+
+
+{
+q:"What is the full form of DARPG?",
+o:[
+"Department of Administrative Reforms and Public Grievances",
+"Department of Administration and Regional Governance",
+"Department of Administrative Regulation and Public Governance",
+"Department of Administrative Rights and Public Governance"
+],
+a:0,
+e:"DARPG stands for Department of Administrative Reforms and Public Grievances."
+},
+
+
+{
+q:"Which body is the apex policy think tank of the Government of India?",
+o:[
+"NITI Aayog",
+"RBI",
+"SEBI",
+"Finance Commission"
+],
+a:0,
+e:"NITI Aayog is the Government of India's apex public policy think tank."
+},
+
+
+{
+q:"Which body prepares the Union Budget?",
+o:[
+"Ministry of Finance",
+"RBI",
+"NITI Aayog",
+"SEBI"
+],
+a:0,
+e:"The Union Budget is prepared by the Ministry of Finance."
+},
+
+
+{
+q:"Which institution acts as India's banker to the government?",
+o:[
+"Reserve Bank of India",
+"State Bank of India",
+"Punjab National Bank",
+"SEBI"
+],
+a:0,
+e:"RBI acts as banker to the Central and state governments."
+},
+
+
+{
+q:"Which institution is known as the lender of last resort in India?",
+o:[
+"Reserve Bank of India",
+"State Bank of India",
+"NABARD",
+"SEBI"
+],
+a:0,
+e:"RBI functions as the lender of last resort for the banking system."
+},
+
+
+{
+q:"Which body supervises India's banking system?",
+o:[
+"Reserve Bank of India",
+"SEBI",
+"IRDAI",
+"PFRDA"
+],
+a:0,
+e:"RBI regulates and supervises the banking system in India."
+},
+
+
+{
+q:"Which of the following is a monetary policy instrument?",
+o:[
+"Repo Rate",
+"GST",
+"Corporate Tax",
+"Customs Duty"
+],
+a:0,
+e:"The repo rate is an important monetary policy instrument of the RBI."
+},
+
+
+{
+q:"Which of the following is a direct tax in India?",
+o:[
+"Income Tax",
+"GST",
+"Customs Duty",
+"Excise Duty"
+],
+a:0,
+e:"Income tax is a direct tax because it is imposed directly on income."
+},
+
+
+{
+q:"Which of the following is an indirect tax?",
+o:[
+"GST",
+"Income Tax",
+"Corporate Income Tax",
+"Wealth Tax"
+],
+a:0,
+e:"GST is an indirect tax levied on the supply of goods and services."
+},
+
+
+{
+q:"Which body administers GST in India?",
+o:[
+"GST Council and tax authorities",
+"RBI alone",
+"SEBI alone",
+"NITI Aayog"
+],
+a:0,
+e:"GST policy is governed by the GST Council and administered by the relevant tax authorities."
+},
+
+
+{
+q:"Who chairs the GST Council?",
+o:[
+"Union Finance Minister",
+"Prime Minister",
+"RBI Governor",
+"Finance Secretary"
+],
+a:0,
+e:"The Union Finance Minister chairs the GST Council."
+},
+
+
+{
+q:"Which constitutional amendment introduced GST in India?",
+o:[
+"101st Constitutional Amendment",
+"100th Constitutional Amendment",
+"102nd Constitutional Amendment",
+"99th Constitutional Amendment"
+],
+a:0,
+e:"The 101st Constitutional Amendment Act, 2016 introduced GST."
+},
+
+
+{
+q:"Which organisation publishes India's national meteorological warnings?",
+o:[
+"India Meteorological Department",
+"RBI",
+"SEBI",
+"NITI Aayog"
+],
+a:0,
+e:"IMD issues weather forecasts, warnings and meteorological information."
+},
+
+
+{
+q:"Which ministry administers the India Meteorological Department?",
+o:[
+"Ministry of Earth Sciences",
+"Ministry of Science and Technology",
+"Ministry of Environment",
+"Ministry of Home Affairs"
+],
+a:0,
+e:"IMD functions under the Ministry of Earth Sciences."
+},
+
+
+{
+q:"Which ministry administers DRDO?",
+o:[
+"Ministry of Defence",
+"Ministry of Home Affairs",
+"Ministry of Science and Technology",
+"Ministry of External Affairs"
+],
+a:0,
+e:"DRDO functions under the Ministry of Defence."
+},
+
+
+{
+q:"Which ministry administers ISRO?",
+o:[
+"Department of Space",
+"Ministry of Defence",
+"Ministry of Science and Technology",
+"Ministry of Earth Sciences"
+],
+a:0,
+e:"ISRO functions under the Department of Space."
+},
+
+
+{
+q:"Which organisation is India's primary space agency?",
+o:[
+"ISRO",
+"DRDO",
+"BARC",
+"CSIR"
+],
+a:0,
+e:"ISRO is India's primary space agency."
+},
+
+
+{
+q:"What is the full form of ISRO?",
+o:[
+"Indian Space Research Organisation",
+"Indian Satellite Research Organisation",
+"International Space Research Organisation",
+"Indian Scientific Research Office"
+],
+a:0,
+e:"ISRO stands for Indian Space Research Organisation."
+},
+
+
+{
+q:"Which Indian mission is India's first human spaceflight programme?",
+o:[
+"Gaganyaan",
+"Chandrayaan-3",
+"Mangalyaan",
+"Aditya-L1"
+],
+a:0,
+e:"Gaganyaan is India's first human spaceflight programme."
+},
+
+
+{
+q:"Which award is India's highest peacetime gallantry award?",
+o:[
+"Ashoka Chakra",
+"Kirti Chakra",
+"Shaurya Chakra",
+"Param Vir Chakra"
+],
+a:0,
+e:"Ashoka Chakra is India's highest peacetime military decoration."
+},
+
+
+{
+q:"Which is India's highest wartime gallantry award?",
+o:[
+"Param Vir Chakra",
+"Ashoka Chakra",
+"Vir Chakra",
+"Kirti Chakra"
+],
+a:0,
+e:"Param Vir Chakra is India's highest wartime gallantry award."
+},
+
+
+{
+q:"Which award ranks immediately below Ashoka Chakra among peacetime gallantry awards?",
+o:[
+"Kirti Chakra",
+"Shaurya Chakra",
+"Vir Chakra",
+"Param Vir Chakra"
+],
+a:0,
+e:"Kirti Chakra is the second-highest peacetime gallantry award."
+},
+
+
+{
+q:"Which award ranks below Kirti Chakra in the peacetime gallantry awards?",
+o:[
+"Shaurya Chakra",
+"Vir Chakra",
+"Param Vir Chakra",
+"Ashoka Chakra"
+],
+a:0,
+e:"Shaurya Chakra is the third-highest peacetime gallantry award."
+},
+
+
+{
+q:"Who is the Supreme Commander of India's Armed Forces?",
+o:[
+"President of India",
+"Prime Minister",
+"Defence Minister",
+"Chief of Defence Staff"
+],
+a:0,
+e:"The President of India is the Supreme Commander of the Armed Forces."
+},
+
+
+{
+q:"Who conferred the gallantry awards during Defence Investiture Ceremony 2026?",
+o:[
+"President Droupadi Murmu",
+"Prime Minister Narendra Modi",
+"Defence Minister Rajnath Singh",
+"Vice-President of India"
+],
+a:0,
+e:"President Droupadi Murmu conferred the gallantry awards."
+},
+
+
+{
+q:"Which award was given to Prashanth Balakrishnan Nair?",
+o:[
+"Kirti Chakra",
+"Vir Chakra",
+"Shaurya Chakra",
+"Param Vir Chakra"
+],
+a:0,
+e:"Air Commodore Prashanth Balakrishnan Nair received the Kirti Chakra."
+},
+
+
+{
+q:"Which international organisation's mission involved Prashanth Balakrishnan Nair as backup astronaut?",
+o:[
+"Axiom Space",
+"NASA only",
+"ESA",
+"JAXA"
+],
+a:0,
+e:"He served as a backup astronaut for the Axiom-4 private space mission."
+},
+
+
+{
+q:"Which country is home to the World Bank headquarters?",
+o:[
+"United States",
+"United Kingdom",
+"Switzerland",
+"France"
+],
+a:0,
+e:"The World Bank headquarters is located in Washington, D.C., United States."
+},
+
+
+{
+q:"The World Bank is headquartered in which city?",
+o:[
+"Washington, D.C.",
+"New York",
+"Geneva",
+"Paris"
+],
+a:0,
+e:"The World Bank headquarters is in Washington, D.C."
+},
+
+
+{
+q:"Which institution is one of the Bretton Woods institutions?",
+o:[
+"World Bank",
+"WHO",
+"WTO",
+"UNESCO"
+],
+a:0,
+e:"The World Bank and IMF are the two principal Bretton Woods institutions."
+},
+
+
+{
+q:"Which international institution is responsible for global monetary cooperation?",
+o:[
+"International Monetary Fund",
+"World Bank",
+"WTO",
+"WHO"
+],
+a:0,
+e:"The IMF promotes international monetary cooperation and financial stability."
+},
+
+
+{
+q:"Which organisation deals primarily with international trade rules?",
+o:[
+"World Trade Organization",
+"World Bank",
+"IMF",
+"WHO"
+],
+a:0,
+e:"The WTO provides the international framework for trade rules."
+},
+
+
+{
+q:"Which organisation is responsible for international public health?",
+o:[
+"World Health Organization",
+"World Bank",
+"IMF",
+"WTO"
+],
+a:0,
+e:"WHO is the specialised UN agency responsible for international public health."
+},
+
+
+{
+q:"Which organisation is headquartered in Geneva?",
+o:[
+"World Health Organization",
+"World Bank",
+"IMF",
+"UNESCO"
+],
+a:0,
+e:"The headquarters of WHO is in Geneva, Switzerland."
+},
+
+
+{
+q:"Which organisation is headquartered in Paris?",
+o:[
+"UNESCO",
+"WHO",
+"World Bank",
+"IMF"
+],
+a:0,
+e:"UNESCO is headquartered in Paris, France."
+},
+
+
+{
+q:"Which of the following is a specialised agency of the United Nations?",
+o:[
+"WHO",
+"NITI Aayog",
+"RBI",
+"SEBI"
+],
+a:0,
+e:"The World Health Organization is a specialised agency of the United Nations."
+},
+
+
+{
+q:"Which body was responsible for approving the four National Highway projects in June 2026?",
+o:[
+"Cabinet Committee on Economic Affairs",
+"Union Cabinet Secretariat",
+"NITI Aayog",
+"National Development Council"
+],
+a:0,
+e:"The Cabinet Committee on Economic Affairs approved the projects."
+},
+
+
+{
+q:"Who chairs the Cabinet Committee on Economic Affairs?",
+o:[
+"Prime Minister",
+"Union Finance Minister",
+"Home Minister",
+"Defence Minister"
+],
+a:0,
+e:"The Prime Minister chairs the Cabinet Committee on Economic Affairs."
+},
+
+
+{
+q:"Which ministry handles India's national highways?",
+o:[
+"Ministry of Road Transport and Highways",
+"Ministry of Railways",
+"Ministry of Ports",
+"Ministry of Commerce"
+],
+a:0,
+e:"The Ministry of Road Transport and Highways is responsible for national highways."
+},
+
+
+{
+q:"What does NH stand for in NH projects?",
+o:[
+"National Highway",
+"National Housing",
+"National Harbour",
+"New Highway"
+],
+a:0,
+e:"NH stands for National Highway."
+},
+
+
+{
+q:"Which state among the four CCEA highway-project states is located in eastern India?",
+o:[
+"Odisha",
+"Telangana",
+"Madhya Pradesh",
+"Rajasthan"
+],
+a:0,
+e:"Odisha is one of the eastern Indian states included in the projects."
+},
+
+
+{
+q:"Which state among the four highway-project states is located in central India?",
+o:[
+"Madhya Pradesh",
+"Odisha",
+"Telangana",
+"Bihar"
+],
+a:0,
+e:"Madhya Pradesh is the central Indian state among the four."
+},
+
+
+{
+q:"Which state among the four highway-project states is located in southern India?",
+o:[
+"Telangana",
+"Bihar",
+"Odisha",
+"Madhya Pradesh"
+],
+a:0,
+e:"Telangana is the southern Indian state among the four."
+},
+
+
+{
+q:"Which state among the four highway-project states is located in eastern/northern India?",
+o:[
+"Bihar",
+"Telangana",
+"Madhya Pradesh",
+"Goa"
+],
+a:0,
+e:"Bihar was one of the four states included in the approved highway projects."
+},
+
+
+{
+q:"Which organisation is associated with electronic governance awards in India?",
+o:[
+"Department of Administrative Reforms and Public Grievances",
+"RBI",
+"SEBI",
+"ISRO"
+],
+a:0,
+e:"DARPG organises the National Awards for e-Governance."
+},
+
+
+{
+q:"Which category was specifically mentioned among the National Awards for e-Governance?",
+o:[
+"Gram Panchayat",
+"Space Research",
+"Banking",
+"Defence Production"
+],
+a:0,
+e:"The Gram Panchayat category recognises grassroots digital service delivery."
+},
+
+
+{
+q:"The National Awards for e-Governance primarily recognise:",
+o:[
+"Digital governance and innovation",
+"Military operations",
+"Banking profits",
+"Film production"
+],
+a:0,
+e:"The awards recognise excellence in digital governance, innovation and technology-enabled public service delivery."
+}
+
+];
+
+
+let currentQuestion = 0;
+
+let answers =
+new Array(questions.length).fill(null);
+
+let submitted = false;
+
+let totalSeconds = 45 * 60;
+
+let timerInterval;
+
+
+/* TIMER */
+
+function startTimer(){
+
+    timerInterval = setInterval(function(){
+
+        if(totalSeconds <= 0){
+
+            clearInterval(timerInterval);
+
+            submitTest(true);
+
+            return;
+        }
+
+        totalSeconds--;
+
+        let minutes =
+        Math.floor(totalSeconds / 60);
+
+        let seconds =
+        totalSeconds % 60;
+
+        document.getElementById("timer").textContent =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+    },1000);
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+    const q =
+    questions[currentQuestion];
+
+    document.getElementById("currentNo").textContent =
+    currentQuestion + 1;
+
+    document.getElementById("questionNumber").textContent =
+    "Question " + (currentQuestion + 1);
+
+    document.getElementById("questionText").textContent =
+    q.q;
+
+    const options =
+    document.getElementById("options");
+
+    options.innerHTML = "";
+
+
+    q.o.forEach((option,index)=>{
+
+        const label =
+        document.createElement("label");
+
+        const input =
+        document.createElement("input");
+
+        input.type = "radio";
+
+        input.name = "answer";
+
+        input.value = index;
+
+
+        if(answers[currentQuestion] === index){
+
+            input.checked = true;
+
+        }
+
+
+        input.addEventListener(
+        "change",
+        function(){
+
+            answers[currentQuestion] =
+            index;
+
+            updatePalette();
+
+        });
+
+
+        label.appendChild(input);
+
+        label.appendChild(
+        document.createTextNode(
+        String.fromCharCode(65 + index) +
+        ". " +
+        option
+        ));
+
+        options.appendChild(label);
+
+    });
+
+
+    document.getElementById("prevBtn").disabled =
+    currentQuestion === 0;
+
+
+    document.getElementById("nextBtn").disabled =
+    currentQuestion === questions.length - 1;
+
+
+    updatePalette();
+
+}
+
+
+/* PALETTE */
+
+function createPalette(){
+
+    const grid =
+    document.getElementById("questionGrid");
+
+    grid.innerHTML = "";
+
+
+    questions.forEach((q,index)=>{
+
+        const btn =
+        document.createElement("button");
+
+        btn.className = "qbtn";
+
+        btn.textContent = index + 1;
+
+
+        btn.onclick = function(){
+
+            currentQuestion = index;
+
+            loadQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+
+        grid.appendChild(btn);
+
+    });
+
+
+    updatePalette();
+
+}
+
+
+function updatePalette(){
+
+    const buttons =
+    document.querySelectorAll(".qbtn");
+
+
+    buttons.forEach((btn,index)=>{
+
+        btn.className = "qbtn";
+
+
+        if(index === currentQuestion){
+
+            btn.classList.add("current");
+
+        }
+
+
+        if(answers[index] !== null){
+
+            btn.classList.add("attempted");
+
+        }
+
+    });
+
+}
+
+
+/* NEXT */
+
+function nextQuestion(){
+
+    if(currentQuestion <
+    questions.length - 1){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* PREVIOUS */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* SUBMIT */
+
+function submitTest(autoSubmit=false){
+
+    if(submitted) return;
+
+
+    if(!autoSubmit){
+
+        const unanswered =
+        answers.filter(
+        a => a === null
+        ).length;
+
+
+        if(unanswered > 0){
+
+            const confirmSubmit =
+            confirm(
+            "You have " +
+            unanswered +
+            " unanswered question(s).\n\n" +
+
+            "Correct: +1 mark\n" +
+            "Wrong: -0.33 mark\n" +
+            "Unattempted: 0 mark\n\n" +
+
+            "Do you want to submit?"
+            );
+
+
+            if(!confirmSubmit) return;
+
+        }
+
+    }
+
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+
+    let correct = 0;
+
+    let wrong = 0;
+
+    let attempted = 0;
+
+
+    questions.forEach((q,index)=>{
+
+        if(answers[index] !== null){
+
+            attempted++;
+
+
+            if(answers[index] === q.a){
+
+                correct++;
+
+            }else{
+
+                wrong++;
+
+            }
+
+        }
+
+    });
+
+
+    let unattempted =
+    questions.length - attempted;
+
+
+    let negativeMarks =
+    wrong * 0.33;
+
+
+    let finalScore =
+    correct - negativeMarks;
+
+
+    finalScore =
+    Math.max(0,finalScore);
+
+
+    let percentage =
+    ((finalScore / questions.length) * 100)
+    .toFixed(2);
+
+
+    let resultHTML = `
+
+    <h2>Test Result</h2>
+
+    <div class="negative-info">
+
+    Negative Marking:
+    0.33 mark for every wrong answer
+
+    </div>
+
+
+    <div class="score">
+
+    Final Score:
+    ${finalScore.toFixed(2)} / 100
+
+    </div>
+
+
+    <div class="result-card">
+
+    <p>
+    <strong>Correct Answers:</strong>
+    ${correct} × 1 =
+    ${correct.toFixed(2)}
+    </p>
+
+
+    <p>
+    <strong>Wrong Answers:</strong>
+    ${wrong} × 0.33 =
+    -${negativeMarks.toFixed(2)}
+    </p>
+
+
+    <p>
+    <strong>Unattempted:</strong>
+    ${unattempted} × 0 = 0
+    </p>
+
+
+    <hr style="margin:10px 0;">
+
+
+    <p>
+    <strong>Final Marks:</strong>
+    ${correct}
+    -
+    ${negativeMarks.toFixed(2)}
+    =
+    ${finalScore.toFixed(2)}
+    </p>
+
+
+    <p>
+    <strong>Percentage:</strong>
+    ${percentage}%
+    </p>
+
+
+    <p>
+    <strong>Attempted:</strong>
+    ${attempted}
+    </p>
+
+
+    </div>
+
+
+    <h3>Detailed Solutions</h3>
+
+    `;
+
+
+    questions.forEach((q,index)=>{
+
+        const userAnswer =
+        answers[index];
+
+
+        let status = "";
+
+
+        if(userAnswer === null){
+
+            status =
+            `<span class="unattempted">
+            Not Attempted
+            </span>`;
+
+        }
+
+        else if(userAnswer === q.a){
+
+            status =
+            `<span class="correct">
+            Correct (+1)
+            </span>`;
+
+        }
+
+        else{
+
+            status =
+            `<span class="wrong">
+            Wrong (-0.33)
+            </span>`;
+
+        }
+
+
+        resultHTML += `
+
+        <div class="explanation">
+
+        <p>
+        <strong>
+        Q${index + 1}.
+        ${q.q}
+        </strong>
+        </p>
+
+
+        <p>
+        ${status}
+        </p>
+
+
+        <p>
+        <strong>Your Answer:</strong>
+
+        ${
+            userAnswer === null
+            ?
+            "Not Attempted"
+            :
+            q.o[userAnswer]
+        }
+
+        </p>
+
+
+        <p>
+        <strong>Correct Answer:</strong>
+
+        ${q.o[q.a]}
+
+        </p>
+
+
+        <p>
+        <strong>Solution:</strong>
+
+        ${q.e}
+
+        </p>
+
+
+        </div>
+
+        `;
+
+    });
+
+
+    const result =
+    document.getElementById("result");
+
+
+    result.innerHTML =
+    resultHTML;
+
+
+    result.style.display =
+    "block";
+
+
+    document.getElementById("questionBox")
+    .style.display =
+    "none";
+
+
+    document.querySelector(".submit")
+    .style.display =
+    "none";
+
+
+    result.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+createPalette();
+
+loadQuestion();
+
+startTimer();
+
+</script>
+
+</body>
+</html>
