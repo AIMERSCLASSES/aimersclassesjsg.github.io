@@ -8,7 +8,8 @@
 
 <title>AIMERS CLASSES | Aim High • Achieve High</title>
 
-<meta name="description" content="AIMERS CLASSES - Classes 3 to 12, ICSE, CBSE, CHSE, Competitive Exams, Spoken English and School Entrance Exams.">
+<meta name="description"
+content="AIMERS CLASSES - Classes 3 to 12, ICSE, CBSE, CHSE, Competitive Exams, Spoken English and School Entrance Exams.">
 
 <style>
 
@@ -530,49 +531,29 @@ section{
 }
 
 
-/* ================= PDF ================= */
+/* ================= CURRENT AFFAIRS ================= */
 
-.pdf-section{
-  background:#eef4ff;
-}
-
-.pdf-group{
-  margin-bottom:45px;
-}
-
-.pdf-group-title{
-  color:#102a43;
-  font-size:27px;
-  margin-bottom:20px;
-  padding-left:14px;
-  border-left:5px solid #1d4ed8;
-}
-
-.pdf-grid{
+.current-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:22px;
 }
 
-.pdf-card{
+.current-card{
   background:white;
-  border-radius:15px;
   padding:25px;
-  box-shadow:0 7px 25px rgba(0,0,0,.08);
-  border-left:5px solid #1d4ed8;
+  border-radius:14px;
+  box-shadow:0 7px 25px rgba(0,0,0,.07);
+  border-top:4px solid #1d4ed8;
 }
 
-.pdf-card h3{
-  color:#102a43;
+.current-card h3{
+  color:#1d4ed8;
   margin-bottom:8px;
-  font-size:20px;
 }
 
-.pdf-card p{
-  color:#667085;
-  font-size:14px;
-  margin-bottom:18px;
-}
+
+/* ================= PDF BUTTONS ================= */
 
 .pdf-buttons{
   display:flex;
@@ -596,28 +577,6 @@ section{
 .download-btn{
   background:#16a34a;
   color:white;
-}
-
-
-/* ================= CURRENT AFFAIRS ================= */
-
-.current-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
-}
-
-.current-card{
-  background:white;
-  padding:25px;
-  border-radius:14px;
-  box-shadow:0 7px 25px rgba(0,0,0,.07);
-  border-top:4px solid #1d4ed8;
-}
-
-.current-card h3{
-  color:#1d4ed8;
-  margin-bottom:8px;
 }
 
 
@@ -698,7 +657,6 @@ footer p{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .pdf-grid,
   .current-grid,
   .contact-grid{
     grid-template-columns:1fr;
@@ -805,6 +763,7 @@ footer p{
 
 </head>
 
+
 <body>
 
 
@@ -816,9 +775,10 @@ footer p{
 
 <div class="brand">
 
-<img src="logo.jpg"
-     alt="AIMERS CLASSES Logo"
-     class="logo-img">
+<img
+src="logo.jpg"
+alt="AIMERS CLASSES Logo"
+class="logo-img">
 
 <div class="logo">
 AIMERS <span>CLASSES</span>
@@ -826,13 +786,19 @@ AIMERS <span>CLASSES</span>
 
 </div>
 
+
 <nav>
 
 <a href="#home">Home</a>
+
 <a href="#courses">Courses</a>
+
 <a href="#study-material">Study Material</a>
+
 <a href="#current-affairs">Current Affairs</a>
+
 <a href="#mock-test">Mock Tests</a>
+
 <a href="#contact">Contact</a>
 
 </nav>
@@ -913,11 +879,15 @@ aria-label="Next Slide">
 <div class="slider-dots">
 
 <button class="dot active" data-slide="0"></button>
+
 <button class="dot" data-slide="1"></button>
+
 <button class="dot" data-slide="2"></button>
+
 <button class="dot" data-slide="3"></button>
 
 </div>
+
 
 </div>
 
@@ -942,6 +912,7 @@ Aim High • Achieve High
 
 </h1>
 
+
 <p>
 
 Quality education, smart learning and result-oriented preparation
@@ -949,16 +920,20 @@ for school students and competitive examinations.
 
 </p>
 
+
 <div class="hero-buttons">
 
-<a href="#study-material"
+<a
+href="#study-material"
 class="btn btn-primary">
 
 Explore Study Material
 
 </a>
 
-<a href="#contact"
+
+<a
+href="#contact"
 class="btn btn-secondary">
 
 Contact Us
@@ -1239,7 +1214,9 @@ COMMUNICATION
 
 <div class="section-title">
 
-<h2>Study Material</h2>
+<h2>
+Study Material
+</h2>
 
 <p>
 Notes, PDFs, current affairs and mock tests
@@ -1251,54 +1228,86 @@ Notes, PDFs, current affairs and mock tests
 <div class="resource-grid">
 
 
-<a class="resource" href="material.html">
+<!-- PDF NOTES - NOW OPENS NEW PAGE -->
 
-<b>📚 CLASS 10, 11 & 12 Notes</b>
+<a
+class="resource"
+href="material.html">
+
+<b>
+📚 CLASS 10, 11 & 12 Notes
+</b>
 
 <span>
 Class notes, specimen papers and downloadable PDFs
 </span>
 
-<em>Open →</em>
+<em>
+Open →
+</em>
 
 </a>
 
 
-<a class="resource" href="#current-affairs">
+<!-- CURRENT AFFAIRS -->
 
-<b>📰 Current Affairs</b>
+<a
+class="resource"
+href="#current-affairs">
+
+<b>
+📰 Current Affairs
+</b>
 
 <span>
 Monthly current affairs and MCQ practice
 </span>
 
-<em>Open →</em>
+<em>
+Open →
+</em>
 
 </a>
 
 
-<a class="resource" href="#mock-test">
+<!-- MOCK TEST -->
 
-<b>📝 Mock Tests</b>
+<a
+class="resource"
+href="#mock-test">
+
+<b>
+📝 Mock Tests
+</b>
 
 <span>
 Practice tests for school and competitive examinations
 </span>
 
-<em>Open →</em>
+<em>
+Open →
+</em>
 
 </a>
 
 
-<a class="resource" href="#contact">
+<!-- VIDEO CLASSES -->
 
-<b>🎥 Video Classes</b>
+<a
+class="resource"
+href="#contact">
+
+<b>
+🎥 Video Classes
+</b>
 
 <span>
 Learning resources and classroom support
 </span>
 
-<em>Contact Us →</em>
+<em>
+Contact Us →
+</em>
 
 </a>
 
@@ -1310,815 +1319,10 @@ Learning resources and classroom support
 </section>
 
 
-<!-- ================= PDF NOTES ================= -->
-
-<section class="pdf-section" id="pdf-notes">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>📄 PDF Notes</h2>
-
-<p>
-Download study material and specimen papers
-</p>
-
-</div>
-
-
-<!-- CLASS 12 ISC 2027 -->
-
-<div class="pdf-group">
-
-<h2 class="pdf-group-title">
-📚 Class 12 ISC – 2027
-</h2>
-
-
-<div class="pdf-grid">
-
-
-<div class="pdf-card">
-
-<h3>
-📘 Class 12 ISC 2027 Specimen Paper
-</h3>
-
-<p>
-Class 12 ISC 2027 complete specimen paper.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-📐 Mathematics Class 12 ISC 2027
-</h3>
-
-<p>
-ISC Class 12 Mathematics Specimen Paper 2027.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-⚛️ Physics Class 12 ISC 2027
-</h3>
-
-<p>
-ISC Class 12 Physics Specimen Paper 2027.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 2027
-</h3>
-
-<p>
-Class 12 Chemistry Specimen Paper 2027.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%202027%20specimen.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%202027%20specimen.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- CHEMISTRY 2026 -->
-
-<div class="pdf-group">
-
-<h2 class="pdf-group-title">
-🧪 Chemistry Class 12 – 2026
-</h2>
-
-
-<div class="pdf-grid">
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 2026 Specimen
-</h3>
-
-<p>
-Chemistry Class 12 2026 Specimen Paper.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%202026%20specimen.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%202026%20specimen.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 Sample Paper 1
-</h3>
-
-<p>
-Chemistry Class 12 Sample Paper 1.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%201.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%201.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 Sample Paper 2
-</h3>
-
-<p>
-Chemistry Class 12 Sample Paper 2.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%202.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%202.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 Sample Paper 3
-</h3>
-
-<p>
-Chemistry Class 12 Sample Paper 3.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%203.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%203.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 Sample Paper 4
-</h3>
-
-<p>
-Chemistry Class 12 Sample Paper 4.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%204.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%204.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 Sample Paper 5
-</h3>
-
-<p>
-Chemistry Class 12 Sample Paper 5.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%205.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%205.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- MATHEMATICS 2026 -->
-
-<div class="pdf-group">
-
-<h2 class="pdf-group-title">
-📐 Mathematics Class 12 – 2026
-</h2>
-
-
-<div class="pdf-grid">
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Set 1</h3>
-
-<p>Class 12 Mathematics 2026 Set 1.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20set%201.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20set%201.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Set 2</h3>
-
-<p>Class 12 Mathematics 2026 Set 2.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20set%202.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20set%202.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Set 3</h3>
-
-<p>Class 12 Mathematics 2026 Set 3.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20set%203.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20set%203.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Set 4</h3>
-
-<p>Class 12 Mathematics 2026 Set 4.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20set%204.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20set%204.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Set 5</h3>
-
-<p>Class 12 Mathematics 2026 Set 5.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20set%205.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20set%205.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Specimen Paper</h3>
-
-<p>Class 12 Mathematics 2026 Specimen Paper.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20specimen.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20specimen.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- PHYSICS 2026 -->
-
-<div class="pdf-group">
-
-<h2 class="pdf-group-title">
-⚛️ Physics Class 12 – 2026
-</h2>
-
-
-<div class="pdf-grid">
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Set 1</h3>
-
-<p>Class 12 Physics 2026 Set 1.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20class%2012%202026%20set%201.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20class%2012%202026%20set%201.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Set 2</h3>
-
-<p>Class 12 Physics 2026 Set 2.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20class%2012%202026%20set%202.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20class%2012%202026%20set%202.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Set 3</h3>
-
-<p>Class 12 Physics 2026 Set 3.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20class%2012%202026%20set%203.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20class%2012%202026%20set%203.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Set 4</h3>
-
-<p>Class 12 Physics 2026 Set 4.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20class%2012%202026%20set%204.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20class%2012%202026%20set%204.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Set 5</h3>
-
-<p>Class 12 Physics 2026 Set 5.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20class%2012%202026%20set%205.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20class%2012%202026%20set%205.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Specimen Paper</h3>
-
-<p>Class 12 Physics 2026 Specimen Paper.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20isc%20class%2012%20specimen%202026.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20isc%20class%2012%20specimen%202026.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-</section>
+<!-- =====================================================
+     NOTE:
+     PDF NOTES SECTION HAS BEEN MOVED TO material.html
+     ===================================================== -->
 
 
 <!-- ================= CURRENT AFFAIRS ================= -->
@@ -2129,7 +1333,9 @@ class="pdf-btn download-btn">
 
 <div class="section-title">
 
-<h2>📰 Current Affairs</h2>
+<h2>
+📰 Current Affairs
+</h2>
 
 <p>
 Monthly Current Affairs MCQs for examination preparation
@@ -2141,9 +1347,13 @@ Monthly Current Affairs MCQs for examination preparation
 <div class="current-grid">
 
 
+<!-- MARCH 2026 -->
+
 <div class="current-card">
 
-<h3>March 2026 Current Affairs</h3>
+<h3>
+March 2026 Current Affairs
+</h3>
 
 <p>
 March 2026 Current Affairs MCQ PDF.
@@ -2174,9 +1384,13 @@ class="pdf-btn download-btn">
 </div>
 
 
+<!-- APRIL 2026 -->
+
 <div class="current-card">
 
-<h3>April 2026 Current Affairs</h3>
+<h3>
+April 2026 Current Affairs
+</h3>
 
 <p>
 April 2026 Current Affairs MCQ PDF.
@@ -2207,9 +1421,13 @@ class="pdf-btn download-btn">
 </div>
 
 
+<!-- MAY 2026 -->
+
 <div class="current-card">
 
-<h3>May 2026 Current Affairs</h3>
+<h3>
+May 2026 Current Affairs
+</h3>
 
 <p>
 May 2026 Current Affairs MCQ PDF.
@@ -2240,9 +1458,13 @@ class="pdf-btn download-btn">
 </div>
 
 
+<!-- JUNE 2026 -->
+
 <div class="current-card">
 
-<h3>June 2026 Current Affairs</h3>
+<h3>
+June 2026 Current Affairs
+</h3>
 
 <p>
 June 2026 Current Affairs MCQ PDF.
@@ -2273,9 +1495,13 @@ class="pdf-btn download-btn">
 </div>
 
 
+<!-- JULY 2026 -->
+
 <div class="current-card">
 
-<h3>July 2026 Current Affairs</h3>
+<h3>
+July 2026 Current Affairs
+</h3>
 
 <p>
 July 2026 Current Affairs MCQ PDF.
@@ -2306,9 +1532,13 @@ class="pdf-btn download-btn">
 </div>
 
 
+<!-- AUGUST 2026 -->
+
 <div class="current-card">
 
-<h3>August 2026 Current Affairs</h3>
+<h3>
+August 2026 Current Affairs
+</h3>
 
 <p>
 300 MCQs - August 2026 Current Affairs.
@@ -2404,7 +1634,9 @@ Admission Open • Limited Seats
 
 <div class="contact-card">
 
-<h3>📍 Address</h3>
+<h3>
+📍 Address
+</h3>
 
 <p>
 
@@ -2433,16 +1665,16 @@ Odisha
 
 <div class="contact-card">
 
-<h3>📱 Contact</h3>
+<h3>
+📱 Contact
+</h3>
 
 <p>
 
 <strong>Phone:</strong>
 
 <a href="tel:7735060804">
-
 7735060804
-
 </a>
 
 </p>
@@ -2453,9 +1685,7 @@ Odisha
 <strong>Alternate:</strong>
 
 <a href="tel:7657040804">
-
 7657040804
-
 </a>
 
 </p>
@@ -2572,6 +1802,8 @@ let currentSlide = 0;
 let autoSlide;
 
 
+/* SHOW SLIDE */
+
 function showSlide(index){
 
 currentSlide =
@@ -2595,6 +1827,8 @@ index === currentSlide
 }
 
 
+/* NEXT */
+
 function nextSlide(){
 
 showSlide(currentSlide + 1);
@@ -2602,12 +1836,16 @@ showSlide(currentSlide + 1);
 }
 
 
+/* PREVIOUS */
+
 function prevSlide(){
 
 showSlide(currentSlide - 1);
 
 }
 
+
+/* AUTO SLIDE */
 
 function startAutoSlide(){
 
@@ -2622,6 +1860,8 @@ nextSlide,
 }
 
 
+/* NEXT BUTTON */
+
 nextBtn.addEventListener(
 "click",
 function(){
@@ -2634,6 +1874,8 @@ startAutoSlide();
 );
 
 
+/* PREVIOUS BUTTON */
+
 prevBtn.addEventListener(
 "click",
 function(){
@@ -2645,6 +1887,8 @@ startAutoSlide();
 }
 );
 
+
+/* DOTS */
 
 dots.forEach(function(dot){
 
@@ -2666,6 +1910,8 @@ startAutoSlide();
 });
 
 
+/* PAUSE ON MOUSE */
+
 slider.addEventListener(
 "mouseenter",
 function(){
@@ -2676,6 +1922,8 @@ clearInterval(autoSlide);
 );
 
 
+/* RESUME */
+
 slider.addEventListener(
 "mouseleave",
 function(){
@@ -2685,6 +1933,8 @@ startAutoSlide();
 }
 );
 
+
+/* MOBILE SWIPE */
 
 let touchStartX = 0;
 
@@ -2736,6 +1986,8 @@ startAutoSlide();
 {passive:true}
 );
 
+
+/* START */
 
 showSlide(0);
 
