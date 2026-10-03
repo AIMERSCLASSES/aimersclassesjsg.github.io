@@ -1,1 +1,2429 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | March 2026 Current Affairs Test 1</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+}
+
+button{
+    font-family:inherit;
+}
+
+.header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:15px 20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.brand{
+    font-size:25px;
+    font-weight:900;
+}
+
+.brand span{
+    color:#ffd43b;
+}
+
+.test-title{
+    text-align:right;
+}
+
+.test-title h1{
+    font-size:20px;
+}
+
+.test-title p{
+    font-size:13px;
+    opacity:.9;
+}
+
+
+/* ================= TOP BAR ================= */
+
+.topbar{
+    max-width:1250px;
+    margin:15px auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.info-box{
+    background:white;
+    padding:10px 18px;
+    border-radius:8px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+    font-weight:bold;
+}
+
+.timer{
+    background:#102a43;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:900;
+    min-width:120px;
+    text-align:center;
+}
+
+.timer.warning{
+    background:#dc2626;
+}
+
+
+/* ================= MAIN ================= */
+
+.main{
+    max-width:1250px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 290px;
+    gap:20px;
+    padding:0 15px 30px;
+}
+
+
+/* ================= QUESTION AREA ================= */
+
+.question-area{
+    background:white;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.question-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+    padding-bottom:15px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.question-number{
+    font-size:19px;
+    font-weight:900;
+    color:#1d4ed8;
+}
+
+.progress-text{
+    color:#64748b;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.question{
+    font-size:19px;
+    line-height:1.6;
+    font-weight:700;
+    margin-bottom:22px;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+}
+
+.option{
+    border:2px solid #e2e8f0;
+    background:#f8fafc;
+    padding:14px 16px;
+    border-radius:9px;
+    cursor:pointer;
+    transition:.2s;
+    font-size:16px;
+}
+
+.option:hover{
+    border-color:#1d4ed8;
+    background:#eef4ff;
+}
+
+.option.selected{
+    border-color:#1d4ed8;
+    background:#eaf2ff;
+    color:#102a43;
+    font-weight:bold;
+}
+
+.option.correct{
+    border-color:#16a34a;
+    background:#dcfce7;
+    color:#166534;
+}
+
+.option.wrong{
+    border-color:#dc2626;
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.option.disabled{
+    cursor:default;
+}
+
+
+/* ================= NAVIGATION ================= */
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+.nav-btn{
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.prev-btn{
+    background:#e2e8f0;
+    color:#172033;
+}
+
+.next-btn{
+    background:#1d4ed8;
+    color:white;
+}
+
+.submit-btn{
+    background:#dc2626;
+    color:white;
+}
+
+.nav-btn:hover{
+    opacity:.9;
+}
+
+
+/* ================= PALETTE ================= */
+
+.palette{
+    background:white;
+    border-radius:14px;
+    padding:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    height:max-content;
+    position:sticky;
+    top:15px;
+}
+
+.palette h3{
+    color:#102a43;
+    margin-bottom:5px;
+}
+
+.palette p{
+    color:#64748b;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.palette-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.palette-btn{
+    border:1px solid #cbd5e1;
+    background:#f8fafc;
+    height:36px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    color:#334155;
+}
+
+.palette-btn:hover{
+    border-color:#1d4ed8;
+}
+
+.palette-btn.current{
+    background:#1d4ed8;
+    color:white;
+    border-color:#1d4ed8;
+}
+
+.palette-btn.attempted{
+    background:#16a34a;
+    color:white;
+    border-color:#16a34a;
+}
+
+.palette-btn.current.attempted{
+    background:#15803d;
+    color:white;
+    border:3px solid #ffd43b;
+}
+
+
+/* ================= LEGEND ================= */
+
+.legend{
+    margin-top:18px;
+    border-top:1px solid #e5e7eb;
+    padding-top:15px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    margin:7px 0;
+}
+
+.legend-box{
+    width:18px;
+    height:18px;
+    border-radius:4px;
+}
+
+.legend-current{
+    background:#1d4ed8;
+}
+
+.legend-attempted{
+    background:#16a34a;
+}
+
+.legend-unattempted{
+    background:#f8fafc;
+    border:1px solid #cbd5e1;
+}
+
+
+/* ================= RESULT ================= */
+
+.result{
+    display:none;
+    max-width:900px;
+    margin:30px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 25px rgba(0,0,0,.1);
+}
+
+.result h2{
+    text-align:center;
+    color:#102a43;
+    margin-bottom:20px;
+}
+
+.score-box{
+    text-align:center;
+    background:#eef4ff;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:25px;
+}
+
+.score{
+    font-size:40px;
+    font-weight:900;
+    color:#1d4ed8;
+}
+
+.result-details{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.result-item{
+    padding:15px;
+    text-align:center;
+    background:#f8fafc;
+    border-radius:8px;
+}
+
+.result-item strong{
+    display:block;
+    font-size:22px;
+    color:#102a43;
+}
+
+
+/* ================= SOLUTIONS ================= */
+
+.solutions{
+    margin-top:30px;
+}
+
+.solutions h3{
+    color:#102a43;
+    margin-bottom:15px;
+}
+
+.solution{
+    border:1px solid #e2e8f0;
+    border-radius:9px;
+    padding:15px;
+    margin-bottom:12px;
+    background:#fafcff;
+}
+
+.solution-q{
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.solution-answer{
+    color:#15803d;
+    font-weight:800;
+    margin-bottom:6px;
+}
+
+.solution-exp{
+    color:#475569;
+    font-size:14px;
+    line-height:1.6;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:30px;
+}
+
+footer h3{
+    color:#ffd43b;
+    margin-bottom:6px;
+}
+
+footer p{
+    color:#cbd5e1;
+    font-size:13px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .main{
+        grid-template-columns:1fr;
+    }
+
+    .palette{
+        position:static;
+        order:-1;
+    }
+
+    .palette-grid{
+        grid-template-columns:repeat(10,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .test-title{
+        text-align:center;
+    }
+
+    .question-area{
+        padding:18px;
+    }
+
+    .question{
+        font-size:17px;
+    }
+
+    .palette-grid{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+    .result-details{
+        grid-template-columns:1fr;
+    }
+
+    .navigation{
+        flex-wrap:wrap;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+<div class="header-inner">
+
+<div class="brand">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="test-title">
+
+<h1>March 2026 Current Affairs – Test 1</h1>
+
+<p>SSC • Railway • UPSC Prelims Level</p>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- ================= TOP INFO ================= -->
+
+<div class="topbar">
+
+<div class="info-box">
+📅 March 2026
+</div>
+
+<div class="info-box">
+📝 Test 1 | 100 Questions
+</div>
+
+<div class="info-box">
+🎯 +1 Mark | No Negative Marking
+</div>
+
+<div class="timer" id="timer">
+60:00
+</div>
+
+</div>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+
+<!-- QUESTION AREA -->
+
+<div class="question-area">
+
+<div class="question-header">
+
+<div class="question-number" id="questionNumber">
+Question 1
+</div>
+
+<div class="progress-text" id="progressText">
+1 / 100
+</div>
+
+</div>
+
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+
+<div class="navigation">
+
+<button
+class="nav-btn prev-btn"
+onclick="previousQuestion()">
+← Previous
+</button>
+
+<button
+class="nav-btn next-btn"
+onclick="nextQuestion()">
+Next →
+</button>
+
+<button
+class="nav-btn submit-btn"
+onclick="submitTest()">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- QUESTION PALETTE -->
+
+<div class="palette">
+
+<h3>Question Palette</h3>
+
+<p>Green = Attempted</p>
+
+<div
+class="palette-grid"
+id="palette">
+</div>
+
+
+<div class="legend">
+
+<div class="legend-item">
+
+<div class="legend-box legend-current"></div>
+
+Current Question
+
+</div>
+
+
+<div class="legend-item">
+
+<div class="legend-box legend-attempted"></div>
+
+Attempted
+
+</div>
+
+
+<div class="legend-item">
+
+<div class="legend-box legend-unattempted"></div>
+
+Not Attempted
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= RESULT ================= -->
+
+<div class="result" id="result">
+
+<h2>
+🎉 Test Completed
+</h2>
+
+<div class="score-box">
+
+<div>
+Your Score
+</div>
+
+<div class="score" id="score">
+0 / 100
+</div>
+
+</div>
+
+
+<div class="result-details">
+
+<div class="result-item">
+
+Correct
+
+<strong id="correctCount">
+0
+</strong>
+
+</div>
+
+<div class="result-item">
+
+Wrong
+
+<strong id="wrongCount">
+0
+</strong>
+
+</div>
+
+<div class="result-item">
+
+Not Attempted
+
+<strong id="unattemptedCount">
+0
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="solutions">
+
+<h3>
+📖 Answer Key & Solutions
+</h3>
+
+<div id="solutionContainer">
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h3>
+AIMERS CLASSES
+</h3>
+
+<p>
+Aim High • Achieve High
+</p>
+
+<p>
+March 2026 Current Affairs Test Series
+</p>
+
+<p>
+SSC | Railway | UPSC | Competitive Exams
+</p>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================================================
+   MARCH 2026 CURRENT AFFAIRS – TEST 1
+   100 QUESTIONS
+========================================================= */
+
+
+const questions = [
+
+{
+q:"The EUR 20 million India-Germany climate initiative announced in March 2026 primarily focuses on what?",
+o:[
+"Strengthening resilience of high-risk ecosystems",
+"Building nuclear power plants",
+"Funding metro rail projects",
+"Promoting cryptocurrency"
+],
+a:0,
+e:"The initiative focuses on ecosystem-based approaches such as forest restoration, biodiversity connectivity and erosion control in vulnerable regions."
+},
+
+{
+q:"The inland-waterway projects inaugurated at Dibrugarh are located on which National Waterway?",
+o:[
+"NW-1",
+"NW-2",
+"NW-3",
+"NW-4"
+],
+a:1,
+e:"National Waterway-2 runs along the Brahmaputra River in Assam."
+},
+
+{
+q:"Ariyur Shola Reserve Forest, inaugurated as Tamil Nadu's first Dark Sky Park, is located in which region?",
+o:[
+"Kolli Hills",
+"Nilgiri Hills",
+"Palani Hills",
+"Yelagiri Hills"
+],
+a:0,
+e:"Ariyur Shola Reserve Forest is located in the Kolli Hills of Namakkal district."
+},
+
+{
+q:"Which Indian tiger reserve became the country's first official Dark Sky Park in 2024?",
+o:[
+"Kanha",
+"Pench",
+"Bandhavgarh",
+"Satpura"
+],
+a:1,
+e:"Pench Tiger Reserve in Madhya Pradesh was recognized as India's first official Dark Sky Park."
+},
+
+{
+q:"What is the primary function of the upgraded RAJMARG PRAVESH 2.0 portal?",
+o:[
+"Booking railway tickets",
+"Applying for highway-related NOCs",
+"Buying insurance",
+"Filing income-tax returns"
+],
+a:1,
+e:"RAJMARG PRAVESH facilitates permissions and NOCs for facilities and utilities along National Highways."
+},
+
+{
+q:"Who was appointed chairman of the reconstituted Hindi Advisory Committee of the Ministry of Chemicals and Fertilizers?",
+o:[
+"JP Nadda",
+"Nitin Gadkari",
+"Anupriya Patel",
+"Dharmendra Pradhan"
+],
+a:0,
+e:"Jagat Prakash Nadda was appointed chairman, while Anupriya Patel was named vice-chairperson."
+},
+
+{
+q:"Which Indian Air Force command conducted Exercise Kalari Leap?",
+o:[
+"Eastern Air Command",
+"Western Air Command",
+"Southern Air Command",
+"South Western Air Command"
+],
+a:2,
+e:"The Southern Air Command conducted the joint maritime exercise Kalari Leap."
+},
+
+{
+q:"Exercise Vayushakti-26 was conducted at which location?",
+o:[
+"Chandipur",
+"Pokhran Range",
+"Jamnagar",
+"Leh"
+],
+a:1,
+e:"Vayushakti-26 was conducted at the Pokhran Field Firing Range in Rajasthan."
+},
+
+{
+q:"Which honour was conferred on Prime Minister Narendra Modi during his 2026 visit to Israel?",
+o:[
+"Order of the Star of Israel",
+"Medal of the Knesset",
+"Key of Tel Aviv",
+"Jerusalem Peace Medal"
+],
+a:1,
+e:"PM Narendra Modi was conferred the Medal of the Knesset."
+},
+
+{
+q:"IIFL Home Finance obtained a USD 300 million loan from which institution for affordable housing?",
+o:[
+"World Bank",
+"Asian Development Bank",
+"IMF",
+"New Development Bank"
+],
+a:1,
+e:"The Asian Development Bank provided the USD 300 million loan, with a focus including women borrowers."
+},
+
+{
+q:"The Finsider application of Jio Finance primarily uses which technology combination?",
+o:[
+"Blockchain and cryptocurrency",
+"Agentic AI and neural networks",
+"Quantum computing and IoT",
+"Robotics and 3D printing"
+],
+a:1,
+e:"Finsider uses Agentic AI and neural networks to provide personalized financial services."
+},
+
+{
+q:"Which AMC partnered with Central Bank of India for distribution of mutual fund products?",
+o:[
+"Canara Robeco AMC",
+"HDFC AMC",
+"SBI Mutual Fund",
+"ICICI Prudential AMC"
+],
+a:0,
+e:"Central Bank of India entered into a distribution arrangement with Canara Robeco Asset Management Company."
+},
+
+{
+q:"What special capability was introduced through the Gnani.ai-Razorpay platform?",
+o:[
+"AI-driven UPI payments during calls",
+"Crypto mining during calls",
+"Stock trading through SMS",
+"Automated insurance underwriting"
+],
+a:0,
+e:"The platform uses AI to identify payment intent and facilitate UPI transactions during customer calls."
+},
+
+{
+q:"Sri Lanka's first blue bond, dual-listed on NSE IX at GIFT City, was issued by which bank?",
+o:[
+"DFCC Bank",
+"Bank of Ceylon",
+"Commercial Bank of Ceylon",
+"People's Bank"
+],
+a:0,
+e:"DFCC Bank Plc of Sri Lanka issued the blue bond, which was dual-listed at NSE IX."
+},
+
+{
+q:"In Sarvam's partnership with SBI Life, what is the role of 'Samvaad'?",
+o:[
+"Data storage",
+"Conversational AI",
+"Cybersecurity",
+"Cloud computing"
+],
+a:1,
+e:"Samvaad is Sarvam's conversational AI platform for customer interactions."
+},
+
+{
+q:"What is VSHORADS tested by DRDO at Chandipur?",
+o:[
+"An intercontinental ballistic missile",
+"A man-portable air defence system",
+"A submarine-launched missile",
+"An anti-ship ballistic missile"
+],
+a:1,
+e:"VSHORADS stands for Very Short-Range Air Defence System and is designed to counter low-altitude aerial threats."
+},
+
+{
+q:"INS Anjadip is associated with which category of naval vessel?",
+o:[
+"Aircraft carrier",
+"Anti-Submarine Warfare Shallow Water Craft",
+"Destroyer",
+"Landing ship"
+],
+a:1,
+e:"INS Anjadip is an indigenously built Anti-Submarine Warfare Shallow Water Craft."
+},
+
+{
+q:"Utsav Charan Das was associated with which traditional Odia folk dance?",
+o:[
+"Gotipua",
+"Ghoda Nacha",
+"Chhau",
+"Garba"
+],
+a:1,
+e:"Utsav Charan Das was known for promoting the Odia folk dance Ghoda Nacha."
+},
+
+{
+q:"What was the theme of National Science Day 2026?",
+o:[
+"Science for Global Well-being",
+"Women in Science: Catalysing Viksit Bharat",
+"Science for Sustainable Cities",
+"Science and Digital India"
+],
+a:1,
+e:"The 2026 National Science Day theme was 'Women in Science: Catalysing Viksit Bharat'."
+},
+
+{
+q:"National Science Day commemorates which discovery by C. V. Raman?",
+o:[
+"Photoelectric effect",
+"Raman Effect",
+"Radioactivity",
+"Electron"
+],
+a:1,
+e:"National Science Day commemorates C. V. Raman's discovery of the Raman Effect."
+},
+
+
+/* ================= DAY 2 ================= */
+
+{
+q:"The Micron facility inaugurated at Sanand is primarily an ATMP facility. What does ATMP refer to?",
+o:[
+"Advanced Technology Manufacturing Process",
+"Assembly, Test, Marking and Packaging",
+"Automated Testing and Microchip Production",
+"Advanced Thermal Manufacturing Platform"
+],
+a:1,
+e:"ATMP stands for Assembly, Test, Marking and Packaging and is used for semiconductor products."
+},
+
+{
+q:"The Khurda–Balangir railway project incorporates wildlife-protection infrastructure mainly to safeguard which type of fauna?",
+o:[
+"Desert animals",
+"Elephant corridors and local wildlife",
+"Marine mammals",
+"Snow leopards"
+],
+a:1,
+e:"The project includes tunnels and underpasses to reduce impacts on wildlife, including elephant movement corridors."
+},
+
+{
+q:"After the arrival of nine cheetahs from Botswana, India's cheetah population was reported at approximately:",
+o:[
+"28",
+"37",
+"48",
+"52"
+],
+a:2,
+e:"The reported population reached 48 after the new arrivals."
+},
+
+{
+q:"What annual intellectual-property filing target is mentioned in Gujarat's STI Policy 2026–31?",
+o:[
+"100 filings",
+"500 filings",
+"1,000 filings",
+"5,000 filings"
+],
+a:2,
+e:"The policy targets 1,000 intellectual-property filings annually."
+},
+
+{
+q:"What is the main purpose of Maharashtra's Divyang Sahayak Portal?",
+o:[
+"Digital delivery of disability welfare services",
+"Senior-citizen pension management",
+"School admissions",
+"Farmer loan applications"
+],
+a:0,
+e:"The portal allows persons with disabilities to apply for benefits, track applications and access grievance services."
+},
+
+{
+q:"The Varanasi Guinness World Record for mass plantation used which technique?",
+o:[
+"Hydroponics",
+"Miyawaki technique",
+"Drip-irrigation plantation",
+"Vertical farming"
+],
+a:1,
+e:"The Miyawaki method was used to create a dense urban forest."
+},
+
+{
+q:"Which of the following was NOT listed among the women-centric schemes launched in Delhi?",
+o:[
+"Pink National Common Mobility Card",
+"Delhi Lakhpati Bitiya Yojana",
+"Free LPG cylinder scheme",
+"Digital Skill Scholarship"
+],
+a:3,
+e:"Digital Skill Scholarship was not among the listed schemes."
+},
+
+{
+q:"Who was named to the temporary three-member Leadership Council mentioned in connection with Iran?",
+o:[
+"Alireza Arafi",
+"Ali Larijani",
+"Hassan Rouhani",
+"Ebrahim Raisi"
+],
+a:0,
+e:"Alireza Arafi was identified as the jurist member of the temporary council."
+},
+
+{
+q:"The rise in FPI inflows into India in February 2026 was attributed partly to strong earnings and what other development?",
+o:[
+"An interim India-US trade deal",
+"A sharp rise in customs duty",
+"A ban on foreign investment",
+"A fall in GST collections"
+],
+a:0,
+e:"The cited explanation linked the rise to strong Q3 FY26 earnings and an interim India-US trade deal."
+},
+
+{
+q:"India's cumulative gross GST collections for the fiscal year crossed which milestone by February 28, 2026?",
+o:[
+"₹15 lakh crore",
+"₹18 lakh crore",
+"₹20 lakh crore",
+"₹25 lakh crore"
+],
+a:2,
+e:"Cumulative gross GST revenue crossed the ₹20 lakh crore mark."
+},
+
+{
+q:"Deepak Gupta took charge as CMD of which Maharatna PSU from March 1, 2026?",
+o:[
+"ONGC",
+"GAIL",
+"NTPC",
+"IOCL"
+],
+a:1,
+e:"Deepak Gupta became CMD of GAIL (India) Limited."
+},
+
+{
+q:"Mangaluru International Airport received the 2025 ASQ award in which category?",
+o:[
+"Best Cargo Terminal",
+"Best Airport Security",
+"Best Airport at Arrivals",
+"Best Green Airport"
+],
+a:2,
+e:"It was recognized as the Best Airport at Arrivals – Globally."
+},
+
+{
+q:"According to the cited report, how does the Amondawa tribe traditionally conceptualize time?",
+o:[
+"Through a formal lunar calendar",
+"Through abstract numerical years",
+"Without words for abstract temporal concepts",
+"Only through astronomical calculations"
+],
+a:2,
+e:"The report describes the Amondawa as lacking words for abstract concepts such as months and years."
+},
+
+{
+q:"The Nodi Bandhan initiative in West Bengal focuses on restoration of which river basins?",
+o:[
+"Damodar and Ajay",
+"Ichhamati and Jalangi",
+"Teesta and Torsa",
+"Hooghly and Rupnarayan"
+],
+a:1,
+e:"Nodi Bandhan focuses on restoration and basin-level planning for the Ichhamati and Jalangi rivers."
+},
+
+{
+q:"The Forest Owlet was recorded for the first time in which protected area mentioned in March 2026 current affairs?",
+o:[
+"Kuno National Park",
+"Bandhavgarh National Park",
+"Gir National Park",
+"Kanha Tiger Reserve"
+],
+a:0,
+e:"The Forest Owlet was reported from Kuno National Park."
+},
+
+{
+q:"Who scored 97 during India's record chase against West Indies in the cited 2026 T20 World Cup Super Eight match?",
+o:[
+"Hardik Pandya",
+"Sanju Samson",
+"Suryakumar Yadav",
+"Rinku Singh"
+],
+a:1,
+e:"Sanju Samson scored 97 in the cited match."
+},
+
+{
+q:"Alyssa Healy's final ODI was notable because she scored 158 runs and then:",
+o:[
+"Won a new captaincy",
+"Retired from international cricket",
+"Joined a new franchise",
+"Scored a double century"
+],
+a:1,
+e:"Healy announced retirement from international cricket after her final ODI innings."
+},
+
+{
+q:"Gujarat's ₹1,000 crore innovation fund under its STI Policy is intended mainly to:",
+o:[
+"Promote indigenous technology development",
+"Finance foreign technology imports",
+"Build airports",
+"Subsidize housing loans"
+],
+a:0,
+e:"The fund aims to accelerate indigenous technology development and reduce dependence on imported critical technologies."
+},
+
+{
+q:"Which company announced a ₹250 crore investment in SSD and memory-module production at Sanand?",
+o:[
+"Qualcomm",
+"Hotayi Electronic",
+"Rohm Semiconductor",
+"Intel"
+],
+a:1,
+e:"Malaysia-based Hotayi Electronic announced the investment."
+},
+
+{
+q:"What is the constitutional role of Iran's Assembly of Experts?",
+o:[
+"Electing the Supreme Leader",
+"Running the central bank",
+"Passing the annual budget",
+"Commanding the armed forces"
+],
+a:0,
+e:"The Assembly of Experts has the constitutional role of selecting the Supreme Leader."
+
+
+/* ================= DAY 3 ================= */
+
+},
+
+{
+q:"The proposed restructuring of Central Warehousing Corporation (CWC) aims partly at achieving which status?",
+o:[
+"Navratna",
+"Maharatna",
+"Miniratna",
+"Schedule C"
+],
+a:1,
+e:"The proposal aims to broaden CWC's operations and facilitate its transition toward Maharatna status."
+},
+
+{
+q:"Which application was launched during the Bureau of Energy Efficiency's 25th Foundation Day?",
+o:[
+"BEE Star Label Mobile App",
+"Energy India App",
+"Power Saver India",
+"National Energy Tracker"
+],
+a:0,
+e:"The BEE Star Label Mobile App was launched to improve access to verified energy-performance information."
+},
+
+{
+q:"The Indian Bison Fest at Debrigarh Wildlife Sanctuary primarily seeks to promote awareness about:",
+o:[
+"Indian bison or gaur conservation",
+"Tiger relocation",
+"Snow leopard conservation",
+"Marine biodiversity"
+],
+a:0,
+e:"The festival celebrates the Indian bison, or gaur, and promotes its conservation."
+},
+
+{
+q:"Haryana's projected fiscal deficit for 2026–27 was approximately what percentage of GSDP?",
+o:[
+"1.50%",
+"2.65%",
+"4.15%",
+"5.15%"
+],
+a:1,
+e:"The projected fiscal deficit was around 2.65% of GSDP."
+},
+
+{
+q:"Project HANUMAN launched in Andhra Pradesh focuses on:",
+o:[
+"Human-wildlife conflict management",
+"Urban transport",
+"Railway electrification",
+"Digital education"
+],
+a:0,
+e:"Project HANUMAN aims to address human-wildlife conflict using rapid response and monitoring mechanisms."
+},
+
+{
+q:"India and Canada discussed a CEPA-linked trade goal of approximately how much by 2030?",
+o:[
+"CAD 30 billion",
+"CAD 50 billion",
+"CAD 70 billion",
+"CAD 100 billion"
+],
+a:2,
+e:"The cited target under CEPA negotiations was CAD 70 billion by 2030."
+},
+
+{
+q:"What Guinness World Record was associated with India's AI Impact Summit 2026?",
+o:[
+"Most AI robots assembled",
+"Most AI responsibility pledges in 24 hours",
+"Most AI papers published",
+"Most AI startups launched"
+],
+a:1,
+e:"India recorded a Guinness World Record for the number of AI-responsibility pledges received in 24 hours."
+},
+
+{
+q:"According to the cited RBI data, India's current account deficit in 2025 narrowed to approximately:",
+o:[
+"$15.5 billion",
+"$30.1 billion",
+"$36.6 billion",
+"$50 billion"
+],
+a:1,
+e:"The reported current account deficit was $30.1 billion, or about 1% of GDP."
+},
+
+{
+q:"Dan Bailey was appointed President of which company?",
+o:[
+"Jio Platforms",
+"Bharti Airtel",
+"Tata Digital",
+"Reliance Retail"
+],
+a:0,
+e:"Dan Bailey was appointed President of Jio Platforms to lead international expansion."
+},
+
+{
+q:"Saba Shawl became the first Kashmiri woman to head which institution?",
+o:[
+"Central Jail Srinagar",
+"Jammu High Court",
+"J&K Police Headquarters",
+"Srinagar Airport"
+],
+a:0,
+e:"Saba Shawl was appointed head of Central Jail Srinagar."
+},
+
+{
+q:"B.P. Singh's appointment as DGONA relates primarily to:",
+o:[
+"Naval armament management",
+"Foreign affairs",
+"Naval medical services",
+"Space operations"
+],
+a:0,
+e:"DGONA deals with naval armament management, procurement and logistics."
+},
+
+{
+q:"Which platform was reported as entering the world's top five most-visited websites in 2026?",
+o:[
+"ChatGPT",
+"LinkedIn",
+"Wikipedia",
+"Amazon"
+],
+a:0,
+e:"The cited traffic data placed ChatGPT among the top five most-visited websites globally."
+},
+
+{
+q:"The newly inaugurated Ariyur Shola Dark Sky Park aims primarily to reduce:",
+o:[
+"Air pollution",
+"Light pollution",
+"Water pollution",
+"Noise pollution"
+],
+a:1,
+e:"Dark Sky Parks are intended to protect natural night skies from excessive artificial light."
+},
+
+{
+q:"The Bharat Steel 2026 summit sought to promote India as a:",
+o:[
+"Global steel hub",
+"Global oil hub",
+"Global shipping hub",
+"Global banking hub"
+],
+a:0,
+e:"The summit emphasized collaboration, innovation and sustainable growth in the steel sector."
+},
+
+{
+q:"The ASMITA Women's Sports League 2026 uses which age brackets?",
+o:[
+"Under 10, 10–15 and 15+",
+"Under 13, 13–18 and 18+",
+"Under 14, 14–20 and 20+",
+"Under 16 and 16+ only"
+],
+a:1,
+e:"The cited age categories are under 13, 13–18 and 18+."
+},
+
+{
+q:"What was the theme of World Wildlife Day 2026?",
+o:[
+"Recovering Key Species",
+"Medicinal and Aromatic Plants: Conserving Health, Heritage and Livelihoods",
+"Forests and Wildlife",
+"Wildlife and Climate Change"
+],
+a:1,
+e:"The 2026 theme highlighted medicinal and aromatic plants and their importance to health, heritage and livelihoods."
+},
+
+{
+q:"K.P. Unnikrishnan served as a Member of Parliament from which constituency?",
+o:[
+"Vadakara",
+"Kozhikode",
+"Thrissur",
+"Kannur"
+],
+a:0,
+e:"K.P. Unnikrishnan was a six-time Lok Sabha MP from Vadakara, Kerala."
+},
+
+{
+q:"While serving in the V.P. Singh Cabinet, K.P. Unnikrishnan was associated with the evacuation of Indians during which crisis?",
+o:[
+"Gulf War",
+"Bangladesh War",
+"Kargil War",
+"Afghanistan War"
+],
+a:0,
+e:"He was associated with the evacuation of Indian citizens during the Gulf War."
+},
+
+{
+q:"The treaty whose signing is commemorated by World Wildlife Day is:",
+o:[
+"Paris Agreement",
+"CITES",
+"Kyoto Protocol",
+"Ramsar Convention"
+],
+a:1,
+e:"World Wildlife Day commemorates the signing of CITES in 1973."
+},
+
+{
+q:"What was the total outlay of Haryana's 2026–27 budget as cited in March current affairs?",
+o:[
+"₹1.23 lakh crore",
+"₹2.23 lakh crore",
+"₹3.23 lakh crore",
+"₹4.23 lakh crore"
+],
+a:1,
+e:"The budget outlay was reported at approximately ₹2,23,658 crore."
+},
+
+
+/* ================= DAY 4 ================= */
+
+{
+q:"The NH-332A project inaugurated in Tamil Nadu is expected to reduce travel time on which route?",
+o:[
+"Marakkanam–Puducherry",
+"Chennai–Madurai",
+"Madurai–Rameswaram",
+"Coimbatore–Salem"
+],
+a:0,
+e:"The four-laning project connects Marakkanam and Puducherry and is expected to reduce travel time substantially."
+},
+
+{
+q:"The New Seed Act 2026 proposes which mechanism on seed packets?",
+o:[
+"QR-code registration",
+"Blockchain voting",
+"Biometric farmer ID",
+"GPS tracking"
+],
+a:0,
+e:"The proposed framework includes registration and QR codes to improve traceability and seed-quality regulation."
+},
+
+{
+q:"The second phase of the NITI Aayog–JICA partnership focuses on:",
+o:[
+"Aspirational Districts and Blocks Programme",
+"Digital India",
+"Smart Cities",
+"Skill India"
+],
+a:0,
+e:"Phase II focuses on strengthening the Aspirational Districts and Blocks Programme."
+},
+
+{
+q:"The BEE Star Label Mobile App allows consumers to access energy-performance information by scanning:",
+o:[
+"Barcodes on railway tickets",
+"QR codes on appliances",
+"Vehicle number plates",
+"Electricity meters only"
+],
+a:1,
+e:"The application allows users to scan QR codes on star-labelled appliances."
+},
+
+{
+q:"Survey of India signed a five-year MoU for AI/ML-based geospatial research with:",
+o:[
+"Kerala Digital University",
+"IIT Delhi",
+"IISc Bengaluru",
+"IIT Madras"
+],
+a:0,
+e:"Survey of India partnered with Kerala Digital University for geospatial research involving AI and ML."
+},
+
+{
+q:"The 30 kW Integrated Drive System developed at IIT Madras for EVs uses:",
+o:[
+"Wide Band Gap technology",
+"Hydrogen combustion",
+"Diesel-electric technology",
+"Lead-acid batteries"
+],
+a:0,
+e:"The system uses Wide Band Gap power modules, including silicon-carbide MOSFET technology."
+},
+
+{
+q:"Mumbai's Saksham Skill Census is being conducted by:",
+o:[
+"Sapio Analytics",
+"NITI Aayog",
+"Skill India Council",
+"Digital India Corporation"
+],
+a:0,
+e:"Sapio Analytics is conducting the AI-driven skill survey."
+},
+
+{
+q:"The ASMITA Athletics League mainly seeks to increase:",
+o:[
+"Women's grassroots participation in sports",
+"Professional football clubs",
+"Men's cricket participation",
+"Foreign sports tourism"
+],
+a:0,
+e:"The league is intended to encourage women and girls to participate in sports at the grassroots level."
+},
+
+{
+q:"The renewed RBI–Bank of Japan Bilateral Swap Arrangement has a value of up to:",
+o:[
+"USD 25 billion",
+"USD 50 billion",
+"USD 75 billion",
+"USD 100 billion"
+],
+a:2,
+e:"The renewed BSA was reported at up to USD 75 billion."
+},
+
+{
+q:"The India INX GA–HSBC IBU referral arrangement enables eligible investors to access:",
+o:[
+"Foreign equities and ETFs under the LRS",
+"Only Indian government bonds",
+"Cryptocurrency exchanges",
+"Foreign property without limits"
+],
+a:0,
+e:"The arrangement provides access to global investment products within the RBI's Liberalised Remittance Scheme framework."
+},
+
+{
+q:"Safeena Husain founded which organization recognized in TIME Women of the Year 2026?",
+o:[
+"Educate Girls",
+"Pratham",
+"Nanhi Kali",
+"Smile Foundation"
+],
+a:0,
+e:"Safeena Husain is the founder of Educate Girls."
+},
+
+{
+q:"K.P. Unnikrishnan served on which parliamentary committee during his political career?",
+o:[
+"Public Accounts Committee",
+"Ethics Committee",
+"Privileges Committee",
+"Defence Committee"
+],
+a:0,
+e:"He served on the Public Accounts Committee."
+},
+
+{
+q:"The book 'Mahatma: A Great Communicator' was authored by an official associated with:",
+o:[
+"Akashvani",
+"Doordarshan",
+"PIB",
+"Press Council of India"
+],
+a:0,
+e:"The book was authored by Dr. Dhiraj Kakadia, associated with Akashvani."
+},
+
+{
+q:"Civil Accounts Day is observed on March 1 to mark the foundation of which service?",
+o:[
+"Indian Civil Accounts Service",
+"Indian Audit Service",
+"Indian Revenue Service",
+"Indian Statistical Service"
+],
+a:0,
+e:"March 1 marks the foundation of the Indian Civil Accounts Service under the Departmentalisation of Union Accounts framework."
+},
+
+{
+q:"Which topic was NOT among the themes of the 16 publications released by Vice-President C.P. Radhakrishnan?",
+o:[
+"Bankim Chandra Chatterjee",
+"Rameswaram Temple",
+"Manimegalai",
+"Cybersecurity in Banking"
+],
+a:3,
+e:"The cited list included subjects such as Rameswaram, Bankim Chandra Chatterjee and Manimegalai, but not cybersecurity in banking."
+},
+
+{
+q:"Haryana's projected fiscal deficit for FY 2026–27 was estimated at:",
+o:[
+"2.65% of GSDP",
+"3.65% of GSDP",
+"4.65% of GSDP",
+"1.65% of GSDP"
+],
+a:0,
+e:"The fiscal deficit was projected at 2.65% of the state's GSDP."
+},
+
+{
+q:"Which sustainable-energy policy was announced in Haryana's FY27 budget?",
+o:[
+"Green Hydrogen Policy",
+"National Solar Alliance",
+"Carbon Tax Policy",
+"Blue Energy Policy"
+],
+a:0,
+e:"Haryana announced a Green Hydrogen Policy, with a planned first plant at Panipat."
+},
+
+{
+q:"World Seagrass Day is facilitated by which UN body?",
+o:[
+"UNESCO",
+"UNEP",
+"FAO",
+"WHO"
+],
+a:1,
+e:"The UN General Assembly invited UNEP to facilitate observance of World Seagrass Day."
+},
+
+{
+q:"Among the cited Haryana budget categories, which received the highest allocation?",
+o:[
+"Health",
+"Agriculture",
+"Education and Sports",
+"Rural Development"
+],
+a:2,
+e:"Education and Sports received the highest allocation among the listed categories."
+},
+
+{
+q:"The proposed Revised Pesticide Act 2026 is intended to replace which law?",
+o:[
+"Insecticides Act, 1968",
+"Seed Act, 1966",
+"Essential Commodities Act, 1955",
+"Food Safety Act, 2006"
+],
+a:0,
+e:"The proposed legislation is intended to replace the Insecticides Act, 1968."
+},
+
+
+/* ================= DAY 5 ================= */
+
+{
+q:"Mark Carney's 2026 India visit was the first official visit by a Canadian Prime Minister to India since which leader's 2018 visit?",
+o:[
+"Justin Trudeau",
+"Stephen Harper",
+"Paul Martin",
+"Brian Mulroney"
+],
+a:0,
+e:"The cited March 2026 material identifies Justin Trudeau's 2018 visit as the previous Canadian PM visit."
+},
+
+{
+q:"India and Canada set a bilateral trade target of how much by 2030 in the cited March 2026 update?",
+o:[
+"USD 25 billion",
+"USD 50 billion",
+"USD 75 billion",
+"USD 100 billion"
+],
+a:1,
+e:"The cited target was USD 50 billion by 2030."
+},
+
+{
+q:"What EPF interest rate did the Central Board of Trustees recommend for FY 2025–26?",
+o:[
+"8.00%",
+"8.15%",
+"8.25%",
+"8.50%"
+],
+a:2,
+e:"The CBT recommended retaining the EPF interest rate at 8.25% for FY 2025–26."
+},
+
+{
+q:"Which organization was approved to conduct direct recruitment and promotion examinations for EPFO?",
+o:[
+"UPSC",
+"SSC",
+"IBPS",
+"NTA"
+],
+a:2,
+e:"The Institute of Banking Personnel Selection was approved for these examinations."
+},
+
+{
+q:"The Government Bank Dashboard launched by the CGA aims to move government banking from reactive corrections towards:",
+o:[
+"Proactive oversight",
+"Private auditing",
+"Manual bookkeeping",
+"Cryptocurrency settlement"
+],
+a:0,
+e:"The dashboard is designed as a real-time monitoring tool for proactive oversight."
+},
+
+{
+q:"The Ministry of Defence signed a contract for VL-Shtil missiles with:",
+o:[
+"JSC Rosoboronexport",
+"HAL",
+"BEL",
+"Mazagon Dock"
+],
+a:0,
+e:"The contract was signed with Russia's JSC Rosoboronexport."
+},
+
+{
+q:"The Indian Navy signed a contract for four 500-tonne Self-Propelled Fuel Barges with:",
+o:[
+"Shoft Shipyard Private Limited",
+"Cochin Shipyard",
+"Goa Shipyard",
+"GRSE"
+],
+a:0,
+e:"The contract was signed with Shoft Shipyard Private Limited based in Thane, Maharashtra."
+},
+
+{
+q:"IRDAI's proposed adoption of Ind AS for insurers primarily seeks to improve:",
+o:[
+"Global comparability and transparency",
+"Foreign currency reserves",
+"Insurance tax collection",
+"Number of insurance companies"
+],
+a:0,
+e:"Ind AS adoption is intended to improve transparency, disclosure and global comparability."
+},
+
+{
+q:"Dan Bailey was appointed President of which company?",
+o:[
+"Jio Platforms Limited",
+"Reliance Retail",
+"Bharti Airtel",
+"Tata Digital"
+],
+a:0,
+e:"Dan Bailey was appointed President of Jio Platforms."
+},
+
+{
+q:"The earthworm species Moniligaster girishi and Drawida reynoldsi were discovered in:",
+o:[
+"Silent Valley National Park",
+"Periyar National Park",
+"Kaziranga National Park",
+"Jim Corbett National Park"
+],
+a:0,
+e:"The two new earthworm species were discovered in Silent Valley National Park, Kerala."
+},
+
+{
+q:"What unusual anatomical feature was reported for the fish species Gitchak nakan?",
+o:[
+"Complete absence of a skull roof",
+"Bioluminescent fins",
+"Three hearts",
+"An external shell"
+],
+a:0,
+e:"The fish is notable for its translucent body and absence of a skull roof."
+},
+
+{
+q:"H.K. Dua received which civilian award from the Government of India in 1998?",
+o:[
+"Padma Shri",
+"Padma Bhushan",
+"Padma Vibhushan",
+"Bharat Ratna"
+],
+a:1,
+e:"Veteran journalist and diplomat H.K. Dua was awarded the Padma Bhushan in 1998."
+},
+
+{
+q:"Which phrase correctly represents the theme of World Wildlife Day 2026?",
+o:[
+"Medicinal and Aromatic Plants: Conserving Health, Heritage and Livelihoods",
+"Recovering Key Species for Ecosystem Restoration",
+"Big Cats: Predators Under Threat",
+"Wildlife and Climate Action"
+],
+a:0,
+e:"The 2026 theme focused on medicinal and aromatic plants and their contribution to health, heritage and livelihoods."
+},
+
+{
+q:"Why was March 3 selected for World Hearing Day?",
+o:[
+"The date marks the WHO's founding",
+"The digits 3 and 3 resemble ears",
+"It is the date of the first hearing aid",
+"It marks the discovery of sound"
+],
+a:1,
+e:"The two digits '3' visually resemble the shape of human ears."
+},
+
+{
+q:"National Security Day in India is observed on:",
+o:[
+"March 1",
+"March 4",
+"March 8",
+"March 15"
+],
+a:1,
+e:"National Security Day is observed annually on March 4."
+},
+
+{
+q:"The National Security Council of India was established during the tenure of which Prime Minister?",
+o:[
+"Rajiv Gandhi",
+"Atal Bihari Vajpayee",
+"Manmohan Singh",
+"Indira Gandhi"
+],
+a:1,
+e:"The National Security Council was established in 1998 during Atal Bihari Vajpayee's tenure."
+},
+
+{
+q:"Telangana's ₹12.66 crore Challenge Fund under SERP targets primarily:",
+o:[
+"Women and young entrepreneurs",
+"Only large industries",
+"Only government employees",
+"Foreign investors"
+],
+a:0,
+e:"The fund is intended to support women and young entrepreneurs, particularly in rural areas."
+},
+
+{
+q:"Which organizations were cited as partners in implementing Telangana's Challenge Fund?",
+o:[
+"TBIS, T-Hub and WE Hub",
+"ISRO, DRDO and BARC",
+"SEBI, RBI and NABARD",
+"UNDP, UNESCO and WHO"
+],
+a:0,
+e:"The cited partnership includes TBIS, T-Hub and WE Hub along with SERP."
+},
+
+{
+q:"The Uttar Pradesh government signed a ₹200 crore MoU with which German company for rail infrastructure?",
+o:[
+"RAILONE GmbH",
+"Siemens AG",
+"Deutsche Bahn",
+"Alstom"
+],
+a:0,
+e:"The MoU was signed with Germany's RAILONE GmbH for rail-track technology and concrete sleeper manufacturing."
+},
+
+{
+q:"The Garo-derived word 'Gitchak' in the name of the newly reported Assam fish refers to:",
+o:[
+"Red",
+"Blind",
+"Small",
+"River"
+],
+a:0,
+e:"The source explains that Gitchak means 'red'; other parts of the name refer to the fish's lack of eyes."
+}
+
+];
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentQuestion = 0;
+
+let answers = new Array(questions.length).fill(null);
+
+let submitted = false;
+
+let timeLeft = 60 * 60;
+
+let timerInterval;
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const questionText =
+document.getElementById("questionText");
+
+const optionsContainer =
+document.getElementById("options");
+
+const questionNumber =
+document.getElementById("questionNumber");
+
+const progressText =
+document.getElementById("progressText");
+
+const palette =
+document.getElementById("palette");
+
+const timer =
+document.getElementById("timer");
+
+const result =
+document.getElementById("result");
+
+
+/* =========================================================
+   LOAD QUESTION
+========================================================= */
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    questionNumber.innerText =
+    "Question " + (currentQuestion + 1);
+
+    progressText.innerText =
+    (currentQuestion + 1) + " / " + questions.length;
+
+    questionText.innerText =
+    q.q;
+
+    optionsContainer.innerHTML = "";
+
+    q.o.forEach((option,index)=>{
+
+        const div =
+        document.createElement("div");
+
+        div.className = "option";
+
+        div.innerHTML =
+        "<b>" +
+        String.fromCharCode(65 + index) +
+        ")</b> " +
+        option;
+
+        if(answers[currentQuestion] === index){
+
+            div.classList.add("selected");
+
+        }
+
+        if(submitted){
+
+            div.classList.add("disabled");
+
+            if(index === q.a){
+
+                div.classList.add("correct");
+
+            }
+
+            if(
+                answers[currentQuestion] === index &&
+                index !== q.a
+            ){
+
+                div.classList.add("wrong");
+
+            }
+
+        }
+
+        div.onclick = function(){
+
+            if(submitted){
+                return;
+            }
+
+            selectAnswer(index);
+
+        };
+
+        optionsContainer.appendChild(div);
+
+    });
+
+    updatePalette();
+
+}
+
+
+/* =========================================================
+   SELECT ANSWER
+========================================================= */
+
+function selectAnswer(index){
+
+    answers[currentQuestion] = index;
+
+    loadQuestion();
+
+}
+
+
+/* =========================================================
+   PALETTE
+========================================================= */
+
+function createPalette(){
+
+    palette.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const btn =
+        document.createElement("button");
+
+        btn.className = "palette-btn";
+
+        btn.innerText = index + 1;
+
+        btn.onclick = function(){
+
+            currentQuestion = index;
+
+            loadQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+        palette.appendChild(btn);
+
+    });
+
+}
+
+
+function updatePalette(){
+
+    const buttons =
+    document.querySelectorAll(".palette-btn");
+
+    buttons.forEach((btn,index)=>{
+
+        btn.classList.remove("current");
+        btn.classList.remove("attempted");
+
+        if(index === currentQuestion){
+
+            btn.classList.add("current");
+
+        }
+
+        if(answers[index] !== null){
+
+            btn.classList.add("attempted");
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   NEXT / PREVIOUS
+========================================================= */
+
+function nextQuestion(){
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function startTimer(){
+
+    timerInterval =
+    setInterval(()=>{
+
+        if(timeLeft <= 0){
+
+            clearInterval(timerInterval);
+
+            alert(
+                "Time is over. Your test will be submitted automatically."
+            );
+
+            submitTest();
+
+            return;
+
+        }
+
+        timeLeft--;
+
+        const minutes =
+        Math.floor(timeLeft / 60);
+
+        const seconds =
+        timeLeft % 60;
+
+        timer.innerText =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+        if(timeLeft <= 300){
+
+            timer.classList.add("warning");
+
+        }
+
+    },1000);
+
+}
+
+
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
+function submitTest(){
+
+    if(submitted){
+        return;
+    }
+
+    const attempted =
+    answers.filter(a => a !== null).length;
+
+    const unanswered =
+    questions.length - attempted;
+
+    if(attempted < questions.length){
+
+        const confirmSubmit =
+        confirm(
+            "You have " +
+            unanswered +
+            " unanswered question(s). Are you sure you want to submit?"
+        );
+
+        if(!confirmSubmit){
+            return;
+        }
+
+    }
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+
+    answers.forEach((answer,index)=>{
+
+        if(answer === questions[index].a){
+
+            correct++;
+
+        }
+
+    });
+
+    const wrong =
+    attempted - correct;
+
+    const score =
+    correct;
+
+    document.getElementById("score").innerText =
+    score + " / " + questions.length;
+
+    document.getElementById("correctCount").innerText =
+    correct;
+
+    document.getElementById("wrongCount").innerText =
+    wrong;
+
+    document.getElementById("unattemptedCount").innerText =
+    unanswered;
+
+    showSolutions();
+
+    result.style.display = "block";
+
+    window.scrollTo({
+        top:result.offsetTop - 20,
+        behavior:"smooth"
+    });
+
+    loadQuestion();
+
+}
+
+
+/* =========================================================
+   SHOW SOLUTIONS
+========================================================= */
+
+function showSolutions(){
+
+    const container =
+    document.getElementById("solutionContainer");
+
+    container.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const div =
+        document.createElement("div");
+
+        div.className = "solution";
+
+        const answerLetter =
+        String.fromCharCode(65 + q.a);
+
+        const userAnswer =
+        answers[index] === null
+        ? "Not Attempted"
+        : String.fromCharCode(65 + answers[index]) +
+          ") " +
+          q.o[answers[index]];
+
+        div.innerHTML =
+
+        "<div class='solution-q'>" +
+        "Q" + (index + 1) + ". " +
+        q.q +
+        "</div>" +
+
+        "<div class='solution-answer'>" +
+        "Correct Answer: " +
+        answerLetter +
+        ") " +
+        q.o[q.a] +
+        "</div>" +
+
+        "<div class='solution-exp'>" +
+        "<b>Your Answer:</b> " +
+        userAnswer +
+        "<br><br>" +
+        "<b>Explanation:</b> " +
+        q.e +
+        "</div>";
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+createPalette();
+
+loadQuestion();
+
+startTimer();
+
+
+/* =========================================================
+   PREVENT ACCIDENTAL PAGE LEAVE
+========================================================= */
+
+window.addEventListener("beforeunload",function(e){
+
+    if(!submitted){
+
+        e.preventDefault();
+
+        e.returnValue = "";
+
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>
