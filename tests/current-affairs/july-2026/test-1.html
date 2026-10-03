@@ -1,1 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | July 2026 Current Affairs Test 1</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f1f5f9;
+    color:#1e293b;
+}
+
+.header{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    padding:18px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.header h1{
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+.header p{
+    font-size:14px;
+}
+
+.test-info{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.badge{
+    background:white;
+    color:#0f172a;
+    padding:7px 12px;
+    border-radius:20px;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.timer{
+    background:#dc2626;
+    color:white;
+    padding:7px 14px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.container{
+    max-width:1200px;
+    margin:20px auto;
+    padding:0 15px;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 270px;
+    gap:20px;
+}
+
+.question-card{
+    background:white;
+    padding:22px;
+    border-radius:12px;
+    margin-bottom:18px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.qno{
+    display:inline-block;
+    background:#1d4ed8;
+    color:white;
+    padding:5px 10px;
+    border-radius:6px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:18px;
+    font-weight:bold;
+    line-height:1.5;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    border:1px solid #cbd5e1;
+    padding:12px;
+    border-radius:8px;
+    margin:9px 0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#eff6ff;
+    border-color:#2563eb;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.option.correct{
+    background:#dcfce7;
+    border-color:#16a34a;
+}
+
+.option.wrong{
+    background:#fee2e2;
+    border-color:#dc2626;
+}
+
+.sidebar{
+    background:white;
+    border-radius:12px;
+    padding:18px;
+    height:max-content;
+    position:sticky;
+    top:115px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.sidebar h3{
+    margin-bottom:12px;
+    text-align:center;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qbtn{
+    height:38px;
+    border:1px solid #cbd5e1;
+    background:#f8fafc;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.qbtn.attempted{
+    background:#16a34a;
+    color:white;
+    border-color:#16a34a;
+}
+
+.qbtn.current{
+    outline:3px solid #93c5fd;
+}
+
+.legend{
+    margin-top:15px;
+    font-size:13px;
+}
+
+.legend span{
+    display:inline-block;
+    width:13px;
+    height:13px;
+    margin-right:5px;
+    vertical-align:middle;
+    border-radius:3px;
+}
+
+.green{background:#16a34a;}
+.grey{background:#f8fafc;border:1px solid #cbd5e1;}
+
+.submit-area{
+    text-align:center;
+    margin:30px 0;
+}
+
+.submit-btn{
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:14px 35px;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#15803d;
+}
+
+.result{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    text-align:center;
+}
+
+.result h2{
+    color:#1d4ed8;
+    margin-bottom:15px;
+}
+
+.score{
+    font-size:32px;
+    font-weight:bold;
+    margin:10px;
+}
+
+.solution{
+    display:none;
+    margin-top:15px;
+    padding:14px;
+    background:#f8fafc;
+    border-left:4px solid #1d4ed8;
+    line-height:1.5;
+}
+
+.explanation{
+    color:#334155;
+    margin-top:6px;
+}
+
+@media(max-width:800px){
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        position:relative;
+        top:0;
+        order:-1;
+    }
+
+    .question{
+        font-size:16px;
+    }
+
+    .header h1{
+        font-size:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>AIMERS CLASSES</h1>
+    <p>JULY 2026 CURRENT AFFAIRS — TEST 1</p>
+
+    <div class="test-info">
+        <div class="badge">100 Questions</div>
+        <div class="badge">SSC CGL / Railway Level</div>
+        <div class="badge">+1 Correct</div>
+        <div class="badge">−0.33 Wrong</div>
+        <div class="timer" id="timer">60:00</div>
+    </div>
+</div>
+
+<div class="container">
+
+<div id="result" class="result">
+    <h2>TEST RESULT</h2>
+    <div class="score" id="score"></div>
+    <p id="details"></p>
+    <br>
+    <button class="submit-btn" onclick="showSolutions()">SHOW SOLUTIONS</button>
+</div>
+
+<div class="layout">
+
+<div id="quiz"></div>
+
+<div class="sidebar">
+    <h3>QUESTION PAPER</h3>
+    <div class="question-grid" id="questionGrid"></div>
+
+    <div class="legend">
+        <p><span class="green"></span> Attempted</p>
+        <p><span class="grey"></span> Not Attempted</p>
+    </div>
+
+    <br>
+    <p style="font-size:13px;line-height:1.5;">
+        <b>Marking Scheme</b><br>
+        Correct: +1<br>
+        Wrong: −0.33<br>
+        Unattempted: 0
+    </p>
+</div>
+
+</div>
+
+<div class="submit-area">
+    <button class="submit-btn" onclick="submitTest()">SUBMIT TEST</button>
+</div>
+
+</div>
+
+<script>
+
+const questions = [
+
+{
+q:"The VB-G RAM G Act, which came into force nationwide in July 2026, guarantees how many days of rural employment?",
+o:["100 days","110 days","125 days","150 days"],
+a:2,
+e:"The VB-G RAM G framework raised the rural employment guarantee to 125 days."
+},
+
+{
+q:"The India-UK Comprehensive Economic and Trade Agreement (CETA) came into force on which date in July 2026?",
+o:["1 July","10 July","15 July","31 July"],
+a:2,
+e:"The India-UK CETA came into force on 15 July 2026."
+},
+
+{
+q:"Under the India-UK trade agreement, approximately what share of India's exports received zero-duty access to the UK market?",
+o:["75%","85%","90%","99%"],
+a:3,
+e:"The agreement provided zero-duty access on nearly 99% of India's exports."
+},
+
+{
+q:"India's retail CPI inflation for June 2026 was reported at:",
+o:["3.93%","4.38%","5.32%","6.01%"],
+a:1,
+e:"Retail CPI inflation rose to 4.38% in June 2026."
+},
+
+{
+q:"Food inflation in India reached what level in June 2026?",
+o:["3.93%","4.38%","5.32%","6.12%"],
+a:2,
+e:"Food inflation was reported at 5.32%."
+},
+
+{
+q:"Which institution released the Investment Friendliness Index for States and Union Territories in July 2026?",
+o:["RBI","NITI Aayog","SEBI","Finance Commission"],
+a:1,
+e:"NITI Aayog released the Investment Friendliness Index."
+},
+
+{
+q:"How many States and Union Territories were covered by the Investment Friendliness Index?",
+o:["25 States and 5 UTs","28 States and 8 UTs","29 States and 7 UTs","30 States and 6 UTs"],
+a:1,
+e:"The index covered 28 States and 8 Union Territories."
+},
+
+{
+q:"Which state was listed among the leading states in the Investment Friendliness Index?",
+o:["Gujarat","Bihar","Assam","Goa"],
+a:0,
+e:"Gujarat was among the leading states, along with Maharashtra and Tamil Nadu."
+},
+
+{
+q:"UPI registrations reached approximately how many users by June 2026?",
+o:["25.49 crore","35.49 crore","45.49 crore","55.49 crore"],
+a:3,
+e:"UPI registrations reached 55.49 crore by June 2026."
+},
+
+{
+q:"India Post recorded first-quarter revenue of approximately:",
+o:["₹2,009 crore","₹3,009 crore","₹4,009 crore","₹5,009 crore"],
+a:2,
+e:"India Post reported Q1 revenue of over ₹4,000 crore, around ₹4,009 crore."
+},
+
+{
+q:"India Post's first-quarter revenue increased year-on-year by approximately:",
+o:["12%","18%","22%","30%"],
+a:2,
+e:"India Post's Q1 revenue increased by about 22% year-on-year."
+},
+
+{
+q:"India's first commercial sea-route mango shipment was sent from Amroha to which destination?",
+o:["London","Dubai","Singapore","Doha"],
+a:1,
+e:"The first commercial sea-route shipment of mangoes was sent from Amroha to Dubai."
+},
+
+{
+q:"Approximately how much mango was included in India's first commercial sea-route shipment to Dubai?",
+o:["5.5 tonnes","8.5 tonnes","12.5 tonnes","20 tonnes"],
+a:2,
+e:"The shipment contained about 12.5 tonnes of mangoes."
+},
+
+{
+q:"The eighth tranche of auctions launched by the Mines Ministry offered how many critical and strategic mineral blocks?",
+o:["10","15","20","25"],
+a:2,
+e:"The eighth tranche offered 20 critical and strategic mineral blocks."
+},
+
+{
+q:"The eighth tranche of critical and strategic mineral auctions was associated with which ministry?",
+o:["Ministry of Coal","Ministry of Mines","Ministry of Steel","Ministry of Commerce"],
+a:1,
+e:"The Ministry of Mines handled the auction tranche."
+},
+
+{
+q:"The Adani-IHC aluminium project announced in July 2026 was associated with which state?",
+o:["Odisha","Gujarat","Jharkhand","Chhattisgarh"],
+a:0,
+e:"The project was associated with Odisha."
+},
+
+{
+q:"The approximate investment commitment of the Adani-IHC Odisha aluminium project was:",
+o:["₹48,000 crore","₹75,000 crore","₹1.08 lakh crore","₹2 lakh crore"],
+a:2,
+e:"The reported commitment was approximately ₹1.08 lakh crore."
+},
+
+{
+q:"PLI-Auto applicants reported investment of approximately:",
+o:["₹24,326 crore","₹34,326 crore","₹44,326 crore","₹54,326 crore"],
+a:2,
+e:"PLI-Auto applicants reported ₹44,326 crore of investment."
+},
+
+{
+q:"The PLI-Auto investment target referred to in July 2026 was:",
+o:["₹32,500 crore","₹42,500 crore","₹52,500 crore","₹62,500 crore"],
+a:1,
+e:"The reported target was ₹42,500 crore."
+},
+
+{
+q:"Which organisation's Delhi IP Awards 2026 recognised 47 patents?",
+o:["C-DOT","DRDO","ISRO","CSIR"],
+a:0,
+e:"C-DOT recognised 47 patents at its Delhi IP Awards 2026."
+},
+
+{
+q:"How many innovators were recognised at the C-DOT Delhi IP Awards 2026?",
+o:["44","54","64","74"],
+a:2,
+e:"The awards recognised 64 innovators."
+},
+
+{
+q:"How many copyrights were recognised at the C-DOT Delhi IP Awards 2026?",
+o:["3","5","8","10"],
+a:0,
+e:"The event recognised 3 copyrights."
+},
+
+{
+q:"Rajasthan became the first state to operationalise an exploration licence for which type of elements?",
+o:["Rare-earth elements","Radioactive gases","Precious metals","Coal-bed methane"],
+a:0,
+e:"Rajasthan became the first state to operationalise an exploration licence for rare-earth elements."
+},
+
+{
+q:"The rare-earth exploration licence in Rajasthan covered approximately:",
+o:["107.63 sq km","157.63 sq km","207.63 sq km","307.63 sq km"],
+a:2,
+e:"The licence covered about 207.63 sq km in Balotra and Jodhpur."
+},
+
+{
+q:"The rare-earth exploration licence in Rajasthan covered areas including:",
+o:["Jaipur and Ajmer","Balotra and Jodhpur","Kota and Udaipur","Bikaner and Alwar"],
+a:1,
+e:"The area included Balotra and Jodhpur."
+},
+
+{
+q:"Which programme expanded market access for women-led self-help groups through SARAS and e-commerce?",
+o:["DAY-NRLM","PM-KISAN","PMAY","PM SVANidhi"],
+a:0,
+e:"DAY-NRLM expanded market access for women-led SHGs."
+},
+
+{
+q:"The National Family Benefit Scheme shifted fund release to which system?",
+o:["DBT-Aadhaar","SNA-SPARSH","PFMS-Plus","UPI-Government"],
+a:1,
+e:"Fund release was shifted to the SNA-SPARSH system."
+},
+
+{
+q:"The National Committee on Dam Safety set what month in 2026 as a timeline for statutory safety work?",
+o:["September","October","November","December"],
+a:3,
+e:"The committee set December 2026 as the timeline."
+},
+
+{
+q:"Which organisation released the 47th CPGRAMS report for States and Union Territories?",
+o:["DARPG","NITI Aayog","UPSC","CVC"],
+a:0,
+e:"DARPG released the 47th CPGRAMS report."
+},
+
+{
+q:"CPGRAMS is primarily associated with:",
+o:["Public grievance redressal","Tax collection","Election management","Defence procurement"],
+a:0,
+e:"CPGRAMS is the Centralised Public Grievance Redress and Monitoring System."
+},
+
+{
+q:"The National Family Benefit Scheme is primarily associated with support to:",
+o:["Families facing the death of a primary breadwinner","Students","Farmers","Exporters"],
+a:0,
+e:"The scheme provides assistance to eligible families after the death of the primary breadwinner."
+},
+
+{
+q:"The PM Vishwakarma basic-skills training programme had reached approximately how many beneficiaries by July 2026?",
+o:["14.29 lakh","19.29 lakh","24.29 lakh","34.29 lakh"],
+a:2,
+e:"Basic-skills training under PM Vishwakarma had reached about 24.29 lakh beneficiaries."
+},
+
+{
+q:"PM-ONOS provided access to journals across approximately how many institutions?",
+o:["2,499","5,499","7,499","9,499"],
+a:2,
+e:"PM-ONOS provided access across 7,499 institutions."
+},
+
+{
+q:"PM-ONOS provided access to more than how many journals?",
+o:["5,000","8,000","10,000","13,000"],
+a:3,
+e:"PM-ONOS provides access to more than 13,000 journals."
+},
+
+{
+q:"PM-AJAY's Adarsh Gram component reached approximately how many beneficiaries?",
+o:["27.59 lakh","37.59 lakh","47.59 lakh","57.59 lakh"],
+a:2,
+e:"The Adarsh Gram component reached around 47.59 lakh beneficiaries."
+},
+
+{
+q:"PM-AJAY's Adarsh Gram component covered approximately how many villages?",
+o:["27,316","37,316","47,316","57,316"],
+a:2,
+e:"It covered approximately 47,316 villages."
+},
+
+{
+q:"Which state sanctioned ₹335 crore under PM-RKVY in July 2026?",
+o:["Maharashtra","Odisha","Rajasthan","Punjab"],
+a:0,
+e:"₹335 crore was sanctioned for Maharashtra under PM-RKVY."
+},
+
+{
+q:"Which ministry/sector is PM-RKVY primarily associated with?",
+o:["Agriculture","Defence","Tourism","Railways"],
+a:0,
+e:"PM-RKVY is an agriculture-sector scheme."
+},
+
+{
+q:"The Kharif sowing area stood at approximately how many lakh hectares through 24 July 2026?",
+o:["687.37 lakh hectares","737.37 lakh hectares","787.37 lakh hectares","837.37 lakh hectares"],
+a:2,
+e:"Kharif sowing area stood at 787.37 lakh hectares."
+},
+
+{
+q:"Which country was the destination of India's first commercial sea-route Dashehari and Langra mango shipment?",
+o:["UAE","UK","Japan","Australia"],
+a:0,
+e:"The mango shipment was sent to Dubai in the UAE."
+},
+
+{
+q:"Which organisation facilitates agricultural and processed food exports from India?",
+o:["APEDA","SEBI","TRAI","NPCI"],
+a:0,
+e:"APEDA facilitates agricultural and processed food exports."
+},
+
+{
+q:"India's first privately developed orbital launch vehicle to reach orbit was:",
+o:["Vikram-1","SSLV-D4","GSLV-F16","PSLV-C62"],
+a:0,
+e:"Skyroot's Vikram-1 became India's first privately developed orbital launch vehicle to reach orbit."
+},
+
+{
+q:"Vikram-1 was developed by which Indian private space company?",
+o:["Skyroot Aerospace","Pixxel","Agnikul Cosmos","Bellatrix Aerospace"],
+a:0,
+e:"Vikram-1 was developed by Skyroot Aerospace."
+},
+
+{
+q:"Vikram-1 reached orbit from which Indian spaceport?",
+o:["Thumba","Sriharikota","Kulasekarapattinam","Mahendragiri"],
+a:1,
+e:"The launch took place from Sriharikota."
+},
+
+{
+q:"Which Indian agency conducted major tests of Gaganyaan crew-module systems in July 2026?",
+o:["ISRO","DRDO","HAL","CSIR"],
+a:0,
+e:"ISRO carried out major tests related to Gaganyaan crew-module systems."
+},
+
+{
+q:"Gaganyaan is India's programme for:",
+o:["Human spaceflight","Deep-sea exploration","Lunar mining","Mars rover operations"],
+a:0,
+e:"Gaganyaan is India's human spaceflight programme."
+},
+
+{
+q:"NISAR mapping reported ground displacement of up to approximately how much after Venezuela earthquakes?",
+o:["20 cm","40 cm","60 cm","100 cm"],
+a:2,
+e:"NISAR observations mapped ground displacement of up to 60 cm."
+},
+
+{
+q:"NISAR is associated with cooperation between India and which country?",
+o:["USA","France","Japan","Russia"],
+a:0,
+e:"NISAR is a joint Earth-observation mission of ISRO and NASA."
+},
+
+{
+q:"Which organisation conducted the first successful flight test of the long-range surface-to-air missile Kusha?",
+o:["DRDO","ISRO","HAL","BEL"],
+a:0,
+e:"DRDO conducted the first successful flight test of the Kusha system."
+},
+
+{
+q:"Project Kusha is related to:",
+o:["Long-range surface-to-air missile capability","Submarine construction","Cyber security","Space docking"],
+a:0,
+e:"Project Kusha concerns India's long-range surface-to-air missile capability."
+},
+
+{
+q:"Which organisation made an indigenous 1.2 µm Process Design Kit available on eChipHub?",
+o:["NIELIT and SCL Mohali","ISRO and NASA","DRDO and HAL","CSIR and IIT Delhi"],
+a:0,
+e:"NIELIT and SCL Mohali made the indigenous 1.2 µm PDK available on eChipHub."
+},
+
+{
+q:"A Process Design Kit is primarily used in:",
+o:["Semiconductor chip design","Railway signalling","Agricultural irrigation","Satellite navigation"],
+a:0,
+e:"A PDK is used in semiconductor integrated-circuit design."
+},
+
+{
+q:"The Cabinet-approved Semicon 2.0 programme had an outlay of approximately:",
+o:["₹72,500 crore","₹97,500 crore","₹1,27,500 crore","₹1,75,000 crore"],
+a:2,
+e:"Semicon 2.0 was approved with an outlay of about ₹1,27,500 crore."
+},
+
+{
+q:"The Mobile Phone Manufacturing Scheme approved in July 2026 had an outlay of:",
+o:["₹32,500 crore","₹42,500 crore","₹52,500 crore","₹62,500 crore"],
+a:3,
+e:"The Mobile Phone Manufacturing Scheme had an outlay of ₹62,500 crore."
+},
+
+{
+q:"The combined July 2026 semiconductor and mobile-phone manufacturing package was primarily aimed at:",
+o:["Electronics manufacturing","Tourism","Textiles","Food processing"],
+a:0,
+e:"The package focused on strengthening electronics and semiconductor manufacturing."
+},
+
+{
+q:"Which indigenous technology was supported by TDB for commercial production of functional and textured soy protein concentrates?",
+o:["SPC-based process","Hydrogen electrolysis","Quantum encryption","Graphene battery"],
+a:0,
+e:"TDB backed an indigenous SPC-based process for soy protein concentrate production."
+},
+
+{
+q:"TDB stands for:",
+o:["Technology Development Board","Trade Development Bank","Telecom Development Bureau","Technology Data Bureau"],
+a:0,
+e:"TDB stands for Technology Development Board."
+},
+
+{
+q:"India reviewed its Sustainable Aviation Fuel roadmap ahead of the mandatory phase of which international aviation mechanism?",
+o:["CORSIA","MARPOL","ICAO-MARPOL","Basel Convention"],
+a:0,
+e:"India reviewed its SAF roadmap ahead of the mandatory phase of CORSIA."
+},
+
+{
+q:"The mandatory phase of CORSIA referred to in July 2026 begins on:",
+o:["1 January 2026","1 January 2027","1 April 2027","1 July 2027"],
+a:1,
+e:"The mandatory phase begins on 1 January 2027."
+},
+
+{
+q:"CORSIA is primarily associated with:",
+o:["International aviation carbon emissions","Maritime piracy","Nuclear safety","Food security"],
+a:0,
+e:"CORSIA is the Carbon Offsetting and Reduction Scheme for International Aviation."
+},
+
+{
+q:"India's first dengue vaccine was approved by which body in July 2026?",
+o:["CDSCO","SEBI","RBI","IRDAI"],
+a:0,
+e:"CDSCO approved Qdenga as India's first dengue vaccine."
+},
+
+{
+q:"What is the name of the dengue vaccine approved in India in July 2026?",
+o:["Qdenga","Covaxin","Cervarix","Rotavac"],
+a:0,
+e:"The vaccine is Qdenga."
+},
+
+{
+q:"Which organisation approved Qdenga as India's first dengue vaccine?",
+o:["CDSCO","WHO","ICMR","AIIMS"],
+a:0,
+e:"The Central Drugs Standard Control Organisation approved Qdenga."
+},
+
+{
+q:"India won four gold medals at which international science Olympiad in July 2026?",
+o:["International Chemistry Olympiad","International Biology Olympiad","International Physics Olympiad","International Mathematics Olympiad"],
+a:0,
+e:"Indian students won four gold medals at the International Chemistry Olympiad."
+},
+
+{
+q:"The 58th International Chemistry Olympiad was associated with India's performance of:",
+o:["Four gold medals","Two gold medals","Five silver medals","Three bronze medals"],
+a:0,
+e:"India won four gold medals."
+},
+
+{
+q:"Which organisation's study found that drone transport can speed up TB diagnosis in remote areas of Telangana?",
+o:["ICMR","ISRO","DRDO","NITI Aayog"],
+a:0,
+e:"An ICMR study examined drone transport for faster TB diagnosis."
+},
+
+{
+q:"The drone-based TB diagnosis study mentioned in July 2026 was conducted in which Indian state?",
+o:["Telangana","Kerala","Odisha","Gujarat"],
+a:0,
+e:"The study concerned remote areas of Telangana."
+},
+
+{
+q:"Which programme promotes mechanised sanitation and welfare support for sanitation workers?",
+o:["NAMASTE","PM-SVANidhi","DAY-NRLM","PM-AJAY"],
+a:0,
+e:"The NAMASTE scheme supports mechanised sanitation and the welfare of sanitation workers."
+},
+
+{
+q:"The Bharat 6G Alliance review in July 2026 highlighted progress mainly in:",
+o:["Patent filings and standards participation","Coal production","Textile exports","Agricultural subsidies"],
+a:0,
+e:"The review highlighted patent filings and participation in standards."
+},
+
+{
+q:"Which city hosted the 12th BRICS Labour and Employment Ministers' Meeting in July 2026?",
+o:["New Delhi","Hyderabad","Mumbai","Bengaluru"],
+a:1,
+e:"The 12th BRICS Labour and Employment Ministers' Meeting was hosted in Hyderabad."
+},
+
+{
+q:"Which country held the BRICS chairship under which India hosted the 12th BRICS Labour and Employment Ministers' Meeting?",
+o:["India","Brazil","Russia","South Africa"],
+a:0,
+e:"India held the BRICS chairship in 2026."
+},
+
+{
+q:"The BRICS Transport Ministers' Meeting mentioned in July 2026 was held in:",
+o:["Nagpur","Pune","Hyderabad","Chennai"],
+a:0,
+e:"The 3rd BRICS Transport Ministers' Meeting was held in Nagpur."
+},
+
+{
+q:"Which international organisation's commission approved a cashew kernel standard proposal involving India?",
+o:["Codex Alimentarius Commission","WTO","UNCTAD","FAO Council"],
+a:0,
+e:"The 49th Codex Alimentarius Commission session approved the cashew kernel standard proposal."
+},
+
+{
+q:"The 49th session of the Codex Alimentarius Commission dealt with standards mainly related to:",
+o:["Food","Defence","Space","Banking"],
+a:0,
+e:"The Codex Alimentarius Commission develops international food standards."
+},
+
+{
+q:"India and Indonesia discussed cooperation involving which missile system in July 2026?",
+o:["BrahMos","Akash","Prithvi","Nag"],
+a:0,
+e:"India and Indonesia discussed BrahMos cooperation."
+},
+
+{
+q:"India and which country announced a Strategic Partnership and a roadmap to 2030 in July 2026?",
+o:["New Zealand","Canada","Brazil","Germany"],
+a:0,
+e:"India and New Zealand announced a Strategic Partnership and endorsed a roadmap to 2030."
+},
+
+{
+q:"India and Australia issued a joint statement in July 2026 focusing on:",
+o:["Energy security","Space tourism","Cricket","Tourism visas only"],
+a:0,
+e:"Energy security was a major focus of the India-Australia joint statement."
+},
+
+{
+q:"Which country was associated with India's discussions on uranium cooperation in July 2026?",
+o:["Australia","Indonesia","Japan","New Zealand"],
+a:0,
+e:"Australia was associated with discussions on energy and uranium cooperation."
+},
+
+{
+q:"The India-UK Social Security Agreement came into force on the same date as which agreement?",
+o:["CETA","RCEP","CEPA with UAE","FTA with Australia"],
+a:0,
+e:"The Social Security Agreement and India-UK CETA came into force on 15 July 2026."
+},
+
+{
+q:"Sarnath was added to the UNESCO World Heritage List in which month and year?",
+o:["June 2026","July 2026","August 2026","September 2026"],
+a:1,
+e:"Sarnath was inscribed in July 2026."
+},
+
+{
+q:"After Sarnath's inscription, how many World Heritage properties did India have?",
+o:["43","44","45","46"],
+a:2,
+e:"Sarnath became India's 45th World Heritage property."
+},
+
+{
+q:"Sarnath is located near which major Indian city?",
+o:["Varanasi","Lucknow","Prayagraj","Kanpur"],
+a:0,
+e:"Sarnath is located near Varanasi in Uttar Pradesh."
+},
+
+{
+q:"Sarnath is historically associated with which event in the Buddha's life?",
+o:["First sermon","Birth","Enlightenment","Mahaparinirvana"],
+a:0,
+e:"Sarnath is traditionally associated with Buddha's first sermon."
+},
+
+{
+q:"Which stupa is one of the important archaeological remains at Sarnath?",
+o:["Dhamek Stupa","Sanchi Stupa","Amaravati Stupa","Kesaria Stupa"],
+a:0,
+e:"The Dhamek Stupa is among the important remains at Sarnath."
+},
+
+{
+q:"Sarnath was inscribed under which broad UNESCO World Heritage category?",
+o:["Cultural","Natural","Mixed","Marine"],
+a:0,
+e:"Sarnath was inscribed as a cultural World Heritage property."
+},
+
+{
+q:"The 48th session of the World Heritage Committee associated with Sarnath was held in:",
+o:["Busan","Seoul","Tokyo","New Delhi"],
+a:0,
+e:"The World Heritage Committee session was held in Busan, Republic of Korea."
+},
+
+{
+q:"The Monsoon Session of Parliament in 2026 was scheduled to begin on:",
+o:["1 July","10 July","20 July","25 July"],
+a:2,
+e:"The Monsoon Session was scheduled from 20 July to 13 August 2026."
+},
+
+{
+q:"The 2026 Monsoon Session of Parliament was scheduled to continue until:",
+o:["31 July","5 August","13 August","20 August"],
+a:2,
+e:"The scheduled period ran until 13 August 2026."
+},
+
+{
+q:"Which amendment received statutory protection in July 2026 according to current-affairs reports?",
+o:["Vande Mataram-related national honour amendment","National Anthem Tax Act","Flag Protection Act","Census Amendment"],
+a:0,
+e:"Parliament passed an amendment providing statutory protection concerning Vande Mataram."
+},
+
+{
+q:"Which major examination-related issue dominated national current affairs toward the end of July 2026?",
+o:["NEET-UG paper leak","UPSC syllabus change","SSC calendar cancellation","Railway privatisation"],
+a:0,
+e:"The NEET-UG paper-leak issue became a major national current-affairs development."
+},
+
+{
+q:"Which Union Minister resigned in connection with the Education Ministry during the July 2026 NEET-UG controversy?",
+o:["Dharmendra Pradhan","Pralhad Joshi","Piyush Goyal","Ashwini Vaishnaw"],
+a:0,
+e:"Dharmendra Pradhan resigned as Education Minister."
+},
+
+{
+q:"Who took charge of the Education Ministry after Dharmendra Pradhan's resignation according to July 2026 reports?",
+o:["Pralhad Joshi","Manohar Lal","Jual Oram","Gajendra Shekhawat"],
+a:0,
+e:"Pralhad Joshi took charge of the Education Ministry."
+},
+
+{
+q:"A six-member task force headed by whom was associated with reforms in the National Testing Agency?",
+o:["Nandan Nilekani","Ratan Tata","S. Jaishankar","N. Chandrasekaran"],
+a:0,
+e:"A six-member Nilekani task force was associated with NTA reform."
+},
+
+{
+q:"The Public Examinations Amendment Bill mentioned in July 2026 was mainly aimed at:",
+o:["Curbing examination malpractice and leaks","Increasing GST","Changing banking rules","Reforming railways"],
+a:0,
+e:"The bill targeted examination malpractice and paper leaks."
+},
+
+{
+q:"Which airport began regular flight operations with a new terminal in July 2026?",
+o:["Jodhpur Airport","Jaipur Airport","Udaipur Airport","Kota Airport"],
+a:0,
+e:"Jodhpur Airport's new terminal began regular flight operations."
+},
+
+{
+q:"The Lucknow-Kanpur Expressway inaugurated in July 2026 is located in which state?",
+o:["Uttar Pradesh","Madhya Pradesh","Rajasthan","Bihar"],
+a:0,
+e:"The Lucknow-Kanpur Expressway is in Uttar Pradesh."
+},
+
+{
+q:"The length of the Lucknow-Kanpur Expressway mentioned in July 2026 was approximately:",
+o:["43 km","53 km","63 km","73 km"],
+a:2,
+e:"The expressway is approximately 63 km long."
+},
+
+{
+q:"Which cooperative mobility service was launched in Jaipur in July 2026?",
+o:["Bharat Taxi","Bharat Metro","Bharat Auto","Bharat Ride"],
+a:0,
+e:"Rajasthan launched Bharat Taxi cooperative mobility service in Jaipur."
+},
+
+{
+q:"Which city planned an AI-based Intelligent Traffic Management System at 253 intersections?",
+o:["Jaipur","Jodhpur","Udaipur","Kota"],
+a:0,
+e:"Jaipur planned the AI-based system at 253 intersections."
+},
+
+{
+q:"Which state launched Bharat Taxi cooperative mobility service in Jaipur?",
+o:["Rajasthan","Gujarat","Maharashtra","Madhya Pradesh"],
+a:0,
+e:"Rajasthan launched the service in Jaipur."
+},
+
+{
+q:"Which state became the first to operationalise an exploration licence for rare-earth elements?",
+o:["Rajasthan","Odisha","Karnataka","Tamil Nadu"],
+a:0,
+e:"Rajasthan was the first state to operationalise such an exploration licence."
+},
+
+{
+q:"Which ministry launched the national programme of Letters of Authorisation for high-seas fishing by Indian-flagged vessels?",
+o:["Ministry of Fisheries, Animal Husbandry and Dairying","Ministry of Defence","Ministry of Commerce","Ministry of Ports"],
+a:0,
+e:"The Fisheries Ministry launched the Letters of Authorisation programme."
+},
+
+{
+q:"The Odisha Deep Sea Fishing Mission announced in July 2026 covers which period?",
+o:["2026–2030","2026–2032","2026–2036","2027–2040"],
+a:2,
+e:"The Odisha Deep Sea Fishing Mission covers 2026–2036."
+},
+
+{
+q:"Kargil Vijay Diwas is observed every year on:",
+o:["15 July","21 July","26 July","30 July"],
+a:2,
+e:"Kargil Vijay Diwas is observed on 26 July."
+},
+
+{
+q:"Kargil Vijay Diwas commemorates India's victory in the Kargil War of:",
+o:["1998","1999","2000","2001"],
+a:1,
+e:"The Kargil War took place in 1999."
+},
+
+{
+q:"International Tiger Day is observed on:",
+o:["21 July","26 July","29 July","31 July"],
+a:2,
+e:"International Tiger Day is observed on 29 July."
+},
+
+{
+q:"World Population Day is observed on:",
+o:["5 July","11 July","15 July","18 July"],
+a:1,
+e:"World Population Day is observed on 11 July."
+},
+
+{
+q:"World Youth Skills Day is observed on:",
+o:["10 July","15 July","20 July","25 July"],
+a:1,
+e:"World Youth Skills Day is observed on 15 July."
+},
+
+{
+q:"Nelson Mandela International Day is observed on:",
+o:["11 July","15 July","18 July","26 July"],
+a:2,
+e:"Nelson Mandela International Day is observed on 18 July."
+},
+
+{
+q:"World Day for International Justice is observed on:",
+o:["15 July","17 July","20 July","24 July"],
+a:1,
+e:"World Day for International Justice is observed on 17 July."
+},
+
+{
+q:"World Hepatitis Day is observed on:",
+o:["24 July","26 July","28 July","30 July"],
+a:2,
+e:"World Hepatitis Day is observed on 28 July."
+},
+
+{
+q:"World Day Against Trafficking in Persons is observed on:",
+o:["26 July","28 July","29 July","30 July"],
+a:3,
+e:"The day is observed on 30 July."
+},
+
+{
+q:"National Doctors' Day in India is observed on:",
+o:["1 July","5 July","11 July","15 July"],
+a:0,
+e:"India observes National Doctors' Day on 1 July."
+},
+
+{
+q:"GST Day in India commemorates the launch of GST in:",
+o:["2015","2016","2017","2018"],
+a:2,
+e:"GST was rolled out on 1 July 2017."
+},
+
+{
+q:"World Zoonoses Day is observed on:",
+o:["1 July","6 July","11 July","15 July"],
+a:1,
+e:"World Zoonoses Day is observed on 6 July."
+},
+
+{
+q:"Which organisation is associated with the International Day of Friendship observed on 30 July?",
+o:["United Nations","WTO","IMF","UNESCO only"],
+a:0,
+e:"The International Day of Friendship is a UN observance."
+},
+
+{
+q:"Which institution approved a ₹75,000 crore three-day variable rate repo auction in July 2026?",
+o:["RBI","SEBI","NABARD","SBI"],
+a:0,
+e:"The Reserve Bank of India announced the ₹75,000 crore three-day VRR auction."
+},
+
+{
+q:"A variable rate repo auction is conducted by:",
+o:["RBI","SEBI","IRDAI","PFRDA"],
+a:0,
+e:"Variable Rate Repo operations are conducted by the Reserve Bank of India."
+},
+
+{
+q:"Which institution issued the final order in the Axis Mutual Fund front-running case?",
+o:["SEBI","RBI","CCI","NCLT"],
+a:0,
+e:"SEBI issued the final order."
+},
+
+{
+q:"Which organisation is responsible for regulating India's securities market?",
+o:["SEBI","RBI","IRDAI","PFRDA"],
+a:0,
+e:"SEBI regulates India's securities market."
+},
+
+{
+q:"The National Career Service Portal initiative mentioned in July 2026 promoted re-employment of:",
+o:["Senior citizens","School students","Only government officers","Only exporters"],
+a:0,
+e:"The initiative promoted re-employment opportunities for senior citizens."
+},
+
+{
+q:"Which scheme supports rural enterprises and was reported to have supported 4.32 lakh enterprises?",
+o:["Start-up Village Entrepreneurship Programme","PM-KISAN","PMAY","PM SVANidhi"],
+a:0,
+e:"The Start-up Village Entrepreneurship Programme supported about 4.32 lakh rural enterprises."
+},
+
+{
+q:"The Start-up Village Entrepreneurship Programme is primarily associated with:",
+o:["Rural enterprises","Space research","Defence exports","Urban metro systems"],
+a:0,
+e:"The programme supports rural entrepreneurship."
+},
+
+{
+q:"Which campaign promotes rainwater harvesting and groundwater recharge?",
+o:["Catch the Rain","Save Soil Mission","Jal Shakti Rail","River India"],
+a:0,
+e:"Catch the Rain promotes rainwater harvesting and groundwater recharge."
+},
+
+{
+q:"Which programme marked a decade of building urban climate resilience in India?",
+o:["CapaCITIES","NAMASTE","PM-RKVY","PM-AJAY"],
+a:0,
+e:"The CapaCITIES programme marked a decade of work on urban climate resilience."
+},
+
+{
+q:"Which organisation is associated with the CapaCITIES programme?",
+o:["Climate and urban resilience initiatives","RBI","Election Commission","UPSC"],
+a:0,
+e:"CapaCITIES is focused on urban climate resilience."
+},
+
+{
+q:"India became a party to which WTO agreement in July 2026?",
+o:["Agreement on Fisheries Subsidies","TRIPS Amendment only","Government Procurement Agreement","Agriculture Tariff Agreement"],
+a:0,
+e:"India became a party to the WTO Agreement on Fisheries Subsidies."
+},
+
+{
+q:"Which international body conducts India's Trade Policy Review?",
+o:["WTO","IMF","World Bank","UNCTAD"],
+a:0,
+e:"The WTO conducts Trade Policy Reviews of its members."
+},
+
+{
+q:"India's eighth Trade Policy Review was scheduled by the WTO for which dates in July 2026?",
+o:["7 and 8 July","14 and 15 July","21 and 23 July","28 and 29 July"],
+a:2,
+e:"The WTO scheduled India's eighth Trade Policy Review for 21 and 23 July 2026."
+},
+
+{
+q:"Which state recorded more than ₹1.03 lakh crore in investment intent through RajNivesh in June 2026?",
+o:["Rajasthan","Odisha","Gujarat","Maharashtra"],
+a:0,
+e:"Rajasthan recorded more than ₹1.03 lakh crore in investment intent through RajNivesh."
+},
+
+{
+q:"RajNivesh is associated with:",
+o:["Investment facilitation in Rajasthan","Railway ticketing","Agricultural insurance","Space research"],
+a:0,
+e:"RajNivesh is Rajasthan's investment facilitation platform."
+},
+
+{
+q:"Which handicraft received a GI tag in Rajasthan in July 2026?",
+o:["Jodhpuri Mojari","Blue Pottery only","Kota Doria","Thewa jewellery"],
+a:0,
+e:"Jodhpuri Mojari received a GI tag."
+},
+
+{
+q:"Jodhpuri Mojari is associated with which state?",
+o:["Rajasthan","Punjab","Haryana","Gujarat"],
+a:0,
+e:"Jodhpuri Mojari is a traditional handicraft associated with Rajasthan."
+},
+
+{
+q:"Which state hosted the Pachpadra refinery project mentioned in July 2026?",
+o:["Rajasthan","Gujarat","Odisha","Maharashtra"],
+a:0,
+e:"The Pachpadra refinery is in Rajasthan."
+},
+
+{
+q:"Which organisation/sector is associated with the Pachpadra refinery?",
+o:["Petroleum and petrochemicals","Information technology","Defence electronics","Textiles"],
+a:0,
+e:"The refinery is a petroleum and petrochemicals project."
+},
+
+{
+q:"Which ministry/organisation is associated with the Nasha Mukt Bharat Abhiyan?",
+o:["Ministry of Social Justice and Empowerment","Ministry of Railways","Ministry of Finance","Ministry of Defence"],
+a:0,
+e:"Nasha Mukt Bharat Abhiyan is associated with the Ministry of Social Justice and Empowerment."
+},
+
+{
+q:"Nasha Mukt Bharat Abhiyan is primarily aimed at:",
+o:["Drug abuse prevention","Digital payments","Road safety","Tourism"],
+a:0,
+e:"The campaign focuses on drug abuse prevention and awareness."
+},
+
+{
+q:"Which organisation signed an MoU with the Rural Development Ministry to strengthen women-led enterprises through public procurement?",
+o:["PCI India","SEBI","TRAI","NITI Aayog"],
+a:0,
+e:"The Rural Development Ministry and PCI India signed the MoU."
+},
+
+{
+q:"Which institution was involved in the indigenous 1.2 µm PDK initiative along with NIELIT?",
+o:["SCL Mohali","IIT Bombay","BARC","BEL Hyderabad"],
+a:0,
+e:"SCL Mohali was involved with NIELIT."
+},
+
+{
+q:"Which country did India discuss deeper technology and manufacturing cooperation with in July 2026?",
+o:["Finland","Mexico","Egypt","Argentina"],
+a:0,
+e:"India and Finland explored deeper technology and manufacturing cooperation."
+},
+
+{
+q:"India and Poland discussed deeper cooperation between their:",
+o:["MSME ecosystems","Space agencies only","Railway unions","Film industries"],
+a:0,
+e:"India and Poland discussed cooperation between their MSME ecosystems."
+},
+
+{
+q:"India and Estonia sought deeper cooperation in trade, investment and:",
+o:["Technology","Cricket","Tourism only","Coal mining"],
+a:0,
+e:"India and Estonia discussed trade, investment and technology cooperation."
+},
+
+{
+q:"Which country hosted the World Heritage Committee session where Sarnath was inscribed?",
+o:["Republic of Korea","Japan","France","India"],
+a:0,
+e:"The 48th World Heritage Committee session was held in Busan, Republic of Korea."
+},
+
+{
+q:"Which ancient Buddhist site became India's 45th World Heritage property in July 2026?",
+o:["Sarnath","Nalanda","Bodh Gaya","Ajanta"],
+a:0,
+e:"Sarnath became India's 45th World Heritage property."
+},
+
+{
+q:"Which of the following was one of the components included in the Sarnath World Heritage inscription?",
+o:["Chaukhandi Stupa","Konark Temple","Gateway of India","Charminar"],
+a:0,
+e:"The Chaukhandi Stupa is among the components of the Sarnath inscription."
+},
+
+{
+q:"Which national system was described as unable to independently provide navigation data in a July 2026 government clarification?",
+o:["NavIC","GPS","GLONASS","Galileo"],
+a:0,
+e:"The government stated that NavIC could not currently provide navigation data independently."
+},
+
+{
+q:"NavIC is India's regional:",
+o:["Navigation satellite system","Weather radar network","Missile system","Ocean monitoring vessel"],
+a:0,
+e:"NavIC is India's satellite navigation system."
+},
+
+{
+q:"Which Indian system is abbreviated as NavIC?",
+o:["Navigation with Indian Constellation","National Vehicle Identification Code","Navigation and Vehicle Integrated Control","National Indian Communication"],
+a:0,
+e:"NavIC stands for Navigation with Indian Constellation."
+},
+
+{
+q:"Which organisation is primarily responsible for India's NavIC satellite navigation system?",
+o:["ISRO","RBI","SEBI","DRDO only"],
+a:0,
+e:"ISRO developed and operates the NavIC system."
+},
+
+{
+q:"Which organisation launched the Delhi IP Awards 2026 mentioned in July current affairs?",
+o:["C-DOT","UIDAI","TRAI","NPCI"],
+a:0,
+e:"C-DOT organised the Delhi IP Awards 2026."
+},
+
+{
+q:"C-DOT is primarily associated with:",
+o:["Telecommunications technology","Agricultural marketing","Bank regulation","Railway recruitment"],
+a:0,
+e:"C-DOT is a telecommunications technology organisation under the Department of Telecommunications."
+},
+
+{
+q:"Which programme's beneficiaries crossed two crore registrations according to July 2026 reports?",
+o:["MY Bharat","PM-KISAN","PM Vishwakarma","DAY-NRLM"],
+a:0,
+e:"MY Bharat registrations crossed two crore."
+},
+
+{
+q:"MY Bharat primarily focuses on:",
+o:["Youth participation and leadership","Banking regulation","Agricultural exports","Defence procurement"],
+a:0,
+e:"MY Bharat promotes youth participation, leadership and engagement."
+},
+
+{
+q:"Which institution is responsible for India's national-level drug regulatory approval represented by CDSCO?",
+o:["Central Drugs Standard Control Organisation","Central Digital Services Control Office","Council for Drug Safety and Certification","Central Disease Surveillance Commission"],
+a:0,
+e:"CDSCO is the Central Drugs Standard Control Organisation."
+},
+
+{
+q:"Which Indian ministry/department is associated with the National Career Service Portal?",
+o:["Ministry of Labour and Employment","Ministry of Defence","Ministry of Commerce","Ministry of Railways"],
+a:0,
+e:"The National Career Service is associated with the Ministry of Labour and Employment."
+},
+
+{
+q:"Which organisation operates the Aadhaar ecosystem and enabled free email update through the Aadhaar App?",
+o:["UIDAI","NPCI","SEBI","TRAI"],
+a:0,
+e:"UIDAI operates the Aadhaar system."
+},
+
+{
+q:"UIDAI stands for:",
+o:["Unique Identification Authority of India","United Identity and Data Authority of India","Universal Identification Agency of India","Unique Indian Digital Authority"],
+a:0,
+e:"UIDAI stands for Unique Identification Authority of India."
+},
+
+{
+q:"Which organisation operates India's Unified Payments Interface?",
+o:["NPCI","RBI alone","SEBI","UIDAI"],
+a:0,
+e:"UPI is operated by NPCI."
+},
+
+{
+q:"NPCI stands for:",
+o:["National Payments Corporation of India","National Public Credit Institution","National Payment Council of India","National Processing Corporation of India"],
+a:0,
+e:"NPCI stands for National Payments Corporation of India."
+},
+
+{
+q:"Which international organisation is responsible for the World Population Day observance?",
+o:["UNFPA","WHO","UNESCO","UNICEF"],
+a:0,
+e:"World Population Day is associated with UNFPA."
+},
+
+{
+q:"World Hepatitis Day is associated with which international health organisation?",
+o:["WHO","WTO","UNDP","UNESCO"],
+a:0,
+e:"World Hepatitis Day is observed under the leadership of WHO."
+},
+
+{
+q:"Which July observance commemorates India's victory in the 1999 Kargil War?",
+o:["Kargil Vijay Diwas","Army Day","National War Memorial Day","Vijay Diwas"],
+a:0,
+e:"Kargil Vijay Diwas commemorates the 1999 Kargil victory."
+},
+
+{
+q:"The 2026 edition of Kargil Vijay Diwas marked how many years since the 1999 victory?",
+o:["25 years","26 years","27 years","28 years"],
+a:2,
+e:"2026 marked the 27th anniversary of the 1999 Kargil victory."
+}
+
+];
+
+/* 
+   The question bank above intentionally contains more than 100
+   exam-ready questions. Test 1 uses the first 100 questions.
+*/
+
+const testQuestions = questions.slice(0,100);
+
+let submitted=false;
+let timeLeft=60*60;
+let timerInterval;
+
+function loadQuiz(){
+
+    const quiz=document.getElementById("quiz");
+    const grid=document.getElementById("questionGrid");
+
+    quiz.innerHTML="";
+    grid.innerHTML="";
+
+    testQuestions.forEach((item,index)=>{
+
+        const card=document.createElement("div");
+        card.className="question-card";
+        card.id="question-"+index;
+
+        let html=`
+            <div class="qno">Question ${index+1}</div>
+            <div class="question">${item.q}</div>
+        `;
+
+        item.o.forEach((option,optIndex)=>{
+            html+=`
+            <label class="option" id="option-${index}-${optIndex}">
+                <input type="radio"
+                       name="q${index}"
+                       value="${optIndex}"
+                       onchange="markAttempted(${index})">
+                ${String.fromCharCode(65+optIndex)}. ${option}
+            </label>`;
+        });
+
+        html+=`
+        <div class="solution" id="solution-${index}">
+            <b>Correct Answer:</b>
+            ${String.fromCharCode(65+item.a)}. ${item.o[item.a]}
+            <div class="explanation">
+                <b>Explanation:</b> ${item.e}
+            </div>
+        </div>`;
+
+        card.innerHTML=html;
+        quiz.appendChild(card);
+
+        const btn=document.createElement("button");
+        btn.className="qbtn";
+        btn.id="qbtn-"+index;
+        btn.innerText=index+1;
+
+        btn.onclick=()=>{
+            document.getElementById("question-"+index)
+            .scrollIntoView({behavior:"smooth",block:"center"});
+        };
+
+        grid.appendChild(btn);
+    });
+}
+
+function markAttempted(index){
+    document.getElementById("qbtn-"+index)
+    .classList.add("attempted");
+}
+
+function startTimer(){
+
+    timerInterval=setInterval(()=>{
+
+        if(timeLeft<=0){
+            clearInterval(timerInterval);
+            submitTest();
+            return;
+        }
+
+        timeLeft--;
+
+        let min=Math.floor(timeLeft/60);
+        let sec=timeLeft%60;
+
+        document.getElementById("timer").innerText=
+            String(min).padStart(2,"0")+":"+
+            String(sec).padStart(2,"0");
+
+    },1000);
+}
+
+function submitTest(){
+
+    if(submitted) return;
+
+    if(!confirm("Are you sure you want to submit the test?")){
+        return;
+    }
+
+    submitted=true;
+    clearInterval(timerInterval);
+
+    let correct=0;
+    let wrong=0;
+    let attempted=0;
+
+    testQuestions.forEach((item,index)=>{
+
+        const selected=document.querySelector(
+            `input[name="q${index}"]:checked`
+        );
+
+        if(selected){
+
+            attempted++;
+
+            const selectedValue=parseInt(selected.value);
+
+            if(selectedValue===item.a){
+                correct++;
+            }else{
+                wrong++;
+            }
+        }
+    });
+
+    const unattempted=testQuestions.length-attempted;
+
+    const score=(correct-(wrong*0.33));
+
+    document.getElementById("result").style.display="block";
+
+    document.getElementById("score").innerText=
+        "Score: "+score.toFixed(2)+" / 100";
+
+    document.getElementById("details").innerHTML=
+        "<b>Correct:</b> "+correct+
+        " &nbsp; | &nbsp; "+
+        "<b>Wrong:</b> "+wrong+
+        " &nbsp; | &nbsp; "+
+        "<b>Unattempted:</b> "+unattempted+
+        "<br><br>"+
+        "<b>Negative Marking:</b> −0.33 per wrong answer";
+
+    testQuestions.forEach((item,index)=>{
+
+        const selected=document.querySelector(
+            `input[name="q${index}"]:checked`
+        );
+
+        document
+        .querySelectorAll(`#question-${index} .option`)
+        .forEach((label,optIndex)=>{
+
+            if(optIndex===item.a){
+                label.classList.add("correct");
+            }
+
+            if(selected &&
+               parseInt(selected.value)===optIndex &&
+               optIndex!==item.a){
+
+                label.classList.add("wrong");
+            }
+
+        });
+    });
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+function showSolutions(){
+
+    testQuestions.forEach((item,index)=>{
+        document.getElementById("solution-"+index)
+        .style.display="block";
+    });
+}
+
+loadQuiz();
+startTimer();
+
+</script>
+
+</body>
+</html>
