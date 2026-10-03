@@ -1,82 +1,376 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Study Material | AIMERS CLASSES</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="css/style.css">
+<title>AIMERS CLASSES | Class 10, 11 & 12 Notes</title>
+
+<meta name="description"
+content="AIMERS CLASSES Class 10, 11 and 12 Notes, Specimen Papers and Study Material">
 
 <style>
 
-.downloads {
-    display: grid;
-    gap: 14px;
-    margin-top: 20px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.downloads a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 16px 18px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    text-decoration: none;
-    color: #172033;
-    font-weight: 600;
-    transition: all 0.25s ease;
+html{
+    scroll-behavior:smooth;
 }
 
-.downloads a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.10);
-    border-color: #2563eb;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.6;
 }
 
-.downloads a b {
-    background: #2563eb;
-    color: white;
-    padding: 8px 13px;
-    border-radius: 7px;
-    font-size: 13px;
-    white-space: nowrap;
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
-.pdf-description {
-    color: #667085;
-    margin-bottom: 10px;
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
 }
 
-.subject {
-    color: #2563eb;
+
+/* ================= HEADER ================= */
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
 }
 
-.pdf-group-title {
-    margin-top: 32px;
-    margin-bottom: 8px;
-    color: #102a43;
-    font-size: 22px;
-    border-left: 5px solid #2563eb;
-    padding-left: 12px;
+.nav{
+    min-height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
-@media (max-width: 600px) {
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
-    .downloads a {
-        flex-direction: column;
-        align-items: flex-start;
+.logo-img{
+    width:52px;
+    height:52px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid #ffd43b;
+    background:white;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.back-btn{
+    background:white;
+    color:#1d4ed8;
+    padding:10px 17px;
+    border-radius:8px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.back-btn:hover{
+    background:#ffd43b;
+    color:#102a43;
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+    background:linear-gradient(135deg,#eaf2ff,#ffffff);
+    padding:55px 0;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:42px;
+    color:#102a43;
+    margin-bottom:10px;
+    font-weight:900;
+}
+
+.hero h1 span{
+    color:#1d4ed8;
+}
+
+.hero p{
+    color:#667085;
+    font-size:17px;
+}
+
+
+/* ================= SECTION ================= */
+
+.pdf-section{
+    padding:60px 0 80px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:34px;
+    color:#102a43;
+    margin-bottom:8px;
+    font-weight:900;
+}
+
+.section-title p{
+    color:#667085;
+}
+
+
+/* ================= CLASS TABS ================= */
+
+.class-navigation{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:45px;
+}
+
+.class-nav-btn{
+    display:inline-block;
+    background:white;
+    color:#1d4ed8;
+    border:2px solid #1d4ed8;
+    padding:12px 25px;
+    border-radius:10px;
+    font-weight:900;
+    transition:.3s;
+}
+
+.class-nav-btn:hover{
+    background:#1d4ed8;
+    color:white;
+}
+
+
+/* ================= CLASS SECTION ================= */
+
+.class-section{
+    margin-bottom:60px;
+}
+
+.class-heading{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:18px 22px;
+    border-radius:12px;
+    margin-bottom:25px;
+    box-shadow:0 7px 20px rgba(0,0,0,.10);
+}
+
+.class-heading h2{
+    font-size:28px;
+    font-weight:900;
+}
+
+.class-heading p{
+    margin-top:4px;
+    color:#e2e8f0;
+}
+
+
+/* ================= PDF GROUP ================= */
+
+.pdf-group{
+    margin-bottom:45px;
+}
+
+.pdf-group-title{
+    color:#102a43;
+    font-size:27px;
+    margin-bottom:20px;
+    padding-left:14px;
+    border-left:5px solid #1d4ed8;
+}
+
+
+/* ================= PDF GRID ================= */
+
+.pdf-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+
+/* ================= PDF CARD ================= */
+
+.pdf-card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 7px 25px rgba(0,0,0,.08);
+    border-left:5px solid #1d4ed8;
+    transition:.3s;
+}
+
+.pdf-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+
+.pdf-card h3{
+    color:#102a43;
+    margin-bottom:8px;
+    font-size:20px;
+}
+
+.pdf-card p{
+    color:#667085;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.pdf-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.pdf-btn{
+    display:inline-block;
+    padding:10px 15px;
+    border-radius:7px;
+    font-size:14px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.view-btn{
+    background:#1d4ed8;
+    color:white;
+}
+
+.view-btn:hover{
+    background:#102a43;
+}
+
+.download-btn{
+    background:#16a34a;
+    color:white;
+}
+
+.download-btn:hover{
+    background:#15803d;
+}
+
+
+/* ================= EMPTY SECTION ================= */
+
+.empty-box{
+    background:white;
+    border-radius:15px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 7px 25px rgba(0,0,0,.07);
+    border:2px dashed #cbd5e1;
+}
+
+.empty-box h3{
+    color:#64748b;
+    margin-bottom:8px;
+}
+
+.empty-box p{
+    color:#94a3b8;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0f172a;
+    color:white;
+    padding:30px 0;
+    text-align:center;
+}
+
+footer h3{
+    color:#ffd43b;
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+    .pdf-grid{
+        grid-template-columns:1fr;
     }
 
-    .downloads a b {
-        width: 100%;
-        text-align: center;
+}
+
+@media(max-width:600px){
+
+    .nav{
+        flex-direction:column;
+        padding:15px 0;
+    }
+
+    .hero{
+        padding:40px 15px;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+
+    .section-title h2{
+        font-size:28px;
+    }
+
+    .class-heading h2{
+        font-size:23px;
+    }
+
+    .pdf-group-title{
+        font-size:22px;
+    }
+
+    .class-nav-btn{
+        width:100%;
+        text-align:center;
     }
 
 }
@@ -85,577 +379,1127 @@
 
 </head>
 
+
 <body>
 
-<!-- HEADER -->
 
-<header class="header">
+<!-- ================= HEADER ================= -->
+
+<header>
 
 <div class="container nav">
 
-<a class="brand" href="index.html">
+<div class="brand">
 
-<span class="brand-mark">A</span>
+<img
+src="logo.jpg"
+alt="AIMERS CLASSES Logo"
+class="logo-img">
 
-<span>
-<b>AIMERS</b>
-<small>CLASSES</small>
-</span>
+<div class="logo">
+
+AIMERS <span>CLASSES</span>
+
+</div>
+
+</div>
+
+
+<a
+href="index.html"
+class="back-btn">
+
+← Main Website
 
 </a>
-
-<nav>
-
-<a href="index.html">Home</a> <a href="#pdf">PDF Notes</a> <a href="#video">Videos</a> <a href="#current">Current Affairs</a> <a href="#mock">Mock Tests</a>
-
-</nav>
 
 </div>
 
 </header>
 
-<!-- PAGE HERO -->
 
-<section class="page-hero">
+<!-- ================= HERO ================= -->
+
+<section class="hero">
 
 <div class="container">
 
-<span class="pill">LEARNING HUB</span>
+<h1>
 
-<h1>Study Material</h1>
+📚 <span>CLASS 10, 11 & 12</span>
+NOTES
+
+</h1>
 
 <p>
-Notes, specimen papers, sample papers, current affairs,
-videos and mock tests.
+
+Study Material • Specimen Papers • Sample Papers • Downloadable PDFs
+
 </p>
 
 </div>
 
 </section>
 
-<section class="section">
 
-<div class="container material-page">
+<!-- ================= PDF SECTION ================= -->
 
-<!-- ================================================= -->
+<section class="pdf-section">
 
-<!-- PDF NOTES -->
+<div class="container">
 
-<!-- ================================================= -->
 
-<div id="pdf" class="material-section">
+<div class="section-title">
 
-<div class="material-icon">📄</div>
+<h2>
+📖 Class 10, 11 & 12 Study Material
+</h2>
 
-<div>
-
-<h2>PDF Notes</h2>
-
-<p class="pdf-description">
-Class 12 study materials, specimen papers and sample papers.
+<p>
+Select your class and access available study material.
 </p>
 
-<div class="downloads">
+</div>
 
-<!-- CLASS 12 ISC 2027 -->
 
-<h3 class="pdf-group-title">
+<!-- ================= CLASS NAVIGATION ================= -->
+
+<div class="class-navigation">
+
+<a
+href="#class10"
+class="class-nav-btn">
+
+CLASS 10
+
+</a>
+
+<a
+href="#class11"
+class="class-nav-btn">
+
+CLASS 11
+
+</a>
+
+<a
+href="#class12"
+class="class-nav-btn">
+
+CLASS 12
+
+</a>
+
+</div>
+
+
+
+<!-- =====================================================
+     CLASS 10
+===================================================== -->
+
+<div
+class="class-section"
+id="class10">
+
+
+<div class="class-heading">
+
+<h2>
+📘 CLASS 10
+</h2>
+
+<p>
+Study Notes, Sample Papers and Specimen Papers
+</p>
+
+</div>
+
+
+<div class="empty-box">
+
+<h3>
+📚 Class 10 Study Material
+</h3>
+
+<p>
+Class 10 PDF notes and specimen papers will be added here.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     CLASS 11
+===================================================== -->
+
+<div
+class="class-section"
+id="class11">
+
+
+<div class="class-heading">
+
+<h2>
+📗 CLASS 11
+</h2>
+
+<p>
+Science • Commerce • Arts Study Material
+</p>
+
+</div>
+
+
+<div class="empty-box">
+
+<h3>
+📚 Class 11 Study Material
+</h3>
+
+<p>
+Class 11 PDF notes and specimen papers will be added here.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     CLASS 12
+===================================================== -->
+
+<div
+class="class-section"
+id="class12">
+
+
+<div class="class-heading">
+
+<h2>
+📕 CLASS 12
+</h2>
+
+<p>
+Available specimen papers and subject-wise study material
+</p>
+
+</div>
+
+
+
+<!-- =====================================================
+     CLASS 12 ISC 2027
+===================================================== -->
+
+<div class="pdf-group">
+
+
+<h2 class="pdf-group-title">
+
 📚 Class 12 ISC – 2027
+
+</h2>
+
+
+<div class="pdf-grid">
+
+
+<!-- SPECIMEN -->
+
+<div class="pdf-card">
+
+<h3>
+📘 Class 12 ISC 2027 Specimen Paper
 </h3>
 
-<a href="./CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
+<p>
+Class 12 ISC 2027 complete specimen paper.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
 target="_blank"
-rel="noopener">
+class="pdf-btn view-btn">
 
-<span>
-📘
-<strong class="subject">
-Class 12 ISC 2027 Specimen Paper
-</strong>
-</span>
-
-<b>📖 View PDF</b>
+📖 View PDF
 
 </a>
 
-<a href="./MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
-target="_blank"
-rel="noopener">
+<a
+href="CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
+download
+class="pdf-btn download-btn">
 
-<span>
-📐
-<strong class="subject">
-Mathematics Class 12 ISC 2027 Specimen Paper
-</strong>
-</span>
-
-<b>📖 View PDF</b>
+⬇ Download
 
 </a>
 
-<a href="./PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
+</div>
+
+</div>
+
+
+<!-- MATHEMATICS 2027 -->
+
+<div class="pdf-card">
+
+<h3>
+📐 Mathematics Class 12 ISC 2027
+</h3>
+
+<p>
+ISC Class 12 Mathematics Specimen Paper 2027.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
 target="_blank"
-rel="noopener">
+class="pdf-btn view-btn">
 
-<span>
-⚛️
-<strong class="subject">
-Physics Class 12 ISC 2027 Specimen Paper
-</strong>
-</span>
-
-<b>📖 View PDF</b>
+📖 View PDF
 
 </a>
 
-<a href="./chemistry%20class%2012%202027%20specimen.pdf"
-target="_blank"
-rel="noopener">
+<a
+href="MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
+download
+class="pdf-btn download-btn">
 
-<span>
-🧪
-<strong class="subject">
-Chemistry Class 12 2027 Specimen Paper
-</strong>
-</span>
-
-<b>📖 View PDF</b>
+⬇ Download
 
 </a>
 
-<!-- CHEMISTRY 2026 -->
+</div>
 
-<h3 class="pdf-group-title">
+</div>
+
+
+<!-- PHYSICS 2027 -->
+
+<div class="pdf-card">
+
+<h3>
+⚛️ Physics Class 12 ISC 2027
+</h3>
+
+<p>
+ISC Class 12 Physics Specimen Paper 2027.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- CHEMISTRY 2027 -->
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 2027
+</h3>
+
+<p>
+Class 12 Chemistry Specimen Paper 2027.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%202027%20specimen.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%202027%20specimen.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CHEMISTRY 2026
+===================================================== -->
+
+<div class="pdf-group">
+
+
+<h2 class="pdf-group-title">
+
 🧪 Chemistry Class 12 – 2026
+
+</h2>
+
+
+<div class="pdf-grid">
+
+
+<!-- CHEMISTRY SPECIMEN -->
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 2026 Specimen
 </h3>
 
-<a href="./chemistry%20class%2012%202026%20specimen.pdf"
+<p>
+Chemistry Class 12 2026 Specimen Paper.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%202026%20specimen.pdf"
 target="_blank"
-rel="noopener">
+class="pdf-btn view-btn">
 
-<span>
-🧪 Chemistry Class 12 2026 – Specimen Paper
-</span>
-
-<b>📖 View PDF</b>
+📖 View PDF
 
 </a>
 
-<a href="./chemistry%20class%2012%20sample%20papaer%201.pdf"
-target="_blank"
-rel="noopener">
+<a
+href="chemistry%20class%2012%202026%20specimen.pdf"
+download
+class="pdf-btn download-btn">
 
-<span>
-🧪 Chemistry Class 12 – Sample Paper 1
-</span>
-
-<b>📖 View PDF</b>
+⬇ Download
 
 </a>
 
-<a href="./chemistry%20class%2012%20sample%20papaer%202.pdf"
+</div>
+
+</div>
+
+
+<!-- SAMPLE 1 -->
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 Sample Paper 1
+</h3>
+
+<p>
+Chemistry Class 12 Sample Paper 1.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%201.pdf"
 target="_blank"
-rel="noopener">
+class="pdf-btn view-btn">
 
-<span>
-🧪 Chemistry Class 12 – Sample Paper 2
-</span>
-
-<b>📖 View PDF</b>
+📖 View PDF
 
 </a>
 
-<a href="./chemistry%20class%2012%20sample%20papaer%203.pdf"
-target="_blank"
-rel="noopener">
+<a
+href="chemistry%20class%2012%20sample%20papaer%201.pdf"
+download
+class="pdf-btn download-btn">
 
-<span>
-🧪 Chemistry Class 12 – Sample Paper 3
-</span>
-
-<b>📖 View PDF</b>
+⬇ Download
 
 </a>
 
-<a href="./chemistry%20class%2012%20sample%20papaer%204.pdf"
+</div>
+
+</div>
+
+
+<!-- SAMPLE 2 -->
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 Sample Paper 2
+</h3>
+
+<p>
+Chemistry Class 12 Sample Paper 2.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%202.pdf"
 target="_blank"
-rel="noopener">
+class="pdf-btn view-btn">
 
-<span>
-🧪 Chemistry Class 12 – Sample Paper 4
-</span>
-
-<b>📖 View PDF</b>
+📖 View PDF
 
 </a>
 
-<a href="./chemistry%20class%2012%20sample%20papaer%205.pdf"
-target="_blank"
-rel="noopener">
+<a
+href="chemistry%20class%2012%20sample%20papaer%202.pdf"
+download
+class="pdf-btn download-btn">
 
-<span>
-🧪 Chemistry Class 12 – Sample Paper 5
-</span>
-
-<b>📖 View PDF</b>
+⬇ Download
 
 </a>
 
-<!-- MATHEMATICS 2026 -->
+</div>
 
-<h3 class="pdf-group-title">
+</div>
+
+
+<!-- SAMPLE 3 -->
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 Sample Paper 3
+</h3>
+
+<p>
+Chemistry Class 12 Sample Paper 3.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%203.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%203.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- SAMPLE 4 -->
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 Sample Paper 4
+</h3>
+
+<p>
+Chemistry Class 12 Sample Paper 4.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%204.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%204.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- SAMPLE 5 -->
+
+<div class="pdf-card">
+
+<h3>
+🧪 Chemistry Class 12 Sample Paper 5
+</h3>
+
+<p>
+Chemistry Class 12 Sample Paper 5.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%205.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="chemistry%20class%2012%20sample%20papaer%205.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MATHEMATICS 2026
+===================================================== -->
+
+<div class="pdf-group">
+
+
+<h2 class="pdf-group-title">
+
 📐 Mathematics Class 12 – 2026
+
+</h2>
+
+
+<div class="pdf-grid">
+
+
+<!-- SET 1 -->
+
+<div class="pdf-card">
+
+<h3>
+📐 Mathematics 2026 – Set 1
 </h3>
 
-<a href="./math%20class%2012%202026%20set%201.pdf"
+<p>
+Class 12 Mathematics 2026 Set 1.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20set%201.pdf"
 target="_blank"
-rel="noopener">
+class="pdf-btn view-btn">
 
-<span>
-📐 Mathematics Class 12 2026 – Set 1
-</span>
-
-<b>📖 View PDF</b>
+📖 View PDF
 
 </a>
 
-<a href="./math%20class%2012%202026%20set%202.pdf"
-target="_blank"
-rel="noopener">
+<a
+href="math%20class%2012%202026%20set%201.pdf"
+download
+class="pdf-btn download-btn">
 
-<span>
-📐 Mathematics Class 12 2026 – Set 2
-</span>
-
-<b>📖 View PDF</b>
+⬇ Download
 
 </a>
 
-<a href="./math%20class%2012%202026%20set%203.pdf"
+</div>
+
+</div>
+
+
+<!-- SET 2 -->
+
+<div class="pdf-card">
+
+<h3>
+📐 Mathematics 2026 – Set 2
+</h3>
+
+<p>
+Class 12 Mathematics 2026 Set 2.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20set%202.pdf"
 target="_blank"
-rel="noopener">
+class="pdf-btn view-btn">
 
-<span>
-📐 Mathematics Class 12 2026 – Set 3
-</span>
-
-<b>📖 View PDF</b>
+📖 View PDF
 
 </a>
 
-<a href="./math%20class%2012%202026%20set%204.pdf"
-target="_blank"
-rel="noopener">
+<a
+href="math%20class%2012%202026%20set%202.pdf"
+download
+class="pdf-btn download-btn">
 
-<span>
-📐 Mathematics Class 12 2026 – Set 4
-</span>
-
-<b>📖 View PDF</b>
+⬇ Download
 
 </a>
 
-<a href="./math%20class%2012%202026%20set%205.pdf"
+</div>
+
+</div>
+
+
+<!-- SET 3 -->
+
+<div class="pdf-card">
+
+<h3>
+📐 Mathematics 2026 – Set 3
+</h3>
+
+<p>
+Class 12 Mathematics 2026 Set 3.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20set%203.pdf"
 target="_blank"
-rel="noopener">
+class="pdf-btn view-btn">
 
-<span>
-📐 Mathematics Class 12 2026 – Set 5
-</span>
-
-<b>📖 View PDF</b>
+📖 View PDF
 
 </a>
 
-<a href="./math%20class%2012%202026%20specimen.pdf"
-target="_blank"
-rel="noopener">
+<a
+href="math%20class%2012%202026%20set%203.pdf"
+download
+class="pdf-btn download-btn">
 
-<span>
-📐 Mathematics Class 12 2026 – Specimen Paper
-</span>
-
-<b>📖 View PDF</b>
+⬇ Download
 
 </a>
 
-<!-- PHYSICS 2026 -->
+</div>
 
-<h3 class="pdf-group-title">
+</div>
+
+
+<!-- SET 4 -->
+
+<div class="pdf-card">
+
+<h3>
+📐 Mathematics 2026 – Set 4
+</h3>
+
+<p>
+Class 12 Mathematics 2026 Set 4.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20set%204.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="math%20class%2012%202026%20set%204.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- SET 5 -->
+
+<div class="pdf-card">
+
+<h3>
+📐 Mathematics 2026 – Set 5
+</h3>
+
+<p>
+Class 12 Mathematics 2026 Set 5.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20set%205.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="math%20class%2012%202026%20set%205.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- SPECIMEN -->
+
+<div class="pdf-card">
+
+<h3>
+📐 Mathematics 2026 – Specimen Paper
+</h3>
+
+<p>
+Class 12 Mathematics 2026 Specimen Paper.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="math%20class%2012%202026%20specimen.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="math%20class%2012%202026%20specimen.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     PHYSICS 2026
+===================================================== -->
+
+<div class="pdf-group">
+
+
+<h2 class="pdf-group-title">
+
 ⚛️ Physics Class 12 – 2026
+
+</h2>
+
+
+<div class="pdf-grid">
+
+
+<!-- SET 1 -->
+
+<div class="pdf-card">
+
+<h3>
+⚛️ Physics 2026 – Set 1
 </h3>
-
-<a href="./physics%20class%2012%202026%20set%201.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-⚛️ Physics Class 12 2026 – Set 1
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-<a href="./physics%20class%2012%202026%20set%202.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-⚛️ Physics Class 12 2026 – Set 2
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-<a href="./physics%20class%2012%202026%20set%203.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-⚛️ Physics Class 12 2026 – Set 3
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-<a href="./physics%20class%2012%202026%20set%204.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-⚛️ Physics Class 12 2026 – Set 4
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-<a href="./physics%20class%2012%202026%20set%205.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-⚛️ Physics Class 12 2026 – Set 5
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ================================================= -->
-
-<!-- CURRENT AFFAIRS -->
-
-<!-- ================================================= -->
-
-<div id="current" class="material-section">
-
-<div class="material-icon">📰</div>
-
-<div>
-
-<h2>Current Affairs</h2>
-
-<p class="pdf-description">
-Monthly Current Affairs PDFs and MCQ study material.
-</p>
-
-<div class="downloads">
-
-<!-- MARCH 2026 -->
-
-<h3 class="pdf-group-title">
-📰 March 2026
-</h3>
-
-<a href="./MARCH%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-📰 March 2026 Current Affairs MCQ
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-<!-- APRIL 2026 -->
-
-<h3 class="pdf-group-title">
-📰 April 2026
-</h3>
-
-<a href="./APRIL%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-📰 April 2026 Current Affairs MCQ
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-<!-- MAY 2026 -->
-
-<h3 class="pdf-group-title">
-📰 May 2026
-</h3>
-
-<a href="./MAY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-📰 May 2026 Current Affairs MCQ
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-<!-- JUNE 2026 -->
-
-<h3 class="pdf-group-title">
-📰 June 2026
-</h3>
-
-<a href="./JUNE%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-📰 June 2026 Current Affairs MCQ
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-<!-- JULY 2026 -->
-
-<h3 class="pdf-group-title">
-📰 July 2026
-</h3>
-
-<a href="./JULY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-📰 July 2026 Current Affairs MCQ
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-<!-- AUGUST 2026 -->
-
-<h3 class="pdf-group-title">
-📰 August 2026
-</h3>
-
-<a href="./300_MCQs_August_2026_Current_Affairs.pdf"
-target="_blank"
-rel="noopener">
-
-<span>
-📰 August 2026 Current Affairs – 300 MCQs
-</span>
-
-<b>📖 View PDF</b>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ================================================= -->
-
-<!-- VIDEO -->
-
-<!-- ================================================= -->
-
-<div id="video" class="material-section">
-
-<div class="material-icon">🎥</div>
-
-<div>
-
-<h2>Video Classes</h2>
 
 <p>
-Video lessons and revision classes.
+Class 12 Physics 2026 Set 1.
 </p>
 
-<div class="downloads">
+<div class="pdf-buttons">
 
-<a href="#" onclick="return false">
+<a
+href="physics%20class%2012%202026%20set%201.pdf"
+target="_blank"
+class="pdf-btn view-btn">
 
-<span>
-🎬 Demo Video Lesson
-</span>
-
-<b>Watch</b>
-
-</a>
-
-<a href="#" onclick="return false">
-
-<span>
-📺 Revision Class
-</span>
-
-<b>Watch</b>
+📖 View PDF
 
 </a>
 
-</div>
+<a
+href="physics%20class%2012%202026%20set%201.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
 
 </div>
 
 </div>
 
-<!-- ================================================= -->
 
-<!-- MOCK TEST -->
+<!-- SET 2 -->
 
-<!-- ================================================= -->
+<div class="pdf-card">
 
-<div id="mock" class="material-section">
-
-<div class="material-icon">📝</div>
-
-<div>
-
-<h2>Mock Tests</h2>
+<h3>
+⚛️ Physics 2026 – Set 2
+</h3>
 
 <p>
-Start the online mock test and check your preparation.
+Class 12 Physics 2026 Set 2.
 </p>
 
-<a class="btn primary" href="mock-test.html">
+<div class="pdf-buttons">
 
-Start Mock Test
+<a
+href="physics%20class%2012%202026%20set%202.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20class%2012%202026%20set%202.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
 
 </a>
 
 </div>
+
+</div>
+
+
+<!-- SET 3 -->
+
+<div class="pdf-card">
+
+<h3>
+⚛️ Physics 2026 – Set 3
+</h3>
+
+<p>
+Class 12 Physics 2026 Set 3.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="physics%20class%2012%202026%20set%203.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20class%2012%202026%20set%203.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- SET 4 -->
+
+<div class="pdf-card">
+
+<h3>
+⚛️ Physics 2026 – Set 4
+</h3>
+
+<p>
+Class 12 Physics 2026 Set 4.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="physics%20class%2012%202026%20set%204.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20class%2012%202026%20set%204.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- SET 5 -->
+
+<div class="pdf-card">
+
+<h3>
+⚛️ Physics 2026 – Set 5
+</h3>
+
+<p>
+Class 12 Physics 2026 Set 5.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="physics%20class%2012%202026%20set%205.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20class%2012%202026%20set%205.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- SPECIMEN -->
+
+<div class="pdf-card">
+
+<h3>
+⚛️ Physics 2026 – Specimen Paper
+</h3>
+
+<p>
+Class 12 Physics 2026 Specimen Paper.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="physics%20isc%20class%2012%20specimen%202026.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="physics%20isc%20class%2012%20specimen%202026.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
 
 </div>
 
@@ -663,49 +1507,39 @@ Start Mock Test
 
 </section>
 
-<!-- CTA -->
 
-<section class="cta">
-
-<div class="container">
-
-<h2>AIM HIGH • ACHIEVE HIGH</h2>
-
-<a class="btn white" href="index.html">
-
-Back to Home
-
-</a>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
-<div class="container footer">
+<div class="container">
 
-<div>
-
-<b>AIMERS CLASSES</b>
+<h3>
+AIMERS CLASSES
+</h3>
 
 <p>
-Purunabasti, Jharsuguda, Odisha
+Aim High • Achieve High
 </p>
 
-</div>
+<p>
+Class 10 • Class 11 • Class 12 Study Material
+</p>
 
-<div>
+<p>
+Notes | Specimen Papers | Sample Papers | PDFs
+</p>
 
-© 2026 AIMERS CLASSES
+<p style="margin-top:12px;">
 
-</div>
+© 2026 AIMERS CLASSES. All Rights Reserved.
+
+</p>
 
 </div>
 
 </footer>
+
 
 </body>
 
