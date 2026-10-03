@@ -1,1 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES | September 2026 Current Affairs Test 2</title>
 
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#1f2937;
+}
+
+.header{
+    background:linear-gradient(135deg,#0f172a,#1d4ed8);
+    color:#fff;
+    padding:22px 14px;
+    text-align:center;
+}
+
+.header h1{
+    margin:0;
+    font-size:32px;
+    letter-spacing:1px;
+}
+
+.header p{
+    margin:7px 0 15px;
+    font-size:18px;
+}
+
+.exam-info{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+}
+
+.badge{
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.25);
+    padding:7px 11px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.main{
+    max-width:1250px;
+    margin:18px auto;
+    padding:0 12px;
+    display:grid;
+    grid-template-columns:1fr 310px;
+    gap:18px;
+}
+
+.card{
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 4px 18px rgba(15,23,42,.08);
+}
+
+.question-area{
+    padding:20px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.qno{
+    font-weight:700;
+    color:#1d4ed8;
+    font-size:17px;
+}
+
+.timer{
+    background:#111827;
+    color:#fff;
+    padding:9px 14px;
+    border-radius:9px;
+    font-weight:700;
+    min-width:90px;
+    text-align:center;
+}
+
+.question{
+    font-size:21px;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+.option{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    border:1px solid #dbe3ef;
+    padding:13px 14px;
+    border-radius:10px;
+    margin:10px 0;
+    cursor:pointer;
+    transition:.15s;
+}
+
+.option:hover{
+    background:#f8fbff;
+    border-color:#93c5fd;
+}
+
+.option input{
+    margin-top:4px;
+}
+
+.option.selected{
+    background:#eaf2ff;
+    border-color:#2563eb;
+}
+
+.option-letter{
+    font-weight:700;
+    color:#1d4ed8;
+    min-width:22px;
+}
+
+.nav-buttons{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:20px;
+}
+
+button{
+    border:0;
+    border-radius:9px;
+    padding:11px 14px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.prev{
+    background:#64748b;
+    color:#fff;
+}
+
+.next{
+    background:#2563eb;
+    color:#fff;
+}
+
+.review{
+    background:#f59e0b;
+    color:#fff;
+}
+
+.submit{
+    width:100%;
+    background:#dc2626;
+    color:#fff;
+    margin-top:16px;
+    padding:13px;
+}
+
+.palette{
+    padding:18px;
+    height:max-content;
+    position:sticky;
+    top:12px;
+}
+
+.palette h3{
+    margin-top:0;
+}
+
+.legend{
+    font-size:12px;
+    line-height:2;
+    color:#475569;
+    margin-bottom:10px;
+}
+
+.legend span{
+    display:inline-block;
+    width:12px;
+    height:12px;
+    border-radius:3px;
+    vertical-align:-1px;
+    margin-right:3px;
+    border:1px solid #cbd5e1;
+}
+
+.answered-box{
+    background:#16a34a!important;
+    border-color:#16a34a!important;
+}
+
+.unanswered-box{
+    background:#fff!important;
+}
+
+.review-box{
+    background:#f59e0b!important;
+    border-color:#f59e0b!important;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qbtn{
+    padding:8px 0;
+    background:#fff;
+    border:1px solid #cbd5e1;
+    color:#334155;
+}
+
+.qbtn.answered{
+    background:#16a34a;
+    color:#fff;
+    border-color:#16a34a;
+}
+
+.qbtn.reviewed{
+    background:#f59e0b;
+    color:#fff;
+    border-color:#f59e0b;
+}
+
+.qbtn.current{
+    outline:3px solid #2563eb;
+    outline-offset:1px;
+}
+
+.result{
+    display:none;
+    max-width:1100px;
+    margin:25px auto;
+    padding:0 12px;
+}
+
+.result-card{
+    background:#fff;
+    padding:22px;
+    border-radius:14px;
+    box-shadow:0 4px 18px rgba(15,23,42,.08);
+}
+
+.score{
+    font-size:38px;
+    font-weight:800;
+    color:#1d4ed8;
+    margin:10px 0;
+}
+
+.result-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:18px 0;
+}
+
+.result-table th,
+.result-table td{
+    border:1px solid #e2e8f0;
+    padding:10px;
+    text-align:center;
+}
+
+.solution{
+    border:1px solid #e2e8f0;
+    border-radius:10px;
+    padding:13px;
+    margin:10px 0;
+}
+
+.correct{
+    border-left:5px solid #16a34a;
+}
+
+.wrong{
+    border-left:5px solid #dc2626;
+}
+
+.unattempted{
+    border-left:5px solid #f59e0b;
+}
+
+.solution strong{
+    color:#0f172a;
+}
+
+@media(max-width:850px){
+    .main{
+        grid-template-columns:1fr;
+    }
+
+    .palette{
+        position:static;
+    }
+}
+
+@media(max-width:500px){
+    .header h1{
+        font-size:25px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .question-area{
+        padding:14px;
+    }
+
+    .nav-buttons button{
+        padding:9px 10px;
+        font-size:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>AIMERS CLASSES</h1>
+
+<p>September 2026 Current Affairs — Test 2</p>
+
+<div class="exam-info">
+
+<div class="badge">100 Questions</div>
+
+<div class="badge">SSC CGL / SSC / Railway Level</div>
+
+<div class="badge">Correct: +1</div>
+
+<div class="badge">Wrong: −0.33</div>
+
+<div class="badge">Unattempted: 0</div>
+
+<div class="badge">Time: 60 Minutes</div>
+
+</div>
+
+</div>
+
+
+<div id="testArea" class="main">
+
+<div class="card">
+
+<div class="question-area">
+
+<div class="topbar">
+
+<div class="qno" id="qNumber">
+Question 1 of 100
+</div>
+
+<div class="timer" id="timer">
+60:00
+</div>
+
+</div>
+
+<div id="questionBox"></div>
+
+<div class="nav-buttons">
+
+<button class="prev" onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="review" onclick="toggleReview()">
+Mark Review
+</button>
+
+<button class="next" onclick="nextQuestion()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card palette">
+
+<h3>Question Palette</h3>
+
+<div class="legend">
+
+<span class="answered-box"></span>
+Attempted
+
+&nbsp;&nbsp;
+
+<span class="unanswered-box"></span>
+Not Attempted
+
+<br>
+
+<span class="review-box"></span>
+Marked for Review
+
+</div>
+
+<div class="grid" id="palette"></div>
+
+<button class="submit" onclick="submitTest()">
+SUBMIT TEST
+</button>
+
+</div>
+
+</div>
+
+
+<div id="resultArea" class="result">
+
+<div class="result-card">
+
+<h2>
+AIMERS CLASSES — September Test 2 Result
+</h2>
+
+<div class="score" id="finalScore"></div>
+
+<p id="resultSummary"></p>
+
+<table class="result-table">
+
+<tr>
+<th>Correct</th>
+<th>Wrong</th>
+<th>Unattempted</th>
+<th>Score</th>
+</tr>
+
+<tr>
+<td id="correctCount"></td>
+<td id="wrongCount"></td>
+<td id="unattemptedCount"></td>
+<td id="scoreCell"></td>
+</tr>
+
+</table>
+
+<h2>Answer & Solution</h2>
+
+<div id="solutions"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+{
+"q":"Which body approved the increase in the EPFO wage ceiling from ₹15,000 to ₹25,000 per month?",
+"o":["RBI","Union Cabinet","SEBI","NITI Aayog"],
+"a":1,
+"s":"Correct answer: Union Cabinet. The Cabinet approved the revised EPFO wage ceiling."
+},
+
+{
+"q":"The revised EPFO wage ceiling announced in September 2026 was fixed at:",
+"o":["₹18,000","₹20,000","₹25,000","₹30,000"],
+"a":2,
+"s":"Correct answer: ₹25,000 per month."
+},
+
+{
+"q":"NEET-SS is primarily associated with admission to which courses?",
+"o":["MBBS courses","BDS courses","DM/MCh super-speciality courses","Diploma courses"],
+"a":2,
+"s":"Correct answer: DM/MCh super-speciality courses. NEET-SS is the entrance examination for super-speciality medical education."
+},
+
+{
+"q":"From which percentile was the NEET-SS qualifying threshold reduced?",
+"o":["60% to 40%","50% to 30%","45% to 25%","40% to 20%"],
+"a":1,
+"s":"Correct answer: 50% to 30%."
+},
+
+{
+"q":"The 2026 India–Japan air exercise Veer Guardian was held at which place?",
+"o":["Pune","Jodhpur","Chennai","Guwahati"],
+"a":1,
+"s":"Correct answer: Jodhpur. The exercise was conducted at Air Force Station Jodhpur, Rajasthan."
+},
+
+{
+"q":"Veer Guardian is a bilateral air exercise between India and:",
+"o":["Japan","France","Australia","Russia"],
+"a":0,
+"s":"Correct answer: Japan."
+},
+
+{
+"q":"SEMICON India 2026 concluded at which venue in New Delhi?",
+"o":["Bharat Mandapam","Yashobhoomi","Vigyan Bhawan","Pragati Maidan"],
+"a":1,
+"s":"Correct answer: Yashobhoomi."
+},
+
+{
+"q":"SEMICON India 2026 primarily focused on which strategic technology sector?",
+"o":["Textiles","Semiconductors","Shipbuilding","Fertilizers"],
+"a":1,
+"s":"Correct answer: Semiconductors."
+},
+
+{
+"q":"Which Gulf country was involved in the September 19 high-level call with India?",
+"o":["UAE","Nepal","Japan","Brazil"],
+"a":0,
+"s":"Correct answer: United Arab Emirates (UAE)."
+},
+
+{
+"q":"The President of the UAE mentioned in the September 2026 India-UAE call was:",
+"o":["Sheikh Mohamed bin Zayed Al Nahyan","Mohammed bin Rashid Al Maktoum","Tamim bin Hamad Al Thani","King Abdullah II"],
+"a":0,
+"s":"Correct answer: Sheikh Mohamed bin Zayed Al Nahyan."
+},
+
+{
+"q":"What was the title of the international conference on environment and climate dynamics held in September 2026?",
+"o":["Global Climate Futures","The Future of Environment and Climate Dynamics","Climate India 2047","World Environment and Energy Forum"],
+"a":1,
+"s":"Correct answer: The Future of Environment and Climate Dynamics."
+},
+
+{
+"q":"Biometric Aadhaar authentication for subsidised LPG refills was scheduled to become mandatory from:",
+"o":["1 September 2026","1 October 2026","1 January 2027","1 April 2027"],
+"a":1,
+"s":"Correct answer: 1 October 2026."
+},
+
+{
+"q":"The Aadhaar biometric requirement for LPG was linked mainly with strengthening which mechanism?",
+"o":["GST compensation","Direct Benefit Transfer","Export subsidy","Crop insurance"],
+"a":1,
+"s":"Correct answer: Direct Benefit Transfer (DBT)."
+},
+
+{
+"q":"How many appointment letters were distributed at the 20th Rozgar Mela in September 2026?",
+"o":["About 10,000","About 25,000","More than 51,000","More than 2 lakh"],
+"a":2,
+"s":"Correct answer: More than 51,000."
+},
+
+{
+"q":"The September 2026 Rozgar Mela mentioned in current affairs was the:",
+"o":["18th","19th","20th","21st"],
+"a":2,
+"s":"Correct answer: 20th Rozgar Mela."
+},
+
+{
+"q":"The proposed nationwide bank strike was scheduled for which dates?",
+"o":["20–22 September","24–26 September","28–30 September","1–3 October"],
+"a":2,
+"s":"Correct answer: 28–30 September 2026."
+},
+
+{
+"q":"Which organisation called the September 2026 nationwide bank strike?",
+"o":["IBA","UFBU","RBI","NPCI"],
+"a":1,
+"s":"Correct answer: United Forum of Bank Unions (UFBU)."
+},
+
+{
+"q":"One major demand associated with the September 2026 bank strike was:",
+"o":["Privatisation of RBI","Five-day banking week","Removal of UPI","Abolition of EPFO"],
+"a":1,
+"s":"Correct answer: Five-day banking week."
+},
+
+{
+"q":"Nearly what share of coal-based power plants was reported to have critically low fuel stocks in the September 22 report?",
+"o":["Around 10%","Around 20%","Around 40%","Around 70%"],
+"a":2,
+"s":"Correct answer: Around 40%."
+},
+
+{
+"q":"The shortage of coal stocks at power plants is directly linked to concerns about:",
+"o":["Space exploration","Energy security","Census enumeration","Tourism promotion"],
+"a":1,
+"s":"Correct answer: Energy security."
+},
+
+{
+"q":"India's first gold medal at the 2026 Asian Games was won by which team?",
+"o":["Men's hockey team","Women's cricket team","Men's cricket team","Women's kabaddi team"],
+"a":1,
+"s":"Correct answer: Women's cricket team."
+},
+
+{
+"q":"India defeated which country in the women's cricket final at the 2026 Asian Games?",
+"o":["Bangladesh","Sri Lanka","Pakistan","Japan"],
+"a":1,
+"s":"Correct answer: Sri Lanka."
+},
+
+{
+"q":"By how many runs did India defeat Sri Lanka in the women's cricket final?",
+"o":["97 runs","117 runs","147 runs","167 runs"],
+"a":2,
+"s":"Correct answer: 147 runs."
+},
+
+{
+"q":"Moody's raised India's FY27 real GDP growth forecast to:",
+"o":["5.5%","6%","7%","8%"],
+"a":2,
+"s":"Correct answer: 7%."
+},
+
+{
+"q":"What sovereign rating did Moody's retain for India in the September 2026 report?",
+"o":["A1","Baa3","Ba1","BBB+"],
+"a":1,
+"s":"Correct answer: Baa3."
+},
+
+{
+"q":"The outlook on India's sovereign rating in the cited Moody's update was:",
+"o":["Negative","Stable","Positive","Developing"],
+"a":1,
+"s":"Correct answer: Stable."
+},
+
+{
+"q":"The ₹811-crore contract for satellite smart anti-airfield weapons was signed with:",
+"o":["HAL","Bharat Dynamics Limited","BEL","Mazagon Dock"],
+"a":1,
+"s":"Correct answer: Bharat Dynamics Limited (BDL)."
+},
+
+{
+"q":"How many satellite smart anti-airfield weapons were covered by the ₹811-crore contract?",
+"o":["80","120","160","200"],
+"a":2,
+"s":"Correct answer: 160."
+},
+
+{
+"q":"The satellite smart anti-airfield weapons under the September 2026 contract were intended for the:",
+"o":["Indian Army","Indian Navy","Indian Air Force","Coast Guard"],
+"a":2,
+"s":"Correct answer: Indian Air Force."
+},
+
+{
+"q":"The next phase of UDAN was launched across how many States/UTs according to the September 24 update?",
+"o":["12","18","22","28"],
+"a":2,
+"s":"Correct answer: 22 States and Union Territories."
+},
+
+{
+"q":"UDAN is an acronym for:",
+"o":["Ude Desh ka Aam Naagrik","Universal Development of Air Network","Urban Development and Air Navigation","Unified Domestic Aviation Network"],
+"a":0,
+"s":"Correct answer: Ude Desh ka Aam Naagrik."
+},
+
+{
+"q":"Mirabai Chanu won which medal in women's 49 kg weightlifting at the 2026 Asian Games?",
+"o":["Gold","Silver","Bronze","No medal"],
+"a":1,
+"s":"Correct answer: Silver."
+},
+
+{
+"q":"Mirabai Chanu's Asian Games 2026 medal came in which sport?",
+"o":["Boxing","Weightlifting","Wrestling","Archery"],
+"a":1,
+"s":"Correct answer: Weightlifting."
+},
+
+{
+"q":"The Indian men's badminton team won which medal at the 2026 Asian Games?",
+"o":["Gold","Silver","Bronze","None"],
+"a":2,
+"s":"Correct answer: Bronze."
+},
+
+{
+"q":"India's men's badminton team won its bronze after the semi-final against which country?",
+"o":["Japan","China","Indonesia","Malaysia"],
+"a":1,
+"s":"Correct answer: China."
+},
+
+{
+"q":"KAVACH 4.0 was commissioned on which railway section in September 2026?",
+"o":["Malkajgiri–Kamareddi","Delhi–Agra","Howrah–Dhanbad","Mumbai–Pune"],
+"a":0,
+"s":"Correct answer: Malkajgiri–Kamareddi section of South Central Railway."
+},
+
+{
+"q":"KAVACH 4.0 covered approximately how many route kilometres on the cited South Central Railway section?",
+"o":["58 km","88 km","108 km","180 km"],
+"a":2,
+"s":"Correct answer: 108 route kilometres."
+},
+
+{
+"q":"KAVACH is India's system for:",
+"o":["Automatic train protection","Railway catering","Ticket pricing","Freight taxation"],
+"a":0,
+"s":"Correct answer: Automatic train protection."
+},
+
+{
+"q":"S&P Global raised India's FY27 growth forecast to:",
+"o":["5.9%","6.2%","7%","8.1%"],
+"a":2,
+"s":"Correct answer: 7%."
+},
+
+{
+"q":"What was S&P Global's earlier FY27 growth forecast before the September 2026 revision?",
+"o":["5.6%","6.0%","6.6%","7.5%"],
+"a":2,
+"s":"Correct answer: 6.6%."
+},
+
+{
+"q":"The G4 grouping that called for early UN Security Council reform includes India, Brazil, Germany and:",
+"o":["Japan","Canada","Australia","South Africa"],
+"a":0,
+"s":"Correct answer: Japan."
+},
+
+{
+"q":"Which country is NOT part of the G4?",
+"o":["India","Brazil","Germany","South Africa"],
+"a":3,
+"s":"Correct answer: South Africa."
+},
+
+{
+"q":"The G4 meeting on UN Security Council reform in September 2026 took place in:",
+"o":["Geneva","New York","Paris","Vienna"],
+"a":1,
+"s":"Correct answer: New York."
+},
+
+{
+"q":"Yudh Abhyas is a bilateral military exercise between India and:",
+"o":["United States","United Kingdom","Japan","France"],
+"a":0,
+"s":"Correct answer: United States."
+},
+
+{
+"q":"Yudh Abhyas 2026 was conducted in which Indian state?",
+"o":["Rajasthan","Punjab","Gujarat","Assam"],
+"a":0,
+"s":"Correct answer: Rajasthan."
+},
+
+{
+"q":"The Centre extended AFSPA in specified areas of which three northeastern states from October 1, 2026?",
+"o":["Manipur, Nagaland and Arunachal Pradesh","Assam, Meghalaya and Tripura","Mizoram, Tripura and Assam","Sikkim, Assam and Manipur"],
+"a":0,
+"s":"Correct answer: Manipur, Nagaland and Arunachal Pradesh."
+},
+
+{
+"q":"AFSPA stands for:",
+"o":["Armed Forces (Special Powers) Act","Armed Force Security Protection Act","Army Forces Special Protection Act","Armed Frontier Security Powers Act"],
+"a":0,
+"s":"Correct answer: Armed Forces (Special Powers) Act."
+},
+
+{
+"q":"AFSPA was enacted in:",
+"o":["1950","1956","1958","1962"],
+"a":2,
+"s":"Correct answer: 1958."
+},
+
+{
+"q":"The September 2026 AFSPA extension in the specified northeastern areas was for another:",
+"o":["Three months","Six months","One year","Two years"],
+"a":1,
+"s":"Correct answer: Six months."
+},
+
+{
+"q":"Which organisation called the bank strike, as distinct from the Indian Banks' Association?",
+"o":["United Forum of Bank Unions","NPCI","SEBI","IRDAI"],
+"a":0,
+"s":"Correct answer: United Forum of Bank Unions."
+},
+
+{
+"q":"Anahat Singh won silver in which event at the 2026 Asian Games?",
+"o":["Women's singles squash","Women's doubles badminton","Women's 25m pistol","Women's 49kg weightlifting"],
+"a":0,
+"s":"Correct answer: Women's singles squash."
+},
+
+{
+"q":"Anahat Singh's September 2026 Asian Games medal was in:",
+"o":["Squash","Archery","Shooting","Athletics"],
+"a":0,
+"s":"Correct answer: Squash."
+},
+
+{
+"q":"India's first individual Asian Games gold in women's trap in 2026 was won by:",
+"o":["Manu Bhaker","Neeru Dhanda","Suruchi Singh","Esha Singh"],
+"a":1,
+"s":"Correct answer: Neeru Dhanda."
+},
+
+{
+"q":"Neeru Dhanda's Asian Games gold came in which shooting event?",
+"o":["Women's trap","10m air rifle","25m pistol","50m rifle"],
+"a":0,
+"s":"Correct answer: Women's trap."
+},
+
+{
+"q":"The India-UAE leaders' September 2026 conversation covered regional security and:",
+"o":["Bilateral cooperation","Only cricket","Only tourism","Only space launches"],
+"a":0,
+"s":"Correct answer: Bilateral cooperation."
+},
+
+{
+"q":"Which mechanism was expected to continue functioning during the bank strike?",
+"o":["Only cheque clearing","Digital payment systems such as UPI","Only postal services","Only stock exchanges"],
+"a":1,
+"s":"Correct answer: Digital payment systems such as UPI."
+},
+
+{
+"q":"The 2026 Asian Games referenced in these September current affairs were hosted in:",
+"o":["Doha, Qatar","Aichi-Nagoya, Japan","Hangzhou, China","Jakarta, Indonesia"],
+"a":1,
+"s":"Correct answer: Aichi-Nagoya, Japan."
+},
+
+{
+"q":"India's women's cricket gold at the 2026 Asian Games was its first gold medal in the:",
+"o":["Games' cricket competition","Men's hockey competition","Archery competition","Kabaddi competition"],
+"a":0,
+"s":"Correct answer: Games' cricket competition."
+},
+
+{
+"q":"The ₹811-crore defence contract supported which broad objective?",
+"o":["Indigenous defence manufacturing","Foreign tourism","Railway catering","Bank recapitalisation"],
+"a":0,
+"s":"Correct answer: Indigenous defence manufacturing."
+},
+
+{
+"q":"Bharat Dynamics Limited is primarily associated with which sector?",
+"o":["Defence production","Banking","Tourism","Agriculture marketing"],
+"a":0,
+"s":"Correct answer: Defence production."
+},
+
+{
+"q":"The September 2026 S&P growth revision was described as reflecting stronger expected:",
+"o":["Monsoon rainfall","Domestic economic activity","Gold imports","Tourism arrivals"],
+"a":1,
+"s":"Correct answer: Domestic economic activity."
+},
+
+{
+"q":"The 2026 Veer Guardian exercise primarily focused on:",
+"o":["Naval mining","Air combat interoperability and joint operational planning","Railway signalling","Agricultural exports"],
+"a":1,
+"s":"Correct answer: Air combat interoperability and joint operational planning."
+},
+
+{
+"q":"Yashobhoomi is best described as a:",
+"o":["Railway station","Convention and exhibition centre","Military academy","Port"],
+"a":1,
+"s":"Correct answer: Convention and exhibition centre."
+},
+
+{
+"q":"The semiconductor event SEMICON India 2026 highlighted the importance of resilience in:",
+"o":["Coal supply chains","Chip supply chains","Milk supply chains","Fertilizer retail chains"],
+"a":1,
+"s":"Correct answer: Chip supply chains."
+},
+
+{
+"q":"The September 2026 NEET-SS change was intended partly to address vacant:",
+"o":["Primary school seats","Super-speciality seats","Engineering seats","Law seats"],
+"a":1,
+"s":"Correct answer: Super-speciality seats."
+},
+
+{
+"q":"The EPFO wage ceiling change relates to which area of public policy?",
+"o":["Social security","Foreign exchange","Space exploration","Tourism"],
+"a":0,
+"s":"Correct answer: Social security."
+},
+
+{
+"q":"The Aadhaar authentication requirement for subsidised LPG was intended to reduce:",
+"o":["Railway delays","Leakages","Export tariffs","Interest rates"],
+"a":1,
+"s":"Correct answer: Leakages."
+},
+
+{
+"q":"The 20th Rozgar Mela was primarily connected with:",
+"o":["Government recruitment and appointment letters","Bank mergers","Olympic selection","Census publication"],
+"a":0,
+"s":"Correct answer: Government recruitment and appointment letters."
+},
+
+{
+"q":"The September 2026 climate conference brought together scientists and policymakers to discuss:",
+"o":["Only banking regulation","Climate dynamics and environmental sustainability","Only railway fares","Only sports medicine"],
+"a":1,
+"s":"Correct answer: Climate dynamics and environmental sustainability."
+},
+
+{
+"q":"Which Gulf country was involved in the September 19 high-level call with India?",
+"o":["Oman","United Arab Emirates","Bahrain","Kuwait"],
+"a":1,
+"s":"Correct answer: United Arab Emirates."
+},
+
+{
+"q":"The 2026 Asian Games are also known as the:",
+"o":["18th Asian Games","19th Asian Games","20th Asian Games","21st Asian Games"],
+"a":2,
+"s":"Correct answer: 20th Asian Games."
+},
+
+{
+"q":"Which country did India beat for the women's cricket gold at the Asian Games?",
+"o":["Sri Lanka","Nepal","Thailand","South Korea"],
+"a":0,
+"s":"Correct answer: Sri Lanka."
+},
+
+{
+"q":"The Indian men's badminton bronze was won at the Asian Games in:",
+"o":["2024","2025","2026","2027"],
+"a":2,
+"s":"Correct answer: 2026."
+},
+
+{
+"q":"The South Central Railway section using KAVACH 4.0 is Malkajgiri–:",
+"o":["Secunderabad","Kamareddi","Warangal","Vijayawada"],
+"a":1,
+"s":"Correct answer: Kamareddi."
+},
+
+{
+"q":"The KAVACH system is designed mainly to improve:",
+"o":["Train operational safety","Port customs","Air ticket pricing","Postal delivery"],
+"a":0,
+"s":"Correct answer: Train operational safety."
+},
+
+{
+"q":"The G4 is associated with reform of which UN organ?",
+"o":["UNESCO","United Nations Security Council","WHO","UNEP"],
+"a":1,
+"s":"Correct answer: United Nations Security Council."
+},
+
+{
+"q":"The United States ambassador who witnessed Yudh Abhyas 2026 in Rajasthan was:",
+"o":["Sergio Gor","Eric Garcetti","John Kerry","Antony Blinken"],
+"a":0,
+"s":"Correct answer: Sergio Gor."
+},
+
+{
+"q":"The September 2026 bank strike was expected to affect branch-based:",
+"o":["Banking services","Air traffic control","Railway signalling","Passport printing"],
+"a":0,
+"s":"Correct answer: Banking services."
+},
+
+{
+"q":"The proposed 0.4% MDR in the September 2026 legal update applied to specified UPI transactions above:",
+"o":["₹500","₹1,000","₹2,000","₹5,000"],
+"a":2,
+"s":"Correct answer: ₹2,000."
+},
+
+{
+"q":"MDR stands for:",
+"o":["Merchant Discount Rate","Monthly Deposit Ratio","Market Development Return","Merchant Digital Registry"],
+"a":0,
+"s":"Correct answer: Merchant Discount Rate."
+},
+
+{
+"q":"The proposed 0.4% MDR was discussed in relation to which payment system?",
+"o":["UPI","NEFT only","RTGS only","IMPS only"],
+"a":0,
+"s":"Correct answer: UPI."
+},
+
+{
+"q":"The OECD's September 2026 India growth forecast for FY27 was:",
+"o":["6.1%","6.5%","7.1%","8.1%"],
+"a":2,
+"s":"Correct answer: 7.1%."
+},
+
+{
+"q":"What was the OECD's earlier June 2026 forecast for India's FY27 growth?",
+"o":["5.8%","6.3%","6.8%","7.3%"],
+"a":1,
+"s":"Correct answer: 6.3%."
+},
+
+{
+"q":"The OECD report containing the September 2026 growth forecast was an:",
+"o":["Annual Budget","Interim Economic Outlook","Trade Census","Employment Survey"],
+"a":1,
+"s":"Correct answer: Interim Economic Outlook."
+},
+
+{
+"q":"The report title associated with the OECD September 2026 outlook was:",
+"o":["Weathering Successive Shocks","Global Recovery 2030","India Rising","World Trade Reset"],
+"a":0,
+"s":"Correct answer: Weathering Successive Shocks."
+},
+
+{
+"q":"The UPSC completed how many years in 2026?",
+"o":["75 years","90 years","100 years","125 years"],
+"a":2,
+"s":"Correct answer: 100 years."
+},
+
+{
+"q":"The UPSC centenary celebrations were scheduled at which venue?",
+"o":["Yashobhoomi, New Delhi","Bharat Mandapam, New Delhi","Vigyan Bhawan","Raj Bhavan"],
+"a":1,
+"s":"Correct answer: Bharat Mandapam, New Delhi."
+},
+
+{
+"q":"The Indian archery contingent secured a gold-medal hat-trick in which type of events at the 2026 Asian Games?",
+"o":["Recurve archery","Compound archery","Field archery","Traditional archery"],
+"a":1,
+"s":"Correct answer: Compound archery."
+},
+
+{
+"q":"How many major warships and submarines was the Indian Navy set to induct in 2026 according to the September 30 update?",
+"o":["10","12","18","25"],
+"a":2,
+"s":"Correct answer: 18."
+},
+
+{
+"q":"The first PRAMAAN certificates mentioned in late September 2026 relate to:",
+"o":["Indian Forest and Wood Certification Scheme","GST registration","Railway safety","Airport security"],
+"a":0,
+"s":"Correct answer: Indian Forest and Wood Certification Scheme."
+},
+
+{
+"q":"Which ministry introduced the upgraded GDP series with 2022–23 as the base year?",
+"o":["Ministry of Finance","Ministry of Statistics and Programme Implementation","Ministry of Commerce","Ministry of Labour"],
+"a":1,
+"s":"Correct answer: Ministry of Statistics and Programme Implementation (MoSPI)."
+},
+
+{
+"q":"The new GDP series replaced which older base-year series?",
+"o":["2004–05","2011–12","2015–16","2020–21"],
+"a":1,
+"s":"Correct answer: 2011–12."
+},
+
+{
+"q":"India's first LNG-powered train was flagged off from:",
+"o":["Sabarmati Railway Station, Gujarat","Howrah Station, West Bengal","Chennai Central, Tamil Nadu","Bhopal Station, Madhya Pradesh"],
+"a":0,
+"s":"Correct answer: Sabarmati Railway Station, Gujarat."
+},
+
+{
+"q":"KAZIND-2026 is a joint military exercise between India and:",
+"o":["Kazakhstan","Kyrgyzstan","Uzbekistan","Tajikistan"],
+"a":0,
+"s":"Correct answer: Kazakhstan."
+},
+
+{
+"q":"How many members were in the Indian Armed Forces contingent that departed for KAZIND-2026?",
+"o":["40","50","60","100"],
+"a":2,
+"s":"Correct answer: 60 members."
+},
+
+{
+"q":"KAZIND-2026 was the what edition of the annual bilateral exercise?",
+"o":["6th","7th","8th","9th"],
+"a":2,
+"s":"Correct answer: 8th edition."
+},
+
+{
+"q":"The proposed five-day banking week demand was associated with which sector?",
+"o":["Banking sector","Railway sector","Telecom sector","Mining sector"],
+"a":0,
+"s":"Correct answer: Banking sector."
+},
+
+{
+"q":"India's men's and women's kabaddi teams won gold medals at the 2026 Asian Games against:",
+"o":["Iran","China","Japan","Sri Lanka"],
+"a":0,
+"s":"Correct answer: Iran."
+},
+
+{
+"q":"The September 26 Asian Games achievement involved a double gold in:",
+"o":["Kabaddi","Cricket","Badminton","Archery"],
+"a":0,
+"s":"Correct answer: Kabaddi."
+},
+
+{
+"q":"Exercise Tarang Shakti 2026 was conducted by the:",
+"o":["Indian Army","Indian Navy","Indian Air Force","Indian Coast Guard"],
+"a":2,
+"s":"Correct answer: Indian Air Force."
+},
+
+{
+"q":"Tarang Shakti 2026 was described as a:",
+"o":["Bilateral naval exercise","Multinational air exercise","Tri-service mountain exercise","Domestic railway drill"],
+"a":1,
+"s":"Correct answer: Multinational air exercise."
+},
+
+{
+"q":"The September 30 women's 4x400m relay gold was India's first athletics gold at the:",
+"o":["2024 Olympics","2026 Asian Games","2026 Commonwealth Games","2027 World Championships"],
+"a":1,
+"s":"Correct answer: 2026 Asian Games."
+},
+
+{
+"q":"Which athlete was NOT listed as part of India's women's 4x400m relay team in the September 30 report?",
+"o":["Kiran Pahal","Prachi Choudhary","M. R. Poovamma","Neeru Dhanda"],
+"a":3,
+"s":"Correct answer: Neeru Dhanda. She was associated with women's trap shooting, not the reported 4x400m relay team."
+},
+
+{
+"q":"Article 324 of the Constitution is associated with the powers of the:",
+"o":["Finance Commission","Election Commission of India","UPSC","CAG"],
+"a":1,
+"s":"Correct answer: Election Commission of India."
+},
+
+{
+"q":"The September 30 political news concerned proposed discussions by the INDIA bloc in:",
+"o":["Mumbai","Delhi","Kolkata","Hyderabad"],
+"a":1,
+"s":"Correct answer: Delhi."
+},
+
+{
+"q":"The September 2026 Supreme Court update on UPI involved refusal to stay a proposed:",
+"o":["0.1% tax","0.4% MDR","1% GST","2% surcharge"],
+"a":1,
+"s":"Correct answer: 0.4% Merchant Discount Rate."
+},
+
+{
+"q":"The 0.4% MDR framework was scheduled to take effect from:",
+"o":["1 October 2026","15 October 2026","1 November 2026","1 January 2027"],
+"a":1,
+"s":"Correct answer: 15 October 2026."
+},
+
+{
+"q":"The September 30 OECD forecast represented an increase of how many percentage points over its June forecast?",
+"o":["0.3 percentage point","0.5 percentage point","0.8 percentage point","1.2 percentage points"],
+"a":2,
+"s":"Correct answer: 0.8 percentage point."
+},
+
+{
+"q":"The September 2026 UPSC centenary marked the anniversary of India's premier:",
+"o":["Constitutional recruiting body","Central bank","Tax authority","Election tribunal"],
+"a":0,
+"s":"Correct answer: Constitutional recruiting body."
+}
+
+];
+
+let current=0;
+let answers=new Array(questions.length).fill(null);
+let review=new Array(questions.length).fill(false);
+let submitted=false;
+let totalSeconds=60*60;
+
+
+function loadQuestion(){
+
+    const q=questions[current];
+
+    document.getElementById("qNumber").textContent=
+        `Question ${current+1} of ${questions.length}`;
+
+    let html=`<div class="question">${q.q}</div>`;
+
+    q.o.forEach((opt,i)=>{
+
+        const letter=String.fromCharCode(65+i);
+
+        html+=`
+        <label class="option ${answers[current]===i?'selected':''}">
+
+        <input
+            type="radio"
+            name="answer"
+            ${answers[current]===i?'checked':''}
+            onclick="selectAnswer(${i})">
+
+        <span class="option-letter">
+            ${letter}.
+        </span>
+
+        <span>
+            ${opt}
+        </span>
+
+        </label>
+        `;
+
+    });
+
+    document.getElementById("questionBox").innerHTML=html;
+
+    updatePalette();
+
+    document.querySelector(".review").textContent=
+        review[current] ? "Unmark Review" : "Mark Review";
+}
+
+
+function selectAnswer(index){
+
+    if(submitted) return;
+
+    answers[current]=index;
+
+    loadQuestion();
+}
+
+
+function nextQuestion(){
+
+    if(current<questions.length-1){
+
+        current++;
+
+        loadQuestion();
+    }
+}
+
+
+function previousQuestion(){
+
+    if(current>0){
+
+        current--;
+
+        loadQuestion();
+    }
+}
+
+
+function jumpQuestion(index){
+
+    current=index;
+
+    loadQuestion();
+}
+
+
+function toggleReview(){
+
+    if(submitted) return;
+
+    review[current]=!review[current];
+
+    updatePalette();
+
+    document.querySelector(".review").textContent=
+        review[current] ? "Unmark Review" : "Mark Review";
+}
+
+
+function updatePalette(){
+
+    const p=document.getElementById("palette");
+
+    p.innerHTML="";
+
+    questions.forEach((q,i)=>{
+
+        const b=document.createElement("button");
+
+        b.className="qbtn";
+
+        if(answers[i]!==null)
+            b.classList.add("answered");
+
+        if(review[i])
+            b.classList.add("reviewed");
+
+        if(i===current)
+            b.classList.add("current");
+
+        b.textContent=i+1;
+
+        b.onclick=()=>jumpQuestion(i);
+
+        p.appendChild(b);
+
+    });
+}
+
+
+function updateTimer(){
+
+    if(submitted) return;
+
+    const m=Math.floor(totalSeconds/60);
+
+    const s=totalSeconds%60;
+
+    document.getElementById("timer").textContent=
+        String(m).padStart(2,"0")+":"+
+        String(s).padStart(2,"0");
+
+    if(totalSeconds<=0){
+
+        clearInterval(timerInterval);
+
+        submitTest(true);
+
+        return;
+    }
+
+    totalSeconds--;
+}
+
+
+const timerInterval=setInterval(updateTimer,1000);
+
+
+function submitTest(auto=false){
+
+    if(submitted) return;
+
+    if(!auto){
+
+        const ok=confirm(
+            "Are you sure you want to submit the test?"
+        );
+
+        if(!ok) return;
+    }
+
+    submitted=true;
+
+    clearInterval(timerInterval);
+
+    let correct=0;
+    let wrong=0;
+    let unattempted=0;
+
+    questions.forEach((q,i)=>{
+
+        if(answers[i]===null){
+
+            unattempted++;
+
+        }
+        else if(answers[i]===q.a){
+
+            correct++;
+
+        }
+        else{
+
+            wrong++;
+
+        }
+
+    });
+
+    const score=correct-(wrong*0.33);
+
+    document.getElementById("testArea").style.display="none";
+
+    document.getElementById("resultArea").style.display="block";
+
+    document.getElementById("finalScore").textContent=
+        "Score: "+score.toFixed(2)+" / 100";
+
+    document.getElementById("resultSummary").textContent=
+        `Correct +1 | Wrong −0.33 | Unattempted 0 | Total Questions ${questions.length}`;
+
+    document.getElementById("correctCount").textContent=correct;
+
+    document.getElementById("wrongCount").textContent=wrong;
+
+    document.getElementById("unattemptedCount").textContent=
+        unattempted;
+
+    document.getElementById("scoreCell").textContent=
+        score.toFixed(2);
+
+    showSolutions();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+function showSolutions(){
+
+    let html="";
+
+    questions.forEach((q,i)=>{
+
+        const user=answers[i];
+
+        let cls="unattempted";
+
+        let status="Unattempted";
+
+        if(user!==null){
+
+            if(user===q.a){
+
+                cls="correct";
+
+                status="Correct";
+
+            }
+            else{
+
+                cls="wrong";
+
+                status="Wrong";
+            }
+        }
+
+        const correctLetter=
+            String.fromCharCode(65+q.a);
+
+        const userText=
+            user===null
+            ?"Not Attempted"
+            :`${String.fromCharCode(65+user)}. ${q.o[user]}`;
+
+        html+=`
+
+        <div class="solution ${cls}">
+
+        <strong>
+            Q${i+1}. ${q.q}
+        </strong>
+
+        <br>
+
+        <b>Your Answer:</b>
+        ${userText}
+
+        <br>
+
+        <b>Status:</b>
+        ${status}
+
+        <br>
+
+        <b>Correct Answer:</b>
+        ${correctLetter}. ${q.o[q.a]}
+
+        <br>
+
+        <b>Explanation:</b>
+        ${q.s}
+
+        </div>
+
+        `;
+    });
+
+    document.getElementById("solutions").innerHTML=html;
+}
+
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
