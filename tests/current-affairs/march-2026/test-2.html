@@ -1,1 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | March 2026 Current Affairs Test 2</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:18px;
+    text-align:center;
+}
+
+header h1{
+    font-size:25px;
+}
+
+.container{
+    width:94%;
+    max-width:1200px;
+    margin:20px auto;
+}
+
+.test-info{
+    background:white;
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.timer{
+    position:fixed;
+    top:15px;
+    right:20px;
+    background:#dc2626;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:bold;
+    z-index:1000;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 280px;
+    gap:20px;
+}
+
+.question-box{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.question{
+    display:none;
+}
+
+.question.active{
+    display:block;
+}
+
+.question h3{
+    margin-bottom:20px;
+    color:#102a43;
+}
+
+.option{
+    display:block;
+    padding:13px;
+    margin:10px 0;
+    border:1px solid #dbe2ea;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.option:hover{
+    background:#eef5ff;
+}
+
+.palette{
+    background:white;
+    padding:20px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    height:max-content;
+    position:sticky;
+    top:20px;
+}
+
+.palette-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qno{
+    border:1px solid #cbd5e1;
+    padding:8px;
+    text-align:center;
+    border-radius:5px;
+    cursor:pointer;
+    background:white;
+}
+
+.qno.attempted{
+    background:#16a34a;
+    color:white;
+}
+
+.qno.current{
+    border:3px solid #1d4ed8;
+}
+
+.buttons{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+    gap:10px;
+}
+
+button{
+    border:none;
+    padding:12px 20px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+    background:#1d4ed8;
+    color:white;
+}
+
+.clear{
+    background:#64748b;
+}
+
+.submit{
+    background:#dc2626;
+}
+
+#result{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    margin-top:20px;
+}
+
+.solution{
+    background:#f8fafc;
+    padding:15px;
+    margin:15px 0;
+    border-left:5px solid #16a34a;
+    border-radius:8px;
+}
+
+@media(max-width:800px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette{
+        position:static;
+    }
+
+    .timer{
+        position:static;
+        text-align:center;
+        margin:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>AIMERS CLASSES</h1>
+<p>March 2026 Current Affairs — Test 2</p>
+</header>
+
+<div class="timer">
+Time Left: <span id="timer">60:00</span>
+</div>
+
+<div class="container">
+
+<div class="test-info">
+<b>March 2026 Current Affairs — Test 2</b><br>
+100 Questions | SSC • Railway • UPSC<br>
+<b>Correct:</b> +1 Mark &nbsp;
+<b>Wrong:</b> −0.25 Mark &nbsp;
+<b>Unattempted:</b> 0 Mark
+</div>
+
+<div class="layout">
+
+<div class="question-box" id="questionBox">
+
+<!-- QUESTIONS WILL BE HERE -->
+
+</div>
+
+<div class="palette">
+
+<h3>Question Palette</h3>
+
+<br>
+
+<div class="palette-grid" id="palette"></div>
+
+<br>
+
+<p>🟢 Attempted</p>
+<p>⚪ Not Attempted</p>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="clear" onclick="clearAnswer()">
+Clear Answer
+</button>
+
+<button onclick="nextQuestion()">
+Next →
+</button>
+
+<button class="submit" onclick="submitTest()">
+Submit Test
+</button>
+
+</div>
+
+<div id="result"></div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+/* =========================
+   QUESTIONS 1–100
+   ========================= */
+
+{
+q:"Question 1 goes here",
+options:[
+"Option A",
+"Option B",
+"Option C",
+"Option D"
+],
+answer:0,
+solution:"Correct Answer: Option A. Explanation goes here."
+},
+
+{
+q:"Question 2 goes here",
+options:[
+"Option A",
+"Option B",
+"Option C",
+"Option D"
+],
+answer:1,
+solution:"Correct Answer: Option B. Explanation goes here."
+},
+
+/* Continue up to Question 100 */
+
+];
+
+
+let currentQuestion=0;
+let userAnswers=new Array(questions.length).fill(null);
+let timeLeft=60*60;
+let submitted=false;
+
+
+function loadQuestion(){
+
+const box=document.getElementById("questionBox");
+
+box.innerHTML="";
+
+questions.forEach((item,index)=>{
+
+const div=document.createElement("div");
+
+div.className="question";
+
+if(index===currentQuestion){
+div.classList.add("active");
+}
+
+let html=`
+<h3>
+Q${index+1}. ${item.q}
+</h3>
+`;
+
+item.options.forEach((option,optIndex)=>{
+
+html+=`
+<label class="option">
+<input
+type="radio"
+name="question${index}"
+value="${optIndex}"
+${userAnswers[index]===optIndex?"checked":""}
+onchange="selectAnswer(${index},${optIndex})">
+
+${option}
+
+</label>
+`;
+
+});
+
+div.innerHTML=html;
+
+box.appendChild(div);
+
+});
+
+updatePalette();
+
+}
+
+
+function selectAnswer(question,answer){
+
+userAnswers[question]=answer;
+
+updatePalette();
+
+}
+
+
+function updatePalette(){
+
+const palette=document.getElementById("palette");
+
+palette.innerHTML="";
+
+questions.forEach((q,index)=>{
+
+const btn=document.createElement("div");
+
+btn.className="qno";
+
+btn.innerText=index+1;
+
+if(userAnswers[index]!==null){
+btn.classList.add("attempted");
+}
+
+if(index===currentQuestion){
+btn.classList.add("current");
+}
+
+btn.onclick=()=>{
+
+currentQuestion=index;
+loadQuestion();
+
+};
+
+palette.appendChild(btn);
+
+});
+
+}
+
+
+function nextQuestion(){
+
+if(currentQuestion<questions.length-1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}
+
+}
+
+
+function previousQuestion(){
+
+if(currentQuestion>0){
+
+currentQuestion--;
+
+loadQuestion();
+
+}
+
+}
+
+
+function clearAnswer(){
+
+userAnswers[currentQuestion]=null;
+
+loadQuestion();
+
+}
+
+
+function submitTest(){
+
+if(submitted) return;
+
+if(!confirm("Are you sure you want to submit the test?")){
+return;
+}
+
+submitted=true;
+
+clearInterval(timerInterval);
+
+let correct=0;
+let wrong=0;
+let unanswered=0;
+
+questions.forEach((q,index)=>{
+
+if(userAnswers[index]===null){
+
+unanswered++;
+
+}
+else if(userAnswers[index]===q.answer){
+
+correct++;
+
+}
+else{
+
+wrong++;
+
+}
+
+});
+
+let score=correct-(wrong*0.25);
+
+let percentage=(score/questions.length)*100;
+
+let result=document.getElementById("result");
+
+result.style.display="block";
+
+result.innerHTML=`
+
+<h2>Test Result</h2>
+
+<br>
+
+<p><b>Total Questions:</b> ${questions.length}</p>
+
+<p><b>Correct:</b> ${correct}</p>
+
+<p><b>Wrong:</b> ${wrong}</p>
+
+<p><b>Unattempted:</b> ${unanswered}</p>
+
+<p><b>Negative Marking:</b> ${wrong*0.25.toFixed(2)} marks</p>
+
+<p><b>Final Score:</b> ${score.toFixed(2)} / 100</p>
+
+<p><b>Percentage:</b> ${percentage.toFixed(2)}%</p>
+
+<hr>
+
+<h2>Solutions</h2>
+
+${questions.map((q,i)=>`
+
+<div class="solution">
+
+<b>Q${i+1}. ${q.q}</b>
+
+<br><br>
+
+<b>Correct Answer:</b>
+${q.options[q.answer]}
+
+<br><br>
+
+${q.solution}
+
+</div>
+
+`).join("")}
+
+`;
+
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:"smooth"
+});
+
+}
+
+
+function updateTimer(){
+
+let minutes=Math.floor(timeLeft/60);
+
+let seconds=timeLeft%60;
+
+document.getElementById("timer").innerText=
+`${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+
+if(timeLeft<=0){
+
+clearInterval(timerInterval);
+
+if(!submitted){
+
+alert("Time is over. Test will be submitted automatically.");
+
+submitTest();
+
+}
+
+return;
+
+}
+
+timeLeft--;
+
+}
+
+
+let timerInterval=setInterval(updateTimer,1000);
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
