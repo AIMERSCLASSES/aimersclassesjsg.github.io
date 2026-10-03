@@ -1,1 +1,2484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | April 2026 Current Affairs Test 1</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:18px;
+    text-align:center;
+}
+
+header h1{
+    font-size:25px;
+    font-weight:900;
+}
+
+header p{
+    margin-top:4px;
+}
+
+.container{
+    width:94%;
+    max-width:1200px;
+    margin:20px auto;
+}
+
+.top-info{
+    background:white;
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.top-info h2{
+    color:#102a43;
+    margin-bottom:8px;
+}
+
+.instructions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
+}
+
+.badge{
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.green{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.red{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.blue{
+    background:#dbeafe;
+    color:#1e40af;
+}
+
+.gray{
+    background:#e5e7eb;
+    color:#374151;
+}
+
+.timer{
+    position:fixed;
+    right:20px;
+    top:15px;
+    z-index:1000;
+    background:#dc2626;
+    color:white;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:900;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 290px;
+    gap:20px;
+}
+
+.question-box{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    min-height:450px;
+}
+
+.question{
+    display:none;
+}
+
+.question.active{
+    display:block;
+}
+
+.question h3{
+    color:#102a43;
+    line-height:1.5;
+    margin-bottom:22px;
+}
+
+.option{
+    display:block;
+    padding:13px 15px;
+    margin:10px 0;
+    border:1px solid #d8dee8;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#eff6ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:9px;
+}
+
+.palette{
+    background:white;
+    padding:20px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    height:max-content;
+    position:sticky;
+    top:20px;
+}
+
+.palette h3{
+    color:#102a43;
+    margin-bottom:15px;
+}
+
+.palette-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qno{
+    border:1px solid #cbd5e1;
+    background:white;
+    padding:8px 4px;
+    text-align:center;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.qno:hover{
+    background:#eff6ff;
+}
+
+.qno.attempted{
+    background:#16a34a;
+    color:white;
+    border-color:#16a34a;
+}
+
+.qno.current{
+    border:3px solid #1d4ed8;
+}
+
+.legend{
+    margin-top:15px;
+    font-size:13px;
+}
+
+.legend p{
+    margin:5px 0;
+}
+
+.buttons{
+    background:white;
+    padding:18px;
+    margin-top:20px;
+    border-radius:12px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+button{
+    border:none;
+    padding:12px 20px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:800;
+    color:white;
+    background:#1d4ed8;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.clear{
+    background:#64748b;
+}
+
+.submit{
+    background:#dc2626;
+}
+
+#result{
+    display:none;
+    background:white;
+    padding:25px;
+    margin-top:20px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.result-box{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:20px 0;
+}
+
+.result-item{
+    padding:15px;
+    background:#f8fafc;
+    border-radius:8px;
+    text-align:center;
+}
+
+.result-item b{
+    display:block;
+    font-size:22px;
+    margin-top:5px;
+}
+
+.solution{
+    background:#f8fafc;
+    padding:16px;
+    margin:14px 0;
+    border-left:5px solid #16a34a;
+    border-radius:7px;
+    line-height:1.6;
+}
+
+.correct-answer{
+    color:#15803d;
+    font-weight:bold;
+}
+
+footer{
+    margin-top:40px;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+footer h3{
+    color:#ffd43b;
+}
+
+footer p{
+    color:#cbd5e1;
+    margin-top:5px;
+}
+
+@media(max-width:850px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette{
+        position:static;
+    }
+
+    .timer{
+        position:static;
+        width:max-content;
+        margin:10px auto;
+    }
+
+    .result-box{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:500px){
+
+    .question-box{
+        padding:18px;
+    }
+
+    .result-box{
+        grid-template-columns:1fr;
+    }
+
+    header h1{
+        font-size:21px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>AIMERS CLASSES</h1>
+
+<p>April 2026 Current Affairs — Test 1</p>
+
+</header>
+
+<div class="timer">
+⏱ Time Left: <span id="timer">60:00</span>
+</div>
+
+<div class="container">
+
+<div class="top-info">
+
+<h2>
+📚 April 2026 Current Affairs — Test 1
+</h2>
+
+<p>
+SSC • Railway • UPSC • Competitive Examinations
+</p>
+
+<div class="instructions">
+
+<span class="badge blue">100 Questions</span>
+
+<span class="badge blue">60 Minutes</span>
+
+<span class="badge green">Correct +1</span>
+
+<span class="badge red">Wrong −0.25</span>
+
+<span class="badge gray">Unattempted 0</span>
+
+</div>
+
+</div>
+
+
+<div class="layout">
+
+<div class="question-box" id="questionBox"></div>
+
+
+<div class="palette">
+
+<h3>
+📝 Question Palette
+</h3>
+
+<div class="palette-grid" id="palette"></div>
+
+<div class="legend">
+
+<p>🟢 Attempted</p>
+
+<p>⚪ Not Attempted</p>
+
+<p>🔵 Current Question</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="clear" onclick="clearAnswer()">
+Clear Answer
+</button>
+
+<button onclick="nextQuestion()">
+Next →
+</button>
+
+<button class="submit" onclick="submitTest()">
+Submit Test
+</button>
+
+</div>
+
+
+<div id="result"></div>
+
+</div>
+
+
+<footer>
+
+<h3>AIMERS CLASSES</h3>
+
+<p>April 2026 Current Affairs Test Series</p>
+
+<p>SSC • Railway • UPSC</p>
+
+</footer>
+
+
+<script>
+
+const questions = [
+
+{
+q:"Which railway service was introduced in April 2026 to directly connect Jammu Tawi with Srinagar?",
+options:[
+"Amrit Bharat Express",
+"Vande Bharat Express",
+"Tejas Express",
+"Rajdhani Express"
+],
+answer:1,
+solution:"The Jammu Tawi–Srinagar Vande Bharat Express was highlighted as a major railway connectivity development in April 2026."
+},
+
+{
+q:"The Jammu–Srinagar Vande Bharat service reduced the journey time to approximately:",
+options:[
+"2 hours",
+"5 hours",
+"8 hours",
+"12 hours"
+],
+answer:1,
+solution:"The service was reported to reduce the journey to about five hours."
+},
+
+{
+q:"The Jammu–Srinagar rail connection is closely associated with which major railway project?",
+options:[
+"DFCC",
+"USBRL",
+"MAHSR",
+"DMIC"
+],
+answer:1,
+solution:"USBRL stands for Udhampur-Srinagar-Baramulla Rail Link."
+},
+
+{
+q:"Which technology is used by the Amrit Bharat Express trains highlighted in April 2026?",
+options:[
+"Maglev",
+"Push-Pull",
+"Hydrogen propulsion",
+"Steam propulsion"
+],
+answer:1,
+solution:"The Amrit Bharat Express uses Push-Pull technology, with locomotives arranged to improve acceleration and operational efficiency."
+},
+
+{
+q:"How many coaches were highlighted as typical for the non-AC Amrit Bharat Express configuration?",
+options:[
+"12",
+"18",
+"22",
+"30"
+],
+answer:2,
+solution:"The April 2026 compilation identifies a 22-coach configuration for the highlighted Amrit Bharat Express."
+},
+
+{
+q:"The Mumbai–Ahmedabad High-Speed Rail project is based on which country's Shinkansen technology?",
+options:[
+"France",
+"Germany",
+"Japan",
+"South Korea"
+],
+answer:2,
+solution:"India's first high-speed rail corridor uses Japanese Shinkansen technology."
+},
+
+{
+q:"What was the reported physical progress of the Mumbai–Ahmedabad High-Speed Rail project in April 2026?",
+options:[
+"45.2%",
+"50.0%",
+"59.1%",
+"72.5%"
+],
+answer:2,
+solution:"The reported physical progress was 59.1%."
+},
+
+{
+q:"What is the approximate length of the Mumbai–Ahmedabad High-Speed Rail corridor?",
+options:[
+"350 km",
+"508 km",
+"650 km",
+"720 km"
+],
+answer:1,
+solution:"The corridor is approximately 508 km long."
+},
+
+{
+q:"Which indigenous railway safety system received expansion approval in April 2026?",
+options:[
+"Kavach",
+"Rakshak",
+"Trinetra",
+"Suraksha"
+],
+answer:0,
+solution:"Kavach is India's Automatic Train Protection system."
+},
+
+{
+q:"Kavach is primarily designed to prevent which railway safety problem?",
+options:[
+"Ticketless travel",
+"Signal Passing at Danger and collisions",
+"Platform overcrowding",
+"Train catering problems"
+],
+answer:1,
+solution:"Kavach is an Automatic Train Protection system intended to reduce risks such as Signal Passing at Danger and collisions."
+},
+
+{
+q:"Which organization is closely associated with the technical development of Kavach?",
+options:[
+"ISRO",
+"RDSO",
+"HAL",
+"DRDO"
+],
+answer:1,
+solution:"Research Designs and Standards Organisation (RDSO) is closely associated with railway technical standards and Kavach development."
+},
+
+{
+q:"Which scheme focuses on redevelopment and modernization of railway stations?",
+options:[
+"PM Gati Shakti",
+"Amrit Bharat Station Scheme",
+"PM Gram Sadak Yojana",
+"Smart Cities Mission"
+],
+answer:1,
+solution:"The Amrit Bharat Station Scheme focuses on modernizing and redeveloping railway stations."
+},
+
+{
+q:"The Western Dedicated Freight Corridor connects Dadri with:",
+options:[
+"JNPT",
+"Kochi",
+"Mormugao",
+"Paradip"
+],
+answer:0,
+solution:"The Western Dedicated Freight Corridor runs from Dadri in Uttar Pradesh to JNPT near Mumbai."
+},
+
+{
+q:"Which organization releases the World Press Freedom Index?",
+options:[
+"UNESCO",
+"Reporters Without Borders",
+"World Bank",
+"UNDP"
+],
+answer:1,
+solution:"The World Press Freedom Index is published by Reporters Without Borders (RSF)."
+},
+
+{
+q:"What was India's reported position in the World Press Freedom Index 2026?",
+options:[
+"142nd",
+"151st",
+"157th",
+"165th"
+],
+answer:2,
+solution:"India was placed at 157th position in the 2026 index according to the cited April compilation."
+},
+
+{
+q:"How many countries were covered by the World Press Freedom Index 2026?",
+options:[
+"150",
+"175",
+"180",
+"195"
+],
+answer:2,
+solution:"The index covered 180 countries."
+},
+
+{
+q:"Which country occupied the top position in the World Press Freedom Index 2026?",
+options:[
+"Norway",
+"Finland",
+"Sweden",
+"Denmark"
+],
+answer:0,
+solution:"Norway was listed at the top of the 2026 World Press Freedom Index."
+},
+
+{
+q:"Which organization publishes the Global Military Expenditure report used in April 2026 current affairs?",
+options:[
+"SIPRI",
+"IMF",
+"NATO",
+"World Bank"
+],
+answer:0,
+solution:"The Stockholm International Peace Research Institute (SIPRI) publishes global military expenditure data."
+},
+
+{
+q:"What was India's military expenditure reported by SIPRI for the relevant 2025 data?",
+options:[
+"$75.5 billion",
+"$82.4 billion",
+"$92.1 billion",
+"$105.2 billion"
+],
+answer:2,
+solution:"India's military expenditure was reported at about $92.1 billion."
+},
+
+{
+q:"What was India's position among the world's largest military spenders in the cited SIPRI report?",
+options:[
+"3rd",
+"4th",
+"5th",
+"6th"
+],
+answer:2,
+solution:"India was reported as the world's fifth-largest military spender."
+},
+
+{
+q:"Which country was identified as the world's largest military spender?",
+options:[
+"China",
+"United States",
+"Russia",
+"India"
+],
+answer:1,
+solution:"The United States remained the largest military spender."
+},
+
+{
+q:"Which country topped the World Happiness Report 2026?",
+options:[
+"Denmark",
+"Finland",
+"Norway",
+"Iceland"
+],
+answer:1,
+solution:"Finland retained the top position in the World Happiness Report 2026."
+},
+
+{
+q:"Which organization is associated with the World Happiness Report?",
+options:[
+"UN Sustainable Development Solutions Network",
+"IMF",
+"WHO",
+"World Bank"
+],
+answer:0,
+solution:"The World Happiness Report is associated with the UN Sustainable Development Solutions Network."
+},
+
+{
+q:"What was India's reported rank in the World Happiness Report 2026?",
+options:[
+"108th",
+"118th",
+"126th",
+"135th"
+],
+answer:2,
+solution:"India was reported at 126th position in the 2026 report."
+},
+
+{
+q:"Which country topped the Henley Passport Index Q2 2026?",
+options:[
+"Japan",
+"Singapore",
+"Germany",
+"France"
+],
+answer:1,
+solution:"Singapore topped the cited Q2 2026 Henley Passport Index."
+},
+
+{
+q:"What was India's position in the Henley Passport Index Q2 2026?",
+options:[
+"70th",
+"75th",
+"80th",
+"85th"
+],
+answer:2,
+solution:"India was reported at 80th position."
+},
+
+{
+q:"Approximately how many destinations were accessible to Indian passport holders without a prior visa according to the cited April update?",
+options:[
+"35",
+"45",
+"55",
+"75"
+],
+answer:2,
+solution:"The cited update reported access to about 55 destinations."
+},
+
+{
+q:"Which organization publishes the Logistics Performance Index?",
+options:[
+"World Bank",
+"IMF",
+"WTO",
+"UNCTAD"
+],
+answer:0,
+solution:"The Logistics Performance Index is published by the World Bank."
+},
+
+{
+q:"What was India's reported rank in the Logistics Performance Index 2026?",
+options:[
+"28th",
+"38th",
+"48th",
+"58th"
+],
+answer:1,
+solution:"India was reported at 38th position."
+},
+
+{
+q:"Which organization publishes the Global Firepower Index?",
+options:[
+"SIPRI",
+"Global Firepower",
+"NATO",
+"UN Security Council"
+],
+answer:1,
+solution:"The Global Firepower Index is published by Global Firepower."
+},
+
+{
+q:"What was India's position in the Global Firepower Index 2026?",
+options:[
+"2nd",
+"3rd",
+"4th",
+"5th"
+],
+answer:2,
+solution:"India was ranked fourth in the cited 2026 Global Firepower Index."
+},
+
+{
+q:"Which city hosted the 11th Heads of Mission Conference in April 2026?",
+options:[
+"Mumbai",
+"New Delhi",
+"Chennai",
+"Hyderabad"
+],
+answer:1,
+solution:"The 11th Heads of Mission Conference was held in New Delhi."
+},
+
+{
+q:"What was the theme of the 11th Heads of Mission Conference?",
+options:[
+"Reforming Indian Diplomacy for 2047",
+"One Earth One Future",
+"Digital India Diplomacy",
+"Global South First"
+],
+answer:0,
+solution:"The theme was 'Reforming Indian Diplomacy for 2047.'"
+},
+
+{
+q:"Which three areas were highlighted as the '3Ts' in India's diplomatic outreach?",
+options:[
+"Trade, Technology, Tourism",
+"Transport, Trade, Taxation",
+"Technology, Tourism, Textiles",
+"Trade, Training, Transport"
+],
+answer:0,
+solution:"The three Ts were Trade, Technology and Tourism."
+},
+
+{
+q:"Who addressed the closing session of the 11th Heads of Mission Conference?",
+options:[
+"Amit Shah",
+"Narendra Modi",
+"S. Jaishankar",
+"Rajnath Singh"
+],
+answer:1,
+solution:"Prime Minister Narendra Modi addressed the closing session."
+},
+
+{
+q:"Where was the GRP Chiefs' Conference 2026 held?",
+options:[
+"New Delhi",
+"Mumbai",
+"Kolkata",
+"Bengaluru"
+],
+answer:0,
+solution:"The Government Railway Police Chiefs' Conference was held in New Delhi."
+},
+
+{
+q:"Which two organizations co-organized the anti-doping intelligence conference highlighted in April?",
+options:[
+"WADA and INTERPOL",
+"FIFA and IOC",
+"WHO and UNESCO",
+"UNODC and FIFA"
+],
+answer:0,
+solution:"The conference involved WADA and INTERPOL along with India's NADA."
+},
+
+{
+q:"Which city was confirmed as host of the 2026 Quad Leaders' Summit?",
+options:[
+"Tokyo",
+"Brisbane",
+"New Delhi",
+"Washington D.C."
+],
+answer:1,
+solution:"Brisbane, Australia was identified as the host city."
+},
+
+{
+q:"Which country held the G7 presidency in 2026?",
+options:[
+"France",
+"Germany",
+"Canada",
+"Italy"
+],
+answer:0,
+solution:"France held the G7 presidency in 2026."
+},
+
+{
+q:"Where was the 52nd G7 Summit scheduled to be held?",
+options:[
+"Paris",
+"Évian-les-Bains",
+"Nice",
+"Lyon"
+],
+answer:1,
+solution:"The 52nd G7 Summit was scheduled for Évian-les-Bains, France."
+},
+
+{
+q:"Which country was confirmed as an invited guest for the 2026 G7 Summit?",
+options:[
+"India",
+"Brazil",
+"South Africa",
+"Indonesia"
+],
+answer:0,
+solution:"India was highlighted as an invited guest country."
+},
+
+{
+q:"Which country held the BIMSTEC chairmanship in the cited April 2026 update?",
+options:[
+"India",
+"Thailand",
+"Bangladesh",
+"Sri Lanka"
+],
+answer:1,
+solution:"Thailand was identified as the current BIMSTEC chair."
+},
+
+{
+q:"BIMSTEC primarily focuses on cooperation among countries around which region?",
+options:[
+"Bay of Bengal",
+"Arabian Peninsula",
+"South China Sea",
+"Caspian Sea"
+],
+answer:0,
+solution:"BIMSTEC stands for Bay of Bengal Initiative for Multi-Sectoral Technical and Economic Cooperation."
+},
+
+{
+q:"Which agreement was finalized by BIMSTEC members in the cited April 2026 update?",
+options:[
+"Maritime Transport Cooperation Agreement",
+"Common Currency Agreement",
+"Digital Visa Agreement",
+"Defence Treaty"
+],
+answer:0,
+solution:"The Maritime Transport Cooperation Agreement was highlighted."
+},
+
+{
+q:"Where is the Prototype Fast Breeder Reactor (PFBR) located?",
+options:[
+"Tarapur",
+"Kalpakkam",
+"Narora",
+"Rawatbhata"
+],
+answer:1,
+solution:"The PFBR is located at Kalpakkam in Tamil Nadu."
+},
+
+{
+q:"What is the electrical capacity of the PFBR at Kalpakkam?",
+options:[
+"250 MWe",
+"500 MWe",
+"750 MWe",
+"1000 MWe"
+],
+answer:1,
+solution:"The PFBR has a planned electrical capacity of 500 MWe."
+},
+
+{
+q:"Which coolant is used in the Prototype Fast Breeder Reactor?",
+options:[
+"Heavy water",
+"Liquid sodium",
+"Helium",
+"Liquid nitrogen"
+],
+answer:1,
+solution:"The PFBR uses liquid sodium as its coolant."
+},
+
+{
+q:"What major milestone did the PFBR achieve in April 2026?",
+options:[
+"Commercial launch",
+"First criticality",
+"First satellite link",
+"First hydrogen production"
+],
+answer:1,
+solution:"The PFBR achieved first criticality in April 2026."
+},
+
+{
+q:"The PFBR forms part of which stage of India's three-stage nuclear power programme?",
+options:[
+"Stage I",
+"Stage II",
+"Stage III",
+"Not part of it"
+],
+answer:1,
+solution:"Fast Breeder Reactors form the second stage of India's three-stage nuclear programme."
+},
+
+{
+q:"India's three-stage nuclear programme was formulated under the vision of:",
+options:[
+"Homi J. Bhabha",
+"Vikram Sarabhai",
+"Satish Dhawan",
+"A.P.J. Abdul Kalam"
+],
+answer:0,
+solution:"The three-stage nuclear programme is associated with Dr. Homi J. Bhabha."
+},
+
+{
+q:"Which NASA mission was the first crewed flight of the Artemis programme to orbit the Moon?",
+options:[
+"Artemis I",
+"Artemis II",
+"Artemis III",
+"Artemis IV"
+],
+answer:1,
+solution:"Artemis II was the first crewed lunar-orbit mission of the Artemis programme."
+},
+
+{
+q:"Which spacecraft is used by Artemis II?",
+options:[
+"Orion",
+"Dragon",
+"Starliner",
+"Soyuz"
+],
+answer:0,
+solution:"Artemis II uses NASA's Orion spacecraft."
+},
+
+{
+q:"Which launch vehicle is associated with Artemis II?",
+options:[
+"Falcon Heavy",
+"Space Launch System",
+"Atlas V",
+"Ariane 6"
+],
+answer:1,
+solution:"Artemis II uses NASA's Space Launch System (SLS)."
+},
+
+{
+q:"How many astronauts were aboard Artemis II?",
+options:[
+"2",
+"3",
+"4",
+"6"
+],
+answer:2,
+solution:"Artemis II carried a crew of four astronauts."
+},
+
+{
+q:"Which Indian missile project was reported with an estimated range of 8,000–12,000 km?",
+options:[
+"Agni-I",
+"Agni-III",
+"Agni-V",
+"Agni-VI"
+],
+answer:3,
+solution:"The cited April update described Agni-VI with an estimated range of 8,000–12,000 km."
+},
+
+{
+q:"MIRV technology refers to:",
+options:[
+"Multiple Independently Targetable Reentry Vehicles",
+"Multi Integrated Radar Vehicles",
+"Missile Interceptor Range Vehicles",
+"Mobile Integrated Rocket Vehicles"
+],
+answer:0,
+solution:"MIRV stands for Multiple Independently Targetable Reentry Vehicles."
+},
+
+{
+q:"Which two space agencies are associated with Chandrayaan-5/LUPEX?",
+options:[
+"ISRO and NASA",
+"ISRO and JAXA",
+"ISRO and ESA",
+"ISRO and Roscosmos"
+],
+answer:1,
+solution:"LUPEX is a collaborative lunar exploration mission involving ISRO and Japan's JAXA."
+},
+
+{
+q:"What is the primary purpose of the SARAL AI platform mentioned in April 2026?",
+options:[
+"Stock trading",
+"Scientific research simplification",
+"Railway ticketing",
+"Weather forecasting only"
+],
+answer:1,
+solution:"SARAL AI was described as a platform aimed at simplifying scientific research."
+},
+
+{
+q:"Who was reported as Chairman of DRDO in April 2026?",
+options:[
+"Samir V. Kamat",
+"S. Somanath",
+"G. Satheesh Reddy",
+"Ajit Doval"
+],
+answer:0,
+solution:"Samir V. Kamat was identified as DRDO Chairman in the cited April material."
+},
+
+{
+q:"On which date is World Quantum Day observed?",
+options:[
+"April 7",
+"April 14",
+"April 22",
+"April 30"
+],
+answer:1,
+solution:"World Quantum Day is observed on April 14."
+},
+
+{
+q:"Which rover was associated with the discovery of new organic molecules on Mars in the cited April material?",
+options:[
+"Curiosity",
+"Perseverance",
+"Opportunity",
+"Zhurong"
+],
+answer:0,
+solution:"The cited material associated the finding with NASA's Curiosity rover."
+},
+
+{
+q:"India's first Quantum Computing Testing Facility was announced in which city?",
+options:[
+"Bengaluru",
+"Amaravati",
+"Pune",
+"Hyderabad"
+],
+answer:1,
+solution:"The cited April compilation identified Amaravati."
+},
+
+{
+q:"Who was appointed Vice Chairperson of NITI Aayog in April 2026 according to the cited material?",
+options:[
+"Suman Bery",
+"Dr. Ashok Kumar Lahiri",
+"Arvind Panagariya",
+"B.V.R. Subrahmanyam"
+],
+answer:1,
+solution:"Dr. Ashok Kumar Lahiri was identified as the appointee."
+},
+
+{
+q:"Who is the ex-officio President of the Anusandhan National Research Foundation?",
+options:[
+"President of India",
+"Prime Minister of India",
+"Science Minister",
+"UGC Chairman"
+],
+answer:1,
+solution:"The Prime Minister of India is the ex-officio President of ANRF."
+},
+
+{
+q:"Where is the headquarters of the World Anti-Doping Agency located?",
+options:[
+"Paris",
+"Montreal",
+"Geneva",
+"Vienna"
+],
+answer:1,
+solution:"WADA is headquartered in Montreal, Canada."
+},
+
+{
+q:"Where is the headquarters of the International Telecommunication Union located?",
+options:[
+"New York",
+"Geneva",
+"Paris",
+"London"
+],
+answer:1,
+solution:"The ITU is headquartered in Geneva, Switzerland."
+},
+
+{
+q:"Who is the Secretary-General of the ITU?",
+options:[
+"Doreen Bogdan-Martin",
+"António Guterres",
+"Audrey Azoulay",
+"Rebeca Grynspan"
+],
+answer:0,
+solution:"Doreen Bogdan-Martin is the Secretary-General of the International Telecommunication Union."
+},
+
+{
+q:"Which organization is one of the oldest specialized agencies of the United Nations?",
+options:[
+"ITU",
+"WHO",
+"UNDP",
+"UNHCR"
+],
+answer:0,
+solution:"The ITU traces its origins to 1865 and is recognized as the oldest specialized agency in the UN system."
+},
+
+{
+q:"Who was identified as Secretary General of FICCI in the cited April 2026 material?",
+options:[
+"Anant Swarup",
+"Subhrakant Panda",
+"Uday Shankar",
+"Shailesh Pathak"
+],
+answer:0,
+solution:"Anant Swarup was identified as the Secretary General of FICCI."
+},
+
+{
+q:"FICCI was established in which year?",
+options:[
+"1919",
+"1927",
+"1935",
+"1947"
+],
+answer:1,
+solution:"FICCI was established in 1927."
+},
+
+{
+q:"Which leader's advice was associated with the establishment of FICCI?",
+options:[
+"Mahatma Gandhi",
+"Jawaharlal Nehru",
+"Sardar Patel",
+"Dr. B.R. Ambedkar"
+],
+answer:0,
+solution:"FICCI's formation is associated with the advice of Mahatma Gandhi."
+},
+
+{
+q:"Where is SIPRI headquartered?",
+options:[
+"Geneva",
+"Stockholm",
+"Oslo",
+"Copenhagen"
+],
+answer:1,
+solution:"SIPRI is headquartered in the Stockholm area of Sweden."
+},
+
+{
+q:"What does SIPRI primarily study?",
+options:[
+"Global military expenditure and arms-related issues",
+"Global agriculture only",
+"International tourism",
+"Global literacy"
+],
+answer:0,
+solution:"SIPRI researches conflict, arms transfers and military expenditure."
+},
+
+{
+q:"Which festival marks the New Year in Andhra Pradesh, Telangana and Karnataka?",
+options:[
+"Ugadi",
+"Vishu",
+"Puthandu",
+"Baisakhi"
+],
+answer:0,
+solution:"Ugadi marks the traditional New Year in Andhra Pradesh, Telangana and Karnataka."
+},
+
+{
+q:"Gudi Padwa is associated particularly with which state?",
+options:[
+"Maharashtra",
+"Punjab",
+"Assam",
+"Odisha"
+],
+answer:0,
+solution:"Gudi Padwa is the traditional New Year festival of Maharashtra."
+},
+
+{
+q:"Baisakhi is strongly associated with which states?",
+options:[
+"Punjab and Haryana",
+"Kerala and Tamil Nadu",
+"Odisha and Bihar",
+"Assam and Meghalaya"
+],
+answer:0,
+solution:"Baisakhi is a major harvest and New Year festival in Punjab and Haryana."
+},
+
+{
+q:"The Khalsa Panth was established in which year?",
+options:[
+"1599",
+"1699",
+"1799",
+"1899"
+],
+answer:1,
+solution:"Guru Gobind Singh established the Khalsa Panth in 1699."
+},
+
+{
+q:"Vishu is primarily associated with which Indian state?",
+options:[
+"Kerala",
+"Karnataka",
+"Goa",
+"West Bengal"
+],
+answer:0,
+solution:"Vishu is the traditional New Year celebration associated with Kerala."
+},
+
+{
+q:"What is 'Vishu Kani' associated with?",
+options:[
+"Morning viewing of auspicious items",
+"Opening railway accounts",
+"Harvesting rice",
+"Lighting war lamps"
+],
+answer:0,
+solution:"Vishu Kani refers to the auspicious arrangement viewed first thing in the morning on Vishu."
+},
+
+{
+q:"Rongali or Bohag Bihu is celebrated in which state?",
+options:[
+"Assam",
+"Manipur",
+"Tripura",
+"Sikkim"
+],
+answer:0,
+solution:"Rongali/Bohag Bihu is the major Assamese New Year festival."
+},
+
+{
+q:"Puthandu is the traditional New Year of which community?",
+options:[
+"Tamil",
+"Punjabi",
+"Assamese",
+"Bengali"
+],
+answer:0,
+solution:"Puthandu is the Tamil New Year."
+},
+
+{
+q:"Poila Baisakh is associated with which community?",
+options:[
+"Bengali",
+"Malayali",
+"Marathi",
+"Odia"
+],
+answer:0,
+solution:"Poila Baisakh marks the Bengali New Year."
+},
+
+{
+q:"What is 'Haal Khata' associated with?",
+options:[
+"Opening new account books",
+"Temple decoration",
+"Harvesting wheat",
+"Traditional dance"
+],
+answer:0,
+solution:"Haal Khata is the traditional opening of new account books, especially associated with Poila Baisakh."
+},
+
+{
+q:"Thrissur Pooram is celebrated in which state?",
+options:[
+"Kerala",
+"Tamil Nadu",
+"Karnataka",
+"Andhra Pradesh"
+],
+answer:0,
+solution:"Thrissur Pooram is a major festival of Kerala."
+},
+
+{
+q:"What is the famous 'Kudamattom' associated with?",
+options:[
+"Thrissur Pooram",
+"Onam",
+"Pongal",
+"Vishu"
+],
+answer:0,
+solution:"Kudamattom is a major visual feature of Thrissur Pooram."
+},
+
+{
+q:"Easter in 2026 was observed on:",
+options:[
+"April 1",
+"April 5",
+"April 14",
+"April 22"
+],
+answer:1,
+solution:"Easter Sunday fell on April 5, 2026."
+},
+
+{
+q:"Mahavir Jayanti commemorates the birth of which Tirthankara?",
+options:[
+"1st",
+"10th",
+"23rd",
+"24th"
+],
+answer:3,
+solution:"Mahavira was the 24th Tirthankara of Jainism."
+},
+
+{
+q:"Which ministry is associated with the Prime Minister Internship Scheme?",
+options:[
+"Ministry of Corporate Affairs",
+"Ministry of Education",
+"Ministry of Labour",
+"Ministry of Finance"
+],
+answer:0,
+solution:"The Prime Minister Internship Scheme is associated with the Ministry of Corporate Affairs."
+},
+
+{
+q:"The Technology Development and Investment Promotion scheme is mainly related to:",
+options:[
+"Telecom standards and innovation",
+"Railway ticketing",
+"Crop insurance",
+"Tourism promotion"
+],
+answer:0,
+solution:"The TDIP scheme is aimed at strengthening India's participation in global telecom standards and technology development."
+},
+
+{
+q:"Which scheme focuses on loans and credit support for marginalized communities?",
+options:[
+"PM-SURAJ",
+"PM-KISAN",
+"PMAY",
+"PMGSY"
+],
+answer:0,
+solution:"PM-SURAJ is aimed at facilitating credit support for marginalized communities."
+},
+
+{
+q:"PM-KISAN provides annual income support of:",
+options:[
+"₹3,000",
+"₹5,000",
+"₹6,000",
+"₹10,000"
+],
+answer:2,
+solution:"PM-KISAN provides ₹6,000 annually in three equal instalments, subject to eligibility."
+},
+
+{
+q:"The RBI Green Deposit Framework is intended to support:",
+options:[
+"Climate-friendly projects",
+"Luxury housing",
+"Gold imports",
+"Defence exports only"
+],
+answer:0,
+solution:"Green deposits are intended to channel funds towards environmentally sustainable projects."
+},
+
+{
+q:"The Diamond Imprest Authorisation Scheme primarily supports:",
+options:[
+"Natural diamond exporters",
+"Railway contractors",
+"Fishermen",
+"Tourism operators"
+],
+answer:0,
+solution:"The scheme is aimed at exporters of natural cut and polished diamonds."
+},
+
+{
+q:"Which award is widely described as India's highest literary honour?",
+options:[
+"Jnanpith Award",
+"Sahitya Akademi Award",
+"Booker Prize",
+"Vyas Samman"
+],
+answer:0,
+solution:"The Jnanpith Award is widely regarded as India's highest literary honour."
+},
+
+{
+q:"Who was highlighted as the recipient of the Jnanpith Award in the cited April 2026 material?",
+options:[
+"Vairamuthu",
+"Raghu Rai",
+"Sayani Gupta",
+"Huub Lelieveld"
+],
+answer:0,
+solution:"Vairamuthu was identified as the recipient in the cited April 2026 compilation."
+},
+
+{
+q:"The World Food Prize is primarily associated with:",
+options:[
+"Food and agriculture",
+"Space exploration",
+"Journalism",
+"Cinema"
+],
+answer:0,
+solution:"The World Food Prize recognizes contributions to food and agriculture."
+},
+
+{
+q:"Who was named the World Food Prize laureate in the cited April 2026 material?",
+options:[
+"Huub Lelieveld",
+"Ch. Srinivasa Rao",
+"Vairamuthu",
+"Carlos Alcaraz"
+],
+answer:0,
+solution:"Huub Lelieveld was identified as the 2026 World Food Prize laureate."
+},
+
+{
+q:"Which award is named after the scientist associated with India's Green Revolution?",
+options:[
+"Prof. M.S. Swaminathan Award",
+"Jnanpith Award",
+"Ramon Magsaysay Award",
+"Shanti Swarup Bhatnagar Award"
+],
+answer:0,
+solution:"The Prof. M.S. Swaminathan Award is named after the agricultural scientist associated with India's Green Revolution."
+},
+
+{
+q:"Who received the Prof. M.S. Swaminathan Award in the cited April 2026 material?",
+options:[
+"Dr. Ch. Srinivasa Rao",
+"Huub Lelieveld",
+"Vairamuthu",
+"Samir V. Kamat"
+],
+answer:0,
+solution:"Dr. Ch. Srinivasa Rao was identified as the recipient."
+},
+
+{
+q:"The WSIS Prizes are associated with which organization?",
+options:[
+"International Telecommunication Union",
+"World Bank",
+"UNESCO",
+"IMF"
+],
+answer:0,
+solution:"The WSIS Prizes are associated with the International Telecommunication Union."
+},
+
+{
+q:"Which Indian initiative was nominated for the WSIS Prizes according to the cited April material?",
+options:[
+"Samriddh Gram",
+"BharatNet",
+"Digital India",
+"Startup India"
+],
+answer:0,
+solution:"The cited material highlighted the Samriddh Gram initiative."
+},
+
+{
+q:"Which organization administers the World Anti-Doping framework internationally?",
+options:[
+"WADA",
+"FIFA",
+"ICC",
+"FIDE"
+],
+answer:0,
+solution:"WADA, the World Anti-Doping Agency, coordinates the international anti-doping framework."
+},
+
+{
+q:"Which ministry organizes the Heads of Mission Conference?",
+options:[
+"Ministry of External Affairs",
+"Ministry of Defence",
+"Ministry of Home Affairs",
+"Ministry of Commerce"
+],
+answer:0,
+solution:"The Heads of Mission Conference is organized by the Ministry of External Affairs."
+},
+
+{
+q:"The Quad consists of India, Australia, Japan and:",
+options:[
+"United Kingdom",
+"United States",
+"France",
+"Germany"
+],
+answer:1,
+solution:"The Quad consists of India, Australia, Japan and the United States."
+},
+
+{
+q:"Which country is NOT a member of the Quad?",
+options:[
+"India",
+"Japan",
+"Australia",
+"United Kingdom"
+],
+answer:3,
+solution:"The United Kingdom is not a member of the Quad."
+},
+
+{
+q:"What is the primary geographical focus of BIMSTEC?",
+options:[
+"Bay of Bengal region",
+"Atlantic Ocean",
+"Arctic region",
+"Mediterranean region"
+],
+answer:0,
+solution:"BIMSTEC brings together countries around the Bay of Bengal."
+},
+
+{
+q:"Which country is the lead country for the Security pillar of BIMSTEC?",
+options:[
+"India",
+"Thailand",
+"Myanmar",
+"Sri Lanka"
+],
+answer:0,
+solution:"India leads the Security pillar of BIMSTEC."
+},
+
+{
+q:"Which institution manages the Indira Gandhi Centre for Atomic Research?",
+options:[
+"Department of Atomic Energy",
+"Ministry of Railways",
+"DRDO",
+"ISRO"
+],
+answer:0,
+solution:"IGCAR functions under the Department of Atomic Energy."
+},
+
+{
+q:"The main purpose of India's three-stage nuclear programme is linked to long-term utilization of:",
+options:[
+"Thorium",
+"Coal",
+"Natural gas",
+"Hydrogen only"
+],
+answer:0,
+solution:"The programme is designed ultimately to enable large-scale utilization of India's thorium resources."
+},
+
+{
+q:"Which railway scheme includes the 'One Station One Product' concept?",
+options:[
+"Amrit Bharat Station Scheme",
+"PM-KISAN",
+"PM-SURAJ",
+"Digital India"
+],
+answer:0,
+solution:"One Station One Product is associated with Indian Railways and station development initiatives."
+},
+
+{
+q:"PM Gati Shakti is mainly associated with:",
+options:[
+"Multi-modal infrastructure planning",
+"Direct farmer income",
+"University scholarships",
+"Anti-doping"
+],
+answer:0,
+solution:"PM Gati Shakti is a national master plan for integrated and multi-modal infrastructure planning."
+},
+
+{
+q:"The Shinkansen E5 technology used as the basis for India's high-speed rail project originates from:",
+options:[
+"Japan",
+"China",
+"Germany",
+"France"
+],
+answer:0,
+solution:"The Shinkansen is Japan's high-speed railway technology."
+},
+
+{
+q:"The cited E5-series Shinkansen technology has a design-speed capability around:",
+options:[
+"200 km/h",
+"250 km/h",
+"320–350 km/h",
+"500 km/h"
+],
+answer:2,
+solution:"The cited material discusses a design-speed capability around the 320–350 km/h range."
+},
+
+{
+q:"Which index measures the efficiency of international supply chains?",
+options:[
+"Logistics Performance Index",
+"World Press Freedom Index",
+"Global Firepower Index",
+"Human Development Index"
+],
+answer:0,
+solution:"The Logistics Performance Index evaluates the efficiency of logistics and supply chains."
+},
+
+{
+q:"Which organization releases the Logistics Performance Index?",
+options:[
+"World Bank",
+"WHO",
+"UNESCO",
+"SIPRI"
+],
+answer:0,
+solution:"The World Bank publishes the Logistics Performance Index."
+},
+
+{
+q:"Which index evaluates military capability using factors such as manpower, equipment and geography?",
+options:[
+"Global Firepower Index",
+"Henley Passport Index",
+"World Happiness Report",
+"LPI"
+],
+answer:0,
+solution:"The Global Firepower Index uses multiple factors related to military capability."
+},
+
+{
+q:"Which country ranked first in the Global Firepower Index 2026 according to the cited material?",
+options:[
+"USA",
+"Russia",
+"China",
+"India"
+],
+answer:0,
+solution:"The United States was placed first in the cited 2026 Global Firepower ranking."
+},
+
+{
+q:"Which country ranked first in the World Happiness Report 2026?",
+options:[
+"Finland",
+"Denmark",
+"Sweden",
+"Norway"
+],
+answer:0,
+solution:"Finland ranked first."
+},
+
+{
+q:"Which organization is responsible for the Henley Passport Index?",
+options:[
+"Henley & Partners",
+"World Bank",
+"IATA alone",
+"UNDP"
+],
+answer:0,
+solution:"Henley & Partners publishes the Henley Passport Index."
+},
+
+{
+q:"The Henley Passport Index primarily measures:",
+options:[
+"Passport mobility",
+"Military power",
+"Press freedom",
+"Trade competitiveness"
+],
+answer:0,
+solution:"It ranks passports by the number of destinations accessible without a prior visa."
+},
+
+{
+q:"Which organization is headquartered in Montreal and works on anti-doping?",
+options:[
+"WADA",
+"SIPRI",
+"FICCI",
+"ITU"
+],
+answer:0,
+solution:"WADA is headquartered in Montreal."
+},
+
+{
+q:"Which organization was founded in 1927 and represents Indian industry?",
+options:[
+"FICCI",
+"SIPRI",
+"NITI Aayog",
+"WADA"
+],
+answer:0,
+solution:"FICCI was founded in 1927 as a major representative body of Indian industry."
+},
+
+{
+q:"NITI Aayog was established in which year?",
+options:[
+"2010",
+"2012",
+"2015",
+"2018"
+],
+answer:2,
+solution:"NITI Aayog was established in 2015, replacing the Planning Commission."
+},
+
+{
+q:"The chairperson of NITI Aayog is:",
+options:[
+"Prime Minister of India",
+"President of India",
+"Finance Minister",
+"Vice President of India"
+],
+answer:0,
+solution:"The Prime Minister serves as the ex-officio Chairperson of NITI Aayog."
+},
+
+{
+q:"Which organization replaced the Science and Engineering Research Board (SERB)?",
+options:[
+"ANRF",
+"ISRO",
+"CSIR",
+"UGC"
+],
+answer:0,
+solution:"The Anusandhan National Research Foundation replaced SERB as part of India's research funding architecture."
+},
+
+{
+q:"ANRF is primarily concerned with:",
+options:[
+"Scientific research and innovation",
+"Railway operations",
+"Foreign exchange",
+"Passport issuance"
+],
+answer:0,
+solution:"ANRF provides strategic direction and support for scientific research and innovation."
+},
+
+{
+q:"Which UN specialized agency coordinates global telecommunications standards?",
+options:[
+"ITU",
+"WHO",
+"FAO",
+"UNESCO"
+],
+answer:0,
+solution:"The International Telecommunication Union coordinates international telecommunications and ICT standards."
+},
+
+{
+q:"Which organization focuses on conflict, arms transfers and military expenditure?",
+options:[
+"SIPRI",
+"FICCI",
+"WADA",
+"ITU"
+],
+answer:0,
+solution:"SIPRI conducts research on conflict, armaments and military expenditure."
+},
+
+{
+q:"What is the main purpose of a Fast Breeder Reactor?",
+options:[
+"Breed more fissile material while generating power",
+"Produce solar electricity",
+"Store hydrogen",
+"Desalinate seawater"
+],
+answer:0,
+solution:"Fast breeder reactors can produce more fissile fuel than they consume while generating electricity."
+},
+
+{
+q:"Which material is converted into fissile plutonium in a breeder reactor?",
+options:[
+"Uranium-238",
+"Hydrogen-1",
+"Carbon-12",
+"Helium-4"
+],
+answer:0,
+solution:"Uranium-238 can be converted into fissile plutonium-239 in the breeder cycle."
+},
+
+{
+q:"Which NASA programme is intended to establish a sustained human presence around and eventually on the Moon?",
+options:[
+"Artemis",
+"Apollo",
+"Gemini",
+"Mercury"
+],
+answer:0,
+solution:"NASA's Artemis programme is focused on returning humans to the Moon and preparing for future deep-space missions."
+},
+
+{
+q:"Which Artemis mission is intended to carry astronauts to the lunar surface after Artemis II?",
+options:[
+"Artemis I",
+"Artemis II",
+"Artemis III",
+"Artemis Zero"
+],
+answer:2,
+solution:"Artemis III is the mission associated with the planned crewed lunar landing phase."
+},
+
+{
+q:"Which of the following is a major objective of Kavach?",
+options:[
+"Automatic train protection",
+"Passenger food delivery",
+"Online ticket booking",
+"Station construction"
+],
+answer:0,
+solution:"Kavach is an Automatic Train Protection system."
+},
+
+{
+q:"Which railway organization develops and maintains technical standards for Indian Railways?",
+options:[
+"RDSO",
+"FICCI",
+"NITI Aayog",
+"SEBI"
+],
+answer:0,
+solution:"RDSO is the Research Designs and Standards Organisation of Indian Railways."
+},
+
+{
+q:"Which festival is known for the preparation of Ugadi Pachadi?",
+options:[
+"Ugadi",
+"Baisakhi",
+"Vishu",
+"Puthandu"
+],
+answer:0,
+solution:"Ugadi Pachadi is a traditional preparation associated with Ugadi."
+},
+
+{
+q:"Which festival is associated with the Punjabi New Year?",
+options:[
+"Baisakhi",
+"Vishu",
+"Poila Baisakh",
+"Ugadi"
+],
+answer:0,
+solution:"Baisakhi marks the Punjabi New Year and is also an important harvest festival."
+},
+
+{
+q:"Which festival marks the Assamese New Year?",
+options:[
+"Bohag Bihu",
+"Vishu",
+"Gudi Padwa",
+"Puthandu"
+],
+answer:0,
+solution:"Bohag/Rongali Bihu marks the Assamese New Year."
+},
+
+{
+q:"Which festival marks the Bengali New Year?",
+options:[
+"Poila Baisakh",
+"Ugadi",
+"Pana Sankranti",
+"Vishu"
+],
+answer:0,
+solution:"Poila Baisakh is the Bengali New Year."
+},
+
+{
+q:"Which festival marks the Odia New Year?",
+options:[
+"Pana Sankranti",
+"Baisakhi",
+"Vishu",
+"Ugadi"
+],
+answer:0,
+solution:"Pana Sankranti marks the Odia New Year."
+},
+
+{
+q:"Which festival marks the Malayalam New Year?",
+options:[
+"Vishu",
+"Puthandu",
+"Poila Baisakh",
+"Bihu"
+],
+answer:0,
+solution:"Vishu is the Malayalam New Year celebration."
+},
+
+{
+q:"Which festival is associated with the Tamil New Year?",
+options:[
+"Puthandu",
+"Vishu",
+"Baisakhi",
+"Ugadi"
+],
+answer:0,
+solution:"Puthandu is the Tamil New Year."
+},
+
+{
+q:"Which festival is associated with the traditional 'Kanni' arrangement?",
+options:[
+"Puthandu",
+"Baisakhi",
+"Bihu",
+"Poila Baisakh"
+],
+answer:0,
+solution:"Viewing the Kanni arrangement is a Tamil New Year tradition associated with Puthandu."
+},
+
+{
+q:"Which organization publishes the World Press Freedom Index?",
+options:[
+"Reporters Without Borders",
+"World Bank",
+"UNICEF",
+"SIPRI"
+],
+answer:0,
+solution:"Reporters Without Borders, also known as RSF, publishes the World Press Freedom Index."
+}
+
+];
+
+
+let currentQuestion=0;
+let userAnswers=new Array(questions.length).fill(null);
+let submitted=false;
+let timeLeft=60*60;
+let timerInterval;
+
+
+function loadQuestion(){
+
+const box=document.getElementById("questionBox");
+
+box.innerHTML="";
+
+questions.forEach((item,index)=>{
+
+const div=document.createElement("div");
+
+div.className="question";
+
+if(index===currentQuestion){
+div.classList.add("active");
+}
+
+let html=`
+<h3>
+Q${index+1}. ${item.q}
+</h3>
+`;
+
+item.options.forEach((option,optIndex)=>{
+
+html+=`
+<label class="option">
+
+<input
+type="radio"
+name="question${index}"
+value="${optIndex}"
+${userAnswers[index]===optIndex ? "checked" : ""}
+onchange="selectAnswer(${index},${optIndex})">
+
+${String.fromCharCode(65+optIndex)}. ${option}
+
+</label>
+`;
+
+});
+
+div.innerHTML=html;
+
+box.appendChild(div);
+
+});
+
+updatePalette();
+
+}
+
+
+function selectAnswer(index,answer){
+
+userAnswers[index]=answer;
+
+updatePalette();
+
+}
+
+
+function updatePalette(){
+
+const palette=document.getElementById("palette");
+
+palette.innerHTML="";
+
+questions.forEach((item,index)=>{
+
+const btn=document.createElement("div");
+
+btn.className="qno";
+
+btn.innerText=index+1;
+
+if(userAnswers[index]!==null){
+btn.classList.add("attempted");
+}
+
+if(index===currentQuestion){
+btn.classList.add("current");
+}
+
+btn.onclick=function(){
+
+currentQuestion=index;
+
+loadQuestion();
+
+};
+
+palette.appendChild(btn);
+
+});
+
+}
+
+
+function nextQuestion(){
+
+if(currentQuestion<questions.length-1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}
+
+}
+
+
+function previousQuestion(){
+
+if(currentQuestion>0){
+
+currentQuestion--;
+
+loadQuestion();
+
+}
+
+}
+
+
+function clearAnswer(){
+
+userAnswers[currentQuestion]=null;
+
+loadQuestion();
+
+}
+
+
+function submitTest(){
+
+if(submitted){
+return;
+}
+
+if(!confirm("Are you sure you want to submit the test?")){
+return;
+}
+
+submitted=true;
+
+clearInterval(timerInterval);
+
+calculateResult();
+
+}
+
+
+function calculateResult(){
+
+let correct=0;
+let wrong=0;
+let unanswered=0;
+
+questions.forEach((q,index)=>{
+
+if(userAnswers[index]===null){
+
+unanswered++;
+
+}
+else if(userAnswers[index]===q.answer){
+
+correct++;
+
+}
+else{
+
+wrong++;
+
+}
+
+});
+
+const negative=wrong*0.25;
+
+const score=correct-negative;
+
+const percentage=(score/questions.length)*100;
+
+const result=document.getElementById("result");
+
+result.style.display="block";
+
+result.innerHTML=`
+
+<h2>🎯 Test Result</h2>
+
+<div class="result-box">
+
+<div class="result-item">
+Total
+<b>${questions.length}</b>
+</div>
+
+<div class="result-item">
+Correct
+<b style="color:#16a34a">${correct}</b>
+</div>
+
+<div class="result-item">
+Wrong
+<b style="color:#dc2626">${wrong}</b>
+</div>
+
+<div class="result-item">
+Unattempted
+<b>${unanswered}</b>
+</div>
+
+</div>
+
+<p>
+<b>Negative Marks:</b> −${negative.toFixed(2)}
+</p>
+
+<p>
+<b>Final Score:</b> ${score.toFixed(2)} / 100
+</p>
+
+<p>
+<b>Percentage:</b> ${percentage.toFixed(2)}%
+</p>
+
+<hr style="margin:25px 0;">
+
+<h2>📖 Complete Solutions</h2>
+
+${questions.map((q,index)=>`
+
+<div class="solution">
+
+<b>Q${index+1}. ${q.q}</b>
+
+<br><br>
+
+<span class="correct-answer">
+Correct Answer:
+${String.fromCharCode(65+q.answer)}. ${q.options[q.answer]}
+</span>
+
+<br><br>
+
+${q.solution}
+
+</div>
+
+`).join("")}
+
+`;
+
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:"smooth"
+});
+
+}
+
+
+function updateTimer(){
+
+let minutes=Math.floor(timeLeft/60);
+
+let seconds=timeLeft%60;
+
+document.getElementById("timer").innerText=
+`${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+
+if(timeLeft<=0){
+
+clearInterval(timerInterval);
+
+if(!submitted){
+
+alert("Time is over. The test will be submitted automatically.");
+
+submitted=true;
+
+calculateResult();
+
+}
+
+return;
+
+}
+
+timeLeft--;
+
+}
+
+
+timerInterval=setInterval(updateTimer,1000);
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
