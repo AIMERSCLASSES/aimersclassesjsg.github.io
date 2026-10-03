@@ -1,1 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | April Current Affairs Test 02</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f2f5f9;
+    color:#222;
+}
+
+.header{
+    background:linear-gradient(135deg,#0b3d91,#1456c1);
+    color:white;
+    padding:18px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.header h1{
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+.header h2{
+    font-size:20px;
+    font-weight:500;
+}
+
+.header p{
+    margin-top:5px;
+    font-size:14px;
+}
+
+.container{
+    width:95%;
+    max-width:1200px;
+    margin:20px auto;
+}
+
+.top-info{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.timer{
+    font-size:20px;
+    font-weight:bold;
+    color:#d00000;
+}
+
+.progress{
+    font-weight:bold;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 270px;
+    gap:20px;
+}
+
+.question-box{
+    background:white;
+    border-radius:10px;
+    padding:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    min-height:420px;
+}
+
+.question-number{
+    color:#0b3d91;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.question{
+    font-size:20px;
+    line-height:1.5;
+    font-weight:600;
+    margin-bottom:22px;
+}
+
+.options label{
+    display:block;
+    padding:14px;
+    border:1px solid #d8d8d8;
+    border-radius:8px;
+    margin:10px 0;
+    cursor:pointer;
+    transition:.2s;
+    font-size:17px;
+}
+
+.options label:hover{
+    background:#eef5ff;
+    border-color:#1456c1;
+}
+
+.options input{
+    margin-right:10px;
+    transform:scale(1.2);
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+    gap:10px;
+}
+
+button{
+    border:none;
+    padding:12px 22px;
+    border-radius:7px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.prev{
+    background:#6c757d;
+    color:white;
+}
+
+.next{
+    background:#0b3d91;
+    color:white;
+}
+
+.submit{
+    background:#198754;
+    color:white;
+    width:100%;
+    margin-top:15px;
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.palette{
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    height:max-content;
+    position:sticky;
+    top:115px;
+}
+
+.palette h3{
+    color:#0b3d91;
+    margin-bottom:12px;
+    text-align:center;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qbtn{
+    background:#e9ecef;
+    color:#222;
+    padding:8px 4px;
+    border-radius:5px;
+    font-size:13px;
+}
+
+.qbtn.current{
+    background:#0b3d91;
+    color:white;
+}
+
+.qbtn.attempted{
+    background:#198754;
+    color:white;
+}
+
+.legend{
+    margin-top:15px;
+    font-size:13px;
+    line-height:1.8;
+}
+
+.legend span{
+    display:inline-block;
+    width:13px;
+    height:13px;
+    margin-right:5px;
+    border-radius:3px;
+}
+
+.blue{background:#0b3d91;}
+.green{background:#198754;}
+.grey{background:#e9ecef;border:1px solid #ccc;}
+
+.result{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    margin-top:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.result h2{
+    color:#0b3d91;
+    margin-bottom:15px;
+}
+
+.score{
+    font-size:28px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.explanation{
+    border-top:1px solid #ddd;
+    padding:15px 0;
+    margin-top:10px;
+}
+
+.correct{
+    color:#198754;
+    font-weight:bold;
+}
+
+.wrong{
+    color:#dc3545;
+    font-weight:bold;
+}
+
+.unattempted{
+    color:#6c757d;
+    font-weight:bold;
+}
+
+@media(max-width:800px){
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette{
+        position:static;
+        order:-1;
+    }
+
+    .question-grid{
+        grid-template-columns:repeat(10,1fr);
+    }
+
+    .question-box{
+        padding:18px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+}
+
+@media(max-width:500px){
+    .question-grid{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+    .header h1{
+        font-size:22px;
+    }
+
+    .header h2{
+        font-size:17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>AIMERS CLASSES</h1>
+    <h2>APRIL CURRENT AFFAIRS – TEST 02</h2>
+    <p>SSC CGL • SSC CHSL • Railway • Competitive Exams</p>
+</div>
+
+<div class="container">
+
+<div class="top-info">
+    <div class="progress">
+        Question <span id="currentNo">1</span> / 100
+    </div>
+
+    <div class="timer">
+        Time Left: <span id="timer">45:00</span>
+    </div>
+</div>
+
+<div class="layout">
+
+<div>
+
+<div class="question-box" id="questionBox">
+
+<div class="question-number" id="questionNumber"></div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+<div class="navigation">
+    <button class="prev" onclick="previousQuestion()" id="prevBtn">
+        ← Previous
+    </button>
+
+    <button class="next" onclick="nextQuestion()" id="nextBtn">
+        Next →
+    </button>
+</div>
+
+</div>
+
+<button class="submit" onclick="submitTest()">
+    SUBMIT TEST
+</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<div class="palette">
+
+<h3>Question Palette</h3>
+
+<div class="question-grid" id="questionGrid"></div>
+
+<div class="legend">
+    <div><span class="blue"></span> Current Question</div>
+    <div><span class="green"></span> Attempted</div>
+    <div><span class="grey"></span> Not Attempted</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+const questions = [
+
+/* 1 */
+{
+q:"Which city hosted the 26th Laureus World Sports Awards in 2026?",
+o:["Madrid","Paris","London","Rome"],
+a:0,
+e:"The 26th Laureus World Sports Awards ceremony was held in Madrid."
+},
+
+/* 2 */
+{
+q:"Who won the Laureus World Sportsman of the Year Award 2026?",
+o:["Carlos Alcaraz","Novak Djokovic","Lamine Yamal","Jannik Sinner"],
+a:0,
+e:"Spanish tennis player Carlos Alcaraz won the Sportsman of the Year award."
+},
+
+/* 3 */
+{
+q:"Who won the Laureus World Sportswoman of the Year Award 2026?",
+o:["Aryna Sabalenka","Iga Swiatek","Coco Gauff","Elena Rybakina"],
+a:0,
+e:"Belarusian tennis player Aryna Sabalenka received the Sportswoman of the Year award."
+},
+
+/* 4 */
+{
+q:"Which football club won the Laureus World Team of the Year Award 2026?",
+o:["Paris Saint-Germain","Real Madrid","Manchester City","Bayern Munich"],
+a:0,
+e:"Paris Saint-Germain was named World Team of the Year."
+},
+
+/* 5 */
+{
+q:"Who became the youngest athlete to win two Laureus awards in 2026?",
+o:["Lamine Yamal","Carlos Alcaraz","Jude Bellingham","Kylian Mbappe"],
+a:0,
+e:"Lamine Yamal became the youngest athlete to win two Laureus awards."
+},
+
+/* 6 */
+{
+q:"How many women received the Goldman Environmental Prize in 2026?",
+o:["Six","Four","Eight","Ten"],
+a:0,
+e:"The 2026 Goldman Environmental Prize had six women recipients."
+},
+
+/* 7 */
+{
+q:"How many Indians were included in the World Economic Forum Young Global Leaders Class of 2026?",
+o:["10","5","15","20"],
+a:0,
+e:"Ten Indian figures were included in the 2026 Young Global Leaders class."
+},
+
+/* 8 */
+{
+q:"How many Young Global Leaders from 55 countries were announced by WEF for 2026?",
+o:["118","100","150","75"],
+a:0,
+e:"WEF announced 118 Young Global Leaders from 55 countries."
+},
+
+/* 9 */
+{
+q:"The Young Global Leaders initiative was established in which year?",
+o:["2004","2000","2008","2010"],
+a:0,
+e:"The WEF Young Global Leaders initiative was established in 2004."
+},
+
+/* 10 */
+{
+q:"Who was appointed Secretary General of FICCI effective April 14, 2026?",
+o:["Anant Swarup","Sanjay Malhotra","Rakesh Bhanot","Vibha Padalkar"],
+a:0,
+e:"Anant Swarup was appointed FICCI Secretary General."
+},
+
+/* 11 */
+{
+q:"Who was named ICC Men's Player of the Month for March 2026?",
+o:["Sanju Samson","Virat Kohli","Rohit Sharma","Jasprit Bumrah"],
+a:0,
+e:"Sanju Samson was named ICC Men's Player of the Month for March 2026."
+},
+
+/* 12 */
+{
+q:"Who was elected Deputy Chairman of the Rajya Sabha for a third consecutive term in April 2026?",
+o:["Harivansh Narayan Singh","Jagdeep Dhankhar","P. J. Kurien","K. Rahman Khan"],
+a:0,
+e:"Harivansh Narayan Singh was elected to a third consecutive term as Rajya Sabha Deputy Chairman."
+},
+
+/* 13 */
+{
+q:"Who was appointed Acting Director General of the Competition Commission of India in April 2026?",
+o:["Rakesh Bhanot","Ansuman Pattanaik","Anant Swarup","Sanjay Kumar"],
+a:0,
+e:"CCI appointed advisor Rakesh Bhanot as Acting Director General."
+},
+
+/* 14 */
+{
+q:"Who was announced as Apple's CEO effective September 1, 2026?",
+o:["John Ternus","Tim Cook","Jeff Williams","Eddy Cue"],
+a:0,
+e:"Apple announced John Ternus as CEO effective September 1, 2026."
+},
+
+/* 15 */
+{
+q:"What position was Tim Cook announced to take after September 1, 2026?",
+o:["Executive Chairman","President","Chief Technology Officer","Chief Operating Officer"],
+a:0,
+e:"Tim Cook was announced to transition to Executive Chairman."
+},
+
+/* 16 */
+{
+q:"Who was reappointed Managing Director and CEO of HDFC Life?",
+o:["Vibha Padalkar","Keki Mistry","Sashidhar Jagdishan","Sanjiv Mehta"],
+a:0,
+e:"HDFC Life's board approved the reappointment of Vibha Padalkar."
+},
+
+/* 17 */
+{
+q:"According to Moody's April 2026 forecast, India's FY27 GDP growth was revised to:",
+o:["6.0%","6.8%","7.4%","5.5%"],
+a:0,
+e:"Moody's revised India's FY27 growth forecast from 6.8% to 6.0%."
+},
+
+/* 18 */
+{
+q:"What FY27 inflation rate did Moody's project for India in its April 2026 assessment?",
+o:["4.8%","3.5%","6.2%","5.5%"],
+a:0,
+e:"The assessment cited an inflation projection of 4.8%."
+},
+
+/* 19 */
+{
+q:"According to UN ESCAP, India's economy was projected to grow by what percentage in 2026?",
+o:["6.4%","6.0%","7.4%","5.9%"],
+a:0,
+e:"UN ESCAP projected India's 2026 growth at 6.4%."
+},
+
+/* 20 */
+{
+q:"What growth rate did UN ESCAP project for India in 2027?",
+o:["6.6%","6.0%","7.0%","5.8%"],
+a:0,
+e:"UN ESCAP projected 6.6% growth for India in 2027."
+},
+
+/* 21 */
+{
+q:"What was SBI's targeted share of India's GDP-sized balance sheet by 2030?",
+o:["25%","15%","20%","30%"],
+a:0,
+e:"SBI announced a target to increase its balance-sheet size to 25% of India's GDP by 2030."
+},
+
+/* 22 */
+{
+q:"As reported in April 2026, what was SBI's balance sheet size as of December 31, 2025?",
+o:["₹71.62 lakh crore","₹50 lakh crore","₹85 lakh crore","₹103.29 lakh crore"],
+a:0,
+e:"SBI's balance sheet stood at ₹71.62 lakh crore as of December 31, 2025."
+},
+
+/* 23 */
+{
+q:"What was SBI's total business size as of December 31, 2025?",
+o:["₹103.29 lakh crore","₹71.62 lakh crore","₹57.01 lakh crore","₹46.28 lakh crore"],
+a:0,
+e:"SBI's total business was reported at ₹103.29 lakh crore."
+},
+
+/* 24 */
+{
+q:"What GDP growth rate did UN ESCAP project for the South and South-West Asia region in 2025?",
+o:["5.4%","6.4%","4.2%","7.1%"],
+a:0,
+e:"The South and South-West Asia region recorded projected/estimated growth of 5.4% in 2025."
+},
+
+/* 25 */
+{
+q:"India was projected to attract approximately how much greenfield FDI according to UN ESCAP?",
+o:["US$50 billion","US$25 billion","US$75 billion","US$100 billion"],
+a:0,
+e:"UN ESCAP projected India to attract about US$50 billion in greenfield FDI."
+},
+
+/* 26 */
+{
+q:"What is the theme of Earth Day 2026?",
+o:["Our Power, Our Planet","Restore Our Earth","Invest in Our Planet","Planet vs Plastics"],
+a:0,
+e:"Earth Day 2026 was observed with the theme 'Our Power, Our Planet'."
+},
+
+/* 27 */
+{
+q:"Earth Day is observed every year on:",
+o:["April 22","April 21","April 23","April 18"],
+a:0,
+e:"Earth Day is observed on April 22."
+},
+
+/* 28 */
+{
+q:"National Civil Services Day in India is observed on:",
+o:["April 21","April 22","April 15","April 14"],
+a:0,
+e:"National Civil Services Day is observed on April 21."
+},
+
+/* 29 */
+{
+q:"What was the theme of National Civil Services Day 2026?",
+o:["Viksit Bharat: Citizen-Centric Governance and Development at the Last Mile","Good Governance for All","Sabka Vikas","Digital India for All"],
+a:0,
+e:"The 2026 theme was 'Viksit Bharat: Citizen-Centric Governance and Development at the Last Mile'."
+},
+
+/* 30 */
+{
+q:"World Creativity and Innovation Day is observed on:",
+o:["April 21","April 22","April 23","April 15"],
+a:0,
+e:"World Creativity and Innovation Day is observed annually on April 21."
+},
+
+/* 31 */
+{
+q:"World Book and Copyright Day is observed on:",
+o:["April 23","April 22","April 21","April 18"],
+a:0,
+e:"World Book and Copyright Day is observed on April 23."
+},
+
+/* 32 */
+{
+q:"Which city was designated World Book Capital for 2026?",
+o:["Rabat","Madrid","Paris","Nairobi"],
+a:0,
+e:"Rabat, Morocco was designated World Book Capital 2026."
+},
+
+/* 33 */
+{
+q:"World Quantum Day is observed on:",
+o:["April 14","April 15","April 16","April 17"],
+a:0,
+e:"World Quantum Day is observed on April 14."
+},
+
+/* 34 */
+{
+q:"What was the theme of World Quantum Day 2026?",
+o:["Shaping the Quantum Workforce","Quantum for Humanity","Quantum Future","Quantum Technology for All"],
+a:0,
+e:"The 2026 theme was 'Shaping the Quantum Workforce'."
+},
+
+/* 35 */
+{
+q:"World Art Day is observed on:",
+o:["April 15","April 14","April 16","April 18"],
+a:0,
+e:"World Art Day is observed on April 15."
+},
+
+/* 36 */
+{
+q:"World Voice Day is observed on:",
+o:["April 16","April 15","April 17","April 20"],
+a:0,
+e:"World Voice Day is observed annually on April 16."
+},
+
+/* 37 */
+{
+q:"National Maritime Day in India is observed on:",
+o:["April 5","April 4","April 6","April 7"],
+a:0,
+e:"National Maritime Day is observed on April 5."
+},
+
+/* 38 */
+{
+q:"International Day for Mine Awareness and Assistance in Mine Action is observed on:",
+o:["April 4","April 5","April 6","April 3"],
+a:0,
+e:"The International Day for Mine Awareness and Assistance in Mine Action is observed on April 4."
+},
+
+/* 39 */
+{
+q:"International Day of Conscience is observed on:",
+o:["April 5","April 4","April 6","April 7"],
+a:0,
+e:"The United Nations observes International Day of Conscience on April 5."
+},
+
+/* 40 */
+{
+q:"World Liver Day is observed on:",
+o:["April 19","April 20","April 18","April 21"],
+a:0,
+e:"World Liver Day is observed on April 19."
+},
+
+/* 41 */
+{
+q:"Which state became home to India's 99th Ramsar site in April 2026?",
+o:["Uttar Pradesh","Odisha","Rajasthan","Gujarat"],
+a:0,
+e:"Shekha Jheel Bird Sanctuary in Uttar Pradesh became India's 99th Ramsar site."
+},
+
+/* 42 */
+{
+q:"What is the name of India's 99th Ramsar site mentioned in April 2026 current affairs?",
+o:["Shekha Jheel Bird Sanctuary","Chilika Lake","Keoladeo National Park","Saman Bird Sanctuary"],
+a:0,
+e:"Shekha Jheel Bird Sanctuary was designated India's 99th Ramsar site."
+},
+
+/* 43 */
+{
+q:"How many Ramsar sites did Uttar Pradesh have after the addition of Shekha Jheel?",
+o:["12","10","15","8"],
+a:0,
+e:"The addition brought Uttar Pradesh's Ramsar site count to 12."
+},
+
+/* 44 */
+{
+q:"Where was India's first Petroglyph Conservation Park established?",
+o:["Ladakh","Sikkim","Rajasthan","Himachal Pradesh"],
+a:0,
+e:"India's first Petroglyph Conservation Park was initiated in Ladakh."
+},
+
+/* 45 */
+{
+q:"At which location in Ladakh was the Petroglyph Conservation Park foundation stone laid?",
+o:["Sindhu Ghat","Pangong","Kargil","Nubra"],
+a:0,
+e:"The foundation stone was laid at Sindhu Ghat."
+},
+
+/* 46 */
+{
+q:"Which organization signed an MoU related to conservation of Ladakh's petroglyphs?",
+o:["Archaeological Survey of India","SEBI","ISRO","NITI Aayog"],
+a:0,
+e:"The Archaeological Survey of India was involved in the conservation initiative."
+},
+
+/* 47 */
+{
+q:"How many square kilometres were designated as an Eco-Sensitive Zone around Barasingha Wildlife Sanctuary?",
+o:["408.7 sq km","300 sq km","500 sq km","208.7 sq km"],
+a:0,
+e:"The notified Eco-Sensitive Zone covered 408.7 square kilometres."
+},
+
+/* 48 */
+{
+q:"The Barasingha Wildlife Sanctuary Eco-Sensitive Zone covered how many villages?",
+o:["307","207","407","157"],
+a:0,
+e:"The Eco-Sensitive Zone covered 307 villages."
+},
+
+/* 49 */
+{
+q:"Which state is associated with the Barasingha Wildlife Sanctuary Eco-Sensitive Zone notification?",
+o:["Uttar Pradesh","Madhya Pradesh","Rajasthan","Bihar"],
+a:0,
+e:"The notified area lies in Uttar Pradesh."
+},
+
+/* 50 */
+{
+q:"Which river-bank location was associated with the Petroglyph Conservation Park?",
+o:["Indus River","Ganga River","Yamuna River","Narmada River"],
+a:0,
+e:"The park initiative was associated with Sindhu Ghat on the Indus River."
+},
+
+/* 51 */
+{
+q:"What was the total outlay of the two major railway multitracking projects approved in April 2026?",
+o:["₹24,815 crore","₹20,000 crore","₹30,000 crore","₹18,500 crore"],
+a:0,
+e:"The two projects had a combined investment of ₹24,815 crore."
+},
+
+/* 52 */
+{
+q:"The Ghaziabad–Sitapur railway multitracking project has a route length of approximately:",
+o:["403 km","303 km","503 km","203 km"],
+a:0,
+e:"The Ghaziabad–Sitapur route covered approximately 403 km."
+},
+
+/* 53 */
+{
+q:"The Rajahmundry–Visakhapatnam railway project has a route length of approximately:",
+o:["198 km","298 km","148 km","398 km"],
+a:0,
+e:"The Rajahmundry–Visakhapatnam project has a route length of 198 km."
+},
+
+/* 54 */
+{
+q:"What change in Dearness Allowance was approved in April 2026?",
+o:["58% to 60%","50% to 55%","60% to 65%","55% to 58%"],
+a:0,
+e:"DA and DR were increased from 58% to 60% of basic pay/pension."
+},
+
+/* 55 */
+{
+q:"From which date was the April 2026 DA revision effective?",
+o:["January 1, 2026","April 1, 2026","March 1, 2026","February 1, 2026"],
+a:0,
+e:"The DA revision was effective from January 1, 2026."
+},
+
+/* 56 */
+{
+q:"Which countries were added to the eligible destinations under the RELIEF export scheme?",
+o:["Egypt and Jordan","Japan and Korea","UAE and Qatar","Nepal and Bhutan"],
+a:0,
+e:"Egypt and Jordan were added to the eligible destinations."
+},
+
+/* 57 */
+{
+q:"RELIEF in the export-support context stands for:",
+o:["Resilience & Logistics Intervention for Export Facilitation","Rapid Export Logistics and International Freight","Resilient Logistics Initiative for Export Finance","Regional Logistics Initiative for Export Facilitation"],
+a:0,
+e:"RELIEF stands for Resilience & Logistics Intervention for Export Facilitation."
+},
+
+/* 58 */
+{
+q:"What minimum distance was proposed between new sugar mills under the Draft Sugarcane Control Order 2026?",
+o:["25 km","15 km","20 km","30 km"],
+a:0,
+e:"The draft proposed increasing the minimum distance from 15 km to 25 km."
+},
+
+/* 59 */
+{
+q:"What was India's seafood export value in FY 2025-26 as reported in April 2026?",
+o:["₹72,325.82 crore","₹62,325 crore","₹82,325 crore","₹52,325 crore"],
+a:0,
+e:"Marine product exports reached ₹72,325.82 crore."
+},
+
+/* 60 */
+{
+q:"Which seafood product remained India's major export backbone in FY 2025-26?",
+o:["Frozen shrimp","Tuna","Crab","Lobster"],
+a:0,
+e:"Frozen shrimp remained the main export product."
+},
+
+/* 61 */
+{
+q:"Approximately how much frozen shrimp was exported in value terms in FY 2025-26?",
+o:["₹47,973 crore","₹37,973 crore","₹57,973 crore","₹27,973 crore"],
+a:0,
+e:"Frozen shrimp contributed more than ₹47,973 crore."
+},
+
+/* 62 */
+{
+q:"Which scheme was extended until March 2028 for rural road development?",
+o:["Pradhan Mantri Gram Sadak Yojana III","PMGSY I","Bharatmala Pariyojana","PM Gati Shakti"],
+a:0,
+e:"Pradhan Mantri Gram Sadak Yojana III was extended until March 2028."
+},
+
+/* 63 */
+{
+q:"What revised outlay was approved for PMGSY III?",
+o:["₹83,977 crore","₹73,977 crore","₹93,977 crore","₹63,977 crore"],
+a:0,
+e:"The revised allocation was ₹83,977 crore."
+},
+
+/* 64 */
+{
+q:"Which ministry launched 'Vishwa Sutra – Weaves of India for the World'?",
+o:["Ministry of Textiles","Ministry of Culture","Ministry of Commerce","Ministry of MSME"],
+a:0,
+e:"The Ministry of Textiles launched the initiative."
+},
+
+/* 65 */
+{
+q:"How many traditional Indian weaves were featured in the Vishwa Sutra collection?",
+o:["30","20","25","50"],
+a:0,
+e:"The collection featured 30 traditional Indian weaves."
+},
+
+/* 66 */
+{
+q:"Which institution collaborated in developing the Vishwa Sutra initiative?",
+o:["National Institute of Fashion Technology","IIT Delhi","NIFTEM","Lalit Kala Akademi"],
+a:0,
+e:"The National Institute of Fashion Technology was involved."
+},
+
+/* 67 */
+{
+q:"Who launched the 'Divya Bharat: A Window to the Soul of India' anthology?",
+o:["NITI Aayog","Ministry of Tourism","UNESCO","Ministry of Culture"],
+a:0,
+e:"NITI Aayog Vice Chairman Suman Bery launched the anthology."
+},
+
+/* 68 */
+{
+q:"Approximately how many tourism destinations were included in the Divya Bharat anthology?",
+o:["2,100","1,000","3,000","1,500"],
+a:0,
+e:"The anthology included approximately 2,100 tourism destinations."
+},
+
+/* 69 */
+{
+q:"How many cultural listings were mentioned in the Divya Bharat anthology?",
+o:["1,200","800","2,000","3,200"],
+a:0,
+e:"The anthology contained approximately 1,200 cultural listings."
+},
+
+/* 70 */
+{
+q:"What was the initial underwriting capacity of the Bharat Maritime Insurance Pool?",
+o:["₹950 crore","₹1,500 crore","₹2,000 crore","₹500 crore"],
+a:0,
+e:"The initial underwriting capacity was ₹950 crore."
+},
+
+/* 71 */
+{
+q:"What sovereign guarantee backed the Bharat Maritime Insurance Pool?",
+o:["₹12,980 crore","₹9,800 crore","₹15,000 crore","₹10,980 crore"],
+a:0,
+e:"The pool was backed by a ₹12,980 crore sovereign guarantee."
+},
+
+/* 72 */
+{
+q:"Which organization launched the third edition of the VAANI scheme?",
+o:["AICTE","UGC","NCERT","NITI Aayog"],
+a:0,
+e:"AICTE launched the third edition of the VAANI scheme."
+},
+
+/* 73 */
+{
+q:"What does VAANI refer to in the AICTE scheme?",
+o:["Vibrant Advocacy for Advancement and Nurturing of Indian Languages","Virtual Academic Advancement Network of India","Vocational Advancement and New National Initiative","Vibrant Academic Access Network Initiative"],
+a:0,
+e:"VAANI stands for Vibrant Advocacy for Advancement and Nurturing of Indian Languages."
+},
+
+/* 74 */
+{
+q:"What annual budget was allocated for the third edition of VAANI?",
+o:["₹4 crore","₹5 crore","₹2 crore","₹10 crore"],
+a:0,
+e:"The annual budget allocation mentioned was ₹4 crore."
+},
+
+/* 75 */
+{
+q:"How many Indian languages are covered under the VAANI initiative?",
+o:["22","18","24","12"],
+a:0,
+e:"VAANI supports activities in the 22 languages listed in the Eighth Schedule."
+},
+
+/* 76 */
+{
+q:"Which bank partnered with CheQ to launch a co-branded LED-powered credit card?",
+o:["AU Small Finance Bank","SBI","HDFC Bank","Axis Bank"],
+a:0,
+e:"CheQ partnered with AU Small Finance Bank."
+},
+
+/* 77 */
+{
+q:"The CheQ AU credit card used which technology for its LED feature?",
+o:["NFC field from POS terminals","GPS","Bluetooth only","QR-only technology"],
+a:0,
+e:"The card uses the NFC field from POS terminals and does not require an internal battery for the LED feature."
+},
+
+/* 78 */
+{
+q:"How many banks were authorized by DGFT for gold and silver imports until March 2029?",
+o:["17","15","20","12"],
+a:0,
+e:"DGFT authorized 17 banks for gold and silver imports."
+},
+
+/* 79 */
+{
+q:"What is the name of the logistics data platform operated by NICDC Logistics Data Services?",
+o:["ULIP","FASTag","GeM","DigiLocker"],
+a:0,
+e:"NLDSL operates the Unified Logistics Interface Platform (ULIP)."
+},
+
+/* 80 */
+{
+q:"Which South Korean company entered a proposed 50:50 joint venture with JSW Steel?",
+o:["POSCO","Samsung","Hyundai","LG"],
+a:0,
+e:"JSW Steel and POSCO proposed a 50:50 joint venture."
+},
+
+/* 81 */
+{
+q:"What capacity was proposed for the JSW Steel-POSCO integrated steel plant?",
+o:["6 MTPA","4 MTPA","8 MTPA","10 MTPA"],
+a:0,
+e:"The proposed integrated steel plant has a capacity of 6 million tonnes per annum."
+},
+
+/* 82 */
+{
+q:"Where is the proposed JSW Steel-POSCO integrated steel plant planned?",
+o:["Odisha","Jharkhand","Chhattisgarh","West Bengal"],
+a:0,
+e:"The integrated steel plant is planned in Odisha."
+},
+
+/* 83 */
+{
+q:"Which state received a World Bank loan for highway modernization in April 2026?",
+o:["Rajasthan","Gujarat","Maharashtra","Madhya Pradesh"],
+a:0,
+e:"The World Bank approved financing for the Rajasthan Highway Modernisation Project."
+},
+
+/* 84 */
+{
+q:"What was the value of the World Bank loan for the Rajasthan Highway Modernisation Project?",
+o:["US$225 million","US$125 million","US$325 million","US$425 million"],
+a:0,
+e:"The World Bank approved a US$225 million loan."
+},
+
+/* 85 */
+{
+q:"Approximately how many kilometres of Rajasthan state highways were targeted for upgrading?",
+o:["800 km","500 km","1,000 km","600 km"],
+a:0,
+e:"The project targeted upgrading approximately 800 km of state highways."
+},
+
+/* 86 */
+{
+q:"Which agency signed the Plan of Implementation with South Korea for India's maritime skill development?",
+o:["KOICA","KOTRA","KORAIL","KISA"],
+a:0,
+e:"The Ministry of Ports, Shipping and Waterways worked with Korea International Cooperation Agency (KOICA)."
+},
+
+/* 87 */
+{
+q:"Which two organizations conducted India's first intra-city drone delivery trial mentioned in April 2026?",
+o:["FedEx and IIT Madras","ISRO and DRDO","Amazon and IIT Delhi","India Post and IIT Bombay"],
+a:0,
+e:"FedEx and IIT Madras conducted the trial."
+},
+
+/* 88 */
+{
+q:"The drone delivery trial was conducted in which Indian city?",
+o:["Bengaluru","Hyderabad","Mumbai","Delhi"],
+a:0,
+e:"The trial was conducted in Bengaluru."
+},
+
+/* 89 */
+{
+q:"Approximately how long did the drone route take compared with the road journey in the FedEx-IIT Madras trial?",
+o:["About 21 minutes","About 45 minutes","About 60 minutes","About 90 minutes"],
+a:0,
+e:"The flight route took approximately 21 minutes."
+},
+
+/* 90 */
+{
+q:"Which IIT launched an AI-powered integrated agricultural intelligence ecosystem?",
+o:["IIT Ropar","IIT Madras","IIT Kanpur","IIT Delhi"],
+a:0,
+e:"IIT Ropar launched the AI-powered agricultural intelligence ecosystem."
+},
+
+/* 91 */
+{
+q:"What is the name of the AI agricultural ecosystem launched by IIT Ropar?",
+o:["ANNAM.AI","KrishiAI","AgriNet","Bharat Krishi AI"],
+a:0,
+e:"The ecosystem is associated with ANNAM.AI."
+},
+
+/* 92 */
+{
+q:"Which company partnered with IIT Madras Research Park to establish a plant cell fermentation Centre of Excellence?",
+o:["Herbalife India","Tata Consumer","Biocon","Dabur"],
+a:0,
+e:"Herbalife India partnered with IIT Madras."
+},
+
+/* 93 */
+{
+q:"Where was India's first advanced 3D semiconductor packaging facility established?",
+o:["Odisha","Tamil Nadu","Karnataka","Gujarat"],
+a:0,
+e:"The facility was established at Info Valley in Odisha."
+},
+
+/* 94 */
+{
+q:"What annual production capacity was projected for the 3D semiconductor packaging facility in Odisha?",
+o:["50 million assembled units","10 million units","25 million units","100 million units"],
+a:0,
+e:"The facility was projected to produce 50 million assembled units annually."
+},
+
+/* 95 */
+{
+q:"Which space agency selected SpaceX to launch ESA's Rosalind Franklin rover to Mars?",
+o:["NASA","ISRO","JAXA","CNSA"],
+a:0,
+e:"NASA selected SpaceX for the 2028 launch of ESA's Rosalind Franklin rover."
+},
+
+/* 96 */
+{
+q:"In which year is the Rosalind Franklin rover scheduled to launch to Mars?",
+o:["2028","2027","2029","2030"],
+a:0,
+e:"The launch is planned for 2028."
+},
+
+/* 97 */
+{
+q:"Which launch vehicle was selected for the Rosalind Franklin rover mission?",
+o:["Falcon Heavy","Falcon 9","Starship","New Glenn"],
+a:0,
+e:"NASA selected SpaceX's Falcon Heavy for the mission."
+},
+
+/* 98 */
+{
+q:"What is the primary scientific objective of the Rosalind Franklin rover?",
+o:["Search for signs of past or present microbial life on Mars","Study Jupiter's atmosphere","Collect solar samples","Map Earth's oceans"],
+a:0,
+e:"The rover is designed to search for evidence of past or present microbial life on Mars."
+},
+
+/* 99 */
+{
+q:"Which company successfully landed a reused New Glenn booster in April 2026?",
+o:["Blue Origin","SpaceX","Rocket Lab","ULA"],
+a:0,
+e:"Blue Origin successfully landed its reused New Glenn booster."
+},
+
+/* 100 */
+{
+q:"What was the name of the reused New Glenn booster that landed successfully?",
+o:["Never Tell Me the Odds","New Glenn Alpha","BlueBird One","Pathfinder"],
+a:0,
+e:"The reused New Glenn booster was named 'Never Tell Me the Odds'."
+}
+
+];
+
+let currentQuestion = 0;
+let answers = new Array(questions.length).fill(null);
+let submitted = false;
+
+let totalSeconds = 45 * 60;
+let timerInterval;
+
+function startTimer(){
+
+    timerInterval = setInterval(function(){
+
+        if(totalSeconds <= 0){
+            clearInterval(timerInterval);
+            submitTest(true);
+            return;
+        }
+
+        totalSeconds--;
+
+        let minutes = Math.floor(totalSeconds / 60);
+        let seconds = totalSeconds % 60;
+
+        document.getElementById("timer").textContent =
+            String(minutes).padStart(2,"0") + ":" +
+            String(seconds).padStart(2,"0");
+
+    },1000);
+}
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("currentNo").textContent =
+        currentQuestion + 1;
+
+    document.getElementById("questionNumber").textContent =
+        "Question " + (currentQuestion + 1);
+
+    document.getElementById("questionText").textContent =
+        q.q;
+
+    const options = document.getElementById("options");
+
+    options.innerHTML = "";
+
+    q.o.forEach((option,index)=>{
+
+        const label = document.createElement("label");
+
+        const input = document.createElement("input");
+
+        input.type = "radio";
+        input.name = "answer";
+        input.value = index;
+
+        if(answers[currentQuestion] === index){
+            input.checked = true;
+        }
+
+        input.addEventListener("change",function(){
+
+            answers[currentQuestion] = index;
+            updatePalette();
+
+        });
+
+        label.appendChild(input);
+        label.appendChild(
+            document.createTextNode(
+                String.fromCharCode(65 + index) + ". " + option
+            )
+        );
+
+        options.appendChild(label);
+
+    });
+
+    document.getElementById("prevBtn").disabled =
+        currentQuestion === 0;
+
+    document.getElementById("nextBtn").disabled =
+        currentQuestion === questions.length - 1;
+
+    updatePalette();
+}
+
+function createPalette(){
+
+    const grid = document.getElementById("questionGrid");
+
+    grid.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const btn = document.createElement("button");
+
+        btn.className = "qbtn";
+
+        btn.textContent = index + 1;
+
+        btn.onclick = function(){
+
+            currentQuestion = index;
+            loadQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+        grid.appendChild(btn);
+
+    });
+
+    updatePalette();
+}
+
+function updatePalette(){
+
+    const buttons =
+        document.querySelectorAll(".qbtn");
+
+    buttons.forEach((btn,index)=>{
+
+        btn.className = "qbtn";
+
+        if(index === currentQuestion){
+            btn.classList.add("current");
+        }
+
+        if(answers[index] !== null){
+            btn.classList.add("attempted");
+        }
+
+    });
+}
+
+function nextQuestion(){
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+function submitTest(autoSubmit=false){
+
+    if(submitted) return;
+
+    if(!autoSubmit){
+
+        const unanswered =
+            answers.filter(a => a === null).length;
+
+        if(unanswered > 0){
+
+            const confirmSubmit =
+                confirm(
+                    "You have " +
+                    unanswered +
+                    " unanswered question(s). Do you want to submit?"
+                );
+
+            if(!confirmSubmit) return;
+
+        }
+
+    }
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+    let score = 0;
+    let attempted = 0;
+
+    questions.forEach((q,index)=>{
+
+        if(answers[index] !== null){
+
+            attempted++;
+
+            if(answers[index] === q.a){
+                score++;
+            }
+
+        }
+
+    });
+
+    let wrong = attempted - score;
+    let unattempted = questions.length - attempted;
+
+    let percentage =
+        ((score / questions.length) * 100).toFixed(2);
+
+    let resultHTML = `
+
+        <h2>Test Result</h2>
+
+        <div class="score">
+            Score: ${score} / ${questions.length}
+        </div>
+
+        <p><strong>Percentage:</strong> ${percentage}%</p>
+
+        <p><strong>Attempted:</strong> ${attempted}</p>
+
+        <p><strong>Correct:</strong> ${score}</p>
+
+        <p><strong>Wrong:</strong> ${wrong}</p>
+
+        <p><strong>Unattempted:</strong> ${unattempted}</p>
+
+        <hr style="margin:20px 0;">
+
+        <h3>Detailed Solutions</h3>
+    `;
+
+    questions.forEach((q,index)=>{
+
+        const userAnswer = answers[index];
+
+        let status = "";
+
+        if(userAnswer === null){
+
+            status =
+                `<span class="unattempted">Not Attempted</span>`;
+
+        }else if(userAnswer === q.a){
+
+            status =
+                `<span class="correct">Correct</span>`;
+
+        }else{
+
+            status =
+                `<span class="wrong">Wrong</span>`;
+
+        }
+
+        resultHTML += `
+
+        <div class="explanation">
+
+            <p>
+                <strong>Q${index + 1}. ${q.q}</strong>
+            </p>
+
+            <p>${status}</p>
+
+            <p>
+                <strong>Your Answer:</strong>
+                ${
+                    userAnswer === null
+                    ? "Not Attempted"
+                    : q.o[userAnswer]
+                }
+            </p>
+
+            <p>
+                <strong>Correct Answer:</strong>
+                ${q.o[q.a]}
+            </p>
+
+            <p>
+                <strong>Solution:</strong>
+                ${q.e}
+            </p>
+
+        </div>
+
+        `;
+
+    });
+
+    const result =
+        document.getElementById("result");
+
+    result.innerHTML = resultHTML;
+
+    result.style.display = "block";
+
+    document.getElementById("questionBox").style.display =
+        "none";
+
+    document.querySelector(".submit").style.display =
+        "none";
+
+    result.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+createPalette();
+loadQuestion();
+startTimer();
+
+</script>
+
+</body>
+</html>
