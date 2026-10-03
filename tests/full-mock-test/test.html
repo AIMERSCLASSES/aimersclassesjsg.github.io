@@ -1,1 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | Full Mock Test</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+
+.header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.header h1{
+    font-size:30px;
+}
+
+.header p{
+    margin-top:5px;
+    color:#eaf2ff;
+}
+
+.container{
+    width:94%;
+    max-width:1200px;
+    margin:25px auto;
+}
+
+.test-info{
+    background:white;
+    border-radius:14px;
+    padding:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.test-info h2{
+    color:#1d4ed8;
+    margin-bottom:8px;
+}
+
+.info-boxes{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
+}
+
+.info{
+    background:#eef4ff;
+    padding:8px 14px;
+    border-radius:20px;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.notice{
+    margin-top:18px;
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    padding:12px;
+    border-radius:8px;
+    color:#9a3412;
+}
+
+.back{
+    display:inline-block;
+    background:#64748b;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+.question-card{
+    background:white;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.question-card h3{
+    color:#102a43;
+    margin-bottom:15px;
+}
+
+.question-card p{
+    color:#667085;
+    font-size:17px;
+}
+
+.coming{
+    margin-top:20px;
+    padding:20px;
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+    border-radius:10px;
+    color:#1d4ed8;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="header">
+
+<h1>AIMERS CLASSES</h1>
+
+<p>Online Full Mock Test</p>
+
+</div>
+
+
+<div class="container">
+
+<a href="index.html" class="back">
+← Back to Full Mock Tests
+</a>
+
+
+<div class="test-info">
+
+<h2 id="examName">
+Full Mock Test
+</h2>
+
+<p id="testName">
+Loading Test...
+</p>
+
+
+<div class="info-boxes">
+
+<div class="info">
+100 Questions
+</div>
+
+<div class="info">
++1 Correct
+</div>
+
+<div class="info">
+−0.33 Wrong
+</div>
+
+<div class="info">
+60 Minutes
+</div>
+
+</div>
+
+
+<div class="notice">
+
+Questions will be added here according to the selected
+examination and test number.
+
+</div>
+
+</div>
+
+
+<div class="question-card">
+
+<h3>
+📝 Test Interface Ready
+</h3>
+
+<p>
+This is the common test page.
+</p>
+
+<div class="coming">
+
+Exam and Test Number are automatically detected
+from the button you clicked.
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+
+/* ==============================
+   GET EXAM AND TEST FROM URL
+================================ */
+
+const urlParams =
+new URLSearchParams(window.location.search);
+
+const exam =
+urlParams.get("exam");
+
+const test =
+urlParams.get("test");
+
+
+/* ==============================
+   EXAM NAMES
+================================ */
+
+const examNames = {
+
+"ssc-cgl":
+"SSC CGL",
+
+"rrb-group-d":
+"RRB GROUP D",
+
+"ssc-chsl":
+"SSC CHSL",
+
+"ibps-clerk":
+"IBPS CLERK",
+
+"ibps-po":
+"IBPS PO",
+
+"rrb-ntpc":
+"RRB NTPC",
+
+"ssc-mts":
+"SSC MTS",
+
+"aso":
+"ASO",
+
+"ossc":
+"OSSC",
+
+"osssc":
+"OSSSC"
+
+};
+
+
+/* ==============================
+   DISPLAY EXAM
+================================ */
+
+if(exam && examNames[exam]){
+
+document.getElementById("examName")
+.innerText =
+examNames[exam];
+
+document.getElementById("testName")
+.innerText =
+"Full Mock Test " + test;
+
+document.title =
+"AIMERS CLASSES | " +
+examNames[exam] +
+" Test " +
+test;
+
+}
+
+else{
+
+document.getElementById("examName")
+.innerText =
+"Full Mock Test";
+
+document.getElementById("testName")
+.innerText =
+"Invalid Test";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
