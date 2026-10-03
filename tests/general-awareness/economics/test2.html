@@ -1,1 +1,2115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Economics Test 2 - SSC CGL & Railway</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fa;
+    color:#222;
+}
+
+.header{
+    background:#17365d;
+    color:white;
+    text-align:center;
+    padding:15px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.header h1{
+    margin:0;
+    font-size:24px;
+}
+
+.header p{
+    margin:6px 0;
+    font-size:14px;
+}
+
+.timer{
+    display:inline-block;
+    background:#d9534f;
+    padding:8px 22px;
+    border-radius:25px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.container{
+    max-width:1250px;
+    margin:20px auto;
+    padding:0 15px;
+    display:flex;
+    gap:20px;
+}
+
+.main{
+    flex:1;
+}
+
+.sidebar{
+    width:280px;
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    height:fit-content;
+    position:sticky;
+    top:115px;
+    box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+
+.question-card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+
+.question-number{
+    color:#17365d;
+    font-size:17px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:19px;
+    font-weight:bold;
+    line-height:1.55;
+    margin-bottom:22px;
+}
+
+.option{
+    display:block;
+    padding:13px;
+    margin:10px 0;
+    border:1px solid #ddd;
+    border-radius:7px;
+    cursor:pointer;
+    transition:.2s;
+    line-height:1.4;
+}
+
+.option:hover{
+    background:#edf4fc;
+    border-color:#17365d;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:22px;
+}
+
+button{
+    border:none;
+    border-radius:6px;
+    padding:11px 20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.prev{
+    background:#777;
+    color:white;
+}
+
+.next{
+    background:#17365d;
+    color:white;
+}
+
+.submit{
+    background:#198754;
+    color:white;
+    width:100%;
+    margin-top:18px;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+    margin-top:12px;
+}
+
+.qbtn{
+    width:42px;
+    height:38px;
+    padding:0;
+    background:#e9ecef;
+    color:#222;
+}
+
+.qbtn.active{
+    background:#17365d;
+    color:white;
+}
+
+.qbtn.attempted{
+    background:#198754;
+    color:white;
+}
+
+.legend{
+    margin-top:18px;
+    font-size:13px;
+}
+
+.legend div{
+    margin:8px 0;
+}
+
+.box{
+    display:inline-block;
+    width:15px;
+    height:15px;
+    border-radius:3px;
+    vertical-align:middle;
+    margin-right:5px;
+}
+
+.green{
+    background:#198754;
+}
+
+.blue{
+    background:#17365d;
+}
+
+.grey{
+    background:#e9ecef;
+    border:1px solid #ccc;
+}
+
+#result{
+    display:none;
+    background:white;
+    padding:25px;
+    margin-top:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+
+.result-score{
+    text-align:center;
+    font-size:36px;
+    font-weight:bold;
+    color:#17365d;
+}
+
+.result-info{
+    text-align:center;
+    font-size:17px;
+    margin:15px 0;
+}
+
+.review-title{
+    margin-top:30px;
+    color:#17365d;
+}
+
+.review-item{
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:15px;
+    margin:12px 0;
+    line-height:1.5;
+}
+
+.correct{
+    color:#198754;
+    font-weight:bold;
+}
+
+.wrong{
+    color:#d9534f;
+    font-weight:bold;
+}
+
+.solution{
+    background:#f5f7fa;
+    padding:10px;
+    border-radius:5px;
+    margin-top:8px;
+}
+
+@media(max-width:850px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        position:static;
+        order:-1;
+    }
+
+    .question-grid{
+        grid-template-columns:repeat(10,1fr);
+    }
+}
+
+@media(max-width:500px){
+
+    .header h1{
+        font-size:19px;
+    }
+
+    .question{
+        font-size:17px;
+    }
+
+    .question-card{
+        padding:17px;
+    }
+
+    .question-grid{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+    .qbtn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>ECONOMICS TEST - 2</h1>
+
+<p>SSC CGL & Railway Level | 100 Questions | 100 Minutes</p>
+
+<div class="timer" id="timer">100:00</div>
+
+</div>
+
+
+<div class="container">
+
+<div class="main">
+
+<div class="question-card" id="quizBox"></div>
+
+<div id="result">
+
+<h2 style="text-align:center;">Test Completed</h2>
+
+<div class="result-score" id="score"></div>
+
+<div class="result-info" id="details"></div>
+
+<h2 class="review-title">Question-wise Solutions</h2>
+
+<div id="review"></div>
+
+</div>
+
+</div>
+
+
+<div class="sidebar">
+
+<h3>Question Navigator</h3>
+
+<div class="question-grid" id="questionGrid"></div>
+
+<div class="legend">
+
+<div>
+<span class="box green"></span>
+Attempted
+</div>
+
+<div>
+<span class="box blue"></span>
+Current
+</div>
+
+<div>
+<span class="box grey"></span>
+Not Attempted
+</div>
+
+</div>
+
+<button class="submit" onclick="submitTest()">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+/* 1 */
+{
+q:"Which of the following is included in National Income?",
+options:[
+"Intermediate goods",
+"Final goods and services",
+"Second-hand goods",
+"Transfer payments"
+],
+answer:1,
+solution:"National income measures the value of final goods and services produced by the normal residents of a country during a given period."
+},
+
+/* 2 */
+{
+q:"Which institution is responsible for issuing most currency notes in India?",
+options:[
+"Ministry of Finance",
+"Reserve Bank of India",
+"State Bank of India",
+"SEBI"
+],
+answer:1,
+solution:"The Reserve Bank of India issues currency notes except the ₹1 note, which is issued by the Government of India."
+},
+
+/* 3 */
+{
+q:"Repo Rate is the rate at which:",
+options:[
+"Banks lend to customers",
+"RBI lends money to commercial banks",
+"Government lends money to RBI",
+"Banks lend to RBI"
+],
+answer:1,
+solution:"Repo rate is the rate at which the RBI lends short-term funds to commercial banks against eligible securities."
+},
+
+/* 4 */
+{
+q:"Which of the following is a direct tax?",
+options:[
+"GST",
+"Customs duty",
+"Income tax",
+"Excise duty"
+],
+answer:2,
+solution:"Income tax is directly imposed on the income of individuals or entities and is therefore a direct tax."
+},
+
+/* 5 */
+{
+q:"Fiscal policy is mainly concerned with:",
+options:[
+"Money supply",
+"Government revenue and expenditure",
+"Banking regulation",
+"Foreign exchange only"
+],
+answer:1,
+solution:"Fiscal policy deals mainly with government taxation, expenditure and borrowing."
+},
+
+/* 6 */
+{
+q:"Which sector is known as the primary sector of the Indian economy?",
+options:[
+"Manufacturing",
+"Banking",
+"Agriculture",
+"Transport"
+],
+answer:2,
+solution:"Agriculture and allied activities belong to the primary sector because they directly use natural resources."
+},
+
+/* 7 */
+{
+q:"When the general price level rises continuously, it is called:",
+options:[
+"Deflation",
+"Inflation",
+"Disinflation",
+"Depression"
+],
+answer:1,
+solution:"A sustained increase in the general price level is called inflation."
+},
+
+/* 8 */
+{
+q:"The central bank of India is:",
+options:[
+"SBI",
+"RBI",
+"SEBI",
+"NABARD"
+],
+answer:1,
+solution:"The Reserve Bank of India is the central bank of India."
+},
+
+/* 9 */
+{
+q:"Which of the following is a capital good?",
+options:[
+"Bread",
+"Milk",
+"Machine",
+"Vegetable"
+],
+answer:2,
+solution:"Machines are used in the production process and are therefore capital goods."
+},
+
+/* 10 */
+{
+q:"The term 'Bank Rate' refers to the rate at which:",
+options:[
+"RBI lends to commercial banks",
+"Customers lend to banks",
+"Banks lend to customers",
+"Government lends to RBI"
+],
+answer:0,
+solution:"Bank Rate is the rate at which the RBI is prepared to lend to commercial banks, traditionally for longer-term purposes."
+},
+
+/* 11 */
+{
+q:"Which of the following is an indirect tax?",
+options:[
+"Income tax",
+"Corporate tax",
+"GST",
+"Wealth tax"
+],
+answer:2,
+solution:"GST is an indirect tax because its burden can be passed on to the final consumer."
+},
+
+/* 12 */
+{
+q:"What happens to the purchasing power of money during inflation?",
+options:[
+"It increases",
+"It decreases",
+"It remains constant",
+"It becomes zero"
+],
+answer:1,
+solution:"During inflation, the general price level rises, so the purchasing power of money decreases."
+},
+
+/* 13 */
+{
+q:"Which market structure has only one seller?",
+options:[
+"Perfect competition",
+"Monopoly",
+"Oligopoly",
+"Monopolistic competition"
+],
+answer:1,
+solution:"A monopoly is a market structure in which a single seller controls the supply of a product or service."
+},
+
+/* 14 */
+{
+q:"Which sector contributes significantly to employment in rural India?",
+options:[
+"Agriculture",
+"Air transport",
+"Software",
+"Banking"
+],
+answer:0,
+solution:"Agriculture remains a major source of employment, especially in rural India."
+},
+
+/* 15 */
+{
+q:"GDP stands for:",
+options:[
+"Gross Domestic Product",
+"General Domestic Production",
+"Gross Development Product",
+"General Development Plan"
+],
+answer:0,
+solution:"GDP means Gross Domestic Product, the market value of final goods and services produced within a country's borders."
+},
+
+/* 16 */
+{
+q:"GNP differs from GDP because GNP includes:",
+options:[
+"Only domestic production",
+"Net factor income from abroad",
+"Only government production",
+"Only agricultural production"
+],
+answer:1,
+solution:"GNP = GDP + Net Factor Income from Abroad."
+},
+
+/* 17 */
+{
+q:"Which of the following is a qualitative credit control method?",
+options:[
+"Bank Rate",
+"Open Market Operations",
+"Margin requirements",
+"Cash Reserve Ratio"
+],
+answer:2,
+solution:"Margin requirements are a selective or qualitative credit control instrument."
+},
+
+/* 18 */
+{
+q:"CRR stands for:",
+options:[
+"Cash Reserve Ratio",
+"Capital Revenue Ratio",
+"Credit Reserve Rate",
+"Cash Revenue Rate"
+],
+answer:0,
+solution:"CRR stands for Cash Reserve Ratio."
+},
+
+/* 19 */
+{
+q:"Under CRR, commercial banks are required to keep a portion of their deposits with:",
+options:[
+"SEBI",
+"RBI",
+"Finance Ministry",
+"NABARD"
+],
+answer:1,
+solution:"Banks maintain the prescribed CRR as cash balance with the Reserve Bank of India."
+},
+
+/* 20 */
+{
+q:"SLR stands for:",
+options:[
+"Statutory Liquidity Ratio",
+"Standard Lending Rate",
+"State Liquidity Reserve",
+"Statutory Lending Reserve"
+],
+answer:0,
+solution:"SLR means Statutory Liquidity Ratio."
+},
+
+/* 21 */
+{
+q:"Which of the following is a monetary policy instrument?",
+options:[
+"CRR",
+"Income tax",
+"Government expenditure",
+"Subsidy"
+],
+answer:0,
+solution:"CRR is a monetary policy tool used by the RBI to regulate liquidity in the banking system."
+},
+
+/* 22 */
+{
+q:"Open Market Operations refer to:",
+options:[
+"Buying and selling government securities by RBI",
+"Buying shares by SEBI",
+"Foreign trade",
+"Buying agricultural products"
+],
+answer:0,
+solution:"Open Market Operations involve RBI's purchase or sale of government securities to regulate liquidity."
+},
+
+/* 23 */
+{
+q:"What is meant by 'deflation'?",
+options:[
+"Continuous fall in general price level",
+"Continuous rise in prices",
+"Rise in employment",
+"Rise in money supply"
+],
+answer:0,
+solution:"Deflation is a sustained decline in the general price level."
+},
+
+/* 24 */
+{
+q:"Which type of unemployment is associated with seasonal agricultural activities?",
+options:[
+"Frictional",
+"Seasonal",
+"Structural",
+"Technological"
+],
+answer:1,
+solution:"Seasonal unemployment occurs when employment opportunities are available only during certain periods of the year."
+},
+
+/* 25 */
+{
+q:"Disguised unemployment is most commonly associated with:",
+options:[
+"Agriculture",
+"Banking",
+"Airlines",
+"IT services"
+],
+answer:0,
+solution:"Disguised unemployment is frequently observed in agriculture where more people work than are actually required."
+},
+
+/* 26 */
+{
+q:"Per capita income is calculated by dividing national income by:",
+options:[
+"Total population",
+"Working population",
+"Urban population",
+"Labour force"
+],
+answer:0,
+solution:"Per capita income = National Income ÷ Total Population."
+},
+
+/* 27 */
+{
+q:"Which organization replaced the Planning Commission?",
+options:[
+"Finance Commission",
+"NITI Aayog",
+"RBI",
+"SEBI"
+],
+answer:1,
+solution:"NITI Aayog replaced the Planning Commission in 2015."
+},
+
+/* 28 */
+{
+q:"The first Five-Year Plan in India started in:",
+options:[
+"1947",
+"1950",
+"1951",
+"1956"
+],
+answer:2,
+solution:"India's First Five-Year Plan began in 1951 and focused heavily on agriculture and irrigation."
+},
+
+/* 29 */
+{
+q:"The Second Five-Year Plan was based largely on the model of:",
+options:[
+"Mahalanobis",
+"Keynes",
+"Adam Smith",
+"Ricardo"
+],
+answer:0,
+solution:"The Second Five-Year Plan was based on the Mahalanobis model and emphasized heavy industries."
+},
+
+/* 30 */
+{
+q:"Which Five-Year Plan is associated with the slogan 'Garibi Hatao'?",
+options:[
+"Third Plan",
+"Fourth Plan",
+"Fifth Plan",
+"Sixth Plan"
+],
+answer:2,
+solution:"The Fifth Five-Year Plan emphasized poverty removal and economic self-reliance."
+},
+
+/* 31 */
+{
+q:"Which of the following is NOT a function of money?",
+options:[
+"Medium of exchange",
+"Measure of value",
+"Store of value",
+"Production of goods"
+],
+answer:3,
+solution:"Production of goods is an economic activity, not a function of money."
+},
+
+/* 32 */
+{
+q:"The barter system suffers mainly from the problem of:",
+options:[
+"Double coincidence of wants",
+"Inflation",
+"Deflation",
+"Interest"
+],
+answer:0,
+solution:"Barter requires a double coincidence of wants, meaning both parties must want what the other offers."
+},
+
+/* 33 */
+{
+q:"Which economist is associated with the concept of 'effective demand'?",
+options:[
+"J.M. Keynes",
+"Adam Smith",
+"David Ricardo",
+"Marshall"
+],
+answer:0,
+solution:"John Maynard Keynes developed the theory of effective demand in his General Theory."
+},
+
+/* 34 */
+{
+q:"According to the law of demand, other things remaining constant:",
+options:[
+"Demand rises when price rises",
+"Demand falls when price rises",
+"Demand never changes",
+"Supply falls when price falls"
+],
+answer:1,
+solution:"The law of demand states that quantity demanded generally falls when price rises, ceteris paribus."
+},
+
+/* 35 */
+{
+q:"According to the law of supply, other things remaining constant:",
+options:[
+"Supply rises with price",
+"Supply falls with price",
+"Supply is unrelated to price",
+"Demand rises with price"
+],
+answer:0,
+solution:"Generally, producers are willing to supply more at higher prices."
+},
+
+/* 36 */
+{
+q:"Price elasticity of demand measures the responsiveness of:",
+options:[
+"Supply to income",
+"Demand to price",
+"Price to population",
+"Income to supply"
+],
+answer:1,
+solution:"Price elasticity of demand measures the percentage change in quantity demanded due to a percentage change in price."
+},
+
+/* 37 */
+{
+q:"A perfectly inelastic demand curve is:",
+options:[
+"Horizontal",
+"Vertical",
+"Upward sloping",
+"Downward sloping"
+],
+answer:1,
+solution:"With perfectly inelastic demand, quantity demanded does not change with price, so the curve is vertical."
+},
+
+/* 38 */
+{
+q:"A perfectly elastic demand curve is:",
+options:[
+"Vertical",
+"Horizontal",
+"Upward sloping",
+"U-shaped"
+],
+answer:1,
+solution:"Perfectly elastic demand is represented by a horizontal demand curve."
+},
+
+/* 39 */
+{
+q:"Opportunity cost means:",
+options:[
+"Money spent on a product",
+"Value of the next best alternative foregone",
+"Total cost of production",
+"Fixed cost"
+],
+answer:1,
+solution:"Opportunity cost is the value of the next best alternative that is sacrificed when a choice is made."
+},
+
+/* 40 */
+{
+q:"Which of the following is a fixed cost?",
+options:[
+"Raw material cost",
+"Electricity used in production",
+"Factory rent",
+"Cost of packaging"
+],
+answer:2,
+solution:"Factory rent generally remains fixed in the short run regardless of output."
+},
+
+/* 41 */
+{
+q:"Which of the following is a variable cost?",
+options:[
+"Factory rent",
+"Insurance premium",
+"Raw material cost",
+"Permanent building cost"
+],
+answer:2,
+solution:"Raw material expenditure changes with the level of production and is therefore a variable cost."
+},
+
+/* 42 */
+{
+q:"Average cost is equal to:",
+options:[
+"Total cost × output",
+"Total cost ÷ output",
+"Total revenue ÷ output",
+"Total profit ÷ output"
+],
+answer:1,
+solution:"Average Cost = Total Cost ÷ Quantity of Output."
+},
+
+/* 43 */
+{
+q:"Marginal cost refers to:",
+options:[
+"Total cost",
+"Additional cost of producing one more unit",
+"Average fixed cost",
+"Total revenue"
+],
+answer:1,
+solution:"Marginal cost is the additional cost incurred by producing one additional unit of output."
+},
+
+/* 44 */
+{
+q:"Which of the following is a factor of production?",
+options:[
+"Land",
+"Money only",
+"Tax",
+"Inflation"
+],
+answer:0,
+solution:"The traditional factors of production are land, labour, capital and entrepreneurship."
+},
+
+/* 45 */
+{
+q:"The reward for labour is called:",
+options:[
+"Rent",
+"Wages",
+"Interest",
+"Profit"
+],
+answer:1,
+solution:"Wages are the reward paid to labour."
+},
+
+/* 46 */
+{
+q:"The reward for capital is:",
+options:[
+"Wages",
+"Rent",
+"Interest",
+"Profit"
+],
+answer:2,
+solution:"Interest is generally considered the return or reward for capital."
+},
+
+/* 47 */
+{
+q:"The reward for entrepreneurship is:",
+options:[
+"Rent",
+"Wages",
+"Interest",
+"Profit"
+],
+answer:3,
+solution:"Profit is the reward for entrepreneurship and bearing business risk."
+},
+
+/* 48 */
+{
+q:"The reward for land is:",
+options:[
+"Wages",
+"Rent",
+"Interest",
+"Profit"
+],
+answer:1,
+solution:"Rent is the traditional reward for the factor land."
+},
+
+/* 49 */
+{
+q:"Which of the following is included in the secondary sector?",
+options:[
+"Agriculture",
+"Fishing",
+"Manufacturing",
+"Banking"
+],
+answer:2,
+solution:"Manufacturing converts raw materials into finished or semi-finished products and belongs to the secondary sector."
+},
+
+/* 50 */
+{
+q:"Banking and insurance belong primarily to which sector?",
+options:[
+"Primary",
+"Secondary",
+"Tertiary",
+"Quaternary only"
+],
+answer:2,
+solution:"Banking and insurance are service activities and therefore belong to the tertiary sector."
+},
+
+/* 51 */
+{
+q:"Balance of Payments records:",
+options:[
+"Only exports",
+"Only imports",
+"All economic transactions between residents and the rest of the world",
+"Only government transactions"
+],
+answer:2,
+solution:"Balance of Payments records economic transactions between residents of a country and the rest of the world during a period."
+},
+
+/* 52 */
+{
+q:"A trade deficit occurs when:",
+options:[
+"Exports exceed imports",
+"Imports exceed exports",
+"Exports equal imports",
+"Government expenditure exceeds revenue"
+],
+answer:1,
+solution:"A trade deficit occurs when the value of imports of goods exceeds the value of exports."
+},
+
+/* 53 */
+{
+q:"Foreign exchange rate means:",
+options:[
+"Rate of domestic inflation",
+"Price of one currency in terms of another",
+"Interest rate on deposits",
+"Tax rate on imports"
+],
+answer:1,
+solution:"The exchange rate expresses the value of one currency in terms of another currency."
+},
+
+/* 54 */
+{
+q:"Devaluation means:",
+options:[
+"Official reduction in the value of a currency under a fixed exchange-rate system",
+"Rise in stock prices",
+"Increase in wages",
+"Fall in imports only"
+],
+answer:0,
+solution:"Devaluation is an official reduction in the value of a currency under a fixed or managed exchange-rate system."
+},
+
+/* 55 */
+{
+q:"Depreciation of a currency generally makes exports:",
+options:[
+"More expensive to foreigners",
+"Cheaper to foreigners",
+"Impossible",
+"Unaffected in every case"
+],
+answer:1,
+solution:"When a currency depreciates, domestic goods may become relatively cheaper for foreign buyers."
+},
+
+/* 56 */
+{
+q:"Which institution is known as the lender of last resort in India?",
+options:[
+"SEBI",
+"RBI",
+"SBI",
+"NITI Aayog"
+],
+answer:1,
+solution:"The RBI acts as the lender of last resort to the banking system."
+},
+
+/* 57 */
+{
+q:"NABARD is mainly associated with:",
+options:[
+"Agriculture and rural development",
+"Stock exchanges",
+"Foreign trade",
+"Urban housing only"
+],
+answer:0,
+solution:"NABARD promotes credit and development related to agriculture and rural areas."
+},
+
+/* 58 */
+{
+q:"SIDBI is primarily associated with:",
+options:[
+"Small industries",
+"Agriculture only",
+"Foreign exchange",
+"Insurance"
+],
+answer:0,
+solution:"SIDBI was established to promote, finance and develop the Micro, Small and Medium Enterprise sector."
+},
+
+/* 59 */
+{
+q:"EXIM Bank is primarily concerned with:",
+options:[
+"Export-import finance",
+"Agricultural loans",
+"Insurance",
+"Stock trading"
+],
+answer:0,
+solution:"EXIM Bank provides financial assistance and support for India's international trade."
+},
+
+/* 60 */
+{
+q:"Which organization regulates the securities market in India?",
+options:[
+"RBI",
+"SEBI",
+"NABARD",
+"IRDAI"
+],
+answer:1,
+solution:"SEBI regulates India's securities market and protects investors."
+},
+
+/* 61 */
+{
+q:"Which organization regulates the insurance sector in India?",
+options:[
+"SEBI",
+"RBI",
+"IRDAI",
+"NABARD"
+],
+answer:2,
+solution:"IRDAI is the Insurance Regulatory and Development Authority of India."
+},
+
+/* 62 */
+{
+q:"Which institution regulates the pension sector in India?",
+options:[
+"PFRDA",
+"SEBI",
+"NABARD",
+"SIDBI"
+],
+answer:0,
+solution:"PFRDA regulates and develops India's pension sector."
+},
+
+/* 63 */
+{
+q:"The term 'banker's bank' is commonly used for:",
+options:[
+"SBI",
+"RBI",
+"PNB",
+"BOI"
+],
+answer:1,
+solution:"RBI is called the banker's bank because it maintains reserves of commercial banks and provides support to them."
+},
+
+/* 64 */
+{
+q:"Which of the following is NOT a function of a commercial bank?",
+options:[
+"Accepting deposits",
+"Providing loans",
+"Creating credit",
+"Issuing currency notes"
+],
+answer:3,
+solution:"Currency notes, except the ₹1 note, are issued by RBI. Commercial banks do not issue legal tender currency notes."
+},
+
+/* 65 */
+{
+q:"Credit creation is mainly associated with:",
+options:[
+"Commercial banks",
+"Stock exchanges",
+"Insurance companies",
+"Government departments"
+],
+answer:0,
+solution:"Commercial banks create credit through the lending process based on deposits and reserves."
+},
+
+/* 66 */
+{
+q:"Which deposit can generally be withdrawn at any time by the account holder?",
+options:[
+"Demand deposit",
+"Fixed deposit only",
+"Long-term bond",
+"Government security"
+],
+answer:0,
+solution:"Demand deposits are payable on demand and can generally be withdrawn as per account conditions."
+},
+
+/* 67 */
+{
+q:"A fixed deposit generally offers:",
+options:[
+"No interest",
+"Interest for a specified period",
+"Only foreign currency",
+"Only government subsidy"
+],
+answer:1,
+solution:"Fixed deposits are maintained for a specified period and generally earn a predetermined interest rate."
+},
+
+/* 68 */
+{
+q:"Which of the following is NOT a function of the RBI?",
+options:[
+"Monetary policy",
+"Currency management",
+"Banker to government",
+"Manufacturing automobiles"
+],
+answer:3,
+solution:"RBI performs monetary and banking functions; manufacturing automobiles is unrelated to its role."
+},
+
+/* 69 */
+{
+q:"What is 'stagflation'?",
+options:[
+"Inflation with economic stagnation",
+"Deflation with rapid growth",
+"High growth with low inflation",
+"Fall in unemployment only"
+],
+answer:0,
+solution:"Stagflation refers to a combination of high inflation and stagnant economic growth, often accompanied by unemployment."
+},
+
+/* 70 */
+{
+q:"What is disinflation?",
+options:[
+"Fall in the rate of inflation",
+"Complete fall in prices",
+"Rise in unemployment only",
+"Rise in money supply"
+],
+answer:0,
+solution:"Disinflation means a reduction in the rate at which prices are rising; prices may still be increasing but more slowly."
+},
+
+/* 71 */
+{
+q:"Which of the following is a symptom of recession?",
+options:[
+"Decline in economic activity",
+"Rapid increase in employment",
+"Strong sustained growth",
+"Continuous rise in output"
+],
+answer:0,
+solution:"A recession involves a significant decline in economic activity, often reflected in output and employment."
+},
+
+/* 72 */
+{
+q:"Economic growth generally refers to:",
+options:[
+"Increase in real output over time",
+"Only increase in prices",
+"Increase in imports only",
+"Increase in tax rates"
+],
+answer:0,
+solution:"Economic growth generally refers to an increase in real production or real national income over time."
+},
+
+/* 73 */
+{
+q:"Economic development is broader than economic growth because it includes:",
+options:[
+"Only GDP increase",
+"Structural and qualitative improvements",
+"Only population growth",
+"Only price increases"
+],
+answer:1,
+solution:"Economic development includes growth along with improvements in living standards, health, education and economic structure."
+},
+
+/* 74 */
+{
+q:"Human Development Index is published by:",
+options:[
+"World Bank",
+"UNDP",
+"IMF",
+"WTO"
+],
+answer:1,
+solution:"The Human Development Report and HDI are published by the United Nations Development Programme."
+},
+
+/* 75 */
+{
+q:"HDI mainly considers:",
+options:[
+"Health, education and income",
+"Only GDP",
+"Only exports",
+"Only population"
+],
+answer:0,
+solution:"HDI combines indicators relating to health, education and standard of living."
+},
+
+/* 76 */
+{
+q:"The World Bank primarily provides:",
+options:[
+"Development and financial assistance",
+"Currency notes",
+"Stock exchange regulation in India",
+"Election services"
+],
+answer:0,
+solution:"The World Bank provides development finance and technical assistance to member countries."
+},
+
+/* 77 */
+{
+q:"The IMF mainly deals with:",
+options:[
+"International monetary cooperation",
+"Indian agriculture only",
+"Indian stock markets",
+"Local government taxation"
+],
+answer:0,
+solution:"The International Monetary Fund promotes international monetary cooperation and financial stability."
+},
+
+/* 78 */
+{
+q:"WTO is mainly concerned with:",
+options:[
+"International trade",
+"International health",
+"Currency printing",
+"Domestic taxation"
+],
+answer:0,
+solution:"The World Trade Organization provides the framework for international trade rules."
+},
+
+/* 79 */
+{
+q:"Which organization was established in 1944 to promote international monetary cooperation?",
+options:[
+"IMF",
+"WTO",
+"UNESCO",
+"WHO"
+],
+answer:0,
+solution:"The IMF was created at the Bretton Woods Conference in 1944."
+},
+
+/* 80 */
+{
+q:"The Bretton Woods Conference is associated with the establishment of:",
+options:[
+"IMF and World Bank",
+"WTO and WHO",
+"SEBI and RBI",
+"NABARD and SIDBI"
+],
+answer:0,
+solution:"The Bretton Woods Conference of 1944 led to the creation of the IMF and International Bank for Reconstruction and Development, now part of the World Bank Group."
+},
+
+/* 81 */
+{
+q:"Which of the following is an example of public expenditure?",
+options:[
+"Government spending on roads",
+"Household spending on food",
+"Private company investment",
+"Individual savings"
+],
+answer:0,
+solution:"Government spending on infrastructure such as roads is public expenditure."
+},
+
+/* 82 */
+{
+q:"Revenue receipts of the government include:",
+options:[
+"Tax revenue",
+"Borrowings",
+"Recovery of loans",
+"Sale of government assets"
+],
+answer:0,
+solution:"Tax revenue is a revenue receipt because it does not create a liability or reduce government assets."
+},
+
+/* 83 */
+{
+q:"Government borrowing is classified as:",
+options:[
+"Revenue receipt",
+"Capital receipt",
+"Revenue expenditure",
+"Transfer payment only"
+],
+answer:1,
+solution:"Borrowings are capital receipts because they create liabilities for the government."
+},
+
+/* 84 */
+{
+q:"Fiscal deficit broadly represents:",
+options:[
+"Total expenditure minus total receipts excluding borrowings",
+"Only tax revenue",
+"Exports minus imports",
+"Revenue receipts minus revenue expenditure"
+],
+answer:0,
+solution:"Fiscal deficit represents the government's total expenditure exceeding its total receipts excluding borrowings."
+},
+
+/* 85 */
+{
+q:"Primary deficit is equal to:",
+options:[
+"Fiscal deficit minus interest payments",
+"Fiscal deficit plus interest payments",
+"Revenue deficit minus tax",
+"Budget deficit plus exports"
+],
+answer:0,
+solution:"Primary Deficit = Fiscal Deficit − Interest Payments."
+},
+
+/* 86 */
+{
+q:"Revenue deficit occurs when:",
+options:[
+"Revenue expenditure exceeds revenue receipts",
+"Capital receipts exceed capital expenditure",
+"Exports exceed imports",
+"Tax revenue exceeds expenditure"
+],
+answer:0,
+solution:"Revenue deficit occurs when revenue expenditure is greater than revenue receipts."
+},
+
+/* 87 */
+{
+q:"A progressive tax is one in which:",
+options:[
+"Tax rate rises as income rises",
+"Tax rate falls as income rises",
+"Everyone pays exactly the same amount",
+"No tax is charged"
+],
+answer:0,
+solution:"Under a progressive tax system, the tax rate increases with the taxpayer's income."
+},
+
+/* 88 */
+{
+q:"A regressive tax places relatively greater burden on:",
+options:[
+"High-income groups",
+"Low-income groups",
+"Only corporations",
+"Only exporters"
+],
+answer:1,
+solution:"A regressive tax takes a larger proportion of income from lower-income groups than from higher-income groups."
+},
+
+/* 89 */
+{
+q:"Which of the following is an example of a progressive tax?",
+options:[
+"Income tax with increasing slabs",
+"Uniform sales tax",
+"Equal fee",
+"Fixed toll"
+],
+answer:0,
+solution:"Income tax with increasing rates at higher income levels is an example of progressive taxation."
+},
+
+/* 90 */
+{
+q:"The term 'deficit financing' generally refers to:",
+options:[
+"Financing government expenditure through borrowing or creation of additional money",
+"Reducing all government spending",
+"Only increasing exports",
+"Reducing currency circulation"
+],
+answer:0,
+solution:"Deficit financing broadly refers to financing a budget deficit through borrowing and, in some contexts, money creation."
+},
+
+/* 91 */
+{
+q:"Which of the following is a non-tax revenue receipt?",
+options:[
+"Income tax",
+"GST",
+"Fees and fines",
+"Customs duty"
+],
+answer:2,
+solution:"Fees, fines, interest receipts and dividends from government enterprises are examples of non-tax revenue."
+},
+
+/* 92 */
+{
+q:"The term 'budget' refers to:",
+options:[
+"Annual statement of estimated receipts and expenditure",
+"Only tax collection",
+"Only government borrowing",
+"Only foreign trade"
+],
+answer:0,
+solution:"The government budget is an annual financial statement showing estimated receipts and expenditure."
+},
+
+/* 93 */
+{
+q:"Which of the following is a capital expenditure?",
+options:[
+"Construction of a new highway",
+"Payment of salaries",
+"Pension payments",
+"Interest payment"
+],
+answer:0,
+solution:"Construction of infrastructure creates an asset and is therefore capital expenditure."
+},
+
+/* 94 */
+{
+q:"Which of the following is revenue expenditure?",
+options:[
+"Construction of a dam",
+"Purchase of land",
+"Payment of government salaries",
+"Construction of a new railway line"
+],
+answer:2,
+solution:"Government salaries are recurring expenses and are classified as revenue expenditure."
+},
+
+/* 95 */
+{
+q:"The term 'liquidity' refers to:",
+options:[
+"Ease with which an asset can be converted into cash",
+"Profit earned by a company",
+"Rate of inflation",
+"Amount of tax paid"
+],
+answer:0,
+solution:"Liquidity refers to how easily an asset can be converted into cash without significant loss in value."
+},
+
+/* 96 */
+{
+q:"Which of the following is generally considered the most liquid asset?",
+options:[
+"Land",
+"Building",
+"Cash",
+"Machinery"
+],
+answer:2,
+solution:"Cash is the most liquid asset because it can immediately be used for transactions."
+},
+
+/* 97 */
+{
+q:"When RBI increases the Repo Rate, the immediate objective is generally to:",
+options:[
+"Make borrowing cheaper",
+"Reduce excessive liquidity and inflationary pressure",
+"Increase money supply",
+"Increase government expenditure"
+],
+answer:1,
+solution:"A higher repo rate makes central-bank borrowing more expensive for banks and can reduce liquidity and inflationary pressure."
+},
+
+/* 98 */
+{
+q:"If RBI reduces the Cash Reserve Ratio, commercial banks can generally:",
+options:[
+"Lend a greater proportion of their deposits",
+"Lend nothing",
+"Stop accepting deposits",
+"Increase taxes"
+],
+answer:0,
+solution:"A lower CRR releases more funds for banks to lend, potentially increasing credit availability."
+},
+
+/* 99 */
+{
+q:"Which of the following best describes financial inclusion?",
+options:[
+"Providing access to useful and affordable financial services",
+"Only opening stock exchanges",
+"Only providing loans to large companies",
+"Reducing all bank branches"
+],
+answer:0,
+solution:"Financial inclusion means ensuring that individuals and businesses have access to appropriate and affordable financial services."
+},
+
+/* 100 */
+{
+q:"Which of the following is an important objective of economic planning?",
+options:[
+"Balanced economic development",
+"Elimination of all private businesses",
+"Only increasing imports",
+"Only increasing population"
+],
+answer:0,
+solution:"Economic planning aims at objectives such as growth, employment, poverty reduction, social justice and balanced development."
+}
+
+];
+
+
+let currentQuestion = 0;
+let userAnswers = new Array(questions.length).fill(null);
+let timeLeft = 100 * 60;
+let testSubmitted = false;
+
+
+/* TIMER */
+
+const timerElement = document.getElementById("timer");
+
+const timerInterval = setInterval(function(){
+
+    if(testSubmitted){
+        clearInterval(timerInterval);
+        return;
+    }
+
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    timerElement.textContent =
+        String(minutes).padStart(2,"0") + ":" +
+        String(seconds).padStart(2,"0");
+
+    if(timeLeft <= 0){
+        clearInterval(timerInterval);
+        submitTest(true);
+        return;
+    }
+
+    timeLeft--;
+
+},1000);
+
+
+/* DISPLAY QUESTION */
+
+function displayQuestion(){
+
+    const q = questions[currentQuestion];
+
+    let html = "";
+
+    html += `
+        <div class="question-number">
+            Question ${currentQuestion + 1} of ${questions.length}
+        </div>
+
+        <div class="question">
+            ${q.q}
+        </div>
+    `;
+
+    q.options.forEach((option,index)=>{
+
+        const checked =
+            userAnswers[currentQuestion] === index
+            ? "checked"
+            : "";
+
+        html += `
+        <label class="option">
+
+            <input
+                type="radio"
+                name="answer"
+                value="${index}"
+                ${checked}
+                onchange="selectAnswer(${index})"
+            >
+
+            <strong>${String.fromCharCode(65+index)}.</strong>
+            ${option}
+
+        </label>
+        `;
+
+    });
+
+
+    html += `
+        <div class="navigation">
+
+            <button
+                class="prev"
+                onclick="previousQuestion()"
+                ${currentQuestion === 0 ? "disabled" : ""}
+            >
+                Previous
+            </button>
+
+            <button
+                class="next"
+                onclick="nextQuestion()"
+            >
+                ${currentQuestion === questions.length-1
+                    ? "Finish"
+                    : "Next"}
+            </button>
+
+        </div>
+    `;
+
+    document.getElementById("quizBox").innerHTML = html;
+
+    updateNavigator();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* SELECT ANSWER */
+
+function selectAnswer(index){
+
+    userAnswers[currentQuestion] = index;
+
+    updateNavigator();
+}
+
+
+/* NEXT */
+
+function nextQuestion(){
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+
+        displayQuestion();
+
+    }else{
+
+        submitTest();
+
+    }
+}
+
+
+/* PREVIOUS */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        displayQuestion();
+
+    }
+}
+
+
+/* QUESTION NAVIGATOR */
+
+function createNavigator(){
+
+    const grid =
+        document.getElementById("questionGrid");
+
+    grid.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className = "qbtn";
+
+        button.textContent = index + 1;
+
+        button.onclick = function(){
+
+            currentQuestion = index;
+
+            displayQuestion();
+
+        };
+
+        grid.appendChild(button);
+
+    });
+
+    updateNavigator();
+}
+
+
+function updateNavigator(){
+
+    const buttons =
+        document.querySelectorAll(".qbtn");
+
+    buttons.forEach((button,index)=>{
+
+        button.classList.remove(
+            "active",
+            "attempted"
+        );
+
+        if(userAnswers[index] !== null){
+
+            button.classList.add("attempted");
+
+        }
+
+        if(index === currentQuestion){
+
+            button.classList.add("active");
+
+        }
+
+    });
+}
+
+
+/* SUBMIT */
+
+function submitTest(autoSubmit=false){
+
+    if(testSubmitted) return;
+
+    if(!autoSubmit){
+
+        const unanswered =
+            userAnswers.filter(a => a === null).length;
+
+        if(unanswered > 0){
+
+            const confirmSubmit =
+                confirm(
+                    "You have " +
+                    unanswered +
+                    " unanswered question(s). Do you want to submit the test?"
+                );
+
+            if(!confirmSubmit){
+                return;
+            }
+
+        }else{
+
+            const confirmSubmit =
+                confirm(
+                    "Are you sure you want to submit the test?"
+                );
+
+            if(!confirmSubmit){
+                return;
+            }
+
+        }
+
+    }
+
+    testSubmitted = true;
+
+    clearInterval(timerInterval);
+
+    calculateResult();
+
+}
+
+
+/* RESULT */
+
+function calculateResult(){
+
+    let correct = 0;
+    let wrong = 0;
+    let unanswered = 0;
+
+    questions.forEach((q,index)=>{
+
+        if(userAnswers[index] === null){
+
+            unanswered++;
+
+        }else if(userAnswers[index] === q.answer){
+
+            correct++;
+
+        }else{
+
+            wrong++;
+
+        }
+
+    });
+
+
+    const marks =
+        (correct * 2) -
+        (wrong * 0.5);
+
+    const percentage =
+        ((correct / questions.length) * 100).toFixed(2);
+
+
+    document.getElementById("quizBox").style.display = "none";
+
+    document.getElementById("result").style.display = "block";
+
+
+    document.getElementById("score").innerHTML =
+        `${marks.toFixed(2)} / 200`;
+
+
+    document.getElementById("details").innerHTML =
+
+        `
+        <b>Correct:</b> ${correct}
+        &nbsp; | &nbsp;
+
+        <b>Wrong:</b> ${wrong}
+        &nbsp; | &nbsp;
+
+        <b>Unanswered:</b> ${unanswered}
+        <br><br>
+
+        <b>Percentage:</b> ${percentage}%
+
+        <br>
+
+        <small>
+        Marking Scheme: +2 for correct, -0.5 for wrong
+        </small>
+        `;
+
+
+    generateReview();
+
+    document.querySelector(".sidebar").style.display = "none";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* SOLUTION REVIEW */
+
+function generateReview(){
+
+    const review =
+        document.getElementById("review");
+
+    review.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const user =
+            userAnswers[index];
+
+        let status = "";
+
+        if(user === null){
+
+            status =
+                `<div class="wrong">
+                    Not Attempted
+                </div>`;
+
+        }else if(user === q.answer){
+
+            status =
+                `<div class="correct">
+                    Correct
+                </div>`;
+
+        }else{
+
+            status =
+                `<div class="wrong">
+                    Wrong
+                </div>`;
+
+        }
+
+
+        let userText =
+            user === null
+            ? "Not Attempted"
+            : q.options[user];
+
+        let correctText =
+            q.options[q.answer];
+
+
+        const div =
+            document.createElement("div");
+
+        div.className = "review-item";
+
+        div.innerHTML = `
+
+            <strong>
+                Q${index+1}. ${q.q}
+            </strong>
+
+            <br><br>
+
+            ${status}
+
+            <br>
+
+            <b>Your Answer:</b>
+            ${userText}
+
+            <br>
+
+            <b>Correct Answer:</b>
+            ${correctText}
+
+            <div class="solution">
+
+                <b>Solution:</b>
+                ${q.solution}
+
+            </div>
+
+        `;
+
+        review.appendChild(div);
+
+    });
+
+}
+
+
+/* START */
+
+createNavigator();
+
+displayQuestion();
+
+</script>
+
+</body>
+</html>
