@@ -4,608 +4,977 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AIMERS CLASSES | Aim High • Achieve High</title>
+<title>AIMERS CLASSES | Our Courses</title>
 
-<meta name="description" content="AIMERS CLASSES - Classes 3 to 12, ICSE, CBSE, CHSE, Competitive Exams, Spoken English and School Entrance Exams.">
+<meta name="description"
+content="AIMERS CLASSES - Competitive Exams, Odisha Government Exams, School Academic Courses, School Entrance Examination and Spoken English Course.">
 
 <style>
 
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f7fb;
-  color:#172033;
-  line-height:1.6;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    background:#f4f7fb;
+
+    color:#172033;
+
+    line-height:1.6;
+
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
-}
 
-.container{
-  width:92%;
-  max-width:1200px;
-  margin:auto;
-}
-
-/* ================= HEADER ================= */
+/* =====================================================
+   HEADER
+===================================================== */
 
 header{
-  background:linear-gradient(135deg,#102a43,#1d4ed8);
-  color:white;
-  position:sticky;
-  top:0;
-  z-index:1000;
-  box-shadow:0 4px 15px rgba(0,0,0,.15);
+
+    background:
+    linear-gradient(
+        135deg,
+        #102a43,
+        #1d4ed8
+    );
+
+    color:white;
+
+    box-shadow:
+    0 4px 18px rgba(0,0,0,.15);
+
 }
 
-.nav{
-  min-height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+
+.header-container{
+
+    width:92%;
+
+    max-width:1250px;
+
+    margin:auto;
+
+    min-height:82px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
 }
+
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
 }
+
 
 .logo-img{
-  width:52px;
-  height:52px;
-  object-fit:cover;
-  border-radius:50%;
-  border:2px solid #ffd43b;
-  background:white;
+
+    width:58px;
+
+    height:58px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    background:white;
+
+    border:3px solid #ffd43b;
+
 }
+
 
 .logo{
-  font-size:25px;
-  font-weight:900;
-  letter-spacing:1px;
+
+    font-size:27px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
 }
+
 
 .logo span{
-  color:#ffd43b;
+
+    color:#ffd43b;
+
 }
 
-nav{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
+
+.header-tagline{
+
+    font-size:14px;
+
+    color:#dbeafe;
+
+    margin-top:2px;
+
 }
 
-nav a{
-  color:white;
-  font-weight:700;
-  font-size:14px;
-  transition:.3s;
-}
 
-nav a:hover{
-  color:#ffd43b;
-}
-
-/* ================= IMAGE SLIDER ================= */
-
-.hero-slider{
-  width:100%;
-  background:#07182c;
-  position:relative;
-  overflow:hidden;
-}
-
-.slider{
-  width:100%;
-  position:relative;
-}
-
-.slides{
-  display:flex;
-  width:400%;
-  transition:transform .7s ease-in-out;
-}
-
-.slide{
-  width:25%;
-  flex:0 0 25%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#07182c;
-}
-
-.slide img{
-  width:100%;
-  height:auto;
-  max-height:calc(100vh - 72px);
-  object-fit:contain;
-  display:block;
-}
-
-/* ARROWS */
-
-.slider-arrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:55px;
-  height:55px;
-  border:none;
-  border-radius:50%;
-  background:rgba(7,24,44,.80);
-  color:white;
-  font-size:32px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  z-index:5;
-  transition:.25s;
-}
-
-.slider-arrow:hover{
-  background:#1d4ed8;
-  transform:translateY(-50%) scale(1.08);
-}
-
-.prev{
-  left:20px;
-}
-
-.next{
-  right:20px;
-}
-
-/* DOTS */
-
-.slider-dots{
-  position:absolute;
-  left:50%;
-  bottom:18px;
-  transform:translateX(-50%);
-  display:flex;
-  gap:9px;
-  z-index:5;
-}
-
-.dot{
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  border:2px solid white;
-  background:rgba(255,255,255,.45);
-  cursor:pointer;
-}
-
-.dot.active{
-  background:#ffd43b;
-  transform:scale(1.2);
-}
-
-/* ================= HERO ================= */
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
-  background:linear-gradient(135deg,#eaf2ff,#ffffff);
-  padding:70px 0;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #eaf2ff,
+        #ffffff
+    );
+
+    padding:65px 20px 55px;
+
+    text-align:center;
+
 }
 
-.hero-content{
-  display:grid;
-  grid-template-columns:1.3fr 1fr;
-  gap:40px;
-  align-items:center;
-}
 
 .hero h1{
-  font-size:48px;
-  line-height:1.15;
-  color:#102a43;
-  margin-bottom:18px;
-  font-weight:900;
+
+    font-size:44px;
+
+    font-weight:900;
+
+    color:#102a43;
+
+    margin-bottom:12px;
+
 }
+
 
 .hero h1 span{
-  color:#1d4ed8;
+
+    color:#1d4ed8;
+
 }
+
 
 .hero p{
-  font-size:18px;
-  color:#52606d;
-  margin-bottom:25px;
+
+    font-size:18px;
+
+    color:#64748b;
+
+    max-width:750px;
+
+    margin:auto;
+
 }
 
-.hero-buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+
+/* =====================================================
+   COURSES SECTION
+===================================================== */
+
+.courses-section{
+
+    padding:65px 20px 90px;
+
+    background:#f4f7fb;
+
 }
 
-.btn{
-  display:inline-block;
-  padding:13px 22px;
-  border-radius:8px;
-  font-weight:800;
+
+.courses-container{
+
+    width:92%;
+
+    max-width:1250px;
+
+    margin:auto;
+
 }
 
-.btn-primary{
-  background:#1d4ed8;
-  color:white;
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
 }
 
-.btn-secondary{
-  background:white;
-  border:2px solid #1d4ed8;
-  color:#1d4ed8;
+
+.section-heading h2{
+
+    font-size:40px;
+
+    font-weight:900;
+
+    color:#102a43;
+
+    margin-bottom:10px;
+
+    letter-spacing:.3px;
+
 }
 
-.btn-secondary:hover{
-  background:#1d4ed8;
-  color:white;
+
+.section-heading h2::after{
+
+    content:"";
+
+    display:block;
+
+    width:75px;
+
+    height:5px;
+
+    background:#1d4ed8;
+
+    border-radius:10px;
+
+    margin:14px auto 0;
+
 }
 
-.hero-box{
-  background:white;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.10);
-  border-top:5px solid #1d4ed8;
+
+.section-heading p{
+
+    margin-top:18px;
+
+    font-size:17px;
+
+    color:#64748b;
+
 }
 
-.hero-box h3{
-  color:#1d4ed8;
-  margin-bottom:15px;
-  font-size:24px;
+
+/* =====================================================
+   COURSE GRID
+===================================================== */
+
+.courses-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2, 1fr);
+
+    gap:28px;
+
 }
 
-.hero-box ul{
-  list-style:none;
-}
 
-.hero-box li{
-  padding:9px 0;
-  border-bottom:1px solid #edf0f5;
-  font-weight:700;
-}
-
-/* ================= GENERAL ================= */
-
-section{
-  padding:65px 0;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:40px;
-}
-
-.section-title h2{
-  font-size:34px;
-  color:#102a43;
-  margin-bottom:8px;
-  font-weight:900;
-}
-
-.section-title p{
-  color:#6b7280;
-}
-
-/* ================= COURSES ================= */
-
-.course-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
+/* =====================================================
+   COURSE CARD
+===================================================== */
 
 .course-card{
-  background:white;
-  padding:28px 24px;
-  border-radius:16px;
-  box-shadow:0 7px 25px rgba(0,0,0,.08);
-  border-top:5px solid #1d4ed8;
-  transition:.3s;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:38px 36px;
+
+    min-height:285px;
+
+    box-shadow:
+
+    0 8px 25px
+    rgba(15,23,42,.08);
+
+    border-top:7px solid #1d4ed8;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+
 }
+
+
+/* Decorative circle */
+
+.course-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+
+    height:150px;
+
+    border-radius:50%;
+
+    background:rgba(29,78,216,.04);
+
+    right:-50px;
+
+    top:-50px;
+
+}
+
 
 .course-card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 15px 35px rgba(0,0,0,.13);
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+    0 18px 40px
+    rgba(15,23,42,.14);
+
 }
+
+
+/* =====================================================
+   CARD ICON
+===================================================== */
+
+.course-icon{
+
+    width:68px;
+
+    height:68px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:16px;
+
+    font-size:35px;
+
+    background:#eef4ff;
+
+    margin-bottom:20px;
+
+}
+
+
+/* =====================================================
+   CARD HEADING
+===================================================== */
 
 .course-card h3{
-  color:#1d4ed8;
-  margin-bottom:12px;
-  font-size:21px;
+
+    font-size:25px;
+
+    font-weight:900;
+
+    color:#102a43;
+
+    margin-bottom:18px;
+
+    line-height:1.25;
+
 }
 
-.course-card p{
-  color:#4b5563;
-  font-size:14px;
-  font-weight:600;
+
+/* =====================================================
+   ALL COMPETITIVE EXAMS
+===================================================== */
+
+.competitive-card{
+
+    border-top-color:#1d4ed8;
+
 }
 
-/* ================= STUDY MATERIAL ================= */
 
-.resource-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
+.competitive-card .course-icon{
+
+    background:#eaf2ff;
+
 }
 
-.resource{
-  display:block;
-  background:white;
-  padding:25px;
-  border-radius:14px;
-  box-shadow:0 7px 25px rgba(0,0,0,.07);
-  transition:.3s;
+
+.competitive-card h3{
+
+    color:#1d4ed8;
+
 }
 
-.resource:hover{
-  transform:translateY(-5px);
+
+/* =====================================================
+   ODISHA GOVERNMENT EXAMS
+===================================================== */
+
+.odisha-card{
+
+    border-top-color:#16a34a;
+
 }
 
-.resource b{
-  display:block;
-  color:#1d4ed8;
-  font-size:19px;
-  margin-bottom:8px;
+
+.odisha-card .course-icon{
+
+    background:#ecfdf3;
+
 }
 
-.resource span{
-  display:block;
-  color:#667085;
-  font-size:14px;
-  margin-bottom:12px;
+
+.odisha-card h3{
+
+    color:#15803d;
+
 }
 
-.resource em{
-  color:#102a43;
-  font-style:normal;
-  font-weight:800;
+
+/* =====================================================
+   SCHOOL ACADEMIC
+===================================================== */
+
+.academic-card{
+
+    border-top-color:#9333ea;
+
 }
 
-/* ================= PDF ================= */
 
-.pdf-section{
-  background:#eef4ff;
+.academic-card .course-icon{
+
+    background:#faf5ff;
+
 }
 
-.pdf-group{
-  margin-bottom:45px;
+
+.academic-card h3{
+
+    color:#7e22ce;
+
 }
 
-.pdf-group-title{
-  color:#102a43;
-  font-size:27px;
-  margin-bottom:20px;
-  padding-left:14px;
-  border-left:5px solid #1d4ed8;
+
+/* =====================================================
+   SCHOOL ENTRANCE
+===================================================== */
+
+.entrance-card{
+
+    border-top-color:#ea580c;
+
 }
 
-.pdf-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
+
+.entrance-card .course-icon{
+
+    background:#fff7ed;
+
 }
 
-.pdf-card{
-  background:white;
-  border-radius:15px;
-  padding:25px;
-  box-shadow:0 7px 25px rgba(0,0,0,.08);
-  border-left:5px solid #1d4ed8;
+
+.entrance-card h3{
+
+    color:#c2410c;
+
 }
 
-.pdf-card h3{
-  color:#102a43;
-  margin-bottom:8px;
-  font-size:20px;
+
+/* =====================================================
+   SPOKEN ENGLISH
+===================================================== */
+
+.english-card{
+
+    border-top-color:#0891b2;
+
 }
 
-.pdf-card p{
-  color:#667085;
-  font-size:14px;
-  margin-bottom:18px;
+
+.english-card .course-icon{
+
+    background:#ecfeff;
+
 }
 
-.pdf-buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+
+.english-card h3{
+
+    color:#0e7490;
+
 }
 
-.pdf-btn{
-  display:inline-block;
-  padding:10px 15px;
-  border-radius:7px;
-  font-size:14px;
-  font-weight:800;
+
+/* =====================================================
+   EXAM TAGS
+===================================================== */
+
+.exam-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
 }
 
-.view-btn{
-  background:#1d4ed8;
-  color:white;
+
+.exam-tag{
+
+    padding:11px 20px;
+
+    border-radius:10px;
+
+    background:#eef4ff;
+
+    color:#1d4ed8;
+
+    border:1px solid #dbe7ff;
+
+    font-size:17px;
+
+    font-weight:900;
+
 }
 
-.download-btn{
-  background:#16a34a;
-  color:white;
+
+/* Odisha tags */
+
+.odisha-card .exam-tag{
+
+    background:#ecfdf3;
+
+    color:#15803d;
+
+    border-color:#bbf7d0;
+
 }
 
-/* ================= CURRENT AFFAIRS ================= */
 
-.current-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
+/* =====================================================
+   ACADEMIC CARD
+===================================================== */
+
+.class-number{
+
+    font-size:29px;
+
+    font-weight:900;
+
+    color:#172033;
+
+    margin-bottom:5px;
+
 }
 
-.current-card{
-  background:white;
-  padding:25px;
-  border-radius:14px;
-  box-shadow:0 7px 25px rgba(0,0,0,.07);
-  border-top:4px solid #1d4ed8;
+
+.board-text{
+
+    color:#64748b;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
 }
 
-.current-card h3{
-  color:#1d4ed8;
-  margin-bottom:8px;
+
+.subject-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
 }
 
-/* ================= MOCK ================= */
 
-.mock-box{
-  background:linear-gradient(135deg,#102a43,#1d4ed8);
-  color:white;
-  padding:45px;
-  border-radius:18px;
-  text-align:center;
+.subject-tag{
+
+    padding:11px 18px;
+
+    border-radius:10px;
+
+    background:#faf5ff;
+
+    color:#7e22ce;
+
+    border:1px solid #e9d5ff;
+
+    font-size:16px;
+
+    font-weight:900;
+
 }
 
-.mock-box h2{
-  font-size:32px;
-  margin-bottom:12px;
+
+/* =====================================================
+   ENTRANCE EXAM LIST
+===================================================== */
+
+.entrance-list{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:13px;
+
 }
 
-/* ================= CONTACT ================= */
 
-.contact-section{
-  background:white;
+.entrance-item{
+
+    padding:13px 15px;
+
+    border-radius:11px;
+
+    background:#fff7ed;
+
+    color:#c2410c;
+
+    border:1px solid #fed7aa;
+
+    font-size:16px;
+
+    font-weight:800;
+
 }
 
-.contact-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:25px;
+
+/* =====================================================
+   SPOKEN ENGLISH
+===================================================== */
+
+.english-description{
+
+    color:#475569;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    margin-bottom:20px;
+
 }
 
-.contact-card{
-  background:#f7f9fc;
-  padding:30px;
-  border-radius:15px;
+
+.english-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
 }
 
-.contact-card h3{
-  color:#1d4ed8;
-  margin-bottom:15px;
+
+.english-tag{
+
+    padding:9px 15px;
+
+    border-radius:9px;
+
+    background:#ecfeff;
+
+    color:#0e7490;
+
+    border:1px solid #a5f3fc;
+
+    font-size:14px;
+
+    font-weight:900;
+
 }
 
-.contact-card p{
-  margin-bottom:10px;
+
+/* =====================================================
+   FULL WIDTH SPOKEN ENGLISH
+===================================================== */
+
+.english-card{
+
+    grid-column:1 / -1;
+
 }
 
-/* ================= FOOTER ================= */
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer{
-  background:#0f172a;
-  color:white;
-  padding:35px 0;
-  text-align:center;
+
+    background:#0f172a;
+
+    color:white;
+
+    padding:40px 20px;
+
+    text-align:center;
+
 }
+
+
+.footer-container{
+
+    width:92%;
+
+    max-width:1100px;
+
+    margin:auto;
+
+}
+
 
 footer h3{
-  color:#ffd43b;
-  margin-bottom:8px;
+
+    font-size:24px;
+
+    color:#ffd43b;
+
+    margin-bottom:8px;
+
 }
+
 
 footer p{
-  color:#cbd5e1;
-  font-size:14px;
+
+    color:#cbd5e1;
+
+    font-size:14px;
+
+    margin-top:4px;
+
 }
 
-/* ================= MOBILE ================= */
+
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media(max-width:900px){
 
-  .hero-content{
-    grid-template-columns:1fr;
-  }
+    .courses-grid{
 
-  .course-grid,
-  .resource-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+        grid-template-columns:1fr;
 
-  .pdf-grid,
-  .current-grid,
-  .contact-grid{
-    grid-template-columns:1fr;
-  }
+    }
+
+    .english-card{
+
+        grid-column:auto;
+
+    }
 
 }
 
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
 @media(max-width:600px){
 
-  .nav{
-    flex-direction:column;
-    padding:15px 0;
-  }
+    .header-container{
 
-  nav{
-    justify-content:center;
-    gap:10px 13px;
-  }
+        min-height:auto;
 
-  nav a{
-    font-size:13px;
-  }
+        padding:15px 0;
 
-  .slider-arrow{
-    width:42px;
-    height:42px;
-    font-size:25px;
-  }
+    }
 
-  .prev{
-    left:8px;
-  }
 
-  .next{
-    right:8px;
-  }
+    .logo-img{
 
-  .slide img{
-    max-height:none;
-  }
+        width:48px;
 
-  .hero{
-    padding:50px 0;
-  }
+        height:48px;
 
-  .hero h1{
-    font-size:35px;
-  }
+    }
 
-  .course-grid,
-  .resource-grid{
-    grid-template-columns:1fr;
-  }
 
-  .section-title h2{
-    font-size:28px;
-  }
+    .logo{
 
-  .mock-box{
-    padding:30px 20px;
-  }
+        font-size:21px;
+
+    }
+
+
+    .header-tagline{
+
+        font-size:11px;
+
+    }
+
+
+    .hero{
+
+        padding:45px 18px;
+
+    }
+
+
+    .hero h1{
+
+        font-size:32px;
+
+    }
+
+
+    .hero p{
+
+        font-size:15px;
+
+    }
+
+
+    .courses-section{
+
+        padding:50px 15px 65px;
+
+    }
+
+
+    .courses-container{
+
+        width:100%;
+
+    }
+
+
+    .section-heading{
+
+        margin-bottom:35px;
+
+    }
+
+
+    .section-heading h2{
+
+        font-size:32px;
+
+    }
+
+
+    .section-heading p{
+
+        font-size:15px;
+
+    }
+
+
+    .course-card{
+
+        padding:28px 23px;
+
+        min-height:auto;
+
+    }
+
+
+    .course-card h3{
+
+        font-size:21px;
+
+    }
+
+
+    .course-icon{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:30px;
+
+    }
+
+
+    .exam-tag{
+
+        font-size:15px;
+
+        padding:10px 15px;
+
+    }
+
+
+    .entrance-list{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .class-number{
+
+        font-size:25px;
+
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media(max-width:380px){
+
+    .logo{
+
+        font-size:18px;
+
+    }
+
+
+    .section-heading h2{
+
+        font-size:28px;
+
+    }
+
+
+    .course-card h3{
+
+        font-size:19px;
+
+    }
 
 }
 
@@ -613,1810 +982,356 @@ footer p{
 
 </head>
 
+
 <body>
 
-<!-- ================= HEADER ================= -->
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header>
 
-<div class="container nav">
+    <div class="header-container">
 
-<div class="brand">
+        <div class="brand">
 
-<img src="logo.jpg"
-     alt="AIMERS CLASSES Logo"
-     class="logo-img">
+            <!--
+            If your logo.jpg is in the same folder,
+            change this to:
+            src="logo.jpg"
+            -->
 
-<div class="logo">
-AIMERS <span>CLASSES</span>
-</div>
+            <img
+                src="logo.jpg"
+                alt="AIMERS CLASSES Logo"
+                class="logo-img"
+            >
 
-</div>
+            <div>
 
-<nav>
+                <div class="logo">
+                    AIMERS <span>CLASSES</span>
+                </div>
 
-<a href="#home">Home</a>
-<a href="#courses">Courses</a>
-<a href="#study-material">Study Material</a>
-<a href="#current-affairs">Current Affairs</a>
-<a href="#mock-test">Mock Tests</a>
-<a href="#contact">Contact</a>
+                <div class="header-tagline">
+                    Learn • Prepare • Achieve
+                </div>
 
-</nav>
+            </div>
 
-</div>
+        </div>
+
+    </div>
 
 </header>
 
 
-<!-- ================= 4 IMAGE SLIDER ================= -->
 
-<section class="hero-slider" id="home">
-
-<div class="slider">
-
-<div class="slides" id="slides">
-
-
-<div class="slide">
-
-<img
-src="WhatsApp%20Image%202026-09-28%20at%2010.11.18%20(3).jpeg"
-alt="AIMERS CLASSES Admission Open 2026">
-
-</div>
-
-
-<div class="slide">
-
-<img
-src="WhatsApp%20Image%202026-09-28%20at%2010.11.18%20(2).jpeg"
-alt="AIMERS CLASSES Spoken English">
-
-</div>
-
-
-<div class="slide">
-
-<img
-src="WhatsApp%20Image%202026-09-28%20at%2010.11.18%20(1).jpeg"
-alt="AIMERS CLASSES Competitive Exams">
-
-</div>
-
-
-<div class="slide">
-
-<img
-src="WhatsApp%20Image%202026-09-28%20at%2010.11.18.jpeg"
-alt="AIMERS CLASSES School Entrance Exams">
-
-</div>
-
-
-</div>
-
-
-<button
-class="slider-arrow prev"
-id="prevBtn"
-aria-label="Previous Slide">
-
-&#10094;
-
-</button>
-
-
-<button
-class="slider-arrow next"
-id="nextBtn"
-aria-label="Next Slide">
-
-&#10095;
-
-</button>
-
-
-<div class="slider-dots">
-
-<button class="dot active" data-slide="0"></button>
-<button class="dot" data-slide="1"></button>
-<button class="dot" data-slide="2"></button>
-<button class="dot" data-slide="3"></button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= HERO ================= -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
-<div class="container hero-content">
+    <h1>
+        Welcome to
+        <span>AIMERS CLASSES</span>
+    </h1>
 
-<div>
-
-<h1>
-
-AIMERS <span>CLASSES</span>
-
-<br>
-
-Aim High • Achieve High
-
-</h1>
-
-<p>
-
-Quality education, smart learning and result-oriented preparation
-for school students and competitive examinations.
-
-</p>
-
-<div class="hero-buttons">
-
-<a href="#study-material"
-class="btn btn-primary">
-
-Explore Study Material
-
-</a>
-
-<a href="#contact"
-class="btn btn-secondary">
-
-Contact Us
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="hero-box">
-
-<h3>📚 What We Offer</h3>
-
-<ul>
-
-<li>✅ Classes 3–12</li>
-
-<li>✅ ICSE • CBSE • CHSE</li>
-
-<li>✅ SSC • Railway • Banking</li>
-
-<li>✅ ASO • OSSC • OSSSC</li>
-
-<li>✅ Navodaya • Sainik • Adarsha • Eklavya</li>
-
-<li>✅ Spoken English & Personality Development</li>
-
-<li>✅ Current Affairs & Mock Tests</li>
-
-</ul>
-
-</div>
-
-</div>
+    <p>
+        Complete academic and competitive examination
+        preparation under one platform.
+    </p>
 
 </section>
 
 
-<!-- ================= COURSES ================= -->
 
-<section id="courses">
+<!-- =====================================================
+     OUR COURSES
+===================================================== -->
 
-<div class="container">
+<section class="courses-section">
 
-<div class="section-title">
-
-<h2>Our Courses</h2>
-
-<p>
-Complete academic and competitive exam preparation
-</p>
-
-</div>
+    <div class="courses-container">
 
 
-<div class="course-grid">
+        <!-- SECTION HEADING -->
+
+        <div class="section-heading">
+
+            <h2>
+                Our Courses
+            </h2>
+
+            <p>
+                Complete academic and competitive exam preparation
+            </p>
+
+        </div>
 
 
-<div class="course-card">
 
-<h3>📘 Classes 3–5</h3>
+        <!-- COURSE GRID -->
 
-<p>
-Foundation learning with strong concepts, regular practice
-and school examination support.
-</p>
-
-</div>
+        <div class="courses-grid">
 
 
-<div class="course-card">
 
-<h3>📗 Classes 6–10</h3>
+            <!-- =================================================
+                 1. ALL COMPETITIVE EXAMS
+            ================================================== -->
 
-<p>
-School syllabus, concept building, tests and examination preparation.
-</p>
+            <div class="course-card competitive-card">
 
-</div>
+                <div class="course-icon">
+                    🎯
+                </div>
 
+                <h3>
+                    ALL COMPETITIVE EXAMS
+                </h3>
 
-<div class="course-card">
+                <div class="exam-tags">
 
-<h3>📕 Classes 11–12</h3>
+                    <div class="exam-tag">
+                        SSC
+                    </div>
 
-<p>
-Science, Commerce and Arts academic preparation with specimen
-papers and regular tests.
-</p>
+                    <div class="exam-tag">
+                        RAILWAY
+                    </div>
 
-</div>
+                    <div class="exam-tag">
+                        BANKING
+                    </div>
 
+                </div>
 
-<div class="course-card">
-
-<h3>🎯 Competitive Exams</h3>
-
-<p>
-SSC, Railway, Banking, ASO, OSSC, OSSSC and other competitive exams.
-</p>
-
-</div>
-
-
-<div class="course-card">
-
-<h3>🗣️ Spoken English</h3>
-
-<p>
-Speaking, Listening, Reading, Writing, Vocabulary,
-Pronunciation, Interview Preparation and Personality Development.
-</p>
-
-</div>
+            </div>
 
 
-<div class="course-card">
 
-<h3>🏫 School Entrance</h3>
+            <!-- =================================================
+                 2. ODISHA GOVERNMENT EXAMS
+            ================================================== -->
 
-<p>
-Preparation for Jawahar Navodaya, Sainik, Adarsha
-and Eklavya school entrance examinations.
-</p>
+            <div class="course-card odisha-card">
 
-</div>
+                <div class="course-icon">
+                    🏛️
+                </div>
+
+                <h3>
+                    ODISHA GOVERNMENT EXAMS
+                </h3>
+
+                <div class="exam-tags">
+
+                    <div class="exam-tag">
+                        ASO
+                    </div>
+
+                    <div class="exam-tag">
+                        OSSC
+                    </div>
+
+                    <div class="exam-tag">
+                        OSSSC
+                    </div>
+
+                    <div class="exam-tag">
+                        RI
+                    </div>
+
+                    <div class="exam-tag">
+                        AMIN
+                    </div>
+
+                </div>
+
+            </div>
 
 
-</div>
 
-</div>
+            <!-- =================================================
+                 3. SCHOOL ACADEMIC COURSES
+            ================================================== -->
+
+            <div class="course-card academic-card">
+
+                <div class="course-icon">
+                    📚
+                </div>
+
+                <h3>
+                    SCHOOL ACADEMIC COURSES
+                </h3>
+
+                <div class="class-number">
+                    CLASS 1 TO 12
+                </div>
+
+                <div class="board-text">
+                    ICSE • CBSE • CHSE • BSE BOARDS
+                </div>
+
+                <div class="subject-tags">
+
+                    <div class="subject-tag">
+                        SCIENCE
+                    </div>
+
+                    <div class="subject-tag">
+                        COMMERCE
+                    </div>
+
+                    <div class="subject-tag">
+                        ARTS
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 4. SCHOOL ENTRANCE EXAMINATION
+            ================================================== -->
+
+            <div class="course-card entrance-card">
+
+                <div class="course-icon">
+                    🏫
+                </div>
+
+                <h3>
+                    SCHOOL ENTRANCE EXAMINATION
+                </h3>
+
+                <div class="entrance-list">
+
+                    <div class="entrance-item">
+                        🎓 Sainik School
+                    </div>
+
+                    <div class="entrance-item">
+                        📖 Jawahar Navodaya
+                    </div>
+
+                    <div class="entrance-item">
+                        🏫 Odisha Adarsha
+                    </div>
+
+                    <div class="entrance-item">
+                        🌟 Eklavya
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 5. SPOKEN ENGLISH COURSE
+            ================================================== -->
+
+            <div class="course-card english-card">
+
+                <div class="course-icon">
+                    🗣️
+                </div>
+
+                <h3>
+                    SPOKEN ENGLISH COURSE
+                </h3>
+
+                <p class="english-description">
+
+                    Develop confidence in English communication
+                    with focused training in Speaking, Listening,
+                    Reading, Writing, Grammar, Vocabulary,
+                    Pronunciation and Communication Skills.
+
+                </p>
+
+
+                <div class="english-tags">
+
+                    <div class="english-tag">
+                        SPEAKING
+                    </div>
+
+                    <div class="english-tag">
+                        LISTENING
+                    </div>
+
+                    <div class="english-tag">
+                        READING
+                    </div>
+
+                    <div class="english-tag">
+                        WRITING
+                    </div>
+
+                    <div class="english-tag">
+                        GRAMMAR
+                    </div>
+
+                    <div class="english-tag">
+                        VOCABULARY
+                    </div>
+
+                    <div class="english-tag">
+                        COMMUNICATION
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- ================= STUDY MATERIAL ================= -->
 
-<section id="study-material">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Study Material</h2>
-
-<p>
-Notes, PDFs, current affairs and mock tests
-</p>
-
-</div>
-
-
-<div class="resource-grid">
-
-
-<a class="resource" href="#pdf-notes">
-
-<b>📄 PDF Notes</b>
-
-<span>
-Class notes, specimen papers and downloadable PDFs
-</span>
-
-<em>Open ↓</em>
-
-</a>
-
-
-<a class="resource" href="#current-affairs">
-
-<b>📰 Current Affairs</b>
-
-<span>
-Monthly current affairs and MCQ practice
-</span>
-
-<em>Open →</em>
-
-</a>
-
-
-<a class="resource" href="#mock-test">
-
-<b>📝 Mock Tests</b>
-
-<span>
-Practice tests for school and competitive examinations
-</span>
-
-<em>Open →</em>
-
-</a>
-
-
-<a class="resource" href="#contact">
-
-<b>🎥 Video Classes</b>
-
-<span>
-Learning resources and classroom support
-</span>
-
-<em>Contact Us →</em>
-
-</a>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= PDF NOTES ================= -->
-
-<section class="pdf-section" id="pdf-notes">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>📄 PDF Notes</h2>
-
-<p>
-Download study material and specimen papers
-</p>
-
-</div>
-
-
-<!-- CLASS 12 ISC 2027 -->
-
-<div class="pdf-group">
-
-<h2 class="pdf-group-title">
-📚 Class 12 ISC – 2027
-</h2>
-
-
-<div class="pdf-grid">
-
-
-<div class="pdf-card">
-
-<h3>
-📘 Class 12 ISC 2027 Specimen Paper
-</h3>
-
-<p>
-Class 12 ISC 2027 complete specimen paper.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="CLASS%2012%20ISC%202027%20SPECIMEN%20PAPER.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-📐 Mathematics Class 12 ISC 2027
-</h3>
-
-<p>
-ISC Class 12 Mathematics Specimen Paper 2027.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="MATH%20CLASS%2012%20ISC%202027%20specimen.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-⚛️ Physics Class 12 ISC 2027
-</h3>
-
-<p>
-ISC Class 12 Physics Specimen Paper 2027.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="PHYSICS%20CLASS%2012%20ISC%20SPECIMEN%202027.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 2027
-</h3>
-
-<p>
-Class 12 Chemistry Specimen Paper 2027.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%202027%20specimen.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%202027%20specimen.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- CHEMISTRY 2026 -->
-
-<div class="pdf-group">
-
-<h2 class="pdf-group-title">
-🧪 Chemistry Class 12 – 2026
-</h2>
-
-
-<div class="pdf-grid">
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 2026 Specimen
-</h3>
-
-<p>
-Chemistry Class 12 2026 Specimen Paper.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%202026%20specimen.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%202026%20specimen.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 Sample Paper 1
-</h3>
-
-<p>
-Chemistry Class 12 Sample Paper 1.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%201.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%201.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 Sample Paper 2
-</h3>
-
-<p>
-Chemistry Class 12 Sample Paper 2.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%202.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%202.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 Sample Paper 3
-</h3>
-
-<p>
-Chemistry Class 12 Sample Paper 3.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%203.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%203.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 Sample Paper 4
-</h3>
-
-<p>
-Chemistry Class 12 Sample Paper 4.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%204.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%204.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>
-🧪 Chemistry Class 12 Sample Paper 5
-</h3>
-
-<p>
-Chemistry Class 12 Sample Paper 5.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%205.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="chemistry%20class%2012%20sample%20papaer%205.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- MATHEMATICS 2026 -->
-
-<div class="pdf-group">
-
-<h2 class="pdf-group-title">
-📐 Mathematics Class 12 – 2026
-</h2>
-
-
-<div class="pdf-grid">
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Set 1</h3>
-
-<p>Class 12 Mathematics 2026 Set 1.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20set%201.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20set%201.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Set 2</h3>
-
-<p>Class 12 Mathematics 2026 Set 2.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20set%202.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20set%202.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Set 3</h3>
-
-<p>Class 12 Mathematics 2026 Set 3.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20set%203.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20set%203.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Set 4</h3>
-
-<p>Class 12 Mathematics 2026 Set 4.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20set%204.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20set%204.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Set 5</h3>
-
-<p>Class 12 Mathematics 2026 Set 5.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20set%205.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20set%205.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>📐 Mathematics 2026 – Specimen Paper</h3>
-
-<p>Class 12 Mathematics 2026 Specimen Paper.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="math%20class%2012%202026%20specimen.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="math%20class%2012%202026%20specimen.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- PHYSICS 2026 -->
-
-<div class="pdf-group">
-
-<h2 class="pdf-group-title">
-⚛️ Physics Class 12 – 2026
-</h2>
-
-
-<div class="pdf-grid">
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Set 1</h3>
-
-<p>Class 12 Physics 2026 Set 1.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20class%2012%202026%20set%201.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20class%2012%202026%20set%201.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Set 2</h3>
-
-<p>Class 12 Physics 2026 Set 2.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20class%2012%202026%20set%202.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20class%2012%202026%20set%202.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Set 3</h3>
-
-<p>Class 12 Physics 2026 Set 3.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20class%2012%202026%20set%203.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20class%2012%202026%20set%203.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Set 4</h3>
-
-<p>Class 12 Physics 2026 Set 4.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20class%2012%202026%20set%204.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20class%2012%202026%20set%204.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Set 5</h3>
-
-<p>Class 12 Physics 2026 Set 5.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20class%2012%202026%20set%205.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20class%2012%202026%20set%205.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="pdf-card">
-
-<h3>⚛️ Physics 2026 – Specimen Paper</h3>
-
-<p>Class 12 Physics 2026 Specimen Paper.</p>
-
-<div class="pdf-buttons">
-
-<a
-href="physics%20isc%20class%2012%20specimen%202026.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="physics%20isc%20class%2012%20specimen%202026.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= CURRENT AFFAIRS ================= -->
-
-<section id="current-affairs">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>📰 Current Affairs</h2>
-
-<p>
-Monthly Current Affairs MCQs for examination preparation
-</p>
-
-</div>
-
-
-<div class="current-grid">
-
-
-<div class="current-card">
-
-<h3>March 2026 Current Affairs</h3>
-
-<p>
-March 2026 Current Affairs MCQ PDF.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="MARCH%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="MARCH%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="current-card">
-
-<h3>April 2026 Current Affairs</h3>
-
-<p>
-April 2026 Current Affairs MCQ PDF.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="APRIL%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="APRIL%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="current-card">
-
-<h3>May 2026 Current Affairs</h3>
-
-<p>
-May 2026 Current Affairs MCQ PDF.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="MAY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="MAY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="current-card">
-
-<h3>June 2026 Current Affairs</h3>
-
-<p>
-June 2026 Current Affairs MCQ PDF.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="JUNE%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="JUNE%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="current-card">
-
-<h3>July 2026 Current Affairs</h3>
-
-<p>
-July 2026 Current Affairs MCQ PDF.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="JULY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="JULY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="current-card">
-
-<h3>August 2026 Current Affairs</h3>
-
-<p>
-300 MCQs - August 2026 Current Affairs.
-</p>
-
-<div class="pdf-buttons">
-
-<a
-href="300_MCQs_August_2026_Current_Affairs.pdf"
-target="_blank"
-class="pdf-btn view-btn">
-
-📖 View PDF
-
-</a>
-
-<a
-href="300_MCQs_August_2026_Current_Affairs.pdf"
-download
-class="pdf-btn download-btn">
-
-⬇ Download
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= MOCK TEST ================= -->
-
-<section id="mock-test">
-
-<div class="container">
-
-<div class="mock-box">
-
-<h2>
-📝 Online Mock Tests
-</h2>
-
-<p>
-Practice questions, improve your speed and prepare for examinations.
-</p>
-
-<!-- IMPORTANT: THIS GOES TO TESTS MAIN PAGE -->
-
-<a
-href="./tests/index.html"
-class="btn btn-secondary">
-
-Start Mock Test →
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-
-<section
-class="contact-section"
-id="contact">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-📞 Contact AIMERS CLASSES
-</h2>
-
-<p>
-Admission Open • Limited Seats
-</p>
-
-</div>
-
-
-<div class="contact-grid">
-
-
-<div class="contact-card">
-
-<h3>📍 Address</h3>
-
-<p>
-
-Near Hanuman Mandir,
-
-<br>
-
-Front Lane of SBI ATM,
-
-<br>
-
-Purunabasti,
-
-<br>
-
-District Jharsuguda,
-
-<br>
-
-Odisha
-
-</p>
-
-</div>
-
-
-<div class="contact-card">
-
-<h3>📱 Contact</h3>
-
-<p>
-
-<strong>Phone:</strong>
-
-<a href="tel:7735060804">
-
-7735060804
-
-</a>
-
-</p>
-
-
-<p>
-
-<strong>Alternate:</strong>
-
-<a href="tel:7657040804">
-
-7657040804
-
-</a>
-
-</p>
-
-
-<div
-class="pdf-buttons"
-style="margin-top:15px;">
-
-
-<a
-href="https://wa.me/917735060804"
-target="_blank"
-rel="noopener"
-class="pdf-btn download-btn">
-
-💬 WhatsApp Us
-
-</a>
-
-
-<a
-href="https://www.google.com/maps/search/?api=1&query=Purunabasti%20Jharsuguda%20Odisha"
-target="_blank"
-rel="noopener"
-class="pdf-btn view-btn">
-
-📍 Google Maps
-
-</a>
-
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-<div class="container">
+    <div class="footer-container">
 
-<h3>
-AIMERS CLASSES
-</h3>
+        <h3>
+            AIMERS CLASSES
+        </h3>
 
-<p>
-Aim High • Achieve High
-</p>
+        <p>
+            Learn • Prepare • Achieve
+        </p>
 
-<p>
-Classes 3–12 | ICSE | CBSE | CHSE
-</p>
+        <p>
+            Academic & Competitive Examination Preparation
+        </p>
 
-<p>
-Competitive Exams:
-SSC | Railway | Banking | ASO | OSSC | OSSSC
-</p>
+        <p style="margin-top:15px;">
+            © 2026 AIMERS CLASSES. All Rights Reserved.
+        </p>
 
-<p>
-School Entrance Exams:
-Navodaya | Sainik | Adarsha | Eklavya
-</p>
-
-<p>
-Spoken English | Personality Development
-</p>
-
-<p style="margin-top:15px;">
-
-© 2026 AIMERS CLASSES.
-All Rights Reserved.
-
-</p>
-
-</div>
+    </div>
 
 </footer>
 
 
-<!-- ================= SLIDER JAVASCRIPT ================= -->
-
-<script>
-
-(function(){
-
-const slides =
-document.getElementById("slides");
-
-const dots =
-document.querySelectorAll(".dot");
-
-const prevBtn =
-document.getElementById("prevBtn");
-
-const nextBtn =
-document.getElementById("nextBtn");
-
-const slider =
-document.querySelector(".hero-slider");
-
-const totalSlides = 4;
-
-let currentSlide = 0;
-
-let autoSlide;
-
-
-function showSlide(index){
-
-currentSlide =
-(index + totalSlides) % totalSlides;
-
-slides.style.transform =
-"translateX(-" +
-(currentSlide * 25) +
-"%)";
-
-
-dots.forEach(function(dot,index){
-
-dot.classList.toggle(
-"active",
-index === currentSlide
-);
-
-});
-
-}
-
-
-function nextSlide(){
-
-showSlide(currentSlide + 1);
-
-}
-
-
-function prevSlide(){
-
-showSlide(currentSlide - 1);
-
-}
-
-
-function startAutoSlide(){
-
-clearInterval(autoSlide);
-
-autoSlide =
-setInterval(
-nextSlide,
-5000
-);
-
-}
-
-
-nextBtn.addEventListener(
-"click",
-function(){
-
-nextSlide();
-
-startAutoSlide();
-
-}
-);
-
-
-prevBtn.addEventListener(
-"click",
-function(){
-
-prevSlide();
-
-startAutoSlide();
-
-}
-);
-
-
-dots.forEach(function(dot){
-
-dot.addEventListener(
-"click",
-function(){
-
-showSlide(
-Number(
-this.dataset.slide
-)
-);
-
-startAutoSlide();
-
-}
-);
-
-});
-
-
-slider.addEventListener(
-"mouseenter",
-function(){
-
-clearInterval(autoSlide);
-
-}
-);
-
-
-slider.addEventListener(
-"mouseleave",
-function(){
-
-startAutoSlide();
-
-}
-);
-
-
-let touchStartX = 0;
-
-let touchEndX = 0;
-
-
-slider.addEventListener(
-"touchstart",
-function(e){
-
-touchStartX =
-e.changedTouches[0].screenX;
-
-},
-{passive:true}
-);
-
-
-slider.addEventListener(
-"touchend",
-function(e){
-
-touchEndX =
-e.changedTouches[0].screenX;
-
-let distance =
-touchEndX - touchStartX;
-
-
-if(
-Math.abs(distance) > 50
-){
-
-if(distance < 0){
-
-nextSlide();
-
-}else{
-
-prevSlide();
-
-}
-
-startAutoSlide();
-
-}
-
-},
-{passive:true}
-);
-
-
-showSlide(0);
-
-startAutoSlide();
-
-})();
-
-</script>
-
 </body>
+
 </html>
