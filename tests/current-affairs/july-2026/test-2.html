@@ -1,1 +1,3144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | July 2026 Current Affairs Test 2</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f1f5f9;
+    color:#1e293b;
+}
+
+.header{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    padding:18px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.header h1{
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+.header p{
+    font-size:14px;
+}
+
+.test-info{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.badge,.timer{
+    padding:7px 13px;
+    border-radius:20px;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.badge{
+    background:white;
+    color:#0f172a;
+}
+
+.timer{
+    background:#dc2626;
+    color:white;
+}
+
+.container{
+    max-width:1200px;
+    margin:20px auto;
+    padding:0 15px;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 270px;
+    gap:20px;
+}
+
+.question-card{
+    background:white;
+    padding:22px;
+    border-radius:12px;
+    margin-bottom:18px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.qno{
+    display:inline-block;
+    background:#1d4ed8;
+    color:white;
+    padding:5px 10px;
+    border-radius:6px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:18px;
+    font-weight:bold;
+    line-height:1.5;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    border:1px solid #cbd5e1;
+    padding:12px;
+    border-radius:8px;
+    margin:9px 0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    background:#eff6ff;
+    border-color:#2563eb;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.option.correct{
+    background:#dcfce7;
+    border-color:#16a34a;
+}
+
+.option.wrong{
+    background:#fee2e2;
+    border-color:#dc2626;
+}
+
+.sidebar{
+    background:white;
+    border-radius:12px;
+    padding:18px;
+    height:max-content;
+    position:sticky;
+    top:115px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.sidebar h3{
+    margin-bottom:12px;
+    text-align:center;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qbtn{
+    height:38px;
+    border:1px solid #cbd5e1;
+    background:#f8fafc;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.qbtn.attempted{
+    background:#16a34a;
+    color:white;
+    border-color:#16a34a;
+}
+
+.legend{
+    margin-top:15px;
+    font-size:13px;
+}
+
+.legend span{
+    display:inline-block;
+    width:13px;
+    height:13px;
+    margin-right:5px;
+    vertical-align:middle;
+    border-radius:3px;
+}
+
+.green{background:#16a34a;}
+.grey{background:#f8fafc;border:1px solid #cbd5e1;}
+
+.submit-area{
+    text-align:center;
+    margin:30px 0;
+}
+
+.submit-btn{
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:14px 35px;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#15803d;
+}
+
+.result{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    text-align:center;
+}
+
+.result h2{
+    color:#1d4ed8;
+    margin-bottom:15px;
+}
+
+.score{
+    font-size:32px;
+    font-weight:bold;
+    margin:10px;
+}
+
+.solution{
+    display:none;
+    margin-top:15px;
+    padding:14px;
+    background:#f8fafc;
+    border-left:4px solid #1d4ed8;
+    line-height:1.5;
+}
+
+.explanation{
+    margin-top:6px;
+    color:#334155;
+}
+
+@media(max-width:800px){
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        position:relative;
+        top:0;
+        order:-1;
+    }
+
+    .question{
+        font-size:16px;
+    }
+
+    .header h1{
+        font-size:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>AIMERS CLASSES</h1>
+
+<p>JULY 2026 CURRENT AFFAIRS — TEST 2</p>
+
+<div class="test-info">
+<div class="badge">100 Questions</div>
+<div class="badge">SSC CGL / CHSL / Railway</div>
+<div class="badge">+1 Correct</div>
+<div class="badge">−0.33 Wrong</div>
+<div class="timer" id="timer">60:00</div>
+</div>
+
+</div>
+
+<div class="container">
+
+<div id="result" class="result">
+
+<h2>TEST RESULT</h2>
+
+<div class="score" id="score"></div>
+
+<p id="details"></p>
+
+<br>
+
+<button class="submit-btn" onclick="showSolutions()">
+SHOW SOLUTIONS
+</button>
+
+</div>
+
+<div class="layout">
+
+<div id="quiz"></div>
+
+<div class="sidebar">
+
+<h3>QUESTION PAPER</h3>
+
+<div class="question-grid" id="questionGrid"></div>
+
+<div class="legend">
+<p><span class="green"></span> Attempted</p>
+<p><span class="grey"></span> Not Attempted</p>
+</div>
+
+<br>
+
+<p style="font-size:13px;line-height:1.5;">
+<b>MARKING SCHEME</b><br>
+Correct: +1<br>
+Wrong: −0.33<br>
+Unattempted: 0
+</p>
+
+</div>
+
+</div>
+
+<div class="submit-area">
+
+<button class="submit-btn" onclick="submitTest()">
+SUBMIT TEST
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+{
+q:"The Reserve Bank – Integrated Ombudsman Scheme, 2026 came into effect from which date?",
+o:["1 January 2026","1 April 2026","1 July 2026","1 October 2026"],
+a:2,
+e:"The RBI Integrated Ombudsman Scheme, 2026 came into effect on 1 July 2026."
+},
+
+{
+q:"The RBI Integrated Ombudsman Scheme, 2026 replaced which earlier scheme?",
+o:["2017 Scheme","2019 Scheme","2020 Scheme","2021 Scheme"],
+a:3,
+e:"The 2026 scheme replaced the RBI Integrated Ombudsman Scheme, 2021."
+},
+
+{
+q:"Under the new RBI Integrated Ombudsman Scheme, the compensation cap was raised to:",
+o:["₹10 lakh","₹20 lakh","₹30 lakh","₹50 lakh"],
+a:2,
+e:"The compensation ceiling was raised to ₹30 lakh."
+},
+
+{
+q:"Which organisation announced partnerships with HSBC India and J.P. Morgan Payments for cross-border UPI payments?",
+o:["NPCI","SEBI","IRDAI","PFRDA"],
+a:0,
+e:"NPCI announced the partnerships for real-time FX conversion and settlement of cross-border UPI payments."
+},
+
+{
+q:"The July 2026 NPCI partnerships primarily concerned:",
+o:["Cross-border UPI payments","FASTag recharge","Domestic cheque clearing","Pension payments"],
+a:0,
+e:"The partnerships concerned real-time foreign exchange conversion and settlement for cross-border UPI."
+},
+
+{
+q:"Which regulatory body commissioned a study on dark patterns in insurance?",
+o:["SEBI","IRDAI","RBI","PFRDA"],
+a:1,
+e:"IRDAI commissioned the Institute of Public Auditors of India for the study."
+},
+
+{
+q:"The study on dark patterns in insurance was planned for approximately:",
+o:["3 months","6 months","9 months","18 months"],
+a:2,
+e:"The study was planned for nine months."
+},
+
+{
+q:"What does ECLGS stand for?",
+o:["Emergency Credit Line Guarantee Scheme","Economic Credit Lending Guarantee System","Export Credit Loan Guarantee Scheme","Emergency Capital Liquidity Guarantee Scheme"],
+a:0,
+e:"ECLGS stands for Emergency Credit Line Guarantee Scheme."
+},
+
+{
+q:"ECLGS 5.0 had issued approximately how many guarantees by July 2026?",
+o:["2.11 lakh","3.11 lakh","4.11 lakh","5.11 lakh"],
+a:2,
+e:"ECLGS 5.0 had issued about 4.11 lakh guarantees."
+},
+
+{
+q:"The value of guarantees issued under ECLGS 5.0 was approximately:",
+o:["₹95,229 crore","₹1,15,229 crore","₹1,55,229 crore","₹2,05,229 crore"],
+a:2,
+e:"The reported guarantee value was ₹1,55,229 crore."
+},
+
+{
+q:"Approximately what percentage of ECLGS 5.0 guarantees were to MSMEs?",
+o:["78%","88%","98%","100%"],
+a:2,
+e:"Around 98% of the guarantees were to MSMEs."
+},
+
+{
+q:"The FY 2025-26 Ground Level Credit target for agriculture was:",
+o:["₹22.50 lakh crore","₹27.50 lakh crore","₹32.50 lakh crore","₹37.50 lakh crore"],
+a:2,
+e:"The Ground Level Credit target was ₹32.50 lakh crore."
+},
+
+{
+q:"The Ground Level Credit target for agriculture is associated with which sector?",
+o:["Agriculture","Tourism","Telecommunications","Defence"],
+a:0,
+e:"Ground Level Credit is an important indicator of agricultural credit flow."
+},
+
+{
+q:"How many Regional Rural Banks were referred to in the July 2026 rural-credit backgrounder?",
+o:["18","22","28","36"],
+a:2,
+e:"The backgrounder referred to 28 Regional Rural Banks."
+},
+
+{
+q:"The Kisan Credit Card interest-subvention limit was increased to:",
+o:["₹3 lakh","₹4 lakh","₹5 lakh","₹7 lakh"],
+a:2,
+e:"The KCC interest-subvention limit was reported at ₹5 lakh."
+},
+
+{
+q:"How many Jan Dhan accounts were reported as of 1 July 2026?",
+o:["48.63 crore","53.63 crore","58.63 crore","63.63 crore"],
+a:2,
+e:"PMJDY had 58.63 crore accounts."
+},
+
+{
+q:"The total balance in Jan Dhan accounts was approximately:",
+o:["₹2,08,333 crore","₹3,08,333 crore","₹4,08,333 crore","₹5,08,333 crore"],
+a:1,
+e:"The reported balance was ₹3,08,333 crore."
+},
+
+{
+q:"What percentage of Jan Dhan accounts were held by women according to the July 2026 data?",
+o:["45.74%","55.74%","65.74%","75.74%"],
+a:1,
+e:"Women held about 55.74% of the Jan Dhan accounts."
+},
+
+{
+q:"Approximately what percentage of Jan Dhan accounts were in rural and semi-urban areas?",
+o:["57.80%","67.80%","77.80%","87.80%"],
+a:2,
+e:"About 77.80% were in rural and semi-urban areas."
+},
+
+{
+q:"How many PMSBY enrolments were reported in the July 2026 financial-inclusion data?",
+o:["48.78 crore","53.78 crore","58.78 crore","63.78 crore"],
+a:2,
+e:"PMSBY enrolments stood at approximately 58.78 crore."
+},
+
+{
+q:"Atal Pension Yojana enrolments were approximately:",
+o:["7.29 crore","8.29 crore","9.29 crore","10.29 crore"],
+a:2,
+e:"APY had around 9.29 crore enrolments."
+},
+
+{
+q:"Gross NPAs of Public Sector Banks fell to what level as of 31 March 2026?",
+o:["1.9%","2.9%","3.9%","4.9%"],
+a:0,
+e:"Gross NPAs of PSBs fell to a historic low of 1.9%."
+},
+
+{
+q:"Public Sector Banks recorded aggregate net profit of approximately:",
+o:["₹98,000 crore","₹1.48 lakh crore","₹1.98 lakh crore","₹2.98 lakh crore"],
+a:2,
+e:"PSBs recorded aggregate net profit of about ₹1.98 lakh crore."
+},
+
+{
+q:"Aggregate business of Public Sector Banks crossed approximately:",
+o:["₹183 lakh crore","₹233 lakh crore","₹283 lakh crore","₹383 lakh crore"],
+a:2,
+e:"Aggregate business crossed ₹283 lakh crore."
+},
+
+{
+q:"Who was appointed as Executive Director of the RBI with effect from 1 July 2026?",
+o:["Ravi Shankar","Sanjay Malhotra","Shaktikanta Das","Ajay Seth"],
+a:0,
+e:"Ravi Shankar took charge as RBI Executive Director."
+},
+
+{
+q:"Who became the 51st Vice Chief of the Air Staff on 1 July 2026?",
+o:["Air Marshal Ashutosh Dixit","Air Marshal Nagesh Kapoor","Air Marshal A K Bharti","Air Marshal Tejinder Singh"],
+a:0,
+e:"Air Marshal Ashutosh Dixit became the 51st Vice Chief of the Air Staff."
+},
+
+{
+q:"Who became Chief of Integrated Defence Staff to the Chairman, Chiefs of Staff Committee?",
+o:["Air Marshal Tejinder Singh","Air Marshal Ashutosh Dixit","Lt Gen Sandeep Jain","Gen Dhiraj Seth"],
+a:0,
+e:"Air Marshal Tejinder Singh became CISC."
+},
+
+{
+q:"Who became Vice Chief of the Army Staff on 1 July 2026?",
+o:["Lt Gen Sandeep Jain","Lt Gen Anil Chauhan","Lt Gen Rahul Singh","Lt Gen Manoj Pande"],
+a:0,
+e:"Lt Gen Sandeep Jain became Vice Chief of the Army Staff."
+},
+
+{
+q:"Foreign Secretary Vikram Misri's tenure was extended up to:",
+o:["14 July 2026","14 July 2027","31 December 2027","31 March 2028"],
+a:1,
+e:"His tenure was extended until 14 July 2027 or until further orders."
+},
+
+{
+q:"Who was appointed Director General of BPR&D in July 2026?",
+o:["Alok Kumar Mittal","Amit Garg","Sujeet Pandey","Sanjeev Jain"],
+a:0,
+e:"Alok Kumar Mittal was appointed DG, BPR&D."
+},
+
+{
+q:"Alok Kumar Mittal was appointed DG of:",
+o:["BPR&D","NCRB","SVPNPA","CBI"],
+a:0,
+e:"He was appointed Director General of the Bureau of Police Research and Development."
+},
+
+{
+q:"Who was appointed Director of NCRB in July 2026?",
+o:["Amit Garg","Alok Kumar Mittal","Sujeet Pandey","Ravi Shankar"],
+a:0,
+e:"Amit Garg was appointed Director of NCRB."
+},
+
+{
+q:"Who was appointed head of SVPNPA in July 2026?",
+o:["Sujeet Pandey","Amit Garg","Alok Kumar Mittal","Sanjeev Jain"],
+a:0,
+e:"Sujeet Pandey was appointed head of SVPNPA."
+},
+
+{
+q:"Sanjeev Jain was appointed India's next Ambassador to:",
+o:["North Korea","South Korea","Japan","Vietnam"],
+a:0,
+e:"Sanjeev Jain was appointed India's next Ambassador to the Democratic People's Republic of Korea."
+},
+
+{
+q:"Who was appointed Secretary of the Ministry of Earth Sciences?",
+o:["Dr Srinivasa Kumar Tummala","Dr Rajesh Kumar","Dr K. Sivan","Dr R. K. Sinha"],
+a:0,
+e:"Dr Srinivasa Kumar Tummala was appointed Secretary, Ministry of Earth Sciences."
+},
+
+{
+q:"Dr Srinivasa Kumar Tummala was appointed for an initial period of:",
+o:["One year","Two years","Three years","Five years"],
+a:1,
+e:"He was appointed for two years."
+},
+
+{
+q:"Who became CEO of Jio Platforms in July 2026?",
+o:["Pankaj Pawar","Kiran Thomas","Akash Ambani","Sanjay Gupta"],
+a:0,
+e:"Pankaj Pawar was named CEO of Jio Platforms."
+},
+
+{
+q:"Pankaj Pawar succeeded whom as Jio Platforms CEO?",
+o:["Kiran Thomas","Mukesh Ambani","Akash Ambani","Manoj Modi"],
+a:0,
+e:"He succeeded Kiran Thomas."
+},
+
+{
+q:"Who was appointed India's next Ambassador to Mexico?",
+o:["Ngulkham Jathom Gangte","Sanjeev Jain","Vikram Misri","Pankaj Pawar"],
+a:0,
+e:"Ngulkham Jathom Gangte was appointed India's next Ambassador to Mexico."
+},
+
+{
+q:"Who became the first woman Director General of the Geological Survey of India?",
+o:["Varsha Ashok Aglawe","Arti Sarin","Soma Mondal","Kiran Dembla"],
+a:0,
+e:"Varsha Ashok Aglawe became the first woman DG of GSI."
+},
+
+{
+q:"Varsha Ashok Aglawe became the ___ Director General of GSI.",
+o:["52nd","53rd","54th","55th"],
+a:2,
+e:"She became the 54th Director General of the Geological Survey of India."
+},
+
+{
+q:"Who was appointed the next Director General of Armed Forces Medical Services?",
+o:["Air Marshal Sandeep Thareja","Air Marshal A K Bharti","Surgeon Vice Admiral Arti Sarin","Air Marshal Ashutosh Dixit"],
+a:0,
+e:"Air Marshal Sandeep Thareja was appointed the next DGAFMS."
+},
+
+{
+q:"Air Marshal Sandeep Thareja succeeds:",
+o:["Surgeon Vice Admiral Arti Sarin","Air Marshal A K Bharti","Lt Gen Sandeep Jain","Air Marshal Nagesh Kapoor"],
+a:0,
+e:"He succeeds Surgeon Vice Admiral Arti Sarin."
+},
+
+{
+q:"India's first Private Point-in-Space helicopter instrument approach was approved at:",
+o:["Undavalli Heliport","Jind Airport","Sriharikota","Jodhpur Airport"],
+a:0,
+e:"The first PinS helicopter approach was approved at Undavalli Heliport in Andhra Pradesh."
+},
+
+{
+q:"The first PinS helicopter approach was approved by:",
+o:["DGCA","DRDO","ISRO","AAI alone"],
+a:0,
+e:"The procedure was approved by the Directorate General of Civil Aviation."
+},
+
+{
+q:"The first PinS helicopter approach was developed by:",
+o:["Airports Authority of India","ISRO","HAL","DRDO"],
+a:0,
+e:"AAI developed the procedure."
+},
+
+{
+q:"The first PinS helicopter approach used support from which satellite-based augmentation system?",
+o:["GAGAN","NavIC","GPS","GLONASS"],
+a:0,
+e:"GAGAN supports satellite-guided aviation navigation in India."
+},
+
+{
+q:"India's first hydrogen fuel-cell passenger train was flagged off from:",
+o:["Jind","Sonipat","Delhi","Chandigarh"],
+a:0,
+e:"The train was flagged off from Jind, Haryana."
+},
+
+{
+q:"India's first hydrogen train operates on approximately what route length?",
+o:["60 km","75 km","90 km","120 km"],
+a:2,
+e:"The Jind–Sonipat route is approximately 90 km."
+},
+
+{
+q:"India's first hydrogen train entered revenue service on:",
+o:["17 July 2026","18 July 2026","19 July 2026","20 July 2026"],
+a:2,
+e:"It entered revenue service on 19 July 2026."
+},
+
+{
+q:"The hydrogen train uses which type of propulsion?",
+o:["Fuel-cell propulsion","Nuclear propulsion","Steam propulsion","Battery-only propulsion"],
+a:0,
+e:"It is powered by hydrogen fuel-cell technology."
+},
+
+{
+q:"India's first privately developed orbital rocket Vikram-1 was launched on:",
+o:["16 July","18 July","20 July","22 July"],
+a:1,
+e:"Vikram-1 completed its maiden orbital flight on 18 July 2026."
+},
+
+{
+q:"Vikram-1 was developed by a company headquartered in:",
+o:["Hyderabad","Bengaluru","Chennai","Ahmedabad"],
+a:0,
+e:"Skyroot Aerospace is headquartered in Hyderabad."
+},
+
+{
+q:"Vikram-1 reached which orbit?",
+o:["Low Earth Orbit","Geostationary Orbit","Lunar Orbit","Sun-synchronous polar orbit only"],
+a:0,
+e:"Vikram-1 reached Low Earth Orbit."
+},
+
+{
+q:"The Vikram-1 launch took place from:",
+o:["Satish Dhawan Space Centre","Vikram Sarabhai Space Centre","Kulasekarapattinam","Mahendragiri"],
+a:0,
+e:"The launch took place from Satish Dhawan Space Centre, Sriharikota."
+},
+
+{
+q:"India's first complete catalogue of butterflies and moths was prepared by:",
+o:["Zoological Survey of India","Botanical Survey of India","Wildlife Institute of India","ICAR"],
+a:0,
+e:"ZSI completed the catalogue."
+},
+
+{
+q:"The July 2026 Lepidoptera catalogue listed how many species?",
+o:["10,703","12,703","13,703","15,703"],
+a:2,
+e:"The catalogue listed 13,703 butterfly and moth species."
+},
+
+{
+q:"The comprehensive Lepidoptera catalogue took approximately how long to complete?",
+o:["5 years","8 years","12 years","20 years"],
+a:2,
+e:"The work took about 12 years."
+},
+
+{
+q:"Which state was the newly described blind blood-red swamp eel Rakthamichthys anchi found in?",
+o:["Assam","Kerala","Odisha","Tripura"],
+a:0,
+e:"The new species was described from Goalpara district of Assam."
+},
+
+{
+q:"Rakthamichthys anchi belongs to which group?",
+o:["Swamp eel","Butterfly","Frog","Freshwater turtle"],
+a:0,
+e:"It is a blind, blood-red swamp eel."
+},
+
+{
+q:"Which organisation released the Roadmap for Building India as a Leading Bioeconomy Powerhouse by 2035?",
+o:["NITI Aayog","RBI","SEBI","DST"],
+a:0,
+e:"NITI Aayog released the bioeconomy roadmap."
+},
+
+{
+q:"The roadmap targeted India's bioeconomy at approximately what value by 2035?",
+o:["$391 billion","$491 billion","$591 billion","$691 billion"],
+a:3,
+e:"The roadmap targets a bioeconomy of $691 billion by 2035."
+},
+
+{
+q:"The roadmap targeted India's bioeconomy at approximately what value by 2047?",
+o:["$1.6 trillion","$2.6 trillion","$3.6 trillion","$4.6 trillion"],
+a:1,
+e:"The 2047 target is approximately $2.6 trillion."
+},
+
+{
+q:"India's Gross Expenditure on R&D reached approximately what percentage of GDP in 2023-24?",
+o:["0.64%","0.74%","0.84%","1.04%"],
+a:2,
+e:"GERD rose to 0.84% of GDP in 2023-24."
+},
+
+{
+q:"India's GERD in 2023-24 was approximately:",
+o:["₹1,44,768 crore","₹2,44,768 crore","₹3,44,768 crore","₹4,44,768 crore"],
+a:1,
+e:"GERD was approximately ₹2,44,768 crore."
+},
+
+{
+q:"Which sector overtook government in R&D spending according to July 2026 reports?",
+o:["Private sector","Agricultural sector","Tourism sector","Banking sector"],
+a:0,
+e:"The private sector overtook government in R&D expenditure."
+},
+
+{
+q:"India and JAXA reviewed progress on which lunar mission?",
+o:["Chandrayaan-5 / LUPEX","Chandrayaan-2","Mangalyaan-2","Aditya-L2"],
+a:0,
+e:"ISRO and JAXA reviewed Chandrayaan-5, also known as LUPEX."
+},
+
+{
+q:"LUPEX stands for:",
+o:["Lunar Polar Exploration","Lunar Planetary Experiment","Lunar Polar Expedition","Lunar Payload Exploration"],
+a:0,
+e:"LUPEX stands for Lunar Polar Exploration."
+},
+
+{
+q:"Chandrayaan-5/LUPEX is a collaboration between:",
+o:["India and Japan","India and USA","India and France","India and Russia"],
+a:0,
+e:"LUPEX is a joint ISRO-JAXA mission."
+},
+
+{
+q:"The target launch period mentioned for Chandrayaan-5/LUPEX was:",
+o:["2026","2027","2028","2030"],
+a:2,
+e:"The mission remained targeted for 2028."
+},
+
+{
+q:"IndiaAI Mission signed an MoU with which ministry in July 2026?",
+o:["Ministry of Ayush","Ministry of Defence","Ministry of Railways","Ministry of Agriculture"],
+a:0,
+e:"IndiaAI Mission and the Ministry of Ayush signed an MoU."
+},
+
+{
+q:"The IndiaAI–Ayush MoU aims to integrate eligible Ayush research artefacts into:",
+o:["AIKosh","DigiLocker","UMANG","GeM"],
+a:0,
+e:"Eligible Ayush health research artefacts are to be integrated into AIKosh."
+},
+
+{
+q:"AIKosh is primarily associated with:",
+o:["AI data and resources","Railway tickets","Tax returns","Defence recruitment"],
+a:0,
+e:"AIKosh is India's sovereign AI repository."
+},
+
+{
+q:"Which company launched Epoch Builder Edition for Indian-language LLMs?",
+o:["Sarvam AI","Skyroot Aerospace","Pixxel","Zoho"],
+a:0,
+e:"Sarvam AI launched Epoch Builder Edition."
+},
+
+{
+q:"The Epoch Builder Edition was designed primarily for:",
+o:["Indian-language LLM development","Satellite navigation","Banking regulation","Drone manufacturing"],
+a:0,
+e:"It is a developer/enterprise platform for Indian-language LLMs."
+},
+
+{
+q:"How many parameters were associated with the larger model mentioned for Epoch Builder Edition?",
+o:["7B","20B","50B","70B"],
+a:3,
+e:"The platform included 7B and 70B parameter models."
+},
+
+{
+q:"India introduced a regulatory framework for planned re-entry of space objects requiring approval from:",
+o:["IN-SPACe","RBI","SEBI","DGCA"],
+a:0,
+e:"Planned re-entry of space objects requires IN-SPACe approval."
+},
+
+{
+q:"IN-SPACe is associated with regulation and facilitation of:",
+o:["Indian private space activities","Banking services","Insurance","Telecom spectrum auctions"],
+a:0,
+e:"IN-SPACe facilitates and regulates private-sector space activities."
+},
+
+{
+q:"The India Stack is an example of India's:",
+o:["Digital Public Infrastructure","Defence infrastructure","Railway infrastructure","Irrigation infrastructure"],
+a:0,
+e:"India Stack is part of India's Digital Public Infrastructure ecosystem."
+},
+
+{
+q:"The Environmental Performance Index 2026 covered how many countries?",
+o:["157","167","177","187"],
+a:2,
+e:"The EPI 2026 covered 177 countries."
+},
+
+{
+q:"How many indicators were used in the Environmental Performance Index 2026?",
+o:["37","47","57","67"],
+a:1,
+e:"The EPI used 47 indicators."
+},
+
+{
+q:"How many broad issue categories were covered by EPI 2026?",
+o:["8","10","12","15"],
+a:2,
+e:"The index covered 12 issue categories."
+},
+
+{
+q:"Which country topped the Environmental Performance Index 2026?",
+o:["Estonia","Finland","Sweden","Denmark"],
+a:0,
+e:"Estonia ranked first in EPI 2026."
+},
+
+{
+q:"What was India's rank in the Environmental Performance Index 2026?",
+o:["156th","166th","176th","177th"],
+a:2,
+e:"India was ranked 176th."
+},
+
+{
+q:"Which country ranked second in EPI 2026?",
+o:["Luxembourg","United Kingdom","Germany","Switzerland"],
+a:0,
+e:"Luxembourg ranked second."
+},
+
+{
+q:"India's Global Passport Index 2026 rank was:",
+o:["115th","120th","125th","130th"],
+a:2,
+e:"India ranked 125th."
+},
+
+{
+q:"The Global Passport Index 2026 covered how many countries and territories?",
+o:["177","187","197","207"],
+a:2,
+e:"The index covered 197 countries and territories."
+},
+
+{
+q:"Which country topped the Global Passport Index 2026?",
+o:["Sweden","Singapore","Japan","Germany"],
+a:0,
+e:"Sweden topped the Global Passport Index 2026."
+},
+
+{
+q:"India's 2026 Global Passport Index rank was one place below its rank in:",
+o:["2024","2025","2023","2022"],
+a:1,
+e:"India was 124th in 2025 and 125th in 2026."
+},
+
+{
+q:"India climbed to which position in the Global Pro-Competitive Reforms ranking?",
+o:["47th","57th","67th","77th"],
+a:1,
+e:"India rose to 57th position."
+},
+
+{
+q:"From which previous position did India rise in the pro-competitive reforms ranking?",
+o:["72nd","82nd","92nd","102nd"],
+a:1,
+e:"India improved from 82nd to 57th."
+},
+
+{
+q:"The report on India's market distortions and pro-competitive reforms was associated with:",
+o:["Competere Foundation","World Bank","IMF","UNDP"],
+a:0,
+e:"The ranking was associated with the Competere Foundation."
+},
+
+{
+q:"India's electronics production reached approximately what value in 2025-26?",
+o:["₹8.11 lakh crore","₹10.11 lakh crore","₹13.11 lakh crore","₹16.11 lakh crore"],
+a:2,
+e:"Electronics production reached approximately ₹13.11 lakh crore."
+},
+
+{
+q:"India's electronics exports reached approximately what value in 2025-26?",
+o:["₹2.24 lakh crore","₹3.24 lakh crore","₹4.24 lakh crore","₹5.24 lakh crore"],
+a:2,
+e:"Electronics exports reached approximately ₹4.24 lakh crore."
+},
+
+{
+q:"The Centre approved field trials of polymer banknotes in which denominations?",
+o:["₹5 and ₹10","₹10 and ₹20","₹20 and ₹50","₹50 and ₹100"],
+a:1,
+e:"Field trials were approved for ₹10 and ₹20 polymer notes."
+},
+
+{
+q:"Polymer banknotes are commonly made using:",
+o:["Plastic-based polymer substrate","Cotton only","Paper pulp only","Metal foil"],
+a:0,
+e:"Polymer notes use a durable plastic-based polymer substrate."
+},
+
+{
+q:"India's industrial output growth in June 2026 reached:",
+o:["5.3%","6.3%","7.3%","8.3%"],
+a:2,
+e:"IIP grew 7.3% year-on-year in June 2026."
+},
+
+{
+q:"The June 2026 IIP growth represented approximately a:",
+o:["12-month high","18-month high","23-month high","36-month high"],
+a:2,
+e:"The 7.3% growth was a 23-month high."
+},
+
+{
+q:"India exported 7 metric tonnes of value-added flavoured makhana to:",
+o:["Canada","Australia","Japan","UAE"],
+a:0,
+e:"The shipment from Darbhanga was exported to Canada."
+},
+
+{
+q:"The value-added makhana shipment originated from which Indian district?",
+o:["Darbhanga","Patna","Gaya","Muzaffarpur"],
+a:0,
+e:"The shipment originated from Darbhanga, Bihar."
+},
+
+{
+q:"The Coal Exchange Rules, 2026 created a regulated online platform for trading:",
+o:["Coal and lignite","Gold and silver","Rice and wheat","Crude oil only"],
+a:0,
+e:"The rules create a regulated platform for coal, lignite and processed coal."
+},
+
+{
+q:"The Coal Exchange Rules, 2026 were notified under which Act?",
+o:["MMDR Act, 1957","Companies Act, 2013","Mines Act, 1952","Coal Mines Act, 1973"],
+a:0,
+e:"The rules were notified under Section 18B of the MMDR Act, 1957."
+},
+
+{
+q:"Which port handled the largest share of India's marine product exports in FY 2025-26 according to July reports?",
+o:["Visakhapatnam Port","Mumbai Port","Kandla Port","Chennai Port"],
+a:0,
+e:"Visakhapatnam Port handled 48.89% of India's marine product exports in FY 2025-26."
+},
+
+{
+q:"Visakhapatnam Port handled approximately what share of marine product exports in FY 2025-26?",
+o:["38.89%","43.89%","48.89%","53.89%"],
+a:2,
+e:"The share was 48.89%."
+},
+
+{
+q:"India's first Telecom Manufacturing Zone was planned in:",
+o:["Gwalior","Indore","Bhopal","Jabalpur"],
+a:0,
+e:"The first Telecom Manufacturing Zone was planned at Gwalior."
+},
+
+{
+q:"The Telecom Manufacturing Zone MoU was signed between DoT and:",
+o:["Madhya Pradesh Government","Rajasthan Government","Gujarat Government","Odisha Government"],
+a:0,
+e:"The Department of Telecommunications signed the Phase-I MoU with Madhya Pradesh."
+},
+
+{
+q:"The Electronics Development Fund is associated with which ministry?",
+o:["MeitY","Ministry of Finance","Ministry of Commerce","Ministry of Defence"],
+a:0,
+e:"The Electronics Development Fund is a Fund of Funds under MeitY."
+},
+
+{
+q:"The Electronics Development Fund had invested approximately how much by 30 June 2026?",
+o:["₹157.77 crore","₹207.77 crore","₹257.77 crore","₹307.77 crore"],
+a:2,
+e:"EDF had invested ₹257.77 crore."
+},
+
+{
+q:"EDF had invested through how many SEBI-registered venture capital daughter funds?",
+o:["6","8","10","12"],
+a:1,
+e:"The investment was channelled through eight daughter funds."
+},
+
+{
+q:"Which scheme was approved with an outlay of ₹84,084 crore in July 2026?",
+o:["Samudra Manthan","PM Surya Sarovar","Khelo India","BHAVYA-Rasayan"],
+a:0,
+e:"Samudra Manthan was approved with an outlay of ₹84,084 crore."
+},
+
+{
+q:"Samudra Manthan is associated with:",
+o:["Offshore exploration","Sports development","Floating solar","Chemical parks"],
+a:0,
+e:"Samudra Manthan is the National Offshore Exploration Scheme."
+},
+
+{
+q:"The Samudra Manthan scheme runs up to:",
+o:["2028-29","2029-30","2030-31","2032-33"],
+a:2,
+e:"The scheme runs through FY 2030-31."
+},
+
+{
+q:"The PM Surya Sarovar Yojana was approved with an outlay of:",
+o:["₹3,070 crore","₹5,070 crore","₹7,070 crore","₹9,070 crore"],
+a:1,
+e:"The approved outlay was ₹5,070 crore."
+},
+
+{
+q:"PM Surya Sarovar Yojana primarily promotes:",
+o:["Floating solar power","Wind power","Nuclear power","Hydrogen pipelines"],
+a:0,
+e:"The scheme focuses on floating solar PV with energy storage."
+},
+
+{
+q:"PM Surya Sarovar Yojana targets approximately how much floating solar capacity?",
+o:["2,000 MW","3,000 MW","5,000 MW","8,000 MW"],
+a:2,
+e:"The target is 5,000 MW of floating solar PV."
+},
+
+{
+q:"The minimum co-located energy storage under PM Surya Sarovar was specified at:",
+o:["1-hour/5,000 MWh","2-hour/10,000 MWh","3-hour/15,000 MWh","4-hour/20,000 MWh"],
+a:1,
+e:"The scheme specifies minimum 2-hour / 10,000 MWh storage."
+},
+
+{
+q:"BHAVYA-Rasayan was approved with an outlay of:",
+o:["₹2,030 crore","₹3,030 crore","₹4,030 crore","₹5,030 crore"],
+a:1,
+e:"BHAVYA-Rasayan has an outlay of ₹3,030 crore."
+},
+
+{
+q:"BHAVYA-Rasayan aims to establish how many chemical parks?",
+o:["2","3","4","5"],
+a:1,
+e:"The scheme covers three chemical parks."
+},
+
+{
+q:"The revamped Khelo India Scheme was approved with a combined outlay including ANSF support of:",
+o:["₹26,441 crore","₹31,441 crore","₹36,441 crore","₹41,441 crore"],
+a:2,
+e:"The combined outlay was ₹36,441 crore."
+},
+
+{
+q:"The revamped Khelo India Scheme covers the period:",
+o:["2026-27 to 2030-31","2025-26 to 2029-30","2027-28 to 2031-32","2026-27 to 2031-32"],
+a:0,
+e:"The approved period is 2026-27 to 2030-31."
+},
+
+{
+q:"PM-KISAN was extended up to:",
+o:["2028-29","2029-30","2030-31","2031-32"],
+a:2,
+e:"The Cabinet approved continuation of PM-KISAN through 2030-31."
+},
+
+{
+q:"The financial outlay for continuation of PM-KISAN was approximately:",
+o:["₹2.15 lakh crore","₹2.65 lakh crore","₹3.15 lakh crore","₹3.65 lakh crore"],
+a:2,
+e:"The approved outlay was ₹3.15 lakh crore."
+},
+
+{
+q:"The PM-KISAN extension covers which financial years?",
+o:["2026-27 to 2030-31","2025-26 to 2029-30","2027-28 to 2031-32","2026-27 to 2029-30"],
+a:0,
+e:"The extension covers 2026-27 to 2030-31."
+},
+
+{
+q:"How many projects received approval or in-principle approval under the Urban Challenge Fund?",
+o:["23","28","33","38"],
+a:2,
+e:"The government approved or gave in-principle approval to 33 projects."
+},
+
+{
+q:"The Urban Challenge Fund is associated primarily with:",
+o:["Urban development","Rural employment","Agricultural exports","Defence manufacturing"],
+a:0,
+e:"The Urban Challenge Fund supports urban development projects."
+},
+
+{
+q:"The government released over ₹10,000 crore to how many states under PMAY-Gramin?",
+o:["8","10","12","15"],
+a:2,
+e:"More than ₹10,000 crore was released to 12 states."
+},
+
+{
+q:"PMAY-G is primarily associated with:",
+o:["Rural housing","Urban transport","Skill development","Agricultural credit"],
+a:0,
+e:"PMAY-Gramin provides support for rural housing."
+},
+
+{
+q:"How many redeveloped railway stations were virtually inaugurated under the Amrit Bharat Station Scheme?",
+o:["50","60","75","100"],
+a:2,
+e:"Seventy-five redeveloped railway stations were inaugurated."
+},
+
+{
+q:"The 75 redeveloped railway stations were spread across how many states?",
+o:["15","18","20","25"],
+a:2,
+e:"They were spread across 20 states."
+},
+
+{
+q:"The Jan Aushadhi Kendras operational nationwide as of 30 June 2026 numbered:",
+o:["15,149","18,149","20,149","22,149"],
+a:2,
+e:"There were 20,149 Jan Aushadhi Kendras."
+},
+
+{
+q:"Jan Aushadhi Kendras operate under which programme?",
+o:["Pradhan Mantri Bhartiya Janaushadhi Pariyojana","PM-KISAN","PMAY-G","PM SVANidhi"],
+a:0,
+e:"Jan Aushadhi Kendras are part of PMBJP."
+},
+
+{
+q:"Which state launched DWEEPTI Yojana for women-led solar entrepreneurship?",
+o:["Chhattisgarh","Odisha","Jharkhand","Madhya Pradesh"],
+a:0,
+e:"Chhattisgarh launched the DWEEPTI Yojana."
+},
+
+{
+q:"DWEEPTI Yojana is aimed at turning rural SHG women into:",
+o:["Solar entrepreneurs","Bank managers","Teachers","Health workers"],
+a:0,
+e:"The scheme promotes women-led solar enterprises."
+},
+
+{
+q:"DWEEPTI Yojana envisages approximately how many green enterprises?",
+o:["2,000","3,000","5,000","10,000"],
+a:2,
+e:"The scheme aims to support 5,000 green enterprises."
+},
+
+{
+q:"DWEEPTI Yojana targets approximately how many households?",
+o:["2 lakh","3 lakh","5 lakh","8 lakh"],
+a:2,
+e:"The scheme targets services for around 5 lakh households."
+},
+
+{
+q:"Which state proposed legislation to protect Vaishnavite Satras through protected zones?",
+o:["Assam","Manipur","Tripura","West Bengal"],
+a:0,
+e:"Assam proposed the Assam Land and Revenue Regulation Amendment Bill, 2026."
+},
+
+{
+q:"The protected heritage sites in the Assam proposal are known as:",
+o:["Satras","Mathas","Viharas","Devasthans"],
+a:0,
+e:"The protected Vaishnavite institutions are known as Satras."
+},
+
+{
+q:"Which state approved the Lakshmi Yojana providing ₹2,500 monthly assistance to eligible women?",
+o:["Delhi","Punjab","Haryana","Uttar Pradesh"],
+a:0,
+e:"The Delhi Government approved the Delhi Lakshmi Yojana."
+},
+
+{
+q:"The Delhi Lakshmi Yojana provides assistance through:",
+o:["Direct Benefit Transfer","Cash coupons","Food grains","Postal orders"],
+a:0,
+e:"The assistance is transferred through DBT."
+},
+
+{
+q:"Kerala's digital-governance reform package included which initiative?",
+o:["SAMPATH","DWEEPTI","RajNivesh","AIKosh"],
+a:0,
+e:"SAMPATH was among the digital governance reforms approved by Kerala."
+},
+
+{
+q:"Which expedition was India's first tri-service all-women circumnavigation sailing expedition?",
+o:["Samudra Pradakshina","Navika Sagar Parikrama","Sea Shakti","Samudra Shakti"],
+a:0,
+e:"Samudra Pradakshina was India's first tri-service all-women circumnavigation sailing expedition."
+},
+
+{
+q:"Samudra Pradakshina completed approximately how many days of global voyage?",
+o:["214 days","264 days","314 days","364 days"],
+a:2,
+e:"The expedition completed a 314-day global voyage."
+},
+
+{
+q:"Samudra Pradakshina concluded at:",
+o:["Mumbai","Kochi","Visakhapatnam","Chennai"],
+a:0,
+e:"The expedition concluded at Mumbai."
+},
+
+{
+q:"Who took charge as Interim President of FIDE in July 2026?",
+o:["Viswanathan Anand","Magnus Carlsen","Hikaru Nakamura","Praggnanandhaa"],
+a:0,
+e:"Five-time world champion Viswanathan Anand became Interim President of FIDE."
+},
+
+{
+q:"FIDE is the international governing body for:",
+o:["Chess","Badminton","Athletics","Boxing"],
+a:0,
+e:"FIDE governs international chess."
+},
+
+{
+q:"Who won India's first-ever Commonwealth Games decathlon medal in July 2026?",
+o:["Tejaswin Shankar","Neeraj Chopra","Lovepreet Singh","Harsh Singh"],
+a:0,
+e:"Tejaswin Shankar won bronze in men's decathlon."
+},
+
+{
+q:"What medal did Tejaswin Shankar win in the Commonwealth Games 2026 decathlon?",
+o:["Gold","Silver","Bronze","No medal"],
+a:2,
+e:"He won the bronze medal."
+},
+
+{
+q:"Who won India's first men's judo gold at the Commonwealth Games 2026?",
+o:["Harsh Singh","Lovepreet Singh","Tejaswin Shankar","Sushil Kumar"],
+a:0,
+e:"Havildar Harsh Singh won the men's 60 kg judo gold."
+},
+
+{
+q:"Harsh Singh won Commonwealth Games gold in which judo category?",
+o:["60 kg","66 kg","73 kg","81 kg"],
+a:0,
+e:"He won the men's 60 kg category."
+},
+
+{
+q:"Neeraj Chopra won which medal in men's javelin at the Glasgow Commonwealth Games 2026?",
+o:["Gold","Silver","Bronze","No medal"],
+a:1,
+e:"Neeraj Chopra won silver."
+},
+
+{
+q:"Neeraj Chopra's best throw in the event was:",
+o:["80.83 m","83.83 m","85.83 m","87.83 m"],
+a:2,
+e:"His best throw was 85.83 metres."
+},
+
+{
+q:"Who won silver in the men's +110 kg weightlifting event at CWG 2026?",
+o:["Lovepreet Singh","Harsh Singh","Tejaswin Shankar","Mirabai Chanu"],
+a:0,
+e:"Lovepreet Singh won silver."
+},
+
+{
+q:"Lovepreet Singh's combined lift at CWG 2026 was:",
+o:["368 kg","378 kg","388 kg","398 kg"],
+a:2,
+e:"He lifted a combined 388 kg."
+},
+
+{
+q:"Lovepreet Singh's 176 kg snatch was reported as:",
+o:["A national record","A Games record","A world record","A personal record only"],
+a:1,
+e:"His 176 kg snatch was a new Games record."
+},
+
+{
+q:"India concluded the ISSF World Cup 2026 campaign with how many medals?",
+o:["2","3","4","5"],
+a:2,
+e:"India won four medals."
+},
+
+{
+q:"India's ISSF World Cup 2026 medal tally included:",
+o:["1 gold, 1 silver, 2 bronze","2 gold, 1 silver, 1 bronze","1 gold, 2 silver, 1 bronze","4 gold"],
+a:0,
+e:"The tally was 1 gold, 1 silver and 2 bronze medals."
+},
+
+{
+q:"Ajinkya Rahane announced retirement from international cricket in July 2026 across:",
+o:["Tests only","ODIs only","T20Is only","All formats"],
+a:3,
+e:"Rahane announced retirement from international cricket across all formats."
+},
+
+{
+q:"India won both men's and women's team titles at the 22nd Commonwealth Table Tennis Championships held in:",
+o:["New Delhi","Mumbai","Kolkata","Hyderabad"],
+a:0,
+e:"The championships were held at Thyagaraj Stadium, New Delhi."
+},
+
+{
+q:"The 22nd Commonwealth Table Tennis Championships were held at:",
+o:["Thyagaraj Stadium","Major Dhyan Chand Stadium","Indira Gandhi Arena","Siri Fort"],
+a:0,
+e:"The event was held at Thyagaraj Stadium."
+},
+
+{
+q:"Which organisation won the overall title at the 11th All India Police Judo Cluster Championship?",
+o:["SSB","CISF","CRPF","BSF"],
+a:0,
+e:"SSB won the overall title."
+},
+
+{
+q:"The 11th All India Police Judo Cluster Championship was held in:",
+o:["Hyderabad","New Delhi","Bengaluru","Lucknow"],
+a:0,
+e:"It concluded at GMC Balayogi Indoor Stadium, Hyderabad."
+},
+
+{
+q:"Which organisation hosted the 11th All India Police Judo Cluster Championship?",
+o:["CISF","SSB","CRPF","ITBP"],
+a:0,
+e:"CISF hosted the championship."
+},
+
+{
+q:"The 2026 Commonwealth Games referred to in these July current affairs were held in:",
+o:["Glasgow","Birmingham","Melbourne","Delhi"],
+a:0,
+e:"The 2026 Commonwealth Games were held in Glasgow."
+},
+
+{
+q:"The third BRICS Ministerial Meeting on Disaster Risk Reduction was held in:",
+o:["New Delhi","Mumbai","Hyderabad","Bengaluru"],
+a:0,
+e:"The meeting was held in New Delhi."
+},
+
+{
+q:"The BRICS Disaster Risk Reduction meeting adopted a:",
+o:["Joint Statement","Peace Treaty","Trade Pact","Defence Treaty"],
+a:0,
+e:"A BRICS Joint Statement was adopted."
+},
+
+{
+q:"India and Israel concluded their second round of FTA negotiations in July 2026. The talks took place from:",
+o:["10–13 July","15–18 July","20–23 July","24–27 July"],
+a:2,
+e:"The second FTA negotiation round took place from 20–23 July."
+},
+
+{
+q:"India-Israel bilateral trade in FY 2025-26 was approximately:",
+o:["$2.93 billion","$3.93 billion","$4.93 billion","$5.93 billion"],
+a:1,
+e:"FY26 bilateral trade was reported at about $3.93 billion."
+},
+
+{
+q:"President Droupadi Murmu received an honorary doctorate from:",
+o:["Bucharest University of Economic Studies","University of Oxford","University of Tokyo","Harvard University"],
+a:0,
+e:"She received an honorary doctorate from the Bucharest University of Economic Studies."
+},
+
+{
+q:"Bucharest University of Economic Studies is located in:",
+o:["Romania","Hungary","Poland","Bulgaria"],
+a:0,
+e:"Bucharest is the capital of Romania."
+},
+
+{
+q:"EPFO launched which two initiatives in July 2026?",
+o:["VISHWAS 2026 and AMNESTY 2026","NIRMAN and VIKAS","SAMPATH and NAKSHA","SAMUDRA and SURYA"],
+a:0,
+e:"EPFO launched VISHWAS 2026 and AMNESTY 2026."
+},
+
+{
+q:"The EPFO VISHWAS and AMNESTY initiatives became effective from:",
+o:["1 January 2026","29 June 2026","1 July 2026","15 July 2026"],
+a:1,
+e:"The initiatives became effective from 29 June 2026 for six months."
+},
+
+{
+q:"The Department of Health Research allocation for 2026-27 reached approximately:",
+o:["₹3,821.21 crore","₹4,821.21 crore","₹5,821.21 crore","₹6,821.21 crore"],
+a:1,
+e:"The DHR allocation was reported at ₹4,821.21 crore."
+},
+
+{
+q:"ISRO made NISAR S-band SAR products available through:",
+o:["Bhoonidhi","DigiLocker","AIKosh","GeM"],
+a:0,
+e:"NISAR S-band SAR products were made available through Bhoonidhi."
+},
+
+{
+q:"NISAR is an Earth-observation mission involving ISRO and:",
+o:["NASA","ESA","JAXA","Roscosmos"],
+a:0,
+e:"NISAR is a joint ISRO-NASA mission."
+},
+
+{
+q:"SAIL's Q1 FY27 revenue from operations was approximately:",
+o:["₹16,246 crore","₹21,246 crore","₹26,246 crore","₹31,246 crore"],
+a:2,
+e:"SAIL reported revenue from operations of ₹26,246 crore."
+},
+
+{
+q:"Which company reported the Q1 FY27 revenue figure of ₹26,246 crore?",
+o:["SAIL","ONGC","BHEL","GAIL"],
+a:0,
+e:"The figure was reported by Steel Authority of India Limited."
+},
+
+{
+q:"Which government programme launched the Digital Local Pass on RajmargYatra?",
+o:["NHAI","Indian Railways","RBI","UIDAI"],
+a:0,
+e:"NHAI launched the Digital Local Pass."
+},
+
+{
+q:"The MargMitra Help Centre was launched on which app?",
+o:["RajmargYatra","UMANG","DigiLocker","mParivahan"],
+a:0,
+e:"MargMitra Help Centre was launched on the RajmargYatra app."
+},
+
+{
+q:"Operation Vajra by the Central Bureau of Narcotics involved interception of approximately how many Tramadol tablets?",
+o:["2 crore","7 crore","12 crore","20 crore"],
+a:2,
+e:"Operation Vajra thwarted diversion of about 12 crore Tramadol tablets."
+},
+
+{
+q:"The intercepted Tramadol consignment weighed approximately:",
+o:["10 metric tonnes","20 metric tonnes","30 metric tonnes","50 metric tonnes"],
+a:2,
+e:"The consignment weighed about 30 metric tonnes."
+},
+
+{
+q:"Which agency conducted Operation Vajra?",
+o:["Central Bureau of Narcotics","CBI","NIA","ED"],
+a:0,
+e:"Operation Vajra was conducted by the Central Bureau of Narcotics."
+},
+
+{
+q:"India advised ship owners to avoid deploying Indian seafarers on vessels transiting which route?",
+o:["Strait of Hormuz","Strait of Malacca","Bab-el-Mandeb","Suez Canal"],
+a:0,
+e:"The advisory concerned vessels transiting the Strait of Hormuz."
+},
+
+{
+q:"Which authority issued the advisory concerning Indian seafarers and the Strait of Hormuz?",
+o:["Directorate General of Maritime Administration","Navy Headquarters","DGCA","NHAI"],
+a:0,
+e:"The Directorate General of Maritime Administration issued the advisory."
+},
+
+{
+q:"The first-ever air shipment of Karnataka mangoes in July 2026 was sent to:",
+o:["Maldives","UAE","Singapore","Canada"],
+a:0,
+e:"APEDA facilitated the first-ever air shipment of Karnataka mangoes to Maldives."
+},
+
+{
+q:"Which varieties of Karnataka mangoes were included in the shipment to Maldives?",
+o:["Neelam and Totapuri","Alphonso and Kesar","Dashehari and Langra","Banganapalli and Himsagar"],
+a:0,
+e:"The shipment included Neelam and Totapuri mangoes."
+},
+
+{
+q:"Which organisation facilitated Karnataka's first air shipment of mangoes to Maldives?",
+o:["APEDA","NABARD","FSSAI","DGFT"],
+a:0,
+e:"APEDA facilitated the shipment."
+},
+
+{
+q:"The Supreme Court in July 2026 quashed an Office Memorandum concerning:",
+o:["Ex-post facto environmental clearances","GST rates","Bank licences","Railway fares"],
+a:0,
+e:"The Court quashed the 2021 Office Memorandum allowing ex-post facto environmental clearances."
+},
+
+{
+q:"The Supreme Court's July 2026 ruling concerned environmental clearances granted:",
+o:["Retrospectively","Only prospectively","Only internationally","Only for railways"],
+a:0,
+e:"The ruling concerned retrospective or ex-post facto environmental clearances."
+},
+
+{
+q:"The NCCR study found which area moderately clean with respect to microplastics?",
+o:["Thoothukudi–Gulf of Mannar coast","Mumbai coast","Chennai coast","Odisha coast"],
+a:0,
+e:"The NCCR study assessed the Thoothukudi–Gulf of Mannar coast as moderately clean."
+},
+
+{
+q:"The predominant type of microplastic found in the NCCR study was:",
+o:["Synthetic filaments","Plastic beads","Foam particles","Plastic sheets"],
+a:0,
+e:"Synthetic filaments were the predominant microplastic type."
+},
+
+{
+q:"Which of the following was identified as a major source of microplastic pollution in the study area?",
+o:["Riverine discharge","Volcanic activity","Desert dust","Snow melt"],
+a:0,
+e:"Riverine discharge and abandoned fishing gear were identified as major sources."
+},
+
+{
+q:"How many pilot projects were awarded under the National Green Hydrogen Mission for hydrogen vehicles?",
+o:["8","10","12","15"],
+a:2,
+e:"Twelve pilot projects were awarded."
+},
+
+{
+q:"The hydrogen vehicle pilots involved how many vehicles?",
+o:["50","60","70","80"],
+a:2,
+e:"The projects cover 70 hydrogen-powered vehicles."
+},
+
+{
+q:"The 70 hydrogen vehicles included how many buses?",
+o:["17","27","37","47"],
+a:1,
+e:"The programme includes 27 buses."
+},
+
+{
+q:"The 70 hydrogen vehicles included how many trucks?",
+o:["33","43","53","63"],
+a:1,
+e:"The programme includes 43 trucks."
+},
+
+{
+q:"How many hydrogen refuelling stations were included in the pilot projects?",
+o:["10","12","16","20"],
+a:2,
+e:"The pilots include 16 hydrogen refuelling stations."
+},
+
+{
+q:"The hydrogen vehicle pilots cover approximately how many routes?",
+o:["11","16","21","31"],
+a:2,
+e:"The projects cover 21 routes."
+},
+
+{
+q:"The first-ever complete Indian catalogue of Lepidoptera was prepared by which city-based organisation?",
+o:["ZSI Kolkata","BSI Delhi","ICAR Pune","CSIR Hyderabad"],
+a:0,
+e:"The Zoological Survey of India, Kolkata, completed the catalogue."
+},
+
+{
+q:"Lepidoptera includes:",
+o:["Butterflies and moths","Bees and wasps","Beetles and ants","Dragonflies and damselflies"],
+a:0,
+e:"Lepidoptera is the order containing butterflies and moths."
+},
+
+{
+q:"Which institution was responsible for the NISAR S-band SAR product release?",
+o:["ISRO","JAXA","NASA alone","DRDO"],
+a:0,
+e:"ISRO released the products through Bhoonidhi."
+},
+
+{
+q:"The IndiaAI-Ayush collaboration is intended to strengthen AI applications in:",
+o:["Traditional medicine","Railway signalling","Defence missiles","Agricultural machinery only"],
+a:0,
+e:"The collaboration focuses on AI applications in traditional medicine and related research."
+},
+
+{
+q:"Which area was specifically mentioned under the IndiaAI-Ayush MoU?",
+o:["Medicinal plants","Coal mining","Port management","Road construction"],
+a:0,
+e:"Medicinal plants are among the areas covered."
+},
+
+{
+q:"Which body is India's aviation regulator?",
+o:["DGCA","AAI","BCAS","AERA"],
+a:0,
+e:"DGCA is India's Directorate General of Civil Aviation."
+},
+
+{
+q:"Which organisation operates India's major civilian airports and was involved in the Undavalli PinS procedure?",
+o:["Airports Authority of India","DGCA","HAL","ISRO"],
+a:0,
+e:"The Airports Authority of India developed the procedure."
+},
+
+{
+q:"Which technology is used by White Rabbit networks for highly precise time synchronization?",
+o:["Precision timing/synchronisation","Satellite imaging","AI translation","Quantum encryption only"],
+a:0,
+e:"White Rabbit is a precision timing and synchronisation technology."
+},
+
+{
+q:"The White Rabbit Technology-based IST dissemination network was commissioned at:",
+o:["RRSL Bengaluru","ISRO Ahmedabad","IIT Delhi","CSIR Chennai"],
+a:0,
+e:"It was commissioned at the Regional Reference Standard Laboratory in Bengaluru."
+},
+
+{
+q:"IST in the White Rabbit project stands for:",
+o:["Indian Standard Time","International Satellite Time","Indian Space Time","Integrated System Timing"],
+a:0,
+e:"IST means Indian Standard Time."
+},
+
+{
+q:"Which ministry commissioned the White Rabbit IST dissemination demonstration network?",
+o:["Ministry of Consumer Affairs, Food and Public Distribution","Ministry of Defence","Ministry of Railways","Ministry of Science and Technology"],
+a:0,
+e:"The network was commissioned under the Department of Consumer Affairs."
+},
+
+{
+q:"Which Indian mission is abbreviated as NISAR?",
+o:["NASA-ISRO Synthetic Aperture Radar","National Indian Satellite and Radar","New India Space Astronomy Radar","National Imaging Satellite and Research"],
+a:0,
+e:"NISAR stands for NASA-ISRO Synthetic Aperture Radar."
+},
+
+{
+q:"Which satellite technology is central to NISAR?",
+o:["Synthetic Aperture Radar","Optical telescope only","Infrared spectroscopy only","GPS navigation"],
+a:0,
+e:"NISAR uses Synthetic Aperture Radar."
+},
+
+{
+q:"Which ministry signed the MoU with IndiaAI to bring Ayush research into AIKosh?",
+o:["Ministry of Ayush","Ministry of Health and Family Welfare","Ministry of Science and Technology","Ministry of Education"],
+a:0,
+e:"The Ministry of Ayush signed the MoU."
+},
+
+{
+q:"The Ministry of Ayush primarily deals with:",
+o:["Traditional systems of medicine","Banking regulation","Defence procurement","Telecommunications"],
+a:0,
+e:"The Ministry of Ayush deals with traditional Indian systems of medicine."
+},
+
+{
+q:"Which organisation's data showed India's GERD rising to ₹2,44,768 crore?",
+o:["Department of Science and Technology","RBI","NITI Aayog","MoSPI"],
+a:0,
+e:"The data came from the Department of Science and Technology's R&D statistics."
+},
+
+{
+q:"GERD stands for:",
+o:["Gross Expenditure on Research and Development","Government Expenditure on Rural Development","General Economic Research Data","Gross Export Revenue Deficit"],
+a:0,
+e:"GERD means Gross Expenditure on Research and Development."
+},
+
+{
+q:"Which index placed India at 176th in July 2026?",
+o:["Environmental Performance Index","Global Innovation Index","Human Development Index","Global Hunger Index"],
+a:0,
+e:"India ranked 176th in the Environmental Performance Index 2026."
+},
+
+{
+q:"Which index placed India at 125th in July 2026?",
+o:["Global Passport Index","Environmental Performance Index","Global Peace Index","World Press Freedom Index"],
+a:0,
+e:"India was ranked 125th in the Global Passport Index 2026."
+},
+
+{
+q:"Which organisation regulates insurance in India?",
+o:["IRDAI","SEBI","RBI","PFRDA"],
+a:0,
+e:"IRDAI regulates the insurance sector."
+},
+
+{
+q:"Which organisation regulates India's pension system?",
+o:["PFRDA","SEBI","IRDAI","RBI"],
+a:0,
+e:"PFRDA regulates the pension sector."
+},
+
+{
+q:"Which organisation regulates India's capital market?",
+o:["SEBI","RBI","IRDAI","PFRDA"],
+a:0,
+e:"SEBI regulates India's securities and capital markets."
+},
+
+{
+q:"Which institution regulates India's banking system?",
+o:["RBI","SEBI","IRDAI","PFRDA"],
+a:0,
+e:"The Reserve Bank of India is India's central banking regulator."
+},
+
+{
+q:"Which body is responsible for India's railway station redevelopment programme called Amrit Bharat Station Scheme?",
+o:["Ministry of Railways","NHAI","Ministry of Housing","NITI Aayog"],
+a:0,
+e:"The Amrit Bharat Station Scheme is a Ministry of Railways programme."
+},
+
+{
+q:"The Amrit Bharat Station Scheme primarily focuses on:",
+o:["Redevelopment of railway stations","Construction of airports","Metro rail only","National highways"],
+a:0,
+e:"The scheme focuses on modernising and redeveloping railway stations."
+},
+
+{
+q:"Which scheme was extended to 2030-31 with ₹3.15 lakh crore?",
+o:["PM-KISAN","PMAY-G","PM SVANidhi","PM Vishwakarma"],
+a:0,
+e:"PM-KISAN received the ₹3.15 lakh crore extension."
+},
+
+{
+q:"Which scheme focuses on floating solar PV with storage?",
+o:["PM Surya Sarovar Yojana","PM-KISAN","Samudra Manthan","Khelo India"],
+a:0,
+e:"PM Surya Sarovar Yojana focuses on floating solar power."
+},
+
+{
+q:"Which scheme focuses on offshore exploration?",
+o:["Samudra Manthan","PM Surya Sarovar","Khelo India","BHAVYA-Rasayan"],
+a:0,
+e:"Samudra Manthan is the National Offshore Exploration Scheme."
+},
+
+{
+q:"Which scheme focuses on chemical parks?",
+o:["BHAVYA-Rasayan","PM-KISAN","PMAY-G","DWEEPTI"],
+a:0,
+e:"BHAVYA-Rasayan covers three chemical parks."
+},
+
+{
+q:"Which scheme received a combined ₹36,441 crore allocation with higher support for National Sports Federations?",
+o:["Khelo India","PM-KISAN","PMAY-G","NAMASTE"],
+a:0,
+e:"The revamped Khelo India Scheme and ANSF support totalled ₹36,441 crore."
+},
+
+{
+q:"ANSF stands for:",
+o:["Assistance to National Sports Federations","Association of National Sports Facilities","All National Sports Fund","Authority for National Sports Federation"],
+a:0,
+e:"ANSF refers to Assistance to National Sports Federations."
+},
+
+{
+q:"Which Indian chess personality became Interim President of FIDE?",
+o:["Viswanathan Anand","Vishy Menon","Rameshbabu Praggnanandhaa","D. Gukesh"],
+a:0,
+e:"Viswanathan Anand became Interim President of FIDE."
+},
+
+{
+q:"Who became the first Indian to lead FIDE as Interim President?",
+o:["Viswanathan Anand","D. Gukesh","Pentala Harikrishna","Vladimir Kramnik"],
+a:0,
+e:"Viswanathan Anand became the first Indian to lead FIDE."
+},
+
+{
+q:"Which Indian athlete won bronze in the Commonwealth Games men's decathlon?",
+o:["Tejaswin Shankar","Neeraj Chopra","Avinash Sable","Eldhose Paul"],
+a:0,
+e:"Tejaswin Shankar won bronze in the men's decathlon."
+},
+
+{
+q:"Which Indian athlete won silver in men's javelin at Glasgow 2026?",
+o:["Neeraj Chopra","Kishore Jena","Tejaswin Shankar","DP Manu"],
+a:0,
+e:"Neeraj Chopra won silver."
+},
+
+{
+q:"Which Indian athlete won men's 60 kg judo gold at Glasgow 2026?",
+o:["Harsh Singh","Vijay Kumar","Sushil Kumar","Lovepreet Singh"],
+a:0,
+e:"Harsh Singh won gold in men's 60 kg judo."
+},
+
+{
+q:"Which Indian weightlifter won silver in the +110 kg category at Glasgow 2026?",
+o:["Lovepreet Singh","Mirabai Chanu","Jeremy Lalrinnunga","Achinta Sheuli"],
+a:0,
+e:"Lovepreet Singh won silver in the +110 kg category."
+},
+
+{
+q:"Which Indian cricketer retired from international cricket in July 2026?",
+o:["Ajinkya Rahane","Rohit Sharma","Cheteshwar Pujara","Ravichandran Ashwin"],
+a:0,
+e:"Ajinkya Rahane announced retirement from international cricket across all formats."
+},
+
+{
+q:"Which city hosted the Commonwealth Table Tennis Championships where India won both team titles?",
+o:["New Delhi","Mumbai","Pune","Bengaluru"],
+a:0,
+e:"The event was held in New Delhi."
+},
+
+{
+q:"Which country is associated with the 2026 Commonwealth Games host city Glasgow?",
+o:["United Kingdom","Australia","Canada","New Zealand"],
+a:0,
+e:"Glasgow is in Scotland, United Kingdom."
+},
+
+{
+q:"Which organisation is abbreviated as ZSI?",
+o:["Zoological Survey of India","Zoological Society of India","Zonal Science Institute","Zoology Standards Institute"],
+a:0,
+e:"ZSI stands for Zoological Survey of India."
+},
+
+{
+q:"The Zoological Survey of India is headquartered in:",
+o:["Kolkata","New Delhi","Mumbai","Chennai"],
+a:0,
+e:"ZSI is headquartered in Kolkata."
+},
+
+{
+q:"Which new species was described from Assam's Goalpara district in July 2026?",
+o:["Rakthamichthys anchi","Panthera assamensis","Rana goalparensis","Cyprinus anchi"],
+a:0,
+e:"Rakthamichthys anchi is the newly described blind swamp eel."
+},
+
+{
+q:"What distinctive feature was reported for Rakthamichthys anchi?",
+o:["Blind and blood-red body","Blue wings","Golden shell","Transparent skin"],
+a:0,
+e:"It is described as a blind, blood-red swamp eel."
+},
+
+{
+q:"Which state launched India's first women-led distributed renewable energy policy?",
+o:["Chhattisgarh","Rajasthan","Gujarat","Odisha"],
+a:0,
+e:"Chhattisgarh launched the DWEEPTI policy."
+},
+
+{
+q:"DWEEPTI primarily uses which community platform?",
+o:["Self-Help Groups","Panchayat Samitis","Urban municipal corporations","School clubs"],
+a:0,
+e:"The scheme turns rural SHG women into solar entrepreneurs."
+},
+
+{
+q:"Which state approved ₹2,500 monthly DBT support under Lakshmi Yojana?",
+o:["Delhi","Haryana","Punjab","Rajasthan"],
+a:0,
+e:"Delhi approved the Lakshmi Yojana."
+},
+
+{
+q:"Which state's cabinet approved SAMPATH and PlanSpace 2.0 reforms?",
+o:["Kerala","Tamil Nadu","Karnataka","Andhra Pradesh"],
+a:0,
+e:"Kerala approved these digital governance reforms."
+},
+
+{
+q:"Which country was India's partner in the LUPEX lunar exploration mission?",
+o:["Japan","USA","France","Australia"],
+a:0,
+e:"LUPEX is a joint India-Japan mission."
+},
+
+{
+q:"Which organisation is India's sovereign AI repository?",
+o:["AIKosh","Bhoonidhi","DigiLocker","UMANG"],
+a:0,
+e:"AIKosh is India's sovereign AI repository."
+},
+
+{
+q:"Bhoonidhi is associated with:",
+o:["Earth observation and satellite data","Banking","Pension services","Railway booking"],
+a:0,
+e:"Bhoonidhi provides access to ISRO Earth-observation data/products."
+},
+
+{
+q:"Which mission's S-band SAR products were made available through Bhoonidhi?",
+o:["NISAR","Chandrayaan-3","Aditya-L1","Mangalyaan"],
+a:0,
+e:"NISAR S-band SAR products were released through Bhoonidhi."
+},
+
+{
+q:"Which body approved India's first PinS helicopter approach?",
+o:["DGCA","AAI","ISRO","Ministry of Defence"],
+a:0,
+e:"DGCA approved the procedure."
+},
+
+{
+q:"Which state is home to Undavalli Heliport?",
+o:["Andhra Pradesh","Telangana","Karnataka","Tamil Nadu"],
+a:0,
+e:"Undavalli Heliport is in Andhra Pradesh."
+},
+
+{
+q:"Which technology enabled India's first hydrogen passenger train?",
+o:["Hydrogen fuel-cell technology","Nuclear reactor","Diesel-electric technology","Steam technology"],
+a:0,
+e:"The train uses hydrogen fuel-cell technology."
+},
+
+{
+q:"Which private company developed Vikram-1?",
+o:["Skyroot Aerospace","Agnikul Cosmos","Pixxel","Bellatrix Aerospace"],
+a:0,
+e:"Skyroot Aerospace developed Vikram-1."
+},
+
+{
+q:"Vikram-1 became India's first privately developed rocket to:",
+o:["Reach orbit","Land on the Moon","Return from Mars","Dock with a space station"],
+a:0,
+e:"Vikram-1 became the first privately developed Indian orbital rocket to reach orbit."
+},
+
+{
+q:"Which organisation operates the GAGAN satellite-based augmentation system?",
+o:["AAI and ISRO","RBI and NPCI","DRDO and HAL","NHAI and ISRO"],
+a:0,
+e:"GAGAN was developed jointly by AAI and ISRO."
+},
+
+{
+q:"Which index was topped by Estonia in July 2026?",
+o:["Environmental Performance Index","Global Passport Index","Pro-Competitive Reforms Index","Human Development Index"],
+a:0,
+e:"Estonia topped the Environmental Performance Index 2026."
+},
+
+{
+q:"Which country ranked second in the Environmental Performance Index 2026?",
+o:["Luxembourg","Sweden","Germany","Norway"],
+a:0,
+e:"Luxembourg ranked second."
+},
+
+{
+q:"Which country ranked third in the Environmental Performance Index 2026?",
+o:["United Kingdom","France","Germany","Denmark"],
+a:0,
+e:"The United Kingdom ranked third."
+},
+
+{
+q:"Which country's passport ranked first in the Global Passport Index 2026?",
+o:["Sweden","Singapore","Japan","Switzerland"],
+a:0,
+e:"Sweden topped the Global Passport Index 2026."
+},
+
+{
+q:"India's Global Passport Index score was described as its best in:",
+o:["Three years","Five years","Seven years","Ten years"],
+a:1,
+e:"The report described India's score as its best in five years."
+},
+
+{
+q:"Which foundation was associated with India's rise to 57th in the market-distortions performance ranking?",
+o:["Competere Foundation","Heritage Foundation","Gates Foundation","Observer Research Foundation"],
+a:0,
+e:"The ranking was associated with the Competere Foundation."
+},
+
+{
+q:"Which ministry is associated with the Electronics Development Fund?",
+o:["MeitY","Ministry of Steel","Ministry of Power","Ministry of Commerce"],
+a:0,
+e:"EDF is a Fund of Funds under MeitY."
+},
+
+{
+q:"What is the full form of MeitY?",
+o:["Ministry of Electronics and Information Technology","Ministry of Economic and Information Technology","Ministry of Electronics and Industrial Technology","Ministry of Enterprise and Information Technology"],
+a:0,
+e:"MeitY stands for Ministry of Electronics and Information Technology."
+},
+
+{
+q:"Which port handled 48.89% of India's marine product exports in FY 2025-26?",
+o:["Visakhapatnam Port","Cochin Port","Kandla Port","Paradip Port"],
+a:0,
+e:"Visakhapatnam Port handled 48.89%."
+},
+
+{
+q:"Which organisation promotes agricultural and processed-food exports from India?",
+o:["APEDA","FSSAI","NABARD","DGFT"],
+a:0,
+e:"APEDA promotes agricultural and processed food exports."
+},
+
+{
+q:"Which mango varieties were air-shipped from Karnataka to Maldives?",
+o:["Neelam and Totapuri","Alphonso and Kesar","Dashehari and Langra","Banganapalli and Dashehari"],
+a:0,
+e:"The varieties were Neelam and Totapuri."
+},
+
+{
+q:"Which state was the source of the first air shipment of mangoes to Maldives?",
+o:["Karnataka","Kerala","Maharashtra","Tamil Nadu"],
+a:0,
+e:"The shipment originated from Karnataka."
+},
+
+{
+q:"Which organisation is responsible for India's public grievance portal CPGRAMS?",
+o:["DARPG","NITI Aayog","UPSC","CVC"],
+a:0,
+e:"CPGRAMS is administered through the Department of Administrative Reforms and Public Grievances."
+},
+
+{
+q:"Which ministry is associated with PMAY-Gramin?",
+o:["Ministry of Rural Development","Ministry of Housing and Urban Affairs","Ministry of Agriculture","Ministry of Panchayati Raj"],
+a:0,
+e:"PMAY-G is implemented by the Ministry of Rural Development."
+},
+
+{
+q:"Which scheme provides affordable medicines through Jan Aushadhi Kendras?",
+o:["PMBJP","PM-KISAN","PMAY-G","PM SVANidhi"],
+a:0,
+e:"Jan Aushadhi Kendras operate under Pradhan Mantri Bhartiya Janaushadhi Pariyojana."
+},
+
+{
+q:"PMBJP stands for:",
+o:["Pradhan Mantri Bhartiya Janaushadhi Pariyojana","Prime Minister Bharat Jan Arogya Programme","Pradhan Mantri Bharat Jeevan Pariyojana","Public Medicine Bharat Jan Programme"],
+a:0,
+e:"PMBJP stands for Pradhan Mantri Bhartiya Janaushadhi Pariyojana."
+},
+
+{
+q:"Which scheme was described as India's National Offshore Exploration Scheme?",
+o:["Samudra Manthan","Sagar Mala","Sagarmala 2.0","Deep Ocean Mission"],
+a:0,
+e:"Samudra Manthan is the National Offshore Exploration Scheme."
+},
+
+{
+q:"Which scheme targets 5,000 MW of floating solar PV?",
+o:["PM Surya Sarovar Yojana","PM-KUSUM","National Solar Mission","DWEEPTI"],
+a:0,
+e:"PM Surya Sarovar Yojana targets 5,000 MW."
+},
+
+{
+q:"Which July 2026 policy was focused on women-led distributed renewable energy?",
+o:["DWEEPTI","PM Ujjwala","Lakhpati Didi","DAY-NRLM"],
+a:0,
+e:"DWEEPTI is the women-led renewable-energy policy of Chhattisgarh."
+},
+
+{
+q:"Which body became responsible for the Interim Presidency of FIDE in July 2026?",
+o:["Viswanathan Anand","FIDE Council","International Olympic Committee","AICF"],
+a:0,
+e:"Viswanathan Anand took charge as Interim President."
+},
+
+{
+q:"AICF is the national governing body for:",
+o:["Chess","Badminton","Cricket","Athletics"],
+a:0,
+e:"AICF is the All India Chess Federation."
+},
+
+{
+q:"Which Indian athlete's Commonwealth Games medal was India's first in men's decathlon at the Games?",
+o:["Tejaswin Shankar","Neeraj Chopra","Avinash Sable","Eldhose Paul"],
+a:0,
+e:"Tejaswin Shankar's bronze was India's first Commonwealth Games medal in men's decathlon."
+},
+
+{
+q:"Which sport produced India's first men's judo gold at the 2026 Commonwealth Games?",
+o:["Judo","Wrestling","Boxing","Weightlifting"],
+a:0,
+e:"Harsh Singh won India's first men's judo gold at the Commonwealth Games."
+},
+
+{
+q:"Which event produced India's first-ever Commonwealth Games decathlon medal?",
+o:["Men's decathlon","Men's javelin","Men's 100m","Men's long jump"],
+a:0,
+e:"The historic medal came in men's decathlon."
+},
+
+{
+q:"Which organisation conducted the ISSF World Cup mentioned in July 2026?",
+o:["International Shooting Sport Federation","International Sports Safety Federation","Indian Shooting Sports Federation","International Sporting Standards Federation"],
+a:0,
+e:"ISSF stands for International Shooting Sport Federation."
+},
+
+{
+q:"Which sport is governed internationally by FIDE?",
+o:["Chess","Shooting","Judo","Table Tennis"],
+a:0,
+e:"FIDE governs chess."
+},
+
+{
+q:"Which sport is governed internationally by ISSF?",
+o:["Shooting","Chess","Judo","Table Tennis"],
+a:0,
+e:"ISSF governs international shooting sport."
+},
+
+{
+q:"Which city hosted the 11th All India Police Judo Cluster Championship?",
+o:["Hyderabad","New Delhi","Bhopal","Jaipur"],
+a:0,
+e:"The championship concluded in Hyderabad."
+},
+
+{
+q:"Which force won the overall title at the 11th All India Police Judo Cluster Championship?",
+o:["SSB","CISF","CRPF","BSF"],
+a:0,
+e:"SSB won the overall title."
+},
+
+{
+q:"Which organisation hosted that police judo championship?",
+o:["CISF","SSB","CRPF","ITBP"],
+a:0,
+e:"CISF hosted the championship."
+},
+
+{
+q:"The India-Israel FTA negotiations were conducted between India and:",
+o:["Israel","Jordan","Egypt","UAE"],
+a:0,
+e:"The negotiations were between India and Israel."
+},
+
+{
+q:"India-Israel FY26 bilateral trade was approximately:",
+o:["$2.93 billion","$3.93 billion","$4.93 billion","$6.93 billion"],
+a:1,
+e:"The reported FY26 bilateral trade was about $3.93 billion."
+},
+
+{
+q:"Which university awarded President Droupadi Murmu an honorary doctorate?",
+o:["Bucharest University of Economic Studies","University of Bucharest","University of Warsaw","University of Vienna"],
+a:0,
+e:"The honorary doctorate came from the Bucharest University of Economic Studies."
+},
+
+{
+q:"Which country is home to Bucharest University of Economic Studies?",
+o:["Romania","Bulgaria","Serbia","Hungary"],
+a:0,
+e:"The university is in Romania."
+},
+
+{
+q:"Which organisation launched VISHWAS 2026 and AMNESTY 2026?",
+o:["EPFO","ESIC","PFRDA","NPS Trust"],
+a:0,
+e:"The Employees' Provident Fund Organisation launched the initiatives."
+},
+
+{
+q:"EPFO works under which ministry?",
+o:["Ministry of Labour and Employment","Ministry of Finance","Ministry of Social Justice","Ministry of Corporate Affairs"],
+a:0,
+e:"EPFO functions under the Ministry of Labour and Employment."
+},
+
+{
+q:"Which body released the 'Research & Development Statistics 2025-26' report referred to in July current affairs?",
+o:["Department of Science and Technology","NITI Aayog","RBI","MoSPI"],
+a:0,
+e:"The Department of Science and Technology released the R&D statistics."
+},
+
+{
+q:"Which of the following best describes GERD?",
+o:["Total national spending on research and development","Government tax collection","Gross export earnings","Total defence expenditure"],
+a:0,
+e:"GERD measures Gross Expenditure on Research and Development."
+},
+
+{
+q:"Which technology is used to synchronize highly accurate time signals in the White Rabbit network?",
+o:["Precision Ethernet timing","Blockchain","Artificial neural networks","Quantum teleportation"],
+a:0,
+e:"White Rabbit provides extremely precise network timing and synchronization."
+},
+
+{
+q:"The White Rabbit network was demonstrated for dissemination of:",
+o:["Indian Standard Time","GST rates","Satellite images","Election results"],
+a:0,
+e:"The demonstration network disseminates Indian Standard Time."
+},
+
+{
+q:"Which ministry is responsible for the IndiaAI Mission?",
+o:["Ministry of Electronics and Information Technology","Ministry of Education","Ministry of Science and Technology","Ministry of Commerce"],
+a:0,
+e:"IndiaAI Mission is under MeitY."
+},
+
+{
+q:"Which ministry is responsible for Ayush systems?",
+o:["Ministry of Ayush","Ministry of Health and Family Welfare","Ministry of Science and Technology","Ministry of Education"],
+a:0,
+e:"The Ministry of Ayush handles India's traditional medicine systems."
+},
+
+{
+q:"Which mission includes a planned lunar polar exploration collaboration with Japan?",
+o:["Chandrayaan-5/LUPEX","Chandrayaan-4","Aditya-L2","Mangalyaan-2"],
+a:0,
+e:"Chandrayaan-5/LUPEX is the ISRO-JAXA lunar polar exploration mission."
+},
+
+{
+q:"Which organisation provides regulatory approval for planned private space-object re-entry in India?",
+o:["IN-SPACe","ISRO","DRDO","DGCA"],
+a:0,
+e:"The new framework requires IN-SPACe approval."
+},
+
+{
+q:"Which environmental court-related decision was taken by the Supreme Court on 29 July 2026?",
+o:["Ex-post facto environmental clearances were barred","All mining was banned","Plastic was banned nationwide","Forest land was nationalised"],
+a:0,
+e:"The Court quashed the mechanism allowing ex-post facto environmental clearances."
+},
+
+{
+q:"Which organisation conducted the microplastic monitoring study of the Gulf of Mannar?",
+o:["National Centre for Coastal Research","Zoological Survey of India","National Biodiversity Authority","Forest Survey of India"],
+a:0,
+e:"The National Centre for Coastal Research conducted the monitoring."
+},
+
+{
+q:"The Gulf of Mannar study identified which as a major source of microplastics?",
+o:["Abandoned, Lost or Discarded Fishing Gear","Volcanic ash","Desert winds","Snowfall"],
+a:0,
+e:"ALDFG was identified as a major source."
+},
+
+{
+q:"ALDFG stands for:",
+o:["Abandoned, Lost or Discarded Fishing Gear","Artificial Land Disposal Fishing Goods","Advanced Low-Density Fishing Grid","Aquatic Litter Disposal and Fishing Governance"],
+a:0,
+e:"ALDFG means Abandoned, Lost or Discarded Fishing Gear."
+},
+
+{
+q:"Which organisation is India's national-level survey body for zoological resources?",
+o:["Zoological Survey of India","Botanical Survey of India","Geological Survey of India","Archaeological Survey of India"],
+a:0,
+e:"ZSI surveys India's zoological resources."
+},
+
+{
+q:"Which organisation surveys India's geological resources?",
+o:["Geological Survey of India","Zoological Survey of India","Botanical Survey of India","Survey of India"],
+a:0,
+e:"GSI is responsible for geological surveys."
+},
+
+{
+q:"Which woman became the first female Director General of GSI in July 2026?",
+o:["Varsha Ashok Aglawe","Arti Sarin","Soma Mondal","Ritu Kumar"],
+a:0,
+e:"Varsha Ashok Aglawe became the first woman DG of GSI."
+},
+
+{
+q:"Who was appointed Ambassador to Mexico in July 2026?",
+o:["Ngulkham Jathom Gangte","Sanjeev Jain","Vikram Misri","Ashutosh Dixit"],
+a:0,
+e:"Ngulkham Jathom Gangte was appointed India's next Ambassador to Mexico."
+},
+
+{
+q:"Who was appointed Ambassador to North Korea?",
+o:["Sanjeev Jain","Ngulkham Jathom Gangte","Vikram Misri","Ravi Shankar"],
+a:0,
+e:"Sanjeev Jain was appointed India's next Ambassador to North Korea."
+},
+
+{
+q:"Which official received additional charge of the Education Ministry after Dharmendra Pradhan's resignation?",
+o:["Pralhad Joshi","Piyush Goyal","Ashwini Vaishnaw","Manohar Lal"],
+a:0,
+e:"Pralhad Joshi received additional charge of the Education Ministry."
+},
+
+{
+q:"The July 2026 NTA reform task force was associated with:",
+o:["Nandan Nilekani","Amitabh Kant","Raghuram Rajan","N. Chandrasekaran"],
+a:0,
+e:"A task force headed by Nandan Nilekani was associated with NTA reforms."
+},
+
+{
+q:"The anti-paper-leak amendment discussed in July 2026 primarily targeted:",
+o:["Public examination malpractice","Banking fraud only","Tax evasion","Cyber piracy"],
+a:0,
+e:"The amendment targeted leaks and malpractice in public examinations."
+},
+
+{
+q:"Which national exam was central to the July 2026 paper-leak controversy?",
+o:["NEET-UG","UPSC CSE","SSC CGL","CUET-PG"],
+a:0,
+e:"NEET-UG was central to the controversy."
+},
+
+{
+q:"Which ministry was headed by Dharmendra Pradhan before his resignation?",
+o:["Education Ministry","Finance Ministry","Home Ministry","Defence Ministry"],
+a:0,
+e:"Dharmendra Pradhan was Union Education Minister."
+},
+
+{
+q:"Who received additional charge of the Education Ministry following the July 2026 resignation?",
+o:["Pralhad Joshi","Dharmendra Pradhan","Piyush Goyal","Jual Oram"],
+a:0,
+e:"Pralhad Joshi received additional charge."
+},
+
+{
+q:"Which city hosted the 12th BRICS Labour and Employment Ministers' Meeting?",
+o:["Hyderabad","New Delhi","Mumbai","Kolkata"],
+a:0,
+e:"The meeting was hosted in Hyderabad."
+},
+
+{
+q:"Which city hosted the 3rd BRICS Transport Ministers' Meeting?",
+o:["Nagpur","Pune","Nashik","Aurangabad"],
+a:0,
+e:"The meeting was held in Nagpur."
+},
+
+{
+q:"Which commission approved India's proposal on cashew kernel standards?",
+o:["Codex Alimentarius Commission","UNESCO Commission","WTO Council","FAO Fisheries Commission"],
+a:0,
+e:"The Codex Alimentarius Commission approved the proposal."
+},
+
+{
+q:"The Codex Alimentarius Commission primarily deals with:",
+o:["Food standards","Nuclear safety","Civil aviation","Banking regulation"],
+a:0,
+e:"Codex develops international food standards."
+},
+
+{
+q:"Which two countries discussed cooperation on BrahMos in July 2026?",
+o:["India and Indonesia","India and Japan","India and Australia","India and Vietnam"],
+a:0,
+e:"India and Indonesia discussed BrahMos cooperation."
+},
+
+{
+q:"Which country announced a Strategic Partnership and a roadmap to 2030 with India?",
+o:["New Zealand","Canada","Australia","Finland"],
+a:0,
+e:"India and New Zealand announced the Strategic Partnership and roadmap."
+},
+
+{
+q:"India and Australia focused on which sector in their July 2026 joint statement?",
+o:["Energy security","Textiles","Tourism only","Banking"],
+a:0,
+e:"Energy security was a major focus."
+},
+
+{
+q:"Which country was involved in India's discussions on Australian uranium exports under IAEA safeguards?",
+o:["Australia","Canada","Japan","France"],
+a:0,
+e:"The discussions were with Australia."
+},
+
+{
+q:"Which UNESCO-related site became India's 45th World Heritage property in July 2026?",
+o:["Sarnath","Nalanda","Bodh Gaya","Khajuraho"],
+a:0,
+e:"Sarnath became India's 45th World Heritage property."
+},
+
+{
+q:"Sarnath is located in which state?",
+o:["Uttar Pradesh","Bihar","Madhya Pradesh","Rajasthan"],
+a:0,
+e:"Sarnath is in Uttar Pradesh."
+},
+
+{
+q:"Sarnath is located near which city?",
+o:["Varanasi","Lucknow","Ayodhya","Prayagraj"],
+a:0,
+e:"Sarnath is near Varanasi."
+},
+
+{
+q:"The ancient Buddhist site of Sarnath is particularly associated with:",
+o:["Buddha's first sermon","Buddha's birth","Buddha's enlightenment","Buddha's Mahaparinirvana"],
+a:0,
+e:"Sarnath is traditionally associated with Buddha's first sermon."
+},
+
+{
+q:"Which stupa is located at Sarnath?",
+o:["Dhamek Stupa","Sanchi Stupa","Bharhut Stupa","Amaravati Stupa"],
+a:0,
+e:"Dhamek Stupa is one of Sarnath's important monuments."
+},
+
+{
+q:"Which international body inscribed Sarnath on its World Heritage List?",
+o:["UNESCO","UNDP","UNEP","WHO"],
+a:0,
+e:"UNESCO maintains the World Heritage List."
+},
+
+{
+q:"Which city hosted the World Heritage Committee session associated with Sarnath's inscription?",
+o:["Busan","Seoul","Tokyo","Beijing"],
+a:0,
+e:"The 48th World Heritage Committee session was held in Busan."
+},
+
+{
+q:"The 48th World Heritage Committee session was held in which country?",
+o:["Republic of Korea","Japan","China","India"],
+a:0,
+e:"The session was held in the Republic of Korea."
+},
+
+{
+q:"Which organisation administers the World Heritage Convention?",
+o:["UNESCO","UNDP","UNEP","UNFPA"],
+a:0,
+e:"UNESCO administers the World Heritage programme."
+},
+
+{
+q:"Which ministry oversees the National Green Hydrogen Mission?",
+o:["Ministry of New and Renewable Energy","Ministry of Power","Ministry of Heavy Industries","Ministry of Environment"],
+a:0,
+e:"The National Green Hydrogen Mission is under MNRE."
+},
+
+{
+q:"The National Green Hydrogen Mission's July 2026 pilot projects involved which vehicles?",
+o:["Buses and trucks","Cars and trains","Ships and aircraft","Motorcycles and tractors"],
+a:0,
+e:"The pilots involve hydrogen-powered buses and trucks."
+},
+
+{
+q:"Which fuel was used in India's first hydrogen passenger train?",
+o:["Hydrogen","Methanol","LNG","CNG"],
+a:0,
+e:"The train uses hydrogen fuel-cell technology."
+},
+
+{
+q:"Which private space company launched Vikram-1?",
+o:["Skyroot Aerospace","Agnikul Cosmos","Pixxel","Dhruva Space"],
+a:0,
+e:"Skyroot Aerospace developed and launched Vikram-1."
+},
+
+{
+q:"Which July 2026 development was India's first privately developed orbital-class rocket achievement?",
+o:["Vikram-1 reaching orbit","A private lunar landing","Private Mars mission","Private space station docking"],
+a:0,
+e:"Vikram-1 became the first privately developed Indian orbital rocket to reach orbit."
+},
+
+{
+q:"Which institution is responsible for approving private-sector space activities in India?",
+o:["IN-SPACe","ISRO only","DRDO","AAI"],
+a:0,
+e:"IN-SPACe handles authorisation and facilitation for private space activities."
+},
+
+{
+q:"Which index is abbreviated as EPI?",
+o:["Environmental Performance Index","Economic Performance Indicator","Energy Productivity Index","Ecological Protection Indicator"],
+a:0,
+e:"EPI stands for Environmental Performance Index."
+},
+
+{
+q:"Which country topped EPI 2026 with a score of approximately 74.79?",
+o:["Estonia","Luxembourg","United Kingdom","Sweden"],
+a:0,
+e:"Estonia topped the index with a score of 74.79."
+},
+
+{
+q:"Which organisation published the Environmental Performance Index 2026?",
+o:["Yale and Columbia researchers","UNESCO","WHO","WTO"],
+a:0,
+e:"The EPI is associated with research from Yale and Columbia universities."
+},
+
+{
+q:"India's electronics production increased approximately how many times from 2014-15 to 2025-26?",
+o:["Three-fold","Five-fold","Seven-fold","Ten-fold"],
+a:2,
+e:"Electronics production grew roughly seven-fold."
+},
+
+{
+q:"India's electronics exports increased approximately how many times during the same period?",
+o:["Five-fold","Seven-fold","Nine-fold","Eleven-fold"],
+a:3,
+e:"Electronics exports grew approximately eleven-fold."
+},
+
+{
+q:"Which body notified the Coal Exchange Rules under the MMDR Act?",
+o:["Central Government","RBI","SEBI","NITI Aayog"],
+a:0,
+e:"The Central Government notified the Coal Exchange Rules."
+},
+
+{
+q:"The Coal Exchange Rules are intended to improve transparency in:",
+o:["Coal trading","Gold trading","Stock trading","Foreign exchange"],
+a:0,
+e:"They establish a regulated online platform for coal, lignite and processed coal trading."
+},
+
+{
+q:"Which city is associated with India's first Telecom Manufacturing Zone?",
+o:["Gwalior","Bhopal","Indore","Ujjain"],
+a:0,
+e:"Gwalior in Madhya Pradesh is the site of India's first Telecom Manufacturing Zone."
+},
+
+{
+q:"Which state government partnered with DoT for the Telecom Manufacturing Zone?",
+o:["Madhya Pradesh","Rajasthan","Gujarat","Uttar Pradesh"],
+a:0,
+e:"The Madhya Pradesh Government signed the MoU."
+},
+
+{
+q:"Which fund-of-funds is associated with India's electronics ecosystem?",
+o:["Electronics Development Fund","National Investment Fund","Technology Growth Fund","Digital India Fund"],
+a:0,
+e:"The Electronics Development Fund supports the electronics ecosystem through venture capital daughter funds."
+},
+
+{
+q:"EDF is a Fund of Funds under which ministry?",
+o:["MeitY","Finance Ministry","Commerce Ministry","MSME Ministry"],
+a:0,
+e:"EDF is a Fund of Funds under MeitY."
+},
+
+{
+q:"Which organisation operates the Employees' Provident Fund system?",
+o:["EPFO","ESIC","PFRDA","RBI"],
+a:0,
+e:"EPFO administers the Employees' Provident Fund system."
+},
+
+{
+q:"Which July 2026 programme involved re-employment opportunities for senior citizens?",
+o:["National Career Service Portal initiative","PM-KISAN","Khelo India","PMAY-G"],
+a:0,
+e:"The National Career Service Portal initiative promoted re-employment of senior citizens."
+},
+
+{
+q:"Which ministry is associated with the National Career Service?",
+o:["Ministry of Labour and Employment","Ministry of Education","Ministry of Social Justice","Ministry of Finance"],
+a:0,
+e:"NCS is associated with the Ministry of Labour and Employment."
+},
+
+{
+q:"Which programme supported approximately 4.32 lakh rural enterprises?",
+o:["Start-up Village Entrepreneurship Programme","PM SVANidhi","PM Vishwakarma","DAY-NRLM"],
+a:0,
+e:"SVEP supported about 4.32 lakh rural enterprises."
+},
+
+{
+q:"SVEP primarily promotes:",
+o:["Rural entrepreneurship","Urban housing","Space technology","Export finance"],
+a:0,
+e:"The Start-up Village Entrepreneurship Programme promotes rural enterprises."
+},
+
+{
+q:"Which campaign promotes rainwater harvesting and groundwater recharge?",
+o:["Catch the Rain","Jal Jeevan Mission","Namami Gange","Atal Bhujal Yojana"],
+a:0,
+e:"Catch the Rain promotes rainwater harvesting and groundwater recharge."
+},
+
+{
+q:"Which programme focuses on urban climate resilience and marked a decade of work?",
+o:["CapaCITIES","Smart Cities Mission","AMRUT","PMAY-Urban"],
+a:0,
+e:"CapaCITIES focuses on urban climate resilience."
+},
+
+{
+q:"India became a party to which WTO agreement in July 2026?",
+o:["Agreement on Fisheries Subsidies","TRIPS","Government Procurement Agreement","Agreement on Agriculture"],
+a:0,
+e:"India became a party to the WTO Agreement on Fisheries Subsidies."
+},
+
+{
+q:"Which organisation conducts India's Trade Policy Review?",
+o:["WTO","IMF","World Bank","UNCTAD"],
+a:0,
+e:"The WTO conducts Trade Policy Reviews."
+},
+
+{
+q:"India's eighth Trade Policy Review was scheduled for:",
+o:["7 and 8 July","14 and 15 July","21 and 23 July","29 and 30 July"],
+a:2,
+e:"The WTO scheduled the review for 21 and 23 July."
+},
+
+{
+q:"Which Rajasthan platform recorded over ₹1.03 lakh crore investment intent?",
+o:["RajNivesh","Invest Rajasthan","Rajasthan Growth Portal","RajUdyog"],
+a:0,
+e:"RajNivesh recorded the investment intent."
+},
+
+{
+q:"RajNivesh is associated with:",
+o:["Investment facilitation","Agricultural insurance","Tourism ticketing","Railway recruitment"],
+a:0,
+e:"RajNivesh is Rajasthan's investment facilitation platform."
+},
+
+{
+q:"Which traditional footwear received a GI tag in Rajasthan?",
+o:["Jodhpuri Mojari","Jaipuri Jutti","Kota Doria","Thewa"],
+a:0,
+e:"Jodhpuri Mojari received the GI tag."
+},
+
+{
+q:"Jodhpuri Mojari is a:",
+o:["Traditional footwear","Textile","Metal craft","Pottery"],
+a:0,
+e:"Jodhpuri Mojari is traditional footwear."
+},
+
+{
+q:"Which state is associated with the Pachpadra refinery?",
+o:["Rajasthan","Gujarat","Maharashtra","Punjab"],
+a:0,
+e:"The Pachpadra refinery is located in Rajasthan."
+},
+
+{
+q:"The Pachpadra project belongs primarily to which sector?",
+o:["Petroleum and petrochemicals","Telecommunications","Textiles","Defence"],
+a:0,
+e:"It is a petroleum and petrochemicals project."
+},
+
+{
+q:"Which campaign is associated with prevention of drug abuse?",
+o:["Nasha Mukt Bharat Abhiyan","Catch the Rain","Khelo India","PM SVANidhi"],
+a:0,
+e:"Nasha Mukt Bharat Abhiyan focuses on drug abuse prevention."
+},
+
+{
+q:"Nasha Mukt Bharat Abhiyan is associated with which ministry?",
+o:["Ministry of Social Justice and Empowerment","Ministry of Health","Ministry of Home Affairs","Ministry of Education"],
+a:0,
+e:"The campaign is associated with the Ministry of Social Justice and Empowerment."
+}
+
+];
+
+
+/* Use exactly the first 100 questions for Test 2 */
+const testQuestions = questions.slice(0,100);
+
+let submitted=false;
+let timeLeft=60*60;
+let timerInterval;
+
+function loadQuiz(){
+
+    const quiz=document.getElementById("quiz");
+    const grid=document.getElementById("questionGrid");
+
+    quiz.innerHTML="";
+    grid.innerHTML="";
+
+    testQuestions.forEach((item,index)=>{
+
+        const card=document.createElement("div");
+
+        card.className="question-card";
+        card.id="question-"+index;
+
+        let html=`
+        <div class="qno">Question ${index+1}</div>
+        <div class="question">${item.q}</div>
+        `;
+
+        item.o.forEach((option,optIndex)=>{
+
+            html+=`
+            <label class="option" id="option-${index}-${optIndex}">
+            <input type="radio"
+            name="q${index}"
+            value="${optIndex}"
+            onchange="markAttempted(${index})">
+            ${String.fromCharCode(65+optIndex)}. ${option}
+            </label>
+            `;
+
+        });
+
+        html+=`
+        <div class="solution" id="solution-${index}">
+        <b>Correct Answer:</b>
+        ${String.fromCharCode(65+item.a)}. ${item.o[item.a]}
+        <div class="explanation">
+        <b>Explanation:</b> ${item.e}
+        </div>
+        </div>
+        `;
+
+        card.innerHTML=html;
+
+        quiz.appendChild(card);
+
+        const btn=document.createElement("button");
+
+        btn.className="qbtn";
+        btn.id="qbtn-"+index;
+        btn.innerText=index+1;
+
+        btn.onclick=()=>{
+            document.getElementById("question-"+index)
+            .scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+        };
+
+        grid.appendChild(btn);
+
+    });
+}
+
+function markAttempted(index){
+
+    document
+    .getElementById("qbtn-"+index)
+    .classList.add("attempted");
+
+}
+
+function startTimer(){
+
+    timerInterval=setInterval(()=>{
+
+        if(timeLeft<=0){
+
+            clearInterval(timerInterval);
+
+            submitTest(true);
+
+            return;
+
+        }
+
+        timeLeft--;
+
+        const min=Math.floor(timeLeft/60);
+        const sec=timeLeft%60;
+
+        document.getElementById("timer").innerText=
+        String(min).padStart(2,"0")+":"+
+        String(sec).padStart(2,"0");
+
+    },1000);
+
+}
+
+function submitTest(auto=false){
+
+    if(submitted) return;
+
+    if(!auto){
+
+        if(!confirm(
+        "Are you sure you want to submit the test?"
+        )){
+            return;
+        }
+
+    }
+
+    submitted=true;
+
+    clearInterval(timerInterval);
+
+    let correct=0;
+    let wrong=0;
+    let attempted=0;
+
+    testQuestions.forEach((item,index)=>{
+
+        const selected=document.querySelector(
+        `input[name="q${index}"]:checked`
+        );
+
+        if(selected){
+
+            attempted++;
+
+            const value=parseInt(selected.value);
+
+            if(value===item.a){
+
+                correct++;
+
+            }else{
+
+                wrong++;
+
+            }
+
+        }
+
+    });
+
+    const unattempted=
+    testQuestions.length-attempted;
+
+    const score=
+    correct-(wrong*0.33);
+
+    document.getElementById("result")
+    .style.display="block";
+
+    document.getElementById("score")
+    .innerText=
+    "Score: "+score.toFixed(2)+" / 100";
+
+    document.getElementById("details")
+    .innerHTML=
+    "<b>Correct:</b> "+correct+
+    " &nbsp; | &nbsp; "+
+    "<b>Wrong:</b> "+wrong+
+    " &nbsp; | &nbsp; "+
+    "<b>Unattempted:</b> "+unattempted+
+    "<br><br>"+
+    "<b>Marking:</b> +1 correct, −0.33 wrong";
+
+    testQuestions.forEach((item,index)=>{
+
+        const selected=document.querySelector(
+        `input[name="q${index}"]:checked`
+        );
+
+        document
+        .querySelectorAll(
+        `#question-${index} .option`
+        )
+        .forEach((label,optIndex)=>{
+
+            if(optIndex===item.a){
+
+                label.classList.add("correct");
+
+            }
+
+            if(
+            selected &&
+            parseInt(selected.value)===optIndex &&
+            optIndex!==item.a
+            ){
+
+                label.classList.add("wrong");
+
+            }
+
+        });
+
+    });
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+function showSolutions(){
+
+    testQuestions.forEach((item,index)=>{
+
+        document
+        .getElementById("solution-"+index)
+        .style.display="block";
+
+    });
+
+}
+
+loadQuiz();
+startTimer();
+
+</script>
+
+</body>
+</html>
