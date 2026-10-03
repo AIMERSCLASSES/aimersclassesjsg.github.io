@@ -40,6 +40,7 @@ a{
   margin:auto;
 }
 
+
 /* ================= HEADER ================= */
 
 header{
@@ -102,6 +103,7 @@ nav a:hover{
   color:#ffd43b;
 }
 
+
 /* ================= IMAGE SLIDER ================= */
 
 .hero-slider{
@@ -139,6 +141,7 @@ nav a:hover{
   display:block;
 }
 
+
 /* ARROWS */
 
 .slider-arrow{
@@ -173,6 +176,7 @@ nav a:hover{
   right:20px;
 }
 
+
 /* DOTS */
 
 .slider-dots{
@@ -198,6 +202,7 @@ nav a:hover{
   background:#ffd43b;
   transform:scale(1.2);
 }
+
 
 /* ================= HERO ================= */
 
@@ -284,6 +289,7 @@ nav a:hover{
   font-weight:700;
 }
 
+
 /* ================= GENERAL ================= */
 
 section{
@@ -306,39 +312,181 @@ section{
   color:#6b7280;
 }
 
-/* ================= COURSES ================= */
+
+/* =====================================================
+   OUR COURSES
+===================================================== */
 
 .course-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
 }
 
 .course-card{
   background:white;
-  padding:28px 24px;
-  border-radius:16px;
-  box-shadow:0 7px 25px rgba(0,0,0,.08);
-  border-top:5px solid #1d4ed8;
+  padding:35px 32px;
+  border-radius:20px;
+  box-shadow:0 8px 28px rgba(0,0,0,.09);
+  border-top:7px solid #1d4ed8;
   transition:.3s;
+  min-height:260px;
+  position:relative;
+  overflow:hidden;
+}
+
+.course-card::before{
+  content:"";
+  position:absolute;
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background:rgba(29,78,216,.04);
+  right:-40px;
+  top:-40px;
 }
 
 .course-card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 15px 35px rgba(0,0,0,.13);
+  transform:translateY(-8px);
+  box-shadow:0 16px 38px rgba(0,0,0,.14);
 }
 
 .course-card h3{
   color:#1d4ed8;
-  margin-bottom:12px;
-  font-size:21px;
+  margin-bottom:20px;
+  font-size:26px;
+  font-weight:900;
+  line-height:1.3;
 }
 
 .course-card p{
   color:#4b5563;
-  font-size:14px;
+  font-size:16px;
   font-weight:600;
+  line-height:1.7;
 }
+
+.course-icon{
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.course-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.course-tag{
+  display:inline-block;
+  padding:12px 20px;
+  border-radius:10px;
+  background:#eef4ff;
+  color:#1d4ed8;
+  border:1px solid #dbe7ff;
+  font-size:17px;
+  font-weight:900;
+}
+
+
+/* ODISHA */
+
+.course-card.odisha{
+  border-top-color:#16a34a;
+}
+
+.course-card.odisha h3{
+  color:#15803d;
+}
+
+.course-card.odisha .course-tag{
+  background:#ecfdf3;
+  color:#15803d;
+  border-color:#bbf7d0;
+}
+
+
+/* ACADEMIC */
+
+.course-card.academic{
+  border-top-color:#9333ea;
+}
+
+.course-card.academic h3{
+  color:#7e22ce;
+}
+
+.course-card.academic .course-tag{
+  background:#faf5ff;
+  color:#7e22ce;
+  border-color:#e9d5ff;
+}
+
+
+/* ENTRANCE */
+
+.course-card.entrance{
+  border-top-color:#ea580c;
+}
+
+.course-card.entrance h3{
+  color:#c2410c;
+}
+
+.course-card.entrance .course-tag{
+  background:#fff7ed;
+  color:#c2410c;
+  border-color:#fed7aa;
+}
+
+
+/* SPOKEN ENGLISH */
+
+.course-card.english{
+  border-top-color:#0891b2;
+  grid-column:1 / -1;
+}
+
+.course-card.english h3{
+  color:#0e7490;
+}
+
+.course-card.english .course-tag{
+  background:#ecfeff;
+  color:#0e7490;
+  border-color:#a5f3fc;
+}
+
+.course-main-title{
+  font-size:30px;
+  font-weight:900;
+  color:#172033;
+  margin-bottom:8px;
+}
+
+.course-subtitle{
+  color:#64748b;
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.course-entrance-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.course-entrance-item{
+  padding:13px 15px;
+  border-radius:10px;
+  background:#fff7ed;
+  color:#c2410c;
+  border:1px solid #fed7aa;
+  font-size:16px;
+  font-weight:800;
+}
+
 
 /* ================= STUDY MATERIAL ================= */
 
@@ -380,6 +528,7 @@ section{
   font-style:normal;
   font-weight:800;
 }
+
 
 /* ================= PDF ================= */
 
@@ -449,6 +598,7 @@ section{
   color:white;
 }
 
+
 /* ================= CURRENT AFFAIRS ================= */
 
 .current-grid{
@@ -470,6 +620,7 @@ section{
   margin-bottom:8px;
 }
 
+
 /* ================= MOCK ================= */
 
 .mock-box{
@@ -484,6 +635,7 @@ section{
   font-size:32px;
   margin-bottom:12px;
 }
+
 
 /* ================= CONTACT ================= */
 
@@ -512,6 +664,7 @@ section{
   margin-bottom:10px;
 }
 
+
 /* ================= FOOTER ================= */
 
 footer{
@@ -530,6 +683,7 @@ footer p{
   color:#cbd5e1;
   font-size:14px;
 }
+
 
 /* ================= MOBILE ================= */
 
@@ -551,6 +705,7 @@ footer p{
   }
 
 }
+
 
 @media(max-width:600px){
 
@@ -607,6 +762,43 @@ footer p{
     padding:30px 20px;
   }
 
+  .course-card{
+    padding:28px 23px;
+    min-height:auto;
+  }
+
+  .course-card h3{
+    font-size:21px;
+  }
+
+  .course-card.english{
+    grid-column:auto;
+  }
+
+  .course-entrance-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+/* ================= COURSE ICON/TAGS MOBILE ================= */
+
+@media(max-width:500px){
+
+  .course-icon{
+    font-size:36px;
+  }
+
+  .course-tag{
+    font-size:15px;
+    padding:10px 15px;
+  }
+
+  .course-main-title{
+    font-size:25px;
+  }
+
 }
 
 </style>
@@ -614,6 +806,7 @@ footer p{
 </head>
 
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
@@ -806,7 +999,9 @@ Contact Us
 </section>
 
 
-<!-- ================= COURSES ================= -->
+<!-- =====================================================
+     OUR COURSES
+===================================================== -->
 
 <section id="courses">
 
@@ -814,7 +1009,9 @@ Contact Us
 
 <div class="section-title">
 
-<h2>Our Courses</h2>
+<h2>
+Our Courses
+</h2>
 
 <p>
 Complete academic and competitive exam preparation
@@ -826,72 +1023,203 @@ Complete academic and competitive exam preparation
 <div class="course-grid">
 
 
+<!-- ================= ALL COMPETITIVE EXAMS ================= -->
+
 <div class="course-card">
 
-<h3>📘 Classes 3–5</h3>
+<div class="course-icon">
+🎯
+</div>
 
-<p>
-Foundation learning with strong concepts, regular practice
-and school examination support.
-</p>
+<h3>
+ALL COMPETITIVE EXAMS
+</h3>
+
+<div class="course-tags">
+
+<span class="course-tag">
+SSC
+</span>
+
+<span class="course-tag">
+RAILWAY
+</span>
+
+<span class="course-tag">
+BANKING
+</span>
+
+</div>
 
 </div>
 
 
-<div class="course-card">
+<!-- ================= ODISHA GOVERNMENT EXAMS ================= -->
 
-<h3>📗 Classes 6–10</h3>
+<div class="course-card odisha">
 
-<p>
-School syllabus, concept building, tests and examination preparation.
-</p>
+<div class="course-icon">
+🏛️
+</div>
+
+<h3>
+ODISHA GOVERNMENT EXAMS
+</h3>
+
+<div class="course-tags">
+
+<span class="course-tag">
+ASO
+</span>
+
+<span class="course-tag">
+OSSC
+</span>
+
+<span class="course-tag">
+OSSSC
+</span>
+
+<span class="course-tag">
+RI
+</span>
+
+<span class="course-tag">
+AMIN
+</span>
+
+</div>
 
 </div>
 
 
-<div class="course-card">
+<!-- ================= SCHOOL ACADEMIC COURSES ================= -->
 
-<h3>📕 Classes 11–12</h3>
+<div class="course-card academic">
 
-<p>
-Science, Commerce and Arts academic preparation with specimen
-papers and regular tests.
-</p>
+<div class="course-icon">
+📚
+</div>
+
+<h3>
+SCHOOL ACADEMIC COURSES
+</h3>
+
+<div class="course-main-title">
+CLASS 1 TO 12
+</div>
+
+<div class="course-subtitle">
+ICSE • CBSE • CHSE • BSE BOARDS
+</div>
+
+<div class="course-tags">
+
+<span class="course-tag">
+SCIENCE
+</span>
+
+<span class="course-tag">
+COMMERCE
+</span>
+
+<span class="course-tag">
+ARTS
+</span>
+
+</div>
 
 </div>
 
 
-<div class="course-card">
+<!-- ================= SCHOOL ENTRANCE EXAMINATION ================= -->
 
-<h3>🎯 Competitive Exams</h3>
+<div class="course-card entrance">
 
-<p>
-SSC, Railway, Banking, ASO, OSSC, OSSSC and other competitive exams.
-</p>
+<div class="course-icon">
+🏫
+</div>
+
+<h3>
+SCHOOL ENTRANCE EXAMINATION
+</h3>
+
+<div class="course-entrance-grid">
+
+<div class="course-entrance-item">
+🎓 Sainik School
+</div>
+
+<div class="course-entrance-item">
+📖 Jawahar Navodaya
+</div>
+
+<div class="course-entrance-item">
+🏫 Odisha Adarsha
+</div>
+
+<div class="course-entrance-item">
+🌟 Eklavya
+</div>
+
+</div>
 
 </div>
 
 
-<div class="course-card">
+<!-- ================= SPOKEN ENGLISH COURSE ================= -->
 
-<h3>🗣️ Spoken English</h3>
+<div class="course-card english">
 
-<p>
-Speaking, Listening, Reading, Writing, Vocabulary,
-Pronunciation, Interview Preparation and Personality Development.
-</p>
-
+<div class="course-icon">
+🗣️
 </div>
 
-
-<div class="course-card">
-
-<h3>🏫 School Entrance</h3>
+<h3>
+SPOKEN ENGLISH COURSE
+</h3>
 
 <p>
-Preparation for Jawahar Navodaya, Sainik, Adarsha
-and Eklavya school entrance examinations.
+
+Develop confidence in English communication with focused training
+in Speaking, Listening, Reading, Writing, Grammar, Vocabulary,
+Pronunciation and Communication Skills.
+
 </p>
+
+<br>
+
+<div class="course-tags">
+
+<span class="course-tag">
+SPEAKING
+</span>
+
+<span class="course-tag">
+LISTENING
+</span>
+
+<span class="course-tag">
+READING
+</span>
+
+<span class="course-tag">
+WRITING
+</span>
+
+<span class="course-tag">
+GRAMMAR
+</span>
+
+<span class="course-tag">
+VOCABULARY
+</span>
+
+<span class="course-tag">
+COMMUNICATION
+</span>
+
+</div>
 
 </div>
 
@@ -2034,7 +2362,6 @@ class="pdf-btn download-btn">
 Practice questions, improve your speed and prepare for examinations.
 </p>
 
-<!-- IMPORTANT: THIS GOES TO TESTS MAIN PAGE -->
 
 <a
 href="./tests/index.html"
@@ -2417,1340 +2744,6 @@ startAutoSlide();
 })();
 
 </script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AIMERS CLASSES | Our Courses</title>
-
-<meta name="description"
-content="AIMERS CLASSES - Competitive Exams, Odisha Government Exams, School Academic Courses, School Entrance Examination and Spoken English Course.">
-
-<style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-
-    font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-    background:#f4f7fb;
-
-    color:#172033;
-
-    line-height:1.6;
-
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-header{
-
-    background:
-    linear-gradient(
-        135deg,
-        #102a43,
-        #1d4ed8
-    );
-
-    color:white;
-
-    box-shadow:
-    0 4px 18px rgba(0,0,0,.15);
-
-}
-
-
-.header-container{
-
-    width:92%;
-
-    max-width:1250px;
-
-    margin:auto;
-
-    min-height:82px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-}
-
-
-.brand{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-}
-
-
-.logo-img{
-
-    width:58px;
-
-    height:58px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    background:white;
-
-    border:3px solid #ffd43b;
-
-}
-
-
-.logo{
-
-    font-size:27px;
-
-    font-weight:900;
-
-    letter-spacing:1px;
-
-}
-
-
-.logo span{
-
-    color:#ffd43b;
-
-}
-
-
-.header-tagline{
-
-    font-size:14px;
-
-    color:#dbeafe;
-
-    margin-top:2px;
-
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #eaf2ff,
-        #ffffff
-    );
-
-    padding:65px 20px 55px;
-
-    text-align:center;
-
-}
-
-
-.hero h1{
-
-    font-size:44px;
-
-    font-weight:900;
-
-    color:#102a43;
-
-    margin-bottom:12px;
-
-}
-
-
-.hero h1 span{
-
-    color:#1d4ed8;
-
-}
-
-
-.hero p{
-
-    font-size:18px;
-
-    color:#64748b;
-
-    max-width:750px;
-
-    margin:auto;
-
-}
-
-
-/* =====================================================
-   COURSES SECTION
-===================================================== */
-
-.courses-section{
-
-    padding:65px 20px 90px;
-
-    background:#f4f7fb;
-
-}
-
-
-.courses-container{
-
-    width:92%;
-
-    max-width:1250px;
-
-    margin:auto;
-
-}
-
-
-/* =====================================================
-   SECTION HEADING
-===================================================== */
-
-.section-heading{
-
-    text-align:center;
-
-    margin-bottom:50px;
-
-}
-
-
-.section-heading h2{
-
-    font-size:40px;
-
-    font-weight:900;
-
-    color:#102a43;
-
-    margin-bottom:10px;
-
-    letter-spacing:.3px;
-
-}
-
-
-.section-heading h2::after{
-
-    content:"";
-
-    display:block;
-
-    width:75px;
-
-    height:5px;
-
-    background:#1d4ed8;
-
-    border-radius:10px;
-
-    margin:14px auto 0;
-
-}
-
-
-.section-heading p{
-
-    margin-top:18px;
-
-    font-size:17px;
-
-    color:#64748b;
-
-}
-
-
-/* =====================================================
-   COURSE GRID
-===================================================== */
-
-.courses-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2, 1fr);
-
-    gap:28px;
-
-}
-
-
-/* =====================================================
-   COURSE CARD
-===================================================== */
-
-.course-card{
-
-    background:white;
-
-    border-radius:22px;
-
-    padding:38px 36px;
-
-    min-height:285px;
-
-    box-shadow:
-
-    0 8px 25px
-    rgba(15,23,42,.08);
-
-    border-top:7px solid #1d4ed8;
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:
-    transform .3s ease,
-    box-shadow .3s ease;
-
-}
-
-
-/* Decorative circle */
-
-.course-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:150px;
-
-    height:150px;
-
-    border-radius:50%;
-
-    background:rgba(29,78,216,.04);
-
-    right:-50px;
-
-    top:-50px;
-
-}
-
-
-.course-card:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:
-
-    0 18px 40px
-    rgba(15,23,42,.14);
-
-}
-
-
-/* =====================================================
-   CARD ICON
-===================================================== */
-
-.course-icon{
-
-    width:68px;
-
-    height:68px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:16px;
-
-    font-size:35px;
-
-    background:#eef4ff;
-
-    margin-bottom:20px;
-
-}
-
-
-/* =====================================================
-   CARD HEADING
-===================================================== */
-
-.course-card h3{
-
-    font-size:25px;
-
-    font-weight:900;
-
-    color:#102a43;
-
-    margin-bottom:18px;
-
-    line-height:1.25;
-
-}
-
-
-/* =====================================================
-   ALL COMPETITIVE EXAMS
-===================================================== */
-
-.competitive-card{
-
-    border-top-color:#1d4ed8;
-
-}
-
-
-.competitive-card .course-icon{
-
-    background:#eaf2ff;
-
-}
-
-
-.competitive-card h3{
-
-    color:#1d4ed8;
-
-}
-
-
-/* =====================================================
-   ODISHA GOVERNMENT EXAMS
-===================================================== */
-
-.odisha-card{
-
-    border-top-color:#16a34a;
-
-}
-
-
-.odisha-card .course-icon{
-
-    background:#ecfdf3;
-
-}
-
-
-.odisha-card h3{
-
-    color:#15803d;
-
-}
-
-
-/* =====================================================
-   SCHOOL ACADEMIC
-===================================================== */
-
-.academic-card{
-
-    border-top-color:#9333ea;
-
-}
-
-
-.academic-card .course-icon{
-
-    background:#faf5ff;
-
-}
-
-
-.academic-card h3{
-
-    color:#7e22ce;
-
-}
-
-
-/* =====================================================
-   SCHOOL ENTRANCE
-===================================================== */
-
-.entrance-card{
-
-    border-top-color:#ea580c;
-
-}
-
-
-.entrance-card .course-icon{
-
-    background:#fff7ed;
-
-}
-
-
-.entrance-card h3{
-
-    color:#c2410c;
-
-}
-
-
-/* =====================================================
-   SPOKEN ENGLISH
-===================================================== */
-
-.english-card{
-
-    border-top-color:#0891b2;
-
-}
-
-
-.english-card .course-icon{
-
-    background:#ecfeff;
-
-}
-
-
-.english-card h3{
-
-    color:#0e7490;
-
-}
-
-
-/* =====================================================
-   EXAM TAGS
-===================================================== */
-
-.exam-tags{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-}
-
-
-.exam-tag{
-
-    padding:11px 20px;
-
-    border-radius:10px;
-
-    background:#eef4ff;
-
-    color:#1d4ed8;
-
-    border:1px solid #dbe7ff;
-
-    font-size:17px;
-
-    font-weight:900;
-
-}
-
-
-/* Odisha tags */
-
-.odisha-card .exam-tag{
-
-    background:#ecfdf3;
-
-    color:#15803d;
-
-    border-color:#bbf7d0;
-
-}
-
-
-/* =====================================================
-   ACADEMIC CARD
-===================================================== */
-
-.class-number{
-
-    font-size:29px;
-
-    font-weight:900;
-
-    color:#172033;
-
-    margin-bottom:5px;
-
-}
-
-
-.board-text{
-
-    color:#64748b;
-
-    font-size:16px;
-
-    font-weight:700;
-
-    margin-bottom:20px;
-
-}
-
-
-.subject-tags{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-}
-
-
-.subject-tag{
-
-    padding:11px 18px;
-
-    border-radius:10px;
-
-    background:#faf5ff;
-
-    color:#7e22ce;
-
-    border:1px solid #e9d5ff;
-
-    font-size:16px;
-
-    font-weight:900;
-
-}
-
-
-/* =====================================================
-   ENTRANCE EXAM LIST
-===================================================== */
-
-.entrance-list{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:13px;
-
-}
-
-
-.entrance-item{
-
-    padding:13px 15px;
-
-    border-radius:11px;
-
-    background:#fff7ed;
-
-    color:#c2410c;
-
-    border:1px solid #fed7aa;
-
-    font-size:16px;
-
-    font-weight:800;
-
-}
-
-
-/* =====================================================
-   SPOKEN ENGLISH
-===================================================== */
-
-.english-description{
-
-    color:#475569;
-
-    font-size:16px;
-
-    line-height:1.7;
-
-    margin-bottom:20px;
-
-}
-
-
-.english-tags{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-}
-
-
-.english-tag{
-
-    padding:9px 15px;
-
-    border-radius:9px;
-
-    background:#ecfeff;
-
-    color:#0e7490;
-
-    border:1px solid #a5f3fc;
-
-    font-size:14px;
-
-    font-weight:900;
-
-}
-
-
-/* =====================================================
-   FULL WIDTH SPOKEN ENGLISH
-===================================================== */
-
-.english-card{
-
-    grid-column:1 / -1;
-
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-
-    background:#0f172a;
-
-    color:white;
-
-    padding:40px 20px;
-
-    text-align:center;
-
-}
-
-
-.footer-container{
-
-    width:92%;
-
-    max-width:1100px;
-
-    margin:auto;
-
-}
-
-
-footer h3{
-
-    font-size:24px;
-
-    color:#ffd43b;
-
-    margin-bottom:8px;
-
-}
-
-
-footer p{
-
-    color:#cbd5e1;
-
-    font-size:14px;
-
-    margin-top:4px;
-
-}
-
-
-/* =====================================================
-   TABLET
-===================================================== */
-
-@media(max-width:900px){
-
-    .courses-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .english-card{
-
-        grid-column:auto;
-
-    }
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:600px){
-
-    .header-container{
-
-        min-height:auto;
-
-        padding:15px 0;
-
-    }
-
-
-    .logo-img{
-
-        width:48px;
-
-        height:48px;
-
-    }
-
-
-    .logo{
-
-        font-size:21px;
-
-    }
-
-
-    .header-tagline{
-
-        font-size:11px;
-
-    }
-
-
-    .hero{
-
-        padding:45px 18px;
-
-    }
-
-
-    .hero h1{
-
-        font-size:32px;
-
-    }
-
-
-    .hero p{
-
-        font-size:15px;
-
-    }
-
-
-    .courses-section{
-
-        padding:50px 15px 65px;
-
-    }
-
-
-    .courses-container{
-
-        width:100%;
-
-    }
-
-
-    .section-heading{
-
-        margin-bottom:35px;
-
-    }
-
-
-    .section-heading h2{
-
-        font-size:32px;
-
-    }
-
-
-    .section-heading p{
-
-        font-size:15px;
-
-    }
-
-
-    .course-card{
-
-        padding:28px 23px;
-
-        min-height:auto;
-
-    }
-
-
-    .course-card h3{
-
-        font-size:21px;
-
-    }
-
-
-    .course-icon{
-
-        width:60px;
-
-        height:60px;
-
-        font-size:30px;
-
-    }
-
-
-    .exam-tag{
-
-        font-size:15px;
-
-        padding:10px 15px;
-
-    }
-
-
-    .entrance-list{
-
-        grid-template-columns:1fr;
-
-    }
-
-
-    .class-number{
-
-        font-size:25px;
-
-    }
-
-}
-
-
-/* =====================================================
-   VERY SMALL MOBILE
-===================================================== */
-
-@media(max-width:380px){
-
-    .logo{
-
-        font-size:18px;
-
-    }
-
-
-    .section-heading h2{
-
-        font-size:28px;
-
-    }
-
-
-    .course-card h3{
-
-        font-size:19px;
-
-    }
-
-}
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header>
-
-    <div class="header-container">
-
-        <div class="brand">
-
-            <!--
-            If your logo.jpg is in the same folder,
-            change this to:
-            src="logo.jpg"
-            -->
-
-            <img
-                src="logo.jpg"
-                alt="AIMERS CLASSES Logo"
-                class="logo-img"
-            >
-
-            <div>
-
-                <div class="logo">
-                    AIMERS <span>CLASSES</span>
-                </div>
-
-                <div class="header-tagline">
-                    Learn • Prepare • Achieve
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero">
-
-    <h1>
-        Welcome to
-        <span>AIMERS CLASSES</span>
-    </h1>
-
-    <p>
-        Complete academic and competitive examination
-        preparation under one platform.
-    </p>
-
-</section>
-
-
-
-<!-- =====================================================
-     OUR COURSES
-===================================================== -->
-
-<section class="courses-section">
-
-    <div class="courses-container">
-
-
-        <!-- SECTION HEADING -->
-
-        <div class="section-heading">
-
-            <h2>
-                Our Courses
-            </h2>
-
-            <p>
-                Complete academic and competitive exam preparation
-            </p>
-
-        </div>
-
-
-
-        <!-- COURSE GRID -->
-
-        <div class="courses-grid">
-
-
-
-            <!-- =================================================
-                 1. ALL COMPETITIVE EXAMS
-            ================================================== -->
-
-            <div class="course-card competitive-card">
-
-                <div class="course-icon">
-                    🎯
-                </div>
-
-                <h3>
-                    ALL COMPETITIVE EXAMS
-                </h3>
-
-                <div class="exam-tags">
-
-                    <div class="exam-tag">
-                        SSC
-                    </div>
-
-                    <div class="exam-tag">
-                        RAILWAY
-                    </div>
-
-                    <div class="exam-tag">
-                        BANKING
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 2. ODISHA GOVERNMENT EXAMS
-            ================================================== -->
-
-            <div class="course-card odisha-card">
-
-                <div class="course-icon">
-                    🏛️
-                </div>
-
-                <h3>
-                    ODISHA GOVERNMENT EXAMS
-                </h3>
-
-                <div class="exam-tags">
-
-                    <div class="exam-tag">
-                        ASO
-                    </div>
-
-                    <div class="exam-tag">
-                        OSSC
-                    </div>
-
-                    <div class="exam-tag">
-                        OSSSC
-                    </div>
-
-                    <div class="exam-tag">
-                        RI
-                    </div>
-
-                    <div class="exam-tag">
-                        AMIN
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 3. SCHOOL ACADEMIC COURSES
-            ================================================== -->
-
-            <div class="course-card academic-card">
-
-                <div class="course-icon">
-                    📚
-                </div>
-
-                <h3>
-                    SCHOOL ACADEMIC COURSES
-                </h3>
-
-                <div class="class-number">
-                    CLASS 1 TO 12
-                </div>
-
-                <div class="board-text">
-                    ICSE • CBSE • CHSE • BSE BOARDS
-                </div>
-
-                <div class="subject-tags">
-
-                    <div class="subject-tag">
-                        SCIENCE
-                    </div>
-
-                    <div class="subject-tag">
-                        COMMERCE
-                    </div>
-
-                    <div class="subject-tag">
-                        ARTS
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 4. SCHOOL ENTRANCE EXAMINATION
-            ================================================== -->
-
-            <div class="course-card entrance-card">
-
-                <div class="course-icon">
-                    🏫
-                </div>
-
-                <h3>
-                    SCHOOL ENTRANCE EXAMINATION
-                </h3>
-
-                <div class="entrance-list">
-
-                    <div class="entrance-item">
-                        🎓 Sainik School
-                    </div>
-
-                    <div class="entrance-item">
-                        📖 Jawahar Navodaya
-                    </div>
-
-                    <div class="entrance-item">
-                        🏫 Odisha Adarsha
-                    </div>
-
-                    <div class="entrance-item">
-                        🌟 Eklavya
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 5. SPOKEN ENGLISH COURSE
-            ================================================== -->
-
-            <div class="course-card english-card">
-
-                <div class="course-icon">
-                    🗣️
-                </div>
-
-                <h3>
-                    SPOKEN ENGLISH COURSE
-                </h3>
-
-                <p class="english-description">
-
-                    Develop confidence in English communication
-                    with focused training in Speaking, Listening,
-                    Reading, Writing, Grammar, Vocabulary,
-                    Pronunciation and Communication Skills.
-
-                </p>
-
-
-                <div class="english-tags">
-
-                    <div class="english-tag">
-                        SPEAKING
-                    </div>
-
-                    <div class="english-tag">
-                        LISTENING
-                    </div>
-
-                    <div class="english-tag">
-                        READING
-                    </div>
-
-                    <div class="english-tag">
-                        WRITING
-                    </div>
-
-                    <div class="english-tag">
-                        GRAMMAR
-                    </div>
-
-                    <div class="english-tag">
-                        VOCABULARY
-                    </div>
-
-                    <div class="english-tag">
-                        COMMUNICATION
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <div class="footer-container">
-
-        <h3>
-            AIMERS CLASSES
-        </h3>
-
-        <p>
-            Learn • Prepare • Achieve
-        </p>
-
-        <p>
-            Academic & Competitive Examination Preparation
-        </p>
-
-        <p style="margin-top:15px;">
-            © 2026 AIMERS CLASSES. All Rights Reserved.
-        </p>
-
-    </div>
-
-</footer>
 
 
 </body>
