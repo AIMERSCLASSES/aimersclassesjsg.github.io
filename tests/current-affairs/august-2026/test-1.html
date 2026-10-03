@@ -1,1 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES | August Current Affairs Test 1</title>
 
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fa;
+    color:#172033;
+}
+
+.header{
+    background:linear-gradient(135deg,#0b3d91,#1565c0);
+    color:white;
+    padding:18px 20px;
+    text-align:center;
+    box-shadow:0 3px 12px rgba(0,0,0,.2);
+}
+
+.header h1{
+    margin:0;
+    font-size:27px;
+    font-weight:800;
+}
+
+.header p{
+    margin:6px 0 0;
+    font-size:14px;
+}
+
+.exam-info{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.badge{
+    background:rgba(255,255,255,.15);
+    padding:7px 13px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.main{
+    max-width:1250px;
+    margin:18px auto;
+    padding:0 12px;
+    display:grid;
+    grid-template-columns:1fr 310px;
+    gap:18px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+    overflow:hidden;
+}
+
+.question-area{
+    padding:22px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    border-bottom:1px solid #e5e9ef;
+    padding-bottom:13px;
+    margin-bottom:20px;
+}
+
+.qno{
+    font-size:18px;
+    font-weight:bold;
+    color:#0b3d91;
+}
+
+.timer{
+    background:#fff0f0;
+    color:#d60000;
+    border:1px solid #ffcccc;
+    padding:8px 14px;
+    border-radius:8px;
+    font-weight:bold;
+    min-width:105px;
+    text-align:center;
+}
+
+.question{
+    font-size:19px;
+    line-height:1.55;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.option{
+    display:block;
+    margin:11px 0;
+    padding:13px 15px;
+    border:1px solid #dce2e8;
+    border-radius:9px;
+    cursor:pointer;
+    transition:.2s;
+    background:#fff;
+}
+
+.option:hover{
+    background:#f1f6ff;
+    border-color:#6d9fe5;
+}
+
+.option input{
+    margin-right:10px;
+    transform:scale(1.15);
+}
+
+.option.selected{
+    background:#eaf2ff;
+    border-color:#2772d6;
+}
+
+.nav-buttons{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+button{
+    border:0;
+    padding:11px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.prev{
+    background:#e9edf2;
+    color:#333;
+}
+
+.next{
+    background:#1565c0;
+    color:white;
+}
+
+.review{
+    background:#ff9800;
+    color:white;
+}
+
+.submit{
+    background:#198754;
+    color:white;
+    width:100%;
+    margin-top:15px;
+    padding:13px;
+}
+
+.palette{
+    padding:18px;
+}
+
+.palette h3{
+    margin-top:0;
+    color:#0b3d91;
+}
+
+.legend{
+    font-size:12px;
+    margin:12px 0;
+    line-height:1.8;
+}
+
+.legend span{
+    display:inline-block;
+    width:14px;
+    height:14px;
+    vertical-align:middle;
+    border-radius:3px;
+    margin-right:4px;
+}
+
+.answered-box{background:#28a745}
+.unanswered-box{background:#e9edf2}
+.review-box{background:#ff9800}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qbtn{
+    padding:8px 0;
+    background:#e9edf2;
+    color:#222;
+    border-radius:6px;
+    font-size:12px;
+}
+
+.qbtn.answered{
+    background:#28a745;
+    color:white;
+}
+
+.qbtn.reviewed{
+    background:#ff9800;
+    color:white;
+}
+
+.qbtn.current{
+    outline:3px solid #1565c0;
+}
+
+.result{
+    display:none;
+    max-width:1100px;
+    margin:25px auto;
+    padding:20px;
+}
+
+.result-card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 15px rgba(0,0,0,.1);
+}
+
+.score{
+    font-size:30px;
+    font-weight:bold;
+    color:#0b3d91;
+}
+
+.result-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+.result-table th,
+.result-table td{
+    border:1px solid #ddd;
+    padding:9px;
+    text-align:left;
+}
+
+.result-table th{
+    background:#edf3fb;
+}
+
+.solution{
+    margin-top:14px;
+    padding:13px;
+    background:#f6f8fb;
+    border-left:4px solid #1565c0;
+    border-radius:5px;
+}
+
+.correct{
+    color:#198754;
+    font-weight:bold;
+}
+
+.wrong{
+    color:#d60000;
+    font-weight:bold;
+}
+
+.unattempted{
+    color:#777;
+    font-weight:bold;
+}
+
+@media(max-width:850px){
+    .main{
+        grid-template-columns:1fr;
+    }
+    .palette{
+        order:2;
+    }
+    .question-area{
+        padding:16px;
+    }
+    .question{
+        font-size:17px;
+    }
+}
+
+@media(max-width:500px){
+    .header h1{
+        font-size:21px;
+    }
+
+    .grid{
+        grid-template-columns:repeat(8,1fr);
+    }
+
+    .nav-buttons{
+        flex-wrap:wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>AIMERS CLASSES</h1>
+    <p>August 2026 Current Affairs — Test 1</p>
+
+    <div class="exam-info">
+        <div class="badge">100 Questions</div>
+        <div class="badge">SSC CGL / SSC / Railway Level</div>
+        <div class="badge">Correct: +1</div>
+        <div class="badge">Wrong: −0.33</div>
+        <div class="badge">Unattempted: 0</div>
+    </div>
+</div>
+
+<div id="testArea" class="main">
+
+    <div class="card">
+        <div class="question-area">
+
+            <div class="topbar">
+                <div class="qno" id="qNumber">Question 1 of 100</div>
+                <div class="timer" id="timer">60:00</div>
+            </div>
+
+            <div id="questionBox"></div>
+
+            <div class="nav-buttons">
+                <button class="prev" onclick="previousQuestion()">← Previous</button>
+                <button class="review" onclick="toggleReview()">Mark Review</button>
+                <button class="next" onclick="nextQuestion()">Next →</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card palette">
+        <h3>Question Palette</h3>
+
+        <div class="legend">
+            <span class="answered-box"></span> Attempted
+            &nbsp;&nbsp;
+            <span class="unanswered-box"></span> Not Attempted
+            <br>
+            <span class="review-box"></span> Marked for Review
+        </div>
+
+        <div class="grid" id="palette"></div>
+
+        <button class="submit" onclick="submitTest()">SUBMIT TEST</button>
+    </div>
+
+</div>
+
+<div id="resultArea" class="result">
+    <div class="result-card">
+        <h2>AIMERS CLASSES — Test Result</h2>
+
+        <div class="score" id="finalScore"></div>
+
+        <p id="resultSummary"></p>
+
+        <table class="result-table">
+            <tr>
+                <th>Correct</th>
+                <th>Wrong</th>
+                <th>Unattempted</th>
+                <th>Score</th>
+            </tr>
+            <tr>
+                <td id="correctCount"></td>
+                <td id="wrongCount"></td>
+                <td id="unattemptedCount"></td>
+                <td id="scoreCell"></td>
+            </tr>
+        </table>
+
+        <h2>Answer & Solution</h2>
+        <div id="solutions"></div>
+    </div>
+</div>
+
+<script>
+
+const questions = [
+
+{
+q:"India's 16th Census began its digital self-enumeration phase in August 2026 in which state?",
+o:["West Bengal","Gujarat","Odisha","Bihar"],
+a:0,
+s:"West Bengal began the digital self-enumeration phase of India's 16th Census on 1 August 2026."
+},
+
+{
+q:"The 16th Indian Organ Donation Day was observed on which date in 2026?",
+o:["1 August","3 August","7 August","13 August"],
+a:1,
+s:"The 16th Indian Organ Donation Day was observed on 3 August 2026."
+},
+
+{
+q:"Which organisation launched the e-Pratyaropan platform?",
+o:["NITI Aayog","NOTTO","SEBI","UIDAI"],
+a:1,
+s:"NOTTO, the National Organ and Tissue Transplant Organization, launched the e-Pratyaropan platform."
+},
+
+{
+q:"In 2025, India recorded approximately how many organ transplants according to August 2026 current-affairs reports?",
+o:["10,138","15,138","20,138","25,138"],
+a:2,
+s:"India recorded 20,138 organ transplants in 2025."
+},
+
+{
+q:"National Handloom Day is observed annually on which date?",
+o:["5 August","7 August","9 August","10 August"],
+a:1,
+s:"National Handloom Day is observed on 7 August."
+},
+
+{
+q:"The 12th National Handloom Day in 2026 was held at which place?",
+o:["Bharat Mandapam","Rashtrapati Bhavan Cultural Centre","Vigyan Bhavan","Red Fort"],
+a:1,
+s:"The 12th National Handloom Day event was held at Rashtrapati Bhavan Cultural Centre, New Delhi."
+},
+
+{
+q:"Who was the chief guest for the 12th National Handloom Day event in 2026?",
+o:["Droupadi Murmu","Nirmala Sitharaman","Anupriya Patel","Smriti Irani"],
+a:0,
+s:"President Droupadi Murmu was the chief guest."
+},
+
+{
+q:"India celebrated its 80th Independence Day in which year?",
+o:["2024","2025","2026","2027"],
+a:2,
+s:"India celebrated its 80th Independence Day on 15 August 2026."
+},
+
+{
+q:"The 2026 Independence Day celebrations highlighted 150 years of which song?",
+o:["Jana Gana Mana","Vande Mataram","Sare Jahan Se Achha","Ae Mere Watan"],
+a:1,
+s:"The 2026 Independence Day marked 150 years of Vande Mataram."
+},
+
+{
+q:"What seven-part framework was highlighted in the Prime Minister's 2026 Independence Day address?",
+o:["Panch Pran","Sapt Dhara","Nav Sankalp","Trishakti"],
+a:1,
+s:"The seven-part framework was called Sapt Dhara."
+},
+
+{
+q:"The Delhi Master Plan 2047 was unveiled in August 2026 by which Union Minister?",
+o:["Manohar Lal","Amit Shah","Piyush Goyal","Ashwini Vaishnaw"],
+a:0,
+s:"Union Minister Manohar Lal unveiled Delhi Master Plan 2047."
+},
+
+{
+q:"Delhi Master Plan 2047 proposed approximately how many new affordable homes?",
+o:["10 lakh","20 lakh","30 lakh","40 lakh"],
+a:3,
+s:"The plan proposed around 40 lakh new affordable homes."
+},
+
+{
+q:"India's Left Wing Extremism-affected districts were reported to have fallen to effectively zero by which date?",
+o:["31 March 2025","31 March 2026","15 August 2026","31 August 2026"],
+a:1,
+s:"India achieved the stated target by 31 March 2026."
+},
+
+{
+q:"Which organisation conducted pan-India operations resulting in seizures of gold, narcotics and red sanders in August 2026?",
+o:["CBI","DRI","ED","NIA"],
+a:1,
+s:"The Directorate of Revenue Intelligence conducted the pan-India operations."
+},
+
+{
+q:"The Central share of SDRF advance release approved for flood-hit states in August 2026 was approximately:",
+o:["₹1,117.85 crore","₹1,517.85 crore","₹2,117.85 crore","₹3,117.85 crore"],
+a:2,
+s:"An advance release of ₹2,117.85 crore was approved from the Central share of SDRF."
+},
+
+{
+q:"Operation Vajra in August 2026 was associated with dismantling which type of network?",
+o:["Cyber fraud","Counterfeit drugs","Human trafficking","Illegal mining"],
+a:1,
+s:"Operation Vajra targeted an inter-state counterfeit-drug and spurious-medicine network."
+},
+
+{
+q:"The MSME Development (Amendment) Bill, 2026 was passed by Lok Sabha on which date?",
+o:["3 August","5 August","7 August","10 August"],
+a:2,
+s:"The bill was passed by Lok Sabha on 7 August 2026."
+},
+
+{
+q:"Government e-Marketplace completed how many years of operation in August 2026?",
+o:["5 years","8 years","10 years","15 years"],
+a:2,
+s:"GeM marked its 10th foundation day in August 2026."
+},
+
+{
+q:"GeM stands for:",
+o:["Government e-Marketplace","General e-Market","Government Electronic Market","Government Enterprise Market"],
+a:0,
+s:"GeM stands for Government e-Marketplace."
+},
+
+{
+q:"The Indian Air Force conducted Exercise ROTOR CLAP-III at which range?",
+o:["Pokharan","Chabua","Deolali","Jaisalmer Air Base"],
+a:0,
+s:"ROTOR CLAP-III was conducted at the Pokharan range in Rajasthan."
+},
+
+{
+q:"Exercise ROTOR CLAP-III was conducted during which period?",
+o:["1–2 August 2026","5–6 August 2026","10–11 August 2026","15–16 August 2026"],
+a:0,
+s:"The exercise was conducted on 1–2 August 2026."
+},
+
+{
+q:"Glaw Lake, designated as India's 101st Ramsar site, is located in which state?",
+o:["Arunachal Pradesh","Assam","Sikkim","Manipur"],
+a:0,
+s:"Glaw Lake is in Tawang district of Arunachal Pradesh."
+},
+
+{
+q:"Glaw Lake is located in which district?",
+o:["West Kameng","Tawang","Papum Pare","Lohit"],
+a:1,
+s:"Glaw Lake is located in Tawang district."
+},
+
+{
+q:"India's 101st Ramsar site in August 2026 was which wetland?",
+o:["Glaw Lake","Loktak Lake","Wular Lake","Chilika Lake"],
+a:0,
+s:"Glaw Lake was designated as India's 101st Ramsar site."
+},
+
+{
+q:"The MoSPI signed MoUs in August 2026 with IDEAS and which other institution?",
+o:["ISI Kolkata","IIT Delhi","IIM Ahmedabad","NIPFP"],
+a:0,
+s:"MoSPI signed the MoUs with IDEAS and ISI Kolkata."
+},
+
+{
+q:"MoSPI stands for:",
+o:["Ministry of Statistics and Programme Implementation","Ministry of Science and Public Information","Ministry of Statistics and Planning","Ministry of Social Planning and Implementation"],
+a:0,
+s:"MoSPI means Ministry of Statistics and Programme Implementation."
+},
+
+{
+q:"On Independence Day 2026, India announced an AI-skilling target covering how many young people over one year?",
+o:["10 lakh","50 lakh","1 crore","2 crore"],
+a:2,
+s:"The announced target was to provide AI-related skilling to 1 crore young people."
+},
+
+{
+q:"Who is the Chairman of Tata Sons mentioned in the August 2026 current affairs?",
+o:["N. Chandrasekaran","Ratan Tata","S. Gopalakrishnan","Mukesh Ambani"],
+a:0,
+s:"N. Chandrasekaran was the Executive Chairman of Tata Sons."
+},
+
+{
+q:"N. Chandrasekaran announced that he would step down from Tata Sons after completion of his term on:",
+o:["20 February 2027","31 March 2027","15 August 2027","1 January 2027"],
+a:0,
+s:"He announced that he would step down on completion of his term on 20 February 2027."
+},
+
+{
+q:"India Post began drone delivery services in August 2026 under which Union Ministry?",
+o:["Ministry of Communications","Ministry of Defence","Ministry of Civil Aviation","Ministry of Commerce"],
+a:0,
+s:"The India Post drone delivery event was inaugurated by the Union Minister of Communications."
+},
+
+{
+q:"Ayushman Bharat PM-JAY was formally launched in which state in August 2026?",
+o:["West Bengal","Odisha","Bihar","Jharkhand"],
+a:0,
+s:"Ayushman Bharat PM-JAY was formally launched in West Bengal on 16 August 2026."
+},
+
+{
+q:"PM-JAY primarily provides:",
+o:["Crop insurance","Health cover","Pension","Housing assistance"],
+a:1,
+s:"PM-JAY is India's major government-funded health assurance scheme."
+},
+
+{
+q:"India hosted the BRICS ICT Track in August 2026 in which city?",
+o:["Pune","Delhi","Mumbai","Hyderabad"],
+a:0,
+s:"The BRICS ICT Track was hosted in Pune."
+},
+
+{
+q:"IN-SPACe approved a commercial Earth-observation constellation consisting of how many satellites?",
+o:["6","8","10","12"],
+a:3,
+s:"IN-SPACe approved a 12-satellite commercial Earth-observation constellation."
+},
+
+{
+q:"The commercial Earth-observation constellation was led by which Indian space company?",
+o:["PixxelSpace","Skyroot Aerospace","Agnikul Cosmos","Dhruva Space"],
+a:0,
+s:"The constellation was led by PixxelSpace under a public-private partnership."
+},
+
+{
+q:"The RBI imposed a monetary penalty of ₹59.20 lakh on which bank in August 2026?",
+o:["IndusInd Bank","HDFC Bank","Punjab National Bank","Bank of Baroda"],
+a:0,
+s:"RBI imposed a ₹59.20 lakh monetary penalty on IndusInd Bank."
+},
+
+{
+q:"The ₹59.20 lakh penalty on IndusInd Bank was imposed for non-compliance with:",
+o:["Tax rules","Regulatory directions","Foreign trade rules","GST provisions"],
+a:1,
+s:"The penalty related to non-compliance with certain regulatory directions."
+},
+
+{
+q:"India and Nepal signed how many High Impact Community Development Projects in August 2026?",
+o:["4","6","8","10"],
+a:2,
+s:"India and Nepal signed agreements for eight High Impact Community Development Projects."
+},
+
+{
+q:"The value of the India-Nepal High Impact Community Development Projects was approximately:",
+o:["NPR 403 million","NPR 603 million","NPR 803 million","NPR 1,003 million"],
+a:2,
+s:"The projects were worth NPR 803 million."
+},
+
+{
+q:"L&T announced a mega order to build an NVIDIA B300 AI Factory. The order value was approximately:",
+o:["₹1,000–2,000 crore","₹5,000–7,000 crore","₹10,000–15,000 crore","₹20,000–25,000 crore"],
+a:2,
+s:"L&T announced an order valued at approximately ₹10,000–15,000 crore."
+},
+
+{
+q:"The AI Factory project announced by L&T involved which company?",
+o:["NVIDIA","Intel","AMD","Microsoft"],
+a:0,
+s:"The project involved NVIDIA B300 AI Factory infrastructure."
+},
+
+{
+q:"JFSL signed a definitive joint venture agreement with which international financial institution?",
+o:["Bank of America","JPMorgan Chase","Citibank","HSBC"],
+a:0,
+s:"Jio Financial Services Limited signed the agreement with Bank of America."
+},
+
+{
+q:"Andhra Pradesh signed an MoU with CSIR-NGRI for exploration of which minerals?",
+o:["Gold and copper","Lithium and gallium","Coal and iron","Uranium and thorium"],
+a:1,
+s:"The MoU covered detailed exploration of lithium and gallium in the Kadapa Basin."
+},
+
+{
+q:"CSIR-NGRI is primarily associated with:",
+o:["Geophysical research","Space research","Agricultural research","Medical research"],
+a:0,
+s:"CSIR-NGRI is the National Geophysical Research Institute."
+},
+
+{
+q:"The Ministry of Defence signed contracts worth ₹1,577 crore for loiter munition systems with Tata Advanced Systems Limited and:",
+o:["HAL","NIBE","BEL","BEML"],
+a:1,
+s:"The contracts were signed with Tata Advanced Systems Limited and NIBE."
+},
+
+{
+q:"The Kailaras-Sabalgarh-Birpur gauge-converted railway section is in which state?",
+o:["Rajasthan","Madhya Pradesh","Uttar Pradesh","Chhattisgarh"],
+a:1,
+s:"The railway section is in Madhya Pradesh."
+},
+
+{
+q:"The Kailaras-Sabalgarh-Birpur gauge-converted railway section is approximately how long?",
+o:["36 km","46 km","56 km","66 km"],
+a:2,
+s:"The section is 56 km long."
+},
+
+{
+q:"BRICS environment ministers in August 2026 opposed which measure of the European Union?",
+o:["Common Agricultural Policy","Carbon Border tax","Digital tax","Fishing quota"],
+a:1,
+s:"BRICS environment ministers opposed the EU Carbon Border Adjustment-related approach."
+},
+
+{
+q:"The BRICS environment ministers' meeting mentioned in August 2026 was held in:",
+o:["New Delhi","Mumbai","Pune","Bengaluru"],
+a:0,
+s:"The BRICS environment ministers met in New Delhi."
+},
+
+{
+q:"The BRICS Youth Council Meeting and Youth Summit in August 2026 were held in:",
+o:["Gandhinagar","Jaipur","Lucknow","Kochi"],
+a:0,
+s:"The BRICS Youth Council Meeting and Youth Summit were held in Gandhinagar."
+},
+
+{
+q:"The BRICS Youth Council Meeting and Youth Summit were held during:",
+o:["18–19 August","19–20 August","20–21 August","21–22 August"],
+a:1,
+s:"They were held on 19–20 August 2026."
+},
+
+{
+q:"The BRICS Youth Ministers' Meeting on 22 August 2026 was held in:",
+o:["Visakhapatnam","Vijayawada","Bhubaneswar","Chennai"],
+a:0,
+s:"The BRICS Youth Ministers' Meeting was held in Visakhapatnam."
+},
+
+{
+q:"India's foreign-exchange reserves reached a record of approximately how much for the week ended 21 August 2026?",
+o:["$629.33 billion","$679.33 billion","$729.33 billion","$779.33 billion"],
+a:2,
+s:"Forex reserves reached a record $729.33 billion."
+},
+
+{
+q:"India and ADB signed a $230 million loan agreement for which city's water project?",
+o:["Mumbai","Chennai","Kolkata","Bengaluru"],
+a:1,
+s:"The loan was for modernising and expanding Chennai's water supply and sanitation."
+},
+
+{
+q:"Which institution approved the $230 million Chennai water project loan?",
+o:["World Bank","Asian Development Bank","IMF","AIIB"],
+a:1,
+s:"The Asian Development Bank approved the loan."
+},
+
+{
+q:"UPI completed how many years in August 2026?",
+o:["5 years","8 years","10 years","12 years"],
+a:2,
+s:"UPI completed 10 years in August 2026."
+},
+
+{
+q:"UPI was launched in which year?",
+o:["2014","2015","2016","2017"],
+a:2,
+s:"UPI was launched in 2016."
+},
+
+{
+q:"UPI was launched by which organisation?",
+o:["RBI alone","NPCI","SEBI","NITI Aayog"],
+a:1,
+s:"The Unified Payments Interface was launched by NPCI."
+},
+
+{
+q:"SEBI introduced which index for market infrastructure institutions in August 2026?",
+o:["Financial Stability Index","Information Technology Resilience Index","Digital Market Index","Cyber Security Index"],
+a:1,
+s:"SEBI introduced the Information Technology Resilience Index (ITRI)."
+},
+
+{
+q:"What does ITRI stand for in the August 2026 SEBI context?",
+o:["Information Technology Resilience Index","Indian Technology Regulation Index","Information Transaction Risk Index","IT Regulatory Index"],
+a:0,
+s:"ITRI stands for Information Technology Resilience Index."
+},
+
+{
+q:"Which three persons were appointed as part-time, non-official directors on the RBI Central Board?",
+o:["Annie George Mathew, Janmejaya Kumar Sinha and Syed Akbaruddin","Annie George Mathew, Raghuram Rajan and Syed Akbaruddin","Janmejaya Sinha, Sanjay Malhotra and Syed Akbaruddin","None of these"],
+a:0,
+s:"The three appointees were Annie George Mathew, Janmejaya Kumar Sinha and Syed Akbaruddin."
+},
+
+{
+q:"The RBI Central Board appointments in August 2026 were for a term of:",
+o:["2 years","3 years","4 years","5 years"],
+a:2,
+s:"The three non-official directors were appointed for four years."
+},
+
+{
+q:"The appointments to the RBI Central Board were made under which section of the RBI Act, 1934?",
+o:["Section 5","Section 8(1)(c)","Section 12","Section 21"],
+a:1,
+s:"The appointments were made under Section 8(1)(c) of the RBI Act, 1934."
+},
+
+{
+q:"Annie George Mathew was also serving as a full-time member of which body?",
+o:["15th Finance Commission","16th Finance Commission","NITI Aayog","GST Council"],
+a:1,
+s:"Annie George Mathew was a full-time member of the 16th Finance Commission."
+},
+
+{
+q:"Syed Akbaruddin is a former Permanent Representative of India to:",
+o:["WTO","UN","WHO","World Bank"],
+a:1,
+s:"Syed Akbaruddin served as India's Permanent Representative to the United Nations."
+},
+
+{
+q:"NABARD and NaBFID signed an MoU in August 2026 mainly to strengthen collaboration in:",
+o:["Sports financing","Infrastructure financing with rural impact","Defence exports","Tourism"],
+a:1,
+s:"The MoU focused on financing infrastructure projects with significant rural impact."
+},
+
+{
+q:"MeitY approved 31 more applications under which scheme in August 2026?",
+o:["PLI for textiles","Electronics Components Manufacturing Scheme","PM-KUSUM","FAME India"],
+a:1,
+s:"MeitY approved 31 more applications under the Electronics Components Manufacturing Scheme."
+},
+
+{
+q:"The Electronics Components Manufacturing Scheme is commonly abbreviated as:",
+o:["ECMS","ECMS-II","EMCS","EPCS"],
+a:0,
+s:"It is abbreviated as ECMS."
+},
+
+{
+q:"Which company was associated with the NVIDIA B300 AI Factory mega order announced in August 2026?",
+o:["Larsen & Toubro","Tata Motors","Reliance Industries","Infosys"],
+a:0,
+s:"Larsen & Toubro announced the NVIDIA B300 AI Factory order."
+},
+
+{
+q:"Which campaign was launched in August 2026 and dedicated to 150 years of Vande Mataram?",
+o:["Har Ghar Tiranga","Meri Maati Mera Desh","Azadi Ka Amrit Mahotsav","Ek Bharat Shreshtha Bharat"],
+a:0,
+s:"The Har Ghar Tiranga 2026 campaign was dedicated to 150 years of Vande Mataram."
+},
+
+{
+q:"Har Ghar Tiranga 2026 was scheduled nationwide from:",
+o:["1–7 August","9–17 August","10–20 August","15–25 August"],
+a:1,
+s:"The campaign was observed nationwide from 9 to 17 August 2026."
+},
+
+{
+q:"Partition Horrors Remembrance Day is observed on:",
+o:["9 August","14 August","15 August","26 August"],
+a:1,
+s:"Partition Horrors Remembrance Day is observed on 14 August."
+},
+
+{
+q:"World Organ Donation Day is observed on:",
+o:["10 August","12 August","13 August","15 August"],
+a:2,
+s:"World Organ Donation Day is observed on 13 August."
+},
+
+{
+q:"International Youth Day is observed annually on:",
+o:["10 August","12 August","15 August","20 August"],
+a:1,
+s:"International Youth Day is observed on 12 August."
+},
+
+{
+q:"World Elephant Day is observed on:",
+o:["8 August","10 August","12 August","14 August"],
+a:2,
+s:"World Elephant Day is observed on 12 August."
+},
+
+{
+q:"The DNA-based census mentioned for wild elephants in India put their number at approximately:",
+o:["12,446","17,446","22,446","27,446"],
+a:2,
+s:"The reported figure was 22,446 wild elephants."
+},
+
+{
+q:"World Photography Day is observed on:",
+o:["17 August","19 August","21 August","23 August"],
+a:1,
+s:"World Photography Day is observed on 19 August."
+},
+
+{
+q:"World Humanitarian Day is observed on:",
+o:["18 August","19 August","20 August","21 August"],
+a:1,
+s:"World Humanitarian Day is observed on 19 August."
+},
+
+{
+q:"National Space Day in India is observed on:",
+o:["21 August","22 August","23 August","24 August"],
+a:2,
+s:"National Space Day is observed on 23 August."
+},
+
+{
+q:"National Space Day commemorates the successful soft landing of which spacecraft?",
+o:["Chandrayaan-1","Chandrayaan-2","Chandrayaan-3 Vikram lander","Mangalyaan"],
+a:2,
+s:"It commemorates Chandrayaan-3's Vikram lander soft landing."
+},
+
+{
+q:"Chandrayaan-3's historic soft landing occurred in:",
+o:["2021","2022","2023","2024"],
+a:2,
+s:"The Vikram lander soft-landed on 23 August 2023."
+},
+
+{
+q:"Madras Day is observed on:",
+o:["20 August","21 August","22 August","23 August"],
+a:2,
+s:"Madras Day is observed on 22 August."
+},
+
+{
+q:"The 2026 observance of Madras Day marked how many years since the founding of Madras?",
+o:["287","337","387","437"],
+a:2,
+s:"The 2026 edition marked 387 years since Madras was founded in 1639."
+},
+
+{
+q:"National Sports Day is observed on:",
+o:["27 August","28 August","29 August","30 August"],
+a:2,
+s:"National Sports Day is observed on 29 August."
+},
+
+{
+q:"National Sports Day commemorates the birth anniversary of:",
+o:["Milkha Singh","Major Dhyan Chand","Balbir Singh Sr.","Dhanraj Pillay"],
+a:1,
+s:"National Sports Day commemorates Major Dhyan Chand."
+},
+
+{
+q:"In 2026, National Sports Day marked which birth anniversary of Major Dhyan Chand?",
+o:["119th","120th","121st","122nd"],
+a:2,
+s:"The 2026 observance marked his 121st birth anniversary."
+},
+
+{
+q:"World Sanskrit Day in 2026 was observed on:",
+o:["26 August","27 August","28 August","29 August"],
+a:2,
+s:"World Sanskrit Day was observed on 28 August 2026."
+},
+
+{
+q:"World Lake Day is observed on:",
+o:["25 August","26 August","27 August","28 August"],
+a:2,
+s:"World Lake Day is observed on 27 August."
+},
+
+{
+q:"National Small Industry Day is observed on:",
+o:["28 August","29 August","30 August","31 August"],
+a:2,
+s:"National Small Industry Day is observed on 30 August."
+},
+
+{
+q:"India's Q1 FY 2026–27 GDP growth was reported at:",
+o:["6.8%","7.2%","7.8%","8.4%"],
+a:2,
+s:"India's Q1 FY 2026–27 GDP growth was reported at 7.8%."
+},
+
+{
+q:"August 2026 gross GST revenue in India was approximately:",
+o:["₹1,49,853 crore","₹1,79,853 crore","₹1,99,853 crore","₹2,29,853 crore"],
+a:2,
+s:"Gross GST revenue was ₹1,99,853 crore."
+},
+
+{
+q:"The August 2026 GST revenue represented year-on-year growth of approximately:",
+o:["10.8%","12.8%","14.8%","16.8%"],
+a:2,
+s:"The reported year-on-year growth was 14.8%."
+},
+
+{
+q:"India and China resumed border trade in August 2026 through Nathu La and which other pass?",
+o:["Zoji La","Shipki La","Rohtang Pass","Niti Pass"],
+a:1,
+s:"Border trade resumed through Nathu La and Shipki La."
+},
+
+{
+q:"Nathu La is located in which Indian state?",
+o:["Sikkim","Arunachal Pradesh","Uttarakhand","Himachal Pradesh"],
+a:0,
+s:"Nathu La is located in Sikkim."
+},
+
+{
+q:"Shipki La is located in which Indian state?",
+o:["Sikkim","Himachal Pradesh","Uttarakhand","Arunachal Pradesh"],
+a:1,
+s:"Shipki La is located in Himachal Pradesh."
+},
+
+{
+q:"India-Uzbekistan relations were elevated to which level during August 2026?",
+o:["Strategic Partnership","Comprehensive Strategic Partnership","Special Partnership","Defence Partnership"],
+a:1,
+s:"India and Uzbekistan elevated relations to a Comprehensive Strategic Partnership."
+},
+
+{
+q:"Prime Minister Narendra Modi visited Uzbekistan during which period in August 2026?",
+o:["25–26 August","27–28 August","29–30 August","30–31 August"],
+a:2,
+s:"The visit to Uzbekistan was on 29–30 August 2026."
+},
+
+{
+q:"After Uzbekistan, PM Modi visited which country in connection with the SCO Summit?",
+o:["Kyrgyz Republic","Kazakhstan","Tajikistan","Turkmenistan"],
+a:0,
+s:"He visited the Kyrgyz Republic in connection with the 26th SCO Summit."
+},
+
+{
+q:"GSLV-F17 successfully launched which Earth-observation satellite in August 2026?",
+o:["EOS-04","EOS-05","RISAT-3","Cartosat-4"],
+a:1,
+s:"GSLV-F17 launched EOS-05."
+},
+
+{
+q:"GSLV-F17 launched EOS-05 on which date?",
+o:["27 August","28 August","29 August","30 August"],
+a:2,
+s:"The mission successfully launched EOS-05 on 29 August 2026."
+},
+
+{
+q:"EOS-05 was placed into which type of orbit?",
+o:["Low Earth Orbit","Geostationary Orbit","Sub-geosynchronous transfer orbit","Polar orbit"],
+a:2,
+s:"EOS-05 was placed into its intended sub-geosynchronous transfer orbit."
+},
+
+{
+q:"Who won the Esports World Cup chess title in Paris in August 2026?",
+o:["Magnus Carlsen","Hikaru Nakamura","Fabiano Caruana","R Praggnanandhaa"],
+a:0,
+s:"Magnus Carlsen won his second consecutive Esports World Cup chess title."
+},
+
+{
+q:"Magnus Carlsen represents which country?",
+o:["Sweden","Norway","Denmark","Finland"],
+a:1,
+s:"Magnus Carlsen is from Norway."
+},
+
+{
+q:"Who became the first Frenchman to win the men's singles world badminton title in August 2026?",
+o:["Alex Lanier","Hugo Calderano","Kodai Naraoka","Christo Popov"],
+a:0,
+s:"France's Alex Lanier became the first Frenchman to win the men's singles world title."
+},
+
+{
+q:"Alex Lanier defeated whom in the men's singles final?",
+o:["Kodai Naraoka","Shi Yuqi","Viktor Axelsen","Lee Zii Jia"],
+a:0,
+s:"Alex Lanier defeated Kodai Naraoka 21–11, 21–11."
+},
+
+{
+q:"Who won the women's singles world badminton title in August 2026?",
+o:["An Se-young","Akane Yamaguchi","Chen Yufei","Carolina Marin"],
+a:0,
+s:"An Se-young won the women's singles world title."
+},
+
+{
+q:"India's women's hockey team finished at which position in the 2026 FIH Hockey Women's World Cup?",
+o:["Third","Fourth","Fifth","Sixth"],
+a:2,
+s:"India finished fifth after defeating Germany 3–1 in the classification match."
+},
+
+{
+q:"Which organisation announced a ₹50 lakh reward for India's women's hockey team?",
+o:["BCCI","Hockey India","SAI","IOA"],
+a:1,
+s:"Hockey India announced the ₹50 lakh reward."
+},
+
+{
+q:"India's women's hockey team defeated which country in the 5th/6th classification match?",
+o:["Germany","Netherlands","Belgium","Australia"],
+a:0,
+s:"India defeated Germany 3–1."
+},
+
+{
+q:"Who announced retirement from international football on 31 August 2026?",
+o:["Cristiano Ronaldo","Lionel Messi","Neymar","Luka Modric"],
+a:1,
+s:"Lionel Messi announced his retirement from international football."
+},
+
+{
+q:"Lionel Messi was reported as Argentina's record international scorer with how many goals?",
+o:["105","115","125","135"],
+a:2,
+s:"Messi was reported with 125 international goals for Argentina."
+},
+
+{
+q:"Lionel Messi's international football retirement was announced at the age of:",
+o:["37","38","39","40"],
+a:2,
+s:"Messi announced his retirement at age 39."
+},
+
+{
+q:"The Ramon Magsaysay Award winners announced on 31 August 2026 included Tommy Koh, Runa Khan and:",
+o:["Bo Kyi","Abdul Sattar Edhi","Sonam Wangchuk","Kailash Satyarthi"],
+a:0,
+s:"Bo Kyi of Myanmar was among the 2026 Ramon Magsaysay Award recipients."
+},
+
+{
+q:"Tommy Koh, a 2026 Ramon Magsaysay Award recipient, is from:",
+o:["Singapore","Malaysia","Indonesia","Thailand"],
+a:0,
+s:"Tommy Koh is from Singapore."
+},
+
+{
+q:"Runa Khan, a 2026 Ramon Magsaysay Award recipient, is associated with which country?",
+o:["Nepal","Bangladesh","Sri Lanka","Bhutan"],
+a:1,
+s:"Runa Khan is from Bangladesh."
+},
+
+{
+q:"Varsha Ashok Aglawe became the first woman Director General of which organisation in August 2026?",
+o:["Geological Survey of India","Survey of India","Archaeological Survey of India","Forest Survey of India"],
+a:0,
+s:"Varsha Ashok Aglawe became the first woman Director General of the Geological Survey of India."
+},
+
+{
+q:"Alka Nangia Arora assumed charge as Controller General of:",
+o:["Defence Accounts","Accounts and Audit","Customs","Income Tax"],
+a:0,
+s:"Alka Nangia Arora assumed charge as Controller General of Defence Accounts."
+},
+
+{
+q:"Satish Golcha was posted as OSD in which organisation in August 2026?",
+o:["Delhi Home Guards","Delhi Fire Service","CISF","Delhi Police Academy"],
+a:0,
+s:"Satish Golcha was posted as OSD in the Directorate of Home Guards, Delhi."
+},
+
+{
+q:"Satish Golcha was scheduled to become Director General of Delhi Home Guards from:",
+o:["1 September 2026","1 October 2026","1 November 2026","1 January 2027"],
+a:1,
+s:"He was scheduled to become DG from 1 October 2026."
+},
+
+{
+q:"Who was appointed India's Ambassador to North Korea in August 2026?",
+o:["Sanjeev Jain","Vikram Misri","Syed Akbaruddin","Harsh Kumar Jain"],
+a:0,
+s:"Sanjeev Jain was appointed India's Ambassador to North Korea."
+},
+
+{
+q:"The BJP announced its new national team in August 2026 under which national president?",
+o:["J. P. Nadda","Nitin Nabin","Amit Shah","Piyush Goyal"],
+a:1,
+s:"The new BJP national team was announced under Nitin Nabin."
+},
+
+{
+q:"Who was made treasurer in the BJP's new national team announced in August 2026?",
+o:["Piyush Goyal","Nirmala Sitharaman","Rajnath Singh","Dharmendra Pradhan"],
+a:0,
+s:"Piyush Goyal was made treasurer."
+},
+
+{
+q:"Who was appointed as the new CEO of Apple effective after Tim Cook's tenure?",
+o:["John Ternus","Jeff Williams","Craig Federighi","Eddy Cue"],
+a:0,
+s:"John Ternus took over as Apple's CEO after Tim Cook."
+},
+
+{
+q:"Tim Cook's tenure as Apple CEO began in:",
+o:["2009","2010","2011","2012"],
+a:2,
+s:"Tim Cook became CEO on 24 August 2011."
+},
+
+{
+q:"For approximately how long did Tim Cook serve as Apple's CEO?",
+o:["10 years","12 years","15 years","20 years"],
+a:2,
+s:"His tenure lasted approximately 15 years."
+}
+
+];
+
+
+/* =========================
+   TEST ENGINE
+========================= */
+
+let current = 0;
+let answers = new Array(questions.length).fill(null);
+let review = new Array(questions.length).fill(false);
+let submitted = false;
+
+let totalSeconds = 60 * 60;
+
+function loadQuestion(){
+
+    const q = questions[current];
+
+    document.getElementById("qNumber").innerText =
+        "Question " + (current + 1) + " of " + questions.length;
+
+    let html = `
+        <div class="question">${q.q}</div>
+    `;
+
+    q.o.forEach((option,index)=>{
+
+        const checked = answers[current] === index ? "checked" : "";
+        const selected = answers[current] === index ? "selected" : "";
+
+        html += `
+            <label class="option ${selected}">
+                <input type="radio"
+                       name="answer"
+                       value="${index}"
+                       ${checked}
+                       onchange="selectAnswer(${index})">
+                <b>${String.fromCharCode(65+index)}.</b>
+                ${option}
+            </label>
+        `;
+    });
+
+    document.getElementById("questionBox").innerHTML = html;
+
+    updatePalette();
+}
+
+function selectAnswer(index){
+
+    answers[current] = index;
+
+    updatePalette();
+
+    document.querySelectorAll(".option").forEach((el,i)=>{
+        el.classList.toggle("selected",i===index);
+    });
+}
+
+function nextQuestion(){
+
+    if(current < questions.length-1){
+        current++;
+        loadQuestion();
+    }
+}
+
+function previousQuestion(){
+
+    if(current > 0){
+        current--;
+        loadQuestion();
+    }
+}
+
+function toggleReview(){
+
+    review[current] = !review[current];
+    updatePalette();
+}
+
+function jumpQuestion(index){
+
+    current = index;
+    loadQuestion();
+}
+
+function updatePalette(){
+
+    const palette = document.getElementById("palette");
+
+    let html = "";
+
+    for(let i=0;i<questions.length;i++){
+
+        let cls = "qbtn";
+
+        if(answers[i] !== null){
+            cls += " answered";
+        }
+
+        if(review[i]){
+            cls += " reviewed";
+        }
+
+        if(i === current){
+            cls += " current";
+        }
+
+        html += `
+            <button class="${cls}"
+                    onclick="jumpQuestion(${i})">
+                ${i+1}
+            </button>
+        `;
+    }
+
+    palette.innerHTML = html;
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+function updateTimer(){
+
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+
+    document.getElementById("timer").innerText =
+        String(minutes).padStart(2,"0") + ":" +
+        String(seconds).padStart(2,"0");
+
+    if(totalSeconds <= 0){
+
+        clearInterval(timerInterval);
+
+        alert("Time Over! Test will be submitted automatically.");
+
+        submitTest();
+
+        return;
+    }
+
+    totalSeconds--;
+}
+
+const timerInterval = setInterval(updateTimer,1000);
+
+
+/* =========================
+   SUBMIT
+========================= */
+
+function submitTest(){
+
+    if(submitted) return;
+
+    const attempted = answers.filter(a=>a!==null).length;
+
+    const confirmSubmit =
+        confirm(
+            "Are you sure you want to submit the test?\n\n" +
+            "Attempted: " + attempted +
+            "/" + questions.length
+        );
+
+    if(!confirmSubmit) return;
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+    let wrong = 0;
+    let unattempted = 0;
+
+    questions.forEach((q,i)=>{
+
+        if(answers[i] === null){
+
+            unattempted++;
+
+        }else if(answers[i] === q.a){
+
+            correct++;
+
+        }else{
+
+            wrong++;
+
+        }
+    });
+
+    const score =
+        (correct * 1) -
+        (wrong * 0.33);
+
+    document.getElementById("testArea").style.display="none";
+    document.getElementById("resultArea").style.display="block";
+
+    document.getElementById("finalScore").innerText =
+        "Final Score: " + score.toFixed(2) + " / 100";
+
+    document.getElementById("correctCount").innerText = correct;
+    document.getElementById("wrongCount").innerText = wrong;
+    document.getElementById("unattemptedCount").innerText = unattempted;
+    document.getElementById("scoreCell").innerText = score.toFixed(2);
+
+    document.getElementById("resultSummary").innerText =
+        "Correct answers carry +1 mark, wrong answers carry −0.33 mark and unattempted questions carry 0 marks.";
+
+    showSolutions();
+}
+
+
+/* =========================
+   SOLUTIONS
+========================= */
+
+function showSolutions(){
+
+    let html="";
+
+    questions.forEach((q,i)=>{
+
+        let status="";
+        let userAnswer="Not Attempted";
+
+        if(answers[i] === null){
+
+            status=`<span class="unattempted">Unattempted</span>`;
+
+        }else if(answers[i] === q.a){
+
+            status=`<span class="correct">Correct</span>`;
+
+            userAnswer =
+                String.fromCharCode(65+answers[i]) +
+                ". " + q.o[answers[i]];
+
+        }else{
+
+            status=`<span class="wrong">Wrong</span>`;
+
+            userAnswer =
+                String.fromCharCode(65+answers[i]) +
+                ". " + q.o[answers[i]];
+        }
+
+        html += `
+            <div class="solution">
+
+                <b>Q${i+1}. ${q.q}</b>
+
+                <br><br>
+
+                <b>Your Answer:</b>
+                ${userAnswer}
+
+                <br>
+
+                <b>Status:</b>
+                ${status}
+
+                <br><br>
+
+                <b>Correct Answer:</b>
+                <span class="correct">
+                    ${String.fromCharCode(65+q.a)}.
+                    ${q.o[q.a]}
+                </span>
+
+                <br><br>
+
+                <b>Explanation:</b>
+                ${q.s}
+
+            </div>
+        `;
+    });
+
+    document.getElementById("solutions").innerHTML = html;
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
