@@ -1,1 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | IBPS Clerk CSA Prelims Test 5</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:18px 20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.18);
+}
+
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.brand{
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.brand span{
+    color:#ffd43b;
+}
+
+.exam-title{
+    text-align:right;
+}
+
+.exam-title h2{
+    font-size:20px;
+}
+
+.exam-title p{
+    font-size:13px;
+    opacity:.9;
+}
+
+.container{
+    width:94%;
+    max-width:1250px;
+    margin:25px auto;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.info{
+    background:white;
+    padding:15px 10px;
+    text-align:center;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    font-weight:700;
+}
+
+.info b{
+    display:block;
+    font-size:20px;
+    color:#1d4ed8;
+}
+
+.warning{
+    background:#fff7df;
+    border-left:5px solid #ffd43b;
+    padding:13px 16px;
+    border-radius:7px;
+    margin-bottom:20px;
+    font-weight:700;
+}
+
+.section-tabs{
+    display:flex;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.section-tab{
+    flex:1;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#dce6f7;
+    color:#102a43;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.section-tab.active{
+    background:#1d4ed8;
+    color:white;
+}
+
+.test-layout{
+    display:grid;
+    grid-template-columns:1fr 310px;
+    gap:20px;
+}
+
+.question-area,
+.palette{
+    background:white;
+    border-radius:12px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+.question-area{
+    padding:25px;
+}
+
+.section-name{
+    color:#1d4ed8;
+    font-size:18px;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.question-number{
+    color:#68778a;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:22px;
+    white-space:pre-line;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.option{
+    padding:14px;
+    border:1px solid #d6dce5;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
+    background:#fff;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option.selected{
+    background:#e5efff;
+    border:2px solid #1d4ed8;
+    font-weight:700;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    padding:12px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:800;
+}
+
+.prev{
+    background:#64748b;
+    color:white;
+}
+
+.next{
+    background:#1d4ed8;
+    color:white;
+}
+
+.clear{
+    background:#e5e7eb;
+    color:#172033;
+}
+
+.submit{
+    background:#16a34a;
+    color:white;
+}
+
+.palette{
+    padding:20px;
+}
+
+.palette h3{
+    margin-bottom:15px;
+    color:#102a43;
+}
+
+.legend{
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    margin:6px 0;
+}
+
+.legend-box{
+    width:18px;
+    height:18px;
+    border-radius:4px;
+    display:inline-block;
+}
+
+.not-attempted{
+    background:#e5e7eb;
+}
+
+.attempted{
+    background:#22c55e;
+}
+
+.current{
+    background:#1d4ed8;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qbtn{
+    border:none;
+    padding:9px 4px;
+    border-radius:5px;
+    background:#e5e7eb;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.qbtn.attempted{
+    background:#22c55e;
+    color:white;
+}
+
+.qbtn.current{
+    background:#1d4ed8;
+    color:white;
+}
+
+.qbtn.review{
+    background:#f59e0b;
+    color:white;
+}
+
+.timer-box{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#102a43;
+    color:white;
+    padding:14px 22px;
+    border-radius:10px;
+    font-size:22px;
+    font-weight:900;
+    box-shadow:0 4px 15px rgba(0,0,0,.25);
+    z-index:2000;
+}
+
+.result{
+    display:none;
+    background:white;
+    border-radius:12px;
+    padding:30px;
+    box-shadow:0 3px 15px rgba(0,0,0,.1);
+}
+
+.result h2{
+    color:#16a34a;
+    margin-bottom:15px;
+}
+
+.score{
+    font-size:42px;
+    font-weight:900;
+    color:#1d4ed8;
+    margin-bottom:15px;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin:20px 0;
+}
+
+.result-box{
+    background:#f3f6fa;
+    padding:18px;
+    text-align:center;
+    border-radius:8px;
+    font-weight:700;
+}
+
+.result-box b{
+    display:block;
+    font-size:25px;
+    color:#1d4ed8;
+}
+
+.solution{
+    border-top:1px solid #ddd;
+    padding:18px 0;
+}
+
+.solution h4{
+    color:#102a43;
+    margin-bottom:6px;
+}
+
+.correct-answer{
+    color:#16a34a;
+    font-weight:800;
+}
+
+@media(max-width:900px){
+    .info-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .test-layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette{
+        order:2;
+    }
+}
+
+@media(max-width:600px){
+    .header-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .exam-title{
+        text-align:center;
+    }
+
+    .info-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .section-tabs{
+        flex-direction:column;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .result-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .timer-box{
+        right:10px;
+        bottom:10px;
+        font-size:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="brand">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="exam-title">
+<h2>IBPS CLERK / CSA — PRELIMS TEST 5</h2>
+<p>AIM HIGH • ACHIEVE HIGH</p>
+</div>
+
+</div>
+</header>
+
+<div class="container">
+
+<div class="info-grid">
+
+<div class="info">
+<b>30</b>
+English
+</div>
+
+<div class="info">
+<b>35</b>
+Numerical
+</div>
+
+<div class="info">
+<b>35</b>
+Reasoning
+</div>
+
+<div class="info">
+<b>100</b>
+Questions
+</div>
+
+<div class="info">
+<b>100</b>
+Marks
+</div>
+
+<div class="info">
+<b>60 Min</b>
+Total Time
+</div>
+
+</div>
+
+<div class="warning">
+⚠️ Each correct answer = +1 mark | Each wrong answer = −0.25 mark | Unattempted = 0 marks | Each section has a separate 20-minute timer.
+</div>
+
+<div class="section-tabs">
+
+<button class="section-tab active" id="tab0" onclick="jumpSection(0)">
+English Language
+</button>
+
+<button class="section-tab" id="tab1" onclick="jumpSection(1)">
+Numerical Ability
+</button>
+
+<button class="section-tab" id="tab2" onclick="jumpSection(2)">
+Reasoning Ability
+</button>
+
+</div>
+
+<div id="testArea">
+
+<div class="test-layout">
+
+<div class="question-area">
+
+<div class="section-name" id="sectionName">
+English Language
+</div>
+
+<div class="question-number" id="questionNumber">
+Question 1 of 100
+</div>
+
+<div class="question" id="questionText">
+Loading question...
+</div>
+
+<div class="options" id="options"></div>
+
+<div class="buttons">
+
+<button class="btn prev" onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="btn clear" onclick="clearResponse()">
+Clear Response
+</button>
+
+<button class="btn next" id="nextBtn" onclick="nextQuestion()">
+Save & Next →
+</button>
+
+<button class="btn submit" id="submitBtn" onclick="submitTest()" style="display:none;">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+<div class="palette">
+
+<h3>Question Palette</h3>
+
+<div class="legend">
+
+<div class="legend-item">
+<span class="legend-box not-attempted"></span>
+Not Attempted
+</div>
+
+<div class="legend-item">
+<span class="legend-box attempted"></span>
+Attempted
+</div>
+
+<div class="legend-item">
+<span class="legend-box current"></span>
+Current
+</div>
+
+</div>
+
+<div class="question-grid" id="questionGrid"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="result" id="result">
+
+<h2>🎉 Test Submitted</h2>
+
+<div class="score" id="finalScore">0 / 100</div>
+
+<p id="resultMessage"></p>
+
+<div class="result-grid">
+
+<div class="result-box">
+Correct
+<b id="correctCount">0</b>
+</div>
+
+<div class="result-box">
+Wrong
+<b id="wrongCount">0</b>
+</div>
+
+<div class="result-box">
+Unattempted
+<b id="unattemptedCount">0</b>
+</div>
+
+<div class="result-box">
+Percentage
+<b id="percentage">0%</b>
+</div>
+
+</div>
+
+<button class="btn next" onclick="location.reload()">
+🔄 Re-attempt Test
+</button>
+
+<h2 style="margin-top:35px;">
+📚 Answer Key & Detailed Solutions
+</h2>
+
+<div id="solutions"></div>
+
+</div>
+
+</div>
+
+<div class="timer-box">
+⏱ <span id="timer">20:00</span>
+</div>
+
+<script>
+
+/* =========================================================
+   AIMERS CLASSES
+   IBPS CLERK / CSA PRELIMS TEST 5
+
+   ENGLISH = 30
+   NUMERICAL = 35
+   REASONING = 35
+
+   TOTAL = 100
+   MARKING = +1 / -0.25
+========================================================= */
+
+const questions = [
+
+/* =========================================================
+   ENGLISH LANGUAGE — 1 TO 30
+========================================================= */
+
+{
+section:"English Language",
+q:"Choose the word that is most similar in meaning to 'Abundant'.",
+options:["Scarce","Plentiful","Tiny","Weak"],
+answer:1,
+solution:"Abundant means available in large quantities. Therefore, 'Plentiful' is correct."
+},
+
+{
+section:"English Language",
+q:"Choose the word that is opposite in meaning to 'Ancient'.",
+options:["Old","Historic","Modern","Traditional"],
+answer:2,
+solution:"Ancient means very old. Its opposite is 'Modern'."
+},
+
+{
+section:"English Language",
+q:"Choose the correctly spelt word.",
+options:["Accomodation","Accommodation","Acommodation","Accommadation"],
+answer:1,
+solution:"The correct spelling is 'Accommodation'."
+},
+
+{
+section:"English Language",
+q:"The manager insisted ___ completing the report before noon.",
+options:["at","on","for","with"],
+answer:1,
+solution:"The correct preposition is 'on'. The phrase is 'insisted on completing'."
+},
+
+{
+section:"English Language",
+q:"Neither the teacher nor the students ___ ready for the inspection.",
+options:["was","is","were","has"],
+answer:2,
+solution:"With 'neither...nor', the verb agrees with the nearer subject. 'Students' is plural, so 'were' is correct."
+},
+
+{
+section:"English Language",
+q:"Choose the correct improvement: 'She is senior than me.'",
+options:[
+"She is senior to me.",
+"She is senior from me.",
+"She is more senior than me.",
+"No improvement"
+],
+answer:0,
+solution:"The adjective 'senior' takes the preposition 'to'. Hence 'senior to me' is correct."
+},
+
+{
+section:"English Language",
+q:"A person who speaks many languages is called a:",
+options:["Linguist","Polyglot","Orator","Novelist"],
+answer:1,
+solution:"A polyglot is a person who knows or uses several languages."
+},
+
+{
+section:"English Language",
+q:"Choose the correct meaning of the idiom 'Break the ice'.",
+options:[
+"To break something",
+"To start a conversation",
+"To create trouble",
+"To end a meeting"
+],
+answer:1,
+solution:"'Break the ice' means to initiate conversation or make people feel more comfortable."
+},
+
+{
+section:"English Language",
+q:"The train had left before we ___ the station.",
+options:["reach","reached","had reached","reaching"],
+answer:1,
+solution:"The second action is in the simple past: 'before we reached the station'."
+},
+
+{
+section:"English Language",
+q:"Choose the correct passive voice: 'The chef prepared the meal.'",
+options:[
+"The meal is prepared by the chef.",
+"The meal was prepared by the chef.",
+"The meal has prepared by the chef.",
+"The meal had prepared by the chef."
+],
+answer:1,
+solution:"The active sentence is in simple past, so passive voice uses 'was + past participle'."
+},
+
+{
+section:"English Language",
+q:"Choose the correct indirect speech: He said, 'I am busy.'",
+options:[
+"He said that I am busy.",
+"He said that he was busy.",
+"He says that he was busy.",
+"He said that he is busy."
+],
+answer:1,
+solution:"In reported speech, 'I' changes to 'he' and present 'am' generally changes to past 'was'."
+},
+
+{
+section:"English Language",
+q:"Choose the word nearest in meaning to 'Cautious'.",
+options:["Careless","Alert","Angry","Proud"],
+answer:1,
+solution:"Cautious means careful and alert about possible danger."
+},
+
+{
+section:"English Language",
+q:"Choose the word opposite in meaning to 'Expand'.",
+options:["Increase","Extend","Contract","Develop"],
+answer:2,
+solution:"Expand means to become larger; its opposite is 'Contract'."
+},
+
+{
+section:"English Language",
+q:"If I ___ enough money, I would buy a new laptop.",
+options:["have","had","will have","am having"],
+answer:1,
+solution:"This is a second conditional sentence: If + past tense, would + base verb."
+},
+
+{
+section:"English Language",
+q:"The children were excited ___ the school trip.",
+options:["about","at","by","from"],
+answer:0,
+solution:"The correct expression is 'excited about'."
+},
+
+{
+section:"English Language",
+q:"Choose the correctly spelt word.",
+options:["Privilege","Priviledge","Privelege","Privillage"],
+answer:0,
+solution:"The correct spelling is 'Privilege'."
+},
+
+{
+section:"English Language",
+q:"The word 'benevolent' means:",
+options:["Cruel","Kind and charitable","Selfish","Uncertain"],
+answer:1,
+solution:"Benevolent means well-meaning, kind and charitable."
+},
+
+{
+section:"English Language",
+q:"Choose the correct article: He is ___ honest officer.",
+options:["a","an","the","no article"],
+answer:1,
+solution:"'Honest' begins with a vowel sound, so 'an' is used."
+},
+
+{
+section:"English Language",
+q:"Choose the grammatically correct sentence.",
+options:[
+"Each of the boys have a book.",
+"Each of the boys has a book.",
+"Each of the boy have a book.",
+"Each boys has a book."
+],
+answer:1,
+solution:"'Each' is singular and therefore takes the singular verb 'has'."
+},
+
+{
+section:"English Language",
+q:"The meeting was postponed ___ Monday.",
+options:["until","since","during","from"],
+answer:0,
+solution:"'Until Monday' correctly indicates the time up to which the meeting was postponed."
+},
+
+{
+section:"English Language",
+q:"Choose the word nearest in meaning to 'Diligent'.",
+options:["Lazy","Hardworking","Careless","Slow"],
+answer:1,
+solution:"Diligent means hardworking and careful."
+},
+
+{
+section:"English Language",
+q:"Choose the word opposite in meaning to 'Fragile'.",
+options:["Delicate","Weak","Sturdy","Soft"],
+answer:2,
+solution:"Fragile means easily broken. 'Sturdy' means strong and durable."
+},
+
+{
+section:"English Language",
+q:"The principal, along with the teachers, ___ attending the ceremony.",
+options:["are","were","is","have"],
+answer:2,
+solution:"The main subject is 'The principal', which is singular. Hence 'is' is correct."
+},
+
+{
+section:"English Language",
+q:"Choose the correct meaning of 'At the eleventh hour'.",
+options:[
+"Very early",
+"At the last moment",
+"At noon",
+"After eleven days"
+],
+answer:1,
+solution:"The idiom 'at the eleventh hour' means at the last possible moment."
+},
+
+{
+section:"English Language",
+q:"Choose the correct sentence.",
+options:[
+"She has been living here since five years.",
+"She is living here for five years.",
+"She has been living here for five years.",
+"She was living here since five years."
+],
+answer:2,
+solution:"'For' is used with a duration. Present perfect continuous fits the continuing action."
+},
+
+{
+section:"English Language",
+q:"Choose the correct word: The medicine had an immediate ___ on the patient.",
+options:["affect","effect","effact","affecting"],
+answer:1,
+solution:"'Effect' is the noun meaning result or consequence."
+},
+
+{
+section:"English Language",
+q:"Choose the correct form: By next month, she ___ her course.",
+options:[
+"completes",
+"completed",
+"will have completed",
+"has completed"
+],
+answer:2,
+solution:"An action completed before a future point uses future perfect: 'will have completed'."
+},
+
+{
+section:"English Language",
+q:"Choose the correctly spelt word.",
+options:["Conscience","Concience","Conscince","Conshience"],
+answer:0,
+solution:"The correct spelling is 'Conscience'."
+},
+
+{
+section:"English Language",
+q:"The workers completed the project ___ schedule.",
+options:["ahead of","inside","between","under"],
+answer:0,
+solution:"The standard expression is 'ahead of schedule'."
+},
+
+{
+section:"English Language",
+q:"Choose the word nearest in meaning to 'Transparent'.",
+options:["Opaque","Clear","Dark","Secret"],
+answer:1,
+solution:"Transparent means clear or allowing light to pass through."
+},
+
+{
+section:"English Language",
+q:"Choose the correct sentence.",
+options:[
+"Hardly had I reached the station when the train arrived.",
+"Hardly I had reached the station when the train arrived.",
+"Hardly had I reached the station than the train arrived.",
+"Hardly I reached the station when the train arrived."
+],
+answer:0,
+solution:"The correct structure is 'Hardly had...when...'."
+},
+
+/* =========================================================
+   NUMERICAL ABILITY — 31 TO 65
+========================================================= */
+
+{
+section:"Numerical Ability",
+q:"Simplify: 48 ÷ 6 × 5 + 7 = ?",
+options:["42","45","47","50"],
+answer:2,
+solution:"48 ÷ 6 = 8; 8 × 5 = 40; 40 + 7 = 47."
+},
+
+{
+section:"Numerical Ability",
+q:"Find 35% of 240.",
+options:["72","78","84","96"],
+answer:2,
+solution:"35% of 240 = 35/100 × 240 = 84."
+},
+
+{
+section:"Numerical Ability",
+q:"What is the average of 18, 24, 30, 36 and 42?",
+options:["28","30","32","34"],
+answer:1,
+solution:"Sum = 150. Average = 150 ÷ 5 = 30."
+},
+
+{
+section:"Numerical Ability",
+q:"A number is increased by 20% and becomes 360. Find the original number.",
+options:["280","300","320","340"],
+answer:1,
+solution:"120% of the original = 360. Original = 360 × 100/120 = 300."
+},
+
+{
+section:"Numerical Ability",
+q:"The ratio of boys to girls in a class is 5:3. If there are 40 boys, how many girls are there?",
+options:["20","24","28","32"],
+answer:1,
+solution:"5 parts = 40, so 1 part = 8. Girls = 3 × 8 = 24."
+},
+
+{
+section:"Numerical Ability",
+q:"A shopkeeper buys an article for ₹800 and sells it for ₹920. Find the profit percentage.",
+options:["12%","15%","18%","20%"],
+answer:1,
+solution:"Profit = 920 − 800 = 120. Profit% = 120/800 × 100 = 15%."
+},
+
+{
+section:"Numerical Ability",
+q:"A shirt marked at ₹1500 is sold at a discount of 12%. Find the selling price.",
+options:["₹1280","₹1300","₹1320","₹1350"],
+answer:2,
+solution:"Discount = 12% of 1500 = 180. Selling price = 1500 − 180 = ₹1320."
+},
+
+{
+section:"Numerical Ability",
+q:"Find the simple interest on ₹5000 at 8% per annum for 3 years.",
+options:["₹1000","₹1100","₹1200","₹1300"],
+answer:2,
+solution:"SI = PRT/100 = 5000 × 8 × 3/100 = ₹1200."
+},
+
+{
+section:"Numerical Ability",
+q:"A sum of ₹4000 amounts to ₹4480 in 2 years at simple interest. Find the rate.",
+options:["5%","6%","7%","8%"],
+answer:1,
+solution:"SI = 4480 − 4000 = 480. Rate = 480 × 100/(4000 × 2) = 6%."
+},
+
+{
+section:"Numerical Ability",
+q:"A can complete a work in 12 days and B can complete it in 18 days. In how many days can they complete it together?",
+options:["6 days","7.2 days","8 days","9 days"],
+answer:1,
+solution:"Combined work = 1/12 + 1/18 = 5/36. Time = 36/5 = 7.2 days."
+},
+
+{
+section:"Numerical Ability",
+q:"A pipe fills a tank in 10 hours. What fraction of the tank will it fill in 4 hours?",
+options:["1/5","2/5","3/5","4/5"],
+answer:1,
+solution:"In 1 hour it fills 1/10. In 4 hours it fills 4/10 = 2/5."
+},
+
+{
+section:"Numerical Ability",
+q:"A train travels 360 km in 6 hours. What is its speed?",
+options:["50 km/h","55 km/h","60 km/h","65 km/h"],
+answer:2,
+solution:"Speed = Distance/Time = 360/6 = 60 km/h."
+},
+
+{
+section:"Numerical Ability",
+q:"A man travels 150 km at 50 km/h. How much time does he take?",
+options:["2 hours","2.5 hours","3 hours","3.5 hours"],
+answer:2,
+solution:"Time = 150/50 = 3 hours."
+},
+
+{
+section:"Numerical Ability",
+q:"The HCF of 48 and 72 is:",
+options:["12","18","24","36"],
+answer:2,
+solution:"The highest common factor of 48 and 72 is 24."
+},
+
+{
+section:"Numerical Ability",
+q:"The LCM of 15 and 24 is:",
+options:["60","90","120","180"],
+answer:2,
+solution:"15 = 3×5 and 24 = 2³×3. LCM = 2³×3×5 = 120."
+},
+
+{
+section:"Numerical Ability",
+q:"Find the next number: 5, 11, 23, 47, 95, ?",
+options:["181","189","191","193"],
+answer:2,
+solution:"Each number is multiplied by 2 and 1 is added. 95×2+1 = 191."
+},
+
+{
+section:"Numerical Ability",
+q:"Find the missing number: 81, 72, 63, 54, ?",
+options:["42","45","46","48"],
+answer:1,
+solution:"The series decreases by 9 each time. 54 − 9 = 45."
+},
+
+{
+section:"Numerical Ability",
+q:"Solve: x² − 9x + 20 = 0.",
+options:[
+"x = 2, 10",
+"x = 4, 5",
+"x = 3, 7",
+"x = 1, 20"
+],
+answer:1,
+solution:"x² − 9x + 20 = (x−4)(x−5). Therefore x = 4 or 5."
+},
+
+{
+section:"Numerical Ability",
+q:"Solve: x² − 13x + 42 = 0.",
+options:[
+"x = 5, 8",
+"x = 6, 7",
+"x = 4, 9",
+"x = 3, 14"
+],
+answer:1,
+solution:"x² − 13x + 42 = (x−6)(x−7). Therefore x = 6 or 7."
+},
+
+{
+section:"Numerical Ability",
+q:"The sum of two numbers is 96 and their difference is 24. Find the larger number.",
+options:["54","60","66","72"],
+answer:1,
+solution:"Larger number = (96 + 24)/2 = 60."
+},
+
+{
+section:"Numerical Ability",
+q:"A number is 25% more than 160. Find the number.",
+options:["180","190","200","210"],
+answer:2,
+solution:"25% of 160 = 40. Therefore number = 160 + 40 = 200."
+},
+
+{
+section:"Numerical Ability",
+q:"A person spends 70% of his income and saves ₹900. Find his income.",
+options:["₹2700","₹3000","₹3200","₹3500"],
+answer:1,
+solution:"Saving = 30% of income. Income = 900/0.30 = ₹3000."
+},
+
+{
+section:"Numerical Ability",
+q:"The cost price of an article is ₹1200. At what price should it be sold to gain 20%?",
+options:["₹1380","₹1400","₹1440","₹1500"],
+answer:2,
+solution:"Selling price = 120% of 1200 = ₹1440."
+},
+
+{
+section:"Numerical Ability",
+q:"A sum becomes ₹2420 in 2 years at 10% simple interest. Find the principal.",
+options:["₹1900","₹2000","₹2100","₹2200"],
+answer:1,
+solution:"Amount = P(1 + RT/100) = P(1.20). Therefore P = 2420/1.20 = ₹2000."
+},
+
+{
+section:"Numerical Ability",
+q:"The average age of 6 students is 14 years. If a teacher joins them, the average becomes 18 years. Find the teacher's age.",
+options:["38","40","42","44"],
+answer:2,
+solution:"Six students total age = 84. Seven persons total age = 126. Teacher's age = 42."
+},
+
+{
+section:"Numerical Ability",
+q:"A boat covers 36 km downstream in 3 hours. Find its downstream speed.",
+options:["10 km/h","12 km/h","14 km/h","16 km/h"],
+answer:1,
+solution:"Speed = 36/3 = 12 km/h."
+},
+
+{
+section:"Numerical Ability",
+q:"If 8 workers complete a work in 15 days, how many days will 12 workers take, assuming equal efficiency?",
+options:["8 days","10 days","12 days","14 days"],
+answer:1,
+solution:"Workers × days = constant. 8×15 = 12×x, so x = 10 days."
+},
+
+{
+section:"Numerical Ability",
+q:"A rectangular field has length 18 m and breadth 12 m. Find its area.",
+options:["180 m²","196 m²","216 m²","240 m²"],
+answer:2,
+solution:"Area = length × breadth = 18 × 12 = 216 m²."
+},
+
+{
+section:"Numerical Ability",
+q:"The perimeter of a square is 64 cm. Find its area.",
+options:["196 cm²","225 cm²","256 cm²","289 cm²"],
+answer:2,
+solution:"Side = 64/4 = 16 cm. Area = 16² = 256 cm²."
+},
+
+{
+section:"Numerical Ability",
+q:"A sum of ₹6000 is divided between A and B in the ratio 2:3. Find B's share.",
+options:["₹2400","₹3000","₹3600","₹4000"],
+answer:2,
+solution:"Total parts = 5. B's share = 3/5 × 6000 = ₹3600."
+},
+
+{
+section:"Numerical Ability",
+q:"A number when divided by 7 leaves remainder 3. What remainder will its double leave when divided by 7?",
+options:["1","3","5","6"],
+answer:2,
+solution:"Number = 7k+3. Double = 14k+6, so remainder = 6."
+},
+
+{
+section:"Numerical Ability",
+q:"Find the value of 3/5 of 250 + 20.",
+options:["150","160","170","180"],
+answer:2,
+solution:"3/5 × 250 = 150. Adding 20 gives 170."
+},
+
+{
+section:"Numerical Ability",
+q:"A class has 45 students, of whom 60% are boys. How many girls are there?",
+options:["16","18","20","27"],
+answer:1,
+solution:"Boys = 60% of 45 = 27. Girls = 45 − 27 = 18."
+},
+
+{
+section:"Numerical Ability",
+q:"The price of a commodity rises from ₹250 to ₹300. Find the percentage increase.",
+options:["15%","18%","20%","25%"],
+answer:2,
+solution:"Increase = 50. Percentage increase = 50/250 × 100 = 20%."
+},
+
+{
+section:"Numerical Ability",
+q:"If 4x + 7 = 31, find x.",
+options:["5","6","7","8"],
+answer:1,
+solution:"4x = 24, so x = 6."
+},
+
+/* =========================================================
+   REASONING ABILITY — 66 TO 100
+========================================================= */
+
+{
+section:"Reasoning Ability",
+q:"If PEN is coded as QFO, how is BOX coded?",
+options:["CPY","CPZ","CQY","BPY"],
+answer:0,
+solution:"Each letter is moved one step forward: B→C, O→P, X→Y. Hence CPY."
+},
+
+{
+section:"Reasoning Ability",
+q:"Find the next number: 4, 9, 19, 39, 79, ?",
+options:["157","158","159","160"],
+answer:2,
+solution:"Each term is multiplied by 2 and 1 is added. 79×2+1 = 159."
+},
+
+{
+section:"Reasoning Ability",
+q:"Choose the odd one out.",
+options:["Mercury","Venus","Earth","Moon"],
+answer:3,
+solution:"Mercury, Venus and Earth are planets. Moon is a natural satellite."
+},
+
+{
+section:"Reasoning Ability",
+q:"If all pens are books and all books are papers, which conclusion follows?",
+options:[
+"All pens are papers.",
+"Some papers are not books.",
+"No pen is paper.",
+"All papers are pens."
+],
+answer:0,
+solution:"If all pens are books and all books are papers, then all pens must be papers."
+},
+
+{
+section:"Reasoning Ability",
+q:"Pointing to a man, Ravi said, 'He is the son of my mother's only daughter.' How is the man related to Ravi?",
+options:["Brother","Son","Nephew","Father"],
+answer:2,
+solution:"Ravi's mother's only daughter is Ravi's sister. Her son is Ravi's nephew."
+},
+
+{
+section:"Reasoning Ability",
+q:"A person walks 8 m north, then turns right and walks 6 m. In which direction is he from the starting point?",
+options:["North-West","North-East","South-East","South-West"],
+answer:1,
+solution:"After moving north and then east, the person is in the North-East direction."
+},
+
+{
+section:"Reasoning Ability",
+q:"In a row of 30 students, Amit is 12th from the left. What is his position from the right?",
+options:["17th","18th","19th","20th"],
+answer:2,
+solution:"Position from right = 30 − 12 + 1 = 19th."
+},
+
+{
+section:"Reasoning Ability",
+q:"If the letters of the word 'MARKET' are arranged alphabetically, which letter will be third?",
+options:["A","E","K","M"],
+answer:2,
+solution:"Alphabetical order: A, E, K, M, R, T. The third letter is K."
+},
+
+{
+section:"Reasoning Ability",
+q:"Find the missing term: AB, DE, GH, JK, ?",
+options:["LM","MN","NO","OP"],
+answer:1,
+solution:"The pairs move forward by three letters: AB, DE, GH, JK, MN."
+},
+
+{
+section:"Reasoning Ability",
+q:"If '+' means '×' and '−' means '+', then 8 + 3 − 4 = ?",
+options:["24","28","32","36"],
+answer:1,
+solution:"Replace symbols: 8 × 3 + 4 = 28."
+},
+
+{
+section:"Reasoning Ability",
+q:"Which number does not belong to the group?",
+options:["16","25","36","48"],
+answer:3,
+solution:"16, 25 and 36 are perfect squares. 48 is not."
+},
+
+{
+section:"Reasoning Ability",
+q:"Find the next letter: C, F, J, O, U, ?",
+options:["A","B","C","D"],
+answer:1,
+solution:"The gaps are +3, +4, +5, +6, so next gap is +7. U + 7 = B."
+},
+
+{
+section:"Reasoning Ability",
+q:"If 'TABLE' is coded as 'UBCMF', how is 'CHAIR' coded?",
+options:["DIBJS","DIBIR","DHBJS","CIBJS"],
+answer:0,
+solution:"Each letter is moved one step forward. C→D, H→I, A→B, I→J, R→S."
+},
+
+{
+section:"Reasoning Ability",
+q:"Statements: Some cats are dogs. All dogs are animals. Which conclusion follows?",
+options:[
+"Some cats are animals.",
+"All cats are animals.",
+"No cats are animals.",
+"Some animals are not dogs."
+],
+answer:0,
+solution:"Some cats are dogs and all dogs are animals, therefore some cats are animals."
+},
+
+{
+section:"Reasoning Ability",
+q:"A is taller than B. B is taller than C. D is shorter than C. Who is the tallest?",
+options:["A","B","C","D"],
+answer:0,
+solution:"A > B > C > D. Therefore A is the tallest."
+},
+
+{
+section:"Reasoning Ability",
+q:"Find the missing number: 6, 13, 27, 55, ?",
+options:["109","110","111","112"],
+answer:2,
+solution:"Each term is multiplied by 2 and 1 is added. 55×2+1 = 111."
+},
+
+{
+section:"Reasoning Ability",
+q:"If today is Wednesday, what day will it be after 45 days?",
+options:["Friday","Saturday","Sunday","Monday"],
+answer:1,
+solution:"45 ÷ 7 leaves remainder 3. Three days after Wednesday is Saturday."
+},
+
+{
+section:"Reasoning Ability",
+q:"Choose the pair that is different from the others.",
+options:["7 : 49","8 : 64","9 : 81","10 : 90"],
+answer:3,
+solution:"In the first three pairs, the second number is the square of the first. 10² = 100, not 90."
+},
+
+{
+section:"Reasoning Ability",
+q:"How many meaningful English words can be made using the letters T, A and P, using each once?",
+options:["1","2","3","4"],
+answer:2,
+solution:"The meaningful words are TAP and PAT. Therefore there are 2 meaningful words."
+},
+
+{
+section:"Reasoning Ability",
+q:"If all flowers are plants and some plants are trees, which statement is definitely true?",
+options:[
+"All flowers are plants.",
+"All trees are flowers.",
+"Some flowers are trees.",
+"No plants are flowers."
+],
+answer:0,
+solution:"The first statement directly establishes that all flowers are plants."
+},
+
+{
+section:"Reasoning Ability",
+q:"Find the next number: 10, 20, 41, 83, 167, ?",
+options:["333","334","335","336"],
+answer:2,
+solution:"×2+0, ×2+1, ×2+1, ×2+1 gives 167×2+1 = 335."
+},
+
+{
+section:"Reasoning Ability",
+q:"A person is facing east. He turns left, then left again. Which direction is he facing?",
+options:["North","South","East","West"],
+answer:3,
+solution:"Facing east, one left turn gives north; another left turn gives west."
+},
+
+{
+section:"Reasoning Ability",
+q:"In a certain code, 'RING' is written as '18-9-14-7'. How is 'BANK' written?",
+options:[
+"2-1-14-11",
+"2-1-13-11",
+"3-1-14-11",
+"2-2-14-11"
+],
+answer:0,
+solution:"The code uses alphabetical positions: B=2, A=1, N=14, K=11."
+},
+
+{
+section:"Reasoning Ability",
+q:"Which word cannot be formed from the letters of 'DEPARTMENT'?",
+options:["PART","TEAM","MEAT","TREAT"],
+answer:3,
+solution:"'TREAT' requires two T's. DEPARTMENT contains only one T, so it cannot be formed."
+},
+
+{
+section:"Reasoning Ability",
+q:"If 1 January is a Monday, what day will 15 January be?",
+options:["Monday","Tuesday","Wednesday","Sunday"],
+answer:0,
+solution:"The difference is 14 days, exactly two weeks. Therefore it will also be Monday."
+},
+
+{
+section:"Reasoning Ability",
+q:"Find the next pair: AZ, CX, EV, GT, ?",
+options:["IR","HS","IS","JR"],
+answer:0,
+solution:"First letters increase by 2: A,C,E,G,I. Second letters decrease by 2: Z,X,V,T,R. Hence IR."
+},
+
+{
+section:"Reasoning Ability",
+q:"If 'MANGO' is arranged in alphabetical order, which letter is fourth?",
+options:["G","M","N","O"],
+answer:2,
+solution:"Alphabetical order is A, G, M, N, O. The fourth letter is N."
+},
+
+{
+section:"Reasoning Ability",
+q:"A, B, C, D and E are standing in a line. B is to the right of A but left of C. D is to the right of C. E is to the left of A. Who is in the middle?",
+options:["A","B","C","D"],
+answer:1,
+solution:"The order is E-A-B-C-D. Therefore B is in the middle."
+},
+
+{
+section:"Reasoning Ability",
+q:"Statements: No book is a pen. Some pens are pencils. Which conclusion definitely follows?",
+options:[
+"Some pencils are not books.",
+"All pencils are books.",
+"No pencil is a pen.",
+"Some books are pencils."
+],
+answer:0,
+solution:"Some pens are pencils, and no book is a pen. Therefore those pencils that are pens cannot be books, so some pencils are not books."
+},
+
+{
+section:"Reasoning Ability",
+q:"Find the odd number.",
+options:["121","144","169","195"],
+answer:3,
+solution:"121=11², 144=12² and 169=13². 195 is not a perfect square."
+},
+
+{
+section:"Reasoning Ability",
+q:"If SOUTH-EAST is written as SE, then NORTH-WEST will be written as:",
+options:["NW","NE","SW","WN"],
+answer:0,
+solution:"The standard abbreviation for North-West is NW."
+},
+
+{
+section:"Reasoning Ability",
+q:"A clock shows 3:00. What is the angle between the hour hand and minute hand?",
+options:["60°","90°","120°","180°"],
+answer:1,
+solution:"At 3:00, the hour hand is at 3 and the minute hand at 12, giving an angle of 90°."
+},
+
+{
+section:"Reasoning Ability",
+q:"If the positions of the first and second letters of the word 'HOUSE' are interchanged, and the third and fourth are interchanged, what will be the new word?",
+options:["OHUSE","HOSUE","OHSEU","HOESU"],
+answer:1,
+solution:"HOUSE → interchange H,O gives OHUSE; interchange U,S gives OHSUE. Therefore the resulting word is OHSUE."
+},
+
+{
+section:"Reasoning Ability",
+q:"Find the missing number: 2, 5, 10, 17, 26, ?",
+options:["35","36","37","38"],
+answer:2,
+solution:"The differences are 3,5,7,9, so the next difference is 11. 26+11 = 37."
+},
+
+{
+section:"Reasoning Ability",
+q:"If all squares are rectangles and no rectangle is a circle, which conclusion follows?",
+options:[
+"No square is a circle.",
+"Some circles are squares.",
+"All circles are rectangles.",
+"Some squares are circles."
+],
+answer:0,
+solution:"Since every square is a rectangle and no rectangle is a circle, no square can be a circle."
+}
+
+];
+
+/* =========================================================
+   VALIDATION
+========================================================= */
+
+if(questions.length !== 100){
+    alert("Question count error: " + questions.length);
+}
+
+const sections = [
+    {
+        name:"English Language",
+        start:0,
+        end:29
+    },
+    {
+        name:"Numerical Ability",
+        start:30,
+        end:64
+    },
+    {
+        name:"Reasoning Ability",
+        start:65,
+        end:99
+    }
+];
+
+let currentQuestion = 0;
+let userAnswers = new Array(questions.length).fill(null);
+
+let currentSection = 0;
+
+let timeLeft = 20 * 60;
+
+let timerInterval;
+
+
+/* =========================================================
+   LOAD QUESTION
+========================================================= */
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("sectionName").innerText =
+        q.section;
+
+    document.getElementById("questionNumber").innerText =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    document.getElementById("questionText").innerText =
+        q.q;
+
+    const optionsDiv =
+        document.getElementById("options");
+
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        const div = document.createElement("div");
+
+        div.className = "option";
+
+        if(userAnswers[currentQuestion] === index){
+            div.classList.add("selected");
+        }
+
+        div.innerText =
+            String.fromCharCode(65 + index) + ". " + option;
+
+        div.onclick = function(){
+            selectOption(index);
+        };
+
+        optionsDiv.appendChild(div);
+
+    });
+
+    updateSectionTabs();
+
+    updateButtons();
+
+    updatePalette();
+
+}
+
+
+/* =========================================================
+   SELECT OPTION
+========================================================= */
+
+function selectOption(index){
+
+    userAnswers[currentQuestion] = index;
+
+    loadQuestion();
+
+}
+
+
+/* =========================================================
+   CLEAR RESPONSE
+========================================================= */
+
+function clearResponse(){
+
+    userAnswers[currentQuestion] = null;
+
+    loadQuestion();
+
+}
+
+
+/* =========================================================
+   NEXT QUESTION
+========================================================= */
+
+function nextQuestion(){
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+
+        const newSection =
+            getSection(currentQuestion);
+
+        if(newSection !== currentSection){
+
+            currentSection = newSection;
+
+            resetTimer();
+
+        }
+
+        loadQuestion();
+
+    }
+
+}
+
+
+/* =========================================================
+   PREVIOUS QUESTION
+========================================================= */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        const newSection =
+            getSection(currentQuestion);
+
+        if(newSection !== currentSection){
+
+            currentSection = newSection;
+
+            resetTimer();
+
+        }
+
+        loadQuestion();
+
+    }
+
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+function getSection(index){
+
+    if(index <= 29){
+        return 0;
+    }
+
+    if(index <= 64){
+        return 1;
+    }
+
+    return 2;
+
+}
+
+
+function jumpSection(sectionIndex){
+
+    currentSection = sectionIndex;
+
+    currentQuestion =
+        sections[sectionIndex].start;
+
+    resetTimer();
+
+    loadQuestion();
+
+}
+
+
+/* =========================================================
+   SECTION TABS
+========================================================= */
+
+function updateSectionTabs(){
+
+    for(let i=0;i<3;i++){
+
+        document
+        .getElementById("tab"+i)
+        .classList
+        .toggle("active",i===currentSection);
+
+    }
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+function updateButtons(){
+
+    document.getElementById("nextBtn").style.display =
+        currentQuestion === questions.length - 1
+        ? "none"
+        : "inline-block";
+
+    document.getElementById("submitBtn").style.display =
+        currentQuestion === questions.length - 1
+        ? "inline-block"
+        : "none";
+
+}
+
+
+/* =========================================================
+   PALETTE
+========================================================= */
+
+function updatePalette(){
+
+    const grid =
+        document.getElementById("questionGrid");
+
+    grid.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const btn =
+            document.createElement("button");
+
+        btn.className = "qbtn";
+
+        btn.innerText = index + 1;
+
+        if(userAnswers[index] !== null){
+            btn.classList.add("attempted");
+        }
+
+        if(index === currentQuestion){
+            btn.classList.add("current");
+        }
+
+        btn.onclick = function(){
+
+            currentQuestion = index;
+
+            currentSection =
+                getSection(index);
+
+            loadQuestion();
+
+        };
+
+        grid.appendChild(btn);
+
+    });
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function resetTimer(){
+
+    clearInterval(timerInterval);
+
+    timeLeft = 20 * 60;
+
+    startTimer();
+
+}
+
+
+function startTimer(){
+
+    clearInterval(timerInterval);
+
+    updateTimerDisplay();
+
+    timerInterval =
+    setInterval(function(){
+
+        timeLeft--;
+
+        updateTimerDisplay();
+
+        if(timeLeft <= 0){
+
+            clearInterval(timerInterval);
+
+            alert(
+                "20 minutes for " +
+                questions[currentQuestion].section +
+                " are over. Moving to the next section."
+            );
+
+            moveToNextSection();
+
+        }
+
+    },1000);
+
+}
+
+
+function updateTimerDisplay(){
+
+    const minutes =
+        Math.floor(timeLeft / 60);
+
+    const seconds =
+        timeLeft % 60;
+
+    document.getElementById("timer").innerText =
+        String(minutes).padStart(2,"0")
+        + ":"
+        + String(seconds).padStart(2,"0");
+
+}
+
+
+function moveToNextSection(){
+
+    if(currentSection < 2){
+
+        currentSection++;
+
+        currentQuestion =
+            sections[currentSection].start;
+
+        timeLeft = 20 * 60;
+
+        loadQuestion();
+
+        startTimer();
+
+    }
+    else{
+
+        submitTest();
+
+    }
+
+}
+
+
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
+function submitTest(){
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+    let wrong = 0;
+    let unattempted = 0;
+
+    questions.forEach((q,index)=>{
+
+        if(userAnswers[index] === null){
+
+            unattempted++;
+
+        }
+        else if(userAnswers[index] === q.answer){
+
+            correct++;
+
+        }
+        else{
+
+            wrong++;
+
+        }
+
+    });
+
+    const score =
+        correct -
+        (wrong * 0.25);
+
+    const percentage =
+        Math.max(0,(score / 100) * 100);
+
+    document.getElementById("testArea").style.display =
+        "none";
+
+    document.querySelector(".section-tabs").style.display =
+        "none";
+
+    document.getElementById("result").style.display =
+        "block";
+
+    document.getElementById("finalScore").innerText =
+        score.toFixed(2) + " / 100";
+
+    document.getElementById("correctCount").innerText =
+        correct;
+
+    document.getElementById("wrongCount").innerText =
+        wrong;
+
+    document.getElementById("unattemptedCount").innerText =
+        unattempted;
+
+    document.getElementById("percentage").innerText =
+        percentage.toFixed(2) + "%";
+
+    document.getElementById("resultMessage").innerText =
+        "Correct: +1 | Wrong: −0.25 | Unattempted: 0";
+
+    showSolutions();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   SOLUTIONS
+========================================================= */
+
+function showSolutions(){
+
+    const container =
+        document.getElementById("solutions");
+
+    container.innerHTML = "";
+
+    questions.forEach((q,index)=>{
+
+        const div =
+            document.createElement("div");
+
+        div.className = "solution";
+
+        const userAnswer =
+            userAnswers[index] === null
+            ? "Not Attempted"
+            : q.options[userAnswers[index]];
+
+        const correctAnswer =
+            q.options[q.answer];
+
+        div.innerHTML =
+
+        "<h4>Q" + (index + 1) +
+        ". " + q.q + "</h4>" +
+
+        "<p><b>Your Answer:</b> " +
+        userAnswer +
+        "</p>" +
+
+        "<p class='correct-answer'>" +
+        "Correct Answer: " +
+        String.fromCharCode(65 + q.answer) +
+        ". " +
+        correctAnswer +
+        "</p>" +
+
+        "<p><b>Explanation:</b> " +
+        q.solution +
+        "</p>";
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================================================
+   START TEST
+========================================================= */
+
+loadQuestion();
+
+startTimer();
+
+</script>
+
+</body>
+</html>
