@@ -1,1 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES | RRB ALP CBT 1 Mock Test - Test 3</title>
+<meta name="description" content="AIMERS CLASSES RRB ALP CBT 1 Mock Test - Test 3. 75 Questions, 60 Minutes, 1/3 Negative Marking.">
 
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f6fa;color:#102a43;line-height:1.5}
+button{font-family:inherit}
+.header{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#102a43,#1d4ed8);color:#fff;padding:12px 20px;display:grid;grid-template-columns:1fr 2fr 1fr;align-items:center;gap:15px;box-shadow:0 3px 12px rgba(0,0,0,.18)}
+.logo{font-size:22px;font-weight:900;letter-spacing:.7px}
+.exam-title{text-align:center;font-size:18px;font-weight:900}
+.timer-box{justify-self:end;background:#ffd43b;color:#111;padding:10px 16px;min-width:125px;border-radius:10px;text-align:center;font-size:20px;font-weight:900}
+
+.info-bar{width:94%;max-width:1200px;margin:15px auto 0;background:#fff;border-radius:12px;padding:12px;display:flex;gap:8px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.info{background:#eef4ff;border:1px solid #d7e4ff;padding:7px 11px;border-radius:8px;font-size:13px;font-weight:800}
+
+.section-bar{width:94%;max-width:1200px;margin:12px auto;background:#102a43;color:#fff;padding:13px 16px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.section-name{font-size:17px;font-weight:900}
+.section-meta{font-size:13px;opacity:.95}
+
+.container{width:94%;max-width:1200px;margin:0 auto 40px}
+
+.warning{background:#fff3cd;border-left:5px solid #f59e0b;padding:12px 14px;border-radius:8px;margin-bottom:14px;font-size:14px}
+
+.palette-card{background:#fff;border-radius:12px;padding:15px;box-shadow:0 2px 9px rgba(0,0,0,.07);margin-bottom:15px}
+.palette-title{font-weight:900;margin-bottom:10px}
+.legend{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:10px;font-size:12px}
+.legend-item{display:flex;align-items:center;gap:5px}
+.dot{width:14px;height:14px;border-radius:4px;display:inline-block}
+
+.palette{display:grid;grid-template-columns:repeat(15,1fr);gap:6px}
+.palette button{border:0;padding:7px 2px;border-radius:6px;background:#e5e7eb;color:#111;font-weight:900;cursor:pointer}
+.palette button.current{background:#1d4ed8;color:#fff}
+.palette button.attempted{background:#22c55e;color:#fff}
+.palette button.review{background:#f59e0b;color:#111}
+
+.question-card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.question-number{font-size:14px;color:#1d4ed8;font-weight:900;margin-bottom:8px}
+.question{font-size:18px;line-height:1.6;font-weight:800;margin-bottom:18px}
+.options{display:grid;gap:10px}
+.option{border:1px solid #d7dde5;border-radius:9px;padding:12px;cursor:pointer;background:#fff;transition:.15s}
+.option:hover{border-color:#1d4ed8;background:#f7faff}
+.option.selected{border-color:#1d4ed8;background:#eaf1ff;font-weight:800}
+
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.btn{border:0;padding:11px 15px;border-radius:8px;font-weight:900;cursor:pointer}
+.prev{background:#6b7280;color:#fff}
+.next{background:#1d4ed8;color:#fff}
+.review-btn{background:#f59e0b;color:#111}
+.submit{background:#dc2626;color:#fff}
+
+.result{display:none;background:#fff;padding:25px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.result h2{margin-bottom:10px}
+.score{font-size:36px;font-weight:900;color:#1d4ed8;margin:10px 0}
+.stats{font-size:15px;font-weight:700;margin-bottom:15px}
+
+.breakdown{width:100%;border-collapse:collapse;margin-top:15px}
+.breakdown th,.breakdown td{border:1px solid #dbe2ea;padding:9px;text-align:left;font-size:14px}
+.breakdown th{background:#eef4ff}
+
+.solution-card{margin-top:14px;padding:15px;border:1px solid #dbe2ea;border-radius:10px;background:#fafcff}
+.solution-card.correct{border-left:5px solid #22c55e}
+.solution-card.wrong{border-left:5px solid #dc2626}
+.solution-card.unattempted{border-left:5px solid #f59e0b}
+
+.solution-title{font-weight:900;margin-bottom:7px}
+.answer-line{margin-top:5px}
+.explanation{margin-top:7px;color:#52606d;font-size:14px}
+
+.small{color:#667085;font-size:12px;margin-top:15px}
+.hidden{display:none!important}
+
+.footer{background:#0f172a;color:#fff;text-align:center;padding:25px 15px;margin-top:30px}
+.footer h3{color:#ffd43b;margin-bottom:6px}
+.footer p{color:#cbd5e1;font-size:14px}
+
+@media(max-width:800px){
+.header{grid-template-columns:1fr;text-align:center;position:relative}
+.timer-box{justify-self:center}
+.palette{grid-template-columns:repeat(10,1fr)}
+.section-bar{flex-direction:column;align-items:flex-start}
+}
+
+@media(max-width:600px){
+.palette{grid-template-columns:repeat(8,1fr)}
+.question{font-size:16px}
+.question-card{padding:18px}
+.info-bar,.section-bar,.container{width:96%}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+AIMERS CLASSES
+</div>
+
+<div class="exam-title">
+RRB ALP CBT 1 — FULL MOCK TEST | TEST 3
+</div>
+
+<div class="timer-box" id="timer">
+60:00
+</div>
+
+</header>
+
+
+<div class="info-bar">
+
+<div class="info">Mathematics: 20 Q</div>
+
+<div class="info">Reasoning: 25 Q</div>
+
+<div class="info">General Science: 20 Q</div>
+
+<div class="info">GA & Current Affairs: 10 Q</div>
+
+<div class="info">Total: 75 Questions</div>
+
+<div class="info">Total Marks: 75</div>
+
+<div class="info">Time: 60 Minutes</div>
+
+<div class="info">Negative: −1/3</div>
+
+</div>
+
+
+<div class="section-bar">
+
+<div>
+
+<div class="section-name" id="sectionName">
+Mathematics
+</div>
+
+<div class="section-meta" id="sectionMeta">
+20 Questions
+</div>
+
+</div>
+
+<div id="progressText">
+Question 1 of 20
+</div>
+
+</div>
+
+
+<div class="container" id="examContainer">
+
+<div class="warning">
+
+<b>RRB ALP CBT-1 Practice Test:</b>
+
+75 objective questions. Each correct answer carries 1 mark and 1/3 mark is deducted for each wrong answer.
+
+The official CEN does not prescribe a fixed subject-wise split, so this mock uses a practice split of 20 Maths + 25 Reasoning + 20 General Science + 10 GA.
+
+</div>
+
+
+<div class="palette-card">
+
+<div class="palette-title">
+Question Palette
+</div>
+
+<div class="legend">
+
+<div class="legend-item">
+<span class="dot" style="background:#e5e7eb"></span>
+Not Attempted
+</div>
+
+<div class="legend-item">
+<span class="dot" style="background:#22c55e"></span>
+Attempted
+</div>
+
+<div class="legend-item">
+<span class="dot" style="background:#1d4ed8"></span>
+Current
+</div>
+
+<div class="legend-item">
+<span class="dot" style="background:#f59e0b"></span>
+Review
+</div>
+
+</div>
+
+<div class="palette" id="palette"></div>
+
+</div>
+
+
+<div class="question-card">
+
+<div class="question-number" id="questionNumber"></div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+<div class="controls">
+
+<button class="btn prev"
+onclick="previousQuestion()">
+Previous
+</button>
+
+<button class="btn review-btn"
+onclick="markReview()">
+Mark for Review
+</button>
+
+<button class="btn next"
+onclick="nextQuestion()"
+id="nextBtn">
+Save & Next
+</button>
+
+<button class="btn submit"
+onclick="confirmSubmit()">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="container">
+
+<div class="result" id="result">
+
+<h2>
+RRB ALP CBT 1 — Test 3 Result
+</h2>
+
+<div class="score" id="finalScore"></div>
+
+<div class="stats" id="finalStats"></div>
+
+
+<table class="breakdown">
+
+<thead>
+
+<tr>
+
+<th>Subject</th>
+<th>Questions</th>
+<th>Correct</th>
+<th>Wrong</th>
+<th>Unattempted</th>
+<th>Score</th>
+
+</tr>
+
+</thead>
+
+<tbody id="breakdownBody"></tbody>
+
+</table>
+
+
+<div id="solutions"></div>
+
+
+<p class="small">
+
+Score formula: Correct × 1 − Wrong × 1/3.
+Unattempted questions carry 0 marks.
+
+</p>
+
+
+<button class="btn next"
+onclick="location.reload()">
+
+Restart Test
+
+</button>
+
+</div>
+
+</div>
+
+
+<footer class="footer">
+
+<h3>AIMERS CLASSES</h3>
+
+<p>
+Aim High • Achieve High
+</p>
+
+<p>
+RRB | SSC | Railway | Banking | Odisha Exams
+</p>
+
+<p style="margin-top:8px;">
+© 2026 AIMERS CLASSES. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+const sections = [
+
+{
+"title":"Mathematics",
+"short":"Mathematics",
+"data":[
+
+{
+"q":"Simplify: 48 ÷ 6 × 3 + 5.",
+"options":["24","29","35","41"],
+"answer":1,
+"explanation":"Apply division and multiplication from left to right: 48÷6=8, 8×3=24, then 24+5=29."
+},
+
+{
+"q":"If 5x − 7 = 38, the value of x is:",
+"options":["7","8","9","10"],
+"answer":2,
+"explanation":"5x=45, so x=9."
+},
+
+{
+"q":"The value of 2⁵ × 2³ is:",
+"options":["64","128","256","512"],
+"answer":2,
+"explanation":"For the same base, add the exponents: 2^(5+3)=2⁸=256."
+},
+
+{
+"q":"The decimal 0.375 is equal to:",
+"options":["1/4","3/8","5/8","7/8"],
+"answer":1,
+"explanation":"0.375 = 375/1000 = 3/8 after simplification."
+},
+
+{
+"q":"A sum of ₹2400 is divided in the ratio 5:7. The larger share is:",
+"options":["₹1000","₹1200","₹1400","₹1600"],
+"answer":2,
+"explanation":"Total parts=12; one part=200; larger share=7×200=₹1400."
+},
+
+{
+"q":"A cyclist covers 84 km in 7 hours. His average speed is:",
+"options":["10 km/h","12 km/h","14 km/h","16 km/h"],
+"answer":1,
+"explanation":"Speed=84/7=12 km/h."
+},
+
+{
+"q":"A can finish a job in 15 days and B can finish it in 10 days. Working together, they finish it in:",
+"options":["5 days","6 days","7 days","8 days"],
+"answer":1,
+"explanation":"Combined work rate=1/15+1/10=1/6, so time=6 days."
+},
+
+{
+"q":"A pipe fills a tank in 12 hours. What fraction of the tank is filled in 3 hours?",
+"options":["1/3","1/4","1/5","1/6"],
+"answer":1,
+"explanation":"In 3 hours, 3/12=1/4 of the tank is filled."
+},
+
+{
+"q":"The present ages of A and B are in the ratio 4:5. If their sum is 45 years, B's age is:",
+"options":["18 years","20 years","25 years","27 years"],
+"answer":2,
+"explanation":"Total parts=9; one part=5; B=5×5=25 years."
+},
+
+{
+"q":"The median of 4, 9, 12, 15 and 21 is:",
+"options":["9","12","15","21"],
+"answer":1,
+"explanation":"The middle value of the ordered five numbers is 12."
+},
+
+{
+"q":"The area of a circle of radius 14 cm, taking π=22/7, is:",
+"options":["616 cm²","628 cm²","644 cm²","672 cm²"],
+"answer":0,
+"explanation":"Area=πr²=22/7×196=616 cm²."
+},
+
+{
+"q":"The diagonal of a rectangle with sides 9 cm and 12 cm is:",
+"options":["13 cm","14 cm","15 cm","16 cm"],
+"answer":2,
+"explanation":"By Pythagoras, diagonal=√(9²+12²)=√225=15 cm."
+},
+
+{
+"q":"If tan θ = 3/4 for an acute angle θ, then sin θ is:",
+"options":["3/5","4/5","5/3","5/4"],
+"answer":0,
+"explanation":"A 3-4-5 right triangle gives sin θ=opposite/hypotenuse=3/5."
+},
+
+{
+"q":"A number is 20% more than 250. The number is:",
+"options":["280","290","300","320"],
+"answer":2,
+"explanation":"20% of 250 is 50; 250+50=300."
+},
+
+{
+"q":"A shopkeeper buys an item for ₹1250 and sells it for ₹1125. His loss percentage is:",
+"options":["8%","10%","12%","15%"],
+"answer":1,
+"explanation":"Loss=₹125; 125/1250×100=10%."
+},
+
+{
+"q":"The compound amount on ₹4000 at 5% per annum for 2 years, compounded annually, is:",
+"options":["₹4200","₹4410","₹4500","₹4600"],
+"answer":1,
+"explanation":"Amount=4000×1.05²=₹4410."
+},
+
+{
+"q":"The sum of the first 20 natural numbers is:",
+"options":["190","200","210","220"],
+"answer":2,
+"explanation":"n(n+1)/2=20×21/2=210."
+},
+
+{
+"q":"If 3x + 2y = 18 and x=4, then y is:",
+"options":["2","3","4","5"],
+"answer":1,
+"explanation":"12+2y=18, so y=3."
+},
+
+{
+"q":"The perimeter of a rectangle is 50 cm and its breadth is 10 cm. Its length is:",
+"options":["12 cm","15 cm","18 cm","20 cm"],
+"answer":1,
+"explanation":"2(l+10)=50, so l=15 cm."
+},
+
+{
+"q":"The probability of getting an even number on a fair die is:",
+"options":["1/6","1/3","1/2","2/3"],
+"answer":2,
+"explanation":"Even outcomes are 2,4,6: 3 out of 6, so probability=1/2."
+}
+
+]
+},
+
+{
+"title":"General Intelligence & Reasoning",
+"short":"Reasoning",
+"data":[
+
+{
+"q":"Find the next number: 7, 14, 28, 56, 112, ?",
+"options":["196","210","224","256"],
+"answer":2,
+"explanation":"Each term is multiplied by 2."
+},
+
+{
+"q":"Find the next number: 1, 5, 14, 30, 55, ?",
+"options":["81","85","91","96"],
+"answer":2,
+"explanation":"Differences are 4,9,16,25; next difference is 36, so 55+36=91."
+},
+
+{
+"q":"Find the next letter: D, H, M, S, Z, ?",
+"options":["F","G","H","I"],
+"answer":2,
+"explanation":"Increments are +4,+5,+6,+7,+8; Z + 8 wraps around to H."
+},
+
+{
+"q":"Identify the number that does not fit the group:",
+"options":["121","144","169","190"],
+"answer":3,
+"explanation":"121, 144 and 169 are perfect squares; 190 is not."
+},
+
+{
+"q":"Hand : Glove :: Foot :",
+"options":["Cap","Shoe","Belt","Shirt"],
+"answer":1,
+"explanation":"A glove is worn on the hand; a shoe is worn on the foot."
+},
+
+{
+"q":"If MANGO is coded as OCPIQ, then APPLE is coded as:",
+"options":["CRRNG","CQQNG","BQQMF","CRQNG"],
+"answer":0,
+"explanation":"Each letter is shifted two positions forward: A→C, P→R, P→R, L→N, E→G."
+},
+
+{
+"q":"P is the father of Q. Q is the mother of R. How is P related to R?",
+"options":["Father","Grandfather","Uncle","Brother"],
+"answer":1,
+"explanation":"P is Q's father and Q is R's mother, so P is R's grandfather."
+},
+
+{
+"q":"A man travels 8 km south, then 5 km east, then 8 km north. How far is he from the starting point?",
+"options":["3 km","5 km","8 km","13 km"],
+"answer":1,
+"explanation":"The north-south movements cancel; he is 5 km east of the start."
+},
+
+{
+"q":"In a row, Neha is 11th from the left and 17th from the right. Total people are:",
+"options":["26","27","28","29"],
+"answer":1,
+"explanation":"Total=11+17−1=27."
+},
+
+{
+"q":"If today is Friday, what day will it be after 100 days?",
+"options":["Saturday","Sunday","Monday","Tuesday"],
+"answer":1,
+"explanation":"100 mod 7=2; Friday+2=Sunday."
+},
+
+{
+"q":"At 9:00, the angle between the hour and minute hands is:",
+"options":["45°","90°","135°","180°"],
+"answer":1,
+"explanation":"At 9:00 the hands are perpendicular, giving 90°."
+},
+
+{
+"q":"Statements: All pens are tools. Some tools are blue. Which conclusion is definitely true?",
+"options":["All pens are blue","Some pens are blue","All pens are tools","No tools are pens"],
+"answer":2,
+"explanation":"The first statement directly establishes that all pens are tools."
+},
+
+{
+"q":"If A=1, B=2, ..., Z=26, the value of BAD is:",
+"options":["5","6","7","8"],
+"answer":2,
+"explanation":"B=2, A=1 and D=4, so the total is 7."
+},
+
+{
+"q":"Which number replaces the question mark? 4, 9, 19, 39, ?",
+"options":["69","79","81","89"],
+"answer":1,
+"explanation":"Each term is previous term×2+1: 39×2+1=79."
+},
+
+{
+"q":"If '×' means '+', '+' means '−', and '−' means '÷', then 18 × 6 + 4 equals:",
+"options":["20","24","28","36"],
+"answer":0,
+"explanation":"Replace symbols: 18+6−4 = 20."
+},
+
+{
+"q":"Which Venn relation best represents 'Doctors, Men, Women'?",
+"options":["Doctors are separate from both men and women","Doctors can overlap both Men and Women","All men are doctors","All women are doctors"],
+"answer":1,
+"explanation":"Doctors may be men or women, so the doctor set can overlap both groups."
+},
+
+{
+"q":"If the letters of TRAIN are rearranged alphabetically, the third letter is:",
+"options":["A","I","N","R"],
+"answer":2,
+"explanation":"Alphabetical order is A, I, N, R, T; the third letter is N."
+},
+
+{
+"q":"A is taller than B. C is shorter than B. D is taller than A. Who is tallest?",
+"options":["A","B","C","D"],
+"answer":3,
+"explanation":"D>A>B>C, so D is tallest."
+},
+
+{
+"q":"Find the missing term: AB, DE, GH, JK, ?",
+"options":["LM","MN","NO","OP"],
+"answer":1,
+"explanation":"Each pair moves three letters ahead: AB, DE, GH, JK, MN."
+},
+
+{
+"q":"A clock gains 2 minutes every hour. In 10 hours it gains:",
+"options":["10 minutes","15 minutes","20 minutes","25 minutes"],
+"answer":2,
+"explanation":"2×10=20 minutes."
+},
+
+{
+"q":"If SOUTH is written as HTUOS, then NORTH is written as:",
+"options":["HTRON","HTNOR","HRTON","NROHT"],
+"answer":0,
+"explanation":"The word is reversed."
+},
+
+{
+"q":"Which month has a different number of days from the other three?",
+"options":["January","April","July","December"],
+"answer":1,
+"explanation":"April has 30 days; January, July and December have 31."
+},
+
+{
+"q":"If 4 people sit around a square table, in how many different circular arrangements can they sit?",
+"options":["4","6","8","12"],
+"answer":1,
+"explanation":"Circular arrangements of 4 distinct people = (4−1)! = 6."
+},
+
+{
+"q":"Which conclusion follows? Some trains are electric. All electric vehicles are efficient.",
+"options":["All trains are efficient","Some trains are efficient","No trains are efficient","Some efficient things are not trains"],
+"answer":1,
+"explanation":"The trains that are electric are vehicles and therefore efficient."
+},
+
+{
+"q":"In a certain code, 123 means 'big red car' and 345 means 'red fast train'. Which digit represents 'red'?",
+"options":["1","2","3","4"],
+"answer":2,
+"explanation":"The common word is red and the common digit is 3."
+}
+
+]
+},
+
+{
+"title":"General Science",
+"short":"General Science",
+"data":[
+
+{
+"q":"The SI unit of work is:",
+"options":["Newton","Joule","Watt","Pascal"],
+"answer":1,
+"explanation":"Work is measured in joules."
+},
+
+{
+"q":"Which law states that pressure is inversely proportional to volume at constant temperature?",
+"options":["Charles' law","Boyle's law","Ohm's law","Hooke's law"],
+"answer":1,
+"explanation":"Boyle's law states P is inversely proportional to V at constant temperature."
+},
+
+{
+"q":"An object moving in a circular path has acceleration directed toward the:",
+"options":["Centre","Outside","Tangent","Top"],
+"answer":0,
+"explanation":"Centripetal acceleration is directed toward the centre of the circle."
+},
+
+{
+"q":"Which device converts electrical energy into mechanical energy?",
+"options":["Electric motor","Generator","Transformer","Cell"],
+"answer":0,
+"explanation":"An electric motor converts electrical energy into mechanical energy."
+},
+
+{
+"q":"The focal length of a plane mirror is considered:",
+"options":["Zero","Positive","Infinite","Negative"],
+"answer":2,
+"explanation":"A plane mirror has its centre of curvature at infinity, so its focal length is infinite."
+},
+
+{
+"q":"Which particle has no electric charge?",
+"options":["Proton","Electron","Neutron","Positron"],
+"answer":2,
+"explanation":"A neutron is electrically neutral."
+},
+
+{
+"q":"The chemical formula of baking soda is:",
+"options":["Na2CO3","NaHCO3","CaCO3","K2CO3"],
+"answer":1,
+"explanation":"Baking soda is sodium hydrogen carbonate, NaHCO₃."
+},
+
+{
+"q":"Which gas is released when zinc reacts with dilute hydrochloric acid?",
+"options":["Oxygen","Hydrogen","Nitrogen","Chlorine"],
+"answer":1,
+"explanation":"Zinc reacts with HCl to form zinc chloride and hydrogen gas."
+},
+
+{
+"q":"The process of changing a solid directly into gas is called:",
+"options":["Condensation","Sublimation","Freezing","Melting"],
+"answer":1,
+"explanation":"Sublimation is the direct change from solid to gas."
+},
+
+{
+"q":"Which of the following is a strong base?",
+"options":["HCl","NaOH","H2CO3","CH3COOH"],
+"answer":1,
+"explanation":"Sodium hydroxide (NaOH) is a strong base."
+},
+
+{
+"q":"The smallest blood vessels are called:",
+"options":["Arteries","Veins","Capillaries","Aorta"],
+"answer":2,
+"explanation":"Capillaries are microscopic vessels connecting arterioles and venules."
+},
+
+{
+"q":"Which part of the brain controls balance and coordination?",
+"options":["Cerebrum","Cerebellum","Medulla","Hypothalamus"],
+"answer":1,
+"explanation":"The cerebellum coordinates balance, posture and fine motor movements."
+},
+
+{
+"q":"The normal number of chromosomes in a human somatic cell is:",
+"options":["23","44","46","48"],
+"answer":2,
+"explanation":"Human somatic cells normally contain 46 chromosomes in 23 pairs."
+},
+
+{
+"q":"Which hormone helps regulate blood glucose levels by lowering them?",
+"options":["Adrenaline","Insulin","Thyroxine","Glucagon"],
+"answer":1,
+"explanation":"Insulin lowers blood glucose by promoting uptake and storage of glucose."
+},
+
+{
+"q":"The process by which green plants prepare food is called:",
+"options":["Respiration","Photosynthesis","Transpiration","Osmosis"],
+"answer":1,
+"explanation":"Plants synthesize food from carbon dioxide and water using light energy in photosynthesis."
+},
+
+{
+"q":"Which vitamin is important for blood clotting?",
+"options":["Vitamin A","Vitamin C","Vitamin K","Vitamin D"],
+"answer":2,
+"explanation":"Vitamin K is essential for the synthesis of several clotting factors."
+},
+
+{
+"q":"Which metal is commonly used for electrical wiring because of its high conductivity?",
+"options":["Copper","Lead","Mercury","Zinc"],
+"answer":0,
+"explanation":"Copper has high electrical conductivity and is widely used for wires."
+},
+
+{
+"q":"A renewable source of energy is:",
+"options":["Coal","Petroleum","Solar energy","Natural gas"],
+"answer":2,
+"explanation":"Solar energy is naturally replenished and is renewable."
+},
+
+{
+"q":"The instrument used to measure atmospheric pressure is:",
+"options":["Barometer","Hygrometer","Ammeter","Calorimeter"],
+"answer":0,
+"explanation":"A barometer measures atmospheric pressure."
+},
+
+{
+"q":"Which lens is used to correct short-sightedness (myopia)?",
+"options":["Convex lens","Concave lens","Cylindrical lens only","Plane glass"],
+"answer":1,
+"explanation":"A concave lens diverges incoming light and corrects myopia."
+}
+
+]
+},
+
+{
+"title":"General Awareness & Current Affairs",
+"short":"GA & Current Affairs",
+"data":[
+
+{
+"q":"The Indian Parliament consists of the President and:",
+"options":["Lok Sabha only","Rajya Sabha only","Lok Sabha and Rajya Sabha","Supreme Court and Lok Sabha"],
+"answer":2,
+"explanation":"Under the Constitution, Parliament consists of the President and two Houses: Lok Sabha and Rajya Sabha."
+},
+
+{
+"q":"Which Article of the Constitution guarantees equality before law?",
+"options":["Article 12","Article 14","Article 19","Article 21"],
+"answer":1,
+"explanation":"Article 14 guarantees equality before law and equal protection of laws."
+},
+
+{
+"q":"The Comptroller and Auditor General of India is appointed by the:",
+"options":["Prime Minister","President","Chief Justice of India","Finance Minister"],
+"answer":1,
+"explanation":"The CAG is appointed by the President of India."
+},
+
+{
+"q":"The largest planet in the Solar System is:",
+"options":["Earth","Saturn","Jupiter","Neptune"],
+"answer":2,
+"explanation":"Jupiter is the largest planet in the Solar System."
+},
+
+{
+"q":"The headquarters of UNESCO is in:",
+"options":["Geneva","Paris","New York","Rome"],
+"answer":1,
+"explanation":"UNESCO is headquartered in Paris, France."
+},
+
+{
+"q":"The railway zone headquartered at Chennai is:",
+"options":["Southern Railway","South Central Railway","South Western Railway","Eastern Railway"],
+"answer":0,
+"explanation":"Southern Railway has its headquarters at Chennai."
+},
+
+{
+"q":"The first Indian to receive the Nobel Prize was:",
+"options":["C. V. Raman","Rabindranath Tagore","Amartya Sen","Mother Teresa"],
+"answer":1,
+"explanation":"Rabindranath Tagore received the Nobel Prize in Literature in 1913."
+},
+
+{
+"q":"The Fundamental Right to Freedom of Religion is mainly covered under Articles:",
+"options":["12–13","14–18","19–22","25–28"],
+"answer":3,
+"explanation":"Articles 25 to 28 deal with freedom of religion."
+},
+
+{
+"q":"The headquarters of the Asian Development Bank is located in:",
+"options":["Manila","Tokyo","Beijing","Singapore"],
+"answer":0,
+"explanation":"The Asian Development Bank is headquartered in Manila, Philippines."
+},
+
+{
+"q":"The famous Jagannath Temple is located at:",
+"options":["Bhubaneswar","Puri","Cuttack","Konark"],
+"answer":1,
+"explanation":"The Jagannath Temple is located in Puri, Odisha."
+}
+
+]
+}
+
+];
+
+
+/* =========================================================
+EXAM ENGINE
+========================================================= */
+
+let sectionIndex=0;
+let localIndex=0;
+let answers={};
+let review={};
+let timeLeft=60*60;
+let timerId=null;
+let submitted=false;
+
+
+/* =========================================================
+TOTAL QUESTIONS
+========================================================= */
+
+function totalQuestions(){
+
+    return sections.reduce(
+        (total,section)=>
+        total+section.data.length,
+        0
+    );
+
+}
+
+
+/* =========================================================
+GLOBAL INDEX
+========================================================= */
+
+function globalIndex(){
+
+    let n=0;
+
+    for(let i=0;i<sectionIndex;i++){
+
+        n+=sections[i].data.length;
+
+    }
+
+    return n+localIndex;
+
+}
+
+
+/* =========================================================
+FORMAT TIME
+========================================================= */
+
+function formatTime(seconds){
+
+    const minutes=
+        Math.floor(seconds/60)
+        .toString()
+        .padStart(2,"0");
+
+    const secs=
+        (seconds%60)
+        .toString()
+        .padStart(2,"0");
+
+    return minutes+":"+secs;
+
+}
+
+
+/* =========================================================
+START TIMER
+========================================================= */
+
+function startTimer(){
+
+    clearInterval(timerId);
+
+    document.getElementById("timer")
+        .textContent=
+        formatTime(timeLeft);
+
+    timerId=setInterval(()=>{
+
+        if(submitted)return;
+
+        timeLeft--;
+
+        document.getElementById("timer")
+            .textContent=
+            formatTime(Math.max(0,timeLeft));
+
+        if(timeLeft<=0){
+
+            clearInterval(timerId);
+
+            alert(
+                "Time is over. Your test will be submitted automatically."
+            );
+
+            submitTest();
+
+        }
+
+    },1000);
+
+}
+
+
+/* =========================================================
+BUILD PALETTE
+========================================================= */
+
+function buildPalette(){
+
+    const p=
+        document.getElementById("palette");
+
+    p.innerHTML="";
+
+    let number=1;
+
+    sections.forEach((section,si)=>{
+
+        section.data.forEach((question,li)=>{
+
+            const button=
+                document.createElement("button");
+
+            button.textContent=number;
+
+            button.id=
+                "palette-"+(number-1);
+
+            button.onclick=
+                ()=>{
+                    goToQuestion(si,li);
+                };
+
+            p.appendChild(button);
+
+            number++;
+
+        });
+
+    });
+
+    updatePalette();
+
+}
+
+
+/* =========================================================
+GO TO QUESTION
+========================================================= */
+
+function goToQuestion(si,li){
+
+    sectionIndex=si;
+
+    localIndex=li;
+
+    renderQuestion();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+UPDATE PALETTE
+========================================================= */
+
+function updatePalette(){
+
+    let number=0;
+
+    sections.forEach((section,si)=>{
+
+        section.data.forEach((question,li)=>{
+
+            const button=
+                document.getElementById(
+                    "palette-"+number
+                );
+
+            button.className="";
+
+            if(review[number]){
+
+                button.classList.add("review");
+
+            }
+
+            if(answers[number]!==undefined){
+
+                button.classList.add("attempted");
+
+            }
+
+            if(
+                si===sectionIndex &&
+                li===localIndex
+            ){
+
+                button.classList.add("current");
+
+            }
+
+            number++;
+
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+RENDER QUESTION
+========================================================= */
+
+function renderQuestion(){
+
+    const section=
+        sections[sectionIndex];
+
+    const q=
+        section.data[localIndex];
+
+    const gi=
+        globalIndex();
+
+
+    document.getElementById(
+        "sectionName"
+    ).textContent=
+        section.title;
+
+
+    document.getElementById(
+        "sectionMeta"
+    ).textContent=
+        section.data.length+
+        " Questions";
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent=
+        "Question "+
+        (localIndex+1)+
+        " of "+
+        section.data.length;
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent=
+        "Question "+
+        (gi+1);
+
+
+    document.getElementById(
+        "questionText"
+    ).textContent=
+        q.q;
+
+
+    const optionsBox=
+        document.getElementById(
+            "options"
+        );
+
+    optionsBox.innerHTML="";
+
+
+    q.options.forEach((op,i)=>{
+
+        const d=
+            document.createElement("div");
+
+        d.className=
+            "option"+
+            (
+                answers[gi]===i
+                ?" selected"
+                :""
+            );
+
+        d.innerHTML=
+            "<b>"+
+            String.fromCharCode(65+i)+
+            ".</b> "+
+            op;
+
+
+        d.onclick=
+            ()=>{
+                selectOption(i);
+            };
+
+
+        optionsBox.appendChild(d);
+
+    });
+
+
+    if(
+        localIndex===
+        section.data.length-1
+    ){
+
+        document.getElementById(
+            "nextBtn"
+        ).textContent=
+
+            sectionIndex===
+            sections.length-1
+            ?
+            "Finish Test"
+            :
+            "Next Subject";
+
+    }else{
+
+        document.getElementById(
+            "nextBtn"
+        ).textContent=
+            "Save & Next";
+
+    }
+
+
+    updatePalette();
+
+}
+
+
+/* =========================================================
+SELECT OPTION
+========================================================= */
+
+function selectOption(index){
+
+    const gi=
+        globalIndex();
+
+    answers[gi]=index;
+
+    review[gi]=false;
+
+    renderQuestion();
+
+}
+
+
+/* =========================================================
+MARK REVIEW
+========================================================= */
+
+function markReview(){
+
+    const gi=
+        globalIndex();
+
+    review[gi]=!review[gi];
+
+    nextQuestion();
+
+}
+
+
+/* =========================================================
+NEXT QUESTION
+========================================================= */
+
+function nextQuestion(){
+
+    const section=
+        sections[sectionIndex];
+
+
+    if(
+        localIndex<
+        section.data.length-1
+    ){
+
+        localIndex++;
+
+        renderQuestion();
+
+        return;
+
+    }
+
+
+    if(
+        sectionIndex<
+        sections.length-1
+    ){
+
+        sectionIndex++;
+
+        localIndex=0;
+
+        renderQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+        return;
+
+    }
+
+
+    confirmSubmit();
+
+}
+
+
+/* =========================================================
+PREVIOUS QUESTION
+========================================================= */
+
+function previousQuestion(){
+
+    if(localIndex>0){
+
+        localIndex--;
+
+        renderQuestion();
+
+        return;
+
+    }
+
+
+    if(sectionIndex>0){
+
+        sectionIndex--;
+
+        localIndex=
+            sections[sectionIndex]
+            .data.length-1;
+
+        renderQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =========================================================
+CONFIRM SUBMIT
+========================================================= */
+
+function confirmSubmit(){
+
+    if(submitted)return;
+
+
+    const unanswered=
+        totalQuestions()-
+        Object.keys(answers).length;
+
+
+    let message=
+        "Are you sure you want to submit the test?";
+
+
+    if(unanswered>0){
+
+        message+=
+            "\n\nUnattempted questions: "+
+            unanswered;
+
+    }
+
+
+    if(confirm(message)){
+
+        submitTest();
+
+    }
+
+}
+
+
+/* =========================================================
+SUBMIT TEST
+========================================================= */
+
+function submitTest(){
+
+    if(submitted)return;
+
+
+    submitted=true;
+
+    clearInterval(timerId);
+
+
+    let correct=0;
+
+    let wrong=0;
+
+    let unattempted=0;
+
+
+    const rows=[];
+
+
+    sections.forEach((section,si)=>{
+
+        let c=0;
+
+        let w=0;
+
+        let u=0;
+
+
+        section.data.forEach((q,li)=>{
+
+            let gi=0;
+
+
+            for(
+                let k=0;
+                k<si;
+                k++
+            ){
+
+                gi+=
+                    sections[k]
+                    .data.length;
+
+            }
+
+
+            gi+=li;
+
+
+            if(
+                answers[gi]===undefined
+            ){
+
+                u++;
+
+            }
+            else if(
+                answers[gi]===
+                q.answer
+            ){
+
+                c++;
+
+            }
+            else{
+
+                w++;
+
+            }
+
+        });
+
+
+        const score=
+            c-(w/3);
+
+
+        correct+=c;
+
+        wrong+=w;
+
+        unattempted+=u;
+
+
+        rows.push({
+
+            title:section.title,
+
+            questions:
+                section.data.length,
+
+            correct:c,
+
+            wrong:w,
+
+            unattempted:u,
+
+            score:score
+
+        });
+
+    });
+
+
+    const finalScore=
+        correct-(wrong/3);
+
+
+    const percentage=
+        (finalScore/75)*100;
+
+
+    document.getElementById(
+        "examContainer"
+    ).classList.add("hidden");
+
+
+    document.querySelector(
+        ".section-bar"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "result"
+    ).style.display="block";
+
+
+    document.getElementById(
+        "finalScore"
+    ).textContent=
+        finalScore.toFixed(2)+
+        " / 75";
+
+
+    document.getElementById(
+        "finalStats"
+    ).textContent=
+
+        "Correct: "+
+        correct+
+
+        " | Wrong: "+
+        wrong+
+
+        " | Unattempted: "+
+        unattempted+
+
+        " | Percentage: "+
+        percentage.toFixed(2)+
+        "%";
+
+
+    const tbody=
+        document.getElementById(
+            "breakdownBody"
+        );
+
+    tbody.innerHTML="";
+
+
+    rows.forEach(row=>{
+
+        tbody.innerHTML+=
+
+            "<tr>"+
+
+            "<td>"+
+            row.title+
+            "</td>"+
+
+            "<td>"+
+            row.questions+
+            "</td>"+
+
+            "<td>"+
+            row.correct+
+            "</td>"+
+
+            "<td>"+
+            row.wrong+
+            "</td>"+
+
+            "<td>"+
+            row.unattempted+
+            "</td>"+
+
+            "<td>"+
+            row.score.toFixed(2)+
+            "</td>"+
+
+            "</tr>";
+
+    });
+
+
+    showSolutions();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+SHOW SOLUTIONS
+========================================================= */
+
+function showSolutions(){
+
+    const box=
+        document.getElementById(
+            "solutions"
+        );
+
+
+    box.innerHTML=
+        "<h3 style='margin-top:25px;'>Solutions & Answer Key</h3>";
+
+
+    let number=0;
+
+
+    sections.forEach(section=>{
+
+        section.data.forEach(q=>{
+
+            const userAnswer=
+                answers[number];
+
+
+            let statusClass=
+                "unattempted";
+
+
+            let statusText=
+                "Not Attempted";
+
+
+            if(
+                userAnswer!==undefined
+            ){
+
+                if(
+                    userAnswer===
+                    q.answer
+                ){
+
+                    statusClass=
+                        "correct";
+
+                    statusText=
+                        "Correct";
+
+                }else{
+
+                    statusClass=
+                        "wrong";
+
+                    statusText=
+                        "Wrong";
+
+                }
+
+            }
+
+
+            const correctOption=
+                String.fromCharCode(
+                    65+q.answer
+                );
+
+
+            let userText=
+                "Not Attempted";
+
+
+            if(
+                userAnswer!==undefined
+            ){
+
+                userText=
+                    String.fromCharCode(
+                        65+userAnswer
+                    )+
+                    ". "+
+                    q.options[userAnswer];
+
+            }
+
+
+            box.innerHTML+=
+
+                "<div class='solution-card "+
+                statusClass+
+                "'>"+
+
+                "<div class='solution-title'>"+
+                "Q"+
+                (number+1)+
+                ". "+
+                q.q+
+                "</div>"+
+
+                "<div class='answer-line'>"+
+                "<b>Your Answer:</b> "+
+                userText+
+                "</div>"+
+
+                "<div class='answer-line'>"+
+                "<b>Correct Answer:</b> "+
+                correctOption+
+                ". "+
+                q.options[q.answer]+
+                "</div>"+
+
+                "<div class='answer-line'>"+
+                "<b>Status:</b> "+
+                statusText+
+                "</div>"+
+
+                "<div class='explanation'>"+
+                "<b>Explanation:</b> "+
+                q.explanation+
+                "</div>"+
+
+                "</div>";
+
+
+            number++;
+
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+INITIALIZE
+========================================================= */
+
+buildPalette();
+
+renderQuestion();
+
+startTimer();
+
+</script>
+
+</body>
+</html>
