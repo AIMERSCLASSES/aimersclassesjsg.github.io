@@ -1,1 +1,2034 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | RRB ALP CBT 1 Mock Test - Test 1</title>
+
+<meta name="description"
+content="AIMERS CLASSES RRB ALP CBT 1 Full Mock Test - Test 1. 75 Questions, 60 Minutes, 1/3 Negative Marking.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fa;
+    color:#102a43;
+    line-height:1.5;
+}
+
+button{
+    font-family:inherit;
+}
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:12px 20px;
+    display:grid;
+    grid-template-columns:1fr 2fr 1fr;
+    align-items:center;
+    gap:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.18);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:.7px;
+}
+
+.exam-title{
+    text-align:center;
+    font-size:18px;
+    font-weight:900;
+}
+
+.timer-box{
+    justify-self:end;
+    background:#ffd43b;
+    color:#111;
+    padding:10px 16px;
+    min-width:125px;
+    border-radius:10px;
+    text-align:center;
+    font-size:20px;
+    font-weight:900;
+}
+
+.info-bar{
+    width:94%;
+    max-width:1200px;
+    margin:15px auto 0;
+    background:#fff;
+    border-radius:12px;
+    padding:12px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+}
+
+.info{
+    background:#eef4ff;
+    border:1px solid #d7e4ff;
+    padding:7px 11px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:800;
+}
+
+.section-bar{
+    width:94%;
+    max-width:1200px;
+    margin:12px auto;
+    background:#102a43;
+    color:white;
+    padding:13px 16px;
+    border-radius:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.section-name{
+    font-size:17px;
+    font-weight:900;
+}
+
+.section-meta{
+    font-size:13px;
+    opacity:.95;
+}
+
+.container{
+    width:94%;
+    max-width:1200px;
+    margin:0 auto 40px;
+}
+
+.warning{
+    background:#fff3cd;
+    border-left:5px solid #f59e0b;
+    padding:12px 14px;
+    border-radius:8px;
+    margin-bottom:14px;
+    font-size:14px;
+}
+
+.palette-card{
+    background:white;
+    border-radius:12px;
+    padding:15px;
+    box-shadow:0 2px 9px rgba(0,0,0,.07);
+    margin-bottom:15px;
+}
+
+.palette-title{
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.legend{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+    font-size:12px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.dot{
+    width:14px;
+    height:14px;
+    border-radius:4px;
+    display:inline-block;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(15,1fr);
+    gap:6px;
+}
+
+.palette button{
+    border:0;
+    padding:7px 2px;
+    border-radius:6px;
+    background:#e5e7eb;
+    color:#111;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.palette button:hover{
+    transform:translateY(-1px);
+}
+
+.palette button.current{
+    background:#1d4ed8;
+    color:white;
+}
+
+.palette button.attempted{
+    background:#22c55e;
+    color:white;
+}
+
+.palette button.review{
+    background:#f59e0b;
+    color:#111;
+}
+
+.question-card{
+    background:white;
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.question-number{
+    font-size:14px;
+    color:#1d4ed8;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.question{
+    font-size:18px;
+    line-height:1.6;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.options{
+    display:grid;
+    gap:10px;
+}
+
+.option{
+    border:1px solid #d7dde5;
+    border-radius:9px;
+    padding:12px;
+    cursor:pointer;
+    background:#fff;
+    transition:.15s;
+}
+
+.option:hover{
+    border-color:#1d4ed8;
+    background:#f7faff;
+}
+
+.option.selected{
+    border-color:#1d4ed8;
+    background:#eaf1ff;
+    font-weight:800;
+}
+
+.controls{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.btn{
+    border:0;
+    padding:11px 15px;
+    border-radius:8px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.prev{
+    background:#6b7280;
+    color:white;
+}
+
+.next{
+    background:#1d4ed8;
+    color:white;
+}
+
+.review-btn{
+    background:#f59e0b;
+    color:#111;
+}
+
+.submit{
+    background:#dc2626;
+    color:white;
+}
+
+.result{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.result h2{
+    margin-bottom:10px;
+}
+
+.score{
+    font-size:36px;
+    font-weight:900;
+    color:#1d4ed8;
+    margin:10px 0;
+}
+
+.stats{
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.breakdown{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.breakdown th,
+.breakdown td{
+    border:1px solid #dbe2ea;
+    padding:9px;
+    text-align:left;
+    font-size:14px;
+}
+
+.breakdown th{
+    background:#eef4ff;
+}
+
+.solution-card{
+    margin-top:14px;
+    padding:15px;
+    border:1px solid #dbe2ea;
+    border-radius:10px;
+    background:#fafcff;
+}
+
+.solution-card.correct{
+    border-left:5px solid #22c55e;
+}
+
+.solution-card.wrong{
+    border-left:5px solid #dc2626;
+}
+
+.solution-card.unattempted{
+    border-left:5px solid #f59e0b;
+}
+
+.solution-title{
+    font-weight:900;
+    margin-bottom:7px;
+}
+
+.answer-line{
+    margin-top:5px;
+}
+
+.explanation{
+    margin-top:7px;
+    color:#52606d;
+    font-size:14px;
+}
+
+.small{
+    color:#667085;
+    font-size:12px;
+    margin-top:15px;
+}
+
+.hidden{
+    display:none !important;
+}
+
+footer{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:30px;
+}
+
+footer h3{
+    color:#ffd43b;
+    margin-bottom:6px;
+}
+
+footer p{
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+@media(max-width:800px){
+
+    .header{
+        grid-template-columns:1fr;
+        text-align:center;
+        position:relative;
+    }
+
+    .timer-box{
+        justify-self:center;
+    }
+
+    .palette{
+        grid-template-columns:repeat(10,1fr);
+    }
+
+    .section-bar{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .palette{
+        grid-template-columns:repeat(8,1fr);
+    }
+
+    .question{
+        font-size:16px;
+    }
+
+    .question-card{
+        padding:18px;
+    }
+
+    .info-bar,
+    .section-bar,
+    .container{
+        width:96%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        AIMERS CLASSES
+    </div>
+
+    <div class="exam-title">
+        RRB ALP CBT 1 — FULL MOCK TEST | TEST 1
+    </div>
+
+    <div class="timer-box" id="timer">
+        60:00
+    </div>
+
+</header>
+
+
+<div class="info-bar">
+
+    <div class="info">Mathematics: 20 Q</div>
+
+    <div class="info">Reasoning: 25 Q</div>
+
+    <div class="info">General Science: 20 Q</div>
+
+    <div class="info">GA & Current Affairs: 10 Q</div>
+
+    <div class="info">Total: 75 Questions</div>
+
+    <div class="info">Total Marks: 75</div>
+
+    <div class="info">Time: 60 Minutes</div>
+
+    <div class="info">Negative: −1/3</div>
+
+</div>
+
+
+<div class="section-bar">
+
+    <div>
+        <div class="section-name" id="sectionName">
+            Mathematics
+        </div>
+
+        <div class="section-meta" id="sectionMeta">
+            20 Questions
+        </div>
+    </div>
+
+    <div id="progressText">
+        Question 1 of 20
+    </div>
+
+</div>
+
+
+<div class="container" id="examContainer">
+
+    <div class="warning">
+
+        <b>RRB ALP CBT-1 Practice Test:</b>
+        75 objective questions are provided in the same subject-wise structure
+        used for CBT-1 practice. Each correct answer carries 1 mark and
+        1/3 mark is deducted for each wrong answer.
+
+    </div>
+
+
+    <div class="palette-card">
+
+        <div class="palette-title">
+            Question Palette
+        </div>
+
+        <div class="legend">
+
+            <div class="legend-item">
+                <span class="dot" style="background:#e5e7eb"></span>
+                Not Attempted
+            </div>
+
+            <div class="legend-item">
+                <span class="dot" style="background:#22c55e"></span>
+                Attempted
+            </div>
+
+            <div class="legend-item">
+                <span class="dot" style="background:#1d4ed8"></span>
+                Current
+            </div>
+
+            <div class="legend-item">
+                <span class="dot" style="background:#f59e0b"></span>
+                Review
+            </div>
+
+        </div>
+
+        <div class="palette" id="palette"></div>
+
+    </div>
+
+
+    <div class="question-card">
+
+        <div class="question-number" id="questionNumber"></div>
+
+        <div class="question" id="questionText"></div>
+
+        <div class="options" id="options"></div>
+
+        <div class="controls">
+
+            <button
+                class="btn prev"
+                onclick="previousQuestion()">
+                Previous
+            </button>
+
+            <button
+                class="btn review-btn"
+                onclick="markReview()">
+                Mark for Review
+            </button>
+
+            <button
+                class="btn next"
+                onclick="nextQuestion()"
+                id="nextBtn">
+                Save & Next
+            </button>
+
+            <button
+                class="btn submit"
+                onclick="confirmSubmit()">
+                Submit Test
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container">
+
+    <div class="result" id="result">
+
+        <h2>
+            RRB ALP CBT 1 — Test 1 Result
+        </h2>
+
+        <div
+            class="score"
+            id="finalScore">
+        </div>
+
+        <div
+            class="stats"
+            id="finalStats">
+        </div>
+
+        <table class="breakdown">
+
+            <thead>
+
+                <tr>
+                    <th>Subject</th>
+                    <th>Questions</th>
+                    <th>Correct</th>
+                    <th>Wrong</th>
+                    <th>Unattempted</th>
+                    <th>Score</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="breakdownBody"></tbody>
+
+        </table>
+
+        <div id="solutions"></div>
+
+        <p class="small">
+            Score formula: Correct × 1 − Wrong × 1/3.
+            Unattempted questions carry 0 marks.
+        </p>
+
+        <button
+            class="btn next"
+            onclick="location.reload()">
+            Restart Test
+        </button>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <h3>AIMERS CLASSES</h3>
+
+    <p>
+        Aim High • Achieve High
+    </p>
+
+    <p>
+        RRB | SSC | Railway | Banking | Odisha Exams
+    </p>
+
+    <p style="margin-top:8px;">
+        © 2026 AIMERS CLASSES. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   RRB ALP CBT 1 TEST 1
+   20 Mathematics
+   25 Reasoning
+   20 General Science
+   10 General Awareness
+========================================================= */
+
+const sections = [
+
+/* =========================================================
+   MATHEMATICS - 20 QUESTIONS
+========================================================= */
+
+{
+    title:"Mathematics",
+    short:"Mathematics",
+    data:[
+
+        {
+            q:"If 25% of a number is 75, what is the number?",
+            options:["250","300","325","350"],
+            answer:1,
+            explanation:"25% of 300 = 75."
+        },
+
+        {
+            q:"The HCF of 84 and 126 is:",
+            options:["21","28","42","63"],
+            answer:2,
+            explanation:"The greatest common divisor of 84 and 126 is 42."
+        },
+
+        {
+            q:"A train travels 360 km in 5 hours. Its speed is:",
+            options:["60 km/h","72 km/h","75 km/h","80 km/h"],
+            answer:1,
+            explanation:"Speed = Distance ÷ Time = 360 ÷ 5 = 72 km/h."
+        },
+
+        {
+            q:"The simple interest on ₹5000 at 8% per annum for 2 years is:",
+            options:["₹600","₹700","₹800","₹900"],
+            answer:2,
+            explanation:"SI = P×R×T/100 = 5000×8×2/100 = ₹800."
+        },
+
+        {
+            q:"The average of 12, 18, 24, 30 and 36 is:",
+            options:["22","24","26","28"],
+            answer:1,
+            explanation:"Sum = 120 and 120 ÷ 5 = 24."
+        },
+
+        {
+            q:"A shopkeeper buys an article for ₹800 and sells it for ₹920. His profit percentage is:",
+            options:["10%","12%","15%","20%"],
+            answer:2,
+            explanation:"Profit = ₹120. Profit% = 120/800 × 100 = 15%."
+        },
+
+        {
+            q:"The LCM of 12, 18 and 24 is:",
+            options:["36","48","72","96"],
+            answer:2,
+            explanation:"LCM(12,18,24) = 72."
+        },
+
+        {
+            q:"A man can complete a work in 12 days. What fraction of the work does he complete in one day?",
+            options:["1/10","1/12","1/14","1/15"],
+            answer:1,
+            explanation:"One-day work = 1/12."
+        },
+
+        {
+            q:"If x + 17 = 42, then x is:",
+            options:["20","23","25","27"],
+            answer:2,
+            explanation:"x = 42 − 17 = 25."
+        },
+
+        {
+            q:"The perimeter of a square is 64 cm. Its area is:",
+            options:["128 cm²","196 cm²","256 cm²","324 cm²"],
+            answer:2,
+            explanation:"Side = 64/4 = 16 cm. Area = 16² = 256 cm²."
+        },
+
+        {
+            q:"A discount of 20% on ₹1500 gives a selling price of:",
+            options:["₹1100","₹1150","₹1200","₹1250"],
+            answer:2,
+            explanation:"Discount = ₹300. Selling price = ₹1200."
+        },
+
+        {
+            q:"If 3 : 5 = x : 35, then x equals:",
+            options:["15","21","25","28"],
+            answer:1,
+            explanation:"x/35 = 3/5, so x = 21."
+        },
+
+        {
+            q:"The value of 7/8 of 320 is:",
+            options:["240","260","280","300"],
+            answer:2,
+            explanation:"320 × 7/8 = 280."
+        },
+
+        {
+            q:"A number is increased from 400 to 460. The percentage increase is:",
+            options:["10%","12%","15%","20%"],
+            answer:2,
+            explanation:"Increase = 60. 60/400 × 100 = 15%."
+        },
+
+        {
+            q:"The square root of 1764 is:",
+            options:["38","40","42","44"],
+            answer:2,
+            explanation:"42 × 42 = 1764."
+        },
+
+        {
+            q:"A car covers 150 km in 3 hours. How far will it travel in 8 hours at the same speed?",
+            options:["350 km","400 km","450 km","500 km"],
+            answer:1,
+            explanation:"Speed = 50 km/h. Distance in 8 hours = 400 km."
+        },
+
+        {
+            q:"The ratio 18 : 24 in simplest form is:",
+            options:["2 : 3","3 : 4","4 : 5","6 : 8"],
+            answer:1,
+            explanation:"Divide both terms by 6 to get 3 : 4."
+        },
+
+        {
+            q:"A sum amounts to ₹1320 at 10% simple interest in 2 years. The principal is:",
+            options:["₹1000","₹1050","₹1100","₹1200"],
+            answer:2,
+            explanation:"A = P(1 + RT/100) = P(1.2). Thus P = 1320/1.2 = ₹1100."
+        },
+
+        {
+            q:"The area of a rectangle of length 18 cm and breadth 7 cm is:",
+            options:["112 cm²","126 cm²","136 cm²","144 cm²"],
+            answer:1,
+            explanation:"Area = length × breadth = 18 × 7 = 126 cm²."
+        },
+
+        {
+            q:"If 40% of a number is 96, the number is:",
+            options:["200","220","240","260"],
+            answer:2,
+            explanation:"Number = 96 × 100/40 = 240."
+        }
+
+    ]
+},
+
+/* =========================================================
+   REASONING - 25 QUESTIONS
+========================================================= */
+
+{
+    title:"General Intelligence & Reasoning",
+    short:"Reasoning",
+    data:[
+
+        {
+            q:"Find the next number: 2, 6, 12, 20, 30, ?",
+            options:["40","42","44","46"],
+            answer:1,
+            explanation:"Differences are 4, 6, 8, 10, so next difference is 12. Answer = 42."
+        },
+
+        {
+            q:"Find the odd one out:",
+            options:["Triangle","Square","Circle","Rectangle"],
+            answer:2,
+            explanation:"Circle has no straight sides; the others are polygons."
+        },
+
+        {
+            q:"Book : Author :: Painting :",
+            options:["Reader","Artist","Publisher","Editor"],
+            answer:1,
+            explanation:"A book is written by an author; a painting is made by an artist."
+        },
+
+        {
+            q:"If CAT is coded as DBU, then DOG is coded as:",
+            options:["EPH","EOH","FPH","DPG"],
+            answer:0,
+            explanation:"Each letter is shifted one place forward: D→E, O→P, G→H."
+        },
+
+        {
+            q:"A is brother of B. B is sister of C. How is A related to C?",
+            options:["Brother","Sister","Father","Uncle"],
+            answer:0,
+            explanation:"A and C are siblings, and A is male."
+        },
+
+        {
+            q:"Ravi walks 5 km north and then 4 km east. In which direction is he from the starting point?",
+            options:["North-West","North-East","South-East","South-West"],
+            answer:1,
+            explanation:"Moving north and east places Ravi in the north-east direction."
+        },
+
+        {
+            q:"Find the next number: 3, 7, 13, 21, 31, ?",
+            options:["41","42","43","44"],
+            answer:2,
+            explanation:"Differences are 4, 6, 8, 10, so next is 12. Answer = 43."
+        },
+
+        {
+            q:"If A = 1, B = 2, ..., Z = 26, the value of FACE is:",
+            options:["15","16","17","18"],
+            answer:1,
+            explanation:"F=6, A=1, C=3, E=5. Total = 15. Wait: 6+1+3+5 = 15."
+        },
+
+        {
+            q:"Find the next letter: B, F, J, N, R, ?",
+            options:["U","V","W","X"],
+            answer:1,
+            explanation:"Each letter advances by 4 positions. R + 4 = V."
+        },
+
+        {
+            q:"A person is facing east. He turns left and then left again. Which direction is he facing?",
+            options:["North","South","East","West"],
+            answer:3,
+            explanation:"East → North → West."
+        },
+
+        {
+            q:"Rina is 12th from the top and 18th from the bottom. How many students are in the class?",
+            options:["28","29","30","31"],
+            answer:1,
+            explanation:"Total = 12 + 18 − 1 = 29."
+        },
+
+        {
+            q:"Find the next number: 81, 72, 64, 57, 51, ?",
+            options:["46","45","44","43"],
+            answer:0,
+            explanation:"Subtract 9, 8, 7, 6; next subtract 5. Answer = 46."
+        },
+
+        {
+            q:"If 5 is related to 25, then 8 is related to:",
+            options:["56","64","72","80"],
+            answer:1,
+            explanation:"The relation is square: 5² = 25, so 8² = 64."
+        },
+
+        {
+            q:"Choose the word that cannot be formed from EDUCATION:",
+            options:["ACTION","CAUTION","DATE","TEACH"],
+            answer:3,
+            explanation:"The letters required for TEACH include H, which is not present in EDUCATION."
+        },
+
+        {
+            q:"If TRAIN is written as NIART, then PLANE is written as:",
+            options:["ENALP","ENPLA","ELNAP","NALPE"],
+            answer:0,
+            explanation:"The word is written in reverse order."
+        },
+
+        {
+            q:"Find the next pair: AZ, BY, CX, DW, ?",
+            options:["EV","FU","EW","FV"],
+            answer:0,
+            explanation:"First letters move forward and second letters move backward. Next = EV."
+        },
+
+        {
+            q:"If 1 January is Monday, then 8 January will be:",
+            options:["Sunday","Monday","Tuesday","Wednesday"],
+            answer:1,
+            explanation:"Seven days later is again Monday."
+        },
+
+        {
+            q:"At 6:00, the angle between the hands of a clock is:",
+            options:["90°","120°","180°","270°"],
+            answer:2,
+            explanation:"At 6:00, the hour and minute hands are opposite each other."
+        },
+
+        {
+            q:"P is taller than Q, Q is taller than R, and R is taller than S. Who is shortest?",
+            options:["P","Q","R","S"],
+            answer:3,
+            explanation:"The order from tallest to shortest is P > Q > R > S."
+        },
+
+        {
+            q:"Find the next number: 1, 4, 10, 19, 31, ?",
+            options:["44","45","46","47"],
+            answer:2,
+            explanation:"Differences are 3, 6, 9, 12, so next difference is 15. Answer = 46."
+        },
+
+        {
+            q:"A is the son of B. B is the daughter of C. How is C related to A?",
+            options:["Grandparent","Brother","Uncle","Cousin"],
+            answer:0,
+            explanation:"C is the parent of B and therefore grandparent of A."
+        },
+
+        {
+            q:"If MANGO is arranged alphabetically, which letter comes first?",
+            options:["A","G","M","N"],
+            answer:0,
+            explanation:"Alphabetically, A comes before G, M, N and O."
+        },
+
+        {
+            q:"If 3 = 9, 4 = 16, 5 = 25, then 7 = ?",
+            options:["42","49","56","64"],
+            answer:1,
+            explanation:"Each number is squared. 7² = 49."
+        },
+
+        {
+            q:"Find the odd pair:",
+            options:["6 : 36","7 : 49","8 : 64","9 : 72"],
+            answer:3,
+            explanation:"The first three pairs are number × itself. 9 should pair with 81, not 72."
+        },
+
+        {
+            q:"Eight people shake hands with each other exactly once. How many handshakes occur?",
+            options:["24","28","32","36"],
+            answer:1,
+            explanation:"Number of handshakes = 8×7/2 = 28."
+        },
+
+        {
+            q:"Find the next number: 5, 11, 19, 29, 41, ?",
+            options:["53","54","55","56"],
+            answer:2,
+            explanation:"Differences are 6, 8, 10, 12, so next difference is 14. Answer = 55."
+        }
+
+    ]
+},
+
+/* =========================================================
+   GENERAL SCIENCE - 20 QUESTIONS
+========================================================= */
+
+{
+    title:"General Science",
+    short:"General Science",
+    data:[
+
+        {
+            q:"The SI unit of force is:",
+            options:["Joule","Newton","Watt","Pascal"],
+            answer:1,
+            explanation:"Force is measured in newtons."
+        },
+
+        {
+            q:"The SI unit of electric resistance is:",
+            options:["Volt","Ampere","Ohm","Coulomb"],
+            answer:2,
+            explanation:"Electrical resistance is measured in ohms."
+        },
+
+        {
+            q:"The speed of light in vacuum is approximately:",
+            options:["3×10⁶ m/s","3×10⁷ m/s","3×10⁸ m/s","3×10⁹ m/s"],
+            answer:2,
+            explanation:"The speed of light in vacuum is approximately 3×10⁸ m/s."
+        },
+
+        {
+            q:"Which instrument is used to measure electric current?",
+            options:["Voltmeter","Ammeter","Barometer","Thermometer"],
+            answer:1,
+            explanation:"An ammeter measures electric current."
+        },
+
+        {
+            q:"Which colour has the shortest wavelength in visible light?",
+            options:["Red","Yellow","Green","Violet"],
+            answer:3,
+            explanation:"Violet has the shortest wavelength in the visible spectrum."
+        },
+
+        {
+            q:"The chemical formula of common salt is:",
+            options:["NaCl","KCl","NaOH","CaCO3"],
+            answer:0,
+            explanation:"Common salt is sodium chloride, NaCl."
+        },
+
+        {
+            q:"A neutral solution has a pH of:",
+            options:["0","5","7","14"],
+            answer:2,
+            explanation:"At 25°C, a neutral solution has pH 7."
+        },
+
+        {
+            q:"Rusting of iron requires:",
+            options:["Only oxygen","Only water","Oxygen and moisture","Nitrogen and moisture"],
+            answer:2,
+            explanation:"Rusting requires oxygen and moisture."
+        },
+
+        {
+            q:"The largest gland in the human body is:",
+            options:["Pancreas","Liver","Thyroid","Pituitary"],
+            answer:1,
+            explanation:"The liver is the largest gland in the human body."
+        },
+
+        {
+            q:"Insulin is secreted by the:",
+            options:["Liver","Pancreas","Kidney","Thyroid"],
+            answer:1,
+            explanation:"Insulin is produced by beta cells of the pancreas."
+        },
+
+        {
+            q:"The functional unit of the kidney is:",
+            options:["Neuron","Nephron","Alveolus","Villus"],
+            answer:1,
+            explanation:"The nephron is the structural and functional unit of the kidney."
+        },
+
+        {
+            q:"Vitamin D deficiency causes:",
+            options:["Scurvy","Rickets","Beriberi","Night blindness"],
+            answer:1,
+            explanation:"Vitamin D deficiency can cause rickets."
+        },
+
+        {
+            q:"The green pigment present in plants is:",
+            options:["Haemoglobin","Chlorophyll","Melanin","Carotene"],
+            answer:1,
+            explanation:"Chlorophyll absorbs light for photosynthesis."
+        },
+
+        {
+            q:"Photosynthesis mainly takes place in the:",
+            options:["Nucleus","Chloroplast","Mitochondria","Ribosome"],
+            answer:1,
+            explanation:"Photosynthesis occurs in chloroplasts containing chlorophyll."
+        },
+
+        {
+            q:"The chemical symbol for potassium is:",
+            options:["P","K","Pt","Po"],
+            answer:1,
+            explanation:"Potassium has the chemical symbol K."
+        },
+
+        {
+            q:"Which gas is most abundant in Earth's atmosphere?",
+            options:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
+            answer:1,
+            explanation:"Nitrogen forms about 78% of Earth's atmosphere."
+        },
+
+        {
+            q:"Which metal is liquid at ordinary room temperature?",
+            options:["Iron","Mercury","Aluminium","Copper"],
+            answer:1,
+            explanation:"Mercury is liquid at ordinary room temperature."
+        },
+
+        {
+            q:"The unit of power is:",
+            options:["Watt","Joule","Newton","Ohm"],
+            answer:0,
+            explanation:"Power is measured in watts."
+        },
+
+        {
+            q:"Sound cannot travel through:",
+            options:["Solids","Liquids","Gases","Vacuum"],
+            answer:3,
+            explanation:"Sound needs a material medium and cannot travel through vacuum."
+        },
+
+        {
+            q:"The ozone layer is mainly present in the:",
+            options:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],
+            answer:1,
+            explanation:"The ozone layer is mainly concentrated in the stratosphere."
+
+        }
+
+    ]
+},
+
+/* =========================================================
+   GENERAL AWARENESS & CURRENT AFFAIRS - 10 QUESTIONS
+========================================================= */
+
+{
+    title:"General Awareness & Current Affairs",
+    short:"GA & Current Affairs",
+    data:[
+
+        {
+            q:"The Constitution of India was adopted on:",
+            options:["15 August 1947","26 November 1949","26 January 1950","2 October 1950"],
+            answer:1,
+            explanation:"The Constituent Assembly adopted the Constitution on 26 November 1949."
+        },
+
+        {
+            q:"The first passenger railway in India ran between:",
+            options:["Delhi and Agra","Bombay and Thane","Chennai and Bengaluru","Kolkata and Patna"],
+            answer:1,
+            explanation:"The first passenger train ran from Bombay to Thane in 1853."
+        },
+
+        {
+            q:"The headquarters of the Reserve Bank of India is in:",
+            options:["New Delhi","Mumbai","Kolkata","Chennai"],
+            answer:1,
+            explanation:"The headquarters of RBI is in Mumbai."
+        },
+
+        {
+            q:"Odisha became a separate province on:",
+            options:["1 April 1936","15 August 1947","26 January 1950","1 April 1948"],
+            answer:0,
+            explanation:"Odisha became a separate province on 1 April 1936."
+        },
+
+        {
+            q:"The largest ocean in the world is:",
+            options:["Atlantic Ocean","Indian Ocean","Pacific Ocean","Arctic Ocean"],
+            answer:2,
+            explanation:"The Pacific Ocean is the world's largest ocean."
+        },
+
+        {
+            q:"The headquarters of the United Nations is located in:",
+            options:["Geneva","New York","Paris","London"],
+            answer:1,
+            explanation:"The United Nations headquarters is in New York City."
+        },
+
+        {
+            q:"The national animal of India is:",
+            options:["Lion","Tiger","Elephant","Leopard"],
+            answer:1,
+            explanation:"The Bengal tiger is India's national animal."
+        },
+
+        {
+            q:"Hirakud Dam is built across the river:",
+            options:["Brahmani","Mahanadi","Baitarani","Rushikulya"],
+            answer:1,
+            explanation:"Hirakud Dam is built across the Mahanadi River."
+        },
+
+        {
+            q:"The headquarters of Indian Railways is located in:",
+            options:["Mumbai","New Delhi","Kolkata","Chennai"],
+            answer:1,
+            explanation:"Indian Railways has its headquarters in New Delhi."
+        },
+
+        {
+            q:"The Konark Sun Temple is located in which state?",
+            options:["West Bengal","Odisha","Jharkhand","Andhra Pradesh"],
+            answer:1,
+            explanation:"The Konark Sun Temple is located in Odisha."
+
+        }
+
+    ]
+}
+
+];
+
+
+/* =========================================================
+   EXAM ENGINE
+========================================================= */
+
+let sectionIndex = 0;
+let localIndex = 0;
+
+let answers = {};
+let review = {};
+
+let timeLeft = 60 * 60;
+
+let timerId = null;
+let submitted = false;
+
+
+/* ---------------------------------------------------------
+   TOTAL QUESTIONS
+--------------------------------------------------------- */
+
+function totalQuestions(){
+
+    return sections.reduce(
+        (total,section) => total + section.data.length,
+        0
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   GLOBAL INDEX
+--------------------------------------------------------- */
+
+function globalIndex(){
+
+    let n = 0;
+
+    for(let i = 0; i < sectionIndex; i++){
+
+        n += sections[i].data.length;
+
+    }
+
+    return n + localIndex;
+
+}
+
+
+/* ---------------------------------------------------------
+   FORMAT TIME
+--------------------------------------------------------- */
+
+function formatTime(seconds){
+
+    const minutes =
+        Math.floor(seconds / 60)
+        .toString()
+        .padStart(2,"0");
+
+    const secs =
+        (seconds % 60)
+        .toString()
+        .padStart(2,"0");
+
+    return minutes + ":" + secs;
+
+}
+
+
+/* ---------------------------------------------------------
+   START TIMER
+--------------------------------------------------------- */
+
+function startTimer(){
+
+    clearInterval(timerId);
+
+    document.getElementById("timer").textContent =
+        formatTime(timeLeft);
+
+    timerId = setInterval(function(){
+
+        if(submitted){
+            return;
+        }
+
+        timeLeft--;
+
+        document.getElementById("timer").textContent =
+            formatTime(Math.max(0,timeLeft));
+
+        if(timeLeft <= 0){
+
+            clearInterval(timerId);
+
+            alert("Time is over. Your test will be submitted automatically.");
+
+            submitTest();
+
+        }
+
+    },1000);
+
+}
+
+
+/* ---------------------------------------------------------
+   BUILD PALETTE
+--------------------------------------------------------- */
+
+function buildPalette(){
+
+    const palette =
+        document.getElementById("palette");
+
+    palette.innerHTML = "";
+
+    let number = 1;
+
+    sections.forEach(function(section,si){
+
+        section.data.forEach(function(question,li){
+
+            const button =
+                document.createElement("button");
+
+            button.textContent = number;
+
+            button.id = "palette-" + (number - 1);
+
+            button.onclick = function(){
+
+                goToQuestion(si,li);
+
+            };
+
+            palette.appendChild(button);
+
+            number++;
+
+        });
+
+    });
+
+    updatePalette();
+
+}
+
+
+/* ---------------------------------------------------------
+   GO TO QUESTION
+--------------------------------------------------------- */
+
+function goToQuestion(si,li){
+
+    sectionIndex = si;
+
+    localIndex = li;
+
+    renderQuestion();
+
+}
+
+
+/* ---------------------------------------------------------
+   UPDATE PALETTE
+--------------------------------------------------------- */
+
+function updatePalette(){
+
+    let number = 0;
+
+    sections.forEach(function(section,si){
+
+        section.data.forEach(function(question,li){
+
+            const button =
+                document.getElementById(
+                    "palette-" + number
+                );
+
+            button.className = "";
+
+            if(review[number]){
+                button.classList.add("review");
+            }
+
+            if(answers[number] !== undefined){
+                button.classList.add("attempted");
+            }
+
+            if(
+                si === sectionIndex &&
+                li === localIndex
+            ){
+                button.classList.add("current");
+            }
+
+            number++;
+
+        });
+
+    });
+
+}
+
+
+/* ---------------------------------------------------------
+   RENDER QUESTION
+--------------------------------------------------------- */
+
+function renderQuestion(){
+
+    const section =
+        sections[sectionIndex];
+
+    const question =
+        section.data[localIndex];
+
+    const gi =
+        globalIndex();
+
+    document.getElementById("sectionName")
+        .textContent = section.title;
+
+    document.getElementById("sectionMeta")
+        .textContent =
+        section.data.length +
+        " Questions";
+
+    document.getElementById("progressText")
+        .textContent =
+        "Question " +
+        (localIndex + 1) +
+        " of " +
+        section.data.length;
+
+    document.getElementById("questionNumber")
+        .textContent =
+        "Question " +
+        (gi + 1);
+
+    document.getElementById("questionText")
+        .textContent =
+        question.q;
+
+
+    const optionsBox =
+        document.getElementById("options");
+
+    optionsBox.innerHTML = "";
+
+
+    question.options.forEach(function(option,index){
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "option" +
+            (answers[gi] === index
+                ? " selected"
+                : "");
+
+        div.innerHTML =
+            "<b>" +
+            String.fromCharCode(65 + index) +
+            ".</b> " +
+            option;
+
+        div.onclick = function(){
+
+            selectOption(index);
+
+        };
+
+        optionsBox.appendChild(div);
+
+    });
+
+
+    if(localIndex === section.data.length - 1){
+
+        if(sectionIndex === sections.length - 1){
+
+            document.getElementById("nextBtn")
+                .textContent = "Finish Test";
+
+        }else{
+
+            document.getElementById("nextBtn")
+                .textContent = "Next Subject";
+
+        }
+
+    }else{
+
+        document.getElementById("nextBtn")
+            .textContent = "Save & Next";
+
+    }
+
+
+    updatePalette();
+
+}
+
+
+/* ---------------------------------------------------------
+   SELECT OPTION
+--------------------------------------------------------- */
+
+function selectOption(index){
+
+    const gi =
+        globalIndex();
+
+    answers[gi] = index;
+
+    review[gi] = false;
+
+    renderQuestion();
+
+}
+
+
+/* ---------------------------------------------------------
+   MARK FOR REVIEW
+--------------------------------------------------------- */
+
+function markReview(){
+
+    const gi =
+        globalIndex();
+
+    review[gi] = !review[gi];
+
+    nextQuestion();
+
+}
+
+
+/* ---------------------------------------------------------
+   NEXT QUESTION
+--------------------------------------------------------- */
+
+function nextQuestion(){
+
+    const currentSection =
+        sections[sectionIndex];
+
+    if(localIndex <
+       currentSection.data.length - 1){
+
+        localIndex++;
+
+        renderQuestion();
+
+        return;
+
+    }
+
+
+    if(sectionIndex < sections.length - 1){
+
+        sectionIndex++;
+
+        localIndex = 0;
+
+        renderQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+        return;
+
+    }
+
+
+    confirmSubmit();
+
+}
+
+
+/* ---------------------------------------------------------
+   PREVIOUS QUESTION
+--------------------------------------------------------- */
+
+function previousQuestion(){
+
+    if(localIndex > 0){
+
+        localIndex--;
+
+        renderQuestion();
+
+        return;
+
+    }
+
+
+    if(sectionIndex > 0){
+
+        sectionIndex--;
+
+        localIndex =
+            sections[sectionIndex].data.length - 1;
+
+        renderQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   CONFIRM SUBMIT
+--------------------------------------------------------- */
+
+function confirmSubmit(){
+
+    if(submitted){
+        return;
+    }
+
+    const unanswered =
+        totalQuestions() -
+        Object.keys(answers).length;
+
+    let message =
+        "Are you sure you want to submit the test?";
+
+    if(unanswered > 0){
+
+        message +=
+            "\n\nUnattempted questions: " +
+            unanswered;
+
+    }
+
+    if(confirm(message)){
+
+        submitTest();
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   SUBMIT TEST
+--------------------------------------------------------- */
+
+function submitTest(){
+
+    if(submitted){
+        return;
+    }
+
+    submitted = true;
+
+    clearInterval(timerId);
+
+
+    let correct = 0;
+
+    let wrong = 0;
+
+    let unattempted = 0;
+
+
+    const rows = [];
+
+
+    sections.forEach(function(section,si){
+
+        let sectionCorrect = 0;
+
+        let sectionWrong = 0;
+
+        let sectionUnattempted = 0;
+
+
+        section.data.forEach(function(question,li){
+
+            let gi = 0;
+
+            for(let k=0;k<si;k++){
+
+                gi += sections[k].data.length;
+
+            }
+
+            gi += li;
+
+
+            if(answers[gi] === undefined){
+
+                sectionUnattempted++;
+
+            }
+            else if(
+                answers[gi] === question.answer
+            ){
+
+                sectionCorrect++;
+
+            }
+            else{
+
+                sectionWrong++;
+
+            }
+
+        });
+
+
+        const sectionScore =
+            sectionCorrect -
+            (sectionWrong / 3);
+
+
+        correct += sectionCorrect;
+
+        wrong += sectionWrong;
+
+        unattempted += sectionUnattempted;
+
+
+        rows.push({
+
+            title:section.title,
+
+            questions:section.data.length,
+
+            correct:sectionCorrect,
+
+            wrong:sectionWrong,
+
+            unattempted:sectionUnattempted,
+
+            score:sectionScore
+
+        });
+
+    });
+
+
+    const finalScore =
+        correct -
+        (wrong / 3);
+
+
+    const percentage =
+        (finalScore / 75) * 100;
+
+
+    document.getElementById("examContainer")
+        .classList.add("hidden");
+
+    document.querySelector(".section-bar")
+        .classList.add("hidden");
+
+
+    document.getElementById("result")
+        .style.display = "block";
+
+
+    document.getElementById("finalScore")
+        .textContent =
+        finalScore.toFixed(2) +
+        " / 75";
+
+
+    document.getElementById("finalStats")
+        .textContent =
+        "Correct: " +
+        correct +
+        " | Wrong: " +
+        wrong +
+        " | Unattempted: " +
+        unattempted +
+        " | Percentage: " +
+        percentage.toFixed(2) +
+        "%";
+
+
+    const tbody =
+        document.getElementById("breakdownBody");
+
+    tbody.innerHTML = "";
+
+
+    rows.forEach(function(row){
+
+        tbody.innerHTML +=
+        "<tr>" +
+
+        "<td>" +
+        row.title +
+        "</td>" +
+
+        "<td>" +
+        row.questions +
+        "</td>" +
+
+        "<td>" +
+        row.correct +
+        "</td>" +
+
+        "<td>" +
+        row.wrong +
+        "</td>" +
+
+        "<td>" +
+        row.unattempted +
+        "</td>" +
+
+        "<td>" +
+        row.score.toFixed(2) +
+        "</td>" +
+
+        "</tr>";
+
+    });
+
+
+    showSolutions();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ---------------------------------------------------------
+   SHOW SOLUTIONS
+--------------------------------------------------------- */
+
+function showSolutions(){
+
+    const box =
+        document.getElementById("solutions");
+
+    box.innerHTML =
+        "<h3 style='margin-top:25px;'>Solutions & Answer Key</h3>";
+
+
+    let number = 0;
+
+
+    sections.forEach(function(section){
+
+        section.data.forEach(function(question){
+
+            const userAnswer =
+                answers[number];
+
+
+            let statusClass =
+                "unattempted";
+
+            let statusText =
+                "Not Attempted";
+
+
+            if(userAnswer !== undefined){
+
+                if(userAnswer === question.answer){
+
+                    statusClass = "correct";
+
+                    statusText = "Correct";
+
+                }else{
+
+                    statusClass = "wrong";
+
+                    statusText = "Wrong";
+
+                }
+
+            }
+
+
+            const correctOption =
+                String.fromCharCode(
+                    65 + question.answer
+                );
+
+
+            let userText =
+                "Not Attempted";
+
+
+            if(userAnswer !== undefined){
+
+                userText =
+                    String.fromCharCode(
+                        65 + userAnswer
+                    ) +
+                    ". " +
+                    question.options[userAnswer];
+
+            }
+
+
+            box.innerHTML +=
+
+            "<div class='solution-card " +
+            statusClass +
+            "'>" +
+
+            "<div class='solution-title'>" +
+            "Q" +
+            (number + 1) +
+            ". " +
+            question.q +
+            "</div>" +
+
+            "<div class='answer-line'>" +
+            "<b>Your Answer:</b> " +
+            userText +
+            "</div>" +
+
+            "<div class='answer-line'>" +
+            "<b>Correct Answer:</b> " +
+            correctOption +
+            ". " +
+            question.options[question.answer] +
+            "</div>" +
+
+            "<div class='answer-line'>" +
+            "<b>Status:</b> " +
+            statusText +
+            "</div>" +
+
+            "<div class='explanation'>" +
+            "<b>Explanation:</b> " +
+            question.explanation +
+            "</div>" +
+
+            "</div>";
+
+
+            number++;
+
+        });
+
+    });
+
+}
+
+
+/* ---------------------------------------------------------
+   INITIALIZE
+--------------------------------------------------------- */
+
+buildPalette();
+
+renderQuestion();
+
+startTimer();
+
+</script>
+
+</body>
+
+</html>
