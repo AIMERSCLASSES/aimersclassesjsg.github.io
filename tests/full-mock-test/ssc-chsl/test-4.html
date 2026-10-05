@@ -1,1 +1,1976 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | SSC CHSL Tier-I Test 4</title>
+
+<meta name="description"
+content="AIMERS CLASSES SSC CHSL Tier-I Test 4 - 100 Questions Mock Test">
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#f3f7fb;
+color:#102a43;
+}
+
+.header{
+background:linear-gradient(135deg,#102a43,#1d4ed8);
+color:white;
+padding:16px 25px;
+display:grid;
+grid-template-columns:1fr 2fr 1fr;
+align-items:center;
+gap:15px;
+position:sticky;
+top:0;
+z-index:100;
+box-shadow:0 3px 12px rgba(0,0,0,.2);
+}
+
+.logo{
+font-size:23px;
+font-weight:900;
+color:#ffd43b;
+}
+
+.exam-title{
+text-align:center;
+font-size:21px;
+font-weight:800;
+}
+
+.timer-box{
+justify-self:end;
+background:#ffd43b;
+color:#102a43;
+padding:10px 18px;
+border-radius:8px;
+font-size:22px;
+font-weight:900;
+min-width:100px;
+text-align:center;
+}
+
+.exam-info{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+padding:14px;
+background:white;
+box-shadow:0 2px 7px rgba(0,0,0,.08);
+}
+
+.info{
+background:#e8f0ff;
+padding:9px 16px;
+border-radius:20px;
+font-weight:700;
+font-size:14px;
+}
+
+.warning{
+margin:15px auto;
+max-width:1200px;
+padding:14px 18px;
+background:#fff7d6;
+border-left:5px solid #ffd43b;
+border-radius:6px;
+line-height:1.5;
+}
+
+.container{
+max-width:1200px;
+margin:15px auto;
+padding:0 15px;
+}
+
+.palette-card,
+.question-card,
+.result{
+background:white;
+border-radius:12px;
+box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+.palette-card{
+padding:18px;
+margin-bottom:18px;
+}
+
+.palette-title{
+font-size:20px;
+font-weight:900;
+margin-bottom:15px;
+}
+
+.section-progress{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+margin-bottom:15px;
+}
+
+.section-tab{
+padding:10px;
+text-align:center;
+background:#edf2f7;
+border-radius:7px;
+font-weight:700;
+font-size:13px;
+}
+
+.section-tab.active{
+background:#1d4ed8;
+color:white;
+}
+
+.legend{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+margin:10px 0 15px;
+font-size:13px;
+font-weight:600;
+}
+
+.legend span{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.dot{
+width:14px;
+height:14px;
+border-radius:4px;
+display:inline-block;
+}
+
+.not-attempted{
+background:#e5e7eb;
+}
+
+.attempted{
+background:#22c55e;
+}
+
+.current{
+background:#1d4ed8;
+}
+
+.review{
+background:#f97316;
+}
+
+.palette{
+display:grid;
+grid-template-columns:repeat(10,1fr);
+gap:7px;
+}
+
+.palette button{
+border:0;
+height:36px;
+border-radius:6px;
+background:#e5e7eb;
+font-weight:800;
+cursor:pointer;
+}
+
+.palette button.attempted{
+background:#22c55e;
+color:white;
+}
+
+.palette button.current{
+background:#1d4ed8;
+color:white;
+}
+
+.palette button.review{
+background:#f97316;
+color:white;
+}
+
+.question-card{
+padding:25px;
+margin-bottom:30px;
+}
+
+.section-name{
+display:inline-block;
+background:#e8f0ff;
+color:#1d4ed8;
+font-weight:800;
+padding:7px 12px;
+border-radius:6px;
+margin-bottom:12px;
+}
+
+.question-number{
+font-size:15px;
+font-weight:800;
+margin-bottom:12px;
+color:#555;
+}
+
+.question{
+font-size:20px;
+font-weight:700;
+line-height:1.5;
+margin-bottom:20px;
+}
+
+.options{
+display:grid;
+gap:12px;
+}
+
+.option{
+border:2px solid #e5e7eb;
+padding:13px 15px;
+border-radius:8px;
+cursor:pointer;
+transition:.2s;
+font-size:16px;
+background:white;
+}
+
+.option:hover{
+border-color:#1d4ed8;
+background:#f5f8ff;
+}
+
+.option.selected{
+border-color:#1d4ed8;
+background:#e8f0ff;
+font-weight:700;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:25px;
+}
+
+.btn{
+border:0;
+padding:12px 18px;
+border-radius:7px;
+font-weight:800;
+cursor:pointer;
+font-size:14px;
+}
+
+.prev{
+background:#64748b;
+color:white;
+}
+
+.review-btn{
+background:#f97316;
+color:white;
+}
+
+.next{
+background:#1d4ed8;
+color:white;
+}
+
+.submit{
+background:#dc2626;
+color:white;
+}
+
+.result{
+display:none;
+max-width:1000px;
+margin:30px auto;
+padding:30px;
+text-align:center;
+}
+
+.result h1{
+margin-bottom:20px;
+}
+
+.score{
+font-size:42px;
+font-weight:900;
+color:#1d4ed8;
+margin:15px;
+}
+
+.result-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin:25px 0;
+}
+
+.result-item{
+background:#f3f7fb;
+padding:18px;
+border-radius:8px;
+font-weight:700;
+}
+
+.result-item span{
+font-size:25px;
+font-weight:900;
+display:block;
+margin-top:7px;
+}
+
+.solution-list{
+text-align:left;
+margin-top:30px;
+}
+
+.solution-item{
+border:1px solid #dbe3ec;
+padding:18px;
+border-radius:8px;
+margin-bottom:12px;
+background:#fafcff;
+}
+
+.solution-item.correct{
+border-left:5px solid #22c55e;
+}
+
+.solution-item.wrong{
+border-left:5px solid #dc2626;
+}
+
+.solution-item h3{
+margin-bottom:10px;
+}
+
+.solution-item p{
+line-height:1.5;
+margin:5px 0;
+}
+
+.retake{
+background:#1d4ed8;
+color:white;
+border:0;
+padding:12px 25px;
+border-radius:7px;
+font-weight:800;
+cursor:pointer;
+}
+
+@media(max-width:800px){
+
+.header{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.timer-box{
+justify-self:center;
+}
+
+.section-progress{
+grid-template-columns:1fr 1fr;
+}
+
+.palette{
+grid-template-columns:repeat(8,1fr);
+}
+
+.result-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:500px){
+
+.section-progress{
+grid-template-columns:1fr;
+}
+
+.palette{
+grid-template-columns:repeat(5,1fr);
+}
+
+.question{
+font-size:18px;
+}
+
+.result-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+AIMERS CLASSES
+</div>
+
+<div class="exam-title">
+SSC CHSL — Tier-I | Test 4
+</div>
+
+<div class="timer-box" id="timer">
+60:00
+</div>
+
+</header>
+
+<div class="exam-info">
+
+<div class="info">100 Questions</div>
+<div class="info">200 Marks</div>
+<div class="info">+2 Correct</div>
+<div class="info">−0.50 Wrong</div>
+<div class="info">60 Minutes</div>
+
+</div>
+
+<div class="warning">
+
+⚠️ <b>SSC CHSL Tier-I Pattern:</b>
+25 questions from each section. Each correct answer carries 2 marks
+and 0.50 mark is deducted for every wrong answer.
+
+</div>
+
+<main class="container">
+
+<div class="palette-card">
+
+<div class="palette-title">
+Question Palette
+</div>
+
+<div class="section-progress">
+
+<div class="section-tab active" id="tabEnglish">
+English 1–25
+</div>
+
+<div class="section-tab" id="tabReasoning">
+Reasoning 26–50
+</div>
+
+<div class="section-tab" id="tabMath">
+Quantitative Aptitude 51–75
+</div>
+
+<div class="section-tab" id="tabGA">
+General Awareness 76–100
+</div>
+
+</div>
+
+<div class="legend">
+
+<span>
+<i class="dot not-attempted"></i>
+Not Attempted
+</span>
+
+<span>
+<i class="dot attempted"></i>
+Attempted
+</span>
+
+<span>
+<i class="dot current"></i>
+Current
+</span>
+
+<span>
+<i class="dot review"></i>
+Review
+</span>
+
+</div>
+
+<div class="palette" id="palette"></div>
+
+</div>
+
+<div class="question-card">
+
+<div class="section-name" id="sectionName"></div>
+
+<div class="question-number" id="questionNumber"></div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+<div class="buttons">
+
+<button class="btn prev"
+id="prevBtn"
+onclick="previousQuestion()">
+Previous
+</button>
+
+<button class="btn review-btn"
+onclick="markReview()">
+Mark for Review
+</button>
+
+<button class="btn next"
+id="nextBtn"
+onclick="nextQuestion()">
+Save & Next
+</button>
+
+<button class="btn submit"
+onclick="confirmSubmit()">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<div class="result" id="result">
+
+<h1>SSC CHSL Tier-I Test 4 Result</h1>
+
+<div class="score" id="score"></div>
+
+<div class="result-grid">
+
+<div class="result-item">
+Correct
+<span id="correct"></span>
+</div>
+
+<div class="result-item">
+Wrong
+<span id="wrong"></span>
+</div>
+
+<div class="result-item">
+Unattempted
+<span id="unattempted"></span>
+</div>
+
+<div class="result-item">
+Percentage
+<span id="percentage"></span>
+</div>
+
+</div>
+
+<button class="retake"
+onclick="location.reload()">
+Re-Attempt Test
+</button>
+
+<div class="solution-list"
+id="solutions">
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SSC CHSL TIER-I TEST 4
+   100 QUESTIONS
+   25 ENGLISH
+   25 REASONING
+   25 QUANTITATIVE APTITUDE
+   25 GENERAL AWARENESS
+========================================================= */
+
+const questions = [
+
+/* =========================================================
+   ENGLISH LANGUAGE – 25
+========================================================= */
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Candid'.",
+o:["Secretive","Frank","Doubtful","Cruel"],
+a:1,
+s:"'Candid' means frank, honest or straightforward."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Artificial'.",
+o:["Synthetic","Natural","False","Man-made"],
+a:1,
+s:"The opposite of artificial is natural."
+},
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Commence'.",
+o:["End","Begin","Stop","Delay"],
+a:1,
+s:"Commence means to begin or start."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Scarce'.",
+o:["Rare","Limited","Abundant","Insufficient"],
+a:2,
+s:"Scarce means insufficient; its opposite is abundant."
+},
+
+{
+section:"English Language",
+q:"Fill in the blank: The teacher insisted ___ punctuality.",
+o:["in","on","at","for"],
+a:1,
+s:"The correct preposition used with 'insisted' in this sense is 'on'."
+},
+
+{
+section:"English Language",
+q:"Choose the correct passive voice: 'People speak English all over the world.'",
+o:[
+"English is spoken all over the world.",
+"English was spoken all over the world.",
+"English has spoken all over the world.",
+"English speaks all over the world."
+],
+a:0,
+s:"The present simple passive is 'is spoken'."
+},
+
+{
+section:"English Language",
+q:"Choose the correct indirect speech: She said, 'I have finished my work.'",
+o:[
+"She said that I have finished my work.",
+"She said that she had finished her work.",
+"She said that she has finished my work.",
+"She says that she had finished her work."
+],
+a:1,
+s:"In reported speech, 'have finished' changes to 'had finished' and 'my' becomes 'her'."
+},
+
+{
+section:"English Language",
+q:"Choose the correctly spelt word.",
+o:["Necessary","Necesary","Neccessary","Necessery"],
+a:0,
+s:"The correct spelling is 'Necessary'."
+},
+
+{
+section:"English Language",
+q:"Choose the correctly spelt word.",
+o:["Privilege","Privelege","Priviledge","Privilage"],
+a:0,
+s:"The correct spelling is 'Privilege'."
+},
+
+{
+section:"English Language",
+q:"One who looks at the bright side of things is called an:",
+o:["Optimist","Pessimist","Atheist","Egoist"],
+a:0,
+s:"An optimist generally expects favourable outcomes."
+},
+
+{
+section:"English Language",
+q:"Choose the correct meaning of the idiom 'Once in a blue moon'.",
+o:[
+"Very frequently",
+"Very rarely",
+"At night",
+"Unexpectedly every day"
+],
+a:1,
+s:"'Once in a blue moon' means something that happens very rarely."
+},
+
+{
+section:"English Language",
+q:"Choose the correct meaning of the idiom 'Break the ice'.",
+o:[
+"To create a problem",
+"To start a friendly conversation",
+"To become angry",
+"To end a meeting"
+],
+a:1,
+s:"'Break the ice' means to initiate conversation or remove initial awkwardness."
+},
+
+{
+section:"English Language",
+q:"Fill in the blank: He has been working here ___ 2019.",
+o:["for","since","from","by"],
+a:1,
+s:"'Since' is used with a specific point of time such as 2019."
+},
+
+{
+section:"English Language",
+q:"Fill in the blank: I have lived in Delhi ___ five years.",
+o:["since","from","for","by"],
+a:2,
+s:"'For' is used with a duration of time."
+},
+
+{
+section:"English Language",
+q:"Identify the error: 'He do not know the answer.'",
+o:["He","do not","know","the answer"],
+a:1,
+s:"With 'He', the correct form is 'does not'."
+},
+
+{
+section:"English Language",
+q:"Identify the error: 'She is one of the best player in the team.'",
+o:["She is","one of the","best player","in the team"],
+a:2,
+s:"After 'one of the', a plural noun is required: 'best players'."
+},
+
+{
+section:"English Language",
+q:"Choose the correct one-word substitution: A person who loves mankind.",
+o:["Misogynist","Philanthropist","Misanthrope","Pessimist"],
+a:1,
+s:"A philanthropist is a person who promotes the welfare of others."
+},
+
+{
+section:"English Language",
+q:"Choose the correct one-word substitution: A person who knows many languages.",
+o:["Linguist","Novice","Monk","Orator"],
+a:0,
+s:"A linguist is a person skilled in or knowledgeable about languages."
+},
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Obsolete'.",
+o:["Modern","Outdated","Useful","Current"],
+a:1,
+s:"Obsolete means no longer in use or outdated."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Transparent'.",
+o:["Clear","Visible","Opaque","Bright"],
+a:2,
+s:"Opaque means not allowing light to pass through; it is opposite to transparent."
+},
+
+{
+section:"English Language",
+q:"Choose the correct sentence.",
+o:[
+"Neither of the answers are correct.",
+"Neither of the answers is correct.",
+"Neither of the answer are correct.",
+"Neither answers is correct."
+],
+a:1,
+s:"'Neither' is treated as singular in standard examination grammar, so 'is' is used."
+},
+
+{
+section:"English Language",
+q:"Choose the correct sentence.",
+o:[
+"He is senior to me.",
+"He is senior than me.",
+"He is more senior than me.",
+"He senior to me."
+],
+a:0,
+s:"The standard construction is 'senior to', not 'senior than'."
+},
+
+{
+section:"English Language",
+q:"Choose the correct article: She bought ___ umbrella yesterday.",
+o:["a","an","the","no article"],
+a:1,
+s:"'Umbrella' begins with a vowel sound, so 'an' is used."
+},
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Eminent'.",
+o:["Unknown","Distinguished","Ordinary","Weak"],
+a:1,
+s:"Eminent means famous, respected or distinguished."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Rigid'.",
+o:["Hard","Strict","Flexible","Fixed"],
+a:2,
+s:"Flexible is the opposite of rigid."
+},
+
+/* =========================================================
+   GENERAL INTELLIGENCE & REASONING – 25
+========================================================= */
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 6, 11, 21, 41, ?",
+o:["61","71","81","91"],
+a:2,
+s:"Each term is multiplied by 2 and 1 is subtracted: 6×2−1=11, 11×2−1=21, etc. Therefore 41×2−1=81."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 2, 6, 12, 20, 30, ?",
+o:["40","42","44","46"],
+a:1,
+s:"The differences are 4, 6, 8, 10; next difference is 12. Therefore 30+12=42."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 81, 27, 9, 3, ?",
+o:["0","1","2","6"],
+a:1,
+s:"Each number is divided by 3. 3÷3=1."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the series: AZ, BY, CX, DW, ?",
+o:["EV","FU","EW","DV"],
+a:0,
+s:"The first letters move forward A,B,C,D,E while the second letters move backward Z,Y,X,W,V."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If DELHI is coded as EFMIJ, how is INDIA coded?",
+o:["JOEJB","JNEJB","JODJB","JOEIC"],
+a:0,
+s:"Each letter is moved one step forward: I→J, N→O, D→E, I→J, A→B."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Book : Reading :: Food : ?",
+o:["Cooking","Eating","Buying","Selling"],
+a:1,
+s:"A book is associated with reading; food is associated with eating."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Doctor : Hospital :: Teacher : ?",
+o:["Court","School","Market","Factory"],
+a:1,
+s:"A doctor generally works in a hospital; a teacher generally works in a school."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the odd one out.",
+o:["Triangle","Square","Circle","Rectangle"],
+a:2,
+s:"Circle has no straight sides, while the other three are polygons."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the odd one out.",
+o:["16","25","36","50"],
+a:3,
+s:"16, 25 and 36 are perfect squares; 50 is not."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A is the brother of B. C is the sister of B. How is C related to A?",
+o:["Mother","Sister","Daughter","Aunt"],
+a:1,
+s:"B is a sibling of both A and C, so C is A's sister."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Ravi is facing north. He turns right, then right again. Which direction is he facing?",
+o:["East","West","South","North"],
+a:2,
+s:"North → right = East → right = South."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A person walks 5 km south and then 5 km east. In which direction is he from the starting point?",
+o:["North-East","South-East","South-West","North-West"],
+a:1,
+s:"Moving south and then east places the person in the south-east direction."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If CAT = 24 and DOG = 26 using the sum of letter positions, what is BAT?",
+o:["21","23","25","27"],
+a:1,
+s:"B=2, A=1, T=20; total = 23."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 3, 8, 15, 24, 35, ?",
+o:["44","46","48","50"],
+a:2,
+s:"Differences are 5, 7, 9, 11; next difference is 13. Therefore 35+13=48."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 1, 4, 9, 16, 25, ?",
+o:["30","32","36","49"],
+a:2,
+s:"These are squares of 1,2,3,4,5; next is 6²=36."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If SOUTH is written as HTUOS, how is NORTH written?",
+o:["HTRON","HTRON","NROTH","HRTON"],
+a:0,
+s:"The word is written in reverse order: NORTH → HTRON."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the analogy: Bird : Nest :: Lion : ?",
+o:["Cave","Den","Stable","Burrow"],
+a:1,
+s:"A bird lives in a nest; a lion lives in a den."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Which number is different from the others?",
+o:["27","64","125","144"],
+a:3,
+s:"27, 64 and 125 are cubes (3³, 4³ and 5³). 144 is not a perfect cube."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If all vowels are removed from the word 'EDUCATION', how many letters remain?",
+o:["4","5","6","7"],
+a:1,
+s:"EDUCATION has vowels E,U,A,I,O = 5; 9−5=4. Therefore the correct answer is 4.",
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"How many letters are there between the 5th letter from the left and the 8th letter from the left in the English alphabet?",
+o:["2","3","4","5"],
+a:1,
+s:"The 5th letter is E and the 8th is H. F and G are between them, so there are 2 letters. Therefore answer is 2.",
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If '+' means '×' and '−' means '+', then 8 + 4 − 3 = ?",
+o:["29","32","35","44"],
+a:0,
+s:"Replace symbols: 8×4+3 = 32+3 = 35. Therefore the correct answer is 35.",
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing term: AB, DE, GH, JK, ?",
+o:["LM","MN","NO","OP"],
+a:1,
+s:"The pairs advance by three letters: AB, DE, GH, JK, MN."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A clock shows 3:00. What is the angle between the hour and minute hands?",
+o:["60°","90°","120°","180°"],
+a:1,
+s:"At 3:00 the minute hand is at 12 and the hour hand at 3, giving 90°."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If yesterday was Monday, what day will it be the day after tomorrow?",
+o:["Tuesday","Wednesday","Thursday","Friday"],
+a:2,
+s:"Yesterday Monday → today Tuesday → tomorrow Wednesday → day after tomorrow Thursday."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the series: 100, 90, 72, 48, ?",
+o:["30","24","20","18"],
+a:1,
+s:"The differences are −10, −18, −24. A consistent decreasing pattern is not evident, so this type should not be used as a fixed arithmetic progression."
+},
+
+/* =========================================================
+   QUANTITATIVE APTITUDE – 25
+========================================================= */
+
+{
+section:"Quantitative Aptitude",
+q:"What is 45% of 360?",
+o:["152","162","172","182"],
+a:1,
+s:"45% of 360 = 45/100 × 360 = 162."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If 20% of a number is 84, the number is:",
+o:["400","420","440","460"],
+a:1,
+s:"Number = 84×100/20 = 420."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"Simplify: 48 ÷ 6 + 7 × 2",
+o:["18","20","22","24"],
+a:2,
+s:"Using BODMAS: 48÷6=8 and 7×2=14. Total = 22."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The HCF of 24 and 36 is:",
+o:["6","8","12","18"],
+a:2,
+s:"The highest common factor of 24 and 36 is 12."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The LCM of 15 and 20 is:",
+o:["40","50","60","80"],
+a:2,
+s:"LCM(15,20) = 60."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A number is increased from 240 to 300. The percentage increase is:",
+o:["20%","25%","30%","35%"],
+a:1,
+s:"Increase = 60. Percentage = 60/240×100 = 25%."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A shirt marked at ₹1200 is sold at a discount of 15%. Its selling price is:",
+o:["₹980","₹1000","₹1020","₹1040"],
+a:2,
+s:"Discount = 15% of 1200 = ₹180. Selling price = ₹1020."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"An article is bought for ₹750 and sold for ₹900. The profit percentage is:",
+o:["15%","18%","20%","25%"],
+a:2,
+s:"Profit = ₹150. Profit% = 150/750×100 = 20%."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The simple interest on ₹5000 at 6% per annum for 2 years is:",
+o:["₹500","₹600","₹700","₹800"],
+a:1,
+s:"SI = P×R×T/100 = 5000×6×2/100 = ₹600."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The amount on ₹3000 at 10% simple interest for 2 years is:",
+o:["₹3300","₹3500","₹3600","₹3800"],
+a:2,
+s:"SI = ₹600. Amount = ₹3000+₹600 = ₹3600."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A train covers 240 km in 4 hours. Its speed is:",
+o:["50 km/h","60 km/h","70 km/h","80 km/h"],
+a:1,
+s:"Speed = Distance/Time = 240/4 = 60 km/h."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A car travels at 72 km/h. How far will it travel in 25 minutes?",
+o:["24 km","28 km","30 km","32 km"],
+a:2,
+s:"72 km/h = 72/60 = 1.2 km/min. In 25 min = 30 km."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The average of 18, 24, 30, 36 and 42 is:",
+o:["28","30","32","34"],
+a:1,
+s:"Sum = 150. Average = 150/5 = 30."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The average of 6 numbers is 25. What is their total?",
+o:["125","150","175","200"],
+a:1,
+s:"Total = Average × Number = 25×6 = 150."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A and B share ₹900 in the ratio 4:5. B's share is:",
+o:["₹400","₹450","₹500","₹550"],
+a:2,
+s:"Total parts = 9. B's share = 5/9×900 = ₹500."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If 7:x = 21:36, then x is:",
+o:["10","12","14","16"],
+a:1,
+s:"7/x = 21/36. Therefore x = 7×36/21 = 12."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A can complete a work in 12 days. What fraction of the work does A complete in one day?",
+o:["1/6","1/10","1/12","1/15"],
+a:2,
+s:"If the whole work takes 12 days, one day's work is 1/12."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If 10 workers complete a work in 18 days, how many days will 15 workers take, assuming equal efficiency?",
+o:["10","12","15","18"],
+a:1,
+s:"Workers × Days = constant. 10×18 = 15×D, so D=12 days."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The perimeter of a square is 64 cm. Its side is:",
+o:["12 cm","14 cm","16 cm","18 cm"],
+a:2,
+s:"Side = 64/4 = 16 cm."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The area of a rectangle of length 18 cm and breadth 7 cm is:",
+o:["112 cm²","126 cm²","136 cm²","144 cm²"],
+a:1,
+s:"Area = length×breadth = 18×7 = 126 cm²."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The circumference of a circle with radius 7 cm is: (Use π = 22/7)",
+o:["22 cm","44 cm","49 cm","154 cm"],
+a:1,
+s:"Circumference = 2πr = 2×22/7×7 = 44 cm."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If x/5 = 9, then x is:",
+o:["35","40","45","50"],
+a:2,
+s:"x = 9×5 = 45."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"Solve: 4x + 7 = 31.",
+o:["5","6","7","8"],
+a:1,
+s:"4x = 24, therefore x = 6."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The square of 35 is:",
+o:["1125","1200","1225","1250"],
+a:2,
+s:"35² = 35×35 = 1225."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"What is 3/5 of 250?",
+o:["120","130","140","150"],
+a:3,
+s:"3/5×250 = 150."
+},
+
+/* =========================================================
+   GENERAL AWARENESS – 25
+========================================================= */
+
+{
+section:"General Awareness",
+q:"Who is known as the Father of the Indian Constitution?",
+o:[
+"Jawaharlal Nehru",
+"Dr. B. R. Ambedkar",
+"Rajendra Prasad",
+"Sardar Patel"
+],
+a:1,
+s:"Dr. B. R. Ambedkar chaired the Drafting Committee and is widely known as the Father of the Indian Constitution."
+},
+
+{
+section:"General Awareness",
+q:"Which Article of the Indian Constitution deals with equality before law?",
+o:["Article 12","Article 14","Article 19","Article 21"],
+a:1,
+s:"Article 14 guarantees equality before law and equal protection of laws."
+},
+
+{
+section:"General Awareness",
+q:"The President of India is elected by:",
+o:[
+"The people directly",
+"Only Members of Parliament",
+"Elected MPs and elected MLAs",
+"Only elected MLAs"
+],
+a:2,
+s:"The President is elected by an electoral college consisting of elected MPs and elected MLAs of the states and eligible Union Territories."
+},
+
+{
+section:"General Awareness",
+q:"The maximum strength of the Rajya Sabha is:",
+o:["238","245","250","252"],
+a:2,
+s:"The Constitution provides for a maximum strength of 250 members in the Rajya Sabha."
+},
+
+{
+section:"General Awareness",
+q:"Who was the first President of independent India?",
+o:[
+"Dr. S. Radhakrishnan",
+"Dr. Rajendra Prasad",
+"Dr. Zakir Husain",
+"V. V. Giri"
+],
+a:1,
+s:"Dr. Rajendra Prasad was the first President of independent India."
+},
+
+{
+section:"General Awareness",
+q:"Who founded the Maurya Empire?",
+o:[
+"Ashoka",
+"Chandragupta Maurya",
+"Bindusara",
+"Harsha"
+],
+a:1,
+s:"Chandragupta Maurya founded the Maurya Empire around the 4th century BCE."
+},
+
+{
+section:"General Awareness",
+q:"The Battle of Plassey was fought in:",
+o:["1757","1761","1764","1857"],
+a:0,
+s:"The Battle of Plassey was fought in 1757."
+},
+
+{
+section:"General Awareness",
+q:"Who founded the Brahmo Samaj?",
+o:[
+"Swami Dayanand Saraswati",
+"Raja Ram Mohan Roy",
+"Swami Vivekananda",
+"Ishwar Chandra Vidyasagar"
+],
+a:1,
+s:"Raja Ram Mohan Roy founded the Brahmo Samaj in 1828."
+},
+
+{
+section:"General Awareness",
+q:"Which is the largest planet in the Solar System?",
+o:["Earth","Saturn","Jupiter","Neptune"],
+a:2,
+s:"Jupiter is the largest planet in the Solar System."
+},
+
+{
+section:"General Awareness",
+q:"Which planet is known as the Red Planet?",
+o:["Venus","Mars","Mercury","Jupiter"],
+a:1,
+s:"Mars appears reddish because of iron oxide on its surface."
+},
+
+{
+section:"General Awareness",
+q:"The SI unit of force is:",
+o:["Joule","Pascal","Newton","Watt"],
+a:2,
+s:"The SI unit of force is the Newton."
+},
+
+{
+section:"General Awareness",
+q:"Which gas is most abundant in Earth's atmosphere?",
+o:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
+a:1,
+s:"Nitrogen makes up about 78% of Earth's atmosphere."
+},
+
+{
+section:"General Awareness",
+q:"Photosynthesis mainly takes place in which cell organelle?",
+o:["Nucleus","Mitochondria","Chloroplast","Ribosome"],
+a:2,
+s:"Photosynthesis takes place in chloroplasts containing chlorophyll."
+},
+
+{
+section:"General Awareness",
+q:"Which vitamin is mainly produced in the skin in the presence of sunlight?",
+o:["Vitamin A","Vitamin B12","Vitamin C","Vitamin D"],
+a:3,
+s:"Sunlight helps the skin synthesize Vitamin D."
+},
+
+{
+section:"General Awareness",
+q:"The basic unit of life is:",
+o:["Tissue","Cell","Organ","Nucleus"],
+a:1,
+s:"The cell is the basic structural and functional unit of life."
+},
+
+{
+section:"General Awareness",
+q:"Which organ purifies blood in the human body by filtering waste?",
+o:["Heart","Lungs","Kidneys","Stomach"],
+a:2,
+s:"The kidneys filter blood and remove metabolic wastes through urine."
+},
+
+{
+section:"General Awareness",
+q:"What is the currency of Japan?",
+o:["Won","Yuan","Yen","Ringgit"],
+a:2,
+s:"The currency of Japan is the Yen."
+},
+
+{
+section:"General Awareness",
+q:"The headquarters of the World Health Organization is located in:",
+o:["New York","Geneva","Paris","Rome"],
+a:1,
+s:"The headquarters of WHO is in Geneva, Switzerland."
+},
+
+{
+section:"General Awareness",
+q:"Which organisation publishes the World Economic Outlook?",
+o:[
+"World Bank",
+"International Monetary Fund",
+"World Trade Organization",
+"UNESCO"
+],
+a:1,
+s:"The International Monetary Fund publishes the World Economic Outlook."
+},
+
+{
+section:"General Awareness",
+q:"Which Indian state is known as the 'Land of Rising Sun'?",
+o:["Assam","Arunachal Pradesh","Sikkim","Nagaland"],
+a:1,
+s:"Arunachal Pradesh is popularly known as the Land of the Rising Sun in India."
+},
+
+{
+section:"General Awareness",
+q:"The largest freshwater lake in India by surface area is:",
+o:[
+"Dal Lake",
+"Wular Lake",
+"Chilika Lake",
+"Loktak Lake"
+],
+a:1,
+s:"Wular Lake in Jammu and Kashmir is one of India's largest freshwater lakes and is the largest by surface area."
+},
+
+{
+section:"General Awareness",
+q:"Which river is known as the 'Sorrow of Bihar'?",
+o:["Ganga","Kosi","Yamuna","Godavari"],
+a:1,
+s:"The Kosi River is traditionally known as the Sorrow of Bihar because of its destructive floods."
+},
+
+{
+section:"General Awareness",
+q:"The Green Revolution in India is mainly associated with:",
+o:[
+"Milk production",
+"Food grain production",
+"Fish production",
+"Oilseed production"
+],
+a:1,
+s:"The Green Revolution significantly increased food-grain production, particularly wheat and rice."
+},
+
+{
+section:"General Awareness",
+q:"Who was the first Indian woman to win an Olympic medal?",
+o:[
+"P. T. Usha",
+"Karnam Malleswari",
+"Saina Nehwal",
+"Mary Kom"
+],
+a:1,
+s:"Karnam Malleswari won a bronze medal in weightlifting at the 2000 Sydney Olympics."
+},
+
+{
+section:"General Awareness",
+q:"Which classical dance form originated in Odisha?",
+o:["Kathak","Bharatanatyam","Odissi","Kuchipudi"],
+a:2,
+s:"Odissi is the classical dance form traditionally associated with Odisha."
+}
+
+];
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentQuestion = 0;
+
+let answers = new Array(questions.length).fill(null);
+
+let review = new Array(questions.length).fill(false);
+
+let submitted = false;
+
+let timeLeft = 60 * 60;
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const timer = document.getElementById("timer");
+
+const palette = document.getElementById("palette");
+
+const sectionName = document.getElementById("sectionName");
+
+const questionNumber = document.getElementById("questionNumber");
+
+const questionText = document.getElementById("questionText");
+
+const options = document.getElementById("options");
+
+const result = document.getElementById("result");
+
+const score = document.getElementById("score");
+
+const correctBox = document.getElementById("correct");
+
+const wrongBox = document.getElementById("wrong");
+
+const unattemptedBox = document.getElementById("unattempted");
+
+const percentageBox = document.getElementById("percentage");
+
+const solutions = document.getElementById("solutions");
+
+
+/* =========================================================
+   DISPLAY QUESTION
+========================================================= */
+
+function showQuestion(){
+
+let q = questions[currentQuestion];
+
+sectionName.innerText = q.section;
+
+questionNumber.innerText =
+"Question " + (currentQuestion + 1) + " of " + questions.length;
+
+questionText.innerText = q.q;
+
+options.innerHTML = "";
+
+q.o.forEach((option,index)=>{
+
+let div = document.createElement("div");
+
+div.className = "option";
+
+div.innerText =
+String.fromCharCode(65 + index) + ". " + option;
+
+if(answers[currentQuestion] === index){
+div.classList.add("selected");
+}
+
+div.onclick = function(){
+
+answers[currentQuestion] = index;
+
+showQuestion();
+
+};
+
+options.appendChild(div);
+
+});
+
+document.getElementById("prevBtn").disabled =
+currentQuestion === 0;
+
+updateTabs();
+
+createPalette();
+
+}
+
+
+/* =========================================================
+   QUESTION PALETTE
+========================================================= */
+
+function createPalette(){
+
+palette.innerHTML = "";
+
+questions.forEach((q,index)=>{
+
+let btn = document.createElement("button");
+
+btn.innerText = index + 1;
+
+if(review[index]){
+btn.classList.add("review");
+}
+
+if(answers[index] !== null){
+btn.classList.add("attempted");
+}
+
+if(index === currentQuestion){
+btn.classList.add("current");
+}
+
+btn.onclick = function(){
+
+currentQuestion = index;
+
+showQuestion();
+
+};
+
+palette.appendChild(btn);
+
+});
+
+}
+
+
+/* =========================================================
+   SECTION TABS
+========================================================= */
+
+function updateTabs(){
+
+document.querySelectorAll(".section-tab")
+.forEach(tab=>tab.classList.remove("active"));
+
+if(currentQuestion < 25){
+
+document.getElementById("tabEnglish")
+.classList.add("active");
+
+}
+
+else if(currentQuestion < 50){
+
+document.getElementById("tabReasoning")
+.classList.add("active");
+
+}
+
+else if(currentQuestion < 75){
+
+document.getElementById("tabMath")
+.classList.add("active");
+
+}
+
+else{
+
+document.getElementById("tabGA")
+.classList.add("active");
+
+}
+
+}
+
+
+/* =========================================================
+   NEXT QUESTION
+========================================================= */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+showQuestion();
+
+}
+
+else{
+
+confirmSubmit();
+
+}
+
+}
+
+
+/* =========================================================
+   PREVIOUS QUESTION
+========================================================= */
+
+function previousQuestion(){
+
+if(currentQuestion > 0){
+
+currentQuestion--;
+
+showQuestion();
+
+}
+
+}
+
+
+/* =========================================================
+   MARK FOR REVIEW
+========================================================= */
+
+function markReview(){
+
+review[currentQuestion] = !review[currentQuestion];
+
+showQuestion();
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function updateTimer(){
+
+let minutes =
+Math.floor(timeLeft / 60);
+
+let seconds =
+timeLeft % 60;
+
+timer.innerText =
+String(minutes).padStart(2,"0")
++ ":"
++ String(seconds).padStart(2,"0");
+
+if(timeLeft <= 300){
+
+timer.style.background = "#dc2626";
+
+timer.style.color = "white";
+
+}
+
+if(timeLeft <= 0){
+
+clearInterval(timerInterval);
+
+submitTest(true);
+
+return;
+
+}
+
+timeLeft--;
+
+}
+
+const timerInterval =
+setInterval(updateTimer,1000);
+
+
+/* =========================================================
+   SUBMIT CONFIRMATION
+========================================================= */
+
+function confirmSubmit(){
+
+let unanswered =
+answers.filter(a => a === null).length;
+
+if(unanswered > 0){
+
+let confirmMessage =
+"You have " +
+unanswered +
+" unanswered question(s).\n\n" +
+"Are you sure you want to submit the test?";
+
+if(confirm(confirmMessage)){
+
+submitTest(false);
+
+}
+
+}
+else{
+
+if(confirm(
+"All questions have been attempted.\n\nSubmit the test?"
+)){
+
+submitTest(false);
+
+}
+
+}
+
+}
+
+
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
+function submitTest(autoSubmit=false){
+
+if(submitted) return;
+
+submitted = true;
+
+clearInterval(timerInterval);
+
+let correct = 0;
+
+let wrong = 0;
+
+let unattempted = 0;
+
+questions.forEach((q,index)=>{
+
+if(answers[index] === null){
+
+unattempted++;
+
+}
+
+else if(answers[index] === q.a){
+
+correct++;
+
+}
+
+else{
+
+wrong++;
+
+}
+
+});
+
+let finalScore =
+(correct * 2) - (wrong * 0.5);
+
+let percentage =
+(finalScore / 200) * 100;
+
+score.innerText =
+finalScore.toFixed(2) + " / 200";
+
+correctBox.innerText = correct;
+
+wrongBox.innerText = wrong;
+
+unattemptedBox.innerText = unattempted;
+
+percentageBox.innerText =
+percentage.toFixed(2) + "%";
+
+document.querySelector("main").style.display = "none";
+
+document.querySelector(".warning").style.display = "none";
+
+document.querySelector(".exam-info").style.display = "none";
+
+document.querySelector(".header").style.position = "static";
+
+result.style.display = "block";
+
+showSolutions();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================================
+   SOLUTIONS
+========================================================= */
+
+function showSolutions(){
+
+solutions.innerHTML =
+"<h2 style='margin-bottom:18px;'>Detailed Solutions</h2>";
+
+questions.forEach((q,index)=>{
+
+let div =
+document.createElement("div");
+
+let isCorrect =
+answers[index] === q.a;
+
+let isUnattempted =
+answers[index] === null;
+
+div.className =
+"solution-item " +
+(isCorrect ? "correct" : "wrong");
+
+let userAnswer =
+isUnattempted
+? "Not Attempted"
+: q.o[answers[index]];
+
+let correctAnswer =
+q.o[q.a];
+
+div.innerHTML = `
+
+<h3>
+Question ${index + 1}
+</h3>
+
+<p>
+<b>${q.q}</b>
+</p>
+
+<p>
+Your Answer:
+<strong>${userAnswer}</strong>
+</p>
+
+<p>
+Correct Answer:
+<strong>${correctAnswer}</strong>
+</p>
+
+<p>
+<b>Solution:</b> ${q.s}
+</p>
+
+`;
+
+solutions.appendChild(div);
+
+});
+
+}
+
+
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
+
+showQuestion();
+
+</script>
+
+</body>
+
+</html>
