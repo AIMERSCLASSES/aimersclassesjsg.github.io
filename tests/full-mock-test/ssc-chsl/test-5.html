@@ -1,1 +1,2017 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | SSC CHSL Tier-I Test 5</title>
+
+<meta name="description"
+content="AIMERS CLASSES SSC CHSL Tier-I Test 5 - 100 Questions Mock Test">
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#f3f7fb;
+color:#102a43;
+}
+
+.header{
+background:linear-gradient(135deg,#102a43,#1d4ed8);
+color:white;
+padding:16px 25px;
+display:grid;
+grid-template-columns:1fr 2fr 1fr;
+align-items:center;
+gap:15px;
+position:sticky;
+top:0;
+z-index:100;
+box-shadow:0 3px 12px rgba(0,0,0,.2);
+}
+
+.logo{
+font-size:23px;
+font-weight:900;
+color:#ffd43b;
+}
+
+.exam-title{
+text-align:center;
+font-size:21px;
+font-weight:800;
+}
+
+.timer-box{
+justify-self:end;
+background:#ffd43b;
+color:#102a43;
+padding:10px 18px;
+border-radius:8px;
+font-size:22px;
+font-weight:900;
+min-width:100px;
+text-align:center;
+}
+
+.exam-info{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+padding:14px;
+background:white;
+box-shadow:0 2px 7px rgba(0,0,0,.08);
+}
+
+.info{
+background:#e8f0ff;
+padding:9px 16px;
+border-radius:20px;
+font-weight:700;
+font-size:14px;
+}
+
+.warning{
+margin:15px auto;
+max-width:1200px;
+padding:14px 18px;
+background:#fff7d6;
+border-left:5px solid #ffd43b;
+border-radius:6px;
+line-height:1.5;
+}
+
+.container{
+max-width:1200px;
+margin:15px auto;
+padding:0 15px;
+}
+
+.palette-card,
+.question-card,
+.result{
+background:white;
+border-radius:12px;
+box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+.palette-card{
+padding:18px;
+margin-bottom:18px;
+}
+
+.palette-title{
+font-size:20px;
+font-weight:900;
+margin-bottom:15px;
+}
+
+.section-progress{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+margin-bottom:15px;
+}
+
+.section-tab{
+padding:10px;
+text-align:center;
+background:#edf2f7;
+border-radius:7px;
+font-weight:700;
+font-size:13px;
+}
+
+.section-tab.active{
+background:#1d4ed8;
+color:white;
+}
+
+.legend{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+margin:10px 0 15px;
+font-size:13px;
+font-weight:600;
+}
+
+.legend span{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.dot{
+width:14px;
+height:14px;
+border-radius:4px;
+display:inline-block;
+}
+
+.not-attempted{
+background:#e5e7eb;
+}
+
+.attempted{
+background:#22c55e;
+}
+
+.current{
+background:#1d4ed8;
+}
+
+.review{
+background:#f97316;
+}
+
+.palette{
+display:grid;
+grid-template-columns:repeat(10,1fr);
+gap:7px;
+}
+
+.palette button{
+border:0;
+height:36px;
+border-radius:6px;
+background:#e5e7eb;
+font-weight:800;
+cursor:pointer;
+}
+
+.palette button.attempted{
+background:#22c55e;
+color:white;
+}
+
+.palette button.current{
+background:#1d4ed8;
+color:white;
+}
+
+.palette button.review{
+background:#f97316;
+color:white;
+}
+
+.question-card{
+padding:25px;
+margin-bottom:30px;
+}
+
+.section-name{
+display:inline-block;
+background:#e8f0ff;
+color:#1d4ed8;
+font-weight:800;
+padding:7px 12px;
+border-radius:6px;
+margin-bottom:12px;
+}
+
+.question-number{
+font-size:15px;
+font-weight:800;
+margin-bottom:12px;
+color:#555;
+}
+
+.question{
+font-size:20px;
+font-weight:700;
+line-height:1.5;
+margin-bottom:20px;
+}
+
+.options{
+display:grid;
+gap:12px;
+}
+
+.option{
+border:2px solid #e5e7eb;
+padding:13px 15px;
+border-radius:8px;
+cursor:pointer;
+transition:.2s;
+font-size:16px;
+background:white;
+}
+
+.option:hover{
+border-color:#1d4ed8;
+background:#f5f8ff;
+}
+
+.option.selected{
+border-color:#1d4ed8;
+background:#e8f0ff;
+font-weight:700;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:25px;
+}
+
+.btn{
+border:0;
+padding:12px 18px;
+border-radius:7px;
+font-weight:800;
+cursor:pointer;
+font-size:14px;
+}
+
+.prev{
+background:#64748b;
+color:white;
+}
+
+.review-btn{
+background:#f97316;
+color:white;
+}
+
+.next{
+background:#1d4ed8;
+color:white;
+}
+
+.submit{
+background:#dc2626;
+color:white;
+}
+
+.result{
+display:none;
+max-width:1000px;
+margin:30px auto;
+padding:30px;
+text-align:center;
+}
+
+.result h1{
+margin-bottom:20px;
+}
+
+.score{
+font-size:42px;
+font-weight:900;
+color:#1d4ed8;
+margin:15px;
+}
+
+.result-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin:25px 0;
+}
+
+.result-item{
+background:#f3f7fb;
+padding:18px;
+border-radius:8px;
+font-weight:700;
+}
+
+.result-item span{
+font-size:25px;
+font-weight:900;
+display:block;
+margin-top:7px;
+}
+
+.solution-list{
+text-align:left;
+margin-top:30px;
+}
+
+.solution-item{
+border:1px solid #dbe3ec;
+padding:18px;
+border-radius:8px;
+margin-bottom:12px;
+background:#fafcff;
+}
+
+.solution-item.correct{
+border-left:5px solid #22c55e;
+}
+
+.solution-item.wrong{
+border-left:5px solid #dc2626;
+}
+
+.solution-item h3{
+margin-bottom:10px;
+}
+
+.solution-item p{
+line-height:1.5;
+margin:5px 0;
+}
+
+.retake{
+background:#1d4ed8;
+color:white;
+border:0;
+padding:12px 25px;
+border-radius:7px;
+font-weight:800;
+cursor:pointer;
+}
+
+@media(max-width:800px){
+
+.header{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.timer-box{
+justify-self:center;
+}
+
+.section-progress{
+grid-template-columns:1fr 1fr;
+}
+
+.palette{
+grid-template-columns:repeat(8,1fr);
+}
+
+.result-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:500px){
+
+.section-progress{
+grid-template-columns:1fr;
+}
+
+.palette{
+grid-template-columns:repeat(5,1fr);
+}
+
+.question{
+font-size:18px;
+}
+
+.result-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+AIMERS CLASSES
+</div>
+
+<div class="exam-title">
+SSC CHSL — Tier-I | Test 5
+</div>
+
+<div class="timer-box" id="timer">
+60:00
+</div>
+
+</header>
+
+<div class="exam-info">
+
+<div class="info">100 Questions</div>
+<div class="info">200 Marks</div>
+<div class="info">+2 Correct</div>
+<div class="info">−0.50 Wrong</div>
+<div class="info">60 Minutes</div>
+
+</div>
+
+<div class="warning">
+
+⚠️ <b>SSC CHSL Tier-I Pattern:</b>
+25 questions from each section. Each correct answer carries 2 marks
+and 0.50 mark is deducted for every wrong answer.
+
+</div>
+
+<main class="container">
+
+<div class="palette-card">
+
+<div class="palette-title">
+Question Palette
+</div>
+
+<div class="section-progress">
+
+<div class="section-tab active" id="tabEnglish">
+English 1–25
+</div>
+
+<div class="section-tab" id="tabReasoning">
+Reasoning 26–50
+</div>
+
+<div class="section-tab" id="tabMath">
+Quantitative Aptitude 51–75
+</div>
+
+<div class="section-tab" id="tabGA">
+General Awareness 76–100
+</div>
+
+</div>
+
+<div class="legend">
+
+<span>
+<i class="dot not-attempted"></i>
+Not Attempted
+</span>
+
+<span>
+<i class="dot attempted"></i>
+Attempted
+</span>
+
+<span>
+<i class="dot current"></i>
+Current
+</span>
+
+<span>
+<i class="dot review"></i>
+Review
+</span>
+
+</div>
+
+<div class="palette" id="palette"></div>
+
+</div>
+
+<div class="question-card">
+
+<div class="section-name" id="sectionName"></div>
+
+<div class="question-number" id="questionNumber"></div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+<div class="buttons">
+
+<button class="btn prev"
+id="prevBtn"
+onclick="previousQuestion()">
+Previous
+</button>
+
+<button class="btn review-btn"
+onclick="markReview()">
+Mark for Review
+</button>
+
+<button class="btn next"
+id="nextBtn"
+onclick="nextQuestion()">
+Save & Next
+</button>
+
+<button class="btn submit"
+onclick="confirmSubmit()">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<div class="result" id="result">
+
+<h1>SSC CHSL Tier-I Test 5 Result</h1>
+
+<div class="score" id="score"></div>
+
+<div class="result-grid">
+
+<div class="result-item">
+Correct
+<span id="correct"></span>
+</div>
+
+<div class="result-item">
+Wrong
+<span id="wrong"></span>
+</div>
+
+<div class="result-item">
+Unattempted
+<span id="unattempted"></span>
+</div>
+
+<div class="result-item">
+Percentage
+<span id="percentage"></span>
+</div>
+
+</div>
+
+<button class="retake"
+onclick="location.reload()">
+Re-Attempt Test
+</button>
+
+<div class="solution-list" id="solutions"></div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SSC CHSL TIER-I TEST 5
+   100 QUESTIONS
+   25 ENGLISH
+   25 REASONING
+   25 QUANTITATIVE APTITUDE
+   25 GENERAL AWARENESS
+========================================================= */
+
+const questions = [
+
+/* =========================================================
+   ENGLISH LANGUAGE – 25
+========================================================= */
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Benevolent'.",
+o:["Cruel","Kind","Selfish","Proud"],
+a:1,
+s:"Benevolent means kind, charitable or well-meaning."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Victory'.",
+o:["Success","Triumph","Defeat","Achievement"],
+a:2,
+s:"The opposite of victory is defeat."
+},
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Conceal'.",
+o:["Reveal","Hide","Explain","Display"],
+a:1,
+s:"Conceal means to hide or keep something out of sight."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Permanent'.",
+o:["Fixed","Stable","Temporary","Lasting"],
+a:2,
+s:"Temporary means lasting for only a limited period and is opposite to permanent."
+},
+
+{
+section:"English Language",
+q:"Fill in the blank: She is afraid ___ dogs.",
+o:["from","of","with","at"],
+a:1,
+s:"The correct preposition is 'of': afraid of dogs."
+},
+
+{
+section:"English Language",
+q:"Fill in the blank: He is interested ___ learning French.",
+o:["on","at","in","for"],
+a:2,
+s:"The correct expression is 'interested in'."
+},
+
+{
+section:"English Language",
+q:"Choose the correct passive voice: 'The manager will announce the result tomorrow.'",
+o:[
+"The result will be announced by the manager tomorrow.",
+"The result was announced by the manager tomorrow.",
+"The result is announced by the manager tomorrow.",
+"The manager will be announced the result tomorrow."
+],
+a:0,
+s:"Future simple passive is formed with 'will be + past participle': will be announced."
+},
+
+{
+section:"English Language",
+q:"Choose the correct indirect speech: Rahul said, 'I can solve this problem.'",
+o:[
+"Rahul said that I can solve this problem.",
+"Rahul said that he could solve that problem.",
+"Rahul said that he can solve this problem.",
+"Rahul says that he could solve that problem."
+],
+a:1,
+s:"In reported speech, 'can' changes to 'could' and 'this' changes to 'that'."
+},
+
+{
+section:"English Language",
+q:"Choose the correctly spelt word.",
+o:["Occassion","Ocassion","Occasion","Occassionn"],
+a:2,
+s:"The correct spelling is 'Occasion'."
+},
+
+{
+section:"English Language",
+q:"Choose the correctly spelt word.",
+o:["Maintenance","Maintainance","Maintenence","Maintanance"],
+a:0,
+s:"The correct spelling is 'Maintenance'."
+},
+
+{
+section:"English Language",
+q:"A person who hates mankind is called:",
+o:["Philanthropist","Misanthrope","Optimist","Patriot"],
+a:1,
+s:"A misanthrope is a person who dislikes or hates humankind."
+},
+
+{
+section:"English Language",
+q:"A person who can speak two languages is called:",
+o:["Monolingual","Bilingual","Trilingual","Linguist"],
+a:1,
+s:"A bilingual person can speak two languages."
+},
+
+{
+section:"English Language",
+q:"Choose the correct meaning of the idiom 'At the eleventh hour'.",
+o:[
+"Very early",
+"At the last moment",
+"At midnight",
+"After eleven days"
+],
+a:1,
+s:"'At the eleventh hour' means at the last possible moment."
+},
+
+{
+section:"English Language",
+q:"Choose the correct meaning of the idiom 'A storm in a teacup'.",
+o:[
+"A serious disaster",
+"A lot of excitement about a small matter",
+"A weather forecast",
+"A celebration"
+],
+a:1,
+s:"It refers to a great deal of unnecessary excitement over a minor issue."
+},
+
+{
+section:"English Language",
+q:"Identify the error: 'He is good in mathematics.'",
+o:["He","is good","in","mathematics"],
+a:2,
+s:"The standard expression is 'good at mathematics'."
+},
+
+{
+section:"English Language",
+q:"Identify the error: 'She did not went to school yesterday.'",
+o:["She","did not","went","to school yesterday"],
+a:2,
+s:"After 'did not', the base form 'go' is required."
+},
+
+{
+section:"English Language",
+q:"Choose the correct sentence.",
+o:[
+"Everyone have a duty.",
+"Everyone has a duty.",
+"Everyone are having a duty.",
+"Everyone have duties."
+],
+a:1,
+s:"'Everyone' is singular, so 'has' is correct."
+},
+
+{
+section:"English Language",
+q:"Choose the correct sentence.",
+o:[
+"The news are true.",
+"The news is true.",
+"The news were true.",
+"The news have true."
+],
+a:1,
+s:"'News' is treated as a singular uncountable noun in standard English."
+},
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Fragile'.",
+o:["Strong","Delicate","Heavy","Rough"],
+a:1,
+s:"Fragile means easily broken or delicate."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Hostile'.",
+o:["Angry","Friendly","Violent","Aggressive"],
+a:1,
+s:"Friendly is the opposite of hostile."
+},
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Vast'.",
+o:["Tiny","Narrow","Enormous","Short"],
+a:2,
+s:"Vast means very large or extensive."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Ancient'.",
+o:["Historic","Modern","Old","Former"],
+a:1,
+s:"Modern is the opposite of ancient."
+},
+
+{
+section:"English Language",
+q:"Choose the correct article: Ganga is ___ sacred river.",
+o:["a","an","the","no article"],
+a:0,
+s:"'A sacred river' is correct because the noun is singular and countable."
+},
+
+{
+section:"English Language",
+q:"Fill in the blank: The students arrived ___ the classroom before the teacher.",
+o:["at","on","for","by"],
+a:0,
+s:"The correct preposition for a specific place is 'at'."
+},
+
+{
+section:"English Language",
+q:"Choose the correct one-word substitution for 'A person who speaks for others'.",
+o:["Spokesperson","Spectator","Translator","Novice"],
+a:0,
+s:"A spokesperson speaks officially on behalf of another person or organization."
+},
+
+/* =========================================================
+   REASONING – 25
+========================================================= */
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 7, 14, 23, 34, 47, ?",
+o:["60","62","64","66"],
+a:1,
+s:"Differences are 7, 9, 11, 13; next difference is 15. Therefore 47+15=62."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 4, 9, 19, 39, ?",
+o:["69","79","89","99"],
+a:1,
+s:"Each term is multiplied by 2 and 1 is added: 4×2+1=9, etc. Therefore 39×2+1=79."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 128, 64, 32, 16, ?",
+o:["4","6","8","10"],
+a:2,
+s:"Each number is divided by 2. Therefore 16÷2=8."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the series: AC, FH, KM, PR, ?",
+o:["UW","UV","VW","TU"],
+a:0,
+s:"The first letters advance by 5: A,F,K,P,U. The second letters also advance by 5: C,H,M,R,W."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If CODE is written as DPEF, how is MATH written?",
+o:["NBUI","NBSI","MBUI","NATG"],
+a:0,
+s:"Each letter is moved one step forward: M→N, A→B, T→U, H→I."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If TABLE is coded as UBCMF, how is CHAIR coded?",
+o:["DIBJS","DIBIR","DHBJS","EIBJS"],
+a:0,
+s:"Each letter is moved one step forward: C→D, H→I, A→B, I→J, R→S."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Pen : Ink :: Car : ?",
+o:["Road","Fuel","Driver","Wheel"],
+a:1,
+s:"Ink is used in a pen; fuel is used to operate a car."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Eye : See :: Ear : ?",
+o:["Touch","Hear","Speak","Smell"],
+a:1,
+s:"Eyes are used for seeing and ears are used for hearing."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the odd one out.",
+o:["Copper","Iron","Silver","Plastic"],
+a:3,
+s:"Copper, iron and silver are metals; plastic is not."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the odd one out.",
+o:["121","144","169","180"],
+a:3,
+s:"121, 144 and 169 are perfect squares; 180 is not."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"P is the sister of Q. Q is the father of R. How is P related to R?",
+o:["Mother","Aunt","Sister","Grandmother"],
+a:1,
+s:"P is Q's sister and Q is R's father, so P is R's aunt."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"M is the son of N. N is the daughter of P. How is P related to M?",
+o:["Father","Grandfather/Grandmother","Brother","Uncle"],
+a:1,
+s:"N is P's daughter and M is N's son, so P is M's grandparent."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A person faces east. He turns left, then left again. Which direction is he facing?",
+o:["East","West","North","South"],
+a:1,
+s:"East → left = North → left = West."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A man walks 8 km north and then 6 km west. In which direction is he from the starting point?",
+o:["North-East","North-West","South-West","South-East"],
+a:1,
+s:"Moving north and west places him in the north-west direction."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If A=1, B=2, C=3 and so on, what is the value of FACE?",
+o:["15","16","17","18"],
+a:3,
+s:"F=6, A=1, C=3, E=5. Total = 15. Therefore the correct answer is 15."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 5, 11, 23, 47, ?",
+o:["83","91","95","97"],
+a:2,
+s:"Each term is multiplied by 2 and 1 is added. 47×2+1=95."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 2, 5, 11, 23, 47, ?",
+o:["91","93","95","97"],
+a:2,
+s:"Each term is multiplied by 2 and 1 is added. 47×2+1=95."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the letter series: B, E, H, K, ?",
+o:["M","N","O","P"],
+a:1,
+s:"The letters increase by 3 positions: B,E,H,K,N."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the letter series: Z, W, T, Q, ?",
+o:["O","N","M","P"],
+a:1,
+s:"The letters decrease by 3 positions: Z,W,T,Q,N."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If '×' means '+', '+' means '−', and '−' means '×', then 8 × 4 + 3 − 2 = ?",
+o:["7","9","11","13"],
+a:2,
+s:"Replace symbols: 8+4−3×2 = 8+4−6 = 6. Therefore the correct answer is 6."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A clock shows 6:00. What is the angle between the hands?",
+o:["90°","120°","180°","360°"],
+a:2,
+s:"At 6:00 the hour hand is at 6 and the minute hand is at 12, making 180°."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If today is Friday, what day will it be after 10 days?",
+o:["Sunday","Monday","Tuesday","Wednesday"],
+a:1,
+s:"10 days after Friday is Monday."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"How many letters are there between the 3rd and 9th letters of the English alphabet?",
+o:["4","5","6","7"],
+a:1,
+s:"The 3rd letter is C and the 9th is I. D,E,F,G,H are between them: 5 letters."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Which number does not belong to the group?",
+o:["8","27","64","100"],
+a:3,
+s:"8, 27 and 64 are perfect cubes (2³, 3³, 4³). 100 is not a perfect cube."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing term: ZA, YB, XC, WD, ?",
+o:["VE","VF","UE","VD"],
+a:0,
+s:"The first letter moves backward while the second letter moves forward: ZA, YB, XC, WD, VE."
+},
+
+/* =========================================================
+   QUANTITATIVE APTITUDE – 25
+========================================================= */
+
+{
+section:"Quantitative Aptitude",
+q:"What is 18% of 500?",
+o:["80","90","100","110"],
+a:1,
+s:"18% of 500 = 18/100 × 500 = 90."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"What is 72% of 250?",
+o:["160","170","180","190"],
+a:2,
+s:"72/100 × 250 = 180."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If 25% of a number is 75, the number is:",
+o:["250","275","300","325"],
+a:2,
+s:"Number = 75×100/25 = 300."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"Simplify: 36 + 48 ÷ 6 × 2",
+o:["44","48","52","56"],
+a:2,
+s:"Using BODMAS: 48÷6=8, 8×2=16, 36+16=52."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The HCF of 42 and 56 is:",
+o:["7","14","21","28"],
+a:1,
+s:"The highest common factor of 42 and 56 is 14."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The LCM of 18 and 24 is:",
+o:["48","60","72","96"],
+a:2,
+s:"LCM(18,24) = 72."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A number is decreased from 500 to 425. The percentage decrease is:",
+o:["10%","12%","15%","18%"],
+a:2,
+s:"Decrease = 75. Percentage decrease = 75/500×100 = 15%."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"An article costing ₹600 is sold for ₹720. The profit percentage is:",
+o:["15%","20%","25%","30%"],
+a:1,
+s:"Profit = ₹120. Profit percentage = 120/600×100 = 20%."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"An article bought for ₹900 is sold for ₹810. The loss percentage is:",
+o:["5%","10%","12%","15%"],
+a:1,
+s:"Loss = ₹90. Loss percentage = 90/900×100 = 10%."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The simple interest on ₹4000 at 8% per annum for 3 years is:",
+o:["₹860","₹920","₹960","₹1040"],
+a:2,
+s:"SI = 4000×8×3/100 = ₹960."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The amount on ₹2500 at 10% simple interest for 4 years is:",
+o:["₹3000","₹3250","₹3500","₹3750"],
+a:2,
+s:"SI = ₹1000. Amount = ₹2500+₹1000 = ₹3500."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A cyclist travels 90 km in 5 hours. His speed is:",
+o:["15 km/h","18 km/h","20 km/h","25 km/h"],
+a:1,
+s:"Speed = 90/5 = 18 km/h."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A bus travels at 54 km/h. How far will it travel in 40 minutes?",
+o:["30 km","36 km","40 km","45 km"],
+a:1,
+s:"54 km/h = 0.9 km/min. In 40 minutes = 36 km."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The average of 12, 18, 24, 30 and 36 is:",
+o:["22","24","26","28"],
+a:1,
+s:"Sum = 120. Average = 120/5 = 24."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The average of 7 numbers is 18. Their total is:",
+o:["108","116","126","136"],
+a:2,
+s:"Total = 18×7 = 126."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"₹1200 is divided between A and B in the ratio 5:7. B's share is:",
+o:["₹500","₹600","₹700","₹800"],
+a:2,
+s:"Total parts = 12. B's share = 7/12×1200 = ₹700."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If 5:x = 15:27, then x is:",
+o:["7","8","9","10"],
+a:2,
+s:"5/x = 15/27, so x = 5×27/15 = 9."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A can complete a work in 20 days. What fraction of the work does A complete in 5 days?",
+o:["1/5","1/4","1/3","1/2"],
+a:1,
+s:"One day's work = 1/20. Five days' work = 5/20 = 1/4."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If 12 workers complete a work in 10 days, how many days will 15 workers take?",
+o:["6","8","10","12"],
+a:1,
+s:"12×10 = 15×D, so D = 8 days."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The perimeter of a rectangle is 50 cm. If its length is 15 cm, its breadth is:",
+o:["8 cm","10 cm","12 cm","15 cm"],
+a:1,
+s:"2(l+b)=50, so l+b=25. Breadth=25−15=10 cm."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The area of a square with side 18 cm is:",
+o:["284 cm²","304 cm²","324 cm²","344 cm²"],
+a:2,
+s:"Area = 18² = 324 cm²."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The area of a triangle with base 20 cm and height 15 cm is:",
+o:["120 cm²","150 cm²","180 cm²","200 cm²"],
+a:1,
+s:"Area = 1/2×20×15 = 150 cm²."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If 5x − 12 = 38, then x is:",
+o:["8","9","10","12"],
+a:2,
+s:"5x = 50, so x = 10."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The cube of 6 is:",
+o:["108","180","216","256"],
+a:2,
+s:"6³ = 6×6×6 = 216."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"What is 5/8 of 240?",
+o:["120","140","150","160"],
+a:2,
+s:"5/8×240 = 150."
+},
+
+/* =========================================================
+   GENERAL AWARENESS – 25
+========================================================= */
+
+{
+section:"General Awareness",
+q:"Which part of the Indian Constitution contains Fundamental Duties?",
+o:["Part III","Part IV","Part IVA","Part V"],
+a:2,
+s:"Fundamental Duties are contained in Part IVA of the Constitution."
+},
+
+{
+section:"General Awareness",
+q:"How many Fundamental Duties are currently listed in the Indian Constitution?",
+o:["9","10","11","12"],
+a:2,
+s:"There are 11 Fundamental Duties at present."
+},
+
+{
+section:"General Awareness",
+q:"The Directive Principles of State Policy are contained in:",
+o:["Part II","Part III","Part IV","Part V"],
+a:2,
+s:"Directive Principles are contained in Part IV."
+},
+
+{
+section:"General Awareness",
+q:"Who is the ex-officio Chairman of the Rajya Sabha?",
+o:[
+"President of India",
+"Prime Minister",
+"Vice-President of India",
+"Speaker of Lok Sabha"
+],
+a:2,
+s:"The Vice-President of India serves as the ex-officio Chairman of the Rajya Sabha."
+},
+
+{
+section:"General Awareness",
+q:"The Speaker of the Lok Sabha is elected by:",
+o:[
+"The President",
+"Members of Lok Sabha",
+"Members of Rajya Sabha",
+"The Prime Minister"
+],
+a:1,
+s:"The Speaker is elected by the members of the Lok Sabha from among themselves."
+},
+
+{
+section:"General Awareness",
+q:"Who was the first Governor-General of independent India?",
+o:[
+"Lord Mountbatten",
+"C. Rajagopalachari",
+"Lord Wavell",
+"Lord Curzon"
+],
+a:0,
+s:"Lord Mountbatten was the first Governor-General of independent India."
+},
+
+{
+section:"General Awareness",
+q:"Who was the first Indian Governor-General of India?",
+o:[
+"Dr. Rajendra Prasad",
+"C. Rajagopalachari",
+"Jawaharlal Nehru",
+"Sardar Patel"
+],
+a:1,
+s:"C. Rajagopalachari was the first and only Indian Governor-General of India."
+},
+
+{
+section:"General Awareness",
+q:"The Non-Cooperation Movement was launched in:",
+o:["1919","1920","1922","1930"],
+a:1,
+s:"Mahatma Gandhi launched the Non-Cooperation Movement in 1920."
+},
+
+{
+section:"General Awareness",
+q:"The Dandi March was associated with:",
+o:[
+"Non-Cooperation Movement",
+"Salt Satyagraha",
+"Quit India Movement",
+"Swadeshi Movement"
+],
+a:1,
+s:"The Dandi March of 1930 was part of the Salt Satyagraha."
+},
+
+{
+section:"General Awareness",
+q:"Who gave the slogan 'Do or Die' during the freedom movement?",
+o:[
+"Subhas Chandra Bose",
+"Mahatma Gandhi",
+"Bhagat Singh",
+"Bal Gangadhar Tilak"
+],
+a:1,
+s:"Mahatma Gandhi gave the 'Do or Die' call during the Quit India Movement in 1942."
+},
+
+{
+section:"General Awareness",
+q:"Which is the smallest planet in the Solar System?",
+o:["Mars","Mercury","Venus","Earth"],
+a:1,
+s:"Mercury is the smallest planet in the Solar System."
+},
+
+{
+section:"General Awareness",
+q:"Which planet is famous for its prominent ring system?",
+o:["Mars","Venus","Saturn","Mercury"],
+a:2,
+s:"Saturn is famous for its extensive ring system."
+},
+
+{
+section:"General Awareness",
+q:"The SI unit of electric current is:",
+o:["Volt","Ohm","Ampere","Watt"],
+a:2,
+s:"The SI unit of electric current is the Ampere."
+},
+
+{
+section:"General Awareness",
+q:"The SI unit of electric resistance is:",
+o:["Volt","Ohm","Ampere","Coulomb"],
+a:1,
+s:"The SI unit of electrical resistance is the Ohm."
+},
+
+{
+section:"General Awareness",
+q:"Which blood group is known as the universal donor for red blood cells?",
+o:["A positive","B positive","AB positive","O negative"],
+a:3,
+s:"O negative red blood cells lack A, B and Rh antigens and are commonly considered the universal donor type for RBC transfusion."
+},
+
+{
+section:"General Awareness",
+q:"Which blood group is known as the universal recipient for red blood cells?",
+o:["O negative","A negative","AB positive","B positive"],
+a:2,
+s:"AB positive individuals can generally receive red blood cells from all ABO/Rh groups."
+},
+
+{
+section:"General Awareness",
+q:"Which organ produces insulin?",
+o:["Liver","Pancreas","Kidney","Spleen"],
+a:1,
+s:"Insulin is produced by the beta cells of the pancreas."
+},
+
+{
+section:"General Awareness",
+q:"Which pigment gives plants their green colour?",
+o:["Haemoglobin","Chlorophyll","Melanin","Carotene"],
+a:1,
+s:"Chlorophyll is the main green pigment involved in photosynthesis."
+},
+
+{
+section:"General Awareness",
+q:"The largest ocean on Earth is:",
+o:["Atlantic Ocean","Indian Ocean","Pacific Ocean","Arctic Ocean"],
+a:2,
+s:"The Pacific Ocean is the largest ocean on Earth."
+},
+
+{
+section:"General Awareness",
+q:"Which latitude passes through the middle of India?",
+o:[
+"Equator",
+"Arctic Circle",
+"Tropic of Cancer",
+"Tropic of Capricorn"
+],
+a:2,
+s:"The Tropic of Cancer passes through India."
+},
+
+{
+section:"General Awareness",
+q:"Which Indian state has the largest area?",
+o:["Madhya Pradesh","Rajasthan","Maharashtra","Uttar Pradesh"],
+a:1,
+s:"Rajasthan is the largest Indian state by area."
+},
+
+{
+section:"General Awareness",
+q:"Which is the longest river flowing entirely within India?",
+o:["Ganga","Godavari","Yamuna","Narmada"],
+a:1,
+s:"The Godavari is the longest river that flows entirely within India."
+},
+
+{
+section:"General Awareness",
+q:"The headquarters of the United Nations is located in:",
+o:["Geneva","New York","Paris","London"],
+a:1,
+s:"The headquarters of the United Nations is in New York City."
+},
+
+{
+section:"General Awareness",
+q:"The headquarters of UNESCO is located in:",
+o:["Rome","Paris","Geneva","Vienna"],
+a:1,
+s:"UNESCO headquarters is located in Paris, France."
+},
+
+{
+section:"General Awareness",
+q:"Which Indian city is known as the 'Pink City'?",
+o:["Jaipur","Jodhpur","Udaipur","Bikaner"],
+a:0,
+s:"Jaipur is popularly known as the Pink City."
+}
+
+];
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentQuestion = 0;
+
+let answers = new Array(questions.length).fill(null);
+
+let review = new Array(questions.length).fill(false);
+
+let submitted = false;
+
+let timeLeft = 60 * 60;
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const timer =
+document.getElementById("timer");
+
+const palette =
+document.getElementById("palette");
+
+const sectionName =
+document.getElementById("sectionName");
+
+const questionNumber =
+document.getElementById("questionNumber");
+
+const questionText =
+document.getElementById("questionText");
+
+const options =
+document.getElementById("options");
+
+const result =
+document.getElementById("result");
+
+const score =
+document.getElementById("score");
+
+const correctBox =
+document.getElementById("correct");
+
+const wrongBox =
+document.getElementById("wrong");
+
+const unattemptedBox =
+document.getElementById("unattempted");
+
+const percentageBox =
+document.getElementById("percentage");
+
+const solutions =
+document.getElementById("solutions");
+
+
+/* =========================================================
+   SHOW QUESTION
+========================================================= */
+
+function showQuestion(){
+
+let q = questions[currentQuestion];
+
+sectionName.innerText = q.section;
+
+questionNumber.innerText =
+"Question " +
+(currentQuestion + 1) +
+" of " +
+questions.length;
+
+questionText.innerText = q.q;
+
+options.innerHTML = "";
+
+q.o.forEach((option,index)=>{
+
+let div =
+document.createElement("div");
+
+div.className = "option";
+
+div.innerText =
+String.fromCharCode(65 + index) +
+". " +
+option;
+
+if(answers[currentQuestion] === index){
+
+div.classList.add("selected");
+
+}
+
+div.onclick = function(){
+
+answers[currentQuestion] = index;
+
+showQuestion();
+
+};
+
+options.appendChild(div);
+
+});
+
+document.getElementById("prevBtn").disabled =
+currentQuestion === 0;
+
+updateTabs();
+
+createPalette();
+
+}
+
+
+/* =========================================================
+   PALETTE
+========================================================= */
+
+function createPalette(){
+
+palette.innerHTML = "";
+
+questions.forEach((q,index)=>{
+
+let btn =
+document.createElement("button");
+
+btn.innerText =
+index + 1;
+
+if(review[index]){
+
+btn.classList.add("review");
+
+}
+
+if(answers[index] !== null){
+
+btn.classList.add("attempted");
+
+}
+
+if(index === currentQuestion){
+
+btn.classList.add("current");
+
+}
+
+btn.onclick = function(){
+
+currentQuestion = index;
+
+showQuestion();
+
+};
+
+palette.appendChild(btn);
+
+});
+
+}
+
+
+/* =========================================================
+   SECTION TABS
+========================================================= */
+
+function updateTabs(){
+
+document.querySelectorAll(".section-tab")
+.forEach(tab =>
+tab.classList.remove("active")
+);
+
+if(currentQuestion < 25){
+
+document.getElementById("tabEnglish")
+.classList.add("active");
+
+}
+
+else if(currentQuestion < 50){
+
+document.getElementById("tabReasoning")
+.classList.add("active");
+
+}
+
+else if(currentQuestion < 75){
+
+document.getElementById("tabMath")
+.classList.add("active");
+
+}
+
+else{
+
+document.getElementById("tabGA")
+.classList.add("active");
+
+}
+
+}
+
+
+/* =========================================================
+   NEXT
+========================================================= */
+
+function nextQuestion(){
+
+if(currentQuestion <
+questions.length - 1){
+
+currentQuestion++;
+
+showQuestion();
+
+}
+
+else{
+
+confirmSubmit();
+
+}
+
+}
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
+
+function previousQuestion(){
+
+if(currentQuestion > 0){
+
+currentQuestion--;
+
+showQuestion();
+
+}
+
+}
+
+
+/* =========================================================
+   MARK FOR REVIEW
+========================================================= */
+
+function markReview(){
+
+review[currentQuestion] =
+!review[currentQuestion];
+
+showQuestion();
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function updateTimer(){
+
+let minutes =
+Math.floor(timeLeft / 60);
+
+let seconds =
+timeLeft % 60;
+
+timer.innerText =
+String(minutes).padStart(2,"0")
++
+":"
++
+String(seconds).padStart(2,"0");
+
+if(timeLeft <= 300){
+
+timer.style.background =
+"#dc2626";
+
+timer.style.color =
+"white";
+
+}
+
+if(timeLeft <= 0){
+
+clearInterval(timerInterval);
+
+submitTest(true);
+
+return;
+
+}
+
+timeLeft--;
+
+}
+
+const timerInterval =
+setInterval(updateTimer,1000);
+
+
+/* =========================================================
+   SUBMIT CONFIRMATION
+========================================================= */
+
+function confirmSubmit(){
+
+let unanswered =
+answers.filter(
+a => a === null
+).length;
+
+if(unanswered > 0){
+
+let message =
+"You have " +
+unanswered +
+" unanswered question(s).\n\n" +
+"Are you sure you want to submit the test?";
+
+if(confirm(message)){
+
+submitTest(false);
+
+}
+
+}
+else{
+
+if(confirm(
+"All questions have been attempted.\n\nSubmit the test?"
+)){
+
+submitTest(false);
+
+}
+
+}
+
+}
+
+
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
+function submitTest(autoSubmit=false){
+
+if(submitted){
+
+return;
+
+}
+
+submitted = true;
+
+clearInterval(timerInterval);
+
+let correct = 0;
+
+let wrong = 0;
+
+let unattempted = 0;
+
+questions.forEach((q,index)=>{
+
+if(answers[index] === null){
+
+unattempted++;
+
+}
+
+else if(
+answers[index] === q.a
+){
+
+correct++;
+
+}
+
+else{
+
+wrong++;
+
+}
+
+});
+
+let finalScore =
+(correct * 2) -
+(wrong * 0.5);
+
+let percentage =
+(finalScore / 200) * 100;
+
+score.innerText =
+finalScore.toFixed(2) +
+" / 200";
+
+correctBox.innerText =
+correct;
+
+wrongBox.innerText =
+wrong;
+
+unattemptedBox.innerText =
+unattempted;
+
+percentageBox.innerText =
+percentage.toFixed(2) +
+"%";
+
+document.querySelector("main")
+.style.display = "none";
+
+document.querySelector(".warning")
+.style.display = "none";
+
+document.querySelector(".exam-info")
+.style.display = "none";
+
+document.querySelector(".header")
+.style.position = "static";
+
+result.style.display = "block";
+
+showSolutions();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================================
+   SOLUTIONS
+========================================================= */
+
+function showSolutions(){
+
+solutions.innerHTML =
+"<h2 style='margin-bottom:18px;'>Detailed Solutions</h2>";
+
+questions.forEach((q,index)=>{
+
+let div =
+document.createElement("div");
+
+let isCorrect =
+answers[index] === q.a;
+
+div.className =
+"solution-item " +
+(isCorrect ? "correct" : "wrong");
+
+let userAnswer =
+answers[index] === null
+? "Not Attempted"
+: q.o[answers[index]];
+
+let correctAnswer =
+q.o[q.a];
+
+div.innerHTML = `
+
+<h3>
+Question ${index + 1}
+</h3>
+
+<p>
+<b>${q.q}</b>
+</p>
+
+<p>
+Your Answer:
+<strong>${userAnswer}</strong>
+</p>
+
+<p>
+Correct Answer:
+<strong>${correctAnswer}</strong>
+</p>
+
+<p>
+<b>Solution:</b>
+${q.s}
+</p>
+
+`;
+
+solutions.appendChild(div);
+
+});
+
+}
+
+
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
+
+showQuestion();
+
+</script>
+
+</body>
+
+</html>
