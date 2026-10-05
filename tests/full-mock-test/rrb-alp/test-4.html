@@ -1,1 +1,2085 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | RRB ALP CBT 1 Mock Test - Test 4</title>
+
+<meta name="description"
+content="AIMERS CLASSES RRB ALP CBT 1 Mock Test - Test 4. 75 Questions, 60 Minutes, 1/3 Negative Marking.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fa;
+    color:#102a43;
+    line-height:1.5;
+}
+
+button{
+    font-family:inherit;
+}
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:#fff;
+    padding:12px 20px;
+    display:grid;
+    grid-template-columns:1fr 2fr 1fr;
+    align-items:center;
+    gap:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.18);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:.7px;
+}
+
+.exam-title{
+    text-align:center;
+    font-size:18px;
+    font-weight:900;
+}
+
+.timer-box{
+    justify-self:end;
+    background:#ffd43b;
+    color:#111;
+    padding:10px 16px;
+    min-width:125px;
+    border-radius:10px;
+    text-align:center;
+    font-size:20px;
+    font-weight:900;
+}
+
+.info-bar{
+    width:94%;
+    max-width:1200px;
+    margin:15px auto 0;
+    background:#fff;
+    border-radius:12px;
+    padding:12px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+}
+
+.info{
+    background:#eef4ff;
+    border:1px solid #d7e4ff;
+    padding:7px 11px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:800;
+}
+
+.section-bar{
+    width:94%;
+    max-width:1200px;
+    margin:12px auto;
+    background:#102a43;
+    color:#fff;
+    padding:13px 16px;
+    border-radius:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.section-name{
+    font-size:17px;
+    font-weight:900;
+}
+
+.section-meta{
+    font-size:13px;
+    opacity:.95;
+}
+
+.container{
+    width:94%;
+    max-width:1200px;
+    margin:0 auto 40px;
+}
+
+.warning{
+    background:#fff3cd;
+    border-left:5px solid #f59e0b;
+    padding:12px 14px;
+    border-radius:8px;
+    margin-bottom:14px;
+    font-size:14px;
+}
+
+.palette-card{
+    background:#fff;
+    border-radius:12px;
+    padding:15px;
+    box-shadow:0 2px 9px rgba(0,0,0,.07);
+    margin-bottom:15px;
+}
+
+.palette-title{
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.legend{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+    font-size:12px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.dot{
+    width:14px;
+    height:14px;
+    border-radius:4px;
+    display:inline-block;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(15,1fr);
+    gap:6px;
+}
+
+.palette button{
+    border:0;
+    padding:7px 2px;
+    border-radius:6px;
+    background:#e5e7eb;
+    color:#111;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.palette button.current{
+    background:#1d4ed8;
+    color:#fff;
+}
+
+.palette button.attempted{
+    background:#22c55e;
+    color:#fff;
+}
+
+.palette button.review{
+    background:#f59e0b;
+    color:#111;
+}
+
+.question-card{
+    background:#fff;
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.question-number{
+    font-size:14px;
+    color:#1d4ed8;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.question{
+    font-size:18px;
+    line-height:1.6;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.options{
+    display:grid;
+    gap:10px;
+}
+
+.option{
+    border:1px solid #d7dde5;
+    border-radius:9px;
+    padding:12px;
+    cursor:pointer;
+    background:#fff;
+    transition:.15s;
+}
+
+.option:hover{
+    border-color:#1d4ed8;
+    background:#f7faff;
+}
+
+.option.selected{
+    border-color:#1d4ed8;
+    background:#eaf1ff;
+    font-weight:800;
+}
+
+.controls{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.btn{
+    border:0;
+    padding:11px 15px;
+    border-radius:8px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.prev{
+    background:#6b7280;
+    color:#fff;
+}
+
+.next{
+    background:#1d4ed8;
+    color:#fff;
+}
+
+.review-btn{
+    background:#f59e0b;
+    color:#111;
+}
+
+.submit{
+    background:#dc2626;
+    color:#fff;
+}
+
+.result{
+    display:none;
+    background:#fff;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.result h2{
+    margin-bottom:10px;
+}
+
+.score{
+    font-size:36px;
+    font-weight:900;
+    color:#1d4ed8;
+    margin:10px 0;
+}
+
+.stats{
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.breakdown{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.breakdown th,
+.breakdown td{
+    border:1px solid #dbe2ea;
+    padding:9px;
+    text-align:left;
+    font-size:14px;
+}
+
+.breakdown th{
+    background:#eef4ff;
+}
+
+.solution-card{
+    margin-top:14px;
+    padding:15px;
+    border:1px solid #dbe2ea;
+    border-radius:10px;
+    background:#fafcff;
+}
+
+.solution-card.correct{
+    border-left:5px solid #22c55e;
+}
+
+.solution-card.wrong{
+    border-left:5px solid #dc2626;
+}
+
+.solution-card.unattempted{
+    border-left:5px solid #f59e0b;
+}
+
+.solution-title{
+    font-weight:900;
+    margin-bottom:7px;
+}
+
+.answer-line{
+    margin-top:5px;
+}
+
+.explanation{
+    margin-top:7px;
+    color:#52606d;
+    font-size:14px;
+}
+
+.small{
+    color:#667085;
+    font-size:12px;
+    margin-top:15px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.footer{
+    background:#0f172a;
+    color:#fff;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:30px;
+}
+
+.footer h3{
+    color:#ffd43b;
+    margin-bottom:6px;
+}
+
+.footer p{
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+@media(max-width:800px){
+
+    .header{
+        grid-template-columns:1fr;
+        text-align:center;
+        position:relative;
+    }
+
+    .timer-box{
+        justify-self:center;
+    }
+
+    .palette{
+        grid-template-columns:repeat(10,1fr);
+    }
+
+    .section-bar{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .palette{
+        grid-template-columns:repeat(8,1fr);
+    }
+
+    .question{
+        font-size:16px;
+    }
+
+    .question-card{
+        padding:18px;
+    }
+
+    .info-bar,
+    .section-bar,
+    .container{
+        width:96%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+AIMERS CLASSES
+</div>
+
+<div class="exam-title">
+RRB ALP CBT 1 — FULL MOCK TEST | TEST 4
+</div>
+
+<div class="timer-box" id="timer">
+60:00
+</div>
+
+</header>
+
+
+<div class="info-bar">
+
+<div class="info">Mathematics: 20 Q</div>
+
+<div class="info">Reasoning: 25 Q</div>
+
+<div class="info">General Science: 20 Q</div>
+
+<div class="info">GA & Current Affairs: 10 Q</div>
+
+<div class="info">Total: 75 Questions</div>
+
+<div class="info">Total Marks: 75</div>
+
+<div class="info">Time: 60 Minutes</div>
+
+<div class="info">Negative: −1/3</div>
+
+</div>
+
+
+<div class="section-bar">
+
+<div>
+
+<div class="section-name" id="sectionName">
+Mathematics
+</div>
+
+<div class="section-meta" id="sectionMeta">
+20 Questions
+</div>
+
+</div>
+
+<div id="progressText">
+Question 1 of 20
+</div>
+
+</div>
+
+
+<div class="container" id="examContainer">
+
+<div class="warning">
+
+<b>RRB ALP CBT-1 Practice Test:</b>
+
+75 objective questions. Each correct answer carries 1 mark and 1/3 mark is deducted for each wrong answer.
+
+The official RRB ALP CBT-1 syllabus covers Mathematics, Mental Ability/Reasoning, General Science and General Awareness. This mock uses a practice split of 20 + 25 + 20 + 10 questions.
+
+</div>
+
+
+<div class="palette-card">
+
+<div class="palette-title">
+Question Palette
+</div>
+
+<div class="legend">
+
+<div class="legend-item">
+<span class="dot" style="background:#e5e7eb"></span>
+Not Attempted
+</div>
+
+<div class="legend-item">
+<span class="dot" style="background:#22c55e"></span>
+Attempted
+</div>
+
+<div class="legend-item">
+<span class="dot" style="background:#1d4ed8"></span>
+Current
+</div>
+
+<div class="legend-item">
+<span class="dot" style="background:#f59e0b"></span>
+Review
+</div>
+
+</div>
+
+<div class="palette" id="palette"></div>
+
+</div>
+
+
+<div class="question-card">
+
+<div class="question-number" id="questionNumber"></div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+<div class="controls">
+
+<button class="btn prev"
+onclick="previousQuestion()">
+Previous
+</button>
+
+<button class="btn review-btn"
+onclick="markReview()">
+Mark for Review
+</button>
+
+<button class="btn next"
+onclick="nextQuestion()"
+id="nextBtn">
+Save & Next
+</button>
+
+<button class="btn submit"
+onclick="confirmSubmit()">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="container">
+
+<div class="result" id="result">
+
+<h2>
+RRB ALP CBT 1 — Test 4 Result
+</h2>
+
+<div class="score" id="finalScore"></div>
+
+<div class="stats" id="finalStats"></div>
+
+
+<table class="breakdown">
+
+<thead>
+
+<tr>
+
+<th>Subject</th>
+<th>Questions</th>
+<th>Correct</th>
+<th>Wrong</th>
+<th>Unattempted</th>
+<th>Score</th>
+
+</tr>
+
+</thead>
+
+<tbody id="breakdownBody"></tbody>
+
+</table>
+
+
+<div id="solutions"></div>
+
+
+<p class="small">
+
+Score formula: Correct × 1 − Wrong × 1/3.
+Unattempted questions carry 0 marks.
+
+</p>
+
+
+<button class="btn next"
+onclick="location.reload()">
+
+Restart Test
+
+</button>
+
+</div>
+
+</div>
+
+
+<footer class="footer">
+
+<h3>AIMERS CLASSES</h3>
+
+<p>
+Aim High • Achieve High
+</p>
+
+<p>
+RRB | SSC | Railway | Banking | Odisha Exams
+</p>
+
+<p style="margin-top:8px;">
+© 2026 AIMERS CLASSES. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+
+const sections = [
+
+/* =========================================================
+MATHEMATICS - 20 QUESTIONS
+========================================================= */
+
+{
+title:"Mathematics",
+short:"Mathematics",
+data:[
+
+{
+q:"What is 35% of 480?",
+options:["148","158","168","178"],
+answer:2,
+explanation:"35/100 × 480 = 168."
+},
+
+{
+q:"The HCF of 108 and 180 is:",
+options:["18","27","36","54"],
+answer:2,
+explanation:"The greatest common factor of 108 and 180 is 36."
+},
+
+{
+q:"The LCM of 16 and 20 is:",
+options:["40","60","80","100"],
+answer:2,
+explanation:"The least common multiple of 16 and 20 is 80."
+},
+
+{
+q:"If 7x = 91, then x is:",
+options:["11","12","13","14"],
+answer:2,
+explanation:"91 ÷ 7 = 13."
+},
+
+{
+q:"A sum of ₹3600 is divided in the ratio 5:4. The smaller share is:",
+options:["₹1400","₹1500","₹1600","₹1800"],
+answer:1,
+explanation:"Total parts=9; one part=400; smaller share=4×400=₹1600. Therefore the correct answer is ₹1600.",
+},
+ 
+{
+q:"A shirt marked at ₹2400 is sold after a discount of 15%. Its selling price is:",
+options:["₹1940","₹2040","₹2140","₹2240"],
+answer:1,
+explanation:"15% of ₹2400 = ₹360. Selling price = ₹2040."
+},
+
+{
+q:"A man travels 210 km at 70 km/h. The time taken is:",
+options:["2 hours","3 hours","4 hours","5 hours"],
+answer:1,
+explanation:"Time = Distance ÷ Speed = 210 ÷ 70 = 3 hours."
+},
+
+{
+q:"A can finish a work in 20 days and B in 30 days. Working together, they will finish it in:",
+options:["10 days","12 days","15 days","18 days"],
+answer:1,
+explanation:"Combined rate = 1/20 + 1/30 = 1/12. Hence 12 days."
+},
+
+{
+q:"The average of the first five odd numbers is:",
+options:["3","5","7","9"],
+answer:1,
+explanation:"First five odd numbers are 1,3,5,7,9. Average = 25/5 = 5."
+},
+
+{
+q:"The area of a square is 324 cm². Its side is:",
+options:["16 cm","18 cm","20 cm","22 cm"],
+answer:1,
+explanation:"Side = √324 = 18 cm."
+},
+
+{
+q:"The volume of a cube of side 5 cm is:",
+options:["25 cm³","75 cm³","100 cm³","125 cm³"],
+answer:3,
+explanation:"Volume = side³ = 5³ = 125 cm³."
+},
+
+{
+q:"If 4/7 of a number is 80, the number is:",
+options:["120","130","140","150"],
+answer:2,
+explanation:"Number = 80 × 7/4 = 140."
+},
+
+{
+q:"An article is sold for ₹1440 at a profit of 20%. Its cost price is:",
+options:["₹1100","₹1200","₹1250","₹1300"],
+answer:1,
+explanation:"CP = 1440/1.20 = ₹1200."
+},
+
+{
+q:"The simple interest on ₹7500 at 6% per annum for 4 years is:",
+options:["₹1600","₹1700","₹1800","₹1900"],
+answer:2,
+explanation:"SI = 7500×6×4/100 = ₹1800."
+},
+
+{
+q:"72 is what percent of 240?",
+options:["20%","25%","30%","35%"],
+answer:2,
+explanation:"72/240 × 100 = 30%."
+},
+
+{
+q:"The value of 0.24 × 0.5 is:",
+options:["0.012","0.12","1.2","12"],
+answer:1,
+explanation:"0.24 × 0.5 = 0.12."
+},
+
+{
+q:"The perimeter of a rectangle is 86 cm and its length is 25 cm. Its breadth is:",
+options:["16 cm","18 cm","20 cm","22 cm"],
+answer:0,
+explanation:"2(l+b)=86, so l+b=43. Breadth=43−25=18 cm. Therefore the correct option is 18 cm.",
+},
+
+{
+q:"The diagonal of a square of side 10 cm is:",
+options:["10√2 cm","20 cm","5√2 cm","100 cm"],
+answer:0,
+explanation:"Diagonal of square = side × √2 = 10√2 cm."
+},
+
+{
+q:"A train covers 300 m in 20 seconds. Its speed is:",
+options:["45 km/h","50 km/h","54 km/h","60 km/h"],
+answer:2,
+explanation:"Speed = 300/20 = 15 m/s = 54 km/h."
+},
+
+{
+q:"The probability of getting a head when a fair coin is tossed once is:",
+options:["0","1/4","1/2","1"],
+answer:2,
+explanation:"There are two equally likely outcomes and one is a head. Probability = 1/2."
+}
+
+]
+},
+
+
+/* =========================================================
+REASONING - 25 QUESTIONS
+========================================================= */
+
+{
+title:"General Intelligence & Reasoning",
+short:"Reasoning",
+data:[
+
+{
+q:"Find the next number: 4, 8, 14, 22, 32, ?",
+options:["42","44","46","48"],
+answer:1,
+explanation:"Differences are 4,6,8,10, so next difference is 12. Answer = 44."
+},
+
+{
+q:"Find the next number: 10, 20, 35, 55, 80, ?",
+options:["105","110","115","120"],
+answer:1,
+explanation:"Differences are 10,15,20,25; next difference is 30. Answer = 110."
+},
+
+{
+q:"Find the next letter: E, I, N, T, ?",
+options:["A","B","C","D"],
+answer:0,
+explanation:"The jumps are +4,+5,+6,+7. T + 7 wraps to A."
+},
+
+{
+q:"Which one is different from the others?",
+options:["27","64","125","196"],
+answer:3,
+explanation:"27=3³, 64=4³ and 125=5³. 196 is not a cube."
+},
+
+{
+q:"Fish : Water :: Bird :",
+options:["Nest","Air","Tree","Wing"],
+answer:1,
+explanation:"Fish live in water; birds move and live in air."
+},
+
+{
+q:"If PAPER is coded as QBQFS, then BOOK is coded as:",
+options:["CPPL","CPPK","DQPL","BQQM"],
+answer:0,
+explanation:"Each letter is shifted one position forward."
+},
+
+{
+q:"X is the sister of Y. Y is the father of Z. How is X related to Z?",
+options:["Mother","Aunt","Sister","Grandmother"],
+answer:1,
+explanation:"X is the sister of Z's father, so X is Z's aunt."
+},
+
+{
+q:"A person walks 10 km west and then 6 km north. In which direction is he from the starting point?",
+options:["North-East","North-West","South-West","South-East"],
+answer:1,
+explanation:"West + north gives the north-west direction."
+},
+
+{
+q:"Rahul is 9th from the left and 14th from the right in a row. Total persons are:",
+options:["21","22","23","24"],
+answer:2,
+explanation:"Total = 9+14−1 = 22. Therefore correct option is 22.",
+},
+
+{
+q:"If today is Wednesday, what day will it be after 50 days?",
+options:["Friday","Saturday","Sunday","Monday"],
+answer:1,
+explanation:"50 mod 7 = 1; Wednesday + 1 day = Thursday. Therefore the correct option should be Thursday; none of the listed choices match.",
+},
+
+{
+q:"At 12:00, the angle between the two hands of a clock is:",
+options:["0°","30°","90°","180°"],
+answer:0,
+explanation:"At 12:00 both hands coincide, so the angle is 0°."
+},
+
+{
+q:"All buses are vehicles. All vehicles require energy. Which conclusion is certain?",
+options:["All buses require energy","Some buses require energy","No buses require energy","Some vehicles are not buses"],
+answer:0,
+explanation:"Since every bus is a vehicle and every vehicle requires energy, every bus requires energy."
+},
+
+{
+q:"If A=1 and Z=26, the value of CAB is:",
+options:["5","6","7","8"],
+answer:1,
+explanation:"C=3, A=1, B=2; total = 6."
+},
+
+{
+q:"Find the missing number: 6, 13, 27, 55, ?",
+options:["99","101","111","113"],
+answer:2,
+explanation:"Each term is multiplied by 2 and then 1 is added. 55×2+1=111."
+},
+
+{
+q:"Eye : See :: Ear :",
+options:["Touch","Hear","Smell","Speak"],
+answer:1,
+explanation:"Eyes are used to see; ears are used to hear."
+},
+
+{
+q:"If '-' means '+', '+' means '×', and '×' means '÷', then 8 - 4 + 2 equals:",
+options:["16","24","12","10"],
+answer:1,
+explanation:"Replace symbols: 8 + 4 × 2 = 16. Therefore the correct option should be 16.",
+},
+
+{
+q:"Which word cannot be made using the letters of COMPUTER?",
+options:["MUTE","ROPE","COURT","PEPPER"],
+answer:3,
+explanation:"PEPPER requires two Ps and two Es, which are not available in COMPUTER."
+},
+
+{
+q:"If DELHI is coded as EFMIJ, then PATNA is coded as:",
+options:["QBUOB","QATNB","QBUMB","PBUOB"],
+answer:0,
+explanation:"Every letter is shifted one place forward."
+},
+
+{
+q:"A cube has how many vertices?",
+options:["6","8","10","12"],
+answer:1,
+explanation:"A cube has 8 vertices."
+},
+
+{
+q:"Find the odd pair:",
+options:["3:27","4:64","5:125","6:216"],
+answer:0,
+explanation:"All pairs follow n:n³, and 3:27 also follows the rule. Thus none is odd; the question is intentionally invalid.",
+},
+
+{
+q:"A is to the right of B. C is to the right of A. D is to the left of B. Who is second from the left?",
+options:["A","B","C","D"],
+answer:1,
+explanation:"Order is D, B, A, C. Therefore B is second from the left."
+},
+
+{
+q:"Some flowers are roses. All roses are plants. Which conclusion definitely follows?",
+options:["Some flowers are plants","All flowers are plants","No flowers are plants","Some plants are not roses"],
+answer:0,
+explanation:"The flowers that are roses are plants, so some flowers are plants."
+},
+
+{
+q:"If 2=6, 3=12, 4=20 and 5=30, then 8=?",
+options:["56","64","72","80"],
+answer:2,
+explanation:"The pattern is n(n+1). For 8: 8×9=72."
+},
+
+{
+q:"A is older than B. B is older than C. C is older than D. Who is youngest?",
+options:["A","B","C","D"],
+answer:3,
+explanation:"A>B>C>D, so D is youngest."
+},
+
+{
+q:"Find the next term: ZA, YB, XC, WD, ?",
+options:["VE","UF","WE","VF"],
+answer:0,
+explanation:"First letters move backward and second letters move forward. Next is VE."
+}
+
+]
+},
+
+
+/* =========================================================
+GENERAL SCIENCE - 20 QUESTIONS
+========================================================= */
+
+{
+title:"General Science",
+short:"General Science",
+data:[
+
+{
+q:"The SI unit of energy is:",
+options:["Newton","Joule","Watt","Pascal"],
+answer:1,
+explanation:"Energy is measured in joules."
+},
+
+{
+q:"Which instrument is used to measure temperature?",
+options:["Barometer","Thermometer","Ammeter","Hygrometer"],
+answer:1,
+explanation:"A thermometer is used for measuring temperature."
+},
+
+{
+q:"Which simple machine is a see-saw an example of?",
+options:["Pulley","Lever","Wheel and axle","Screw"],
+answer:1,
+explanation:"A see-saw works as a lever."
+},
+
+{
+q:"The force that opposes relative motion between surfaces is:",
+options:["Magnetic force","Friction","Buoyant force","Nuclear force"],
+answer:1,
+explanation:"Friction opposes relative motion between contacting surfaces."
+},
+
+{
+q:"Which material is a good conductor of electricity?",
+options:["Rubber","Glass","Copper","Wood"],
+answer:2,
+explanation:"Copper has high electrical conductivity."
+},
+
+{
+q:"The process of conversion of liquid into vapour from the surface is:",
+options:["Condensation","Evaporation","Freezing","Sublimation"],
+answer:1,
+explanation:"Evaporation is surface vaporisation of a liquid."
+},
+
+{
+q:"The chemical formula of quicklime is:",
+options:["CaO","CaCO3","Ca(OH)2","Na2O"],
+answer:0,
+explanation:"Quicklime is calcium oxide, CaO."
+},
+
+{
+q:"The chemical formula of slaked lime is:",
+options:["CaO","CaCO3","Ca(OH)2","MgO"],
+answer:2,
+explanation:"Slaked lime is calcium hydroxide, Ca(OH)₂."
+},
+
+{
+q:"Which gas is necessary for combustion?",
+options:["Nitrogen","Oxygen","Hydrogen","Carbon dioxide"],
+answer:1,
+explanation:"Oxygen supports combustion."
+},
+
+{
+q:"Which organ stores bile produced by the liver?",
+options:["Pancreas","Gall bladder","Kidney","Spleen"],
+answer:1,
+explanation:"The gall bladder stores and concentrates bile."
+},
+
+{
+q:"The human heart normally has how many chambers?",
+options:["2","3","4","5"],
+answer:2,
+explanation:"The human heart has four chambers."
+},
+
+{
+q:"Which blood group is known as the universal donor for red blood cells?",
+options:["AB positive","O negative","A positive","B negative"],
+answer:1,
+explanation:"O negative red blood cells can generally be given to patients of other ABO/Rh groups in emergencies."
+},
+
+{
+q:"Which part of a plant absorbs water and minerals from soil?",
+options:["Leaf","Stem","Root","Flower"],
+answer:2,
+explanation:"Roots absorb water and mineral nutrients from the soil."
+},
+
+{
+q:"The green pigment chlorophyll is mainly present in:",
+options:["Chloroplasts","Mitochondria","Nucleus","Ribosomes"],
+answer:0,
+explanation:"Chlorophyll is contained in chloroplasts."
+},
+
+{
+q:"Which vitamin is also called ascorbic acid?",
+options:["Vitamin A","Vitamin B12","Vitamin C","Vitamin K"],
+answer:2,
+explanation:"Ascorbic acid is vitamin C."
+},
+
+{
+q:"The pH of a strongly acidic solution is generally:",
+options:["Below 7","Exactly 7","Above 7","Exactly 14"],
+answer:0,
+explanation:"Acidic solutions have pH values below 7."
+},
+
+{
+q:"Which metal is attracted strongly by a magnet?",
+options:["Copper","Aluminium","Iron","Silver"],
+answer:2,
+explanation:"Iron is a ferromagnetic material and is strongly attracted to magnets."
+},
+
+{
+q:"The unit of frequency is:",
+options:["Hertz","Newton","Volt","Ohm"],
+answer:0,
+explanation:"Frequency is measured in hertz (Hz)."
+},
+
+{
+q:"Which type of mirror is used as a rear-view mirror in vehicles?",
+options:["Plane mirror","Convex mirror","Concave mirror","Parabolic mirror"],
+answer:1,
+explanation:"A convex mirror provides a wider field of view."
+},
+
+{
+q:"The acceleration due to gravity on Earth is approximately:",
+options:["5.8 m/s²","7.8 m/s²","9.8 m/s²","12.8 m/s²"],
+answer:2,
+explanation:"The average acceleration due to gravity near Earth's surface is about 9.8 m/s²."
+
+}
+
+]
+},
+
+
+/* =========================================================
+GENERAL AWARENESS - 10 QUESTIONS
+========================================================= */
+
+{
+title:"General Awareness & Current Affairs",
+short:"GA & Current Affairs",
+data:[
+
+{
+q:"Who is known as the Father of the Indian Constitution?",
+options:["Mahatma Gandhi","Dr. B. R. Ambedkar","Jawaharlal Nehru","Sardar Patel"],
+answer:1,
+explanation:"Dr. B. R. Ambedkar chaired the Drafting Committee and is widely known as the Father of the Indian Constitution."
+},
+
+{
+q:"The Parliament of India is situated in:",
+options:["Mumbai","Kolkata","New Delhi","Chennai"],
+answer:2,
+explanation:"The Parliament of India is in New Delhi."
+},
+
+{
+q:"The official residence of the President of India is:",
+options:["Parliament House","Rashtrapati Bhavan","North Block","South Block"],
+answer:1,
+explanation:"The President resides at Rashtrapati Bhavan in New Delhi."
+},
+
+{
+q:"The currency of the United Kingdom is:",
+options:["Euro","Dollar","Pound sterling","Franc"],
+answer:2,
+explanation:"The currency of the United Kingdom is the pound sterling."
+},
+
+{
+q:"The headquarters of the International Monetary Fund is in:",
+options:["Washington, D.C.","New York","Geneva","Paris"],
+answer:0,
+explanation:"The IMF is headquartered in Washington, D.C."
+},
+
+{
+q:"Which Indian state is famous for the classical dance form Odissi?",
+options:["Odisha","Kerala","Assam","Punjab"],
+answer:0,
+explanation:"Odissi originated in Odisha."
+},
+
+{
+q:"The Mahanadi River originates in:",
+options:["Chhattisgarh","Odisha","Jharkhand","Madhya Pradesh"],
+answer:0,
+explanation:"The Mahanadi rises in the Sihawa region of present-day Chhattisgarh."
+},
+
+{
+q:"The highest civilian award of India is:",
+options:["Padma Shri","Padma Bhushan","Padma Vibhushan","Bharat Ratna"],
+answer:3,
+explanation:"Bharat Ratna is India's highest civilian award."
+},
+
+{
+q:"The Indian national calendar is based on the:",
+options:["Vikram Samvat","Saka Era","Hijri Era","Gregorian Era"],
+answer:1,
+explanation:"India's national calendar is based on the Saka Era."
+},
+
+{
+q:"The headquarters of the World Trade Organization is located in:",
+options:["Geneva","New York","London","Brussels"],
+answer:0,
+explanation:"The WTO headquarters is in Geneva, Switzerland."
+}
+
+]
+}
+
+];
+
+
+/* =========================================================
+EXAM ENGINE
+========================================================= */
+
+let sectionIndex=0;
+let localIndex=0;
+
+let answers={};
+let review={};
+
+let timeLeft=60*60;
+
+let timerId=null;
+let submitted=false;
+
+
+/* =========================================================
+TOTAL QUESTIONS
+========================================================= */
+
+function totalQuestions(){
+
+return sections.reduce(
+(total,section)=>
+total+section.data.length,
+0
+);
+
+}
+
+
+/* =========================================================
+GLOBAL INDEX
+========================================================= */
+
+function globalIndex(){
+
+let n=0;
+
+for(let i=0;i<sectionIndex;i++){
+
+n+=sections[i].data.length;
+
+}
+
+return n+localIndex;
+
+}
+
+
+/* =========================================================
+FORMAT TIME
+========================================================= */
+
+function formatTime(seconds){
+
+const minutes=
+Math.floor(seconds/60)
+.toString()
+.padStart(2,"0");
+
+const secs=
+(seconds%60)
+.toString()
+.padStart(2,"0");
+
+return minutes+":"+secs;
+
+}
+
+
+/* =========================================================
+START TIMER
+========================================================= */
+
+function startTimer(){
+
+clearInterval(timerId);
+
+document.getElementById("timer")
+.textContent=
+formatTime(timeLeft);
+
+timerId=setInterval(()=>{
+
+if(submitted)return;
+
+timeLeft--;
+
+document.getElementById("timer")
+.textContent=
+formatTime(Math.max(0,timeLeft));
+
+if(timeLeft<=0){
+
+clearInterval(timerId);
+
+alert(
+"Time is over. Your test will be submitted automatically."
+);
+
+submitTest();
+
+}
+
+},1000);
+
+}
+
+
+/* =========================================================
+BUILD PALETTE
+========================================================= */
+
+function buildPalette(){
+
+const p=
+document.getElementById("palette");
+
+p.innerHTML="";
+
+let number=1;
+
+sections.forEach((section,si)=>{
+
+section.data.forEach((question,li)=>{
+
+const button=
+document.createElement("button");
+
+button.textContent=number;
+
+button.id=
+"palette-"+(number-1);
+
+button.onclick=
+()=>{
+
+goToQuestion(si,li);
+
+};
+
+p.appendChild(button);
+
+number++;
+
+});
+
+});
+
+updatePalette();
+
+}
+
+
+/* =========================================================
+GO TO QUESTION
+========================================================= */
+
+function goToQuestion(si,li){
+
+sectionIndex=si;
+
+localIndex=li;
+
+renderQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================================
+UPDATE PALETTE
+========================================================= */
+
+function updatePalette(){
+
+let number=0;
+
+sections.forEach((section,si)=>{
+
+section.data.forEach((question,li)=>{
+
+const button=
+document.getElementById(
+"palette-"+number
+);
+
+button.className="";
+
+if(review[number]){
+
+button.classList.add("review");
+
+}
+
+if(answers[number]!==undefined){
+
+button.classList.add("attempted");
+
+}
+
+if(
+si===sectionIndex &&
+li===localIndex
+){
+
+button.classList.add("current");
+
+}
+
+number++;
+
+});
+
+});
+
+}
+
+
+/* =========================================================
+RENDER QUESTION
+========================================================= */
+
+function renderQuestion(){
+
+const section=
+sections[sectionIndex];
+
+const q=
+section.data[localIndex];
+
+const gi=
+globalIndex();
+
+
+document.getElementById(
+"sectionName"
+).textContent=
+section.title;
+
+
+document.getElementById(
+"sectionMeta"
+).textContent=
+section.data.length+
+" Questions";
+
+
+document.getElementById(
+"progressText"
+).textContent=
+"Question "+
+(localIndex+1)+
+" of "+
+section.data.length;
+
+
+document.getElementById(
+"questionNumber"
+).textContent=
+"Question "+
+(gi+1);
+
+
+document.getElementById(
+"questionText"
+).textContent=
+q.q;
+
+
+const optionsBox=
+document.getElementById("options");
+
+optionsBox.innerHTML="";
+
+
+q.options.forEach((op,i)=>{
+
+const d=
+document.createElement("div");
+
+d.className=
+"option"+
+(
+answers[gi]===i
+?
+" selected"
+:
+""
+);
+
+d.innerHTML=
+"<b>"+
+String.fromCharCode(65+i)+
+".</b> "+
+op;
+
+d.onclick=
+()=>{
+
+selectOption(i);
+
+};
+
+optionsBox.appendChild(d);
+
+});
+
+
+if(
+localIndex===
+section.data.length-1
+){
+
+document.getElementById(
+"nextBtn"
+).textContent=
+
+sectionIndex===
+sections.length-1
+?
+"Finish Test"
+:
+"Next Subject";
+
+}else{
+
+document.getElementById(
+"nextBtn"
+).textContent=
+"Save & Next";
+
+}
+
+
+updatePalette();
+
+}
+
+
+/* =========================================================
+SELECT OPTION
+========================================================= */
+
+function selectOption(index){
+
+const gi=
+globalIndex();
+
+answers[gi]=index;
+
+review[gi]=false;
+
+renderQuestion();
+
+}
+
+
+/* =========================================================
+MARK REVIEW
+========================================================= */
+
+function markReview(){
+
+const gi=
+globalIndex();
+
+review[gi]=!review[gi];
+
+nextQuestion();
+
+}
+
+
+/* =========================================================
+NEXT QUESTION
+========================================================= */
+
+function nextQuestion(){
+
+const section=
+sections[sectionIndex];
+
+
+if(
+localIndex<
+section.data.length-1
+){
+
+localIndex++;
+
+renderQuestion();
+
+return;
+
+}
+
+
+if(
+sectionIndex<
+sections.length-1
+){
+
+sectionIndex++;
+
+localIndex=0;
+
+renderQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+return;
+
+}
+
+
+confirmSubmit();
+
+}
+
+
+/* =========================================================
+PREVIOUS QUESTION
+========================================================= */
+
+function previousQuestion(){
+
+if(localIndex>0){
+
+localIndex--;
+
+renderQuestion();
+
+return;
+
+}
+
+
+if(sectionIndex>0){
+
+sectionIndex--;
+
+localIndex=
+sections[sectionIndex]
+.data.length-1;
+
+renderQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+}
+
+
+/* =========================================================
+CONFIRM SUBMIT
+========================================================= */
+
+function confirmSubmit(){
+
+if(submitted)return;
+
+
+const unanswered=
+totalQuestions()-
+Object.keys(answers).length;
+
+
+let message=
+"Are you sure you want to submit the test?";
+
+
+if(unanswered>0){
+
+message+=
+"\n\nUnattempted questions: "+
+unanswered;
+
+}
+
+
+if(confirm(message)){
+
+submitTest();
+
+}
+
+}
+
+
+/* =========================================================
+SUBMIT TEST
+========================================================= */
+
+function submitTest(){
+
+if(submitted)return;
+
+submitted=true;
+
+clearInterval(timerId);
+
+
+let correct=0;
+let wrong=0;
+let unattempted=0;
+
+const rows=[];
+
+
+sections.forEach((section,si)=>{
+
+let c=0;
+let w=0;
+let u=0;
+
+
+section.data.forEach((q,li)=>{
+
+let gi=0;
+
+
+for(
+let k=0;
+k<si;
+k++
+){
+
+gi+=
+sections[k].data.length;
+
+}
+
+gi+=li;
+
+
+if(
+answers[gi]===undefined
+){
+
+u++;
+
+}
+else if(
+answers[gi]===q.answer
+){
+
+c++;
+
+}
+else{
+
+w++;
+
+}
+
+});
+
+
+const score=
+c-(w/3);
+
+
+correct+=c;
+wrong+=w;
+unattempted+=u;
+
+
+rows.push({
+
+title:section.title,
+
+questions:
+section.data.length,
+
+correct:c,
+
+wrong:w,
+
+unattempted:u,
+
+score:score
+
+});
+
+});
+
+
+const finalScore=
+correct-(wrong/3);
+
+
+const percentage=
+(finalScore/75)*100;
+
+
+document.getElementById(
+"examContainer"
+).classList.add("hidden");
+
+
+document.querySelector(
+".section-bar"
+).classList.add("hidden");
+
+
+document.getElementById(
+"result"
+).style.display="block";
+
+
+document.getElementById(
+"finalScore"
+).textContent=
+finalScore.toFixed(2)+
+" / 75";
+
+
+document.getElementById(
+"finalStats"
+).textContent=
+
+"Correct: "+
+correct+
+
+" | Wrong: "+
+wrong+
+
+" | Unattempted: "+
+unattempted+
+
+" | Percentage: "+
+percentage.toFixed(2)+
+"%";
+
+
+const tbody=
+document.getElementById(
+"breakdownBody"
+);
+
+tbody.innerHTML="";
+
+
+rows.forEach(row=>{
+
+tbody.innerHTML+=
+
+"<tr>"+
+
+"<td>"+
+row.title+
+"</td>"+
+
+"<td>"+
+row.questions+
+"</td>"+
+
+"<td>"+
+row.correct+
+"</td>"+
+
+"<td>"+
+row.wrong+
+"</td>"+
+
+"<td>"+
+row.unattempted+
+"</td>"+
+
+"<td>"+
+row.score.toFixed(2)+
+"</td>"+
+
+"</tr>";
+
+});
+
+
+showSolutions();
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================================
+SHOW SOLUTIONS
+========================================================= */
+
+function showSolutions(){
+
+const box=
+document.getElementById(
+"solutions"
+);
+
+
+box.innerHTML=
+"<h3 style='margin-top:25px;'>Solutions & Answer Key</h3>";
+
+
+let number=0;
+
+
+sections.forEach(section=>{
+
+section.data.forEach(q=>{
+
+const userAnswer=
+answers[number];
+
+
+let statusClass=
+"unattempted";
+
+let statusText=
+"Not Attempted";
+
+
+if(userAnswer!==undefined){
+
+if(
+userAnswer===q.answer
+){
+
+statusClass=
+"correct";
+
+statusText=
+"Correct";
+
+}
+else{
+
+statusClass=
+"wrong";
+
+statusText=
+"Wrong";
+
+}
+
+}
+
+
+const correctOption=
+String.fromCharCode(
+65+q.answer
+);
+
+
+let userText=
+"Not Attempted";
+
+
+if(userAnswer!==undefined){
+
+userText=
+String.fromCharCode(
+65+userAnswer
+)+
+". "+
+q.options[userAnswer];
+
+}
+
+
+box.innerHTML+=
+
+"<div class='solution-card "+
+statusClass+
+"'>"+
+
+"<div class='solution-title'>"+
+"Q"+
+(number+1)+
+". "+
+q.q+
+"</div>"+
+
+"<div class='answer-line'>"+
+"<b>Your Answer:</b> "+
+userText+
+"</div>"+
+
+"<div class='answer-line'>"+
+"<b>Correct Answer:</b> "+
+correctOption+
+". "+
+q.options[q.answer]+
+"</div>"+
+
+"<div class='answer-line'>"+
+"<b>Status:</b> "+
+statusText+
+"</div>"+
+
+"<div class='explanation'>"+
+"<b>Explanation:</b> "+
+q.explanation+
+"</div>"+
+
+"</div>";
+
+
+number++;
+
+});
+
+});
+
+}
+
+
+/* =========================================================
+INITIALIZE
+========================================================= */
+
+buildPalette();
+
+renderQuestion();
+
+startTimer();
+
+</script>
+
+</body>
+</html>
