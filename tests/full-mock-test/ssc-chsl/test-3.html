@@ -1,1 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | SSC CHSL Tier-I Test 3</title>
+
+<meta name="description"
+content="AIMERS CLASSES SSC CHSL Tier-I Test 3 - 100 questions mock test with solutions.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#1f2937;
+}
+
+.header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 25px;
+    gap:15px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 12px rgba(0,0,0,.18);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:800;
+    color:#ffd43b;
+    white-space:nowrap;
+}
+
+.exam-title{
+    font-size:20px;
+    font-weight:700;
+    text-align:center;
+}
+
+.timer-box{
+    background:#fff;
+    color:#dc2626;
+    font-size:22px;
+    font-weight:800;
+    padding:10px 18px;
+    border-radius:10px;
+    min-width:95px;
+    text-align:center;
+}
+
+.exam-info{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    padding:15px;
+    background:white;
+}
+
+.info{
+    background:#e8f0ff;
+    color:#102a43;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:700;
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+
+.warning{
+    max-width:1200px;
+    margin:15px auto;
+    background:#fff8dc;
+    border-left:5px solid #f59e0b;
+    padding:14px 18px;
+    border-radius:8px;
+    line-height:1.5;
+}
+
+.container{
+    max-width:1200px;
+    margin:20px auto;
+    padding:0 15px;
+}
+
+.palette-card{
+    background:white;
+    border-radius:12px;
+    padding:18px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    margin-bottom:18px;
+}
+
+.palette-title{
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:15px;
+    color:#102a43;
+}
+
+.section-progress{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:15px;
+}
+
+.section-tab{
+    padding:9px 14px;
+    background:#e5e7eb;
+    border-radius:7px;
+    font-weight:700;
+    font-size:14px;
+}
+
+.section-tab.active{
+    background:#1d4ed8;
+    color:white;
+}
+
+.legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    margin:12px 0;
+    font-size:14px;
+    font-weight:600;
+}
+
+.dot{
+    width:13px;
+    height:13px;
+    display:inline-block;
+    border-radius:50%;
+    margin-right:5px;
+    vertical-align:middle;
+}
+
+.dot.not-attempted{
+    background:#e5e7eb;
+}
+
+.dot.attempted{
+    background:#16a34a;
+}
+
+.dot.current{
+    background:#2563eb;
+}
+
+.dot.review{
+    background:#f97316;
+}
+
+.palette{
+    display:grid;
+    grid-template-columns:repeat(10,1fr);
+    gap:7px;
+}
+
+.palette button{
+    border:none;
+    background:#e5e7eb;
+    color:#111827;
+    height:38px;
+    border-radius:6px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.palette button:hover{
+    transform:scale(1.03);
+}
+
+.palette button.attempted{
+    background:#16a34a;
+    color:white;
+}
+
+.palette button.current{
+    background:#2563eb;
+    color:white;
+}
+
+.palette button.review{
+    background:#f97316;
+    color:white;
+}
+
+.question-card{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.section-name{
+    color:#1d4ed8;
+    font-size:17px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.question-number{
+    color:#6b7280;
+    font-weight:700;
+    margin-bottom:14px;
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    line-height:1.5;
+    margin-bottom:20px;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+}
+
+.option{
+    border:2px solid #e5e7eb;
+    padding:14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
+    line-height:1.45;
+}
+
+.option:hover{
+    border-color:#2563eb;
+    background:#f5f8ff;
+}
+
+.option.selected{
+    border-color:#2563eb;
+    background:#eaf1ff;
+}
+
+.option input{
+    margin-right:8px;
+}
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:25px;
+}
+
+.btn{
+    border:none;
+    padding:12px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+    color:white;
+}
+
+.prev{
+    background:#6b7280;
+}
+
+.review-btn{
+    background:#f97316;
+}
+
+.next{
+    background:#2563eb;
+}
+
+.submit{
+    background:#dc2626;
+}
+
+.btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+.result{
+    display:none;
+    max-width:1200px;
+    margin:25px auto;
+    padding:20px;
+}
+
+.result h1{
+    text-align:center;
+    color:#102a43;
+    margin-bottom:20px;
+}
+
+.score{
+    text-align:center;
+    font-size:42px;
+    font-weight:900;
+    color:#1d4ed8;
+    margin-bottom:25px;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.result-item{
+    background:white;
+    padding:20px;
+    text-align:center;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-weight:700;
+}
+
+.result-item span{
+    display:block;
+    margin-top:8px;
+    font-size:25px;
+    color:#1d4ed8;
+}
+
+.review-summary{
+    background:white;
+    padding:15px;
+    margin:20px 0;
+    border-radius:8px;
+}
+
+.solution{
+    margin-top:25px;
+}
+
+.solution h2{
+    margin-bottom:15px;
+    color:#102a43;
+}
+
+.sol-card{
+    background:white;
+    border-radius:10px;
+    padding:18px;
+    margin-bottom:15px;
+    border-left:6px solid #6b7280;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.sol-card.correct{
+    border-left-color:#16a34a;
+}
+
+.sol-card.wrong{
+    border-left-color:#dc2626;
+}
+
+.sol-card.unattempted{
+    border-left-color:#f59e0b;
+}
+
+.sol-q{
+    font-weight:800;
+    font-size:17px;
+    line-height:1.5;
+    margin-bottom:10px;
+}
+
+.your{
+    margin-bottom:7px;
+}
+
+.answer{
+    color:#15803d;
+    font-weight:800;
+    margin-bottom:7px;
+}
+
+.explanation{
+    background:#f8fafc;
+    padding:12px;
+    border-radius:7px;
+    line-height:1.5;
+}
+
+.retake{
+    display:block;
+    margin:25px auto;
+    padding:13px 25px;
+    border:none;
+    border-radius:8px;
+    background:#1d4ed8;
+    color:white;
+    font-weight:800;
+    cursor:pointer;
+}
+
+@media(max-width:700px){
+
+    .header{
+        flex-direction:column;
+        position:static;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+
+    .exam-title{
+        font-size:17px;
+    }
+
+    .palette{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+    .result-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .result-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info{
+        width:100%;
+        text-align:center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+AIMERS CLASSES
+</div>
+
+<div class="exam-title">
+SSC CHSL — Tier-I | Test 3
+</div>
+
+<div class="timer-box" id="timer">
+60:00
+</div>
+
+</header>
+
+
+<div class="exam-info">
+
+<div class="info">100 Questions</div>
+<div class="info">200 Marks</div>
+<div class="info">+2 Correct</div>
+<div class="info">−0.50 Wrong</div>
+<div class="info">60 Minutes</div>
+
+</div>
+
+
+<div class="warning">
+
+⚠️ <b>SSC CHSL Tier-I Pattern:</b>
+25 questions each from English Language, General Intelligence & Reasoning,
+Quantitative Aptitude and General Awareness.
+Total time: 60 minutes.
+Each correct answer carries 2 marks and 0.50 mark is deducted for every wrong answer.
+
+</div>
+
+
+<main class="container" id="testArea">
+
+
+<div class="palette-card">
+
+<div class="palette-title">
+Question Palette
+</div>
+
+<div class="section-progress">
+
+<div class="section-tab active" id="tab0">
+English 1–25
+</div>
+
+<div class="section-tab" id="tab1">
+Reasoning 26–50
+</div>
+
+<div class="section-tab" id="tab2">
+Quantitative Aptitude 51–75
+</div>
+
+<div class="section-tab" id="tab3">
+General Awareness 76–100
+</div>
+
+</div>
+
+
+<div class="legend">
+
+<span>
+<i class="dot not-attempted"></i>
+Not Attempted
+</span>
+
+<span>
+<i class="dot attempted"></i>
+Attempted
+</span>
+
+<span>
+<i class="dot current"></i>
+Current
+</span>
+
+<span>
+<i class="dot review"></i>
+Review
+</span>
+
+</div>
+
+
+<div class="palette" id="palette"></div>
+
+</div>
+
+
+<div class="question-card">
+
+<div class="section-name" id="sectionName"></div>
+
+<div class="question-number" id="questionNumber"></div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+
+<div class="buttons">
+
+<button class="btn prev"
+id="prevBtn"
+onclick="previousQuestion()">
+Previous
+</button>
+
+<button class="btn review-btn"
+onclick="markReview()">
+Mark for Review
+</button>
+
+<button class="btn next"
+id="nextBtn"
+onclick="nextQuestion()">
+Save & Next
+</button>
+
+<button class="btn submit"
+onclick="confirmSubmit()">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+
+<div class="result" id="result">
+
+<h1>
+SSC CHSL Tier-I Test 3 Result
+</h1>
+
+<div class="score" id="score">
+0 / 200
+</div>
+
+
+<div class="result-grid">
+
+<div class="result-item">
+Correct
+<br>
+<span id="correct">0</span>
+</div>
+
+<div class="result-item">
+Wrong
+<br>
+<span id="wrong">0</span>
+</div>
+
+<div class="result-item">
+Unattempted
+<br>
+<span id="unattempted">0</span>
+</div>
+
+<div class="result-item">
+Percentage
+<br>
+<span id="percentage">0%</span>
+</div>
+
+</div>
+
+
+<div class="review-summary" id="reviewSummary"></div>
+
+
+<div class="solution">
+
+<h2>
+Answer & Detailed Solutions
+</h2>
+
+<div id="solutionList"></div>
+
+</div>
+
+
+<button class="retake"
+onclick="location.reload()">
+Re-Attempt Test
+</button>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+/* =========================
+   ENGLISH 1-25
+========================= */
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Candid'.",
+o:["Secretive","Frank","Cruel","Doubtful"],
+a:1,
+e:"Candid means frank, honest, or straightforward."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Hostile'.",
+o:["Friendly","Angry","Harsh","Aggressive"],
+a:0,
+e:"Hostile means unfriendly; its antonym is friendly."
+},
+
+{
+section:"English Language",
+q:"Select the correctly spelt word related to spelling.",
+o:["Privilege","Privelege","Priviledge","Privilage"],
+a:0,
+e:"The correct spelling is 'Privilege'."
+},
+
+{
+section:"English Language",
+q:"Fill in the blank: He insisted ___ going there.",
+o:["on","at","for","with"],
+a:0,
+e:"The verb 'insist' is followed by the preposition 'on'."
+},
+
+{
+section:"English Language",
+q:"Choose the correct passive voice: 'They will complete the project tomorrow.'",
+o:[
+"The project will be completed by them tomorrow.",
+"The project is completed by them tomorrow.",
+"The project was completed by them tomorrow.",
+"The project has been completed by them tomorrow."
+],
+a:0,
+e:"Future simple passive uses 'will be + past participle': will be completed."
+},
+
+{
+section:"English Language",
+q:"Choose the correct indirect speech: She said, 'I have finished my work.'",
+o:[
+"She said that she has finished her work.",
+"She said that she had finished her work.",
+"She says that she had finished her work.",
+"She said that I had finished my work."
+],
+a:1,
+e:"In reported speech, 'have finished' changes to 'had finished' and 'I' changes to 'she'."
+},
+
+{
+section:"English Language",
+q:"Choose the word nearest in meaning to 'Meticulous'.",
+o:["Careless","Thorough","Impatient","Ordinary"],
+a:1,
+e:"Meticulous means very careful and precise; hence thorough."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Scarce'.",
+o:["Rare","Limited","Abundant","Insufficient"],
+a:2,
+e:"Scarce means insufficient or limited; abundant is the opposite."
+},
+
+{
+section:"English Language",
+q:"One who loves mankind is called:",
+o:["Misogynist","Philanthropist","Misanthrope","Pessimist"],
+a:1,
+e:"A philanthropist is a person who seeks the welfare of others."
+},
+
+{
+section:"English Language",
+q:"Choose the correct meaning of the idiom 'Break the ice'.",
+o:[
+"Start a conversation",
+"End a friendship",
+"Create a problem",
+"Work very hard"
+],
+a:0,
+e:"'Break the ice' means to initiate friendly conversation or remove initial awkwardness."
+},
+
+{
+section:"English Language",
+q:"Choose the correct article: She bought ___ umbrella yesterday.",
+o:["a","an","the","no article"],
+a:1,
+e:"'Umbrella' begins with a vowel sound, so 'an' is used."
+},
+
+{
+section:"English Language",
+q:"Fill in the blank: The committee ___ divided in its opinion.",
+o:["are","were","is","have"],
+a:2,
+e:"When a collective noun is treated as one unit, the singular verb 'is' is used."
+},
+
+{
+section:"English Language",
+q:"Choose the correctly spelt profession-related word.",
+o:[
+"Entrepreneur",
+"Enterpreneur",
+"Entreprenuer",
+"Entreprenur"
+],
+a:0,
+e:"The correct spelling is 'Entrepreneur'."
+},
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Vigilant'.",
+o:["Watchful","Careless","Sleepy","Confused"],
+a:0,
+e:"Vigilant means alert and watchful."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Rigid'.",
+o:["Strict","Flexible","Hard","Firm"],
+a:1,
+e:"Rigid means stiff or inflexible; flexible is its opposite."
+},
+
+{
+section:"English Language",
+q:"Identify the error: 'Neither of the answers are correct.'",
+o:["Neither","of the answers","are","correct"],
+a:2,
+e:"'Neither' is singular and takes the singular verb 'is'."
+},
+
+{
+section:"English Language",
+q:"Choose the correct plural form of 'Phenomenon'.",
+o:["Phenomenons","Phenomena","Phenomenas","Phenomenon"],
+a:1,
+e:"The standard plural of 'phenomenon' is 'phenomena'."
+},
+
+{
+section:"English Language",
+q:"Fill in the blank: She has been working here ___ five years.",
+o:["since","for","from","by"],
+a:1,
+e:"'For' is used with a duration such as five years."
+},
+
+{
+section:"English Language",
+q:"Choose the correct form: If I ___ rich, I would help the poor.",
+o:["am","was","were","be"],
+a:2,
+e:"The subjunctive form 'were' is used in an unreal conditional: If I were..."
+},
+
+{
+section:"English Language",
+q:"A person who compiles a dictionary is called a:",
+o:["Biographer","Lexicographer","Cartographer","Calligrapher"],
+a:1,
+e:"A lexicographer writes or compiles dictionaries."
+},
+
+{
+section:"English Language",
+q:"Choose the correct meaning of 'At sixes and sevens'.",
+o:["In confusion","In agreement","Very early","Very wealthy"],
+a:0,
+e:"The idiom means in a state of confusion or disorder."
+},
+
+{
+section:"English Language",
+q:"Choose the correctly improved sentence: 'He is senior than me.'",
+o:[
+"He is senior to me.",
+"He is senior from me.",
+"He is more senior than me.",
+"He is senior with me."
+],
+a:0,
+e:"The adjective 'senior' is normally followed by the preposition 'to'."
+},
+
+{
+section:"English Language",
+q:"Select the grammatically correct sentence.",
+o:[
+"Each student have a book.",
+"Each student has a book.",
+"Each students has a book.",
+"Each student having a book."
+],
+a:1,
+e:"'Each' is singular, so the singular verb 'has' is required."
+},
+
+{
+section:"English Language",
+q:"Choose the synonym of 'Obsolete'.",
+o:["Modern","Outdated","Useful","Current"],
+a:1,
+e:"Obsolete means no longer in use or outdated."
+},
+
+{
+section:"English Language",
+q:"Choose the antonym of 'Transparent'.",
+o:["Clear","Obvious","Opaque","Visible"],
+a:2,
+e:"Opaque means not allowing light through; it is the opposite of transparent."
+},
+
+
+/* =========================
+   REASONING 26-50
+========================= */
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 6, 12, 20, 30, 42, ?",
+o:["54","56","58","60"],
+a:1,
+e:"The differences are 6, 8, 10, 12; next difference is 14, so 42 + 14 = 56."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the series: AZ, BY, CX, DW, ?",
+o:["EV","FU","EX","FV"],
+a:0,
+e:"The first letters move forward A,B,C,D,E while the second letters move backward Z,Y,X,W,V."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If MANGO is coded as NZOHP, how is APPLE coded?",
+o:["BQQMF","BPPMF","BQQLE","CQQMF"],
+a:0,
+e:"Each letter is shifted one step forward: A→B, P→Q, P→Q, L→M, E→F."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Which shape is different from the others?",
+o:["Triangle","Square","Circle","Rectangle"],
+a:2,
+e:"A circle has no straight sides; the others are polygons."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Doctor : Hospital :: Teacher : ?",
+o:["Court","School","Market","Farm"],
+a:1,
+e:"A doctor generally works in a hospital; a teacher generally works in a school."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 7, 13, 21, 31, 43, ?",
+o:["55","57","59","61"],
+a:1,
+e:"Differences are 6, 8, 10, 12; next is 14, so 43 + 14 = 57."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A woman is facing north. She turns 90° clockwise and then 180° anticlockwise. Which direction is she facing?",
+o:["East","West","North","South"],
+a:1,
+e:"North → East after 90° clockwise; 180° anticlockwise from East gives West."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"P is the sister of Q. Q is the father of R. How is P related to R?",
+o:["Mother","Aunt","Sister","Grandmother"],
+a:1,
+e:"P is Q's sister and Q is R's father, so P is R's aunt."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing letter: B, E, H, K, ?",
+o:["M","N","O","P"],
+a:1,
+e:"Each letter advances by 3 positions: B,E,H,K,N."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If 1 January is a Monday, what day is 15 January?",
+o:["Sunday","Monday","Tuesday","Wednesday"],
+a:1,
+e:"The difference is 14 days, which is exactly two weeks, so the day remains Monday."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Identify the non-cube number.",
+o:["27","64","125","225"],
+a:3,
+e:"27=3³, 64=4³ and 125=5³; 225 is not a perfect cube."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the analogy: 8 : 64 :: 11 : ?",
+o:["99","110","121","132"],
+a:2,
+e:"8²=64, so 11²=121."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next term: 121, 144, 169, 196, ?",
+o:["210","225","240","256"],
+a:1,
+e:"These are 11², 12², 13², 14²; next is 15²=225."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If SOUTH is written as HTUOS, how is NORTH written?",
+o:["HTRON","HTORN","NROHT","NORTH"],
+a:0,
+e:"The word is written in reverse order: NORTH → HTRON."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A is taller than B but shorter than C. D is shorter than B. Who is the tallest?",
+o:["A","B","C","D"],
+a:2,
+e:"C is taller than A, and A is taller than B and D; therefore C is tallest."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 3, 9, 27, 81, ?",
+o:["162","216","243","324"],
+a:2,
+e:"Each term is multiplied by 3; 81 × 3 = 243."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If '+' means '−' and '−' means '×', then 18 + 6 − 2 equals:",
+o:["6","12","24","30"],
+a:0,
+e:"Replace symbols: 18 − 6 × 2 = 18 − 12 = 6."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A cube has how many edges?",
+o:["8","10","12","14"],
+a:2,
+e:"A cube has 12 edges."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the odd pair.",
+o:["2 : 4","3 : 9","4 : 16","5 : 20"],
+a:3,
+e:"In the first three pairs, the second number is the square of the first; 5² should be 25, not 20."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the series: 1, 4, 9, 16, 25, ?",
+o:["30","36","42","49"],
+a:1,
+e:"These are consecutive squares: 1²,2²,3²,4²,5²; next is 6²=36."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If all books are papers and some papers are old, which statement is definitely true?",
+o:[
+"All books are old",
+"Some books are old",
+"All books are papers",
+"No books are old"
+],
+a:2,
+e:"The premise directly states that all books are papers."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing term: CD, FG, IJ, LM, ?",
+o:["NO","OP","PQ","QR"],
+a:1,
+e:"Each pair advances by three letters: CD, FG, IJ, LM, OP."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A clock shows 6:00. What is the angle between the hands?",
+o:["90°","120°","180°","270°"],
+a:2,
+e:"At 6:00, the minute hand is at 12 and the hour hand at 6, making 180°."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If RAIN is coded as 18-1-9-14, how is SUN coded using the same method?",
+o:["19-21-14","20-21-14","19-20-13","18-21-14"],
+a:0,
+e:"Using alphabetical positions: S=19, U=21, N=14."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 2, 6, 12, 20, 30, ?",
+o:["40","42","44","46"],
+a:1,
+e:"The differences are 4,6,8,10; next is 12, so 30+12=42."
+},
+
+
+/* =========================
+   QUANTITATIVE APTITUDE 51-75
+========================= */
+
+{
+section:"Quantitative Aptitude",
+q:"A number is increased by 20% and becomes 720. What was the original number?",
+o:["560","600","620","640"],
+a:1,
+e:"Original × 1.20 = 720, so original = 720/1.20 = 600."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"Simplify: 36 + 48 ÷ 6 × 2.",
+o:["40","48","52","56"],
+a:2,
+e:"Division and multiplication are done first: 48÷6×2=16; 36+16=52."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The HCF of 84 and 126 is:",
+o:["21","28","42","63"],
+a:2,
+e:"84=2²×3×7 and 126=2×3²×7; common highest factor is 42."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The LCM of 18 and 24 is:",
+o:["48","54","72","96"],
+a:2,
+e:"18=2×3² and 24=2³×3; LCM=2³×3²=72."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"An article bought for ₹800 is sold for ₹920. Find the profit percentage.",
+o:["10%","12%","15%","20%"],
+a:2,
+e:"Profit=₹120; profit%=120/800×100=15%."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A marked price of ₹2000 is discounted by 15%. Find the selling price.",
+o:["₹1650","₹1700","₹1750","₹1800"],
+a:1,
+e:"Discount=15% of 2000=300; selling price=2000−300=₹1700."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"Find the compound interest on ₹1000 at 10% per annum for 2 years.",
+o:["₹200","₹210","₹220","₹240"],
+a:1,
+e:"Amount=1000×1.1²=1210; CI=1210−1000=₹210."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A train travels 420 km in 7 hours. What is its speed?",
+o:["50 km/h","55 km/h","60 km/h","70 km/h"],
+a:2,
+e:"Speed = distance/time = 420/7 = 60 km/h."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A man walks at 5 km/h for 36 minutes. How far does he travel?",
+o:["2 km","3 km","4 km","5 km"],
+a:1,
+e:"36 minutes=0.6 hour; distance=5×0.6=3 km."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If 7x − 9 = 40, find x.",
+o:["5","6","7","8"],
+a:2,
+e:"7x=49, hence x=7."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The average of 16, 24, 32, 40 and 48 is:",
+o:["30","32","34","36"],
+a:1,
+e:"The sum is 160; 160/5=32."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The average of 9 numbers is 24. If one number is removed, the average of the remaining 8 is 22. Find the removed number.",
+o:["36","38","40","42"],
+a:2,
+e:"Total=9×24=216; remaining total=8×22=176; removed=40."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A can do a work in 24 days and B can do it in 12 days. Together they can complete it in:",
+o:["6 days","8 days","10 days","12 days"],
+a:1,
+e:"Combined rate=1/24+1/12=3/24=1/8, so 8 days."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"12 workers complete a work in 18 days. How many workers are needed to complete it in 12 days?",
+o:["15","18","20","24"],
+a:1,
+e:"Workers and days are inversely proportional: 12×18 = x×12, so x=18 workers."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The perimeter of a rectangle is 54 cm. If its length is 16 cm, find its breadth.",
+o:["9 cm","10 cm","11 cm","12 cm"],
+a:2,
+e:"2(l+b)=54, so l+b=27; b=27−16=11 cm."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The area of a circle of radius 7 cm is (use π=22/7):",
+o:["144 cm²","154 cm²","164 cm²","176 cm²"],
+a:1,
+e:"Area=πr²=(22/7)×49=154 cm²."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The volume of a cube of side 5 cm is:",
+o:["25 cm³","75 cm³","100 cm³","125 cm³"],
+a:3,
+e:"Volume of cube=a³=5³=125 cm³."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If 5:8 = x:40, find x.",
+o:["20","22","25","28"],
+a:2,
+e:"5/8=x/40, so x=25."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"₹1260 is divided between A and B in the ratio 4:5. B's share is:",
+o:["₹540","₹600","₹700","₹720"],
+a:2,
+e:"Total parts=9; B gets 5/9×1260=₹700."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"What is 0.375 expressed as a fraction in simplest form?",
+o:["1/4","3/8","5/8","7/16"],
+a:1,
+e:"0.375=375/1000=3/8."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"What is 7/12 of 360?",
+o:["180","200","210","240"],
+a:2,
+e:"360×7/12=30×7=210."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"The square root of 1764 is:",
+o:["38","40","42","44"],
+a:2,
+e:"42×42=1764, so the square root is 42."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"If 40% of a number is 180, the number is:",
+o:["360","400","450","480"],
+a:2,
+e:"Number=180/0.40=450."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A sum amounts to ₹1320 at simple interest in 2 years at 10% per annum. Find the principal.",
+o:["₹1000","₹1100","₹1200","₹1250"],
+a:1,
+e:"Amount=P(1+10×2/100)=1.2P; therefore P=1320/1.2=₹1100."
+},
+
+{
+section:"Quantitative Aptitude",
+q:"A shopkeeper marks an article 25% above cost price and gives a 10% discount. His profit percentage is:",
+o:["10%","12.5%","15%","20%"],
+a:1,
+e:"SP=1.25×0.90=1.125 CP, so profit=12.5%."
+},
+
+
+/* =========================
+   GENERAL AWARENESS 76-100
+========================= */
+
+{
+section:"General Awareness",
+q:"Who is known as the 'Nightingale of India'?",
+o:["Sarojini Naidu","Annie Besant","Vijaya Lakshmi Pandit","Aruna Asaf Ali"],
+a:0,
+e:"Sarojini Naidu is popularly known as the Nightingale of India."
+},
+
+{
+section:"General Awareness",
+q:"Which Constitutional Article abolishes untouchability?",
+o:["Article 14","Article 15","Article 17","Article 19"],
+a:2,
+e:"Article 17 abolishes untouchability and forbids its practice in any form."
+},
+
+{
+section:"General Awareness",
+q:"Who was the first Speaker of the Lok Sabha?",
+o:["G. V. Mavalankar","Dr. Rajendra Prasad","Jawaharlal Nehru","B. R. Ambedkar"],
+a:0,
+e:"G. V. Mavalankar was the first Speaker of the Lok Sabha."
+},
+
+{
+section:"General Awareness",
+q:"The Battle of Plassey was fought in:",
+o:["1757","1761","1764","1772"],
+a:0,
+e:"The Battle of Plassey was fought in 1757."
+},
+
+{
+section:"General Awareness",
+q:"Who founded the Arya Samaj?",
+o:["Raja Ram Mohan Roy","Swami Dayanand Saraswati","Swami Vivekananda","Ishwar Chandra Vidyasagar"],
+a:1,
+e:"Swami Dayanand Saraswati founded the Arya Samaj in 1875."
+},
+
+{
+section:"General Awareness",
+q:"Which ancient university was located in present-day Bihar?",
+o:["Takshashila","Nalanda","Vikramashila","Both Nalanda and Vikramashila"],
+a:3,
+e:"Both Nalanda and Vikramashila were major ancient centres of learning in present-day Bihar."
+},
+
+{
+section:"General Awareness",
+q:"Which is the largest state of India by area?",
+o:["Madhya Pradesh","Maharashtra","Rajasthan","Uttar Pradesh"],
+a:2,
+e:"Rajasthan is the largest Indian state by geographical area."
+},
+
+{
+section:"General Awareness",
+q:"The Tropic of Cancer passes through how many Indian states?",
+o:["6","7","8","9"],
+a:2,
+e:"The Tropic of Cancer passes through eight Indian states."
+},
+
+{
+section:"General Awareness",
+q:"Which river is known as the 'Sorrow of Bihar'?",
+o:["Ganga","Kosi","Son","Gandak"],
+a:1,
+e:"The Kosi is traditionally called the 'Sorrow of Bihar' because of its frequent flooding."
+},
+
+{
+section:"General Awareness",
+q:"Which part of the plant conducts water from roots to leaves?",
+o:["Phloem","Xylem","Cambium","Epidermis"],
+a:1,
+e:"Xylem transports water and minerals upward from roots."
+},
+
+{
+section:"General Awareness",
+q:"Which blood group is known as the universal donor for red blood cells?",
+o:["A positive","B negative","AB positive","O negative"],
+a:3,
+e:"O negative red blood cells lack A, B and Rh antigens and are commonly treated as the universal donor type."
+},
+
+{
+section:"General Awareness",
+q:"Which organelle is called the powerhouse of the cell?",
+o:["Nucleus","Ribosome","Mitochondrion","Golgi apparatus"],
+a:2,
+e:"Mitochondria produce most cellular ATP and are called the powerhouse of the cell."
+},
+
+{
+section:"General Awareness",
+q:"What is the chemical formula of common salt?",
+o:["Na2CO3","NaCl","KCl","CaCO3"],
+a:1,
+e:"Common salt is sodium chloride, NaCl."
+},
+
+{
+section:"General Awareness",
+q:"Which metal is liquid at room temperature?",
+o:["Iron","Copper","Mercury","Aluminium"],
+a:2,
+e:"Mercury is a metal that is liquid at ordinary room temperature."
+},
+
+{
+section:"General Awareness",
+q:"What is the SI unit of electric current?",
+o:["Volt","Ohm","Ampere","Watt"],
+a:2,
+e:"The SI unit of electric current is the ampere."
+},
+
+{
+section:"General Awareness",
+q:"Which law states that every action has an equal and opposite reaction?",
+o:["Newton's First Law","Newton's Second Law","Newton's Third Law","Law of Gravitation"],
+a:2,
+e:"Newton's Third Law states that every action has an equal and opposite reaction."
+},
+
+{
+section:"General Awareness",
+q:"Which planet is nearest to the Sun?",
+o:["Venus","Mercury","Earth","Mars"],
+a:1,
+e:"Mercury is the planet closest to the Sun."
+},
+
+{
+section:"General Awareness",
+q:"The headquarters of the World Health Organization is in:",
+o:["New York","Geneva","Paris","Vienna"],
+a:1,
+e:"WHO headquarters is located in Geneva, Switzerland."
+},
+
+{
+section:"General Awareness",
+q:"The currency of South Korea is:",
+o:["Yen","Won","Baht","Peso"],
+a:1,
+e:"The South Korean currency is the won."
+},
+
+{
+section:"General Awareness",
+q:"Who wrote 'Gitanjali'?",
+o:["Bankim Chandra Chattopadhyay","Rabindranath Tagore","Premchand","Sarojini Naidu"],
+a:1,
+e:"Rabindranath Tagore wrote Gitanjali."
+},
+
+{
+section:"General Awareness",
+q:"Which classical dance form originated in Kerala?",
+o:["Kathak","Kathakali","Bharatanatyam","Odissi"],
+a:1,
+e:"Kathakali is a classical dance-drama tradition of Kerala."
+},
+
+{
+section:"General Awareness",
+q:"The Green Revolution in India is closely associated with:",
+o:["M. S. Swaminathan","Verghese Kurien","Vikram Sarabhai","Homi J. Bhabha"],
+a:0,
+e:"M. S. Swaminathan is widely known as the father of the Green Revolution in India."
+},
+
+{
+section:"General Awareness",
+q:"Which gas is most abundant in Earth's atmosphere?",
+o:["Oxygen","Nitrogen","Carbon dioxide","Argon"],
+a:1,
+e:"Nitrogen makes up about 78% of Earth's atmosphere."
+},
+
+{
+section:"General Awareness",
+q:"Where is the headquarters of the International Monetary Fund located?",
+o:["Washington, D.C.","London","Geneva","Paris"],
+a:0,
+e:"The IMF headquarters is in Washington, D.C., United States."
+},
+
+{
+section:"General Awareness",
+q:"Which Indian state is famous for the Hornbill Festival?",
+o:["Assam","Nagaland","Manipur","Mizoram"],
+a:1,
+e:"The Hornbill Festival is held in Nagaland."
+}
+
+];
+
+
+const answers = Array(questions.length).fill(null);
+
+const review = Array(questions.length).fill(false);
+
+let currentQuestion = 0;
+
+let timeLeft = 60 * 60;
+
+let timerInterval = null;
+
+let submitted = false;
+
+
+function sectionIndex(i){
+
+    return Math.floor(i / 25);
+
+}
+
+
+function createPalette(){
+
+    const p = document.getElementById("palette");
+
+    p.innerHTML = "";
+
+    questions.forEach((q,i)=>{
+
+        const b = document.createElement("button");
+
+        b.textContent = i + 1;
+
+        b.id = "p" + i;
+
+        b.onclick = ()=>{
+
+            currentQuestion = i;
+
+            renderQuestion();
+
+        };
+
+        p.appendChild(b);
+
+    });
+
+}
+
+
+function updatePalette(){
+
+    questions.forEach((q,i)=>{
+
+        const b = document.getElementById("p" + i);
+
+        b.className = "";
+
+        if(i === currentQuestion){
+
+            b.classList.add("current");
+
+        }
+
+        else if(review[i]){
+
+            b.classList.add("review");
+
+        }
+
+        else if(answers[i] !== null){
+
+            b.classList.add("attempted");
+
+        }
+
+    });
+
+
+    for(let i=0;i<4;i++){
+
+        document
+        .getElementById("tab" + i)
+        .classList
+        .toggle(
+            "active",
+            sectionIndex(currentQuestion) === i
+        );
+
+    }
+
+}
+
+
+function renderQuestion(){
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("sectionName").textContent =
+        q.section;
+
+    document.getElementById("questionNumber").textContent =
+        "Question " + (currentQuestion + 1) +
+        " of " + questions.length;
+
+    document.getElementById("questionText").textContent =
+        q.q;
+
+
+    const o = document.getElementById("options");
+
+    o.innerHTML = "";
+
+
+    q.o.forEach((opt,j)=>{
+
+        const label = document.createElement("label");
+
+        label.className =
+            "option" +
+            (answers[currentQuestion] === j
+            ? " selected"
+            : "");
+
+
+        label.innerHTML =
+            '<input type="radio" name="option" ' +
+            (answers[currentQuestion] === j
+            ? 'checked'
+            : '') +
+            '> ' +
+            String.fromCharCode(65+j) +
+            '. ' +
+            opt;
+
+
+        label.onclick = ()=>{
+
+            answers[currentQuestion] = j;
+
+            renderQuestion();
+
+        };
+
+
+        o.appendChild(label);
+
+    });
+
+
+    document.getElementById("prevBtn").disabled =
+        currentQuestion === 0;
+
+
+    document.getElementById("nextBtn").textContent =
+        currentQuestion === questions.length - 1
+        ? "Finish / Submit"
+        : "Save & Next";
+
+
+    updatePalette();
+
+}
+
+
+function nextQuestion(){
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+
+        renderQuestion();
+
+    }
+
+    else{
+
+        confirmSubmit();
+
+    }
+
+}
+
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        renderQuestion();
+
+    }
+
+}
+
+
+function markReview(){
+
+    review[currentQuestion] =
+        !review[currentQuestion];
+
+    updatePalette();
+
+}
+
+
+function confirmSubmit(){
+
+    const u =
+        answers.filter(x => x === null).length;
+
+
+    if(
+        u > 0 &&
+        !confirm(
+            "You have " +
+            u +
+            " unattempted question(s). " +
+            "Do you still want to submit the test?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    submitTest();
+
+}
+
+
+function submitTest(){
+
+    if(submitted) return;
+
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+
+    let correct = 0;
+
+    let wrong = 0;
+
+    let unattempted = 0;
+
+
+    questions.forEach((q,i)=>{
+
+        if(answers[i] === null){
+
+            unattempted++;
+
+        }
+
+        else if(answers[i] === q.a){
+
+            correct++;
+
+        }
+
+        else{
+
+            wrong++;
+
+        }
+
+    });
+
+
+    const score =
+        (correct * 2) -
+        (wrong * 0.5);
+
+
+    const pct =
+        (score / 200) * 100;
+
+
+    document.getElementById("testArea")
+        .style.display = "none";
+
+
+    document.querySelector(".warning")
+        .style.display = "none";
+
+
+    document.querySelector(".exam-info")
+        .style.display = "none";
+
+
+    document.getElementById("result")
+        .style.display = "block";
+
+
+    document.getElementById("score")
+        .textContent =
+        score.toFixed(2) +
+        " / 200";
+
+
+    document.getElementById("correct")
+        .textContent = correct;
+
+
+    document.getElementById("wrong")
+        .textContent = wrong;
+
+
+    document.getElementById("unattempted")
+        .textContent = unattempted;
+
+
+    document.getElementById("percentage")
+        .textContent =
+        pct.toFixed(2) + "%";
+
+
+    document.getElementById("reviewSummary")
+        .innerHTML =
+        "<b>Review marked:</b> " +
+        review.filter(Boolean).length +
+        " question(s).";
+
+
+    buildSolutions();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function buildSolutions(){
+
+    const list =
+        document.getElementById("solutionList");
+
+    list.innerHTML = "";
+
+
+    questions.forEach((q,i)=>{
+
+        const status =
+            answers[i] === null
+            ? "unattempted"
+            : (
+                answers[i] === q.a
+                ? "correct"
+                : "wrong"
+            );
+
+
+        const div =
+            document.createElement("div");
+
+
+        div.className =
+            "sol-card " + status;
+
+
+        const your =
+            answers[i] === null
+            ? "Not Attempted"
+            : q.o[answers[i]];
+
+
+        div.innerHTML =
+
+            "<div class='sol-q'>" +
+            "Q" + (i+1) +
+            ". " +
+            q.q +
+            "</div>" +
+
+            "<div class='your'>" +
+            "<b>Your Answer:</b> " +
+            your +
+            "</div>" +
+
+            "<div class='answer'>" +
+            "Correct Answer: " +
+            q.o[q.a] +
+            "</div>" +
+
+            "<div class='explanation'>" +
+            "<b>Solution:</b> " +
+            q.e +
+            "</div>";
+
+
+        list.appendChild(div);
+
+    });
+
+}
+
+
+function updateTimer(){
+
+    const m =
+        Math.floor(timeLeft / 60);
+
+    const s =
+        timeLeft % 60;
+
+
+    document.getElementById("timer")
+        .textContent =
+        String(m).padStart(2,"0") +
+        ":" +
+        String(s).padStart(2,"0");
+
+
+    if(timeLeft <= 0){
+
+        clearInterval(timerInterval);
+
+        alert(
+            "Time is over. Test will be submitted automatically."
+        );
+
+        submitTest();
+
+        return;
+
+    }
+
+
+    timeLeft--;
+
+}
+
+
+createPalette();
+
+renderQuestion();
+
+updateTimer();
+
+timerInterval =
+    setInterval(updateTimer,1000);
+
+</script>
+
+</body>
+</html>
