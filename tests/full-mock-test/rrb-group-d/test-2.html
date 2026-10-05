@@ -1,1 +1,1716 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIMERS CLASSES | RRB Group D Test 2</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+}
+
+.header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:15px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+.header-inner{
+    max-width:1300px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.exam-title{
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.timer{
+    background:#fff;
+    color:#dc2626;
+    padding:10px 16px;
+    border-radius:8px;
+    font-weight:900;
+    min-width:115px;
+    text-align:center;
+}
+
+.main{
+    max-width:1300px;
+    margin:20px auto;
+    padding:0 15px;
+}
+
+.test-info{
+    background:white;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:15px;
+    box-shadow:0 4px 18px rgba(0,0,0,.08);
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+}
+
+.info{
+    background:#eef4ff;
+    padding:10px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.warning{
+    margin-top:12px;
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    color:#9a3412;
+    padding:10px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.test-layout{
+    display:grid;
+    grid-template-columns:1fr 280px;
+    gap:20px;
+}
+
+.question-area{
+    background:white;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.section-name{
+    background:#1d4ed8;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    margin-bottom:18px;
+    font-weight:bold;
+}
+
+.question-number{
+    font-size:16px;
+    color:#1d4ed8;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:19px;
+    font-weight:bold;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.option{
+    border:1px solid #d1d5db;
+    border-radius:9px;
+    padding:13px;
+    cursor:pointer;
+    transition:.2s;
+    background:#fff;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+    cursor:pointer;
+}
+
+.option.selected{
+    background:#dbeafe;
+    border-color:#1d4ed8;
+}
+
+.buttons{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+.btn{
+    border:none;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.prev{
+    background:#64748b;
+    color:white;
+}
+
+.next{
+    background:#1d4ed8;
+    color:white;
+}
+
+.submit{
+    background:#dc2626;
+    color:white;
+}
+
+.btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.palette{
+    background:white;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    height:max-content;
+    position:sticky;
+    top:95px;
+}
+
+.palette h3{
+    color:#102a43;
+    margin-bottom:15px;
+}
+
+.legend{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:15px;
+    font-size:12px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.legend-box{
+    width:15px;
+    height:15px;
+    border-radius:3px;
+}
+
+.not-attempted{
+    background:#e5e7eb;
+}
+
+.attempted{
+    background:#16a34a;
+}
+
+.current{
+    background:#1d4ed8;
+}
+
+.review{
+    background:#f59e0b;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qno{
+    height:38px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    background:#e5e7eb;
+    font-weight:bold;
+}
+
+.qno.attempted{
+    background:#16a34a;
+    color:white;
+}
+
+.qno.current{
+    background:#1d4ed8;
+    color:white;
+}
+
+.qno.review{
+    background:#f59e0b;
+    color:white;
+}
+
+.result{
+    display:none;
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 5px 25px rgba(0,0,0,.12);
+    text-align:center;
+}
+
+.result h2{
+    color:#1d4ed8;
+    margin-bottom:20px;
+}
+
+.score{
+    font-size:40px;
+    font-weight:900;
+    color:#16a34a;
+    margin-bottom:15px;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+
+.result-box{
+    padding:15px;
+    border-radius:8px;
+    background:#eef4ff;
+}
+
+.result-box b{
+    display:block;
+    font-size:22px;
+    color:#102a43;
+}
+
+@media(max-width:900px){
+
+    .test-layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette{
+        position:relative;
+        top:0;
+        order:-1;
+    }
+
+    .info-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        flex-direction:column;
+    }
+
+    .exam-title{
+        font-size:17px;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .question-area{
+        padding:18px;
+    }
+
+    .question{
+        font-size:17px;
+    }
+
+    .result-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="header-inner">
+
+<div class="logo">
+AIMERS <span>CLASSES</span>
+</div>
+
+<div class="exam-title">
+RRB GROUP D — CBT | TEST 2
+</div>
+
+<div class="timer" id="timer">
+90:00
+</div>
+
+</div>
+
+</div>
+
+
+<div class="main">
+
+<div class="test-info">
+
+<div class="info-grid">
+
+<div class="info">100 Questions</div>
+<div class="info">100 Marks</div>
+<div class="info">+1 Correct</div>
+<div class="info">−0.33 Wrong</div>
+<div class="info">90 Minutes</div>
+
+</div>
+
+<div class="warning">
+⚠️ Each wrong answer carries 1/3 negative marking. Unattempted questions carry 0 marks.
+</div>
+
+</div>
+
+
+<div id="testArea">
+
+<div class="test-layout">
+
+<div class="question-area">
+
+<div class="section-name" id="sectionName">
+General Science
+</div>
+
+<div class="question-number" id="questionNumber">
+Question 1 of 100
+</div>
+
+<div class="question" id="questionText">
+Loading question...
+</div>
+
+<div class="options" id="options"></div>
+
+<div class="buttons">
+
+<button class="btn prev"
+id="prevBtn"
+onclick="previousQuestion()">
+← Previous
+</button>
+
+<button class="btn next"
+id="nextBtn"
+onclick="nextQuestion()">
+Save & Next →
+</button>
+
+<button class="btn submit"
+id="submitBtn"
+onclick="submitTest()"
+style="display:none;">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+
+<div class="palette">
+
+<h3>Question Palette</h3>
+
+<div class="legend">
+
+<div class="legend-item">
+<span class="legend-box not-attempted"></span>
+Not Attempted
+</div>
+
+<div class="legend-item">
+<span class="legend-box attempted"></span>
+Attempted
+</div>
+
+<div class="legend-item">
+<span class="legend-box current"></span>
+Current
+</div>
+
+<div class="legend-item">
+<span class="legend-box review"></span>
+Review
+</div>
+
+</div>
+
+<div class="question-grid" id="questionGrid"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="result" id="result">
+
+<h2>🎉 Test Submitted</h2>
+
+<div class="score" id="finalScore">
+0 / 100
+</div>
+
+<p id="resultMessage"></p>
+
+<div class="result-grid">
+
+<div class="result-box">
+Correct
+<b id="correctCount">0</b>
+</div>
+
+<div class="result-box">
+Wrong
+<b id="wrongCount">0</b>
+</div>
+
+<div class="result-box">
+Unattempted
+<b id="unattemptedCount">0</b>
+</div>
+
+<div class="result-box">
+Percentage
+<b id="percentage">0%</b>
+</div>
+
+</div>
+
+<br>
+
+<button class="btn next" onclick="location.reload()">
+🔄 Re-attempt Test
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   RRB GROUP D TEST 2
+   100 QUESTIONS
+
+   25 GENERAL SCIENCE
+   25 MATHEMATICS
+   30 GENERAL INTELLIGENCE & REASONING
+   20 GENERAL AWARENESS & CURRENT AFFAIRS
+========================================================= */
+
+const questions = [
+
+/* =========================================================
+   GENERAL SCIENCE 1-25
+========================================================= */
+
+{
+section:"General Science",
+q:"Which of the following is a good conductor of electricity?",
+options:["Rubber","Glass","Copper","Wood"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"What is the SI unit of power?",
+options:["Joule","Newton","Watt","Volt"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"Which vitamin is essential for normal vision?",
+options:["Vitamin A","Vitamin B","Vitamin C","Vitamin K"],
+answer:0
+},
+
+{
+section:"General Science",
+q:"Which organ filters waste products from the blood?",
+options:["Heart","Liver","Kidney","Lungs"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"Which of the following is a chemical change?",
+options:[
+"Melting of ice",
+"Boiling of water",
+"Rusting of iron",
+"Breaking of glass"
+],
+answer:2
+},
+
+{
+section:"General Science",
+q:"What is the approximate value of acceleration due to gravity on Earth?",
+options:["4.8 m/s²","7.8 m/s²","9.8 m/s²","12.8 m/s²"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"Which gas is used by plants during photosynthesis?",
+options:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"Which of the following is an example of a renewable source of energy?",
+options:["Coal","Petroleum","Solar energy","Natural gas"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"Which tissue connects muscles to bones?",
+options:["Ligament","Tendon","Cartilage","Epithelium"],
+answer:1
+},
+
+{
+section:"General Science",
+q:"What is the main function of red blood cells?",
+options:[
+"Fight infection",
+"Clot blood",
+"Carry oxygen",
+"Digest food"
+],
+answer:2
+},
+
+{
+section:"General Science",
+q:"Which instrument is used to measure temperature?",
+options:["Barometer","Thermometer","Ammeter","Manometer"],
+answer:1
+},
+
+{
+section:"General Science",
+q:"Which of the following is an alkali metal?",
+options:["Iron","Sodium","Copper","Calcium"],
+answer:1
+},
+
+{
+section:"General Science",
+q:"What is the chemical symbol of sodium?",
+options:["So","S","Na","Sd"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"Which disease is caused by deficiency of vitamin D?",
+options:["Scurvy","Rickets","Beriberi","Anaemia"],
+answer:1
+},
+
+{
+section:"General Science",
+q:"Which part of the human digestive system absorbs most nutrients?",
+options:["Stomach","Small intestine","Large intestine","Oesophagus"],
+answer:1
+},
+
+{
+section:"General Science",
+q:"Sound cannot travel through:",
+options:["Air","Water","Steel","Vacuum"],
+answer:3
+},
+
+{
+section:"General Science",
+q:"Which mirror is commonly used as a rear-view mirror in vehicles?",
+options:["Plane mirror","Concave mirror","Convex mirror","Parabolic mirror"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"Which blood group is known as the universal donor for red blood cells?",
+options:["AB positive","A positive","O negative","B negative"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"What is the chemical formula of common salt?",
+options:["NaCl","KCl","CaCO₃","NaOH"],
+answer:0
+},
+
+{
+section:"General Science",
+q:"Which planet has the maximum number of moons among the following?",
+options:["Mercury","Earth","Jupiter","Venus"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"Which part of the eye controls the amount of light entering it?",
+options:["Retina","Iris","Cornea","Optic nerve"],
+answer:1
+},
+
+{
+section:"General Science",
+q:"Which type of energy is stored in a stretched rubber band?",
+options:["Kinetic energy","Potential energy","Heat energy","Light energy"],
+answer:1
+},
+
+{
+section:"General Science",
+q:"Which metal is commonly used for electrical wiring?",
+options:["Copper","Sodium","Mercury","Lead"],
+answer:0
+},
+
+{
+section:"General Science",
+q:"What is the process by which liquid changes into vapour?",
+options:["Condensation","Freezing","Evaporation","Sublimation"],
+answer:2
+},
+
+{
+section:"General Science",
+q:"Which hormone regulates blood sugar level in the human body?",
+options:["Thyroxine","Insulin","Adrenaline","Oestrogen"],
+answer:1
+},
+
+
+/* =========================================================
+   MATHEMATICS 26-50
+========================================================= */
+
+{
+section:"Mathematics",
+q:"What is 35% of 200?",
+options:["60","70","80","90"],
+answer:1
+},
+
+{
+section:"Mathematics",
+q:"The HCF of 54 and 72 is:",
+options:["12","18","24","27"],
+answer:1
+},
+
+{
+section:"Mathematics",
+q:"The LCM of 15 and 20 is:",
+options:["30","45","60","75"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"If 7x = 91, then x = ?",
+options:["11","12","13","14"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"A number is decreased by 20% and becomes 240. The original number was:",
+options:["280","300","320","340"],
+answer:1
+},
+
+{
+section:"Mathematics",
+q:"The average of 12, 18, 24, 30 and 36 is:",
+options:["20","22","24","26"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"A bus covers 420 km in 7 hours. Its speed is:",
+options:["50 km/h","55 km/h","60 km/h","65 km/h"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"An article bought for ₹1200 is sold for ₹1380. The profit percentage is:",
+options:["10%","12%","15%","18%"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"Find the simple interest on ₹4000 at 6% per annum for 3 years.",
+options:["₹600","₹720","₹800","₹900"],
+answer:1
+},
+
+{
+section:"Mathematics",
+q:"The ratio 36:48 in simplest form is:",
+options:["2:3","3:4","4:5","5:6"],
+answer:1
+},
+
+{
+section:"Mathematics",
+q:"If 12 workers complete a work in 10 days, the total work is:",
+options:["100 man-days","110 man-days","120 man-days","140 man-days"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"What is the cube of 5?",
+options:["25","75","100","125"],
+answer:3
+},
+
+{
+section:"Mathematics",
+q:"What is 7/8 of 160?",
+options:["120","130","140","150"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"An article marked at ₹1500 is sold after a discount of 10%. Its selling price is:",
+options:["₹1250","₹1300","₹1350","₹1400"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"If a:b = 5:8 and a = 25, then b =:",
+options:["30","35","40","45"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"The area of a square is 196 cm². Its side is:",
+options:["12 cm","13 cm","14 cm","16 cm"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"The perimeter of a rectangle is 50 cm. If its length is 15 cm, its breadth is:",
+options:["8 cm","10 cm","12 cm","15 cm"],
+answer:1
+},
+
+{
+section:"Mathematics",
+q:"A person completes 1/5 of a work in one day. How many days will he take to complete the whole work?",
+options:["3","4","5","6"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"If 30% of a number is 90, the number is:",
+options:["200","250","300","350"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"₹840 is divided between A and B in the ratio 3:4. B receives:",
+options:["₹320","₹420","₹480","₹520"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"Simplify: 45 ÷ 5 + 7 × 3",
+options:["24","30","36","42"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"An article bought for ₹750 is sold for ₹675. The loss percentage is:",
+options:["8%","10%","12%","15%"],
+answer:1
+},
+
+{
+section:"Mathematics",
+q:"The area of a triangle with base 12 cm and height 8 cm is:",
+options:["40 cm²","48 cm²","56 cm²","96 cm²"],
+answer:1
+},
+
+{
+section:"Mathematics",
+q:"A train runs at 72 km/h. How many metres does it cover in 5 seconds?",
+options:["80 m","90 m","100 m","120 m"],
+answer:2
+},
+
+{
+section:"Mathematics",
+q:"The ages of A and B are in the ratio 3:5. If A is 18 years old, B is:",
+options:["24 years","27 years","30 years","36 years"],
+answer:2
+},
+
+
+/* =========================================================
+   GENERAL INTELLIGENCE & REASONING 51-80
+========================================================= */
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 6, 12, 24, 48, ?",
+options:["72","84","96","108"],
+answer:2
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the series: 1, 4, 9, 16, 25, ?",
+options:["30","32","36","49"],
+answer:2
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If BAT is coded as CBU, how is MAN coded?",
+options:["NBO","NAN","MBO","OCP"],
+answer:0
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Bird : Nest :: Lion : ?",
+options:["Cave","Den","Stable","Burrow"],
+answer:1
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the odd one out.",
+options:["Rose","Lotus","Mango","Lily"],
+answer:2
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If EAST is written as FBTU, how is WEST written?",
+options:["XFTU","XFST","WFTU","YGTU"],
+answer:0
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"P is the father of Q. Q is the sister of R. How is P related to R?",
+options:["Brother","Father","Uncle","Grandfather"],
+answer:1
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 7, 14, 28, 56, ?",
+options:["84","98","112","120"],
+answer:2
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Which word cannot be formed from the letters of 'COMPUTER'?",
+options:["MUTE","CORE","ROPE","TEACH"],
+answer:3
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A person walks 4 km west and then 3 km south. In which direction is he from the starting point?",
+options:["North-West","South-West","South-East","North-East"],
+answer:1
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the alphabet series: C, F, I, L, ?",
+options:["N","O","P","Q"],
+answer:1
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Which number is different from the others?",
+options:["49","64","81","100"],
+answer:3
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If 4 + 2 = 24 and 5 + 3 = 40, then 6 + 4 = ?",
+options:["50","60","70","80"],
+answer:1
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"In a row, Sita is 9th from the left and 16th from the right. How many persons are there?",
+options:["23","24","25","26"],
+answer:1
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the series: ZA, YB, XC, WD, ?",
+options:["VE","UF","WE","VD"],
+answer:0
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"All pens are instruments and all instruments are useful. Which conclusion follows?",
+options:[
+"All pens are useful",
+"All useful things are pens",
+"No pen is useful",
+"Some instruments are not useful"
+],
+answer:0
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 2, 4, 8, 16, 32, ?",
+options:["48","56","64","72"],
+answer:2
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If DELHI is coded as EFMIJ, how is INDIA coded?",
+options:["JOEJB","JOEIA","JNEJB","IPDJB"],
+answer:0
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A clock shows 9:00. The angle between the two hands is:",
+options:["60°","90°","120°","180°"],
+answer:1
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the odd pair.",
+options:["6 : 36","7 : 49","8 : 64","9 : 72"],
+answer:3
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If today is Wednesday, what day will it be after 10 days?",
+options:["Friday","Saturday","Sunday","Monday"],
+answer:1
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 100, 90, 81, 73, ?",
+options:["64","66","67","68"],
+answer:2
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A is older than B. B is older than C. C is older than D. Who is the oldest?",
+options:["A","B","C","D"],
+answer:0
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Which one is different from the others?",
+options:["Monday","Wednesday","Friday","March"],
+answer:3
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If CAR is coded as DBS, how is BUS coded?",
+options:["CVT","CUT","DVT","BVS"],
+answer:0
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 3, 7, 15, 31, ?",
+options:["47","55","63","65"],
+answer:2
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Pointing to a girl, Raj said, 'She is the daughter of my father's only daughter.' How is the girl related to Raj?",
+options:["Sister","Daughter","Niece","Mother"],
+answer:2
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Which number does not belong to the group?",
+options:["8","27","64","100"],
+answer:3
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the series: AC, FH, KM, PR, ?",
+options:["UW","TV","VY","XZ"],
+answer:0
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A person is facing east. He turns left, then left again. Which direction is he facing?",
+options:["North","South","East","West"],
+answer:3
+},
+
+
+/* =========================================================
+   GENERAL AWARENESS & CURRENT AFFAIRS 81-100
+========================================================= */
+
+{
+section:"General Awareness & Current Affairs",
+q:"Who was the first Vice-President of India?",
+options:[
+"Dr. Rajendra Prasad",
+"Dr. S. Radhakrishnan",
+"Zakir Hussain",
+"V. V. Giri"
+],
+answer:1
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Which is the smallest state of India by area?",
+options:["Goa","Sikkim","Tripura","Mizoram"],
+answer:0
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"The Parliament of India consists of:",
+options:[
+"Lok Sabha only",
+"Rajya Sabha only",
+"Lok Sabha and Rajya Sabha",
+"President and Lok Sabha only"
+],
+answer:2
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Who was the first woman President of India?",
+options:[
+"Indira Gandhi",
+"Pratibha Patil",
+"Sarojini Naidu",
+"Sucheta Kriplani"
+],
+answer:1
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Which river is known as the 'Sorrow of Bihar'?",
+options:["Ganga","Kosi","Yamuna","Son"],
+answer:1
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"The Battle of Plassey was fought in:",
+options:["1757","1761","1857","1526"],
+answer:0
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Who founded the Maurya Empire?",
+options:[
+"Chandragupta Maurya",
+"Ashoka",
+"Bindusara",
+"Harshavardhana"
+],
+answer:0
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Which state is famous for the Konark Sun Temple?",
+options:["Odisha","Bihar","Gujarat","Rajasthan"],
+answer:0
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"The national animal of India is:",
+options:["Lion","Tiger","Elephant","Leopard"],
+answer:1
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Which is the highest mountain peak in India?",
+options:["Nanda Devi","Kanchenjunga","Annapurna","Mount Everest"],
+answer:1
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"The headquarters of the United Nations is in:",
+options:["Geneva","Paris","New York","Washington D.C."],
+answer:2
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Which Indian city is known as the 'Silicon Valley of India'?",
+options:["Hyderabad","Pune","Bengaluru","Chennai"],
+answer:2
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Who composed the national anthem of India?",
+options:[
+"Bankim Chandra Chattopadhyay",
+"Rabindranath Tagore",
+"Sarojini Naidu",
+"Subhas Chandra Bose"
+],
+answer:1
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Which state has the largest forest area in India?",
+options:["Madhya Pradesh","Odisha","Chhattisgarh","Maharashtra"],
+answer:0
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"The Fundamental Duties were added to the Indian Constitution by which Amendment?",
+options:["24th","42nd","44th","73rd"],
+answer:1
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Who was the first Indian Governor-General of independent India?",
+options:[
+"Lord Mountbatten",
+"C. Rajagopalachari",
+"Jawaharlal Nehru",
+"Dr. Rajendra Prasad"
+],
+answer:1
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Which is the largest public sector bank in India?",
+options:[
+"Bank of Baroda",
+"Punjab National Bank",
+"State Bank of India",
+"Canara Bank"
+],
+answer:2
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"The currency of Bangladesh is:",
+options:["Rupee","Taka","Dinar","Ringgit"],
+answer:1
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Which Indian city is called the 'Pink City'?",
+options:["Jaipur","Jodhpur","Udaipur","Bikaner"],
+answer:0
+},
+
+{
+section:"General Awareness & Current Affairs",
+q:"Which sport is associated with the term 'Grand Slam'?",
+options:["Cricket","Tennis","Hockey","Kabaddi"],
+answer:1
+}
+
+];
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentQuestion = 0;
+
+let userAnswers =
+new Array(questions.length).fill(null);
+
+let reviewQuestions =
+new Array(questions.length).fill(false);
+
+let timeLeft = 90 * 60;
+
+let testSubmitted = false;
+
+
+/* =========================================================
+   QUESTION PALETTE
+========================================================= */
+
+function createPalette(){
+
+const grid =
+document.getElementById("questionGrid");
+
+grid.innerHTML = "";
+
+questions.forEach((q,index)=>{
+
+const btn =
+document.createElement("button");
+
+btn.className = "qno";
+
+btn.id = "qno-" + index;
+
+btn.innerText = index + 1;
+
+btn.onclick = function(){
+
+currentQuestion = index;
+
+loadQuestion();
+
+};
+
+grid.appendChild(btn);
+
+});
+
+}
+
+
+/* =========================================================
+   LOAD QUESTION
+========================================================= */
+
+function loadQuestion(){
+
+const q =
+questions[currentQuestion];
+
+document.getElementById("sectionName")
+.innerText = q.section;
+
+document.getElementById("questionNumber")
+.innerText =
+"Question " +
+(currentQuestion + 1) +
+" of " +
+questions.length;
+
+document.getElementById("questionText")
+.innerText = q.q;
+
+const options =
+document.getElementById("options");
+
+options.innerHTML = "";
+
+q.options.forEach((option,index)=>{
+
+const label =
+document.createElement("label");
+
+label.className = "option";
+
+if(userAnswers[currentQuestion] === index){
+
+label.classList.add("selected");
+
+}
+
+label.innerHTML =
+`<input type="radio"
+name="answer"
+value="${index}"
+${userAnswers[currentQuestion] === index
+? "checked"
+: ""}>
+${String.fromCharCode(65 + index)}. ${option}`;
+
+label.onclick = function(){
+
+userAnswers[currentQuestion] = index;
+
+document.querySelectorAll(".option")
+.forEach(x =>
+x.classList.remove("selected")
+);
+
+label.classList.add("selected");
+
+updatePalette();
+
+};
+
+options.appendChild(label);
+
+});
+
+
+document.getElementById("prevBtn")
+.disabled =
+currentQuestion === 0;
+
+
+if(currentQuestion === questions.length - 1){
+
+document.getElementById("nextBtn")
+.style.display = "none";
+
+document.getElementById("submitBtn")
+.style.display = "inline-block";
+
+}
+else{
+
+document.getElementById("nextBtn")
+.style.display = "inline-block";
+
+document.getElementById("submitBtn")
+.style.display = "none";
+
+}
+
+updatePalette();
+
+}
+
+
+/* =========================================================
+   PALETTE UPDATE
+========================================================= */
+
+function updatePalette(){
+
+questions.forEach((q,index)=>{
+
+const btn =
+document.getElementById("qno-" + index);
+
+btn.className = "qno";
+
+if(index === currentQuestion){
+
+btn.classList.add("current");
+
+}
+
+else if(reviewQuestions[index]){
+
+btn.classList.add("review");
+
+}
+
+else if(userAnswers[index] !== null){
+
+btn.classList.add("attempted");
+
+}
+
+});
+
+}
+
+
+/* =========================================================
+   NEXT
+========================================================= */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}
+
+}
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
+
+function previousQuestion(){
+
+if(currentQuestion > 0){
+
+currentQuestion--;
+
+loadQuestion();
+
+}
+
+}
+
+
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
+function submitTest(){
+
+if(testSubmitted) return;
+
+const unanswered =
+userAnswers.filter(x => x === null).length;
+
+const confirmSubmit =
+confirm(
+"Are you sure you want to submit the test?\n\n" +
+"Unattempted questions: " +
+unanswered
+);
+
+if(!confirmSubmit) return;
+
+testSubmitted = true;
+
+clearInterval(timerInterval);
+
+let correct = 0;
+let wrong = 0;
+let unattempted = 0;
+
+questions.forEach((q,index)=>{
+
+if(userAnswers[index] === null){
+
+unattempted++;
+
+}
+
+else if(userAnswers[index] === q.answer){
+
+correct++;
+
+}
+
+else{
+
+wrong++;
+
+}
+
+});
+
+
+/*
+RRB GROUP D MARKING
+
+Correct = +1
+Wrong = -1/3
+Unattempted = 0
+*/
+
+const score =
+correct -
+(wrong / 3);
+
+const percentage =
+Math.max(0,(score / 100) * 100);
+
+
+document.getElementById("testArea")
+.style.display = "none";
+
+document.getElementById("result")
+.style.display = "block";
+
+
+document.getElementById("finalScore")
+.innerText =
+score.toFixed(2) + " / 100";
+
+
+document.getElementById("correctCount")
+.innerText = correct;
+
+document.getElementById("wrongCount")
+.innerText = wrong;
+
+document.getElementById("unattemptedCount")
+.innerText = unattempted;
+
+document.getElementById("percentage")
+.innerText =
+percentage.toFixed(2) + "%";
+
+document.getElementById("resultMessage")
+.innerText =
+"Correct: +1 mark | Wrong: −1/3 mark | Unattempted: 0 marks";
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function updateTimer(){
+
+let minutes =
+Math.floor(timeLeft / 60);
+
+let seconds =
+timeLeft % 60;
+
+document.getElementById("timer")
+.innerText =
+String(minutes).padStart(2,"0") +
+":" +
+String(seconds).padStart(2,"0");
+
+
+if(timeLeft <= 0){
+
+clearInterval(timerInterval);
+
+alert(
+"Time is over. Your test will be submitted automatically."
+);
+
+submitTest();
+
+return;
+
+}
+
+timeLeft--;
+
+}
+
+
+const timerInterval =
+setInterval(updateTimer,1000);
+
+
+/* =========================================================
+   START
+========================================================= */
+
+createPalette();
+
+loadQuestion();
+
+updateTimer();
+
+</script>
+
+</body>
+
+</html>
+```
