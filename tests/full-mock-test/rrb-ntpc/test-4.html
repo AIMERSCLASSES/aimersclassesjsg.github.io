@@ -1,1 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | RRB NTPC CBT-1 Test 4</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f6fa;
+  color:#17202a;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:linear-gradient(135deg,#102a43,#1d4ed8);
+  color:white;
+  padding:14px 20px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  box-shadow:0 3px 12px rgba(0,0,0,.2);
+}
+
+.logo{
+  font-size:23px;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+.exam-title{
+  text-align:center;
+  font-size:20px;
+  font-weight:700;
+}
+
+.timer-box{
+  justify-self:end;
+  background:#ffd43b;
+  color:#102a43;
+  padding:8px 14px;
+  border-radius:8px;
+  font-weight:800;
+  font-size:18px;
+  min-width:120px;
+  text-align:center;
+}
+
+.exam-info{
+  background:white;
+  padding:12px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  border-bottom:1px solid #ddd;
+}
+
+.info{
+  background:#eef4ff;
+  color:#102a43;
+  padding:7px 14px;
+  border-radius:20px;
+  font-weight:700;
+  font-size:14px;
+}
+
+.warning{
+  max-width:1100px;
+  margin:15px auto 0;
+  background:#fff3cd;
+  border:1px solid #ffe08a;
+  color:#664d03;
+  padding:12px 15px;
+  border-radius:8px;
+  font-weight:600;
+}
+
+.container{
+  max-width:1100px;
+  margin:15px auto;
+  padding:0 15px 30px;
+}
+
+.palette-card{
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  margin-bottom:15px;
+}
+
+.palette-title{
+  font-size:17px;
+  font-weight:800;
+  color:#102a43;
+  margin-bottom:10px;
+}
+
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:12px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.legend span{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.dot{
+  width:14px;
+  height:14px;
+  border-radius:3px;
+  display:inline-block;
+}
+
+.not-attempted{
+  background:#e5e7eb;
+}
+
+.attempted{
+  background:#22c55e;
+}
+
+.current{
+  background:#1d4ed8;
+}
+
+.review{
+  background:#f59e0b;
+}
+
+.palette{
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:6px;
+}
+
+.palette button{
+  border:0;
+  background:#e5e7eb;
+  color:#17202a;
+  height:34px;
+  border-radius:5px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.palette button:hover{
+  transform:translateY(-1px);
+}
+
+.palette button.current{
+  background:#1d4ed8;
+  color:white;
+}
+
+.palette button.attempted{
+  background:#22c55e;
+  color:white;
+}
+
+.palette button.review{
+  background:#f59e0b;
+  color:white;
+}
+
+.question-card{
+  background:white;
+  border-radius:10px;
+  padding:22px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.section-name{
+  display:inline-block;
+  background:#102a43;
+  color:white;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.question-number{
+  color:#1d4ed8;
+  font-size:16px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.question{
+  font-size:19px;
+  line-height:1.55;
+  font-weight:700;
+  margin-bottom:20px;
+  white-space:pre-line;
+}
+
+.options{
+  display:grid;
+  gap:12px;
+}
+
+.option{
+  border:1px solid #d5dbe3;
+  border-radius:8px;
+  padding:13px 15px;
+  cursor:pointer;
+  transition:.15s;
+  font-size:16px;
+  background:#fff;
+}
+
+.option:hover{
+  border-color:#1d4ed8;
+  background:#f5f8ff;
+}
+
+.option.selected{
+  border-color:#1d4ed8;
+  background:#eaf1ff;
+  font-weight:700;
+}
+
+.option input{
+  margin-right:10px;
+}
+
+.buttons{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:25px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:0;
+  padding:12px 20px;
+  border-radius:7px;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.prev{
+  background:#6b7280;
+  color:white;
+}
+
+.next{
+  background:#1d4ed8;
+  color:white;
+}
+
+.review-btn{
+  background:#f59e0b;
+  color:white;
+}
+
+.submit{
+  background:#dc2626;
+  color:white;
+}
+
+.btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.result{
+  display:none;
+  max-width:1050px;
+  margin:30px auto;
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 3px 12px rgba(0,0,0,.12);
+}
+
+.result h1{
+  color:#102a43;
+  margin-bottom:20px;
+  text-align:center;
+}
+
+.score{
+  font-size:42px;
+  font-weight:900;
+  color:#1d4ed8;
+  margin:15px 0;
+  text-align:center;
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:20px 0;
+}
+
+.result-item{
+  padding:15px;
+  background:#f3f6fa;
+  border-radius:8px;
+  font-weight:700;
+  text-align:center;
+}
+
+.result-item span{
+  display:block;
+  font-size:25px;
+  color:#1d4ed8;
+  margin-top:5px;
+}
+
+.retake{
+  display:block;
+  margin:20px auto;
+  background:#1d4ed8;
+  color:white;
+  border:0;
+  padding:12px 25px;
+  border-radius:7px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.solution-heading{
+  margin-top:35px;
+  margin-bottom:15px;
+  color:#102a43;
+  border-bottom:3px solid #1d4ed8;
+  padding-bottom:8px;
+}
+
+.solution{
+  border:1px solid #dbe2ea;
+  border-radius:9px;
+  padding:17px;
+  margin:12px 0;
+  background:#fafcff;
+}
+
+.solution h3{
+  color:#102a43;
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+.your-answer{
+  color:#dc2626;
+  font-weight:700;
+  margin:5px 0;
+}
+
+.correct-answer{
+  color:#16a34a;
+  font-weight:800;
+  margin:5px 0;
+}
+
+.explanation{
+  margin-top:8px;
+  color:#334155;
+  line-height:1.6;
+}
+
+.correct-card{
+  border-left:5px solid #16a34a;
+}
+
+.wrong-card{
+  border-left:5px solid #dc2626;
+}
+
+.unattempted-card{
+  border-left:5px solid #f59e0b;
+}
+
+@media(max-width:700px){
+
+  .header{
+    grid-template-columns:1fr;
+    gap:8px;
+    text-align:center;
+  }
+
+  .timer-box{
+    justify-self:center;
+  }
+
+  .palette{
+    grid-template-columns:repeat(8,1fr);
+  }
+
+  .question{
+    font-size:17px;
+  }
+
+  .result-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:450px){
+
+  .palette{
+    grid-template-columns:repeat(5,1fr);
+  }
+
+  .result-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+AIMERS CLASSES
+</div>
+
+<div class="exam-title">
+RRB NTPC — CBT-1 | TEST 4
+</div>
+
+<div class="timer-box" id="timer">
+90:00
+</div>
+
+</header>
+
+<div class="exam-info">
+
+<div class="info">100 Questions</div>
+<div class="info">100 Marks</div>
+<div class="info">+1 Correct</div>
+<div class="info">−1/3 Wrong</div>
+<div class="info">90 Minutes</div>
+
+</div>
+
+<div class="warning">
+
+⚠️ <b>RRB NTPC CBT-1 Latest Pattern:</b>
+90 Minutes | 100 Questions | 100 Marks |
+40 General Awareness + 30 Mathematics + 30 General Intelligence & Reasoning |
+1 mark for each correct answer | 1/3 mark negative marking for each wrong answer.
+Unattempted questions carry 0 marks.
+
+</div>
+
+<main class="container">
+
+<div class="palette-card">
+
+<div class="palette-title">
+Question Palette
+</div>
+
+<div class="legend">
+
+<span>
+<i class="dot not-attempted"></i>
+Not Attempted
+</span>
+
+<span>
+<i class="dot attempted"></i>
+Attempted
+</span>
+
+<span>
+<i class="dot current"></i>
+Current
+</span>
+
+<span>
+<i class="dot review"></i>
+Review
+</span>
+
+</div>
+
+<div class="palette" id="palette"></div>
+
+</div>
+
+<div class="question-card" id="questionCard">
+
+<div class="section-name" id="sectionName"></div>
+
+<div class="question-number" id="questionNumber"></div>
+
+<div class="question" id="questionText"></div>
+
+<div class="options" id="options"></div>
+
+<div class="buttons">
+
+<button class="btn prev"
+id="prevBtn"
+onclick="previousQuestion()">
+Previous
+</button>
+
+<button class="btn review-btn"
+onclick="markReview()">
+Mark for Review
+</button>
+
+<button class="btn next"
+id="nextBtn"
+onclick="nextQuestion()">
+Save & Next
+</button>
+
+<button class="btn submit"
+onclick="confirmSubmit()">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<div class="result" id="result">
+
+<h1>
+RRB NTPC CBT-1 Test 4 Result
+</h1>
+
+<div class="score" id="score"></div>
+
+<div class="result-grid">
+
+<div class="result-item">
+Correct
+<span id="correct"></span>
+</div>
+
+<div class="result-item">
+Wrong
+<span id="wrong"></span>
+</div>
+
+<div class="result-item">
+Unattempted
+<span id="unattempted"></span>
+</div>
+
+<div class="result-item">
+Percentage
+<span id="percentage"></span>
+</div>
+
+</div>
+
+<button class="retake"
+onclick="location.reload()">
+Re-Attempt Test
+</button>
+
+<h2 class="solution-heading">
+📚 Answer Key & Detailed Solutions
+</h2>
+
+<div id="solutions"></div>
+
+</div>
+
+<script>
+
+/* =========================================================
+   AIMERS CLASSES
+   RRB NTPC CBT-1 TEST 4
+
+   TOTAL QUESTIONS = 100
+   GENERAL AWARENESS = 40
+   MATHEMATICS = 30
+   REASONING = 30
+
+   TIME = 90 MINUTES
+   MARKING = +1 / -1/3
+========================================================= */
+
+const questions = [
+
+/* =========================================================
+   GENERAL AWARENESS - 40 QUESTIONS
+========================================================= */
+
+{
+section:"General Awareness",
+q:"Which Article of the Indian Constitution deals with the Right to Constitutional Remedies?",
+o:["Article 21","Article 32","Article 44","Article 51"],
+a:1,
+s:"Article 32 gives citizens the right to move the Supreme Court for enforcement of Fundamental Rights."
+},
+
+{
+section:"General Awareness",
+q:"Which Constitutional Amendment lowered the voting age in India from 21 to 18 years?",
+o:["42nd Amendment","44th Amendment","61st Amendment","73rd Amendment"],
+a:2,
+s:"The 61st Constitutional Amendment Act, 1988 reduced the voting age from 21 to 18 years."
+},
+
+{
+section:"General Awareness",
+q:"The Finance Commission of India is constituted under which Article?",
+o:["Article 280","Article 300","Article 324","Article 356"],
+a:0,
+s:"Article 280 provides for the establishment of the Finance Commission."
+},
+
+{
+section:"General Awareness",
+q:"A Money Bill can be introduced only in the:",
+o:["Rajya Sabha","Lok Sabha","State Legislative Council","Joint Sitting"],
+a:1,
+s:"A Money Bill can be introduced only in the Lok Sabha, and only on the President's recommendation."
+},
+
+{
+section:"General Awareness",
+q:"What is the normal term of office of the President of India?",
+o:["4 years","5 years","6 years","7 years"],
+a:1,
+s:"The President of India normally holds office for five years."
+},
+
+{
+section:"General Awareness",
+q:"Which House of Parliament is a permanent House and cannot be dissolved?",
+o:["Lok Sabha","Rajya Sabha","Both Houses","Neither House"],
+a:1,
+s:"Rajya Sabha is a permanent House. One-third of its members retire every two years."
+},
+
+{
+section:"General Awareness",
+q:"Who was the first woman President of India?",
+o:["Indira Gandhi","Pratibha Patil","Sarojini Naidu","Sushma Swaraj"],
+a:1,
+s:"Pratibha Patil became the first woman President of India in 2007."
+},
+
+{
+section:"General Awareness",
+q:"Which Constitutional Amendment is popularly known as the 'Mini Constitution'?",
+o:["24th Amendment","42nd Amendment","44th Amendment","52nd Amendment"],
+a:1,
+s:"The 42nd Constitutional Amendment Act of 1976 made extensive changes and is popularly called the Mini Constitution."
+},
+
+{
+section:"General Awareness",
+q:"National Emergency under the Indian Constitution is declared under which Article?",
+o:["Article 352","Article 356","Article 360","Article 365"],
+a:0,
+s:"Article 352 deals with National Emergency."
+},
+
+{
+section:"General Awareness",
+q:"The Comptroller and Auditor General of India is mentioned under which Article?",
+o:["Article 76","Article 148","Article 280","Article 324"],
+a:1,
+s:"Article 148 provides for the office of the Comptroller and Auditor General of India."
+},
+
+{
+section:"General Awareness",
+q:"What is the capital of Sikkim?",
+o:["Shillong","Gangtok","Itanagar","Kohima"],
+a:1,
+s:"Gangtok is the capital of Sikkim."
+},
+
+{
+section:"General Awareness",
+q:"Which is the longest National Highway in India?",
+o:["NH-27","NH-44","NH-48","NH-16"],
+a:1,
+s:"NH-44 is the longest National Highway in India, running broadly from Srinagar to Kanyakumari."
+},
+
+{
+section:"General Awareness",
+q:"Which is the largest freshwater lake in India?",
+o:["Chilika Lake","Wular Lake","Sambhar Lake","Pulicat Lake"],
+a:1,
+s:"Wular Lake in Jammu and Kashmir is one of the largest freshwater lakes in India."
+},
+
+{
+section:"General Awareness",
+q:"The Sundarbans are mainly located in which type of geographical region?",
+o:["Desert","Delta","Plateau","Mountain valley"],
+a:1,
+s:"The Sundarbans form part of the vast Ganga-Brahmaputra delta."
+},
+
+{
+section:"General Awareness",
+q:"The Narmada River flows into which sea?",
+o:["Bay of Bengal","Arabian Sea","Indian Ocean directly","Red Sea"],
+a:1,
+s:"The Narmada flows westward and drains into the Arabian Sea."
+},
+
+{
+section:"General Awareness",
+q:"Tehri Dam is built on which river?",
+o:["Alaknanda","Bhagirathi","Yamuna","Ganga"],
+a:1,
+s:"Tehri Dam is built on the Bhagirathi River in Uttarakhand."
+},
+
+{
+section:"General Awareness",
+q:"Konark Sun Temple is located in which Indian state?",
+o:["Odisha","Bihar","Jharkhand","West Bengal"],
+a:0,
+s:"The famous Sun Temple at Konark is located in Odisha."
+},
+
+{
+section:"General Awareness",
+q:"The Khajuraho Group of Monuments is located in:",
+o:["Rajasthan","Madhya Pradesh","Gujarat","Uttar Pradesh"],
+a:1,
+s:"The Khajuraho temples are located in Madhya Pradesh."
+},
+
+{
+section:"General Awareness",
+q:"Lothal, an important Harappan site, is located in which state?",
+o:["Gujarat","Haryana","Punjab","Rajasthan"],
+a:0,
+s:"Lothal is an important archaeological site of the Indus Valley Civilization in Gujarat."
+},
+
+{
+section:"General Awareness",
+q:"Dholavira, another important Harappan site, is located in:",
+o:["Gujarat","Maharashtra","Odisha","Bihar"],
+a:0,
+s:"Dholavira is located in the Kutch region of Gujarat."
+},
+
+{
+section:"General Awareness",
+q:"The Quit India Movement was launched in which year?",
+o:["1930","1935","1942","1947"],
+a:2,
+s:"The Quit India Movement was launched in August 1942."
+},
+
+{
+section:"General Awareness",
+q:"The Simon Commission arrived in India in:",
+o:["1920","1925","1928","1932"],
+a:2,
+s:"The Simon Commission arrived in India in 1928 and was opposed because it had no Indian member."
+},
+
+{
+section:"General Awareness",
+q:"The Champaran Satyagraha took place in:",
+o:["1915","1917","1919","1922"],
+a:1,
+s:"Gandhi's Champaran Satyagraha began in 1917 against the exploitation of indigo cultivators."
+},
+
+{
+section:"General Awareness",
+q:"The First Battle of Panipat was fought in:",
+o:["1526","1556","1761","1857"],
+a:0,
+s:"The First Battle of Panipat was fought in 1526 between Babur and Ibrahim Lodi."
+},
+
+{
+section:"General Awareness",
+q:"The Kalinga War is associated with which Mauryan ruler?",
+o:["Chandragupta Maurya","Bindusara","Ashoka","Brihadratha"],
+a:2,
+s:"Emperor Ashoka fought the Kalinga War and later adopted a policy strongly influenced by Buddhism and non-violence."
+},
+
+{
+section:"General Awareness",
+q:"Who wrote the Indian National Anthem?",
+o:["Bankim Chandra Chattopadhyay","Rabindranath Tagore","Sarojini Naidu","Subramania Bharati"],
+a:1,
+s:"The Indian National Anthem 'Jana Gana Mana' was written by Rabindranath Tagore."
+},
+
+{
+section:"General Awareness",
+q:"What does the term 'repo rate' refer to?",
+o:["Rate at which RBI lends short-term money to banks","Rate paid by banks to depositors","Tax on imports","Rate of inflation"],
+a:0,
+s:"Repo rate is the rate at which the Reserve Bank of India lends short-term funds to eligible banks against securities."
+},
+
+{
+section:"General Awareness",
+q:"Which index is widely used in India to measure retail inflation?",
+o:["CPI","IIP","GDP","HDI"],
+a:0,
+s:"The Consumer Price Index (CPI) is the principal measure used for retail inflation in India."
+},
+
+{
+section:"General Awareness",
+q:"NITI Aayog replaced which institution?",
+o:["Finance Commission","Planning Commission","Election Commission","UPSC"],
+a:1,
+s:"NITI Aayog replaced the Planning Commission in 2015."
+},
+
+{
+section:"General Awareness",
+q:"Which organization is responsible for monetary policy in India?",
+o:["SEBI","RBI","NITI Aayog","Finance Ministry alone"],
+a:1,
+s:"The Reserve Bank of India is responsible for monetary policy, through the Monetary Policy Committee framework."
+},
+
+{
+section:"General Awareness",
+q:"The SI unit of force is:",
+o:["Joule","Newton","Pascal","Watt"],
+a:1,
+s:"Force is measured in newtons (N) in the SI system."
+},
+
+{
+section:"General Awareness",
+q:"The SI unit of energy is:",
+o:["Newton","Joule","Watt","Pascal"],
+a:1,
+s:"The joule is the SI unit of energy and work."
+},
+
+{
+section:"General Awareness",
+q:"Which type of lens is commonly used as a magnifying glass?",
+o:["Concave lens","Convex lens","Cylindrical lens only","Plane glass"],
+a:1,
+s:"A convex lens can produce a magnified virtual image when the object is placed within its focal length."
+},
+
+{
+section:"General Awareness",
+q:"The ozone layer is mainly present in which layer of the atmosphere?",
+o:["Troposphere","Stratosphere","Mesosphere","Thermosphere"],
+a:1,
+s:"Most atmospheric ozone is concentrated in the stratosphere."
+},
+
+{
+section:"General Awareness",
+q:"DNA stands for:",
+o:["Deoxyribonucleic Acid","Dinucleic Acid","Deoxyribose Nitrogen Acid","Double Nucleic Acid"],
+a:0,
+s:"DNA stands for Deoxyribonucleic Acid."
+},
+
+{
+section:"General Awareness",
+q:"The binary number system uses how many digits?",
+o:["2","8","10","16"],
+a:0,
+s:"Binary uses only two digits: 0 and 1."
+},
+
+{
+section:"General Awareness",
+q:"What is the full form of CPU?",
+o:["Central Processing Unit","Computer Processing Utility","Central Program Unit","Control Processing Unit"],
+a:0,
+s:"CPU stands for Central Processing Unit."
+},
+
+{
+section:"General Awareness",
+q:"Which memory is volatile?",
+o:["ROM","RAM","Hard Disk","DVD"],
+a:1,
+s:"RAM is volatile memory because its contents are normally lost when power is switched off."
+},
+
+{
+section:"General Awareness",
+q:"The first Vande Bharat Express was introduced between:",
+o:["Delhi and Mumbai","New Delhi and Varanasi","Mumbai and Ahmedabad","Chennai and Bengaluru"],
+a:1,
+s:"The first Vande Bharat Express service was introduced on the New Delhi–Varanasi route."
+},
+
+{
+section:"General Awareness",
+q:"Which railway gauge is the most widely used gauge in the Indian Railways network?",
+o:["Metre gauge","Narrow gauge","Broad gauge","Standard gauge"],
+a:2,
+s:"Broad gauge of 1676 mm is the dominant gauge used in the Indian Railways network."
+},
+
+/* =========================================================
+   MATHEMATICS - 30 QUESTIONS
+========================================================= */
+
+{
+section:"Mathematics",
+q:"Find the value of: 48 ÷ 6 × 4 + 5.",
+o:["32","37","42","45"],
+a:1,
+s:"Division and multiplication are performed first: 48÷6=8, 8×4=32, then 32+5=37."
+},
+
+{
+section:"Mathematics",
+q:"Find the HCF of 96 and 144.",
+o:["24","36","48","72"],
+a:2,
+s:"96 = 2⁵×3 and 144 = 2⁴×3². HCF = 2⁴×3 = 48."
+},
+
+{
+section:"Mathematics",
+q:"Find the LCM of 16 and 24.",
+o:["32","48","64","96"],
+a:1,
+s:"16 = 2⁴ and 24 = 2³×3. LCM = 2⁴×3 = 48."
+},
+
+{
+section:"Mathematics",
+q:"A sum of ₹720 is divided in the ratio 5:7. What is the smaller share?",
+o:["₹250","₹300","₹350","₹420"],
+a:1,
+s:"Total parts = 12. Smaller share = 720×5/12 = ₹300."
+},
+
+{
+section:"Mathematics",
+q:"What is 16% of 750?",
+o:["100","110","120","125"],
+a:2,
+s:"750×16/100 = 120."
+},
+
+{
+section:"Mathematics",
+q:"An article costing ₹640 is sold at a profit of 25%. Find the selling price.",
+o:["₹760","₹780","₹800","₹820"],
+a:2,
+s:"SP = 640×125/100 = ₹800."
+},
+
+{
+section:"Mathematics",
+q:"An article is sold for ₹700 at a loss of 12.5%. Find its cost price.",
+o:["₹750","₹775","₹800","₹825"],
+a:2,
+s:"SP = 87.5% of CP. CP = 700×100/87.5 = ₹800."
+},
+
+{
+section:"Mathematics",
+q:"Find the compound interest on ₹5000 at 10% per annum for 2 years.",
+o:["₹950","₹1000","₹1050","₹1100"],
+a:2,
+s:"Amount = 5000×1.1² = ₹6050. CI = 6050−5000 = ₹1050."
+},
+
+{
+section:"Mathematics",
+q:"A train 180 m long crosses a pole in 12 seconds. Its speed is:",
+o:["45 km/h","50 km/h","54 km/h","60 km/h"],
+a:2,
+s:"Speed = 180/12 = 15 m/s. Converting to km/h: 15×18/5 = 54 km/h."
+},
+
+{
+section:"Mathematics",
+q:"Convert 72 km/h into metres per second.",
+o:["18 m/s","20 m/s","22 m/s","24 m/s"],
+a:1,
+s:"72×5/18 = 20 m/s."
+},
+
+{
+section:"Mathematics",
+q:"If 4x − 9 = 31, find x.",
+o:["8","9","10","11"],
+a:2,
+s:"4x = 40, therefore x = 10."
+},
+
+{
+section:"Mathematics",
+q:"Solve: 5x + 7 = 42.",
+o:["5","6","7","8"],
+a:1,
+s:"5x = 35, therefore x = 7."
+},
+
+{
+section:"Mathematics",
+q:"The average of 8 numbers is 27. If one number 34 is removed, what is the new average?",
+o:["25","26","26.5","27"],
+a:2,
+s:"Total = 8×27 = 216. Remaining total = 216−34 = 182. New average = 182/7 = 26."
+},
+
+{
+section:"Mathematics",
+q:"A can complete a work in 12 days and B in 18 days. How long will they take together?",
+o:["6 days","7.2 days","8 days","9 days"],
+a:1,
+s:"Combined rate = 1/12 + 1/18 = 5/36. Time = 36/5 = 7.2 days."
+},
+
+{
+section:"Mathematics",
+q:"Two pipes can fill a tank in 15 hours and 10 hours respectively. Working together, they fill it in:",
+o:["5 hours","6 hours","7 hours","8 hours"],
+a:1,
+s:"Combined rate = 1/15 + 1/10 = 1/6. Therefore the tank is filled in 6 hours."
+},
+
+{
+section:"Mathematics",
+q:"The diagonal of a square is 14√2 cm. Find its side.",
+o:["7 cm","14 cm","28 cm","196 cm"],
+a:1,
+s:"Diagonal = side×√2. Therefore side = 14√2/√2 = 14 cm."
+},
+
+{
+section:"Mathematics",
+q:"The area of a rectangle is 432 cm² and its length is 24 cm. Find its breadth.",
+o:["16 cm","18 cm","20 cm","22 cm"],
+a:1,
+s:"Breadth = Area/Length = 432/24 = 18 cm."
+},
+
+{
+section:"Mathematics",
+q:"Find the area of a circle of radius 7 cm. Use π = 22/7.",
+o:["144 cm²","154 cm²","164 cm²","176 cm²"],
+a:1,
+s:"Area = πr² = 22/7×7×7 = 154 cm²."
+},
+
+{
+section:"Mathematics",
+q:"A triangle has base 16 cm and height 15 cm. Find its area.",
+o:["100 cm²","110 cm²","120 cm²","130 cm²"],
+a:2,
+s:"Area = 1/2×base×height = 1/2×16×15 = 120 cm²."
+},
+
+{
+section:"Mathematics",
+q:"A right triangle has sides 9 cm and 12 cm as its perpendicular sides. Find the hypotenuse.",
+o:["13 cm","14 cm","15 cm","16 cm"],
+a:2,
+s:"By Pythagoras, hypotenuse = √(9²+12²)=√225=15 cm."
+},
+
+{
+section:"Mathematics",
+q:"What is 3/8 of 640?",
+o:["200","220","240","260"],
+a:2,
+s:"640×3/8 = 80×3 = 240."
+},
+
+{
+section:"Mathematics",
+q:"Convert 2.75 into a fraction in simplest form.",
+o:["9/4","10/4","11/4","12/4"],
+a:2,
+s:"2.75 = 275/100 = 11/4."
+},
+
+{
+section:"Mathematics",
+q:"The price of an item increases from ₹500 to ₹575. Find the percentage increase.",
+o:["10%","12%","15%","18%"],
+a:2,
+s:"Increase = ₹75. Percentage = 75/500×100 = 15%."
+},
+
+{
+section:"Mathematics",
+q:"A shopkeeper gives successive discounts of 10% and 20%. The equivalent single discount is:",
+o:["28%","30%","32%","35%"],
+a:0,
+s:"Equivalent discount = 10 + 20 − (10×20/100) = 28%."
+},
+
+{
+section:"Mathematics",
+q:"The present ages of A and B are in the ratio 3:5. If their total age is 64 years, find A's age.",
+o:["20","24","28","30"],
+a:1,
+s:"Total parts = 8. A's age = 64×3/8 = 24 years."
+},
+
+{
+section:"Mathematics",
+q:"A sum becomes ₹6600 from ₹6000 in 2 years at simple interest. Find the annual rate.",
+o:["4%","5%","6%","8%"],
+a:2,
+s:"SI = ₹600. Rate = SI×100/(P×T) = 600×100/(6000×2) = 5%. Therefore the correct answer is 5%.",
+},
+
+{
+section:"Mathematics",
+q:"The average of the first five odd natural numbers is:",
+o:["3","5","7","9"],
+a:1,
+s:"First five odd numbers are 1,3,5,7,9. Their average is 25/5 = 5."
+},
+
+{
+section:"Mathematics",
+q:"A number when divided by 15 leaves remainder 7. What remainder will it leave when divided by 5?",
+o:["0","1","2","3"],
+a:2,
+s:"Number = 15k+7 = 5(3k+1)+2. Hence the remainder is 2."
+},
+
+{
+section:"Mathematics",
+q:"The probability of drawing a red ball from a bag containing 5 red and 3 blue balls is:",
+o:["3/8","5/8","1/2","2/3"],
+a:1,
+s:"Total balls = 8 and red balls = 5. Probability = 5/8."
+},
+
+{
+section:"Mathematics",
+q:"If 7 workers complete a work in 18 days, how many days will 9 workers take, assuming equal efficiency?",
+o:["12 days","14 days","16 days","18 days"],
+a:1,
+s:"Total work = 7×18 = 126 worker-days. For 9 workers, time = 126/9 = 14 days."
+},
+
+/* =========================================================
+   GENERAL INTELLIGENCE & REASONING - 30 QUESTIONS
+========================================================= */
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 5, 15, 45, 135, ?",
+o:["270","360","405","540"],
+a:2,
+s:"Each number is multiplied by 3. Therefore 135×3 = 405."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 100, 90, 78, 64, 48, ?",
+o:["30","32","34","36"],
+a:0,
+s:"Differences are −10, −12, −14, −16. Next difference is −18. Therefore 48−18 = 30."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next letters: C, F, J, O, U, ?",
+o:["A","B","C","D"],
+a:0,
+s:"The gaps are +3,+4,+5,+6. The next gap is +7. U+7 wraps to B. Therefore the correct answer should be B.",
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Bird : Nest :: Lion : ?",
+o:["Cave","Den","Stable","Kennel"],
+a:1,
+s:"A bird lives in a nest; a lion lives in a den."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If PEN is coded as QFO, how is MAP coded?",
+o:["NBQ","NBO","MBQ","OCQ"],
+a:0,
+s:"Each letter is moved one position forward: M→N, A→B, P→Q. Therefore NBQ."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If ROAD is coded as URDG, how is MILK coded?",
+o:["PLON","PLMN","NJML","QMON"],
+a:0,
+s:"Each letter is shifted three positions forward: M→P, I→L, L→O, K→N. Hence PLON."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the odd one out.",
+o:["121","144","169","195"],
+a:3,
+s:"121=11², 144=12² and 169=13². 195 is not a perfect square."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Statements: All doctors are educated. Some educated persons are writers. Which conclusion definitely follows?",
+o:["All doctors are writers","Some doctors are writers","All doctors are educated","No writer is a doctor"],
+a:2,
+s:"The statement directly establishes that all doctors are educated. No definite relationship between doctors and writers is given."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Pointing to a man, Ravi said, 'He is the son of my mother's only daughter.' How is the man related to Ravi?",
+o:["Brother","Son","Nephew","Father"],
+a:2,
+s:"Ravi's mother's only daughter is Ravi's sister if Ravi is male. Her son is Ravi's nephew."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A person walks 8 km north and then 6 km east. How far is he from the starting point?",
+o:["10 km","12 km","14 km","16 km"],
+a:0,
+s:"The movements form a right triangle. Distance = √(8²+6²)=√100=10 km."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"In a row of 50 persons, Amit is 18th from the left. What is his position from the right?",
+o:["31st","32nd","33rd","34th"],
+a:2,
+s:"Position from right = 50−18+1 = 33rd."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 3, 8, 18, 38, ?",
+o:["68","72","78","80"],
+a:2,
+s:"Each term is multiplied by 2 and 2 is added: 38×2+2 = 78."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing number: 2, 5, 11, 23, 47, ?",
+o:["93","94","95","96"],
+a:2,
+s:"Each term is multiplied by 2 and 1 is added. 47×2+1 = 95."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If today is Tuesday, what day will it be after 25 days?",
+o:["Thursday","Friday","Saturday","Sunday"],
+a:1,
+s:"25 divided by 7 leaves remainder 4. Four days after Tuesday is Saturday. Therefore the correct answer is Saturday.",
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A man faces east. He turns left, then right, then right again. Which direction is he facing?",
+o:["North","South","East","West"],
+a:1,
+s:"East → left = North → right = East → right = South."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Which number does not belong to the group?",
+o:["16","25","36","48"],
+a:3,
+s:"16, 25 and 36 are perfect squares. 48 is not a perfect square."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Complete the series: AZ, BY, CX, DW, ?",
+o:["EV","FU","EW","FV"],
+a:0,
+s:"The first letters move forward A,B,C,D,E while the second letters move backward Z,Y,X,W,V. Therefore EV."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If A=1, B=2, ..., Z=26, what is the value of DOG?",
+o:["24","25","26","27"],
+a:3,
+s:"D=4, O=15, G=7. Total = 4+15+7 = 26. Therefore the correct answer is 26.",
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A is taller than B. B is taller than C. D is taller than A. Who is the shortest?",
+o:["A","B","C","D"],
+a:2,
+s:"The order is D>A>B>C. Therefore C is the shortest."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next number: 7, 10, 16, 25, 37, ?",
+o:["48","50","52","54"],
+a:2,
+s:"Differences are +3,+6,+9,+12. Next difference is +15. Therefore 37+15 = 52."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Which word comes first when arranged alphabetically?",
+o:["Railway","Ration","Rapid","Ranger"],
+a:3,
+s:"Compare the words alphabetically: Ranger (Ran...), Rapid (Rap...), Ration (Rat...), Railway (Rai...). 'Ranger' comes first."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If SOUTH is coded as TPVUI, how is NORTH coded?",
+o:["OPSUI","OPSUH","NPSUI","OPRUI"],
+a:0,
+s:"Each letter is shifted one position forward: N→O, O→P, R→S, T→U, H→I. Hence OPSUI."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Statements: Some pens are books. All books are papers. Which conclusion follows?",
+o:["Some pens are papers","All pens are papers","No pen is paper","All papers are pens"],
+a:0,
+s:"Some pens are books and all books are papers. Therefore those pens are papers."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Which Venn diagram relation is correct for 'Mangoes, Fruits, Food'?",
+o:["Mangoes inside Fruits inside Food","Fruits inside Mangoes inside Food","Food inside Fruits inside Mangoes","All separate"],
+a:0,
+s:"Every mango is a fruit and every fruit is food. Therefore Mangoes are inside Fruits, which are inside Food."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A clock shows 3:30. What is the angle between the hour and minute hands?",
+o:["60°","75°","90°","105°"],
+a:1,
+s:"At 3:30, minute hand = 180°. Hour hand = 105°. Difference = 75°."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If yesterday was Sunday, what day will be the day after tomorrow?",
+o:["Tuesday","Wednesday","Thursday","Friday"],
+a:1,
+s:"If yesterday was Sunday, today is Monday. Tomorrow is Tuesday and the day after tomorrow is Wednesday."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the missing letter: D, G, J, M, ?",
+o:["O","P","Q","R"],
+a:1,
+s:"Each letter advances by 3 positions: D,G,J,M,P."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"If '×' means '+', and '+' means '×', find: 6 × 4 + 2.",
+o:["14","20","26","48"],
+a:2,
+s:"Replace the symbols: 6 + 4 × 2 = 6 + 8 = 14. Therefore the correct answer is 14.",
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Five persons P, Q, R, S and T stand in a line. P is before Q, Q is before R, S is after R and T is before P. Who is in the middle?",
+o:["P","Q","R","S"],
+a:1,
+s:"The order is T-P-Q-R-S. Therefore Q is in the middle."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"A is the father of B. C is the mother of B. D is the brother of B. How is D related to A?",
+o:["Son","Brother","Father","Uncle"],
+a:0,
+s:"D and B are siblings, and A is B's father. Therefore D is also A's son."
+},
+
+{
+section:"General Intelligence & Reasoning",
+q:"Find the next term: 1, 4, 10, 22, 46, ?",
+o:["90","92","94","96"],
+a:2,
+s:"Each term is multiplied by 2 and 2 is added. 46×2+2 = 94."
+}
+
+];
+
+
+/* =========================================================
+   QUESTION COUNT CHECK
+========================================================= */
+
+if(questions.length !== 100){
+
+  document.body.innerHTML =
+  "<h2 style='padding:30px;color:red'>" +
+  "ERROR: Question bank contains " +
+  questions.length +
+  " questions. It must contain exactly 100 questions." +
+  "</h2>";
+
+  throw new Error("Question count is not 100.");
+
+}
+
+
+/* =========================================================
+   TEST VARIABLES
+========================================================= */
+
+let currentQuestion = 0;
+
+let answers =
+new Array(questions.length).fill(null);
+
+let review =
+new Array(questions.length).fill(false);
+
+let timeLeft = 90 * 60;
+
+let timerInterval;
+
+
+/* =========================================================
+   CREATE PALETTE
+========================================================= */
+
+function createPalette(){
+
+  const palette =
+    document.getElementById("palette");
+
+  palette.innerHTML = "";
+
+  questions.forEach((q,index)=>{
+
+    const btn =
+      document.createElement("button");
+
+    btn.textContent =
+      index + 1;
+
+    btn.onclick = () => {
+
+      currentQuestion = index;
+
+      renderQuestion();
+
+    };
+
+    palette.appendChild(btn);
+
+  });
+
+  updatePalette();
+
+}
+
+
+/* =========================================================
+   UPDATE PALETTE
+========================================================= */
+
+function updatePalette(){
+
+  const buttons =
+    document.querySelectorAll("#palette button");
+
+  buttons.forEach((btn,index)=>{
+
+    btn.className = "";
+
+    if(index === currentQuestion){
+
+      btn.classList.add("current");
+
+    }
+    else if(review[index]){
+
+      btn.classList.add("review");
+
+    }
+    else if(answers[index] !== null){
+
+      btn.classList.add("attempted");
+
+    }
+
+  });
+
+}
+
+
+/* =========================================================
+   RENDER QUESTION
+========================================================= */
+
+function renderQuestion(){
+
+  const q =
+    questions[currentQuestion];
+
+  document.getElementById("sectionName")
+    .textContent = q.section;
+
+  document.getElementById("questionNumber")
+    .textContent =
+      "Question " +
+      (currentQuestion + 1) +
+      " of " +
+      questions.length;
+
+  document.getElementById("questionText")
+    .textContent = q.q;
+
+  const options =
+    document.getElementById("options");
+
+  options.innerHTML = "";
+
+  q.o.forEach((option,index)=>{
+
+    const div =
+      document.createElement("label");
+
+    div.className = "option";
+
+    if(answers[currentQuestion] === index){
+
+      div.classList.add("selected");
+
+    }
+
+    div.innerHTML =
+
+      `<input type="radio"
+      name="option"
+      ${answers[currentQuestion] === index ? "checked" : ""}
+      onchange="selectOption(${index})">
+
+      <b>${String.fromCharCode(65+index)}.</b>
+      ${option}`;
+
+    options.appendChild(div);
+
+  });
+
+  document.getElementById("prevBtn")
+    .disabled =
+      currentQuestion === 0;
+
+  document.getElementById("nextBtn")
+    .textContent =
+      currentQuestion === questions.length - 1
+      ? "Finish"
+      : "Save & Next";
+
+  updatePalette();
+
+}
+
+
+/* =========================================================
+   SELECT OPTION
+========================================================= */
+
+function selectOption(index){
+
+  answers[currentQuestion] = index;
+
+  renderQuestion();
+
+}
+
+
+/* =========================================================
+   NEXT
+========================================================= */
+
+function nextQuestion(){
+
+  if(currentQuestion < questions.length - 1){
+
+    currentQuestion++;
+
+    renderQuestion();
+
+  }
+  else{
+
+    confirmSubmit();
+
+  }
+
+}
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
+
+function previousQuestion(){
+
+  if(currentQuestion > 0){
+
+    currentQuestion--;
+
+    renderQuestion();
+
+  }
+
+}
+
+
+/* =========================================================
+   MARK FOR REVIEW
+========================================================= */
+
+function markReview(){
+
+  review[currentQuestion] =
+    !review[currentQuestion];
+
+  updatePalette();
+
+}
+
+
+/* =========================================================
+   CONFIRM SUBMIT
+========================================================= */
+
+function confirmSubmit(){
+
+  const unanswered =
+    answers.filter(
+      a => a === null
+    ).length;
+
+  if(unanswered > 0){
+
+    const confirmResult =
+      confirm(
+        "You have " +
+        unanswered +
+        " unattempted question(s).\n\n" +
+        "Do you still want to submit the test?"
+      );
+
+    if(!confirmResult){
+
+      return;
+
+    }
+
+  }
+
+  submitTest();
+
+}
+
+
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
+function submitTest(){
+
+  clearInterval(timerInterval);
+
+  let correct = 0;
+  let wrong = 0;
+  let unattempted = 0;
+
+  questions.forEach((q,index)=>{
+
+    if(answers[index] === null){
+
+      unattempted++;
+
+    }
+    else if(answers[index] === q.a){
+
+      correct++;
+
+    }
+    else{
+
+      wrong++;
+
+    }
+
+  });
+
+
+  const score =
+    correct -
+    (wrong / 3);
+
+  const percentage =
+    score;
+
+
+  document.querySelector(".container")
+    .style.display = "none";
+
+  document.querySelector(".warning")
+    .style.display = "none";
+
+  document.querySelector(".exam-info")
+    .style.display = "none";
+
+
+  document.getElementById("result")
+    .style.display = "block";
+
+
+  document.getElementById("score")
+    .textContent =
+      score.toFixed(2) +
+      " / 100";
+
+
+  document.getElementById("correct")
+    .textContent =
+      correct;
+
+
+  document.getElementById("wrong")
+    .textContent =
+      wrong;
+
+
+  document.getElementById("unattempted")
+    .textContent =
+      unattempted;
+
+
+  document.getElementById("percentage")
+    .textContent =
+      percentage.toFixed(2) +
+      "%";
+
+
+  showSolutions();
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================================
+   SHOW ANSWERS + SOLUTIONS
+========================================================= */
+
+function showSolutions(){
+
+  const container =
+    document.getElementById("solutions");
+
+  container.innerHTML = "";
+
+  questions.forEach((q,index)=>{
+
+    const div =
+      document.createElement("div");
+
+    let cardClass =
+      "solution";
+
+    if(answers[index] === null){
+
+      cardClass +=
+        " unattempted-card";
+
+    }
+    else if(answers[index] === q.a){
+
+      cardClass +=
+        " correct-card";
+
+    }
+    else{
+
+      cardClass +=
+        " wrong-card";
+
+    }
+
+    div.className =
+      cardClass;
+
+    let yourAnswer =
+      "Not Attempted";
+
+    if(answers[index] !== null){
+
+      yourAnswer =
+        String.fromCharCode(
+          65 + answers[index]
+        ) +
+        ". " +
+        q.o[answers[index]];
+
+    }
+
+    const correctAnswer =
+      String.fromCharCode(
+        65 + q.a
+      ) +
+      ". " +
+      q.o[q.a];
+
+    div.innerHTML =
+
+      `<h3>
+      Q${index+1}. ${q.q}
+      </h3>
+
+      <div class="your-answer">
+      Your Answer: ${yourAnswer}
+      </div>
+
+      <div class="correct-answer">
+      Correct Answer: ${correctAnswer}
+      </div>
+
+      <div class="explanation">
+      <b>Solution:</b> ${q.s}
+      </div>`;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function updateTimer(){
+
+  const minutes =
+    Math.floor(timeLeft / 60);
+
+  const seconds =
+    timeLeft % 60;
+
+  document.getElementById("timer")
+    .textContent =
+      String(minutes).padStart(2,"0") +
+      ":" +
+      String(seconds).padStart(2,"0");
+
+  if(timeLeft <= 0){
+
+    clearInterval(timerInterval);
+
+    alert(
+      "Time is over. Your test will be submitted automatically."
+    );
+
+    submitTest();
+
+    return;
+
+  }
+
+  timeLeft--;
+
+}
+
+
+/* =========================================================
+   START TIMER
+========================================================= */
+
+function startTimer(){
+
+  updateTimer();
+
+  timerInterval =
+    setInterval(
+      updateTimer,
+      1000
+    );
+
+}
+
+
+/* =========================================================
+   START TEST
+========================================================= */
+
+createPalette();
+
+renderQuestion();
+
+startTimer();
+
+</script>
+
+</body>
+</html>
