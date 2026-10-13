@@ -1,1 +1,2808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AIMERS CLASSES | IBPS PO Prelims Test 3</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+}
+
+.header{
+    background:linear-gradient(135deg,#102a43,#1d4ed8);
+    color:white;
+    padding:15px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+.header-inner{
+    max-width:1350px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.exam-title{
+    text-align:center;
+    font-size:19px;
+    font-weight:bold;
+}
+
+.timer-box{
+    text-align:center;
+}
+
+.timer-label{
+    font-size:11px;
+    margin-bottom:3px;
+    opacity:.9;
+}
+
+.timer{
+    background:white;
+    color:#dc2626;
+    padding:9px 16px;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:900;
+    min-width:115px;
+}
+
+.main{
+    max-width:1350px;
+    margin:20px auto;
+    padding:0 15px;
+}
+
+.info-card{
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 4px 18px rgba(0,0,0,.08);
+    margin-bottom:15px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+}
+
+.info{
+    background:#eef4ff;
+    padding:10px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.warning{
+    margin-top:12px;
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    color:#9a3412;
+    padding:10px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.section-banner{
+    background:#102a43;
+    color:white;
+    border-radius:10px;
+    padding:12px 15px;
+    margin-bottom:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:bold;
+}
+
+.section-time{
+    background:#ffd43b;
+    color:#102a43;
+    padding:5px 10px;
+    border-radius:6px;
+}
+
+.test-layout{
+    display:grid;
+    grid-template-columns:1fr 290px;
+    gap:20px;
+}
+
+.question-area{
+    background:white;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.section-name{
+    background:#1d4ed8;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    margin-bottom:18px;
+    font-weight:bold;
+}
+
+.question-number{
+    font-size:16px;
+    color:#1d4ed8;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:18px;
+    font-weight:bold;
+    line-height:1.65;
+    margin-bottom:20px;
+}
+
+.passage{
+    background:#f8fafc;
+    border-left:4px solid #1d4ed8;
+    padding:15px;
+    border-radius:7px;
+    line-height:1.6;
+    margin-bottom:18px;
+    font-size:15px;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.option{
+    border:1px solid #d1d5db;
+    border-radius:9px;
+    padding:13px;
+    cursor:pointer;
+    transition:.2s;
+    background:#fff;
+    line-height:1.5;
+}
+
+.option:hover{
+    background:#eef4ff;
+    border-color:#1d4ed8;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.option.selected{
+    background:#dbeafe;
+    border-color:#1d4ed8;
+}
+
+.buttons{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+}
+
+.btn{
+    border:none;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.prev{
+    background:#64748b;
+    color:white;
+}
+
+.next{
+    background:#1d4ed8;
+    color:white;
+}
+
+.clear{
+    background:#f59e0b;
+    color:white;
+}
+
+.submit{
+    background:#dc2626;
+    color:white;
+}
+
+.btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.palette{
+    background:white;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    height:max-content;
+    position:sticky;
+    top:100px;
+}
+
+.palette h3{
+    color:#102a43;
+    margin-bottom:15px;
+}
+
+.palette-section{
+    color:#1d4ed8;
+    font-size:13px;
+    font-weight:bold;
+    margin:15px 0 8px;
+}
+
+.legend{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:15px;
+    font-size:11px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.legend-box{
+    width:14px;
+    height:14px;
+    border-radius:3px;
+}
+
+.not-attempted{
+    background:#e5e7eb;
+}
+
+.attempted{
+    background:#16a34a;
+}
+
+.current{
+    background:#1d4ed8;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.qno{
+    height:36px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    background:#e5e7eb;
+    font-weight:bold;
+}
+
+.qno.attempted{
+    background:#16a34a;
+    color:white;
+}
+
+.qno.current{
+    background:#1d4ed8;
+    color:white;
+}
+
+.qno.locked{
+    opacity:.55;
+    cursor:not-allowed;
+}
+
+.result{
+    display:none;
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 5px 25px rgba(0,0,0,.12);
+}
+
+.result h2{
+    color:#1d4ed8;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.score{
+    font-size:42px;
+    font-weight:900;
+    color:#16a34a;
+    text-align:center;
+}
+
+.result-message{
+    text-align:center;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    margin-top:25px;
+}
+
+.result-box{
+    background:#eef4ff;
+    padding:15px;
+    border-radius:8px;
+    text-align:center;
+}
+
+.result-box b{
+    display:block;
+    font-size:22px;
+    margin-top:5px;
+}
+
+.section-result{
+    margin-top:25px;
+    margin-bottom:10px;
+    background:#102a43;
+    color:white;
+    padding:12px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.solution-card{
+    background:white;
+    border:1px solid #dbe3ef;
+    border-left:5px solid #1d4ed8;
+    border-radius:10px;
+    padding:16px;
+    margin-bottom:14px;
+}
+
+.solution-card.correct{
+    border-left-color:#16a34a;
+}
+
+.solution-card.wrong{
+    border-left-color:#dc2626;
+}
+
+.solution-card.unattempted{
+    border-left-color:#f59e0b;
+}
+
+.solution-q{
+    font-weight:bold;
+    font-size:16px;
+    line-height:1.55;
+    margin-bottom:10px;
+}
+
+.answer-line{
+    margin:6px 0;
+}
+
+.correct-answer{
+    color:#15803d;
+    font-weight:bold;
+}
+
+.user-answer{
+    color:#b91c1c;
+    font-weight:bold;
+}
+
+.solution-text{
+    background:#f8fafc;
+    padding:10px;
+    border-radius:7px;
+    margin-top:8px;
+    line-height:1.55;
+}
+
+.hidden{
+    display:none!important;
+}
+
+@media(max-width:950px){
+
+    .test-layout{
+        grid-template-columns:1fr;
+    }
+
+    .palette{
+        position:relative;
+        top:0;
+        order:-1;
+    }
+
+    .info-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        flex-direction:column;
+    }
+
+    .exam-title{
+        font-size:16px;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .info-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .question-area{
+        padding:18px;
+    }
+
+    .question{
+        font-size:17px;
+    }
+
+    .buttons{
+        flex-wrap:wrap;
+    }
+
+    .result-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+    <div class="header-inner">
+
+        <div class="logo">
+            AIMERS <span>CLASSES</span>
+        </div>
+
+        <div class="exam-title">
+            IBPS PO — PRELIMS | TEST 1
+        </div>
+
+        <div class="timer-box">
+            <div class="timer-label" id="timerLabel">
+                ENGLISH — 20 MIN
+            </div>
+
+            <div class="timer" id="timer">
+                20:00
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="main">
+
+<div class="info-card">
+
+    <div class="info-grid">
+
+        <div class="info">English<br>30 Q / 30 Marks</div>
+
+        <div class="info">Quantitative Aptitude<br>35 Q / 30 Marks</div>
+
+        <div class="info">Reasoning<br>35 Q / 40 Marks</div>
+
+        <div class="info">Total<br>100 Questions</div>
+
+        <div class="info">Total<br>100 Marks</div>
+
+        <div class="info">Total<br>60 Minutes</div>
+
+    </div>
+
+    <div class="warning">
+        ⚠️ IBPS PO Prelims pattern: English 30 Q/30 marks, Quantitative Aptitude 35 Q/30 marks, Reasoning Ability 35 Q/40 marks. Each section is separately timed for 20 minutes. One-fourth of the marks assigned to a question is deducted for a wrong answer.
+    </div>
+
+</div>
+
+
+<div class="section-banner">
+
+    <span id="topSection">
+        Section 1 — English Language
+    </span>
+
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+        <button class="btn clear" id="pauseBtn" onclick="togglePause()">⏸ Pause Exam</button>
+        <button class="btn next" id="resumeBtn" onclick="resumeExam()" style="display:none;">▶ Resume Exam</button>
+        <span class="section-time" id="sectionTimer">20:00</span>
+    </div>
+
+</div>
+
+
+<div id="testArea">
+
+<div class="test-layout">
+
+
+<div class="question-area">
+
+    <div class="section-name" id="sectionName">
+        English Language
+    </div>
+
+    <div class="question-number" id="questionNumber">
+        Question 1 of 30
+    </div>
+
+    <div id="passageBox"></div>
+
+    <div class="question" id="questionText">
+        Loading question...
+    </div>
+
+    <div class="options" id="options"></div>
+
+    <div class="buttons">
+
+        <button class="btn prev"
+                id="prevBtn"
+                onclick="previousQuestion()">
+            ← Previous
+        </button>
+
+        <button class="btn clear"
+                onclick="clearResponse()">
+            Clear Response
+        </button>
+
+        <button class="btn next"
+                id="nextBtn"
+                onclick="nextQuestion()">
+            Save & Next →
+        </button>
+
+        <button class="btn submit"
+                id="submitBtn"
+                onclick="submitTest(false)"
+                style="display:none;">
+            Submit Test
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="palette">
+
+    <h3>Question Palette</h3>
+
+    <div class="legend">
+
+        <div class="legend-item">
+            <span class="legend-box not-attempted"></span>
+            Not Attempted
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-box attempted"></span>
+            Attempted
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-box current"></span>
+            Current
+        </div>
+
+    </div>
+
+    <div class="palette-section">
+        ENGLISH — 1 to 30
+    </div>
+
+    <div class="question-grid"
+         id="englishGrid"></div>
+
+    <div class="palette-section">
+        QUANTITATIVE — 31 to 65
+    </div>
+
+    <div class="question-grid"
+         id="numericalGrid"></div>
+
+    <div class="palette-section">
+        REASONING — 66 to 100
+    </div>
+
+    <div class="question-grid"
+         id="reasoningGrid"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="result" id="result">
+
+    <h2>🎉 IBPS PO Prelims Test Completed</h2>
+
+    <div class="score" id="finalScore">
+        0 / 100
+    </div>
+
+    <p class="result-message" id="resultMessage"></p>
+
+    <div class="result-grid">
+
+        <div class="result-box">
+            Correct
+            <b id="correctCount">0</b>
+        </div>
+
+        <div class="result-box">
+            Wrong
+            <b id="wrongCount">0</b>
+        </div>
+
+        <div class="result-box">
+            Unattempted
+            <b id="unattemptedCount">0</b>
+        </div>
+
+        <div class="result-box">
+            Score
+            <b id="scoreValue">0</b>
+        </div>
+
+        <div class="result-box">
+            Percentage
+            <b id="percentage">0%</b>
+        </div>
+
+    </div>
+
+    <div class="answer-section">
+
+        <h3 style="
+        background:#102a43;
+        color:white;
+        padding:13px;
+        border-radius:8px;
+        margin-top:30px;
+        ">
+            📚 Complete Answer Key & Solutions
+        </h3>
+
+        <div id="solutions"></div>
+
+    </div>
+
+    <br>
+
+    <div style="text-align:center;">
+
+        <button class="btn next"
+                onclick="location.reload()">
+            🔄 Re-attempt Test
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   IBPS PO PRELIMS TEST 1
+
+   ENGLISH       = 30
+   QUANTITATIVE     = 35
+   REASONING     = 35
+
+   TOTAL         = 100
+   MARKS         = 100
+   NEGATIVE      = 0.25
+
+   SECTIONAL TIME:
+   ENGLISH       = 20 MIN
+   QUANTITATIVE     = 20 MIN
+   REASONING     = 20 MIN
+========================================================= */
+
+
+const questions = [
+{
+  "section": "English Language",
+  "q": "Choose the word closest in meaning to 'Prudent'.",
+  "options": [
+    "Careless",
+    "Wise",
+    "Wasteful",
+    "Hasty"
+  ],
+  "answer": 1,
+  "solution": "Prudent means showing good judgement and careful thought; wise is closest."
+},
+{
+  "section": "English Language",
+  "q": "Choose the antonym of 'Mitigate'.",
+  "options": [
+    "Alleviate",
+    "Reduce",
+    "Aggravate",
+    "Ease"
+  ],
+  "answer": 2,
+  "solution": "Mitigate means to make less severe; aggravate means to make worse."
+},
+{
+  "section": "English Language",
+  "q": "Choose the correctly spelled word for 'a formal agreement'.",
+  "options": [
+    "Concurrence",
+    "Concurence",
+    "Concarrence",
+    "Concurance"
+  ],
+  "answer": 0,
+  "solution": "Concurrence is spelled with double 'r' and means agreement or approval."
+},
+{
+  "section": "English Language",
+  "q": "Fill in the blank: The committee _____ divided in its opinion on the proposal.",
+  "options": [
+    "were",
+    "are",
+    "was",
+    "have"
+  ],
+  "answer": 2,
+  "solution": "A collective noun treated as one unit takes a singular verb here: was."
+},
+{
+  "section": "English Language",
+  "q": "Choose the sentence that uses the correct verb form.",
+  "options": [
+    "The list of selected candidates are displayed.",
+    "The list of selected candidates is displayed.",
+    "The list of selected candidates were displayed.",
+    "The list of selected candidates have displayed."
+  ],
+  "answer": 1,
+  "solution": "The main subject is singular 'list', so the singular verb 'is' is correct."
+},
+{
+  "section": "English Language",
+  "q": "Choose the word opposite in meaning to 'Candid'.",
+  "options": [
+    "Frank",
+    "Open",
+    "Evasive",
+    "Honest"
+  ],
+  "answer": 2,
+  "solution": "Candid means frank and honest; evasive is the opposite."
+},
+{
+  "section": "English Language",
+  "q": "Fill in the blank: Hardly had the train _____ the station when it began to rain.",
+  "options": [
+    "left",
+    "leave",
+    "leaving",
+    "leaves"
+  ],
+  "answer": 0,
+  "solution": "The structure 'Hardly had ... when' takes the past participle: left."
+},
+{
+  "section": "English Language",
+  "q": "Choose the best replacement for the underlined phrase: 'He is senior than me.'",
+  "options": [
+    "senior to me",
+    "senior from me",
+    "more senior than me",
+    "senior over me"
+  ],
+  "answer": 0,
+  "solution": "Senior is followed by 'to', not 'than'."
+},
+{
+  "section": "English Language",
+  "q": "Choose the word closest in meaning to 'Obsolete'.",
+  "options": [
+    "Current",
+    "Outdated",
+    "Useful",
+    "Modern"
+  ],
+  "answer": 1,
+  "solution": "Obsolete means no longer in use; outdated is the closest synonym."
+},
+{
+  "section": "English Language",
+  "q": "Fill in the blank: No sooner _____ the announcement made than the audience applauded.",
+  "options": [
+    "was",
+    "had",
+    "has",
+    "did"
+  ],
+  "answer": 0,
+  "solution": "The correct inversion is 'No sooner was the announcement made than...'"
+},
+{
+  "section": "English Language",
+  "q": "Choose the antonym of 'Vigilant'.",
+  "options": [
+    "Watchful",
+    "Alert",
+    "Negligent",
+    "Attentive"
+  ],
+  "answer": 2,
+  "solution": "Vigilant means watchful and alert; negligent means careless or not attentive."
+},
+{
+  "section": "English Language",
+  "q": "Identify the part with an error: 'Neither the manager nor the employees was willing to stay late.'",
+  "options": [
+    "Neither the manager",
+    "nor the employees",
+    "was willing",
+    "to stay late"
+  ],
+  "answer": 2,
+  "solution": "With neither...nor, the verb agrees with the nearer subject 'employees': were willing."
+},
+{
+  "section": "English Language",
+  "q": "Fill in the blank: The new policy will come _____ effect next month.",
+  "options": [
+    "in",
+    "into",
+    "on",
+    "at"
+  ],
+  "answer": 1,
+  "solution": "The standard expression is 'come into effect'."
+},
+{
+  "section": "English Language",
+  "q": "Choose the correctly spelled word meaning 'to make something easier to understand'.",
+  "options": [
+    "Elucidate",
+    "Eluciddate",
+    "Elucidite",
+    "Elucidiate"
+  ],
+  "answer": 0,
+  "solution": "Elucidate is the correct spelling and means to explain or clarify."
+},
+{
+  "section": "English Language",
+  "q": "Choose the word closest in meaning to 'Meticulous'.",
+  "options": [
+    "Careless",
+    "Thorough",
+    "Impatient",
+    "Ordinary"
+  ],
+  "answer": 1,
+  "solution": "Meticulous means extremely careful and precise; thorough is closest."
+},
+{
+  "section": "English Language",
+  "q": "Fill in the blank: If I _____ about the delay, I would have taken another route.",
+  "options": [
+    "knew",
+    "had known",
+    "have known",
+    "would know"
+  ],
+  "answer": 1,
+  "solution": "A third conditional uses 'if + past perfect': had known."
+},
+{
+  "section": "English Language",
+  "q": "Choose the antonym of 'Lucid'.",
+  "options": [
+    "Clear",
+    "Intelligible",
+    "Obscure",
+    "Plain"
+  ],
+  "answer": 2,
+  "solution": "Lucid means clear; obscure means unclear or difficult to understand."
+},
+{
+  "section": "English Language",
+  "q": "Select the correct sentence.",
+  "options": [
+    "The news are encouraging.",
+    "The news is encouraging.",
+    "The news have encouraging.",
+    "News are an encouraging."
+  ],
+  "answer": 1,
+  "solution": "News is an uncountable singular noun and takes 'is'."
+},
+{
+  "section": "English Language",
+  "q": "Fill in the blank: The officer insisted _____ seeing the original documents.",
+  "options": [
+    "for",
+    "at",
+    "on",
+    "to"
+  ],
+  "answer": 2,
+  "solution": "The verb 'insist' is followed by 'on' + gerund."
+},
+{
+  "section": "English Language",
+  "q": "Choose the word closest in meaning to 'Resilient'.",
+  "options": [
+    "Fragile",
+    "Adaptable",
+    "Rigid",
+    "Weak"
+  ],
+  "answer": 1,
+  "solution": "Resilient means able to recover quickly; adaptable is closest among the options."
+},
+{
+  "section": "English Language",
+  "q": "Choose the antonym of 'Ample'.",
+  "options": [
+    "Sufficient",
+    "Abundant",
+    "Meagre",
+    "Plentiful"
+  ],
+  "answer": 2,
+  "solution": "Ample means more than enough; meagre means inadequate or scanty."
+},
+{
+  "section": "English Language",
+  "q": "Fill in the blank: Each applicant must bring _____ identity card.",
+  "options": [
+    "their",
+    "his or her",
+    "them",
+    "they"
+  ],
+  "answer": 1,
+  "solution": "In formal singular agreement, 'his or her' fits the singular applicant."
+},
+{
+  "section": "English Language",
+  "q": "Choose the correct indirect speech: She said, 'I have finished my work.'",
+  "options": [
+    "She said that she has finished her work.",
+    "She said that she had finished her work.",
+    "She said that I had finished my work.",
+    "She told that she finished her work."
+  ],
+  "answer": 1,
+  "solution": "Present perfect usually backshifts to past perfect in reported speech."
+},
+{
+  "section": "English Language",
+  "q": "Choose the word closest in meaning to 'Inevitable'.",
+  "options": [
+    "Avoidable",
+    "Uncertain",
+    "Unavoidable",
+    "Doubtful"
+  ],
+  "answer": 2,
+  "solution": "Inevitable means certain to happen or unavoidable."
+},
+{
+  "section": "English Language",
+  "q": "Fill in the blank: The findings are consistent _____ the earlier report.",
+  "options": [
+    "to",
+    "with",
+    "for",
+    "by"
+  ],
+  "answer": 1,
+  "solution": "The correct collocation is 'consistent with'."
+},
+{
+  "section": "English Language",
+  "q": "Choose the antonym of 'Conspicuous'.",
+  "options": [
+    "Prominent",
+    "Noticeable",
+    "Obscure",
+    "Evident"
+  ],
+  "answer": 2,
+  "solution": "Conspicuous means easily seen or noticeable; obscure means not easily seen or noticed."
+},
+{
+  "section": "English Language",
+  "q": "Select the sentence with correct subject-verb agreement.",
+  "options": [
+    "The quality of the apples are poor.",
+    "The quality of the apples is poor.",
+    "The qualities of the apple is poor.",
+    "Quality of apples were poor."
+  ],
+  "answer": 1,
+  "solution": "The subject is singular 'quality', so the verb is 'is'."
+},
+{
+  "section": "English Language",
+  "q": "Fill in the blank: The witness gave a _____ account of the incident.",
+  "options": [
+    "credible",
+    "credulous",
+    "credit",
+    "credibility"
+  ],
+  "answer": 0,
+  "solution": "Credible means believable, which fits 'account'."
+},
+{
+  "section": "English Language",
+  "q": "Choose the correctly spelled word.",
+  "options": [
+    "Exhilarate",
+    "Exhilerate",
+    "Exhilirate",
+    "Exhilarite"
+  ],
+  "answer": 0,
+  "solution": "Exhilarate is the correct spelling; it means to make someone feel very happy or excited."
+},
+{
+  "section": "English Language",
+  "q": "Choose the word closest in meaning to 'Concise'.",
+  "options": [
+    "Lengthy",
+    "Brief",
+    "Confusing",
+    "Decorative"
+  ],
+  "answer": 1,
+  "solution": "Concise means brief while still giving the necessary information."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A sum of ₹12,000 is invested at 10% compound interest per annum for 2 years. Find the interest.",
+  "options": [
+    "₹2,400",
+    "₹2,520",
+    "₹2,600",
+    "₹2,200"
+  ],
+  "answer": 1,
+  "solution": "Amount = 12000 × 1.1² = ₹14,520; compound interest = ₹2,520."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A train 180 m long crosses a pole in 12 seconds. What is its speed in km/h?",
+  "options": [
+    "45",
+    "54",
+    "60",
+    "48"
+  ],
+  "answer": 1,
+  "solution": "Speed = 180/12 = 15 m/s; 15 × 18/5 = 54 km/h."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "The average of 6 numbers is 19. If 25 is replaced by 13, what is the new average?",
+  "options": [
+    "16",
+    "17",
+    "18",
+    "19"
+  ],
+  "answer": 1,
+  "solution": "The total decreases by 12. New average = 19 − 12/6 = 17."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A can complete a job in 15 days and B in 20 days. In how many days can they finish together?",
+  "options": [
+    "8 4/7",
+    "9",
+    "10",
+    "7 1/2"
+  ],
+  "answer": 0,
+  "solution": "Combined rate = 1/15 + 1/20 = 7/60; time = 60/7 = 8 4/7 days."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A shopkeeper marks an item 40% above cost and gives a 15% discount. Find profit percentage.",
+  "options": [
+    "17%",
+    "19%",
+    "21%",
+    "25%"
+  ],
+  "answer": 1,
+  "solution": "SP = 1.40 × 0.85 = 1.19 of cost, so profit = 19%."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A 30-litre mixture contains milk and water in ratio 4:1. How much water must be added to make the ratio 2:1?",
+  "options": [
+    "5 L",
+    "6 L",
+    "7.5 L",
+    "10 L"
+  ],
+  "answer": 1,
+  "solution": "Milk = 24 L, water = 6 L. For ratio 2:1 water should be 12 L; add 6 L. Correct option should be 6 L."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "The present ages of P and Q are in ratio 5:7. After 6 years the ratio becomes 3:4. Find P's present age.",
+  "options": [
+    "24 years",
+    "30 years",
+    "36 years",
+    "42 years"
+  ],
+  "answer": 1,
+  "solution": "5x+6 over 7x+6 = 3/4 gives 20x+24=21x+18, x=6; P=30."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A boat travels 36 km downstream in 3 hours and the same distance upstream in 4.5 hours. Find the speed of the stream.",
+  "options": [
+    "1 km/h",
+    "2 km/h",
+    "3 km/h",
+    "4 km/h"
+  ],
+  "answer": 1,
+  "solution": "Downstream speed 12, upstream 8; stream speed = (12−8)/2 = 2 km/h."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "If 35% of a number is 210, find 60% of that number.",
+  "options": [
+    "300",
+    "340",
+    "360",
+    "420"
+  ],
+  "answer": 2,
+  "solution": "Number = 210/0.35 = 600; 60% = 360."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A person spends 75% of income and saves ₹8,000. Find monthly income.",
+  "options": [
+    "₹24,000",
+    "₹28,000",
+    "₹32,000",
+    "₹36,000"
+  ],
+  "answer": 2,
+  "solution": "Savings are 25% of income; income = 8000/0.25 = ₹32,000."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "The ratio of boys to girls in a class is 7:5. If there are 48 students, how many girls are there?",
+  "options": [
+    "18",
+    "20",
+    "24",
+    "28"
+  ],
+  "answer": 1,
+  "solution": "Total parts = 12; each part = 48/12 = 4; girls = 5×4 = 20."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A number is increased by 20% and then decreased by 20%. Find the net change.",
+  "options": [
+    "No change",
+    "4% decrease",
+    "4% increase",
+    "2% decrease"
+  ],
+  "answer": 1,
+  "solution": "Net multiplier = 1.2 × 0.8 = 0.96, a 4% decrease."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "Find the simple interest on ₹7,500 at 8% p.a. for 2.5 years.",
+  "options": [
+    "₹1,200",
+    "₹1,400",
+    "₹1,500",
+    "₹1,600"
+  ],
+  "answer": 2,
+  "solution": "SI = 7500 × 8 × 2.5 / 100 = ₹1,500. Correct option should be ₹1,500."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A pipe fills a tank in 12 hours and another empties it in 18 hours. How long to fill the tank if both are opened?",
+  "options": [
+    "24 h",
+    "30 h",
+    "36 h",
+    "40 h"
+  ],
+  "answer": 2,
+  "solution": "Net rate = 1/12−1/18 = 1/36 tank per hour."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "If p:q = 5:6 and q:r = 9:14, find p:r.",
+  "options": [
+    "5:14",
+    "15:28",
+    "10:21",
+    "15:14"
+  ],
+  "answer": 1,
+  "solution": "Make q equal 18: p:q = 15:18 and q:r = 18:28; hence p:r = 15:28."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A car covers 240 km at 60 km/h and returns at 40 km/h. Find average speed for the whole journey.",
+  "options": [
+    "48 km/h",
+    "50 km/h",
+    "45 km/h",
+    "52 km/h"
+  ],
+  "answer": 0,
+  "solution": "For equal distances average speed = 2ab/(a+b) = 2×60×40/100 = 48."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A rectangular garden is 32 m long and 18 m wide. Find its area.",
+  "options": [
+    "500 m²",
+    "540 m²",
+    "576 m²",
+    "600 m²"
+  ],
+  "answer": 2,
+  "solution": "Area = length × breadth = 32 × 18 = 576 m²."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A trader sells an article for ₹1,080 at a loss of 10%. Find its cost price.",
+  "options": [
+    "₹1,150",
+    "₹1,200",
+    "₹1,250",
+    "₹1,300"
+  ],
+  "answer": 1,
+  "solution": "SP is 90% of CP; CP=1080/0.9=₹1,200."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "The sum of the first 20 natural numbers is:",
+  "options": [
+    "190",
+    "200",
+    "210",
+    "220"
+  ],
+  "answer": 2,
+  "solution": "Sum = n(n+1)/2 = 20×21/2 = 210."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "If 3x + 5 = 29, find x² − 1.",
+  "options": [
+    "55",
+    "60",
+    "63",
+    "64"
+  ],
+  "answer": 2,
+  "solution": "3x=24, x=8; x²−1=64−1=63."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "Two numbers are in the ratio 4:9 and their difference is 35. Find their sum.",
+  "options": [
+    "65",
+    "75",
+    "85",
+    "91"
+  ],
+  "answer": 3,
+  "solution": "Difference is 5 parts = 35, so one part is 7. Sum = 13×7 = 91."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A number leaves remainder 4 when divided by 7. What remainder does its square leave when divided by 7?",
+  "options": [
+    "1",
+    "2",
+    "4",
+    "5"
+  ],
+  "answer": 1,
+  "solution": "If n ≡ 4 (mod 7), then n² ≡ 16 ≡ 2 (mod 7)."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "The marked price is ₹2,500. After two successive discounts of 10% and 8%, find selling price.",
+  "options": [
+    "₹2,050",
+    "₹2,070",
+    "₹2,100",
+    "₹2,150"
+  ],
+  "answer": 1,
+  "solution": "SP=2500×0.9×0.92=₹2,070."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A sum doubles itself in 8 years at simple interest. In how many years will it become four times?",
+  "options": [
+    "16 years",
+    "20 years",
+    "24 years",
+    "32 years"
+  ],
+  "answer": 2,
+  "solution": "Doubling means interest equals principal in 8 years. To become 4P, interest=3P, time=24 years."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "Find the least common multiple (LCM) of 18 and 24.",
+  "options": [
+    "48",
+    "60",
+    "72",
+    "96"
+  ],
+  "answer": 2,
+  "solution": "18 = 2×3² and 24 = 2³×3; LCM = 2³×3² = 72."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A cyclist travels at 18 km/h. How far will he travel in 25 minutes?",
+  "options": [
+    "6 km",
+    "7 km",
+    "7.5 km",
+    "8 km"
+  ],
+  "answer": 2,
+  "solution": "25 minutes = 5/12 hour; distance=18×5/12=7.5 km."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "The average of 5 consecutive odd numbers is 37. Find the largest number.",
+  "options": [
+    "39",
+    "41",
+    "43",
+    "45"
+  ],
+  "answer": 1,
+  "solution": "The middle number is 37; numbers are 33,35,37,39,41. Largest=41."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A bag has 5 red, 4 blue and 3 green balls. What is the probability of drawing a blue ball?",
+  "options": [
+    "1/4",
+    "1/3",
+    "1/2",
+    "2/3"
+  ],
+  "answer": 1,
+  "solution": "Total balls = 12; blue balls = 4. Probability = 4/12 = 1/3."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A person rows 15 km downstream in 1.5 hours and upstream in 2.5 hours. Find the speed in still water.",
+  "options": [
+    "8 km/h",
+    "9 km/h",
+    "10 km/h",
+    "11 km/h"
+  ],
+  "answer": 0,
+  "solution": "Downstream speed = 10 km/h; upstream speed = 6 km/h. Still-water speed = (10+6)/2 = 8 km/h."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "If 2ⁿ = 128, find n + 3.",
+  "options": [
+    "8",
+    "9",
+    "10",
+    "11"
+  ],
+  "answer": 2,
+  "solution": "128 = 2⁷, so n = 7 and n + 3 = 10."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A sum of ₹8,000 earns ₹1,920 simple interest in 3 years. Find annual rate.",
+  "options": [
+    "6%",
+    "7%",
+    "8%",
+    "9%"
+  ],
+  "answer": 2,
+  "solution": "Rate=1920×100/(8000×3)=8%."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "Two numbers are in ratio 4:9 and their difference is 35. Find their sum.",
+  "options": [
+    "65",
+    "75",
+    "85",
+    "91"
+  ],
+  "answer": 3,
+  "solution": "Difference is 5 parts=35, one part=7; sum=13×7=91. Correct option should be 91."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A 180 m train crosses a 270 m platform in 30 seconds. Find speed in km/h.",
+  "options": [
+    "48",
+    "50",
+    "54",
+    "60"
+  ],
+  "answer": 2,
+  "solution": "Total distance=450 m; speed=15 m/s=54 km/h."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "A can do a work in 18 days; B is 50% more efficient than A. How many days does B take?",
+  "options": [
+    "9",
+    "10",
+    "12",
+    "15"
+  ],
+  "answer": 2,
+  "solution": "B's rate is 1.5 times A's, so time=18/1.5=12 days."
+},
+{
+  "section": "Quantitative Aptitude",
+  "q": "Find the missing number: 12, 18, 27, 40.5, ?",
+  "options": [
+    "54",
+    "58.5",
+    "60.75",
+    "64"
+  ],
+  "answer": 2,
+  "solution": "Each term is multiplied by 1.5; next=40.5×1.5=60.75."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "In a certain code, MANGO is written as NBOHP. How is PEACH written in that code?",
+  "options": [
+    "QFBDI",
+    "QFBDH",
+    "QFZDI",
+    "OFZBG"
+  ],
+  "answer": 0,
+  "solution": "Each letter is shifted one place forward: P→Q, E→F, A→B, C→D, H→I."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Complete the letter series: D, H, M, S, Z, ?",
+  "options": [
+    "F",
+    "G",
+    "H",
+    "I"
+  ],
+  "answer": 2,
+  "solution": "The jumps are +4, +5, +6, +7; next is +8. Moving eight letters forward from Z wraps to H."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "If A > B, B = C, and C < D, which is definitely true?",
+  "options": [
+    "A > C",
+    "D > B",
+    "A < D",
+    "B > D"
+  ],
+  "answer": 0,
+  "solution": "A>B and B=C imply A>C."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Pointing to a woman, Ravi said, 'She is the daughter of my mother's only son.' How is the woman related to Ravi?",
+  "options": [
+    "Sister",
+    "Daughter",
+    "Niece",
+    "Cousin"
+  ],
+  "answer": 1,
+  "solution": "Ravi's mother's only son is Ravi; his daughter is the woman."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Arrange the words in dictionary order: 1. Stable 2. Stab 3. Stagger 4. Stack",
+  "options": [
+    "2,1,4,3",
+    "2,1,3,4",
+    "1,2,4,3",
+    "2,4,1,3"
+  ],
+  "answer": 0,
+  "solution": "Compare letters: Stab, Stable, Stack, Stagger."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Six people P, Q, R, S, T and U sit in a row facing north. P is left of Q; R is right of Q; S is left of P. Which person is definitely to the left of Q?",
+  "options": [
+    "R only",
+    "P and S",
+    "T only",
+    "U only"
+  ],
+  "answer": 1,
+  "solution": "P is left of Q and S is left of P, so both P and S are left of Q."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "If 'CLOUD' is coded as 'DMPVE', how is 'RAIN' coded using the same rule?",
+  "options": [
+    "SBJO",
+    "QZHM",
+    "SBIN",
+    "TBJO"
+  ],
+  "answer": 0,
+  "solution": "Each letter is shifted one step forward: R→S, A→B, I→J, N→O."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Which number does not fit the pattern?",
+  "options": [
+    "121",
+    "144",
+    "169",
+    "180"
+  ],
+  "answer": 3,
+  "solution": "121, 144 and 169 are perfect squares (11², 12², 13²); 180 is not."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Complete the series: 4, 9, 19, 39, 79, ?",
+  "options": [
+    "149",
+    "158",
+    "159",
+    "169"
+  ],
+  "answer": 2,
+  "solution": "Each term is previous×2+1; next=79×2+1=159."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "If 1 January is Monday in a non-leap year, what day is 1 February?",
+  "options": [
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+  ],
+  "answer": 2,
+  "solution": "January has 31 days; 31 mod 7 = 3, so Monday + 3 = Thursday."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "In a family, A is the brother of B; B is the mother of C; D is the father of A. How is D related to C?",
+  "options": [
+    "Maternal grandfather",
+    "Paternal grandfather",
+    "Uncle",
+    "Father"
+  ],
+  "answer": 0,
+  "solution": "D is A's father and A is B's brother; therefore D is B's father and C's maternal grandfather."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Statements: All pens are books. Some books are files. Conclusions: I. Some pens are files. II. All pens are books.",
+  "options": [
+    "Only I follows",
+    "Only II follows",
+    "Both follow",
+    "Neither follows"
+  ],
+  "answer": 1,
+  "solution": "Conclusion II repeats the given statement. The overlap between pens and files is not guaranteed."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Choose the pair with the same relationship: Author : Novel",
+  "options": [
+    "Composer : Symphony",
+    "Painter : Gallery",
+    "Reader : Library",
+    "Actor : Audience"
+  ],
+  "answer": 0,
+  "solution": "An author creates a novel; a composer creates a symphony."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "If NORTH is written as OPSUI, how is SOUTH written?",
+  "options": [
+    "TPVUI",
+    "TPVUI",
+    "TPVUI",
+    "RNTUG"
+  ],
+  "answer": 0,
+  "solution": "Each letter advances by one: SOUTH→TPVUI."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Find the missing number: 3, 8, 15, 24, 35, ?",
+  "options": [
+    "46",
+    "48",
+    "49",
+    "50"
+  ],
+  "answer": 1,
+  "solution": "Terms are n²−1 for n=2,3,4,5,6; next 7²−1=48."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "In a queue, Neha is 12th from the front and 18th from the back. How many people are in the queue?",
+  "options": [
+    "28",
+    "29",
+    "30",
+    "31"
+  ],
+  "answer": 1,
+  "solution": "Total = 12+18−1 = 29."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "If '+' means '×', '−' means '+', '×' means '÷', and '÷' means '−', find 8 + 3 − 6.",
+  "options": [
+    "24",
+    "30",
+    "27",
+    "18"
+  ],
+  "answer": 1,
+  "solution": "Replace symbols: 8×3+6 = 24+6 = 30."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Which number will replace the question mark? 2, 6, 12, 20, 30, ?",
+  "options": [
+    "40",
+    "42",
+    "44",
+    "48"
+  ],
+  "answer": 1,
+  "solution": "Pattern n(n+1): 1×2,2×3,...,6×7=42."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Five friends J, K, L, M and N have different heights. J is taller than K but shorter than L. M is shorter than K. N is taller than L. Who is tallest?",
+  "options": [
+    "J",
+    "L",
+    "M",
+    "N"
+  ],
+  "answer": 3,
+  "solution": "N>L>J>K>M, so N is tallest."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "If 'PENCIL' is arranged alphabetically, which letter is third from the left?",
+  "options": [
+    "C",
+    "E",
+    "I",
+    "L"
+  ],
+  "answer": 2,
+  "solution": "Alphabetical order is C, E, I, L, N, P; the third letter is I."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Which group has a different number pattern?",
+  "options": [
+    "ACE",
+    "BDF",
+    "CEG",
+    "DGI"
+  ],
+  "answer": 3,
+  "solution": "ACE, BDF and CEG each advance by two letters within each triplet; DGI advances by three from D to G and G to I."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "A person walks 8 m north, turns right and walks 6 m, then turns right and walks 8 m. How far is the person from the starting point?",
+  "options": [
+    "4 m",
+    "6 m",
+    "8 m",
+    "14 m"
+  ],
+  "answer": 1,
+  "solution": "The north and south movements cancel; the person is 6 m east of the start."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "If yesterday was Wednesday, what day will it be 100 days after tomorrow?",
+  "options": [
+    "Friday",
+    "Saturday",
+    "Sunday",
+    "Monday"
+  ],
+  "answer": 1,
+  "solution": "Yesterday Wednesday means today Thursday; tomorrow Friday. 100 days after Friday is Saturday (100 mod 7=2)."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "In a code, 246 means 'bright and clever', 358 means 'clever but calm', and 479 means 'bright looks calm'. Which digit stands for 'bright'?",
+  "options": [
+    "2",
+    "4",
+    "7",
+    "9"
+  ],
+  "answer": 1,
+  "solution": "246 and 479 share 'bright'; their common digit is 4."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Statements: Some cars are buses. All buses are vehicles. Conclusions: I. Some cars are vehicles. II. All vehicles are buses.",
+  "options": [
+    "Only I follows",
+    "Only II follows",
+    "Both follow",
+    "Neither follows"
+  ],
+  "answer": 0,
+  "solution": "Some cars that are buses must be vehicles; the second conclusion is an invalid converse."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Find the next term: AZ, BY, CX, DW, ?",
+  "options": [
+    "EV",
+    "EU",
+    "FV",
+    "EW"
+  ],
+  "answer": 0,
+  "solution": "First letters advance A,B,C,D,E while second letters retreat Z,Y,X,W,V; next EV."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "If 4 # 3 = 19 and 5 # 4 = 29, then 6 # 2 = ?",
+  "options": [
+    "34",
+    "36",
+    "38",
+    "40"
+  ],
+  "answer": 2,
+  "solution": "The pattern is a # b = a² + b. Thus 6 # 2 = 6² + 2 = 38. Correct answer is 38."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Which is the correct mirror order of the digits 2, 4, 6, 8 when viewed from right to left?",
+  "options": [
+    "8642",
+    "2468",
+    "6824",
+    "4286"
+  ],
+  "answer": 0,
+  "solution": "Reading the sequence from right to left gives 8642."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "A is 5 places to the left of B. B is 8 places to the right of C. If C is at position 10, what is A's position?",
+  "options": [
+    "11",
+    "12",
+    "13",
+    "14"
+  ],
+  "answer": 2,
+  "solution": "C is at 10, B is 8 places to its right at 18, and A is 5 places left of B at 13."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Find the odd word.",
+  "options": [
+    "January",
+    "March",
+    "May",
+    "Tuesday"
+  ],
+  "answer": 3,
+  "solution": "January, March and May are months; Tuesday is a weekday."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "In a group of 40 students, Aman ranks 9th from the top. What is his rank from the bottom?",
+  "options": [
+    "30th",
+    "31st",
+    "32nd",
+    "33rd"
+  ],
+  "answer": 2,
+  "solution": "Rank from bottom = 40 − 9 + 1 = 32nd."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "If all roses are flowers and some flowers fade quickly, which conclusion follows?",
+  "options": [
+    "All roses fade quickly",
+    "Some roses fade quickly",
+    "No roses fade quickly",
+    "No definite conclusion about roses fading quickly"
+  ],
+  "answer": 3,
+  "solution": "The flowers that fade may or may not include roses."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Choose the next pair: CD, FG, IJ, LM, ?",
+  "options": [
+    "NO",
+    "OP",
+    "MN",
+    "PQ"
+  ],
+  "answer": 1,
+  "solution": "Each pair uses consecutive letters, with a two-letter jump between pair starts: C,F,I,L,O; next OP."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Six boxes are stacked. A is above B; C is below B; D is above A; E is below C. Which box is definitely above C?",
+  "options": [
+    "A only",
+    "B only",
+    "A and D",
+    "B and E"
+  ],
+  "answer": 2,
+  "solution": "Order constraints give D above A above B above C above E, so A and D are above C."
+},
+{
+  "section": "Reasoning Ability",
+  "q": "Find the missing letter: C, F, J, O, U, ?",
+  "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "answer": 1,
+  "solution": "Jumps are +3,+4,+5,+6; next +7 from U wraps to B."
+}
+];
+
+/* =========================================================
+   SECTION INFORMATION
+========================================================= */
+
+const sections = [
+
+{
+name:"English Language",
+start:0,
+end:29,
+time:20*60
+},
+
+{
+name:"Quantitative Aptitude",
+start:30,
+end:64,
+time:20*60
+},
+
+{
+name:"Reasoning Ability",
+start:65,
+end:99,
+time:20*60
+}
+
+];
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentQuestion = 0;
+
+let currentSection = 0;
+
+let userAnswers =
+    new Array(questions.length).fill(null);
+
+let sectionTimeLeft =
+    sections[0].time;
+
+let timerInterval;
+
+let testSubmitted = false;
+let isPaused = false;
+const STORAGE_KEY = "aimers_ibps_po_prelims_test3_v1";
+
+function saveProgress(){
+    if(testSubmitted) return;
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            currentQuestion, currentSection, userAnswers, sectionTimeLeft,
+            isPaused, savedAt: Date.now()
+        }));
+    } catch(e) {}
+}
+
+function restoreProgress(){
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if(!raw) return false;
+        const data = JSON.parse(raw);
+        if(!data || !Array.isArray(data.userAnswers) ||
+           data.userAnswers.length !== questions.length) return false;
+        if(!confirm("A saved IBPS PO test was found. Resume from where you left off?")) {
+            localStorage.removeItem(STORAGE_KEY);
+            return false;
+        }
+        currentQuestion = Number.isInteger(data.currentQuestion) ? data.currentQuestion : 0;
+        currentSection = Number.isInteger(data.currentSection) ? data.currentSection : 0;
+        currentQuestion = Math.max(0, Math.min(questions.length-1, currentQuestion));
+        currentSection = Math.max(0, Math.min(sections.length-1, currentSection));
+        userAnswers = data.userAnswers;
+        sectionTimeLeft = Number.isFinite(data.sectionTimeLeft) ? Math.max(0, data.sectionTimeLeft) : sections[currentSection].time;
+        isPaused = true;
+        return true;
+    } catch(e) { return false; }
+}
+
+function togglePause(){
+    if(testSubmitted) return;
+    isPaused = true;
+    clearInterval(timerInterval);
+    document.getElementById("pauseBtn").style.display = "none";
+    document.getElementById("resumeBtn").style.display = "inline-block";
+    document.getElementById("timerLabel").innerText = "EXAM PAUSED — TIME FROZEN";
+    saveProgress();
+}
+
+function resumeExam(){
+    if(testSubmitted) return;
+    isPaused = false;
+    document.getElementById("pauseBtn").style.display = "inline-block";
+    document.getElementById("resumeBtn").style.display = "none";
+    updateSectionUI();
+    startTimer();
+    saveProgress();
+}
+
+window.addEventListener("beforeunload", saveProgress);
+
+
+/* =========================================================
+   PALETTE CREATION
+========================================================= */
+
+function createPalette(){
+
+    createSectionPalette(
+        "englishGrid",
+        0,
+        29
+    );
+
+    createSectionPalette(
+        "numericalGrid",
+        30,
+        64
+    );
+
+    createSectionPalette(
+        "reasoningGrid",
+        65,
+        99
+    );
+
+}
+
+
+function createSectionPalette(
+    elementId,
+    start,
+    end
+){
+
+    const grid =
+        document.getElementById(elementId);
+
+    grid.innerHTML = "";
+
+    for(let i=start;i<=end;i++){
+
+        const button =
+            document.createElement("button");
+
+        button.className = "qno";
+
+        button.id = "qno-" + i;
+
+        button.innerText = i + 1;
+
+        button.onclick = function(){
+
+            /*
+            Question can only be opened
+            if it belongs to current section.
+            */
+
+            if(i >= sections[currentSection].start &&
+               i <= sections[currentSection].end){
+
+                currentQuestion = i;
+
+                loadQuestion();
+
+            }
+
+        };
+
+        grid.appendChild(button);
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD QUESTION
+========================================================= */
+
+function loadQuestion(){
+
+    const q =
+        questions[currentQuestion];
+
+    document.getElementById("sectionName").innerText =
+        q.section;
+
+    document.getElementById("questionNumber").innerText =
+        "Question " +
+        (currentQuestion + 1) +
+        " of 100";
+
+    document.getElementById("questionText").innerText =
+        q.q;
+
+    document.getElementById("passageBox").innerHTML = "";
+
+    const optionsBox =
+        document.getElementById("options");
+
+    optionsBox.innerHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        const label =
+            document.createElement("label");
+
+        label.className = "option";
+
+        if(
+            userAnswers[currentQuestion] === index
+        ){
+            label.classList.add("selected");
+        }
+
+        label.innerHTML = `
+            <input type="radio"
+            name="answer"
+            value="${index}"
+            ${userAnswers[currentQuestion] === index ? "checked" : ""}>
+            ${String.fromCharCode(65+index)}. ${option}
+        `;
+
+        label.onclick = function(){
+
+            userAnswers[currentQuestion] =
+                index;
+
+            document
+            .querySelectorAll(".option")
+            .forEach(item=>{
+                item.classList.remove("selected");
+            });
+
+            label.classList.add("selected");
+
+            updatePalette();
+            saveProgress();
+
+        };
+
+        optionsBox.appendChild(label);
+
+    });
+
+
+    const section =
+        sections[currentSection];
+
+    document.getElementById("prevBtn").disabled =
+        currentQuestion === section.start;
+
+
+    if(currentQuestion === section.end){
+
+        document.getElementById("nextBtn")
+        .style.display = "none";
+
+        document.getElementById("submitBtn")
+        .style.display = "inline-block";
+
+    }else{
+
+        document.getElementById("nextBtn")
+        .style.display = "inline-block";
+
+        document.getElementById("submitBtn")
+        .style.display = "none";
+
+    }
+
+    updatePalette();
+
+}
+
+
+/* =========================================================
+   UPDATE PALETTE
+========================================================= */
+
+function updatePalette(){
+
+    questions.forEach((q,index)=>{
+
+        const button =
+            document.getElementById("qno-" + index);
+
+        if(!button) return;
+
+        button.className = "qno";
+
+        if(
+            index >= sections[currentSection].start &&
+            index <= sections[currentSection].end
+        ){
+
+            button.classList.remove("locked");
+
+            if(index === currentQuestion){
+
+                button.classList.add("current");
+
+            }else if(userAnswers[index] !== null){
+
+                button.classList.add("attempted");
+
+            }
+
+        }else{
+
+            button.classList.add("locked");
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   CLEAR RESPONSE
+========================================================= */
+
+function clearResponse(){
+
+    userAnswers[currentQuestion] =
+        null;
+
+    loadQuestion();
+    saveProgress();
+
+}
+
+
+/* =========================================================
+   NEXT QUESTION
+========================================================= */
+
+function nextQuestion(){
+
+    const section =
+        sections[currentSection];
+
+    if(
+        currentQuestion <
+        section.end
+    ){
+
+        currentQuestion++;
+
+        loadQuestion();
+        saveProgress();
+
+    }
+
+}
+
+
+/* =========================================================
+   PREVIOUS QUESTION
+========================================================= */
+
+function previousQuestion(){
+
+    const section =
+        sections[currentSection];
+
+    if(
+        currentQuestion >
+        section.start
+    ){
+
+        currentQuestion--;
+
+        loadQuestion();
+        saveProgress();
+
+    }
+
+}
+
+
+/* =========================================================
+   SECTION TIMER
+========================================================= */
+
+function updateTimer(){
+
+    if(isPaused || testSubmitted) return;
+
+    const minutes =
+        Math.floor(sectionTimeLeft / 60);
+
+    const seconds =
+        sectionTimeLeft % 60;
+
+    document.getElementById("timer").innerText =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+    document.getElementById("sectionTimer").innerText =
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+
+    if(sectionTimeLeft <= 0){
+
+        clearInterval(timerInterval);
+
+        moveToNextSection();
+
+        return;
+
+    }
+
+    sectionTimeLeft--;
+    saveProgress();
+
+}
+
+
+/* =========================================================
+   MOVE TO NEXT SECTION
+========================================================= */
+
+function moveToNextSection(){
+
+    if(currentSection < sections.length - 1){
+
+        alert(
+            "Time for " +
+            sections[currentSection].name +
+            " is over.\n\n" +
+            "Moving to the next section automatically."
+        );
+
+        currentSection++;
+
+        currentQuestion =
+            sections[currentSection].start;
+
+        sectionTimeLeft =
+            sections[currentSection].time;
+
+        updateSectionUI();
+
+        loadQuestion();
+
+        startTimer();
+
+    }else{
+
+        alert(
+            "All sectional timings are over. " +
+            "Your test will now be submitted."
+        );
+
+        submitTest(true);
+
+    }
+
+}
+
+
+/* =========================================================
+   SECTION UI
+========================================================= */
+
+function updateSectionUI(){
+
+    const section =
+        sections[currentSection];
+
+    document.getElementById("topSection")
+    .innerText =
+        "Section " +
+        (currentSection + 1) +
+        " — " +
+        section.name;
+
+    document.getElementById("timerLabel")
+    .innerText =
+        section.name.toUpperCase() +
+        " — 20 MIN";
+
+}
+
+
+/* =========================================================
+   START TIMER
+========================================================= */
+
+function startTimer(){
+
+    clearInterval(timerInterval);
+    if(isPaused || testSubmitted) return;
+
+    updateTimer();
+
+    timerInterval =
+        setInterval(
+            updateTimer,
+            1000
+        );
+
+}
+
+
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
+function submitTest(autoSubmit){
+
+    if(testSubmitted)
+        return;
+
+
+    if(!autoSubmit){
+
+        const unanswered =
+            userAnswers.filter(
+                x => x === null
+            ).length;
+
+        const confirmation =
+            confirm(
+                "Are you sure you want to submit the test?\n\n" +
+                "Unattempted Questions: " +
+                unanswered +
+                "\n\n" +
+                "Complete answer key and solutions will be shown after submission."
+            );
+
+        if(!confirmation)
+            return;
+
+    }
+
+
+    testSubmitted = true;
+    isPaused = false;
+    clearInterval(timerInterval);
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+    const pauseBtn = document.getElementById("pauseBtn");
+    const resumeBtn = document.getElementById("resumeBtn");
+    if(pauseBtn) pauseBtn.style.display = "none";
+    if(resumeBtn) resumeBtn.style.display = "none";
+
+
+    let correct = 0;
+    let wrong = 0;
+    let unattempted = 0;
+    let score = 0;
+    let maxMarks = 100;
+
+
+    questions.forEach((q,index)=>{
+
+        if(
+            userAnswers[index] === null
+        ){
+
+            unattempted++;
+
+        }else {
+            const sectionIndex = index < 30 ? 0 : (index < 65 ? 1 : 2);
+            const marksPerQuestion = sectionIndex === 0 ? 1 : (sectionIndex === 1 ? (30/35) : (40/35));
+            if(userAnswers[index] === q.answer){
+                correct++;
+                score += marksPerQuestion;
+            }else{
+                wrong++;
+                score -= marksPerQuestion * 0.25;
+            }
+        }
+
+    });
+
+    score = Math.max(0, score);
+    const percentage = Math.max(0, (score / maxMarks) * 100);
+
+
+    document.getElementById("testArea")
+    .style.display = "none";
+
+    document.querySelector(".section-banner")
+    .style.display = "none";
+
+    document.getElementById("result")
+    .style.display = "block";
+
+
+    document.getElementById("finalScore")
+    .innerText =
+        score.toFixed(2) +
+        " / 100";
+
+
+    document.getElementById("correctCount")
+    .innerText =
+        correct;
+
+
+    document.getElementById("wrongCount")
+    .innerText =
+        wrong;
+
+
+    document.getElementById("unattemptedCount")
+    .innerText =
+        unattempted;
+
+
+    document.getElementById("scoreValue")
+    .innerText =
+        score.toFixed(2);
+
+
+    document.getElementById("percentage")
+    .innerText =
+        percentage.toFixed(2) +
+        "%";
+
+
+    document.getElementById("resultMessage")
+    .innerText =
+        "Correct answers earn the marks assigned to that section; wrong answers lose 25% of the question's marks; unattempted answers score 0.";
+
+
+    showSolutions();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   SHOW SOLUTIONS
+========================================================= */
+
+function showSolutions(){
+
+    const container =
+        document.getElementById("solutions");
+
+    container.innerHTML = "";
+
+    let previousSection = "";
+
+
+    questions.forEach((q,index)=>{
+
+        if(
+            q.section !== previousSection
+        ){
+
+            const heading =
+                document.createElement("div");
+
+            heading.className =
+                "section-result";
+
+            heading.innerText =
+                q.section;
+
+            container.appendChild(
+                heading
+            );
+
+            previousSection =
+                q.section;
+
+        }
+
+
+        const card =
+            document.createElement("div");
+
+
+        let statusClass = "";
+
+
+        if(
+            userAnswers[index] === null
+        ){
+
+            statusClass =
+                "unattempted";
+
+        }else if(
+            userAnswers[index] === q.answer
+        ){
+
+            statusClass =
+                "correct";
+
+        }else{
+
+            statusClass =
+                "wrong";
+
+        }
+
+
+        card.className =
+            "solution-card " +
+            statusClass;
+
+
+        const correctLetter =
+            String.fromCharCode(
+                65 + q.answer
+            );
+
+
+        const correctText =
+            q.options[q.answer];
+
+
+        let userAnswerHTML = "";
+
+
+        if(
+            userAnswers[index] === null
+        ){
+
+            userAnswerHTML = `
+                <div class="answer-line">
+                    Your Answer:
+                    <span style="
+                    color:#d97706;
+                    font-weight:bold;">
+                        Not Attempted
+                    </span>
+                </div>
+            `;
+
+        }else{
+
+            const userLetter =
+                String.fromCharCode(
+                    65 + userAnswers[index]
+                );
+
+            const userText =
+                q.options[userAnswers[index]];
+
+
+            userAnswerHTML = `
+                <div class="answer-line">
+                    Your Answer:
+                    <span class="user-answer">
+                        ${userLetter}. ${userText}
+                    </span>
+                </div>
+            `;
+
+        }
+
+
+        card.innerHTML = `
+
+            <div class="solution-q">
+                Q${index + 1}. ${q.q}
+            </div>
+
+            <div class="answer-line">
+                Correct Answer:
+                <span class="correct-answer">
+                    ${correctLetter}. ${correctText}
+                </span>
+            </div>
+
+            ${userAnswerHTML}
+
+            <div class="solution-text">
+                <strong>Solution:</strong>
+                ${q.solution}
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+createPalette();
+
+const resumed = restoreProgress();
+updateSectionUI();
+loadQuestion();
+if(resumed){
+    document.getElementById("pauseBtn").style.display = "none";
+    document.getElementById("resumeBtn").style.display = "inline-block";
+    document.getElementById("timerLabel").innerText = "SAVED EXAM — CLICK RESUME";
+    updateTimer();
+}else{
+    startTimer();
+}
+saveProgress();
+
+
+console.log(
+    "IBPS PO Prelims Test Questions:",
+    questions.length
+);
+
+console.log(
+    "Sections:",
+    "English 30 | Quantitative Aptitude 35 | Reasoning 35"
+);
+
+</script>
+
+</body>
+</html>
