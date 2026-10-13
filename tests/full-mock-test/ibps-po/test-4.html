@@ -1,1 +1,385 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIMERS CLASSES | IBPS PO Prelims Test 4</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f1f5f9;color:#172033}
+header{background:linear-gradient(120deg,#102a43,#1d4ed8);color:white;text-align:center;padding:18px}
+header h1{font-size:25px}
+header p{margin-top:7px}
+.stats{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.stats span{padding:7px 11px;border:1px solid #ffffff50;border-radius:18px;font-size:12px}
+.layout{max-width:1250px;margin:18px auto;padding:0 12px;display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:15px}
+.panel{background:white;padding:18px;border-radius:10px;box-shadow:0 2px 9px #0000000b}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+button{cursor:pointer;border:0;border-radius:6px;padding:10px 12px;font-weight:bold;font-size:13px}
+.tab{flex:1;background:#e2e8f0;color:#334155}
+.tab.active,.primary{background:#1d4ed8;color:white}
+.secondary{background:#e2e8f0;color:#172033}
+.review{background:#f59e0b;color:#111827}
+.danger{background:#dc2626;color:white}
+.green{background:#16a34a;color:white}
+.qhead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:1px solid #ddd;padding-bottom:13px;margin-bottom:18px}
+#question{font-size:17px;line-height:1.65;white-space:pre-line;margin-bottom:18px}
+.options{display:grid;gap:10px}
+.option{display:flex;gap:10px;align-items:flex-start;padding:13px;border:1px solid #cbd5e1;border-radius:7px;cursor:pointer;line-height:1.5}
+.option.selected{border:2px solid #2563eb;background:#eff6ff}
+.option input{margin-top:4px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;padding-top:15px;border-top:1px solid #ddd}
+.timer{text-align:center;font-size:30px;font-weight:bold;color:#dc2626;margin:12px}
+.small{text-align:center;font-size:12px;color:#64748b}
+.info{background:#eff6ff;border-radius:7px;padding:11px;line-height:1.8;font-size:12px;margin:12px 0}
+.palette{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:15px 0}
+.num{background:#e5e7eb;color:#333;padding:9px 0}
+.num.answered{background:#22c55e;color:white}
+.num.reviewing{background:#f59e0b;color:#111}
+.num.both{background:#0f766e;color:white}
+.num.current{outline:3px solid #2563eb}
+.legend{font-size:12px;line-height:2}
+.dot{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px}
+.progress{height:7px;background:#e2e8f0;border-radius:8px;margin:12px 0;overflow:hidden}
+#bar{height:100%;background:#16a34a;width:0}
+#result{display:none;max-width:1100px;margin:20px auto}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.card{background:#eff6ff;padding:16px;text-align:center;border-radius:8px}
+.card strong{display:block;font-size:24px;margin-top:8px}
+.solution{border:1px solid #cbd5e1;border-radius:8px;padding:14px;margin:12px 0;line-height:1.7}
+.good{color:#15803d;font-weight:bold}
+.bad{color:#dc2626;font-weight:bold}
+.hidden{display:none!important}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.sidebar{order:-1}.palette{grid-template-columns:repeat(10,minmax(0,1fr))}.num{font-size:11px;padding:8px 0}.cards{grid-template-columns:repeat(2,1fr)}}
+@media print{header,.layout,.actions{display:none!important}#result{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+<h1>AIMERS CLASSES</h1>
+<p>IBPS PO PRELIMS — MOCK TEST 4</p>
+<p>Aim High • Achieve High</p>
+<div class="stats">
+<span>100 Questions</span><span>100 Marks</span>
+<span>60 Minutes</span><span>Negative Marking −0.25</span>
+</div>
+</header>
+
+<div class="layout" id="exam">
+<main class="panel">
+<div class="tabs">
+<button class="tab active" onclick="goSection(0)">English (30)</button>
+<button class="tab" onclick="goSection(1)">Quant (35)</button>
+<button class="tab" onclick="goSection(2)">Reasoning (35)</button>
+</div>
+<div class="qhead">
+<h3 id="qnumber">Question 1</h3>
+<span id="sectionName">English Language</span>
+</div>
+<div id="question"></div>
+<div class="options" id="options"></div>
+<div class="actions">
+<button class="secondary" onclick="previousQ()">← Previous</button>
+<button class="review" onclick="markReview()">Mark for Review</button>
+<button class="secondary" onclick="clearAnswer()">Clear Response</button>
+<button class="primary" onclick="nextQ()">Save & Next →</button>
+</div>
+</main>
+
+<aside class="panel sidebar">
+<h3>Exam Dashboard</h3>
+<div class="small">SECTION TIME REMAINING</div>
+<div class="timer" id="timer">20:00</div>
+<div class="info">
+Section: <b id="sideSection">English Language</b><br>
+Total time: 60 minutes<br>
+Correct: +1 mark<br>
+Wrong: −0.25 mark<br>
+Unattempted: 0 mark
+</div>
+<button class="secondary" style="width:100%" onclick="pauseExam()" id="pauseBtn">Ⅱ Pause Exam</button>
+<div class="progress"><div id="bar"></div></div>
+<p class="small" id="progressText">0 answered</p>
+<h3 style="margin-top:18px">Question Palette</h3>
+<div class="palette" id="palette"></div>
+<div class="legend">
+<div><i class="dot" style="background:#e5e7eb"></i>Not answered</div>
+<div><i class="dot" style="background:#22c55e"></i>Answered</div>
+<div><i class="dot" style="background:#f59e0b"></i>Review</div>
+<div><i class="dot" style="background:#0f766e"></i>Answered + review</div>
+</div>
+<button class="danger" style="width:100%;margin-top:15px" onclick="submitExam()">Submit Test</button>
+<p class="small" style="margin-top:10px">Progress is saved in this browser.</p>
+</aside>
+</div>
+
+<div class="panel hidden" id="paused" style="max-width:600px;margin:35px auto;text-align:center">
+<h2>Exam Paused</h2>
+<p style="margin:15px">Your timer is stopped.</p>
+<button class="primary" onclick="pauseExam()">Resume Exam</button>
+</div>
+
+<div class="panel" id="result">
+<h2>IBPS PO Prelims Test 4 — Result</h2>
+<p id="message" style="margin-top:12px"></p>
+<div class="cards">
+<div class="card">Score<strong id="score">0</strong></div>
+<div class="card">Correct<strong id="correct">0</strong></div>
+<div class="card">Wrong<strong id="wrong">0</strong></div>
+<div class="card">Unattempted<strong id="unattempted">0</strong></div>
+</div>
+<p id="percentage"></p>
+<div class="actions">
+<button class="primary" onclick="showSolutions()">View All Solutions</button>
+<button class="secondary" onclick="window.print()">Print Result</button>
+<button class="green" onclick="restart()">Re-Attempt Test</button>
+</div>
+<div id="solutions" class="hidden"></div>
+</div>
+
+<script>
+const sections=["English Language","Quantitative Aptitude","Reasoning Ability"];
+const starts=[0,30,65],ends=[30,65,100];
+const questions=[
+/* ENGLISH 1-30 */
+[0,"Choose the synonym of METICULOUS.",["Careless","Precise","Hasty","Ordinary"],1,"Meticulous means extremely careful and precise."],
+[0,"Choose the antonym of SCARCE.",["Rare","Limited","Abundant","Insufficient"],2,"Abundant means available in large quantities."],
+[0,"Neither of the candidates ___ selected for the final round.",["were","have","was","are"],2,"Neither is singular here; use was."],
+[0,"The manager insisted ___ checking every document.",["at","on","for","with"],1,"The correct expression is insist on doing something."],
+[0,"Choose the correctly spelt word.",["Accomodation","Acommodation","Accommodation","Accommadation"],2,"Accommodation is the correct spelling."],
+[0,"Hardly had the train left ___ the passengers realised their mistake.",["than","when","then","while"],1,"The correct construction is hardly...when."],
+[0,"Choose the synonym of PRUDENT.",["Wise","Reckless","Impatient","Wasteful"],0,"Prudent means showing sound judgement."],
+[0,"Choose the antonym of HOSTILE.",["Aggressive","Unfriendly","Friendly","Violent"],2,"Friendly is the opposite of hostile."],
+[0,"She has been working here ___ 2020.",["for","since","from","by"],1,"Since is used with a starting point in time."],
+[0,"Identify the error: Each of the employees have received the notice.",["Each of the employees","have received","the notice","No error"],1,"Use has received because each is singular."],
+[0,"Choose the correct sentence.",["One of my friend lives here.","One of my friends live here.","One of my friends lives here.","One of friends lives here."],2,"One of my friends takes a singular verb: lives."],
+[0,"The idiom 'bite the bullet' means:",["Eat quickly","Face difficulty bravely","Waste time","Avoid work"],1,"It means facing a painful or difficult situation courageously."],
+[0,"Choose the synonym of CANDID.",["Frank","Secretive","Dishonest","Reserved"],0,"Candid means frank and honest."],
+[0,"No sooner had he arrived ___ it started raining.",["when","then","than","while"],2,"The correct construction is no sooner...than."],
+[0,"The new rules will ___ every department.",["effect","affect","effects","affects"],1,"Affect is the verb meaning to influence."],
+[0,"Choose the antonym of AMBIGUOUS.",["Unclear","Doubtful","Definite","Confusing"],2,"Definite means clear and certain."],
+[0,"Despite ___ tired, she completed the assignment.",["be","being","been","was"],1,"Despite is followed by a noun or gerund."],
+[0,"Choose the correctly spelt word.",["Entrepreneur","Enterpreneur","Entreprenur","Entreprenuer"],0,"Entrepreneur is the correct spelling."],
+[0,"The proposal was rejected ___ it lacked evidence.",["because","although","unless","despite"],0,"Because introduces the reason."],
+[0,"Choose the synonym of EPHEMERAL.",["Permanent","Short-lived","Ancient","Endless"],1,"Ephemeral means lasting for a short time."],
+[0,"Select the passive voice: The clerk has verified the documents.",["The documents verified the clerk.","The documents have been verified by the clerk.","The documents had verified.","The clerk was verified."],1,"Present perfect passive uses have/has been + past participle."],
+[0,"He said, 'I am busy now.' Choose the correct reported speech.",["He said I am busy now.","He said that he was busy then.","He says he was busy now.","He said he is busy yesterday."],1,"Am changes to was, I to he, and now to then."],
+[0,"Choose the antonym of BENEVOLENT.",["Kind","Generous","Malevolent","Helpful"],2,"Malevolent means wishing harm."],
+[0,"The quality of these goods ___ improved.",["have","has","are","were"],1,"The subject quality is singular."],
+[0,"Choose the correct expression.",["Senior than me","Senior to me","Senior from me","More senior to than me"],1,"Senior is followed by to."],
+[0,"A blessing in disguise means:",["A hidden benefit","An obvious failure","A false promise","An expense"],0,"It is something that seems bad but proves beneficial."],
+[0,"Choose the correctly spelt word.",["Questionaire","Questionnaire","Questionnair","Questionnare"],1,"Questionnaire is the correct spelling."],
+[0,"The officer is capable ___ handling the situation.",["to","for","of","with"],2,"The correct phrase is capable of."],
+[0,"Choose the synonym of DILIGENT.",["Lazy","Hardworking","Careless","Indifferent"],1,"Diligent means hardworking and careful."],
+[0,"If I ___ enough time, I would learn another language.",["have","had","will have","am having"],1,"The second conditional uses if + past simple, would + verb."],
+
+/* QUANT 31-65 */
+[1,"35% of a number is 280. Find the number.",["700","750","800","850"],2,"Number = 280 × 100 / 35 = 800."],
+[1,"An article costing ₹1,500 is sold at a profit of 12%. Find the selling price.",["₹1,620","₹1,650","₹1,680","₹1,700"],2,"SP = 1500 × 1.12 = ₹1,680."],
+[1,"Find the simple interest on ₹9,000 at 8% per annum for 2 years.",["₹1,240","₹1,360","₹1,440","₹1,520"],2,"SI = 9000 × 8 × 2 / 100 = ₹1,440."],
+[1,"A can finish work in 12 days and B in 18 days. Together they finish in:",["6 days","7.2 days","8 days","9 days"],1,"Combined rate = 1/12 + 1/18 = 5/36; time = 36/5 = 7.2 days."],
+[1,"A train travelling at 72 km/h crosses a pole in 15 seconds. Find its length.",["250 m","270 m","300 m","320 m"],2,"72 km/h = 20 m/s; length = 20 × 15 = 300 m."],
+[1,"Find the average of 24, 36, 42, 48 and 50.",["38","40","42","44"],1,"Sum = 200; average = 200/5 = 40."],
+[1,"The ratio of A:B is 7:9. Their total is 640. Find B.",["280","320","360","400"],2,"B = 9/16 × 640 = 360."],
+[1,"A sum becomes ₹7,200 in 2 years at 10% simple interest. Find the principal.",["₹5,500","₹6,000","₹6,200","₹6,500"],1,"Amount = 1.2P; P = 7200/1.2 = ₹6,000."],
+[1,"Find compound interest on ₹4,000 at 10% for 2 years, annually compounded.",["₹800","₹820","₹840","₹880"],2,"Amount = 4000 × 1.1² = 4840; CI = ₹840."],
+[1,"A price rises from ₹800 to ₹920. Find the percentage increase.",["12%","15%","18%","20%"],1,"Increase = 120/800 × 100 = 15%."],
+[1,"Find the next term: 5, 11, 23, 47, 95, ?",["181","189","191","195"],2,"Each term is multiplied by 2 and 1 added; next = 191."],
+[1,"Solve: 4x − 9 = 39.",["10","11","12","13"],2,"4x = 48; x = 12."],
+[1,"A square has perimeter 88 cm. Find its area.",["400 cm²","441 cm²","484 cm²","529 cm²"],2,"Side = 22 cm; area = 22² = 484 cm²."],
+[1,"A boat's still-water speed is 14 km/h and stream speed is 4 km/h. Downstream speed?",["10","14","18","20 km/h"],2,"Downstream speed = 14 + 4 = 18 km/h."],
+[1,"10 workers finish a job in 24 days. How many days for 15 workers?",["12","14","16","18"],2,"Days = 10 × 24 / 15 = 16."],
+[1,"Find the HCF of 96 and 144.",["12","24","36","48"],3,"The greatest common divisor is 48."],
+[1,"Find the LCM of 15, 20 and 24.",["120","180","240","360"],2,"LCM = 2³ × 3 × 5 = 120. Correct option: 120."],
+[1,"Income is ₹40,000 and expenditure is 70% of income. Savings?",["₹10,000","₹12,000","₹14,000","₹16,000"],1,"Savings = 30% of 40,000 = ₹12,000."],
+[1,"Milk and water are in ratio 5:3 in a 64-litre mixture. Water quantity?",["20 L","24 L","32 L","40 L"],1,"Water = 3/8 × 64 = 24 litres."],
+[1,"Find the missing number: 4, 10, 18, 28, 40, ?",["50","52","54","56"],2,"Differences are 6, 8, 10, 12; next difference 14, so 54."],
+[1,"A invests ₹25,000 and B ₹35,000 for equal time. Profit is ₹24,000. B's share?",["₹10,000","₹12,000","₹14,000","₹16,000"],2,"Ratio 5:7; B gets 7/12 × 24,000 = ₹14,000."],
+[1,"A car covers 420 km in 7 hours. Distance in 4.5 hours at same speed?",["240 km","250 km","270 km","300 km"],2,"Speed = 60 km/h; distance = 60 × 4.5 = 270 km."],
+[1,"The average of 9 numbers is 32. If 41 is removed, what is the average of the remaining 8?",["30.5","30.875","31","31.5"],1,"Total = 288; new total = 247; average = 247/8 = 30.875."],
+[1,"If x:y = 3:4 and y:z = 8:11, find x:z.",["3:11","6:11","6:8","4:11"],1,"Make y equal: x:y = 6:8; y:z = 8:11. Thus 6:11."],
+[1,"Find √2304.",["42","46","48","52"],2,"48 × 48 = 2304."],
+[1,"Two successive discounts of 10% and 15% apply to ₹2,000. Final price?",["₹1,500","₹1,530","₹1,550","₹1,600"],1,"2000 × 0.9 × 0.85 = ₹1,530."],
+[1,"Boys:girls = 7:5. Total students = 96. Number of girls?",["35","40","45","56"],1,"Girls = 5/12 × 96 = 40."],
+[1,"A 200 m train runs at 54 km/h. Time to cross a 250 m platform?",["25 sec","30 sec","32 sec","35 sec"],1,"54 km/h = 15 m/s; total distance = 450 m; time = 30 sec."],
+[1,"If 18% of A equals 24% of B, find A:B.",["3:4","4:3","2:3","3:2"],1,"18A = 24B; A:B = 24:18 = 4:3."],
+[1,"A pipe fills a tank in 6 hours and a leak empties it in 9 hours. Time to fill with both open?",["12 h","15 h","18 h","24 h"],2,"Net rate = 1/6 − 1/9 = 1/18 tank per hour."],
+[1,"The perimeter of a rectangle is 70 cm and length is 20 cm. Find breadth.",["10 cm","12 cm","15 cm","18 cm"],0,"2(L+B)=70; L+B=35; breadth = 15 cm. Correct option: 15 cm."],
+[1,"A number is divided by 9 leaving remainder 5. What remainder does twice the number leave when divided by 9?",["1","2","5","7"],3,"2 × 5 = 10, which leaves remainder 1. Correct option: 1."],
+[1,"A seller gives 20% discount on a marked price of ₹2,500. Find selling price.",["₹1,800","₹2,000","₹2,100","₹2,200"],1,"SP = 80% of ₹2,500 = ₹2,000."],
+[1,"A sum doubles in 8 years at simple interest. Find annual rate.",["10%","12.5%","15%","16%"],1,"Interest equals principal in 8 years; rate = 100/8 = 12.5%."],
+[1,"If 3/7 of a number is 81, find 40% of the number.",["72","75.6","80","84"],1,"Number = 189; 40% = 75.6."],
+
+/* REASONING 66-100 */
+[2,"If CAT is coded as DBU, how is LION coded?",["MJPO","MJON","KHNM","MIPO"],0,"Each letter shifts one place forward: LION → MJPO."],
+[2,"Find the odd number.",["16","25","49","63"],3,"16, 25 and 49 are perfect squares; 63 is not."],
+[2,"A > B, B = C, and C > D. Which is definitely true?",["A<D","A>D","B<D","D>A"],1,"A > B = C > D, so A > D."],
+[2,"Ravi says: 'She is the daughter of my father's only daughter.' The woman is Ravi's:",["Mother","Sister","Niece","Daughter"],2,"Ravi's father's only daughter is Ravi's sister; her daughter is his niece."],
+[2,"Arrange logically: Interview, Application, Appointment, Written test, Advertisement.",["5,2,4,1,3","2,5,1,4,3","5,4,2,1,3","2,4,5,1,3"],0,"Advertisement → Application → Written test → Interview → Appointment."],
+[2,"Find the next letter: C, F, J, O, U, ?",["A","B","C","D"],1,"In alphabet positions, add 3,4,5,6, then 7; U+7 wraps to B."],
+[2,"Doctor : Hospital :: Teacher : ?",["School","Court","Farm","Bank"],0,"A doctor works in a hospital; a teacher works in a school."],
+[2,"A person walks 9 m north, 12 m east and 9 m south. Distance from start?",["9 m","12 m","15 m","30 m"],1,"North and south cancel; remaining displacement is 12 m east."],
+[2,"Meena is 14th from left and 17th from right. Total people?",["29","30","31","32"],1,"Total = 14 + 17 − 1 = 30."],
+[2,"All cups are utensils. Some utensils are steel. Conclusion: All cups are steel.",["Definitely follows","Does not necessarily follow","Both statements contradict","None"],1,"Some utensils being steel does not prove that all cups are steel."],
+[2,"Find next number: 2, 6, 12, 20, 30, ?",["36","40","42","48"],2,"Terms are 1×2, 2×3, 3×4, 4×5, 5×6; next 6×7 = 42."],
+[2,"P is brother of Q. Q is mother of R. P is R's:",["Father","Maternal uncle","Brother","Grandfather"],1,"The brother of one's mother is one's maternal uncle."],
+[2,"Which cannot be formed from the letters of BANKER?",["BANK","RANK","BREAK","BARK"],2,"BREAK needs two E's, but BANKER has only one E."],
+[2,"If today is Thursday, what day will it be 52 days later?",["Monday","Tuesday","Wednesday","Thursday"],1,"52 mod 7 = 3; Thursday plus 3 days is Sunday. Correct option should be Sunday."],
+[2,"Find the odd pair.",["2–8","3–27","4–64","5–100"],3,"The first three are n and n³. 5³ = 125, not 100."],
+[2,"If every letter moves one step forward, how is PINK coded?",["QJOL","QJML","OJML","QHML"],0,"P→Q, I→J, N→O, K→L."],
+[2,"A is taller than B. C is taller than A. D is shorter than B. Who is tallest?",["A","B","C","D"],2,"The order is C > A > B > D."],
+[2,"Find next term: 121, 144, 169, 196, ?",["210","216","225","256"],2,"These are 11², 12², 13², 14²; next is 15² = 225."],
+[2,"Some pens are pencils. All pencils are boxes. Conclusion: Some pens are boxes.",["Follows","Does not follow","Contradicts","Cannot be assessed"],0,"The pens that are pencils must also be boxes."],
+[2,"Arrange alphabetically: BANKING. Which letter is fourth?",["G","I","K","N"],1,"Alphabetical order is A, B, G, I, K, N, N; fourth is I."],
+[2,"X is father of Y. Z is wife of X. Z is Y's:",["Sister","Mother","Aunt","Daughter"],1,"Z is the wife of Y's father, hence Y's mother."],
+[2,"D, A, B, C and E sit in a row in that order. Who is in the middle?",["A","B","C","D"],1,"B is third in the five-person row."],
+[2,"Find the next pair: AZ, BY, CX, DW, ?",["EV","FU","EW","FV"],0,"First letters move forward and second letters backward: EV."],
+[2,"If 1 January is Monday in a non-leap year, what day is 1 February?",["Tuesday","Wednesday","Thursday","Friday"],2,"January has 31 days; 31 mod 7 = 3. Monday + 3 = Thursday."],
+[2,"Which is different?",["64","81","100","143"],3,"64, 81 and 100 are perfect squares; 143 is not."],
+[2,"A is fifth to the left of B. B is 14th from the left. A is:",["8th","9th","10th","11th"],1,"14 − 5 = 9th from the left."],
+[2,"If '+' means multiplication and '−' means addition, evaluate 6 + 4 − 3.",["24","27","30","21"],1,"Replace symbols: 6 × 4 + 3 = 27."],
+[2,"Find the next term: ACE, BDF, CEG, ?",["DFH","DEH","DFI","EFG"],0,"Each corresponding letter advances by one; next is DFH."],
+[2,"All cars are vehicles. No vehicle is a tree. Conclusion: No car is a tree.",["Follows","Does not follow","Contradicts","Cannot say"],0,"Cars belong to vehicles, and vehicles cannot be trees."],
+[2,"A man faces west, turns 90° clockwise, then 180° anticlockwise. He faces:",["North","South","East","West"],1,"West → North → South."],
+[2,"Find the next number: 3, 8, 15, 24, 35, ?",["42","46","48","50"],2,"Differences are 5,7,9,11, then 13; next = 48."],
+[2,"Each letter shifts two places forward. FARM becomes:",["HCTO","HCTP","GBSN","HDTO"],0,"F→H, A→C, R→T, M→O."],
+[2,"Six people sit in a circle facing the centre. A is opposite D; B is immediately clockwise of A. Who is immediately anticlockwise of A?",["B","C","E","Cannot be determined"],3,"The remaining positions are not specified, so the answer cannot be determined."],
+[2,"Find the odd month.",["January","March","May","June"],3,"January, March and May have 31 days; June has 30."],
+[2,"If the letters of CREDIT are reversed, which letter is third from the left?",["I","D","E","R"],2,"Reversed word is TIDERC; the third letter is D. Correct option: D."]
+];
+
+let state={answers:Array(100).fill(null),review:Array(100).fill(false),section:0,local:0,remaining:[1200,1200,1200],paused:false,submitted:false};
+let timerId=null;
+const key="aimers_ibps_po_prelims_test4_complete";
+
+function save(){try{localStorage.setItem(key,JSON.stringify(state))}catch(e){}}
+function load(){try{let x=JSON.parse(localStorage.getItem(key));if(x&&x.answers?.length===100){state={...state,...x,paused:true}}}catch(e){}}
+function idx(){return starts[state.section]+state.local}
+function goSection(s){if(state.paused||state.submitted)return;state.section=s;state.local=0;save();render()}
+function render(){
+if(state.submitted)return;
+let i=idx(),q=questions[i];
+document.getElementById("qnumber").textContent="Question "+(i+1);
+document.getElementById("sectionName").textContent=sections[state.section];
+document.getElementById("sideSection").textContent=sections[state.section];
+document.getElementById("question").textContent=q[1];
+document.querySelectorAll(".tab").forEach((b,j)=>b.classList.toggle("active",j===state.section));
+let opts=document.getElementById("options");opts.innerHTML="";
+q[2].forEach((v,j)=>{
+let label=document.createElement("label");label.className="option"+(state.answers[i]===j?" selected":"");
+let input=document.createElement("input");input.type="radio";input.name="answer";input.checked=state.answers[i]===j;
+input.onchange=()=>{state.answers[i]=j;save();render()};
+label.append(input,document.createTextNode(String.fromCharCode(65+j)+". "+v));opts.append(label)
+});
+let p=document.getElementById("palette");p.innerHTML="";
+for(let n=starts[state.section];n<ends[state.section];n++){
+let b=document.createElement("button");b.textContent=n+1;b.className="num";
+if(state.answers[n]!==null)b.classList.add("answered");
+if(state.review[n])b.classList.add(state.answers[n]!==null?"both":"reviewing");
+if(n===i)b.classList.add("current");
+b.onclick=()=>{if(state.paused)return;state.local=n-starts[state.section];save();render()};
+p.append(b)
+}
+let count=state.answers.slice(starts[state.section],ends[state.section]).filter(x=>x!==null).length;
+document.getElementById("progressText").textContent=count+" of "+(ends[state.section]-starts[state.section])+" answered";
+document.getElementById("bar").style.width=count/(ends[state.section]-starts[state.section])*100+"%";
+updateTimer()
+}
+function previousQ(){
+if(state.paused)return;
+if(state.local>0)state.local--;
+else if(state.section>0){state.section--;state.local=ends[state.section]-starts[state.section]-1}
+save();render()
+}
+function nextQ(){
+if(state.paused)return;
+if(idx()<ends[state.section]-1)state.local++;
+else if(state.section<2){state.section++;state.local=0}
+else{alert("You are on the last question. Submit when ready.");return}
+save();render()
+}
+function markReview(){if(state.paused)return;state.review[idx()]=!state.review[idx()];save();render()}
+function clearAnswer(){if(state.paused)return;state.answers[idx()]=null;save();render()}
+function updateTimer(){
+let t=state.remaining[state.section];document.getElementById("timer").textContent=String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0")
+}
+function startTimer(){
+if(timerId||state.paused||state.submitted)return;
+timerId=setInterval(()=>{
+if(state.paused||state.submitted)return;
+state.remaining[state.section]--;
+if(state.remaining[state.section]<=0){
+state.remaining[state.section]=0;clearInterval(timerId);timerId=null;save();
+if(state.section<2){alert(sections[state.section]+" time is over. Moving to next section.");state.section++;state.local=0;save();render();startTimer()}
+else submitExam(true);
+return
+}
+updateTimer();save()
+},1000)
+}
+function pauseExam(){
+if(state.submitted)return;
+state.paused=!state.paused;
+document.getElementById("exam").classList.toggle("hidden",state.paused);
+document.getElementById("paused").classList.toggle("hidden",!state.paused);
+document.getElementById("pauseBtn").textContent=state.paused?"Resume Exam":"Ⅱ Pause Exam";
+if(state.paused){clearInterval(timerId);timerId=null}else startTimer();
+save()
+}
+function submitExam(auto=false){
+if(state.submitted)return;
+if(!auto&&!confirm("Submit the test? Unanswered: "+state.answers.filter(x=>x===null).length))return;
+state.submitted=true;state.paused=false;clearInterval(timerId);timerId=null;save();
+let c=0,w=0,u=0;
+questions.forEach((q,i)=>{if(state.answers[i]===null)u++;else if(state.answers[i]===q[3])c++;else w++});
+let score=c-w*.25;
+document.getElementById("score").textContent=score.toFixed(2)+"/100";
+document.getElementById("correct").textContent=c;
+document.getElementById("wrong").textContent=w;
+document.getElementById("unattempted").textContent=u;
+document.getElementById("percentage").textContent="Net score: "+score.toFixed(2)+"%";
+document.getElementById("message").textContent="Test submitted. "+(auto?"Time limit reached. ":"")+"Correct +1, wrong −0.25, unattempted 0.";
+document.getElementById("exam").classList.add("hidden");
+document.getElementById("paused").classList.add("hidden");
+document.getElementById("result").style.display="block";window.scrollTo(0,0)
+}
+function showSolutions(){
+let box=document.getElementById("solutions");box.classList.remove("hidden");box.innerHTML="<h3 style='margin:20px 0'>All Answers and Explanations</h3>";
+questions.forEach((q,i)=>{
+let d=document.createElement("div");d.className="solution";
+let title=document.createElement("h4");title.textContent="Q"+(i+1)+" — "+sections[q[0]];
+let qt=document.createElement("p");qt.textContent=q[1];qt.style.margin="8px 0";
+let yours=document.createElement("p");yours.textContent="Your answer: "+(state.answers[i]===null?"Not attempted":String.fromCharCode(65+state.answers[i])+". "+q[2][state.answers[i]]);
+yours.className=state.answers[i]===q[3]?"good": "bad";
+let ans=document.createElement("p");ans.className="good";ans.textContent="Correct answer: "+String.fromCharCode(65+q[3])+". "+q[2][q[3]];
+let exp=document.createElement("p");exp.textContent="Explanation: "+q[4];exp.style.marginTop="7px";
+d.append(title,qt,yours,ans,exp);box.append(d)
+});
+box.scrollIntoView({behavior:"smooth"})
+}
+function restart(){if(confirm("Erase saved responses and restart Test 4?")){localStorage.removeItem(key);location.reload()}}
+load();
+if(state.submitted){
+document.getElementById("exam").classList.add("hidden");
+document.getElementById("result").style.display="block";
+let c=0,w=0,u=0;
+questions.forEach((q,i)=>{if(state.answers[i]===null)u++;else if(state.answers[i]===q[3])c++;else w++});
+let sc=c-w*.25;
+document.getElementById("score").textContent=sc.toFixed(2)+"/100";
+document.getElementById("correct").textContent=c;
+document.getElementById("wrong").textContent=w;
+document.getElementById("unattempted").textContent=u;
+document.getElementById("percentage").textContent="Net score: "+sc.toFixed(2)+"%";
+document.getElementById("message").textContent="Test already submitted.";
+}else{
+render();
+if(state.paused){
+document.getElementById("exam").classList.add("hidden");
+document.getElementById("paused").classList.remove("hidden");
+document.getElementById("pauseBtn").textContent="Resume Exam";
+}else startTimer()
+}
+</script>
+</body>
+</html>
