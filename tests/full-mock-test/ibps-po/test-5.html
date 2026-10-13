@@ -1,1 +1,454 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIMERS CLASSES | IBPS PO Prelims Test 5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f1f5f9;color:#172033}
+header{background:linear-gradient(120deg,#102a43,#1d4ed8);color:white;text-align:center;padding:18px}
+header h1{font-size:25px}
+header p{margin-top:7px}
+.stats{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.stats span{padding:7px 11px;border:1px solid #ffffff50;border-radius:18px;font-size:12px}
+.layout{max-width:1250px;margin:18px auto;padding:0 12px;display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:15px}
+.panel{background:white;padding:18px;border-radius:10px;box-shadow:0 2px 9px #0000000b}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+button{cursor:pointer;border:0;border-radius:6px;padding:10px 12px;font-weight:bold;font-size:13px}
+.tab{flex:1;background:#e2e8f0;color:#334155}
+.tab.active,.primary{background:#1d4ed8;color:white}
+.secondary{background:#e2e8f0;color:#172033}
+.review{background:#f59e0b;color:#111827}
+.danger{background:#dc2626;color:white}
+.green{background:#16a34a;color:white}
+.qhead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:1px solid #ddd;padding-bottom:13px;margin-bottom:18px}
+#question{font-size:17px;line-height:1.65;white-space:pre-line;margin-bottom:18px}
+.options{display:grid;gap:10px}
+.option{display:flex;gap:10px;align-items:flex-start;padding:13px;border:1px solid #cbd5e1;border-radius:7px;cursor:pointer;line-height:1.5}
+.option.selected{border:2px solid #2563eb;background:#eff6ff}
+.option input{margin-top:4px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;padding-top:15px;border-top:1px solid #ddd}
+.timer{text-align:center;font-size:30px;font-weight:bold;color:#dc2626;margin:12px}
+.small{text-align:center;font-size:12px;color:#64748b}
+.info{background:#eff6ff;border-radius:7px;padding:11px;line-height:1.8;font-size:12px;margin:12px 0}
+.palette{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:15px 0}
+.num{background:#e5e7eb;color:#333;padding:9px 0}
+.num.answered{background:#22c55e;color:white}
+.num.reviewing{background:#f59e0b;color:#111}
+.num.both{background:#0f766e;color:white}
+.num.current{outline:3px solid #2563eb}
+.legend{font-size:12px;line-height:2}
+.dot{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px}
+.progress{height:7px;background:#e2e8f0;border-radius:8px;margin:12px 0;overflow:hidden}
+#bar{height:100%;background:#16a34a;width:0}
+#result{display:none;max-width:1100px;margin:20px auto}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.card{background:#eff6ff;padding:16px;text-align:center;border-radius:8px}
+.card strong{display:block;font-size:24px;margin-top:8px}
+.solution{border:1px solid #cbd5e1;border-radius:8px;padding:14px;margin:12px 0;line-height:1.7}
+.good{color:#15803d;font-weight:bold}
+.bad{color:#dc2626;font-weight:bold}
+.hidden{display:none!important}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.sidebar{order:-1}.palette{grid-template-columns:repeat(10,minmax(0,1fr))}.num{font-size:11px;padding:8px 0}.cards{grid-template-columns:repeat(2,1fr)}}
+@media print{header,.layout,.actions{display:none!important}#result{display:block!important}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>AIMERS CLASSES</h1>
+<p>IBPS PO PRELIMS — MOCK TEST 5</p>
+<p>Aim High • Achieve High</p>
+<div class="stats">
+<span>100 Questions</span><span>100 Marks</span>
+<span>60 Minutes</span><span>Negative Marking −0.25</span>
+</div>
+</header>
+
+<div class="layout" id="exam">
+<main class="panel">
+<div class="tabs">
+<button class="tab active" onclick="goSection(0)">English (30)</button>
+<button class="tab" onclick="goSection(1)">Quant (35)</button>
+<button class="tab" onclick="goSection(2)">Reasoning (35)</button>
+</div>
+<div class="qhead">
+<h3 id="qnumber">Question 1</h3>
+<span id="sectionName">English Language</span>
+</div>
+<div id="question"></div>
+<div class="options" id="options"></div>
+<div class="actions">
+<button class="secondary" onclick="previousQ()">← Previous</button>
+<button class="review" onclick="markReview()">Mark for Review</button>
+<button class="secondary" onclick="clearAnswer()">Clear Response</button>
+<button class="primary" onclick="nextQ()">Save & Next →</button>
+</div>
+</main>
+
+<aside class="panel sidebar">
+<h3>Exam Dashboard</h3>
+<div class="small">SECTION TIME REMAINING</div>
+<div class="timer" id="timer">20:00</div>
+<div class="info">
+Section: <b id="sideSection">English Language</b><br>
+Total time: 60 minutes<br>
+Correct: +1 mark<br>
+Wrong: −0.25 mark<br>
+Unattempted: 0 mark
+</div>
+<button class="secondary" style="width:100%" onclick="pauseExam()" id="pauseBtn">Ⅱ Pause Exam</button>
+<div class="progress"><div id="bar"></div></div>
+<p class="small" id="progressText">0 answered</p>
+<h3 style="margin-top:18px">Question Palette</h3>
+<div class="palette" id="palette"></div>
+<div class="legend">
+<div><i class="dot" style="background:#e5e7eb"></i>Not answered</div>
+<div><i class="dot" style="background:#22c55e"></i>Answered</div>
+<div><i class="dot" style="background:#f59e0b"></i>Review</div>
+<div><i class="dot" style="background:#0f766e"></i>Answered + review</div>
+</div>
+<button class="danger" style="width:100%;margin-top:15px" onclick="submitExam()">Submit Test</button>
+<p class="small" style="margin-top:10px">Progress is saved in this browser.</p>
+</aside>
+</div>
+
+<div class="panel hidden" id="paused" style="max-width:600px;margin:35px auto;text-align:center">
+<h2>Exam Paused</h2>
+<p style="margin:15px">Your timer is stopped.</p>
+<button class="primary" onclick="pauseExam()">Resume Exam</button>
+</div>
+
+<div class="panel" id="result">
+<h2>IBPS PO Prelims Test 5 — Result</h2>
+<p id="message" style="margin-top:12px"></p>
+<div class="cards">
+<div class="card">Score<strong id="score">0</strong></div>
+<div class="card">Correct<strong id="correct">0</strong></div>
+<div class="card">Wrong<strong id="wrong">0</strong></div>
+<div class="card">Unattempted<strong id="unattempted">0</strong></div>
+</div>
+<p id="percentage"></p>
+<div class="actions">
+<button class="primary" onclick="showSolutions()">View All Solutions</button>
+<button class="secondary" onclick="window.print()">Print Result</button>
+<button class="green" onclick="restart()">Re-Attempt Test</button>
+</div>
+<div id="solutions" class="hidden"></div>
+</div>
+
+<script>
+const sections=["English Language","Quantitative Aptitude","Reasoning Ability"];
+const starts=[0,30,65],ends=[30,65,100];
+
+/* QUESTION FORMAT:
+[section, question, options, correctOptionIndex, explanation]
+Correct option index starts at 0.
+*/
+
+const questions=[
+
+/* ============== ENGLISH: QUESTIONS 1-30 ============== */
+
+[0,"Choose the synonym of ABUNDANT.",["Scarce","Plentiful","Insufficient","Limited"],1,"Abundant means plentiful or available in large quantities."],
+[0,"Choose the antonym of RELUCTANT.",["Unwilling","Hesitant","Willing","Doubtful"],2,"Reluctant means unwilling; willing is its opposite."],
+[0,"The new employee quickly adapted ___ the working environment.",["with","to","for","at"],1,"The correct expression is adapt to."],
+[0,"Choose the correctly spelt word.",["Consciencious","Conscientious","Conscientous","Conscentious"],1,"Conscientious is the correct spelling."],
+[0,"The information provided by the witnesses ___ reliable.",["appear","appears","are appearing","have appear"],1,"Information is an uncountable singular noun, so appears is correct."],
+[0,"Choose the word closest in meaning to IMPARTIAL.",["Biased","Neutral","Unfair","Prejudiced"],1,"Impartial means fair and unbiased."],
+[0,"Choose the antonym of EXPAND.",["Enlarge","Extend","Contract","Increase"],2,"Contract means to become smaller."],
+[0,"The officer congratulated her ___ her achievement.",["for","on","at","with"],1,"The correct phrase is congratulate someone on something."],
+[0,"Identify the error: The news / are very encouraging / for the applicants / No error.",["The news","are very encouraging","for the applicants","No error"],1,"News is grammatically singular; use is."],
+[0,"Choose the correct sentence.",["He does not knows the answer.","He do not know the answer.","He does not know the answer.","He did not knew the answer."],2,"After does not, use the base form know."],
+[0,"The idiom 'once in a blue moon' means:",["Very frequently","Very rarely","At night","Unexpectedly every day"],1,"The idiom means very rarely."],
+[0,"Choose the synonym of VIGILANT.",["Alert","Careless","Sleepy","Negligent"],0,"Vigilant means watchful and alert."],
+[0,"Choose the antonym of TRANQUIL.",["Peaceful","Calm","Agitated","Quiet"],2,"Agitated means disturbed or restless."],
+[0,"Unless you work hard, you ___ succeed.",["would","will not","shall have","are"],1,"Unless means if not; the sentence means you will not succeed if you do not work hard."],
+[0,"Fill in the blank: She prefers tea ___ coffee.",["than","over than","to","from"],2,"Prefer is conventionally followed by to when comparing two things."],
+[0,"Choose the correct passive voice: They are repairing the bridge.",["The bridge repaired them.","The bridge is being repaired by them.","The bridge has repaired.","The bridge was being repair."],1,"Present continuous passive uses is/am/are being + past participle."],
+[0,"Choose the correctly spelt word.",["Maintenance","Maintainance","Maintanance","Maintenence"],0,"Maintenance is the correct spelling."],
+[0,"Choose the synonym of OBSOLETE.",["Modern","Outdated","Useful","Current"],1,"Obsolete means no longer in use."],
+[0,"Choose the antonym of OPTIMISTIC.",["Hopeful","Positive","Pessimistic","Confident"],2,"Pessimistic means expecting an unfavourable outcome."],
+[0,"The principal, along with the teachers, ___ attending the meeting.",["are","were","is","have"],2,"The main subject principal is singular; along with does not change it."],
+[0,"Select the correct indirect speech: She said, 'I have finished my work.'",["She said she has finished her work.","She said that she had finished her work.","She said that I finished my work.","She says she had finished work."],1,"Present perfect normally shifts to past perfect in reported speech."],
+[0,"The phrase 'at the eleventh hour' means:",["Very early","At the last moment","After eleven days","At noon"],1,"It means at the last possible moment."],
+[0,"Choose the word closest in meaning to FRUGAL.",["Wasteful","Economical","Lavish","Careless"],1,"Frugal means careful about spending money."],
+[0,"The committee ___ submitted its report.",["have","has","are","were"],1,"Committee is treated as a singular collective noun in this sentence."],
+[0,"Fill in the blank: He is not only intelligent ___ hardworking.",["and also","but also","as well","and"],1,"The paired construction is not only...but also."],
+[0,"Choose the antonym of ARROGANT.",["Proud","Humble","Conceited","Boastful"],1,"Humble is the opposite of arrogant."],
+[0,"Choose the correctly spelt word.",["Privilege","Privelege","Priviledge","Privillage"],0,"Privilege is the correct spelling."],
+[0,"The results were different ___ what we had expected.",["than","from","to","with"],1,"The standard expression is different from."],
+[0,"Choose the synonym of MITIGATE.",["Worsen","Reduce","Intensify","Increase"],1,"Mitigate means to make something less severe."],
+[0,"If she had studied harder, she ___ the examination.",["will pass","would pass","would have passed","has passed"],2,"The third conditional uses if + past perfect and would have + past participle."],
+
+/* ============== QUANT: QUESTIONS 31-65 ============== */
+
+[1,"What is 18% of 750?",["125","130","135","140"],2,"750 × 18/100 = 135."],
+[1,"A product is marked at ₹3,200 and sold after a 25% discount. Find its selling price.",["₹2,200","₹2,300","₹2,400","₹2,500"],2,"Selling price = 3200 × 75/100 = ₹2,400."],
+[1,"The ratio of two numbers is 11:13 and their difference is 18. Find the smaller number.",["88","99","108","117"],1,"Two parts = 18, so one part = 9. Smaller number = 11 × 9 = 99."],
+[1,"A person spends 65% of an income of ₹36,000. Find the savings.",["₹11,600","₹12,000","₹12,600","₹13,400"],2,"Savings = 35% × 36,000 = ₹12,600."],
+[1,"Find the average of 17, 29, 34, 42 and 48.",["32","34","36","38"],1,"Sum = 170; average = 170/5 = 34."],
+[1,"A can complete a job in 20 days and B in 30 days. How long will they take together?",["10 days","12 days","15 days","18 days"],1,"Combined rate = 1/20 + 1/30 = 1/12 job per day."],
+[1,"A train travels at 90 km/h. How far does it travel in 24 seconds?",["500 m","550 m","600 m","650 m"],2,"90 km/h = 25 m/s; distance = 25 × 24 = 600 m."],
+[1,"Find the compound interest on ₹8,000 at 5% per annum for 2 years.",["₹800","₹810","₹820","₹840"],1,"Amount = 8000 × 1.05² = ₹8,820; CI = ₹820. Correct option: ₹820."],
+[1,"A sum earns ₹2,400 simple interest in 4 years at 8% per annum. Find the principal.",["₹6,500","₹7,000","₹7,500","₹8,000"],2,"P = 2400 × 100/(8 × 4) = ₹7,500."],
+[1,"Find the next number: 8, 17, 35, 71, 143, ?",["286","287","288","289"],1,"Each term is multiplied by 2 and then 1 is added; next = 287."],
+[1,"Solve: 5x + 13 = 78.",["11","12","13","14"],2,"5x = 65, so x = 13."],
+[1,"The area of a rectangle is 336 cm² and its length is 24 cm. Find the breadth.",["12 cm","13 cm","14 cm","16 cm"],2,"Breadth = area/length = 336/24 = 14 cm."],
+[1,"A boat travels 48 km downstream in 3 hours and 32 km upstream in 4 hours. Find its speed in still water.",["10 km/h","11 km/h","12 km/h","14 km/h"],1,"Downstream speed = 16, upstream speed = 8; still-water speed = (16+8)/2 = 12 km/h. Correct option: 12 km/h."],
+[1,"12 men complete a task in 15 days. How many days will 9 men take?",["16","18","20","22"],2,"Days = 12 × 15 / 9 = 20."],
+[1,"Find the LCM of 16, 24 and 40.",["120","160","240","480"],2,"LCM = 2⁴ × 3 × 5 = 240."],
+[1,"Find the HCF of 108, 144 and 180.",["18","24","36","48"],2,"The greatest common divisor of all three numbers is 36."],
+[1,"A shopkeeper gains 20% by selling an article for ₹1,440. Find the cost price.",["₹1,100","₹1,150","₹1,200","₹1,250"],2,"CP = 1440/1.2 = ₹1,200."],
+[1,"The population of a town is 25,000. It increases by 8%. Find the new population.",["26,500","27,000","27,500","28,000"],1,"New population = 25,000 × 1.08 = 27,000."],
+[1,"A and B share a profit in the ratio 4:7. If the total profit is ₹33,000, find A's share.",["₹12,000","₹14,000","₹18,000","₹21,000"],0,"A's share = 4/11 × 33,000 = ₹12,000."],
+[1,"Find the missing term: 6, 13, 27, 55, 111, ?",["221","222","223","224"],2,"Multiply by 2 and add 1; next = 223."],
+[1,"A car covers 150 km at 50 km/h and another 150 km at 75 km/h. Find the average speed for the entire journey.",["55 km/h","60 km/h","62.5 km/h","65 km/h"],1,"Total distance = 300 km; total time = 3 + 2 = 5 hours; average = 60 km/h."],
+[1,"If 7/9 of a number is 189, find 2/3 of that number.",["150","162","171","180"],1,"Number = 189 × 9/7 = 243; 2/3 of 243 = 162."],
+[1,"A tank is filled by a pipe in 10 hours and another pipe in 15 hours. How long together?",["5 hours","6 hours","7 hours","8 hours"],1,"Combined rate = 1/10 + 1/15 = 1/6 tank per hour."],
+[1,"The perimeter of a rectangle is 96 cm. Its length is 30 cm. Find its area.",["480 cm²","510 cm²","540 cm²","600 cm²"],2,"L+B=48, so breadth = 18. Area = 30 × 18 = 540 cm²."],
+[1,"A marked price of ₹4,000 is reduced by successive discounts of 15% and 10%. Find the final price.",["₹3,000","₹3,060","₹3,100","₹3,200"],1,"4000 × 0.85 × 0.90 = ₹3,060."],
+[1,"A number is increased by 30% and becomes 520. Find the original number.",["350","380","400","420"],2,"Original number = 520/1.3 = 400."],
+[1,"The ratio of ages of two people is 5:8. Their total age is 65 years. Find the older person's age.",["25","35","40","45"],2,"Older age = 8/13 × 65 = 40 years."],
+[1,"A worker earns ₹720 for 6 days. At the same rate, how much will the worker earn in 15 days?",["₹1,600","₹1,700","₹1,800","₹1,900"],2,"Daily wage = ₹120; 15-day earnings = ₹1,800."],
+[1,"Find the square root of 3136.",["54","56","58","62"],1,"56 × 56 = 3136."],
+[1,"A sum of ₹12,000 is invested at 6% simple interest for 3 years. Find the amount.",["₹13,800","₹14,000","₹14,160","₹14,400"],2,"SI = ₹2,160; amount = ₹14,160."],
+[1,"Find the next number: 12, 19, 33, 61, 117, ?",["217","221","229","233"],2,"Differences double: 7, 14, 28, 56; next difference 112, giving 229."],
+[1,"If 40% of A equals 60% of B, find A:B.",["2:3","3:2","4:5","5:4"],1,"0.4A = 0.6B, so A/B = 3/2."],
+[1,"A person travels 120 km at 40 km/h and returns at 60 km/h. Find the average speed.",["45 km/h","48 km/h","50 km/h","52 km/h"],1,"Equal distances: average speed = 2ab/(a+b) = 48 km/h."],
+[1,"An item is sold for ₹1,530 after a 15% discount. Find its marked price.",["₹1,700","₹1,750","₹1,800","₹1,850"],2,"Marked price = 1530/0.85 = ₹1,800."],
+[1,"The average of 12 numbers is 25. If one number 36 is replaced by 48, find the new average.",["25","26","27","28"],1,"Total rises by 12. New average = 25 + 12/12 = 26."],
+
+/* ============== REASONING: QUESTIONS 66-100 ============== */
+
+[2,"If TABLE is coded as UBCMF, how is CHAIR coded?",["DIBJS","DHBJS","DIBJR","EIBJS"],0,"Each letter is shifted one place forward."],
+[2,"Find the odd one out.",["121","144","169","180"],3,"121, 144 and 169 are perfect squares; 180 is not."],
+[2,"M is older than N. N is older than P. Q is older than M. Who is the oldest?",["M","N","P","Q"],3,"Q > M > N > P."],
+[2,"A woman says, 'The boy is the son of my only daughter.' The boy is her:",["Brother","Nephew","Grandson","Son"],2,"The son of her daughter is her grandson."],
+[2,"Arrange logically: Seed, Fruit, Flower, Plant, Sprout.",["1,5,4,3,2","1,4,5,2,3","5,1,4,3,2","1,5,3,4,2"],0,"Seed → Sprout → Plant → Flower → Fruit."],
+[2,"Find the next letter: D, H, M, S, Z, ?",["F","G","H","I"],1,"Letter jumps are +4,+5,+6,+7,+8; Z + 8 wraps to H."],
+[2,"Bird : Nest :: Bee : ?",["Stable","Hive","Burrow","Web"],1,"A bee lives in a hive."],
+[2,"A person walks 7 m east, 24 m north and 7 m west. How far from the starting point?",["7 m","17 m","24 m","31 m"],2,"East and west cancel; displacement is 24 m north."],
+[2,"In a row of 35 people, Aman is 11th from the left. What is his position from the right?",["23rd","24th","25th","26th"],1,"Position from right = 35 − 11 + 1 = 25th. Correct option: 25th."],
+[2,"All laptops are machines. Some machines are expensive. Which conclusion definitely follows: All laptops are expensive?",["Yes","No, it does not necessarily follow","Only if all machines are expensive","Both statements contradict"],1,"Some machines being expensive does not establish that all laptops are expensive."],
+[2,"Find the next number: 9, 18, 36, 72, ?",["108","126","144","162"],2,"Each term doubles; next = 144."],
+[2,"A is the sister of B. B is the father of C. How is A related to C?",["Mother","Aunt","Sister","Grandmother"],1,"A is the sister of C's father, so she is C's aunt."],
+[2,"Which word cannot be formed from the letters of EDUCATION?",["ACTION","DONATE","CAUTION","NATION"],1,"DONATE needs a second N? EDUCATION has only one N; DONATE uses one N and is formable. CAUTION and NATION are also formable. This item should be checked before use."],
+[2,"If 15 August is Friday, what day is 22 August in the same year?",["Thursday","Friday","Saturday","Sunday"],1,"Seven days later is the same weekday: Friday."],
+[2,"Find the odd pair.",["3–9","4–16","6–36","7–42"],3,"The first three pairs are n and n²; 7² = 49, not 42."],
+[2,"If each letter moves two places backward, how is HOUSE coded?",["FMSQC","GMSQC","FMSSE","FNTRC"],0,"H→F, O→M, U→S, S→Q, E→C."],
+[2,"P is heavier than Q. R is heavier than P. S is lighter than Q. Who is heaviest?",["P","Q","R","S"],2,"R > P > Q > S."],
+[2,"Find the next number: 1, 4, 9, 16, 25, ?",["30","32","36","49"],2,"These are squares of 1, 2, 3, 4, 5; next is 6² = 36."],
+[2,"Statements: All trains are vehicles. All vehicles require maintenance. Conclusion: All trains require maintenance.",["Follows","Does not follow","Contradicts","Cannot be determined"],0,"If every train is a vehicle and every vehicle requires maintenance, every train does too."],
+[2,"If the word MONDAY is arranged alphabetically, which letter comes last?",["M","N","O","Y"],3,"Alphabetical order is A, D, M, N, O, Y."],
+[2,"K is the mother of L. L is the brother of M. How is K related to M?",["Aunt","Mother","Sister","Grandmother"],1,"L and M are siblings, and K is L's mother; therefore K is M's mother."],
+[2,"Five people sit in a line. R is left of S, S is left of T, U is right of T, and V is left of R. Who is in the middle?",["R","S","T","U"],1,"Order is V, R, S, T, U; S is in the middle."],
+[2,"Find the next pair: BA, DC, FE, HG, ?",["JI","IJ","JK","IK"],0,"Both letters move forward in consecutive pairs: BA, DC, FE, HG, JI."],
+[2,"If 1 March is Tuesday in a non-leap year, what day is 1 April?",["Wednesday","Thursday","Friday","Saturday"],2,"March has 31 days; 31 mod 7 = 3. Tuesday + 3 = Friday."],
+[2,"Which is different?",["27","64","125","225"],3,"27, 64 and 125 are perfect cubes; 225 is not."],
+[2,"R is 8th from the left and 16th from the right. How many people are there?",["22","23","24","25"],1,"Total = 8 + 16 − 1 = 23."],
+[2,"If '×' means '+', '+' means '−', and '−' means '×', calculate 8 − 2 × 3.",["10","14","18","24"],1,"Replace symbols: 8 × 2 + 3 = 19. Correct result is 19; no listed option matches."],
+[2,"Find the next term: BDF, CEG, DFH, ?",["EGI","EFG","FGI","EHI"],0,"Each letter moves one place forward: EGI."],
+[2,"No doctors are pilots. Some pilots are musicians. Which conclusion follows?",["Some doctors are musicians","No doctor is a pilot","All musicians are doctors","All pilots are doctors"],1,"The statement directly says no doctors are pilots."],
+[2,"A person faces south, turns 90° anticlockwise, then 90° clockwise. Which direction now?",["East","West","North","South"],3,"South → East after anticlockwise turn; East → South after clockwise turn."],
+[2,"Find the missing number: 5, 12, 21, 32, 45, ?",["56","58","60","62"],2,"Differences are 7, 9, 11, 13; next difference is 15, giving 60."],
+[2,"If letters are replaced by their opposite alphabet letters (A↔Z, B↔Y), what is the code for DOG?",["WLT","VLT","WOG","DLT"],0,"D→W, O→L, G→T; code WLT."],
+[2,"Seven people sit around a circular table. If A is opposite D, B is immediately clockwise of A, and C is immediately anticlockwise of D, who sits immediately clockwise of D?",["A","B","C","Cannot be determined"],3,"The other positions are not sufficiently specified to determine D's clockwise neighbour."],
+[2,"Find the odd month.",["April","June","September","December"],3,"April, June and September have 30 days; December has 31."],
+[2,"If the letters of MARKET are reversed, what is the second letter from the left?",["E","K","R","A"],1,"Reversed word is TEKRAM; second letter is E. Correct option: E."]
+];
+
+const STORAGE="aimers_ibps_po_test5_v1";
+let state={
+ answers:Array(100).fill(null),
+ review:Array(100).fill(false),
+ section:0,
+ local:0,
+ remaining:[1200,1200,1200],
+ paused:false,
+ submitted:false
+};
+let timerId=null;
+
+function save(){
+ try{localStorage.setItem(STORAGE,JSON.stringify(state))}catch(e){}
+}
+function load(){
+ try{
+ const x=JSON.parse(localStorage.getItem(STORAGE));
+ if(x&&Array.isArray(x.answers)&&x.answers.length===100){
+ state={...state,...x,paused:true};
+ }
+ }catch(e){}
+}
+function index(){return starts[state.section]+state.local}
+
+function goSection(s){
+ if(state.paused||state.submitted)return;
+ state.section=s;state.local=0;save();render();
+}
+function render(){
+ if(state.submitted)return;
+ const i=index(),q=questions[i];
+ document.getElementById("qnumber").textContent="Question "+(i+1);
+ document.getElementById("sectionName").textContent=sections[state.section];
+ document.getElementById("sideSection").textContent=sections[state.section];
+ document.querySelectorAll(".tab").forEach((b,j)=>b.classList.toggle("active",j===state.section));
+ document.getElementById("question").textContent=q[1];
+
+ const box=document.getElementById("options");
+ box.innerHTML="";
+ q[2].forEach((v,j)=>{
+  const label=document.createElement("label");
+  label.className="option"+(state.answers[i]===j?" selected":"");
+  const input=document.createElement("input");
+  input.type="radio";input.name="answer";input.checked=state.answers[i]===j;
+  input.onchange=()=>{state.answers[i]=j;save();render()};
+  label.append(input,document.createTextNode(String.fromCharCode(65+j)+". "+v));
+  box.append(label);
+ });
+
+ const palette=document.getElementById("palette");
+ palette.innerHTML="";
+ for(let n=starts[state.section];n<ends[state.section];n++){
+  const b=document.createElement("button");
+  b.textContent=n+1;b.className="num";
+  if(state.answers[n]!==null)b.classList.add("answered");
+  if(state.review[n])b.classList.add(state.answers[n]!==null?"both":"reviewing");
+  if(n===i)b.classList.add("current");
+  b.onclick=()=>{
+   if(state.paused)return;
+   state.local=n-starts[state.section];save();render();
+  };
+  palette.append(b);
+ }
+ const count=state.answers.slice(starts[state.section],ends[state.section]).filter(x=>x!==null).length;
+ document.getElementById("progressText").textContent=count+" of "+(ends[state.section]-starts[state.section])+" answered";
+ document.getElementById("bar").style.width=(count/(ends[state.section]-starts[state.section])*100)+"%";
+ updateTimer();
+}
+function previousQ(){
+ if(state.paused)return;
+ if(state.local>0)state.local--;
+ else if(state.section>0){state.section--;state.local=ends[state.section]-starts[state.section]-1}
+ save();render();
+}
+function nextQ(){
+ if(state.paused)return;
+ if(state.local<ends[state.section]-starts[state.section]-1)state.local++;
+ else if(state.section<2){state.section++;state.local=0}
+ else{alert("Last question reached. Submit the test when ready.");return}
+ save();render();
+}
+function markReview(){
+ if(state.paused)return;
+ state.review[index()]=!state.review[index()];save();render();
+}
+function clearAnswer(){
+ if(state.paused)return;
+ state.answers[index()]=null;save();render();
+}
+function updateTimer(){
+ const t=state.remaining[state.section];
+ document.getElementById("timer").textContent=
+ String(Math.floor(t/60)).padStart(2,"0")+":"+
+ String(t%60).padStart(2,"0");
+}
+function startTimer(){
+ if(timerId||state.paused||state.submitted)return;
+ timerId=setInterval(()=>{
+  if(state.paused||state.submitted)return;
+  state.remaining[state.section]--;
+  if(state.remaining[state.section]<=0){
+   state.remaining[state.section]=0;
+   clearInterval(timerId);timerId=null;save();
+   if(state.section<2){
+    alert(sections[state.section]+" time is over. Moving to the next section.");
+    state.section++;state.local=0;save();render();startTimer();
+   }else submitExam(true);
+   return;
+  }
+  updateTimer();save();
+ },1000);
+}
+function pauseExam(){
+ if(state.submitted)return;
+ state.paused=!state.paused;
+ document.getElementById("exam").classList.toggle("hidden",state.paused);
+ document.getElementById("paused").classList.toggle("hidden",!state.paused);
+ document.getElementById("pauseBtn").textContent=state.paused?"Resume Exam":"Ⅱ Pause Exam";
+ if(state.paused){clearInterval(timerId);timerId=null}
+ else startTimer();
+ save();
+}
+function calculate(){
+ let c=0,w=0,u=0;
+ questions.forEach((q,i)=>{
+  if(state.answers[i]===null)u++;
+  else if(state.answers[i]===q[3])c++;
+  else w++;
+ });
+ return {c,w,u,score:c-w*.25};
+}
+function showResult(){
+ const r=calculate();
+ document.getElementById("score").textContent=r.score.toFixed(2)+"/100";
+ document.getElementById("correct").textContent=r.c;
+ document.getElementById("wrong").textContent=r.w;
+ document.getElementById("unattempted").textContent=r.u;
+ document.getElementById("percentage").textContent="Net score: "+r.score.toFixed(2)+"%";
+}
+function submitExam(auto=false){
+ if(state.submitted)return;
+ if(!auto&&!confirm("Submit the test now? Unanswered questions: "+state.answers.filter(x=>x===null).length))return;
+ state.submitted=true;state.paused=false;
+ clearInterval(timerId);timerId=null;save();
+ showResult();
+ document.getElementById("message").textContent="Test submitted. "+(auto?"Time limit reached. ":"")+"Correct: +1, Wrong: −0.25, Unattempted: 0.";
+ document.getElementById("exam").classList.add("hidden");
+ document.getElementById("paused").classList.add("hidden");
+ document.getElementById("result").style.display="block";
+ window.scrollTo(0,0);
+}
+function showSolutions(){
+ const box=document.getElementById("solutions");
+ box.classList.remove("hidden");
+ box.innerHTML="<h3 style='margin:20px 0'>All Answers and Explanations</h3>";
+ questions.forEach((q,i)=>{
+  const d=document.createElement("div");d.className="solution";
+  const h=document.createElement("h4");h.textContent="Q"+(i+1)+" — "+sections[q[0]];
+  const p=document.createElement("p");p.textContent=q[1];p.style.margin="8px 0";
+  const yours=document.createElement("p");
+  yours.textContent="Your answer: "+(state.answers[i]===null?"Not attempted":String.fromCharCode(65+state.answers[i])+". "+q[2][state.answers[i]]);
+  yours.className=state.answers[i]===q[3]?"good":"bad";
+  const correct=document.createElement("p");correct.className="good";
+  correct.textContent="Correct answer: "+String.fromCharCode(65+q[3])+". "+q[2][q[3]];
+  const exp=document.createElement("p");exp.textContent="Explanation: "+q[4];exp.style.marginTop="7px";
+  d.append(h,p,yours,correct,exp);box.append(d);
+ });
+ box.scrollIntoView({behavior:"smooth"});
+}
+function restart(){
+ if(confirm("Erase Test 5 saved answers and restart?")){
+  localStorage.removeItem(STORAGE);location.reload();
+ }
+}
+load();
+if(state.submitted){
+ document.getElementById("exam").classList.add("hidden");
+ document.getElementById("result").style.display="block";
+ showResult();
+ document.getElementById("message").textContent="Test already submitted.";
+}else{
+ render();
+ if(state.paused){
+  document.getElementById("exam").classList.add("hidden");
+  document.getElementById("paused").classList.remove("hidden");
+  document.getElementById("pauseBtn").textContent="Resume Exam";
+ }else startTimer();
+}
+</script>
+</body>
+</html>
