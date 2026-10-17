@@ -1,1 +1,502 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES | SSC MTS Test 2</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#eef3f9;color:#172033}
+header{background:linear-gradient(120deg,#102a43,#1d4ed8);color:white;padding:18px;text-align:center}
+header h1{font-size:25px;margin-bottom:7px}
+header p{font-size:13px}
+.info{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:12px}
+.info span{background:#ffffff20;padding:7px 12px;border-radius:6px;font-size:13px}
+.sessionbar{background:#fff;padding:13px;text-align:center;border-bottom:1px solid #d6dfeb}
+.sessionbar h2{font-size:19px;color:#1746a2}
+.sessionbar p{font-size:13px;margin-top:5px}
+.timer{font-size:24px;font-weight:bold;color:#c62828;margin-top:8px}
+.wrap{max-width:1200px;margin:18px auto;padding:0 12px;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:16px}
+.panel{background:white;border-radius:10px;padding:20px;box-shadow:0 3px 12px #14213d12}
+.qtop{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:1px solid #e3e8f0;padding-bottom:12px;margin-bottom:18px}
+.tag{background:#eaf1ff;color:#1746a2;padding:6px 9px;border-radius:5px;font-size:12px;font-weight:bold}
+#question{font-size:18px;line-height:1.55;margin-bottom:20px}
+.option{display:flex;align-items:flex-start;gap:10px;padding:12px;margin:10px 0;border:1px solid #d7dfeb;border-radius:7px;cursor:pointer;line-height:1.4}
+.option:hover{background:#f3f7ff;border-color:#6086db}
+.option input{margin-top:3px}
+.option.selected{background:#eaf1ff;border-color:#1d4ed8}
+.buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+button{border:0;padding:10px 13px;border-radius:6px;cursor:pointer;font-weight:bold;font-size:13px}
+button:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:#1d4ed8;color:white}
+.secondary{background:#e7edf6;color:#172033}
+.review{background:#f8d74a;color:#222}
+.danger{background:#c62828;color:white}
+.green{background:#16834a;color:white}
+.sidebar h3{margin-bottom:12px;color:#163c83}
+.legend{font-size:12px;line-height:2;margin-bottom:12px}
+.dot{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:middle}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.pal{padding:9px 0;border:1px solid #ccd5e2;background:#f3f6fa;border-radius:5px}
+.pal.answered{background:#16834a;color:white}
+.pal.reviewing{background:#f8d74a;color:#222}
+.pal.answeredReview{background:#7c4dcc;color:white}
+.pal.current{outline:3px solid #1d4ed8;outline-offset:1px}
+.progress{height:8px;background:#e6ebf2;border-radius:8px;overflow:hidden;margin:10px 0}
+#progressbar{height:100%;width:0;background:#16834a}
+.small{font-size:12px;color:#596579;line-height:1.6;margin-top:12px}
+footer{text-align:center;background:#102a43;color:white;padding:15px;font-size:13px}
+.overlay{position:fixed;inset:0;background:#0b1830cc;display:none;align-items:center;justify-content:center;padding:15px;z-index:20}
+.modal{background:white;padding:25px;border-radius:12px;max-width:480px;width:100%;text-align:center}
+.modal h2{margin-bottom:12px;color:#163c83}
+.modal p{line-height:1.6;margin-bottom:18px}
+#result{display:none;max-width:1000px;margin:20px auto;padding:15px}
+.scoregrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:16px 0}
+.scorecard{padding:15px;background:#f0f5ff;border-radius:8px;text-align:center}
+.scorecard strong{display:block;font-size:24px;color:#1746a2;margin-top:5px}
+.solution{border:1px solid #d9e1ec;border-radius:8px;padding:15px;margin:12px 0;background:white}
+.solution h4{margin-bottom:8px;line-height:1.5}
+.correctText{color:#16834a;font-weight:bold}
+.wrongText{color:#c62828;font-weight:bold}
+.explanation{background:#f1f5fb;padding:10px;border-radius:6px;margin-top:8px;line-height:1.5}
+.hidden{display:none!important}
+@media(max-width:800px){.wrap{grid-template-columns:1fr}.sidebar{order:-1}.palette{grid-template-columns:repeat(10,1fr)}header h1{font-size:21px}#question{font-size:16px}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>AIMERS CLASSES</h1>
+<p>Aim High • Achieve High</p>
+<div class="info">
+<span>SSC MTS CBT Mock Test 2</span>
+<span>90 Questions</span>
+<span>270 Maximum Marks</span>
+<span>90 Minutes Total</span>
+</div>
+</header>
+
+<div class="sessionbar">
+<h2 id="sessionTitle">Session I — Numerical Ability & Reasoning</h2>
+<p id="sessionDesc">40 Questions | 120 Marks | 45 Minutes | No Negative Marking</p>
+<div class="timer" id="timer">45:00</div>
+<div class="progress"><div id="progressbar"></div></div>
+<p id="progressText">Question 1 of 40</p>
+</div>
+
+<div class="wrap" id="testArea">
+<main class="panel">
+<div class="qtop">
+<span class="tag" id="sectionTag">Numerical Ability</span>
+<span class="tag" id="markInfo">+3 correct | 0 wrong</span>
+</div>
+<div id="question">Loading question...</div>
+<div id="options"></div>
+<div class="buttons">
+<button class="secondary" id="prevBtn" onclick="prevQ()">← Previous</button>
+<button class="secondary" onclick="clearResponse()">Clear Response</button>
+<button class="review" onclick="markReview()">Mark for Review</button>
+<button class="primary" id="nextBtn" onclick="nextQ()">Save & Next →</button>
+</div>
+</main>
+
+<aside class="panel sidebar">
+<h3>Question Palette</h3>
+<div class="legend">
+<div><span class="dot" style="background:#16834a"></span> Answered</div>
+<div><span class="dot" style="background:#f8d74a"></span> Marked for Review</div>
+<div><span class="dot" style="background:#7c4dcc"></span> Answered & Review</div>
+<div><span class="dot" style="background:#f3f6fa;border:1px solid #ccd5e2"></span> Not Answered</div>
+</div>
+<div class="palette" id="palette"></div>
+<p class="small" id="sideStats"></p>
+<div class="buttons">
+<button class="primary" style="width:100%" onclick="confirmSubmit()">Submit Session</button>
+<button class="secondary" style="width:100%" onclick="pauseTest()">Ⅱ Pause Practice</button>
+</div>
+<p class="small">Pause is a practice feature. The official SSC exam does not provide a pause button. Session I and Session II each have their own 45-minute timer.</p>
+</aside>
+</div>
+
+<section id="result" class="panel">
+<h2 id="resultTitle">Test Result</h2>
+<div class="scoregrid" id="scoregrid"></div>
+<div id="sectionResults"></div>
+<div class="buttons">
+<button class="primary" onclick="toggleSolutions()">Show / Hide Answer Key & Solutions</button>
+<button class="secondary" onclick="restartTest()">Restart Test</button>
+</div>
+<div id="solutions"></div>
+</section>
+
+<footer>AIMERS CLASSES | Aim High • Achieve High</footer>
+
+<div class="overlay" id="overlay">
+<div class="modal">
+<h2 id="modalTitle">Pause Practice</h2>
+<p id="modalText">The practice timer is paused.</p>
+<div class="buttons" style="justify-content:center">
+<button class="primary" id="resumeBtn" onclick="resumeTest()">Resume Test</button>
+<button class="danger" id="modalSubmit" onclick="submitNow()">Submit Session</button>
+<button class="secondary" onclick="closeOverlay()">Continue Practising</button>
+</div>
+</div>
+</div>
+
+<script>
+/*
+Question format:
+[question, [option A, option B, option C, option D], correct option index, explanation]
+Correct option index starts at 0.
+*/
+
+const math = [
+["What is 35% of 480?",["148","158","168","178"],2,"35% of 480 = 35/100 × 480 = 168."],
+["Simplify: 48 ÷ 6 × 4 + 7.",["32","39","35","15"],1,"Division and multiplication are evaluated left to right: 48 ÷ 6 = 8; 8 × 4 + 7 = 39."],
+["The HCF of 36 and 84 is:",["6","12","18","24"],1,"The greatest common divisor of 36 and 84 is 12."],
+["A number is increased from 240 to 300. Find the percentage increase.",["20%","22%","25%","30%"],2,"Increase = 60. Percentage increase = 60/240 × 100 = 25%."],
+["Find the simple interest on ₹5,000 at 8% per annum for 3 years.",["₹1,000","₹1,100","₹1,200","₹1,400"],2,"SI = PRT/100 = 5000 × 8 × 3 / 100 = ₹1,200."],
+["A shopkeeper buys an article for ₹800 and sells it for ₹920. Find the profit percentage.",["12%","15%","18%","20%"],1,"Profit = ₹120. Profit percentage = 120/800 × 100 = 15%."],
+["The average of 14, 18, 22, 26 and 30 is:",["20","21","22","24"],2,"Sum = 110; average = 110/5 = 22."],
+["If 12 workers complete a job in 15 days, how many days will 20 workers take at the same rate?",["8","9","10","12"],1,"Total work = 12 × 15 = 180 worker-days. 180/20 = 9 days."],
+["A train travels 180 km in 3 hours. Its average speed is:",["50 km/h","55 km/h","60 km/h","65 km/h"],2,"Speed = distance/time = 180/3 = 60 km/h."],
+["The ratio of two numbers is 3:5 and their sum is 64. Find the smaller number.",["18","24","30","40"],1,"Total parts = 8. One part = 64/8 = 8; smaller number = 3 × 8 = 24."],
+["Find the LCM of 12, 15 and 20.",["30","45","60","120"],2,"LCM = 2² × 3 × 5 = 60."],
+["A man covers 3/5 of a journey in 6 hours. At the same speed, how long will the whole journey take?",["8 hours","9 hours","10 hours","12 hours"],2,"Whole journey time = 6 × 5/3 = 10 hours."],
+["The marked price is ₹1,500 and the discount is 12%. Find the selling price.",["₹1,280","₹1,300","₹1,320","₹1,350"],2,"Discount = ₹180; selling price = 1500 − 180 = ₹1,320."],
+["If x + 17 = 43, find x.",["24","25","26","27"],2,"x = 43 − 17 = 26."],
+["The perimeter of a square is 76 cm. Find its area.",["324 cm²","361 cm²","400 cm²","441 cm²"],1,"Side = 76/4 = 19 cm. Area = 19² = 361 cm²."],
+["A sum becomes ₹6,600 at 10% simple interest in 2 years. Find the principal.",["₹5,000","₹5,200","₹5,500","₹6,000"],2,"Amount = P(1 + 20/100) = 1.2P; P = 6600/1.2 = ₹5,500."],
+["A pipe fills a tank in 6 hours. What fraction of the tank does it fill in 2 hours?",["1/2","1/3","1/4","2/3"],1,"In 2 hours it fills 2/6 = 1/3 of the tank."],
+["Find the value of 2.5 × 1.2.",["2.5","3","3.5","4"],1,"2.5 × 1.2 = 3."],
+["A product is sold for ₹720 at a loss of 10%. Find its cost price.",["₹760","₹780","₹800","₹820"],2,"Selling price is 90% of CP; CP = 720/0.9 = ₹800."],
+["Find the median of 7, 3, 11, 9, 5.",["5","7","9","11"],1,"Arranged order: 3, 5, 7, 9, 11. The middle number is 7."]
+];
+
+const reasoning = [
+["Choose the odd one out.",["Square","Triangle","Circle","Cube"],3,"Cube is a three-dimensional solid; the others are two-dimensional shapes."],
+["Complete the series: 4, 9, 16, 25, 36, ?",["42","45","49","54"],2,"These are squares: 2², 3², 4², 5², 6². Next is 7² = 49."],
+["If CAT is coded as DBU, how is DOG coded?",["EPH","EOG","FPH","DNG"],0,"Each letter is moved one step forward: D→E, O→P, G→H."],
+["Ravi faces north. He turns right, then right again. Which direction is he facing?",["East","West","South","North"],2,"North → East → South."],
+["Find the missing number: 3, 8, 15, 24, 35, ?",["46","48","50","52"],1,"Differences are 5, 7, 9, 11; next difference is 13. 35 + 13 = 48."],
+["Book is to Reading as Fork is to:",["Writing","Eating","Sleeping","Walking"],1,"A book is used for reading; a fork is used for eating."],
+["If A = 1, B = 2, ..., Z = 26, what is the value of BAD?",["6","7","8","9"],1,"B + A + D = 2 + 1 + 4 = 7."],
+["Select the pair that is different from the others.",["2–4","3–9","4–16","5–20"],3,"In the first three pairs, the second number is the square of the first. 5² = 25, not 20."],
+["Complete the series: AZ, BY, CX, DW, ?",["EV","EU","FV","EW"],0,"First letters move forward A, B, C, D, E; second letters move backward Z, Y, X, W, V."],
+["P is taller than Q. Q is taller than R. Who is the shortest?",["P","Q","R","Cannot be determined"],2,"P > Q > R, so R is the shortest."],
+["How many letters are between C and J in the English alphabet?",["5","6","7","8"],1,"D, E, F, G, H, I: six letters."],
+["If MONDAY is coded as NPOEBZ, how is SUNDAY coded using the same rule?",["TVOEBZ","TVNEBZ","TVOFCZ","SUNEBZ"],0,"Each letter moves one step forward: S→T, U→V, N→O, D→E, A→B, Y→Z."],
+["Find the missing term: 81, 27, 9, 3, ?",["0","1","2","6"],1,"Each term is divided by 3. 3 ÷ 3 = 1."],
+["A is the brother of B. B is the sister of C. How is A related to C?",["Brother","Sister","Father","Cannot be determined"],0,"A is male and is a sibling of B; B and C are siblings, so A is C's brother."],
+["Choose the odd number.",["121","144","169","190"],3,"121 = 11², 144 = 12², 169 = 13²; 190 is not a perfect square."],
+["If yesterday was Thursday, what day will it be the day after tomorrow?",["Saturday","Sunday","Monday","Tuesday"],1,"Yesterday Thursday means today Friday; tomorrow Saturday and the day after tomorrow Sunday."],
+["Arrange in dictionary order: 1. Apply 2. Apple 3. Aptitude 4. April",["2, 1, 4, 3","1, 2, 4, 3","2, 4, 1, 3","4, 2, 1, 3"],0,"Alphabetical order: Apple, Apply, April, Aptitude."],
+["Which number replaces ?: 6, 12, 24, 48, ?",["72","84","96","108"],2,"Each term doubles; 48 × 2 = 96."],
+["A person walks 5 km east and then 5 km north. In which direction is the person from the starting point?",["North-West","South-East","North-East","South-West"],2,"The person is both east and north of the starting point: north-east."],
+["Select the related word: Doctor : Hospital :: Teacher : ?",["Court","School","Bank","Factory"],1,"A doctor commonly works in a hospital; a teacher commonly works in a school."]
+];
+
+const gk = [
+["Which part of the Indian Constitution deals with Fundamental Rights?",["Part I","Part II","Part III","Part IV"],2,"Fundamental Rights are contained in Part III of the Constitution."],
+["Who was the first President of India?",["Dr. Rajendra Prasad","Dr. S. Radhakrishnan","Jawaharlal Nehru","Zakir Husain"],0,"Dr. Rajendra Prasad was India's first President."],
+["Which is the largest planet in the Solar System?",["Earth","Saturn","Jupiter","Neptune"],2,"Jupiter is the largest planet in the Solar System."],
+["The chemical symbol Na stands for:",["Nitrogen","Sodium","Neon","Nickel"],1,"Na is the symbol for sodium, derived from the Latin name natrium."],
+["Which river is popularly known as the 'Sorrow of Bihar'?",["Damodar","Kosi","Son","Gandak"],1,"The Kosi River is known as the Sorrow of Bihar because of its flooding."],
+["Who wrote India's national song 'Vande Mataram'?",["Rabindranath Tagore","Bankim Chandra Chattopadhyay","Sarojini Naidu","Subramania Bharati"],1,"Vande Mataram was written by Bankim Chandra Chattopadhyay."],
+["Which vitamin is produced in the skin in response to sunlight?",["Vitamin A","Vitamin B12","Vitamin C","Vitamin D"],3,"Sunlight enables the skin to synthesise vitamin D."],
+["The Battle of Plassey was fought in:",["1757","1761","1764","1857"],0,"The Battle of Plassey took place in 1757."],
+["Which organ filters blood and forms urine?",["Liver","Kidney","Pancreas","Lungs"],1,"The kidneys filter blood and produce urine."],
+["What is the capital of Odisha?",["Cuttack","Sambalpur","Bhubaneswar","Puri"],2,"Bhubaneswar is the capital of Odisha."],
+["Which gas is most abundant in Earth's atmosphere?",["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],2,"Nitrogen makes up about 78% of Earth's atmosphere."],
+["Who is known as the 'Iron Man of India'?",["Mahatma Gandhi","Sardar Vallabhbhai Patel","B. R. Ambedkar","Subhas Chandra Bose"],1,"Sardar Vallabhbhai Patel is popularly known as the Iron Man of India."],
+["Which instrument measures atmospheric pressure?",["Thermometer","Barometer","Hygrometer","Ammeter"],1,"A barometer measures atmospheric pressure."],
+["The headquarters of the Reserve Bank of India is in:",["New Delhi","Kolkata","Chennai","Mumbai"],3,"The RBI's central office is in Mumbai."],
+["Which is the smallest prime number?",["0","1","2","3"],2,"2 is the smallest prime number and the only even prime."],
+["Who founded the Maurya Empire?",["Ashoka","Chandragupta Maurya","Bindusara","Harshavardhana"],1,"Chandragupta Maurya founded the Maurya Empire."],
+["Which blood cells help the body fight infections?",["Red blood cells","White blood cells","Platelets","Plasma cells only"],1,"White blood cells are central to the body's immune defence."],
+["The Tropic of Cancer passes through how many Indian states?",["6","7","8","9"],2,"The Tropic of Cancer passes through eight Indian states."],
+["Which is the hardest naturally occurring substance?",["Quartz","Iron","Diamond","Granite"],2,"Diamond is the hardest naturally occurring mineral."],
+["The first session of the Indian National Congress was held in:",["1885","1887","1905","1919"],0,"The first INC session was held in Bombay in 1885."],
+["Which Indian state is famous for the Hornbill Festival?",["Assam","Manipur","Nagaland","Mizoram"],2,"The Hornbill Festival is held in Nagaland."],
+["What is the SI unit of electric current?",["Volt","Watt","Ohm","Ampere"],3,"The SI unit of electric current is the ampere."],
+["Which movement was launched by Mahatma Gandhi in 1942?",["Non-Cooperation Movement","Civil Disobedience Movement","Quit India Movement","Khilafat Movement"],2,"The Quit India Movement was launched in August 1942."],
+["Which layer of the atmosphere contains most weather phenomena?",["Stratosphere","Troposphere","Mesosphere","Thermosphere"],1,"Most clouds and weather occur in the troposphere."],
+["The headquarters of UNESCO is located in:",["Geneva","Rome","Paris","New York"],2,"UNESCO's headquarters is in Paris, France."]
+];
+
+const english = [
+["Choose the synonym of 'Abundant'.",["Scarce","Plentiful","Empty","Limited"],1,"Abundant means available in large quantities; plentiful is a synonym."],
+["Choose the antonym of 'Ancient'.",["Old","Historic","Modern","Antique"],2,"Modern is the opposite of ancient."],
+["Choose the correct spelling.",["Accomodation","Accommodation","Acommodation","Accommadation"],1,"The correct spelling is accommodation."],
+["Fill in the blank: She _____ to school every day.",["go","going","goes","gone"],2,"With the third-person singular subject 'she', the simple present takes 'goes'."],
+["Choose the correct article: He is _____ honest man.",["a","an","the","no article"],1,"'Honest' begins with a vowel sound, so 'an' is used."],
+["Choose the correct preposition: The book is _____ the table.",["in","on","at","by"],1,"'On the table' indicates the book rests on the surface."],
+["Choose the plural of 'Mouse'.",["Mouses","Mices","Mice","Mouse"],2,"The irregular plural of mouse is mice."],
+["Identify the noun in the sentence: 'Honesty is the best policy.'",["best","is","Honesty","the"],2,"Honesty is an abstract noun."],
+["Choose the correct sentence.",["He do not like tea.","He does not likes tea.","He does not like tea.","He not like tea."],2,"After 'does not', use the base verb 'like'."],
+["Choose the antonym of 'Expand'.",["Enlarge","Extend","Contract","Increase"],2,"Contract means to become smaller, the opposite of expand."],
+["Fill in the blank: Neither Ram nor Shyam _____ present.",["are","were","is","have"],2,"With neither...nor, the verb agrees with the nearer subject; Shyam is singular."],
+["Choose the synonym of 'Rapid'.",["Slow","Swift","Weak","Late"],1,"Rapid means fast or swift."],
+["Change to passive voice: 'The boy kicked the ball.'",["The ball kicked the boy.","The ball was kicked by the boy.","The ball is kicked by the boy.","The boy was kicked by the ball."],1,"Simple past active changes to 'was/were + past participle' in passive voice."],
+["Choose the correct past tense of 'Teach'.",["Teached","Taught","Teaching","Taughted"],1,"The past tense of teach is taught."],
+["Fill in the blank: I have lived here _____ 2020.",["for","from","since","during"],2,"Use 'since' with a specific starting point in time."],
+["Choose the correctly punctuated sentence.",["What a beautiful day.","What a beautiful day!","What a beautiful day,","What a beautiful day?"],1,"An exclamation mark is appropriate for this exclamatory sentence."],
+["Choose the meaning of the idiom 'A piece of cake'.",["A difficult task","An easy task","A food order","An expensive item"],1,"'A piece of cake' means something very easy to do."],
+["Choose the correct indirect speech: He said, 'I am tired.'",["He said that I am tired.","He said that he was tired.","He says he was tired.","He said that he is tiring."],1,"In reported speech, 'I am' changes to 'he was' when the reporting verb is in the past."],
+["Choose the antonym of 'Generous'.",["Kind","Helpful","Selfish","Charitable"],2,"Selfish is the opposite of generous."],
+["Fill in the blank: Each of the students _____ a notebook.",["have","has","are having","were"],1,"'Each' is singular and takes the singular verb 'has'."],
+["Choose the correct comparative form of 'Good'.",["Gooder","More good","Best","Better"],3,"The comparative form of good is better."],
+["Choose the correctly spelt word.",["Privilege","Privelege","Priviledge","Privilage"],0,"The correct spelling is privilege."],
+["Identify the adjective: 'The clever student solved the puzzle.'",["student","solved","puzzle","clever"],3,"Clever describes the noun student, so it is an adjective."],
+["Choose the correct conjunction: Work hard _____ you will succeed.",["but","or","and","although"],2,"'And' joins the two related clauses."],
+["Choose the meaning of 'Benevolent'.",["Cruel","Kind and charitable","Careless","Angry"],1,"Benevolent means well-meaning, kind and charitable."]
+];
+
+const sections = [
+{name:"Numerical Ability",session:1,questions:math},
+{name:"Reasoning Ability",session:1,questions:reasoning},
+{name:"General Awareness",session:2,questions:gk},
+{name:"English Language",session:2,questions:english}
+];
+
+let allQuestions=[];
+let answers=[];
+let reviews=[];
+let current=0;
+let session=1;
+let seconds=45*60;
+let interval=null;
+let paused=false;
+let finished=false;
+let solutionsVisible=false;
+
+function buildQuestions(){
+ allQuestions=[];
+ sections.forEach((s,si)=>{
+  s.questions.forEach((q,qi)=>{
+   allQuestions.push({
+    section:s.name,session:s.session,number:qi+1,
+    q:q[0],options:q[1],answer:q[2],explanation:q[3]
+   });
+  });
+ });
+ answers=Array(allQuestions.length).fill(null);
+ reviews=Array(allQuestions.length).fill(false);
+ current=0;session=1;seconds=2700;paused=false;finished=false;solutionsVisible=false;
+}
+
+function sessionIndices(s){
+ return allQuestions.map((q,i)=>q.session===s?i:-1).filter(i=>i>=0);
+}
+function currentIndices(){return sessionIndices(session);}
+function firstIndex(s){return sessionIndices(s)[0];}
+function lastIndex(s){return sessionIndices(s).slice(-1)[0];}
+
+function render(){
+ if(finished)return;
+ const q=allQuestions[current];
+ document.getElementById("sessionTitle").textContent=session===1?"Session I — Numerical Ability & Reasoning":"Session II — General Awareness & English";
+ document.getElementById("sessionDesc").textContent=session===1?
+ "40 Questions | 120 Marks | 45 Minutes | No Negative Marking":
+ "50 Questions | 150 Marks | 45 Minutes | +3 correct | −1 wrong";
+ document.getElementById("sectionTag").textContent=q.section;
+ document.getElementById("markInfo").textContent=session===1?"+3 correct | 0 wrong":"+3 correct | −1 wrong";
+ document.getElementById("question").textContent="Q"+q.number+". "+q.q;
+ const opts=document.getElementById("options");
+ opts.innerHTML="";
+ q.options.forEach((opt,i)=>{
+  const label=document.createElement("label");
+  label.className="option"+(answers[current]===i?" selected":"");
+  const radio=document.createElement("input");
+  radio.type="radio";radio.name="answer";radio.checked=answers[current]===i;
+  radio.addEventListener("change",()=>{answers[current]=i;render();});
+  const span=document.createElement("span");
+  span.textContent=String.fromCharCode(65+i)+". "+opt;
+  label.appendChild(radio);label.appendChild(span);opts.appendChild(label);
+ });
+ document.getElementById("prevBtn").disabled=current===firstIndex(session);
+ document.getElementById("nextBtn").textContent=current===lastIndex(session)?"Last Question":"Save & Next →";
+ const idxs=currentIndices();
+ const answered=idxs.filter(i=>answers[i]!==null).length;
+ document.getElementById("progressbar").style.width=(answered/idxs.length*100)+"%";
+ document.getElementById("progressText").textContent="Question "+(idxs.indexOf(current)+1)+" of "+idxs.length+" | Answered: "+answered;
+ renderPalette();
+}
+
+function renderPalette(){
+ const p=document.getElementById("palette");
+ p.innerHTML="";
+ currentIndices().forEach((i,n)=>{
+  const b=document.createElement("button");
+  b.className="pal";
+  if(answers[i]!==null && reviews[i])b.classList.add("answeredReview");
+  else if(answers[i]!==null)b.classList.add("answered");
+  else if(reviews[i])b.classList.add("reviewing");
+  if(i===current)b.classList.add("current");
+  b.textContent=n+1;
+  b.title=allQuestions[i].section+" — Question "+(n+1);
+  b.onclick=()=>{current=i;render();};
+  p.appendChild(b);
+ });
+ const idxs=currentIndices();
+ const a=idxs.filter(i=>answers[i]!==null).length;
+ const r=idxs.filter(i=>reviews[i]).length;
+ document.getElementById("sideStats").textContent="Answered: "+a+" / "+idxs.length+" | Marked for review: "+r;
+}
+
+function nextQ(){
+ if(current<lastIndex(session)){current++;render();}
+ else confirmSubmit();
+}
+function prevQ(){
+ if(current>firstIndex(session)){current--;render();}
+}
+function clearResponse(){answers[current]=null;render();}
+function markReview(){
+ reviews[current]=!reviews[current];
+ if(current<lastIndex(session))current++;
+ render();
+}
+
+function startTimer(){
+ clearInterval(interval);
+ interval=setInterval(()=>{
+  if(paused||finished)return;
+  seconds--;
+  updateTimer();
+  if(seconds<=0){
+   clearInterval(interval);
+   if(session===1)startSessionTwo(true);
+   else finishTest(true);
+  }
+ },1000);
+}
+function updateTimer(){
+ const m=Math.floor(seconds/60).toString().padStart(2,"0");
+ const s=(seconds%60).toString().padStart(2,"0");
+ document.getElementById("timer").textContent=m+":"+s;
+ document.getElementById("timer").style.color=seconds<=300?"#c62828":"#c62828";
+}
+function startSessionTwo(auto=false){
+ clearInterval(interval);
+ session=2;seconds=2700;paused=false;
+ current=firstIndex(2);
+ render();updateTimer();startTimer();
+ if(auto){
+  document.getElementById("modalTitle").textContent="Session I Completed";
+  document.getElementById("modalText").textContent="Session I time is over. Your Session I answers are saved. Session II is now starting with a fresh 45-minute timer.";
+  document.getElementById("resumeBtn").classList.add("hidden");
+  document.getElementById("modalSubmit").classList.add("hidden");
+  document.getElementById("overlay").style.display="flex";
+ }
+}
+function pauseTest(){
+ if(finished)return;
+ paused=true;
+ document.getElementById("modalTitle").textContent="Practice Paused";
+ document.getElementById("modalText").textContent="Your timer is paused. Resume when you are ready.";
+ document.getElementById("resumeBtn").classList.remove("hidden");
+ document.getElementById("modalSubmit").classList.remove("hidden");
+ document.getElementById("overlay").style.display="flex";
+}
+function resumeTest(){
+ paused=false;closeOverlay();
+}
+function closeOverlay(){
+ document.getElementById("overlay").style.display="none";
+}
+function confirmSubmit(){
+ paused=true;
+ const idxs=currentIndices();
+ const unanswered=idxs.filter(i=>answers[i]===null).length;
+ document.getElementById("modalTitle").textContent=session===1?"Submit Session I?":"Submit Session II?";
+ document.getElementById("modalText").textContent=
+ "Unanswered questions in this session: "+unanswered+". "+
+ (session===1?"Submitting will lock Session I and start Session II.":"Submitting will finish the complete mock test.")+
+ " Are you sure you want to continue?";
+ document.getElementById("resumeBtn").classList.remove("hidden");
+ document.getElementById("modalSubmit").classList.remove("hidden");
+ document.getElementById("overlay").style.display="flex";
+}
+function submitNow(){
+ closeOverlay();
+ if(session===1)startSessionTwo(false);
+ else finishTest(false);
+}
+function finishTest(auto){
+ clearInterval(interval);finished=true;paused=false;
+ document.getElementById("testArea").classList.add("hidden");
+ document.querySelector(".sessionbar").classList.add("hidden");
+ document.getElementById("result").style.display="block";
+ document.getElementById("resultTitle").textContent="SSC MTS Mock Test 2 — Final Result";
+ let correct=0,wrong=0,unattempted=0,score=0;
+ const stats={};
+ sections.forEach(s=>stats[s.name]={correct:0,wrong:0,unattempted:0,score:0,total:s.questions.length});
+ allQuestions.forEach((q,i)=>{
+  const st=stats[q.section];
+  if(answers[i]===null){unattempted++;st.unattempted++;}
+  else if(answers[i]===q.answer){correct++;st.correct++;score+=3;st.score+=3;}
+  else{
+   wrong++;st.wrong++;
+   if(q.session===2){score-=1;st.score-=1;}
+  }
+ });
+ document.getElementById("scoregrid").innerHTML=
+ `<div class="scorecard">Score<strong>${score}</strong><small>out of 270</small></div>
+ <div class="scorecard">Correct<strong>${correct}</strong></div>
+ <div class="scorecard">Wrong<strong>${wrong}</strong></div>
+ <div class="scorecard">Unattempted<strong>${unattempted}</strong></div>
+ <div class="scorecard">Accuracy<strong>${(correct/(correct+wrong||1)*100).toFixed(1)}%</strong></div>`;
+ let html="<h3>Section-wise Performance</h3>";
+ sections.forEach(s=>{
+  const st=stats[s.name];
+  html+=`<div class="solution"><h4>${s.name} — ${st.total} Questions</h4>
+  Correct: ${st.correct} | Wrong: ${st.wrong} | Unattempted: ${st.unattempted} | Score: ${st.score}</div>`;
+ });
+ if(auto)html+="<p><b>Time completed:</b> The timer ended automatically.</p>";
+ document.getElementById("sectionResults").innerHTML=html;
+ createSolutions();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function createSolutions(){
+ let html="";
+ allQuestions.forEach((q,i)=>{
+  const user=answers[i];
+  const isCorrect=user===q.answer;
+  const status=user===null?"Not attempted":isCorrect?"Correct":"Incorrect";
+  html+=`<div class="solution">
+  <h4>Q${i+1}. ${q.q}</h4>
+  <p>Your answer: <span class="${isCorrect?'correctText':user===null?'':'wrongText'}">${user===null?'Not attempted':String.fromCharCode(65+user)+'. '+q.options[user]}</span></p>
+  <p>Correct answer: <span class="correctText">${String.fromCharCode(65+q.answer)}. ${q.options[q.answer]}</span></p>
+  <p>Status: ${status} | Section: ${q.section}</p>
+  <div class="explanation"><b>Explanation:</b> ${q.explanation}</div>
+  </div>`;
+ });
+ document.getElementById("solutions").innerHTML=html;
+ document.getElementById("solutions").classList.add("hidden");
+}
+function toggleSolutions(){
+ solutionsVisible=!solutionsVisible;
+ document.getElementById("solutions").classList.toggle("hidden",!solutionsVisible);
+ if(solutionsVisible)document.getElementById("solutions").scrollIntoView({behavior:"smooth"});
+}
+function restartTest(){
+ if(!confirm("Restart the complete SSC MTS Test 2? Your current result will be cleared."))return;
+ clearInterval(interval);
+ buildQuestions();
+ document.getElementById("testArea").classList.remove("hidden");
+ document.querySelector(".sessionbar").classList.remove("hidden");
+ document.getElementById("result").style.display="none";
+ document.getElementById("overlay").style.display="none";
+ render();updateTimer();startTimer();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+buildQuestions();
+render();
+updateTimer();
+startTimer();
+</script>
+</body>
+</html>
