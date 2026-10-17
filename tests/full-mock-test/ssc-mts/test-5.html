@@ -1,1 +1,481 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMERS CLASSES | SSC MTS Test 5</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#102a43;--blue:#1d4ed8;--yellow:#ffd43b;--light:#f1f5f9;--green:#15803d;--red:#dc2626}
+body{font-family:Arial,Helvetica,sans-serif;background:#edf2f7;color:#172033}
+header{background:linear-gradient(110deg,var(--navy),var(--blue));color:white;padding:17px 22px}
+.brand{font-size:25px;font-weight:800;letter-spacing:.5px}
+.tagline{color:var(--yellow);margin-top:4px;font-size:13px}
+.exam-info{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.exam-info span{background:#ffffff1c;padding:8px 11px;border-radius:6px;font-size:13px}
+.topbar{background:#fff;padding:12px 18px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-bottom:1px solid #dbe2ea}
+#sessionTitle{font-weight:bold;color:var(--navy)}
+.timer{font-size:23px;font-weight:bold;color:var(--red);font-variant-numeric:tabular-nums}
+main{max-width:1300px;margin:18px auto;padding:0 14px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}
+.panel{background:white;border-radius:10px;box-shadow:0 2px 10px #0f172a0d}
+.question-panel{padding:22px;min-height:420px}
+.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;border-bottom:1px solid #e2e8f0;padding-bottom:14px;margin-bottom:20px}
+.section-name{background:#dbeafe;color:#1e40af;padding:7px 10px;border-radius:5px;font-size:13px;font-weight:bold}
+.qnumber{font-weight:bold;color:#475569}
+#questionText{font-size:19px;line-height:1.65;font-weight:600;margin-bottom:22px;white-space:pre-line}
+.options{display:grid;gap:12px}
+.option{display:flex;gap:12px;align-items:flex-start;border:1px solid #cbd5e1;padding:13px;border-radius:7px;cursor:pointer;line-height:1.45}
+.option:hover{background:#eff6ff;border-color:#60a5fa}
+.option.selected{background:#dbeafe;border-color:var(--blue);font-weight:600}
+.opt-letter{min-width:27px;height:27px;border-radius:50%;background:#e2e8f0;display:grid;place-items:center;font-weight:bold;font-size:13px}
+.option.selected .opt-letter{background:var(--blue);color:white}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:25px;padding-top:17px;border-top:1px solid #e2e8f0}
+button{border:0;border-radius:6px;padding:11px 14px;cursor:pointer;font-weight:bold;font-size:13px}
+button:disabled{opacity:.45;cursor:not-allowed}
+.btn-blue{background:var(--blue);color:white}
+.btn-gray{background:#e2e8f0;color:#1e293b}
+.btn-yellow{background:var(--yellow);color:#1e293b}
+.btn-red{background:var(--red);color:white}
+.sidebar{padding:18px;height:max-content}
+.sidebar h3{color:var(--navy);margin-bottom:12px;font-size:17px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:9px;font-size:12px;margin-bottom:18px}
+.legend div{display:flex;align-items:center;gap:6px}
+.dot{width:13px;height:13px;border-radius:3px;display:inline-block}
+.d-answered{background:#15803d}.d-review{background:#7c3aed}.d-current{background:#2563eb}.d-unanswered{background:#e2e8f0;border:1px solid #94a3b8}
+#palette{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.pal{height:36px;padding:0;background:#e2e8f0;color:#1e293b;border:1px solid #cbd5e1}
+.pal.answered{background:#15803d;color:white;border-color:#15803d}
+.pal.review{background:#7c3aed;color:white;border-color:#7c3aed}
+.pal.current{outline:3px solid #60a5fa;outline-offset:1px}
+.pal.answered.review{background:linear-gradient(135deg,#15803d 50%,#7c3aed 50%)}
+.progress-wrap{height:8px;background:#e2e8f0;border-radius:8px;overflow:hidden;margin:12px 0 5px}
+#progress{height:100%;width:0;background:var(--blue);transition:width .2s}
+.small{font-size:12px;color:#64748b;line-height:1.6}
+.sidebar .submit{width:100%;margin-top:17px}
+.hidden{display:none!important}
+.overlay{position:fixed;inset:0;background:#0f172acc;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal{background:white;border-radius:12px;padding:26px;width:min(600px,100%);max-height:90vh;overflow:auto}
+.modal h2{color:var(--navy);margin-bottom:12px}
+.modal p{line-height:1.6;margin-bottom:12px}
+.modal-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+#resultBox{max-width:900px;margin:22px auto;padding:22px}
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.score-card{background:#f1f5f9;padding:16px;border-radius:8px;text-align:center}
+.score-card strong{display:block;font-size:24px;color:var(--blue);margin-top:6px}
+.review-item{border-top:1px solid #e2e8f0;padding:16px 0;line-height:1.6}
+.correct-text{color:var(--green);font-weight:bold}
+.wrong-text{color:var(--red);font-weight:bold}
+#resultBox h2,#resultBox h3{color:var(--navy);margin-bottom:12px}
+@media(max-width:850px){main{grid-template-columns:1fr}.sidebar{order:2}.question-panel{padding:16px}#questionText{font-size:17px}.score-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.brand{font-size:21px}.timer{font-size:20px}.actions button{flex:1}.exam-info span{font-size:11px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">AIMERS CLASSES</div>
+  <div class="tagline">AIM HIGH • ACHIEVE HIGH</div>
+  <div class="exam-info">
+    <span>SSC MTS — TEST 5</span>
+    <span>90 Questions</span>
+    <span>270 Marks</span>
+    <span>Session I: 45 Minutes</span>
+    <span>Session II: 45 Minutes</span>
+  </div>
+</header>
+
+<div class="topbar">
+  <div id="sessionTitle">Session I — Numerical Ability</div>
+  <div id="timer" class="timer">45:00</div>
+  <div id="sessionProgress" class="small">Session I: Questions 1–40</div>
+</div>
+
+<main id="examArea">
+  <section class="panel question-panel">
+    <div class="qhead">
+      <span id="sectionName" class="section-name">Numerical Ability</span>
+      <span id="qNumber" class="qnumber">Question 1 of 90</span>
+    </div>
+    <div id="questionText">Loading question...</div>
+    <div id="options" class="options"></div>
+    <div class="actions">
+      <button class="btn-gray" onclick="previousQuestion()">← Previous</button>
+      <button class="btn-gray" onclick="clearResponse()">Clear Response</button>
+      <button class="btn-yellow" onclick="toggleReview()">Mark for Review</button>
+      <button class="btn-blue" onclick="nextQuestion()">Save & Next →</button>
+    </div>
+  </section>
+
+  <aside class="panel sidebar">
+    <h3>Question Palette</h3>
+    <div class="legend">
+      <div><span class="dot d-answered"></span> Answered</div>
+      <div><span class="dot d-review"></span> Review</div>
+      <div><span class="dot d-current"></span> Current</div>
+      <div><span class="dot d-unanswered"></span> Not Answered</div>
+    </div>
+    <div class="small" id="paletteRange">Questions 1–40</div>
+    <div id="palette"></div>
+    <div class="progress-wrap"><div id="progress"></div></div>
+    <div id="answeredCount" class="small">Answered: 0 / 40</div>
+    <button class="btn-red submit" onclick="askSubmit()">Submit Session</button>
+    <p class="small" style="margin-top:12px">Practice test: use the palette to move between questions. Your answers remain saved while you practise in this page.</p>
+  </aside>
+</main>
+
+<section id="resultBox" class="panel hidden"></section>
+
+<div id="overlay" class="overlay">
+  <div class="modal" id="modalContent">
+    <h2>SSC MTS Test 5 — Instructions</h2>
+    <p><b>Session I:</b> Numerical Ability (20 questions) and Reasoning Ability (20 questions). Duration: 45 minutes. Each correct answer carries 3 marks. No negative marking.</p>
+    <p><b>Session II:</b> General Awareness (25 questions) and English Language (25 questions). Duration: 45 minutes. Each correct answer carries 3 marks; each wrong answer carries −1 mark.</p>
+    <p>Both sessions are mandatory in this practice test. Once Session I is submitted, you cannot return to it. The practice timer includes a pause option, which is not available in the actual SSC exam.</p>
+    <p class="small">Choose the best answer for each question. Your score and explanations will be shown after you finish Session II.</p>
+    <div class="modal-buttons">
+      <button class="btn-blue" onclick="startTest()">Start Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const math = [
+{q:"A shopkeeper marks an article 40% above cost price and gives a discount of 15%. What is his profit percentage?",o:["15%","19%","21%","25%"],a:2,e:"Let CP = 100. MP = 140; selling price = 140 × 0.85 = 119. Profit = 19%."},
+{q:"The average of 8 numbers is 24. If one number, 31, is replaced by 23, what is the new average?",o:["22","23","24","25"],a:1,e:"The total decreases by 8. New average = (8 × 24 − 8) / 8 = 23."},
+{q:"A train 180 m long crosses a pole in 12 seconds. Find its speed in km/h.",o:["45","48","54","60"],a:2,e:"Speed = 180/12 = 15 m/s. In km/h: 15 × 18/5 = 54 km/h."},
+{q:"Find the simple interest on ₹8,000 at 7.5% per annum for 2 years.",o:["₹1,000","₹1,100","₹1,200","₹1,250"],a:2,e:"SI = PRT/100 = 8000 × 7.5 × 2 / 100 = ₹1,200."},
+{q:"If 3x + 7 = 40, find x.",o:["9","10","11","12"],a:2,e:"3x = 33, so x = 11."},
+{q:"A can complete a job in 12 days and B in 18 days. How long will they take together?",o:["6 days","7 days","7.2 days","8 days"],a:2,e:"Combined work per day = 1/12 + 1/18 = 5/36. Time = 36/5 = 7.2 days."},
+{q:"A number is increased by 20% and then decreased by 20%. What is the net change?",o:["No change","4% increase","4% decrease","2% decrease"],a:2,e:"100 becomes 120, then 96. Net decrease = 4%."},
+{q:"The ratio of two numbers is 7:9 and their sum is 128. Find the larger number.",o:["56","63","72","81"],a:2,e:"16 parts = 128, so 1 part = 8. Larger number = 9 × 8 = 72."},
+{q:"Find the HCF of 84 and 126.",o:["14","21","28","42"],a:3,e:"84 = 2 × 2 × 3 × 7 and 126 = 2 × 3 × 3 × 7. HCF = 42."},
+{q:"A sum of ₹6,000 earns compound interest at 10% per annum for 2 years. Find the compound interest.",o:["₹1,200","₹1,260","₹1,300","₹1,320"],a:1,e:"Amount = 6000 × 1.1² = ₹7,260. CI = ₹1,260."},
+{q:"The perimeter of a square is 64 cm. Find its area.",o:["196 cm²","225 cm²","256 cm²","289 cm²"],a:2,e:"Side = 64/4 = 16 cm. Area = 16² = 256 cm²."},
+{q:"A person travels 150 km at 50 km/h and returns at 75 km/h. Find the average speed for the whole journey.",o:["55 km/h","60 km/h","62.5 km/h","65 km/h"],a:1,e:"Average speed for equal distances = 2ab/(a+b) = 2×50×75/125 = 60 km/h."},
+{q:"If 35% of a number is 140, find the number.",o:["350","380","400","420"],a:2,e:"Number = 140 × 100 / 35 = 400."},
+{q:"The marked price of a bag is ₹2,500. After a 12% discount, what is the selling price?",o:["₹2,100","₹2,150","₹2,200","₹2,250"],a:2,e:"Discount = 12% of 2500 = ₹300. Selling price = ₹2,200."},
+{q:"Find the median of 11, 5, 17, 9, 13.",o:["9","11","13","17"],a:1,e:"Arranged order: 5, 9, 11, 13, 17. The middle value is 11."},
+{q:"A sum amounts to ₹7,500 after 2 years at 10% simple interest per annum. Find the principal.",o:["₹6,000","₹6,250","₹6,500","₹6,750"],a:1,e:"Amount = P(1 + 20/100) = 1.2P. P = 7500/1.2 = ₹6,250."},
+{q:"If 5 workers make 200 items in 4 days, how many items will 8 workers make in 5 days at the same rate?",o:["350","375","400","425"],a:2,e:"Rate per worker per day = 200/(5×4) = 10. Output = 8×5×10 = 400."},
+{q:"Simplify: 3/4 + 5/8 − 1/2.",o:["5/8","7/8","1","9/8"],a:1,e:"6/8 + 5/8 − 4/8 = 7/8."},
+{q:"The length of a rectangle is 18 cm and its breadth is 12 cm. Find its diagonal.",o:["20 cm","21 cm","√468 cm","√468 cm (approximately 21.63 cm)"],a:2,e:"Diagonal = √(18² + 12²) = √468 ≈ 21.63 cm."},
+{q:"A man spends 75% of his income and saves ₹4,500. What is his income?",o:["₹15,000","₹16,000","₹18,000","₹20,000"],a:2,e:"Savings are 25% of income. Income = 4500 × 100 / 25 = ₹18,000."}
+];
+
+const reasoning = [
+{q:"Choose the number that completes the series: 4, 9, 19, 39, 79, ?",o:["119","149","159","169"],a:2,e:"Each term is multiplied by 2 and then 1 is added: 79×2+1 = 159."},
+{q:"If TABLE is coded as UBCMF, how will CHAIR be coded using the same rule?",o:["DIBJS","DIBIR","DHBJS","DIBJT"],a:0,e:"Each letter is replaced by the next letter: C→D, H→I, A→B, I→J, R→S."},
+{q:"Find the odd one out.",o:["Triangle","Square","Circle","Rectangle"],a:2,e:"A circle has no straight sides or vertices; the others are polygons."},
+{q:"Ravi walks 8 m north, turns right and walks 6 m, then turns right and walks 8 m. How far is he from the starting point?",o:["2 m","6 m","8 m","14 m"],a:1,e:"The north and south movements cancel. He is 6 m east of the starting point."},
+{q:"Book is to Author as Painting is to:",o:["Singer","Painter","Reader","Actor"],a:1,e:"An author creates a book; a painter creates a painting."},
+{q:"Select the number that is different from the others.",o:["16","25","49","63"],a:3,e:"16, 25 and 49 are perfect squares. 63 is not."},
+{q:"If A = 1, B = 2, ... Z = 26, what is the value of DOG?",o:["24","25","26","27"],a:2,e:"D=4, O=15, G=7. Total = 4+15+7 = 26."},
+{q:"P is the brother of Q. Q is the mother of R. How is P related to R?",o:["Father","Maternal uncle","Brother","Grandfather"],a:1,e:"P is the brother of R's mother, so he is R's maternal uncle."},
+{q:"Complete the letter series: AZ, BY, CX, DW, ?",o:["EV","EU","FV","EW"],a:0,e:"First letters move forward A, B, C, D, E; second letters move backward Z, Y, X, W, V."},
+{q:"In a row of 35 students, Amit is 12th from the left. What is his position from the right?",o:["22nd","23rd","24th","25th"],a:2,e:"Position from right = 35 − 12 + 1 = 24th."},
+{q:"Which pair follows the same relationship as 6 : 36?",o:["4 : 12","7 : 49","8 : 32","9 : 18"],a:1,e:"36 = 6²; similarly 49 = 7²."},
+{q:"If yesterday was Monday, what day will it be the day after tomorrow?",o:["Tuesday","Wednesday","Thursday","Friday"],a:2,e:"Yesterday Monday means today Tuesday; the day after tomorrow is Thursday."},
+{q:"Find the missing number: 2, 6, 12, 20, 30, ?",o:["36","40","42","44"],a:2,e:"Terms are n(n+1): 1×2, 2×3, 3×4, 4×5, 5×6; next 6×7 = 42."},
+{q:"Choose the odd pair.",o:["3–9","4–16","5–25","6–30"],a:3,e:"In the first three pairs, the second number is the square of the first. 6² = 36, not 30."},
+{q:"If NORTH is written as OPSUI, how is SOUTH written?",o:["TPVUI","TPVTH","TPVUI","TQVUI"],a:0,e:"Each letter is shifted forward by one: SOUTH → TPVUI."},
+{q:"A is taller than B. C is taller than A. D is shorter than B. Who is the tallest?",o:["A","B","C","D"],a:2,e:"C is taller than A, and A is taller than B, so C is tallest."},
+{q:"Choose the missing letter: B, E, H, K, ?",o:["L","M","N","O"],a:2,e:"Letters advance by 3 positions: B, E, H, K, N."},
+{q:"If 1 January is a Sunday, what day is 8 January of the same year?",o:["Saturday","Sunday","Monday","Tuesday"],a:1,e:"Seven days later is the same weekday: Sunday."},
+{q:"Arrange in logical order: 1. Seed 2. Fruit 3. Flower 4. Plant",o:["1,4,3,2","1,3,4,2","4,1,3,2","3,1,4,2"],a:0,e:"A seed grows into a plant, which flowers and then produces fruit."},
+{q:"In a certain code, 246 means 'red big ball', 258 means 'red sweet apple', and 279 means 'red tall tree'. Which digit represents 'red'?",o:["2","4","5","8"],a:0,e:"The common digit in all three codes is 2, so it represents 'red'."}
+];
+
+const gk = [
+{q:"Which part of the Indian Constitution deals with Fundamental Duties?",o:["Part III","Part IVA","Part V","Part VI"],a:1,e:"Fundamental Duties are listed in Part IVA, Article 51A."},
+{q:"Which river is known as the 'Sorrow of Bihar'?",o:["Damodar","Kosi","Son","Gandak"],a:1,e:"The Kosi River is known as the Sorrow of Bihar because of its frequent floods."},
+{q:"Who was the first Indian woman to become President of the Indian National Congress?",o:["Sarojini Naidu","Annie Besant","Vijaya Lakshmi Pandit","Sucheta Kripalani"],a:1,e:"Annie Besant became the first woman president of the Indian National Congress in 1917. Sarojini Naidu was the first Indian woman president in 1925."},
+{q:"Which vitamin is primarily produced in the skin in response to sunlight?",o:["Vitamin A","Vitamin B12","Vitamin C","Vitamin D"],a:3,e:"Ultraviolet B rays help the skin synthesise vitamin D."},
+{q:"The Tropic of Cancer passes through how many Indian states?",o:["6","7","8","9"],a:2,e:"The Tropic of Cancer passes through eight Indian states."},
+{q:"Which gas is most abundant in Earth's atmosphere?",o:["Oxygen","Nitrogen","Carbon dioxide","Argon"],a:1,e:"Nitrogen makes up about 78% of Earth's atmosphere."},
+{q:"Who wrote the book 'The Discovery of India'?",o:["Mahatma Gandhi","Jawaharlal Nehru","B. R. Ambedkar","Rabindranath Tagore"],a:1,e:"Jawaharlal Nehru wrote The Discovery of India while imprisoned during the freedom movement."},
+{q:"Which institution is primarily responsible for conducting monetary policy in India?",o:["SEBI","RBI","NITI Aayog","Finance Commission"],a:1,e:"The Reserve Bank of India formulates and implements India's monetary policy."},
+{q:"Which is the largest gland in the human body?",o:["Pancreas","Thyroid","Liver","Pituitary"],a:2,e:"The liver is the largest gland in the human body."},
+{q:"The Battle of Plassey took place in which year?",o:["1757","1764","1857","1748"],a:0,e:"The Battle of Plassey was fought in 1757."},
+{q:"Which Indian state has the longest coastline?",o:["Tamil Nadu","Andhra Pradesh","Gujarat","Maharashtra"],a:2,e:"Gujarat has the longest coastline among Indian states."},
+{q:"What is the SI unit of electric resistance?",o:["Volt","Ampere","Ohm","Watt"],a:2,e:"Electrical resistance is measured in ohms."},
+{q:"Who is popularly known as the 'Missile Man of India'?",o:["Homi J. Bhabha","Vikram Sarabhai","A. P. J. Abdul Kalam","Satish Dhawan"],a:2,e:"Dr A. P. J. Abdul Kalam earned the title for his work in missile and space programmes."},
+{q:"Which schedule of the Constitution lists the recognised languages?",o:["Fifth Schedule","Seventh Schedule","Eighth Schedule","Tenth Schedule"],a:2,e:"The Eighth Schedule lists the recognised languages of India."},
+{q:"Which soil is especially suitable for cotton cultivation?",o:["Laterite soil","Black soil","Mountain soil","Desert soil"],a:1,e:"Black soil retains moisture and is particularly suitable for cotton."},
+{q:"The headquarters of the World Health Organization is located in:",o:["Paris","New York","Geneva","Rome"],a:2,e:"The WHO headquarters is in Geneva, Switzerland."},
+{q:"Which planet is famous for its prominent ring system?",o:["Mars","Saturn","Venus","Mercury"],a:1,e:"Saturn is famous for its extensive rings made largely of ice and rocky particles."},
+{q:"Who founded the Brahmo Samaj in 1828?",o:["Swami Vivekananda","Raja Ram Mohan Roy","Dayanand Saraswati","Ishwar Chandra Vidyasagar"],a:1,e:"Raja Ram Mohan Roy founded the Brahmo Sabha, later known as the Brahmo Samaj."},
+{q:"Which organ filters blood and forms urine?",o:["Heart","Lungs","Kidneys","Stomach"],a:2,e:"The kidneys filter blood and produce urine."},
+{q:"What is the currency of Bangladesh?",o:["Rupee","Taka","Kyat","Riel"],a:1,e:"Bangladesh uses the taka."},
+{q:"Which is the largest ocean on Earth?",o:["Atlantic Ocean","Indian Ocean","Arctic Ocean","Pacific Ocean"],a:3,e:"The Pacific Ocean is the world's largest ocean."},
+{q:"The Green Revolution in India is most closely associated with which crop?",o:["Tea","Wheat","Cotton","Jute"],a:1,e:"The Green Revolution significantly increased wheat and rice production, especially wheat in its early phase."},
+{q:"Which blood cells help the body fight infections?",o:["Red blood cells","White blood cells","Platelets","Plasma only"],a:1,e:"White blood cells are a major component of the immune system."},
+{q:"Which Indian classical dance form originated in Kerala?",o:["Kathak","Bharatanatyam","Kathakali","Odissi"],a:2,e:"Kathakali is a classical dance-drama tradition from Kerala."},
+{q:"Which metal is liquid at ordinary room temperature?",o:["Iron","Mercury","Aluminium","Copper"],a:1,e:"Mercury is liquid at typical room temperature."}
+];
+
+const english = [
+{q:"Choose the synonym of 'Abundant'.",o:["Scarce","Plentiful","Limited","Rare"],a:1,e:"Abundant means available in large quantities; plentiful is its synonym."},
+{q:"Choose the antonym of 'Hostile'.",o:["Unfriendly","Aggressive","Friendly","Harsh"],a:2,e:"Hostile means unfriendly; friendly is the opposite."},
+{q:"Fill in the blank: She has been working here _____ 2020.",o:["for","since","from","by"],a:1,e:"Use 'since' with a specific starting point in time."},
+{q:"Choose the correctly spelt word.",o:["Accomodation","Acommodation","Accommodation","Accommadation"],a:2,e:"The correct spelling is accommodation, with double c and double m."},
+{q:"Identify the error: 'Each of the players have received a medal.'",o:["Each of","the players","have received","a medal"],a:2,e:"'Each' is singular, so use 'has received'."},
+{q:"Choose the correct passive voice: 'The chef prepared the meal.'",o:["The meal prepares the chef.","The meal was prepared by the chef.","The meal is prepared by the chef.","The chef was prepared by the meal."],a:1,e:"Simple past active changes to 'was/were + past participle' in passive voice."},
+{q:"Choose the one-word substitution: A person who cannot read or write.",o:["Eligible","Illegible","Illiterate","Ineligible"],a:2,e:"An illiterate person cannot read or write."},
+{q:"Choose the correct meaning of the idiom 'Once in a blue moon'.",o:["Every day","Very rarely","At night","Unexpectedly"],a:1,e:"The idiom means something that happens very rarely."},
+{q:"Fill in the blank: Neither the teacher nor the students _____ present.",o:["was","is","were","has"],a:2,e:"With 'neither...nor', the verb generally agrees with the nearer subject; 'students' is plural, so use 'were'."},
+{q:"Choose the correct indirect speech: He said, 'I am tired.'",o:["He said that I am tired.","He said that he was tired.","He says that he was tired.","He told that he is tired."],a:1,e:"In reported speech, 'am' usually changes to 'was' and 'I' changes to 'he'."},
+{q:"Choose the antonym of 'Expand'.",o:["Extend","Enlarge","Contract","Increase"],a:2,e:"Contract means to become smaller; it is the opposite of expand."},
+{q:"Choose the correct article: He is _____ honest man.",o:["a","an","the","no article"],a:1,e:"'Honest' begins with a vowel sound, so use 'an'."},
+{q:"Select the grammatically correct sentence.",o:["She do not like tea.","She does not likes tea.","She does not like tea.","She not like tea."],a:2,e:"After 'does not', use the base form 'like'."},
+{q:"Choose the synonym of 'Diligent'.",o:["Lazy","Careless","Hardworking","Slow"],a:2,e:"Diligent means careful and hardworking."},
+{q:"Fill in the blank: The train arrived _____ time.",o:["at","on","in","by"],a:1,e:"The expression 'on time' means punctual."},
+{q:"Choose the correctly spelt word.",o:["Privilege","Privelege","Priviledge","Privillage"],a:0,e:"The correct spelling is privilege."},
+{q:"Choose the correct plural form of 'Criterion'.",o:["Criterions","Criteria","Criterias","Criterionies"],a:1,e:"The plural of criterion is criteria."},
+{q:"Identify the error: 'He is senior than me.'",o:["He is","senior","than me","No error"],a:2,e:"'Senior' takes 'to', not 'than': 'He is senior to me'."},
+{q:"Choose the meaning of 'Break the ice'.",o:["Break something","Start a friendly conversation","Become angry","End a meeting"],a:1,e:"The idiom means to ease tension or begin interaction."},
+{q:"Fill in the blank: If I _____ rich, I would travel the world.",o:["am","was","were","will be"],a:2,e:"In a hypothetical condition, 'If I were...' is the standard form."},
+{q:"Choose the antonym of 'Transparent'.",o:["Clear","Obvious","Opaque","Visible"],a:2,e:"Opaque means not allowing light to pass through; it is the opposite of transparent."},
+{q:"Choose the correct passive voice: 'They will announce the results tomorrow.'",o:["The results will be announced tomorrow.","The results are announced tomorrow.","The results were announced tomorrow.","Tomorrow the results announced."],a:0,e:"Future simple passive uses 'will be + past participle'."},
+{q:"Choose the one-word substitution: A place where books are kept for reading or borrowing.",o:["Laboratory","Library","Museum","Auditorium"],a:1,e:"A library is a place where books are stored and made available to readers."},
+{q:"Choose the synonym of 'Cautious'.",o:["Careless","Reckless","Prudent","Hasty"],a:2,e:"Prudent means careful and sensible, making it a synonym of cautious."},
+{q:"Fill in the blank: The manager asked me _____ the report immediately.",o:["submit","submitting","to submit","submitted"],a:2,e:"'Ask someone to do something' takes the infinitive: 'to submit'."}
+];
+
+const allQuestions = [
+...math.map(x=>({...x,section:"Numerical Ability",session:1})),
+...reasoning.map(x=>({...x,section:"Reasoning Ability",session:1})),
+...gk.map(x=>({...x,section:"General Awareness",session:2})),
+...english.map(x=>({...x,section:"English Language",session:2}))
+];
+
+let answers = Array(allQuestions.length).fill(null);
+let review = Array(allQuestions.length).fill(false);
+let current = 0;
+let session = 1;
+let remaining = 45 * 60;
+let timerId = null;
+let started = false;
+let paused = false;
+let finished = false;
+let sessionOneSubmitted = false;
+
+function sessionBounds(s=session){
+  return s===1 ? [0,40] : [40,90];
+}
+function questionSection(index){
+  return allQuestions[index].section;
+}
+function startTest(){
+  document.getElementById("overlay").classList.add("hidden");
+  if(!started){
+    started=true;
+    current=0;
+    session=1;
+    remaining=45*60;
+    startClock();
+  }
+  render();
+}
+function startClock(){
+  clearInterval(timerId);
+  timerId=setInterval(()=>{
+    if(paused || finished) return;
+    remaining--;
+    updateTimer();
+    if(remaining<=0){
+      remaining=0;
+      updateTimer();
+      clearInterval(timerId);
+      if(session===1) startSessionTwo(true);
+      else finishTest();
+    }
+  },1000);
+}
+function updateTimer(){
+  const m=Math.floor(remaining/60).toString().padStart(2,"0");
+  const s=(remaining%60).toString().padStart(2,"0");
+  document.getElementById("timer").textContent=m+":"+s;
+}
+function render(){
+  if(finished)return;
+  const [start,end]=sessionBounds();
+  if(current<start || current>=end)current=start;
+  const q=allQuestions[current];
+  document.getElementById("sessionTitle").textContent=session===1?"Session I — Numerical Ability & Reasoning":"Session II — General Awareness & English";
+  document.getElementById("sessionProgress").textContent=session===1?"Session I: Questions 1–40":"Session II: Questions 41–90";
+  document.getElementById("paletteRange").textContent="Questions "+(start+1)+"–"+end;
+  document.getElementById("sectionName").textContent=q.section;
+  document.getElementById("qNumber").textContent="Question "+(current+1)+" of 90";
+  document.getElementById("questionText").textContent=q.q;
+  const options=document.getElementById("options");
+  options.innerHTML="";
+  q.o.forEach((option,i)=>{
+    const label=document.createElement("div");
+    label.className="option"+(answers[current]===i?" selected":"");
+    label.innerHTML='<span class="opt-letter">'+String.fromCharCode(65+i)+'</span><span></span>';
+    label.querySelector("span:last-child").textContent=option;
+    label.onclick=()=>selectAnswer(i);
+    options.appendChild(label);
+  });
+  renderPalette();
+  updateTimer();
+}
+function selectAnswer(i){
+  if(finished)return;
+  answers[current]=i;
+  render();
+}
+function renderPalette(){
+  const [start,end]=sessionBounds();
+  const palette=document.getElementById("palette");
+  palette.innerHTML="";
+  for(let i=start;i<end;i++){
+    const b=document.createElement("button");
+    b.className="pal";
+    b.textContent=i+1;
+    if(answers[i]!==null)b.classList.add("answered");
+    if(review[i])b.classList.add("review");
+    if(i===current)b.classList.add("current");
+    b.onclick=()=>{current=i;render();};
+    palette.appendChild(b);
+  }
+  let count=0;
+  for(let i=start;i<end;i++)if(answers[i]!==null)count++;
+  document.getElementById("answeredCount").textContent="Answered: "+count+" / "+(end-start);
+  document.getElementById("progress").style.width=(count/(end-start)*100)+"%";
+}
+function previousQuestion(){
+  const [start]=sessionBounds();
+  if(current>start){current--;render();}
+}
+function nextQuestion(){
+  const [,end]=sessionBounds();
+  if(current<end-1){current++;render();}
+  else askSubmit();
+}
+function clearResponse(){
+  answers[current]=null;
+  render();
+}
+function toggleReview(){
+  review[current]=!review[current];
+  const wasReview=review[current];
+  render();
+  if(wasReview){
+    document.getElementById("sectionName").textContent=questionSection(current)+" — Marked for Review";
+  }
+}
+function askSubmit(){
+  if(finished)return;
+  const [start,end]=sessionBounds();
+  let unanswered=0;
+  for(let i=start;i<end;i++)if(answers[i]===null)unanswered++;
+  paused=true;
+  document.getElementById("overlay").classList.remove("hidden");
+  document.getElementById("modalContent").innerHTML=
+  '<h2>Submit '+(session===1?'Session I':'Session II')+'?</h2>'+
+  '<p>Questions in this session: '+(end-start)+'</p>'+
+  '<p>Answered: '+((end-start)-unanswered)+' | Unanswered: '+unanswered+'</p>'+
+  '<p>Are you sure you want to submit this session?</p>'+
+  '<div class="modal-buttons"><button class="btn-gray" onclick="resumeTest()">Continue Practising</button><button class="btn-red" onclick="confirmSubmit()">Confirm Submit</button></div>';
+}
+function resumeTest(){
+  document.getElementById("overlay").classList.add("hidden");
+  paused=false;
+  startClock();
+}
+function confirmSubmit(){
+  document.getElementById("overlay").classList.add("hidden");
+  paused=false;
+  if(session===1)startSessionTwo(false);
+  else finishTest();
+}
+function startSessionTwo(auto){
+  clearInterval(timerId);
+  sessionOneSubmitted=true;
+  session=2;
+  current=40;
+  remaining=45*60;
+  paused=!!auto;
+  if(auto){
+    document.getElementById("overlay").classList.remove("hidden");
+    document.getElementById("modalContent").innerHTML=
+    '<h2>Session I Completed</h2><p>Session I time is over. Session II is ready.</p><p>Session II contains 25 General Awareness and 25 English questions. Duration: 45 minutes.</p><div class="modal-buttons"><button class="btn-blue" onclick="beginSessionTwo()">Start Session II</button></div>';
+  }else{
+    beginSessionTwo();
+  }
+}
+function beginSessionTwo(){
+  document.getElementById("overlay").classList.add("hidden");
+  paused=false;
+  remaining=45*60;
+  updateTimer();
+  render();
+  startClock();
+}
+function finishTest(){
+  clearInterval(timerId);
+  finished=true;
+  paused=true;
+  document.getElementById("overlay").classList.add("hidden");
+  document.getElementById("examArea").classList.add("hidden");
+  document.querySelector(".topbar").classList.add("hidden");
+  const result=document.getElementById("resultBox");
+  result.classList.remove("hidden");
+  let correct=0,wrong=0,unattempted=0;
+  let s1Correct=0,s1Wrong=0,s2Correct=0,s2Wrong=0;
+  allQuestions.forEach((q,i)=>{
+    if(answers[i]===null){unattempted++;return;}
+    if(answers[i]===q.a){
+      correct++;
+      if(q.session===1)s1Correct++;else s2Correct++;
+    }else{
+      wrong++;
+      if(q.session===1)s1Wrong++;else s2Wrong++;
+    }
+  });
+  const score=s1Correct*3+s2Correct*3-s2Wrong;
+  const max=270;
+  result.innerHTML=
+  '<h2>AIMERS CLASSES — SSC MTS Test 5 Result</h2>'+
+  '<p class="small">Practice-test result. Session I has no negative marking; Session II deducts 1 mark per incorrect answer.</p>'+
+  '<div class="score-grid">'+
+  card("Final Score",score+" / "+max)+
+  card("Correct",correct)+
+  card("Wrong",wrong)+
+  card("Unattempted",unattempted)+
+  '</div>'+
+  '<h3>Session-wise Performance</h3>'+
+  '<p><b>Session I:</b> '+s1Correct+' correct, '+s1Wrong+' wrong. Score: '+(s1Correct*3)+' / 120.</p>'+
+  '<p><b>Session II:</b> '+s2Correct+' correct, '+s2Wrong+' wrong. Score: '+(s2Correct*3-s2Wrong)+' / 150.</p>'+
+  '<p><b>Percentage:</b> '+(score/max*100).toFixed(2)+'%</p>'+
+  '<div class="actions"><button class="btn-blue" onclick="showSolutions()">View Answers & Solutions</button><button class="btn-gray" onclick="location.reload()">Restart Test</button></div>'+
+  '<div id="solutions" class="hidden"></div>';
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function card(label,value){
+  return '<div class="score-card">'+label+'<strong>'+value+'</strong></div>';
+}
+function showSolutions(){
+  const box=document.getElementById("solutions");
+  box.classList.remove("hidden");
+  box.innerHTML="<h3>Answer Key & Explanations</h3>";
+  allQuestions.forEach((q,i)=>{
+    const your=answers[i]===null?"Not Answered":String.fromCharCode(65+answers[i])+". "+q.o[answers[i]];
+    const correct=String.fromCharCode(65+q.a)+". "+q.o[q.a];
+    const ok=answers[i]===q.a;
+    const div=document.createElement("div");
+    div.className="review-item";
+    div.innerHTML='<b>Q'+(i+1)+'. '+q.q+'</b><p>Your answer: <span class="'+(ok?'correct-text':'wrong-text')+'"></span></p><p class="correct-text"></p><p><b>Explanation:</b> </p>';
+    div.children[1].lastChild.textContent=your;
+    div.children[2].textContent="Correct answer: "+correct;
+    div.children[3].lastChild.textContent=q.e;
+    box.appendChild(div);
+  });
+  box.scrollIntoView({behavior:"smooth"});
+}
+</script>
+</body>
+</html>
+
