@@ -157,7 +157,7 @@ footer p{color:#cbd5e1;font-size:14px}
 </div>
 </div>
 
-<!-- CLASS 12: NEW ICSE/ISC AND CBSE FOLDERS -->
+<!-- CLASS 12: ICSE/ISC AND CBSE FOLDERS -->
 <div class="class-section" id="class12">
 <div class="class-heading">
 <h2>📕 CLASS 12</h2>
@@ -169,7 +169,7 @@ footer p{color:#cbd5e1;font-size:14px}
 <div class="pdf-card folder-card">
 <div class="folder-icon">📁</div>
 <h3>Class 12 ICSE / ISC</h3>
-<p>Open subject-wise folders for Chemistry, Mathematics, Physics and other available papers.</p>
+<p>Open subject-wise folders for Chemistry, Mathematics, Physics, Biology, Social Studies and Commerce.</p>
 <div class="pdf-buttons">
 <a href="materials.html?class=12&board=ICSE" class="pdf-btn view-btn">Open ICSE / ISC →</a>
 </div>
@@ -178,7 +178,7 @@ footer p{color:#cbd5e1;font-size:14px}
 <div class="pdf-card folder-card">
 <div class="folder-icon">📁</div>
 <h3>Class 12 CBSE</h3>
-<p>Open subject-wise folders for CBSE sample papers and study materials.</p>
+<p>Open subject-wise folders for Chemistry, Mathematics, Physics, Biology, Social Studies and Commerce.</p>
 <div class="pdf-buttons">
 <a href="materials.html?class=12&board=CBSE" class="pdf-btn view-btn">Open CBSE →</a>
 </div>
@@ -430,7 +430,7 @@ function showClass11Folders(){
   loadPDFs("Class11/SAMPLE PAPERS/"+subject,"Class 11 • "+subject);
 }
 
-/* CLASS 12 NAVIGATION: NEW SUBJECT-WISE FOLDERS */
+/* CLASS 12 NAVIGATION: SIX SUBJECT FOLDERS FOR BOTH BOARDS */
 function showClass12Folders(){
   folderMessage.hidden = true;
 
@@ -469,10 +469,14 @@ function showClass12Folders(){
     return;
   }
 
+  /* EXISTING THREE SUBJECTS + THREE NEW SUBJECTS */
   const subjects = [
     {name:"Chemistry",icon:"🧪"},
     {name:"Mathematics",icon:"📐"},
-    {name:"Physics",icon:"⚛️"}
+    {name:"Physics",icon:"⚛️"},
+    {name:"Biology",icon:"🧬"},
+    {name:"Social Studies",icon:"🌍"},
+    {name:"Commerce",icon:"📊"}
   ];
 
   if(!subject){
@@ -515,7 +519,10 @@ function showClass12Folders(){
     {name:subject}
   ]);
 
-  loadPDFs("Class12/"+board+"/"+subject,"Class 12 • "+boardLabel+" • "+subject);
+  loadPDFs(
+    "Class12/"+board+"/"+subject,
+    "Class 12 • "+boardLabel+" • "+subject
+  );
 }
 
 /* LOAD PDF FILES FROM THE GITHUB FOLDER */
