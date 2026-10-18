@@ -1,0 +1,68 @@
+
+name: Update Current Affairs PDF List
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'CurrentAffairs/**'
+      - '.github/workflows/update-current-affairs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-pdf-list:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate PDF list
+        run: |
+          python3 <<'PY'
+          import json
+          from pathlib import Path
+          from urllib.parse import quote
+
+          folder = Path("CurrentAffairs")
+          base_url = (
+              "https://aimersclasses.github.io/"
+              "aimersclassesjsg.github.io/CurrentAffairs/"
+          )
+
+          files = sorted(
+              [
+                  f for f in folder.iterdir()
+                  if f.is_file() and f.suffix.lower() == ".pdf"
+              ],
+              key=lambda f: f.name.lower(),
+              reverse=True
+          ) if folder.exists() else []
+
+          pdfs = [
+              {
+                  "name": f.name,
+                  "download_url": base_url + quote(f.name)
+              }
+              for f in files
+          ]
+
+          Path("current-affairs-list.json").write_text(
+              json.dumps(pdfs, ensure_ascii=False, indent=2),
+              encoding="utf-8"
+          )
+          PY
+
+      - name: Save updated list
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add current-affairs-list.json
+          git diff --cached --quiet || (
+            git commit -m "Update Current Affairs PDF list" &&
+            git push
+          )
