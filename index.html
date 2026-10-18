@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +40,7 @@ a{
   max-width:1200px;
   margin:auto;
 }
+
 
 /* ================= HEADER ================= */
 
@@ -104,6 +104,7 @@ nav a:hover{
   color:#ffd43b;
 }
 
+
 /* ================= IMAGE SLIDER ================= */
 
 .hero-slider{
@@ -141,6 +142,7 @@ nav a:hover{
   display:block;
 }
 
+
 /* ARROWS */
 
 .slider-arrow{
@@ -175,6 +177,7 @@ nav a:hover{
   right:20px;
 }
 
+
 /* DOTS */
 
 .slider-dots{
@@ -200,6 +203,7 @@ nav a:hover{
   background:#ffd43b;
   transform:scale(1.2);
 }
+
 
 /* ================= HERO ================= */
 
@@ -286,6 +290,7 @@ nav a:hover{
   font-weight:700;
 }
 
+
 /* ================= GENERAL ================= */
 
 section{
@@ -308,7 +313,10 @@ section{
   color:#6b7280;
 }
 
-/* ================= OUR COURSES ================= */
+
+/* =====================================================
+   OUR COURSES
+===================================================== */
 
 .course-grid{
   display:grid;
@@ -381,6 +389,7 @@ section{
   font-weight:900;
 }
 
+
 /* ODISHA */
 
 .course-card.odisha{
@@ -396,6 +405,7 @@ section{
   color:#15803d;
   border-color:#bbf7d0;
 }
+
 
 /* ACADEMIC */
 
@@ -413,6 +423,7 @@ section{
   border-color:#e9d5ff;
 }
 
+
 /* ENTRANCE */
 
 .course-card.entrance{
@@ -428,6 +439,7 @@ section{
   color:#c2410c;
   border-color:#fed7aa;
 }
+
 
 /* SPOKEN ENGLISH */
 
@@ -476,6 +488,7 @@ section{
   font-weight:800;
 }
 
+
 /* ================= STUDY MATERIAL ================= */
 
 .resource-grid{
@@ -518,31 +531,53 @@ section{
 }
 
 
+/* ================= CURRENT AFFAIRS ================= */
 
-<!-- ================= CURRENT AFFAIRS ================= -->
+.current-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
 
-<section id="current-affairs">
+.current-card{
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 7px 25px rgba(0,0,0,.07);
+  border-top:4px solid #1d4ed8;
+}
 
-  <div class="container">
+.current-card h3{
+  color:#1d4ed8;
+  margin-bottom:8px;
+}
 
-    <div class="section-title">
 
-      <h2>
-        <a href="./current-affairs.html"
-           style="color:#102a43;text-decoration:none;cursor:pointer;">
-          📰 Current Affairs
-        </a>
-      </h2>
+/* ================= PDF BUTTONS ================= */
 
-      <p>
-        Monthly Current Affairs MCQs for examination preparation
-      </p>
+.pdf-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
 
-    </div>
+.pdf-btn{
+  display:inline-block;
+  padding:10px 15px;
+  border-radius:7px;
+  font-size:14px;
+  font-weight:800;
+}
 
-  </div>
+.view-btn{
+  background:#1d4ed8;
+  color:white;
+}
 
-</section>
+.download-btn{
+  background:#16a34a;
+  color:white;
+}
 
 
 /* ================= MOCK ================= */
@@ -559,6 +594,7 @@ section{
   font-size:32px;
   margin-bottom:12px;
 }
+
 
 /* ================= CONTACT ================= */
 
@@ -587,6 +623,7 @@ section{
   margin-bottom:10px;
 }
 
+
 /* ================= FOOTER ================= */
 
 footer{
@@ -605,6 +642,7 @@ footer p{
   color:#cbd5e1;
   font-size:14px;
 }
+
 
 /* ================= MOBILE ================= */
 
@@ -625,6 +663,7 @@ footer p{
   }
 
 }
+
 
 @media(max-width:600px){
 
@@ -700,6 +739,7 @@ footer p{
 
 }
 
+
 /* ================= COURSE ICON/TAGS MOBILE ================= */
 
 @media(max-width:500px){
@@ -723,7 +763,9 @@ footer p{
 
 </head>
 
+
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
@@ -744,13 +786,19 @@ AIMERS <span>CLASSES</span>
 
 </div>
 
+
 <nav>
 
 <a href="#home">Home</a>
+
 <a href="#courses">Courses</a>
+
 <a href="#study-material">Study Material</a>
-<a href="current-affairs.html">Current Affairs</a>
+
+<a href="#current-affairs">Current Affairs</a>
+
 <a href="#mock-test">Mock Tests</a>
+
 <a href="#contact">Contact</a>
 
 </nav>
@@ -758,6 +806,7 @@ AIMERS <span>CLASSES</span>
 </div>
 
 </header>
+
 
 <!-- ================= 4 IMAGE SLIDER ================= -->
 
@@ -767,56 +816,83 @@ AIMERS <span>CLASSES</span>
 
 <div class="slides" id="slides">
 
+
 <div class="slide">
+
 <img
 src="WhatsApp%20Image%202026-09-28%20at%2010.11.18%20(3).jpeg"
 alt="AIMERS CLASSES Admission Open 2026">
+
 </div>
 
+
 <div class="slide">
+
 <img
 src="WhatsApp%20Image%202026-09-28%20at%2010.11.18%20(2).jpeg"
 alt="AIMERS CLASSES Spoken English">
+
 </div>
 
+
 <div class="slide">
+
 <img
 src="WhatsApp%20Image%202026-09-28%20at%2010.11.18%20(1).jpeg"
 alt="AIMERS CLASSES Competitive Exams">
+
 </div>
 
+
 <div class="slide">
+
 <img
 src="WhatsApp%20Image%202026-09-28%20at%2010.11.18.jpeg"
 alt="AIMERS CLASSES School Entrance Exams">
-</div>
 
 </div>
+
+
+</div>
+
 
 <button
 class="slider-arrow prev"
 id="prevBtn"
 aria-label="Previous Slide">
+
 &#10094;
+
 </button>
+
 
 <button
 class="slider-arrow next"
 id="nextBtn"
 aria-label="Next Slide">
+
 &#10095;
+
 </button>
 
+
 <div class="slider-dots">
+
 <button class="dot active" data-slide="0"></button>
+
 <button class="dot" data-slide="1"></button>
+
 <button class="dot" data-slide="2"></button>
+
 <button class="dot" data-slide="3"></button>
+
 </div>
+
 
 </div>
 
 </section>
+
 
 <!-- ================= HERO ================= -->
 
@@ -827,46 +903,68 @@ aria-label="Next Slide">
 <div>
 
 <h1>
+
 AIMERS <span>CLASSES</span>
+
 <br>
+
 Aim High • Achieve High
+
 </h1>
 
+
 <p>
+
 Quality education, smart learning and result-oriented preparation
 for school students and competitive examinations.
+
 </p>
+
 
 <div class="hero-buttons">
 
 <a
 href="#study-material"
 class="btn btn-primary">
+
 Explore Study Material
+
 </a>
+
 
 <a
 href="#contact"
 class="btn btn-secondary">
+
 Contact Us
+
 </a>
 
 </div>
 
 </div>
+
 
 <div class="hero-box">
 
 <h3>📚 What We Offer</h3>
 
 <ul>
+
 <li>✅ Classes 3–12</li>
+
 <li>✅ ICSE • CBSE • CHSE</li>
+
 <li>✅ SSC • Railway • Banking</li>
+
 <li>✅ ASO • OSSC • OSSSC</li>
+
 <li>✅ Navodaya • Sainik • Adarsha • Eklavya</li>
+
 <li>✅ Spoken English & Personality Development</li>
+
 <li>✅ Current Affairs & Mock Tests</li>
+
 </ul>
 
 </div>
@@ -875,7 +973,10 @@ Contact Us
 
 </section>
 
-<!-- ================= OUR COURSES ================= -->
+
+<!-- =====================================================
+     OUR COURSES
+===================================================== -->
 
 <section id="courses">
 
@@ -883,7 +984,9 @@ Contact Us
 
 <div class="section-title">
 
-<h2>Our Courses</h2>
+<h2>
+Our Courses
+</h2>
 
 <p>
 Complete academic and competitive exam preparation
@@ -891,116 +994,217 @@ Complete academic and competitive exam preparation
 
 </div>
 
+
 <div class="course-grid">
 
-<!-- ALL COMPETITIVE EXAMS -->
+
+<!-- ================= ALL COMPETITIVE EXAMS ================= -->
 
 <div class="course-card">
 
-<div class="course-icon">🎯</div>
+<div class="course-icon">
+🎯
+</div>
 
-<h3>ALL COMPETITIVE EXAMS</h3>
+<h3>
+ALL COMPETITIVE EXAMS
+</h3>
 
 <div class="course-tags">
-<span class="course-tag">SSC</span>
-<span class="course-tag">RAILWAY</span>
-<span class="course-tag">BANKING</span>
-</div>
+
+<span class="course-tag">
+SSC
+</span>
+
+<span class="course-tag">
+RAILWAY
+</span>
+
+<span class="course-tag">
+BANKING
+</span>
 
 </div>
 
-<!-- ODISHA GOVERNMENT EXAMS -->
+</div>
+
+
+<!-- ================= ODISHA GOVERNMENT EXAMS ================= -->
 
 <div class="course-card odisha">
 
-<div class="course-icon">🏛️</div>
+<div class="course-icon">
+🏛️
+</div>
 
-<h3>ODISHA GOVERNMENT EXAMS</h3>
+<h3>
+ODISHA GOVERNMENT EXAMS
+</h3>
 
 <div class="course-tags">
-<span class="course-tag">ASO</span>
-<span class="course-tag">OSSC</span>
-<span class="course-tag">OSSSC</span>
-<span class="course-tag">RI</span>
-<span class="course-tag">AMIN</span>
-</div>
+
+<span class="course-tag">
+ASO
+</span>
+
+<span class="course-tag">
+OSSC
+</span>
+
+<span class="course-tag">
+OSSSC
+</span>
+
+<span class="course-tag">
+RI
+</span>
+
+<span class="course-tag">
+AMIN
+</span>
 
 </div>
 
-<!-- SCHOOL ACADEMIC COURSES -->
+</div>
+
+
+<!-- ================= SCHOOL ACADEMIC COURSES ================= -->
 
 <div class="course-card academic">
 
-<div class="course-icon">📚</div>
+<div class="course-icon">
+📚
+</div>
 
-<h3>SCHOOL ACADEMIC COURSES</h3>
+<h3>
+SCHOOL ACADEMIC COURSES
+</h3>
 
-<div class="course-main-title">CLASS 1 TO 12</div>
+<div class="course-main-title">
+CLASS 1 TO 12
+</div>
 
 <div class="course-subtitle">
 ICSE • CBSE • CHSE • BSE BOARDS
 </div>
 
 <div class="course-tags">
-<span class="course-tag">SCIENCE</span>
-<span class="course-tag">COMMERCE</span>
-<span class="course-tag">ARTS</span>
-</div>
+
+<span class="course-tag">
+SCIENCE
+</span>
+
+<span class="course-tag">
+COMMERCE
+</span>
+
+<span class="course-tag">
+ARTS
+</span>
 
 </div>
 
-<!-- SCHOOL ENTRANCE EXAMINATION -->
+</div>
+
+
+<!-- ================= SCHOOL ENTRANCE EXAMINATION ================= -->
 
 <div class="course-card entrance">
 
-<div class="course-icon">🏫</div>
+<div class="course-icon">
+🏫
+</div>
 
-<h3>SCHOOL ENTRANCE EXAMINATION</h3>
+<h3>
+SCHOOL ENTRANCE EXAMINATION
+</h3>
 
 <div class="course-entrance-grid">
 
-<div class="course-entrance-item">🎓 Sainik School</div>
-<div class="course-entrance-item">📖 Jawahar Navodaya</div>
-<div class="course-entrance-item">🏫 Odisha Adarsha</div>
-<div class="course-entrance-item">🌟 Eklavya</div>
+<div class="course-entrance-item">
+🎓 Sainik School
+</div>
 
+<div class="course-entrance-item">
+📖 Jawahar Navodaya
+</div>
+
+<div class="course-entrance-item">
+🏫 Odisha Adarsha
+</div>
+
+<div class="course-entrance-item">
+🌟 Eklavya
 </div>
 
 </div>
 
-<!-- SPOKEN ENGLISH COURSE -->
+</div>
+
+
+<!-- ================= SPOKEN ENGLISH COURSE ================= -->
 
 <div class="course-card english">
 
-<div class="course-icon">🗣️</div>
+<div class="course-icon">
+🗣️
+</div>
 
-<h3>SPOKEN ENGLISH COURSE</h3>
+<h3>
+SPOKEN ENGLISH COURSE
+</h3>
 
 <p>
+
 Develop confidence in English communication with focused training
 in Speaking, Listening, Reading, Writing, Grammar, Vocabulary,
 Pronunciation and Communication Skills.
+
 </p>
 
 <br>
 
 <div class="course-tags">
-<span class="course-tag">SPEAKING</span>
-<span class="course-tag">LISTENING</span>
-<span class="course-tag">READING</span>
-<span class="course-tag">WRITING</span>
-<span class="course-tag">GRAMMAR</span>
-<span class="course-tag">VOCABULARY</span>
-<span class="course-tag">COMMUNICATION</span>
+
+<span class="course-tag">
+SPEAKING
+</span>
+
+<span class="course-tag">
+LISTENING
+</span>
+
+<span class="course-tag">
+READING
+</span>
+
+<span class="course-tag">
+WRITING
+</span>
+
+<span class="course-tag">
+GRAMMAR
+</span>
+
+<span class="course-tag">
+VOCABULARY
+</span>
+
+<span class="course-tag">
+COMMUNICATION
+</span>
+
 </div>
 
 </div>
+
 
 </div>
 
 </div>
 
 </section>
+
 
 <!-- ================= STUDY MATERIAL ================= -->
 
@@ -1010,7 +1214,9 @@ Pronunciation and Communication Skills.
 
 <div class="section-title">
 
-<h2>Study Material</h2>
+<h2>
+Study Material
+</h2>
 
 <p>
 Notes, PDFs, current affairs and mock tests
@@ -1018,69 +1224,106 @@ Notes, PDFs, current affairs and mock tests
 
 </div>
 
+
 <div class="resource-grid">
 
-<!-- PDF NOTES -->
 
-<a class="resource" href="materials.html">
+<!-- PDF NOTES - NOW OPENS NEW PAGE -->
 
-<b>📚 CLASS 10, 11 & 12 Notes</b>
+<a
+class="resource"
+href="materials.html">
+
+<b>
+📚 CLASS 10, 11 & 12 Notes
+</b>
 
 <span>
 Class notes, specimen papers and downloadable PDFs
 </span>
 
-<em>Open →</em>
+<em>
+Open →
+</em>
 
 </a>
 
+
 <!-- CURRENT AFFAIRS -->
 
-<a class="resource" href="#current-affairs">
+<a
+class="resource"
+href="#current-affairs">
 
-<b>📰 Current Affairs</b>
+<b>
+📰 Current Affairs
+</b>
 
 <span>
 Monthly current affairs and MCQ practice
 </span>
 
-<em>Open →</em>
+<em>
+Open →
+</em>
 
 </a>
 
+
 <!-- MOCK TEST -->
 
-<a class="resource" href="#mock-test">
+<a
+class="resource"
+href="#mock-test">
 
-<b>📝 Mock Tests</b>
+<b>
+📝 Mock Tests
+</b>
 
 <span>
 Practice tests for school and competitive examinations
 </span>
 
-<em>Open →</em>
+<em>
+Open →
+</em>
 
 </a>
 
+
 <!-- VIDEO CLASSES -->
 
-<a class="resource" href="#contact">
+<a
+class="resource"
+href="#contact">
 
-<b>🎥 Video Classes</b>
+<b>
+🎥 Video Classes
+</b>
 
 <span>
 Learning resources and classroom support
 </span>
 
-<em>Contact Us →</em>
+<em>
+Contact Us →
+</em>
 
 </a>
+
 
 </div>
 
 </div>
 
 </section>
+
+
+<!-- =====================================================
+     NOTE:
+     PDF NOTES SECTION HAS BEEN MOVED TO material.html
+     ===================================================== -->
+
 
 <!-- ================= CURRENT AFFAIRS ================= -->
 
@@ -1090,14 +1333,9 @@ Learning resources and classroom support
 
 <div class="section-title">
 
-
 <h2>
-  <a href="./current-affairs.html"
-     style="color:inherit;text-decoration:none;cursor:pointer;">
-    📰 Current Affairs
-  </a>
+📰 Current Affairs
 </h2>
-
 
 <p>
 Monthly Current Affairs MCQs for examination preparation
@@ -1105,20 +1343,238 @@ Monthly Current Affairs MCQs for examination preparation
 
 </div>
 
-<!--
-Current Affairs PDF cards have been removed from index.html.
 
-Upload your monthly PDF files to your separate GitHub folder:
-CurrentAffairs/
+<div class="current-grid">
 
-This section currently displays only the heading and description.
-The uploaded PDFs will not appear here automatically until a
-separate Current Affairs listing page or folder-loading code is added.
--->
+
+<!-- MARCH 2026 -->
+
+<div class="current-card">
+
+<h3>
+March 2026 Current Affairs
+</h3>
+
+<p>
+March 2026 Current Affairs MCQ PDF.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="MARCH%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="MARCH%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- APRIL 2026 -->
+
+<div class="current-card">
+
+<h3>
+April 2026 Current Affairs
+</h3>
+
+<p>
+April 2026 Current Affairs MCQ PDF.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="APRIL%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="APRIL%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- MAY 2026 -->
+
+<div class="current-card">
+
+<h3>
+May 2026 Current Affairs
+</h3>
+
+<p>
+May 2026 Current Affairs MCQ PDF.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="MAY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="MAY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- JUNE 2026 -->
+
+<div class="current-card">
+
+<h3>
+June 2026 Current Affairs
+</h3>
+
+<p>
+June 2026 Current Affairs MCQ PDF.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="JUNE%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="JUNE%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- JULY 2026 -->
+
+<div class="current-card">
+
+<h3>
+July 2026 Current Affairs
+</h3>
+
+<p>
+July 2026 Current Affairs MCQ PDF.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="JULY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="JULY%202026%20CURRENT%20AFFAIRS%20MCQ.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- AUGUST 2026 -->
+
+<div class="current-card">
+
+<h3>
+August 2026 Current Affairs
+</h3>
+
+<p>
+300 MCQs - August 2026 Current Affairs.
+</p>
+
+<div class="pdf-buttons">
+
+<a
+href="300_MCQs_August_2026_Current_Affairs.pdf"
+target="_blank"
+class="pdf-btn view-btn">
+
+📖 View PDF
+
+</a>
+
+<a
+href="300_MCQs_August_2026_Current_Affairs.pdf"
+download
+class="pdf-btn download-btn">
+
+⬇ Download
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
 
 </div>
 
 </section>
+
 
 <!-- ================= MOCK TEST ================= -->
 
@@ -1128,16 +1584,21 @@ separate Current Affairs listing page or folder-loading code is added.
 
 <div class="mock-box">
 
-<h2>📝 Online Mock Tests</h2>
+<h2>
+📝 Online Mock Tests
+</h2>
 
 <p>
 Practice questions, improve your speed and prepare for examinations.
 </p>
 
+
 <a
 href="./tests/index.html"
 class="btn btn-secondary">
+
 Start Mock Test →
+
 </a>
 
 </div>
@@ -1146,81 +1607,128 @@ Start Mock Test →
 
 </section>
 
+
 <!-- ================= CONTACT ================= -->
 
-<section class="contact-section" id="contact">
+<section
+class="contact-section"
+id="contact">
 
 <div class="container">
 
 <div class="section-title">
 
-<h2>📞 Contact AIMERS CLASSES</h2>
+<h2>
+📞 Contact AIMERS CLASSES
+</h2>
 
-<p>Admission Open • Limited Seats</p>
+<p>
+Admission Open • Limited Seats
+</p>
 
 </div>
+
 
 <div class="contact-grid">
 
+
 <div class="contact-card">
 
-<h3>📍 Address</h3>
+<h3>
+📍 Address
+</h3>
 
 <p>
+
 Near Hanuman Mandir,
+
 <br>
+
 Front Lane of SBI ATM,
+
 <br>
+
 Purunabasti,
+
 <br>
+
 District Jharsuguda,
+
 <br>
+
 Odisha
+
 </p>
 
 </div>
 
+
 <div class="contact-card">
 
-<h3>📱 Contact</h3>
+<h3>
+📱 Contact
+</h3>
 
 <p>
+
 <strong>Phone:</strong>
-<a href="tel:7735060804">7735060804</a>
+
+<a href="tel:7735060804">
+7735060804
+</a>
+
 </p>
+
 
 <p>
+
 <strong>Alternate:</strong>
-<a href="tel:7657040804">7657040804</a>
+
+<a href="tel:7657040804">
+7657040804
+</a>
+
 </p>
 
-<div class="pdf-buttons" style="margin-top:15px;">
+
+<div
+class="pdf-buttons"
+style="margin-top:15px;">
+
 
 <a
 href="https://wa.me/917735060804"
 target="_blank"
 rel="noopener"
 class="pdf-btn download-btn">
+
 💬 WhatsApp Us
+
 </a>
+
 
 <a
 href="https://www.google.com/maps/search/?api=1&query=Purunabasti%20Jharsuguda%20Odisha"
 target="_blank"
 rel="noopener"
 class="pdf-btn view-btn">
+
 📍 Google Maps
+
 </a>
 
+
 </div>
 
 </div>
+
 
 </div>
 
 </div>
 
 </section>
+
 
 <!-- ================= FOOTER ================= -->
 
@@ -1228,11 +1736,17 @@ class="pdf-btn view-btn">
 
 <div class="container">
 
-<h3>AIMERS CLASSES</h3>
+<h3>
+AIMERS CLASSES
+</h3>
 
-<p>Aim High • Achieve High</p>
+<p>
+Aim High • Achieve High
+</p>
 
-<p>Classes 3–12 | ICSE | CBSE | CHSE</p>
+<p>
+Classes 3–12 | ICSE | CBSE | CHSE
+</p>
 
 <p>
 Competitive Exams:
@@ -1244,16 +1758,21 @@ School Entrance Exams:
 Navodaya | Sainik | Adarsha | Eklavya
 </p>
 
-<p>Spoken English | Personality Development</p>
+<p>
+Spoken English | Personality Development
+</p>
 
 <p style="margin-top:15px;">
+
 © 2026 AIMERS CLASSES.
 All Rights Reserved.
+
 </p>
 
 </div>
 
 </footer>
+
 
 <!-- ================= SLIDER JAVASCRIPT ================= -->
 
@@ -1282,6 +1801,7 @@ let currentSlide = 0;
 
 let autoSlide;
 
+
 /* SHOW SLIDE */
 
 function showSlide(index){
@@ -1294,6 +1814,7 @@ slides.style.transform =
 (currentSlide * 25) +
 "%)";
 
+
 dots.forEach(function(dot,index){
 
 dot.classList.toggle(
@@ -1305,17 +1826,24 @@ index === currentSlide
 
 }
 
+
 /* NEXT */
 
 function nextSlide(){
+
 showSlide(currentSlide + 1);
+
 }
+
 
 /* PREVIOUS */
 
 function prevSlide(){
+
 showSlide(currentSlide - 1);
+
 }
+
 
 /* AUTO SLIDE */
 
@@ -1331,25 +1859,34 @@ nextSlide,
 
 }
 
+
 /* NEXT BUTTON */
 
 nextBtn.addEventListener(
 "click",
 function(){
+
 nextSlide();
+
 startAutoSlide();
+
 }
 );
+
 
 /* PREVIOUS BUTTON */
 
 prevBtn.addEventListener(
 "click",
 function(){
+
 prevSlide();
+
 startAutoSlide();
+
 }
 );
+
 
 /* DOTS */
 
@@ -1372,23 +1909,30 @@ startAutoSlide();
 
 });
 
+
 /* PAUSE ON MOUSE */
 
 slider.addEventListener(
 "mouseenter",
 function(){
+
 clearInterval(autoSlide);
+
 }
 );
+
 
 /* RESUME */
 
 slider.addEventListener(
 "mouseleave",
 function(){
+
 startAutoSlide();
+
 }
 );
+
 
 /* MOBILE SWIPE */
 
@@ -1396,14 +1940,18 @@ let touchStartX = 0;
 
 let touchEndX = 0;
 
+
 slider.addEventListener(
 "touchstart",
 function(e){
+
 touchStartX =
 e.changedTouches[0].screenX;
+
 },
 {passive:true}
 );
+
 
 slider.addEventListener(
 "touchend",
@@ -1415,14 +1963,19 @@ e.changedTouches[0].screenX;
 let distance =
 touchEndX - touchStartX;
 
+
 if(
 Math.abs(distance) > 50
 ){
 
 if(distance < 0){
+
 nextSlide();
+
 }else{
+
 prevSlide();
+
 }
 
 startAutoSlide();
@@ -1433,6 +1986,7 @@ startAutoSlide();
 {passive:true}
 );
 
+
 /* START */
 
 showSlide(0);
@@ -1442,6 +1996,7 @@ startAutoSlide();
 })();
 
 </script>
+
 
 </body>
 
