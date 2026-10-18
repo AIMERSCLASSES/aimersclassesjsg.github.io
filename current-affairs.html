@@ -4,178 +4,379 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Current Affairs PDF | AIMERS CLASSES</title>
-<meta name="description" content="Download Current Affairs PDF notes and MCQs from AIMERS CLASSES.">
+
+<title>Current Affairs PDF & MCQs | AIMERS CLASSES</title>
+
+<meta name="description"
+content="Download Current Affairs PDF notes, monthly MCQs and practice material from AIMERS CLASSES.">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f3f7fc;color:#102a43;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-header{
-  background:linear-gradient(120deg,#102a43,#1d4ed8);
-  color:white;padding:24px 16px;text-align:center;
+
+:root {
+    --navy: #102a43;
+    --blue: #1d4ed8;
+    --yellow: #ffd43b;
+    --light: #f3f7fc;
+    --text: #243b53;
 }
-header h1{font-size:clamp(25px,4vw,36px);margin-bottom:8px}
-header p{font-size:15px}
-nav{margin-top:16px}
-nav a{
-  display:inline-block;color:#102a43;background:#ffd43b;
-  padding:10px 18px;border-radius:8px;text-decoration:none;
-  font-weight:bold;margin:4px;
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--light);
+    color: var(--text);
+    line-height: 1.6;
 }
-.container{max-width:1000px;margin:28px auto;padding:0 16px}
-.intro{text-align:center;margin-bottom:24px}
-.intro h2{font-size:26px;margin-bottom:10px}
-.intro p{color:#526579;line-height:1.6}
-#status{
-  text-align:center;padding:16px;color:#526579;
+
+header {
+    background: linear-gradient(135deg, #102a43, #1d4ed8);
+    color: white;
+    padding: 22px 16px;
 }
-.pdf-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.pdf-card{
-  background:white;border-radius:12px;padding:20px;
-  box-shadow:0 4px 16px #102a4312;border:1px solid #e1eaf5;
-  display:flex;flex-direction:column;gap:12px;
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
 }
-.pdf-card h3{font-size:18px;overflow-wrap:anywhere;line-height:1.5}
-.pdf-card .file-type{color:#64748b;font-size:13px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
-.actions a{
-  display:inline-block;text-decoration:none;text-align:center;
-  padding:10px 14px;border-radius:7px;font-weight:bold;font-size:14px;
+
+.brand {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
 }
-.view{background:#1d4ed8;color:white}
-.download{background:#ffd43b;color:#102a43}
-.empty{
-  grid-column:1/-1;background:white;padding:24px;border-radius:10px;
-  text-align:center;line-height:1.8;color:#526579;
+
+.tagline {
+    color: var(--yellow);
+    font-size: 13px;
+    font-weight: bold;
 }
-footer{
-  text-align:center;background:#102a43;color:white;padding:20px;
-  margin-top:40px;font-size:14px;line-height:1.8;
+
+.back-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--yellow);
+    color: var(--navy);
+    padding: 10px 17px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    background: white;
+}
+
+.hero {
+    background: white;
+    text-align: center;
+    padding: 38px 18px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.hero h1 {
+    color: var(--navy);
+    font-size: clamp(25px, 4vw, 36px);
+    margin-bottom: 10px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    color: #526579;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 16px 35px;
+}
+
+.section-heading {
+    color: var(--navy);
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.description {
+    color: #526579;
+    margin-bottom: 22px;
+}
+
+.status {
+    padding: 13px 15px;
+    background: #e8f1ff;
+    border: 1px solid #c6dcff;
+    color: #17408b;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    overflow-wrap: anywhere;
+}
+
+.pdf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.pdf-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 16px rgba(16, 42, 67, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    min-width: 0;
+}
+
+.pdf-icon {
+    font-size: 34px;
+}
+
+.pdf-name {
+    color: var(--navy);
+    font-size: 17px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.pdf-label {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.action-btn {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 7px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    flex: 1;
+}
+
+.view-btn {
+    background: var(--blue);
+    color: white;
+}
+
+.download-btn {
+    background: var(--yellow);
+    color: var(--navy);
+}
+
+.action-btn:hover {
+    opacity: 0.86;
+}
+
+.empty {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px dashed #cbd5e1;
+    grid-column: 1 / -1;
+}
+
+footer {
+    background: var(--navy);
+    color: white;
+    text-align: center;
+    padding: 23px 15px;
+    font-size: 14px;
+}
+
+footer strong {
+    color: var(--yellow);
+}
+
+@media (max-width: 600px) {
+    .header-inner {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .brand {
+        font-size: 22px;
+    }
+
+    .hero {
+        padding: 28px 15px;
+    }
+
+    .container {
+        margin-top: 22px;
+    }
+
+    .pdf-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
 
 <body>
+
 <header>
-  <h1>AIMERS CLASSES</h1>
-  <p>Aim High • Achieve High</p>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="index.html#study-material">Study Material</a>
-  </nav>
+    <div class="header-inner">
+        <div>
+            <div class="brand">AIMERS CLASSES</div>
+            <div class="tagline">Aim High • Achieve High</div>
+        </div>
+
+        <a class="back-btn" href="index.html">← Back to Home</a>
+    </div>
 </header>
 
-<main class="container">
-  <section class="intro">
-    <h2>Current Affairs PDF & MCQs</h2>
-    <p>View and download Current Affairs notes and practice questions.</p>
-    <p>New PDFs uploaded by AIMERS CLASSES will appear in this list.</p>
-  </section>
+<section class="hero">
+    <h1>Current Affairs PDF &amp; MCQs</h1>
+    <p>
+        Read and download monthly Current Affairs notes, MCQs
+        and practice PDFs for your exam preparation.
+    </p>
+</section>
 
-  <div id="status">Loading PDF files...</div>
-  <section id="pdfList" class="pdf-list"></section>
+<main class="container">
+    <h2 class="section-heading">Available Current Affairs PDFs</h2>
+
+    <p class="description">
+        New PDFs uploaded by AIMERS CLASSES will appear in this list
+        automatically after the repository workflow updates the list.
+    </p>
+
+    <div id="statusBox" class="status" role="status" aria-live="polite">
+        Loading Current Affairs PDFs...
+    </div>
+
+    <div id="pdfList" class="pdf-grid"></div>
 </main>
 
 <footer>
-  <strong>AIMERS CLASSES</strong><br>
-  Aim High • Achieve High<br>
-  Near Hanuman Mandir, Front lane of SBI ATM,<br>
-  Purunabasti, Jharsuguda, Odisha<br>
-  Contact: 7735060804 | 7657040804
+    <strong>AIMERS CLASSES</strong><br>
+    Aim High • Achieve High<br>
+    Near Hanuman Mandir, Front lane of SBI ATM,
+    Purunabasti, Jharsuguda, Odisha<br>
+    Contact: 7735060804 | 7657040804
 </footer>
 
 <script>
-const OWNER = "AIMERSCLASSES";
-const REPO = "aimersclassesjsg.github.io";
-const BRANCH = "main";
-const FOLDER = "CurrentAffairs";
-const statusBox = document.getElementById("status");
 const pdfList = document.getElementById("pdfList");
+const statusBox = document.getElementById("statusBox");
 
 function makeCard(file) {
-  const card = document.createElement("article");
-  card.className = "pdf-card";
+    const card = document.createElement("article");
+    card.className = "pdf-card";
 
-  const title = document.createElement("h3");
-  title.textContent = file.name.replace(/\.pdf$/i, "");
+    const icon = document.createElement("div");
+    icon.className = "pdf-icon";
+    icon.textContent = "📄";
 
-  const type = document.createElement("div");
-  type.className = "file-type";
-  type.textContent = "PDF Document";
+    const name = document.createElement("div");
+    name.className = "pdf-name";
+    name.textContent = file.name;
 
-  const actions = document.createElement("div");
-  actions.className = "actions";
+    const label = document.createElement("div");
+    label.className = "pdf-label";
+    label.textContent = "PDF Document";
 
-  const view = document.createElement("a");
-  view.className = "view";
-  view.href = file.download_url;
-  view.target = "_blank";
-  view.rel = "noopener";
-  view.textContent = "View PDF";
+    const actions = document.createElement("div");
+    actions.className = "actions";
 
-  const download = document.createElement("a");
-  download.className = "download";
-  download.href = file.download_url;
-  download.download = file.name;
-  download.textContent = "Download";
+    const view = document.createElement("a");
+    view.className = "action-btn view-btn";
+    view.href = file.download_url;
+    view.target = "_blank";
+    view.rel = "noopener noreferrer";
+    view.textContent = "View PDF";
 
-  actions.append(view, download);
-  card.append(title, type, actions);
-  return card;
+    const download = document.createElement("a");
+    download.className = "action-btn download-btn";
+    download.href = file.download_url;
+    download.download = file.name;
+    download.textContent = "Download PDF";
+
+    actions.appendChild(view);
+    actions.appendChild(download);
+
+    card.appendChild(icon);
+    card.appendChild(name);
+    card.appendChild(label);
+    card.appendChild(actions);
+
+    return card;
 }
 
 async function loadPDFs() {
-  try {
-    const apiURL =
-      `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FOLDER}?ref=${BRANCH}`;
+    try {
+        const response = await fetch(
+            "current-affairs-list.json?v=" + Date.now(),
+            { cache: "no-store" }
+        );
 
-    const response = await fetch(apiURL);
+        if (!response.ok) {
+            throw new Error(
+                "PDF list file abhi available nahi hai. " +
+                "GitHub Actions workflow check karein."
+            );
+        }
 
-    if (!response.ok) {
-      throw new Error(
-        response.status === 404
-          ? "Folder not found. Check that CURRENT AFFAIRS exists in the main branch."
-          : `GitHub returned error ${response.status}. Please try again later.`
-      );
+        const pdfs = await response.json();
+
+        pdfList.replaceChildren();
+
+        if (!Array.isArray(pdfs) || pdfs.length === 0) {
+            statusBox.textContent = "Abhi koi Current Affairs PDF available nahi hai.";
+            pdfList.innerHTML =
+                '<div class="empty">PDF upload hone ke baad yahan dikhegi.</div>';
+            return;
+        }
+
+        pdfs.forEach(file => {
+            if (
+                file &&
+                typeof file.name === "string" &&
+                typeof file.download_url === "string"
+            ) {
+                pdfList.appendChild(makeCard(file));
+            }
+        });
+
+        statusBox.textContent =
+            pdfList.children.length + " PDF(s) available.";
+
+    } catch (error) {
+        statusBox.textContent = error.message;
+
+        pdfList.innerHTML =
+            '<div class="empty">' +
+            'PDF list load nahi ho paayi. GitHub Actions workflow complete ' +
+            'hone ke baad page refresh karein.' +
+            '</div>';
+
+        console.error("Current Affairs PDF error:", error);
     }
-
-    const files = await response.json();
-
-    if (!Array.isArray(files)) {
-      throw new Error("Could not read the folder contents.");
-    }
-
-    const pdfs = files
-      .filter(file =>
-        file.type === "file" && /\.pdf$/i.test(file.name)
-      )
-      .sort((a, b) => b.name.localeCompare(a.name, undefined, {
-        numeric: true,
-        sensitivity: "base"
-      }));
-
-    statusBox.textContent = "";
-
-    if (pdfs.length === 0) {
-      pdfList.innerHTML =
-        '<div class="empty">Abhi is folder mein koi PDF nahi hai.<br>' +
-        'GitHub ke CURRENT AFFAIRS folder mein PDF upload karke commit karein.</div>';
-      return;
-    }
-
-    pdfs.forEach(file => pdfList.appendChild(makeCard(file)));
-  } catch (error) {
-    statusBox.textContent = error.message;
-    pdfList.innerHTML =
-      '<div class="empty">PDF list load nahi ho paayi.<br>' +
-      'Kuch der baad page refresh karke try karein.</div>';
-  }
 }
 
 loadPDFs();
 </script>
+
 </body>
 </html>
